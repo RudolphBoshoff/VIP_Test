@@ -1,0 +1,315 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CT53nQciSrZMSPf-gt-1424870-2022-01-27T06:27:36.466Z::svc.xml</types1:EntryId>
+      <types1:Name>Svc_VIP_CF_VP8-1</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T06:27:36Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="Svc_VIP_CF_VP8"
+                            label=""
+                            name="Svc_VIP_CF_VP8-1"
+                            uuid="c7e19984-d622-4b83-aef7-dfff75375e4c">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetInternalFile"
+                       maxRedirects="100"
+                       name="GetInternalFile"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="token"
+                                name="token"
+                                required="false"
+                                testWith="WeOTdi1dAXCAgpX7MJYKewPX4cxGHtAa1kNIgskXjpiUV0Xyd_rkAebhbGYtEqo3UXkaZqXMl6w0CLLN-RG4aY7CA5eIDJW09vUM71J1wogT5NRxpOdDr3XCQ6Lc315rcrafIpNhwNBoG3qfPKKecfEOZhB2wF33i-tVs1EombN6y3S24Kk07egiaq2ZtI-ZBrsRywECiL2v5MUbfNue-pgn83ZPiJB4oajWPoXrokMvoHh-4MFhQDXMuC7qF0ev_tTFo1SsDlCogPUv5-pAud_bSopO5r8ELmxFMGUIDDfPsJoCWGdVsEZJwU9kwH7Ub9W572lEJVr2TpCDM4CUNIArHddWvJGD26YcO7H4CRatUOq6vGnGg7SIa_ha50FgfvJDZMsy8b4QAUXkB2rTBT7zSwXSdqdpyNGK1zaSjv81s1oKyIfUeHog8brouJUTIvdj6iP86PQzWIzqsg8wg7PzEbH3WAkfcYWgdudOJd6poDePiRbusnGp_Q6H9UvFtYUzDW3PLx96RKNHeEhUvOx6iTiQBFlhVXT74wZHDUVyugAeHO6X_j8S9geJXNc12VDPsEXdH2RhWC16rtJN6c3Hcfrs_ocPwbk5bknTQxo1U9aMCAmkP41ubBwH6PIVS01AaC35swXE_KaVojjeQkOD9URTmsXSDDNN4SPxfLt31lhrc8Qyc9q7wNhhcoCGM3EsM39S2UpKlu-8l_SutEC7ip8yfYZRFc3Hfpm-Ee2aPNnBNbnC0MRRM5pptxvT2wQaDnALeF0Ktc_88ajqCbPa1_ltoXWtQvYkSn1WF2QUYT0uNgEfOeQptq0oO6s1YknsSXSuNXTG7Dr6WRtU7BzBnlq7EHr0uHraB3UwTJS_yGsSPRsSupXtCJdUvLqIKfljkn8KRC_cPIX3PXgxxLtpoSlZfe-eO1qoDDGL7owC4rJUGvoGkAfjRE53qkZeuJ3xaPO-GRC0O-DT2SZ8Alh0yNaC9Lat91Qpsigm3zfLIKhBMS8pczqplX29synrMWldG2MK77WrJ2sQvxAfaqCoWlsxh5vVeXB_fvOARYc"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest/"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($base_url  , '/api/v8.0/ClientServicingPortal/User/UserProfile/InternalFile')}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$token)}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="fileReference" type="reference">
+                        <options>
+                           <option name="referenceTo">valueF</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                     <field description="" name="fileArray" type="objectlist">
+                        <options>
+                           <option name="referenceTo">valueF</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetDataFromLookValues"
+                       maxRedirects="100"
+                       name="GetDataFromLookValues"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="token"
+                                name="token"
+                                required="false"
+                                testWith="WeOTdi1dAXCAgpX7MJYKewPX4cxGHtAa1kNIgskXjpiUV0Xyd_rkAebhbGYtEqo3UXkaZqXMl6w0CLLN-RG4aY7CA5eIDJW09vUM71J1wogT5NRxpOdDr3XCQ6Lc315rcrafIpNhwNBoG3qfPKKecfEOZhB2wF33i-tVs1EombN6y3S24Kk07egiaq2ZtI-ZBrsRywECiL2v5MUbfNue-pgn83ZPiJB4oajWPoXrokMvoHh-4MFhQDXMuC7qF0ev_tTFo1SsDlCogPUv5-pAud_bSopO5r8ELmxFMGUIDDfPsJoCWGdVsEZJwU9kwH7Ub9W572lEJVr2TpCDM4CUNIArHddWvJGD26YcO7H4CRatUOq6vGnGg7SIa_ha50FgfvJDZMsy8b4QAUXkB2rTBT7zSwXSdqdpyNGK1zaSjv81s1oKyIfUeHog8brouJUTIvdj6iP86PQzWIzqsg8wg7PzEbH3WAkfcYWgdudOJd6poDePiRbusnGp_Q6H9UvFtYUzDW3PLx96RKNHeEhUvOx6iTiQBFlhVXT74wZHDUVyugAeHO6X_j8S9geJXNc12VDPsEXdH2RhWC16rtJN6c3Hcfrs_ocPwbk5bknTQxo1U9aMCAmkP41ubBwH6PIVS01AaC35swXE_KaVojjeQkOD9URTmsXSDDNN4SPxfLt31lhrc8Qyc9q7wNhhcoCGM3EsM39S2UpKlu-8l_SutEC7ip8yfYZRFc3Hfpm-Ee2aPNnBNbnC0MRRM5pptxvT2wQaDnALeF0Ktc_88ajqCbPa1_ltoXWtQvYkSn1WF2QUYT0uNgEfOeQptq0oO6s1YknsSXSuNXTG7Dr6WRtU7BzBnlq7EHr0uHraB3UwTJS_yGsSPRsSupXtCJdUvLqIKfljkn8KRC_cPIX3PXgxxLtpoSlZfe-eO1qoDDGL7owC4rJUGvoGkAfjRE53qkZeuJ3xaPO-GRC0O-DT2SZ8Alh0yNaC9Lat91Qpsigm3zfLIKhBMS8pczqplX29synrMWldG2MK77WrJ2sQvxAfaqCoWlsxh5vVeXB_fvOARYc"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest/"
+                                type="string"/>
+                     <parameter label="tabCode"
+                                name="tabCode"
+                                required="false"
+                                testWith="NATI"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{concat($base_url  , '/api/V8.0/Configuration/BusinessParameter/LookupValues/',$tabCode )}"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$token)}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="lookvaluesReference" type="reference">
+                        <options>
+                           <option name="referenceTo">valueLV</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                     <field description="" name="lookValuesArray" type="objectlist">
+                        <options>
+                           <option name="referenceTo">valueLV</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetAccessToken"
+                       maxRedirects="100"
+                       name="GetAccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                required="false"
+                                testWith="vipapi"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="false"
+                                testWith="Today123"
+                                type="string"/>
+                     <parameter label="grant_type"
+                                name="grant_type"
+                                required="false"
+                                testWith="password"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest/"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{concat($base_url  , 'token')}" verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="accesstoken"
+                            property="access_token"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="eventNrs" nullable="true" required="false" type="string"/>
+                     <field name="supportMultilingual"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="caption" nullable="true" required="false" type="string"/>
+                     <field name="errorCode" nullable="true" required="false" type="string"/>
+                     <field name="multilingualParameters"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="message" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">value</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="status" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="valueF">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="fileName" nullable="true" required="false" type="string"/>
+                     <field name="jurType" nullable="true" required="false" type="string"/>
+                     <field name="fileConfigId" nullable="true" required="false" type="int"/>
+                     <field name="entType" nullable="true" required="false" type="string"/>
+                     <field name="incorpKey" nullable="true" required="false" type="double"/>
+                     <field name="warningField" nullable="true" required="false" type="int"/>
+                     <field name="lastApprovedDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="orgCode" nullable="true" required="false" type="string"/>
+                     <field name="dbId" nullable="true" required="false" type="string"/>
+                     <field name="adminCode" nullable="true" required="false" type="string"/>
+                     <field name="isAccountingEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isEntityAdministrationEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isRelationEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="admin2Code"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="mfStatus" nullable="true" required="false" type="int"/>
+                     <field name="fileCode" nullable="true" required="false" type="int"/>
+                     <field name="recStatus" nullable="true" required="false" type="int"/>
+                     <field name="isSupplierEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isClientGroupEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isBrokerAccountSignatoryEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isShareHolderEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="timeStamp" nullable="true" required="false" type="string"/>
+                     <field name="isBrokerEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="isStatutoryEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="lastApprovedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="entStatus" nullable="true" required="false" type="int"/>
+                     <field name="fileSeqNr" nullable="true" required="false" type="int"/>
+                     <field name="lastChangedBy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="isTimeAndBillingEnabled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="fileType" nullable="true" required="false" type="string"/>
+                     <field name="lastChangedDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="valueLV">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="elValue" nullable="true" required="false" type="int"/>
+                     <field name="convertValues"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="eFile" nullable="true" required="false" type="int"/>
+                     <field name="customized"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="name" nullable="true" required="false" type="string"/>
+                     <field name="inUse" nullable="true" required="false" type="string"/>
+                     <field name="tag" nullable="true" required="false" type="string"/>
+                     <field name="tabCode" nullable="true" required="false" type="string"/>
+                     <field name="elCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>3JiNzvFTe4odPyiwIVl8MR</types1:GUID>
+      <types1:DisplayName>Svc_VIP_CF_VP8</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-05-02T05:48:14.056Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

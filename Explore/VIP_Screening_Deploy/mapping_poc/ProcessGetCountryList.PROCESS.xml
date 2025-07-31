@@ -1,0 +1,164 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>k7KsqeErhNzUzeA-gt-1440411-2022-01-27T06:56:05.171Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetCountryList-2</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T06:56:05Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-27T06:56:33Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetCountryList-2/ProcessGetCountryList-2.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetCountryList"
+                  name="ProcessGetCountryList-2"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="outdata" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="isnull" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmptoken" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmpbaseurl" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">https://web.clmvpcdev.vaws/rest/</option>
+                  </options>
+               </field>
+               <field description="" name="cntrdata" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="cntrcount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmpoutpayload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmpjson" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmpvar" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kysva9xs" targetId="kysva9xr"/>
+               </start>
+               <service id="kysva9xr">
+                  <title>GetAccessToken</title>
+                  <serviceName>AppConnCFIntegration-VP8:GetAccessToken</serviceName>
+                  <serviceGUID>1hcdiA32UI1d4foAqFNOKV</serviceGUID>
+                  <serviceInput>
+                     <parameter name="username" source="constant">vipapi</parameter>
+                     <parameter name="password" source="constant">Today123</parameter>
+                     <parameter name="grant_type" source="constant">password</parameter>
+                     <parameter name="base_url" source="constant">{$temp.tmpbaseurl}</parameter>
+                  </serviceInput>
+                  <link id="kysva9xt" targetId="kyoc2r4d"/>
+               </service>
+               <service id="kysva9zv">
+                  <title>GetDataFromLookValues</title>
+                  <serviceName>AppConnCFIntegration-VP8:GetDataFromLookValues</serviceName>
+                  <serviceGUID>1hcdiA32UI1d4foAqFNOKV</serviceGUID>
+                  <serviceInput>
+                     <parameter name="token" source="field" updatable="true">temp.tmptoken</parameter>
+                     <parameter name="base_url" source="field" updatable="true">temp.tmpbaseurl</parameter>
+                     <parameter name="tabCode" source="constant">CNTR</parameter>
+                  </serviceInput>
+                  <link id="kyvqs5ce" targetId="kyvqs5cd"/>
+               </service>
+               <assignment id="kyoc2r4d">
+                  <title>Assignment to token</title>
+                  <operation source="constant" to="temp.tmptoken">{$output.accesstoken}</operation>
+                  <link id="kysva9zw" targetId="kysva9zv"/>
+               </assignment>
+               <assignment id="kyvqs5cd">
+                  <title>Assignment to lookvaluesReference</title>
+                  <operation source="formula" to="output.lookvaluesReference">
+                     <expression language="XQuery">$output.lookValuesArray </expression>
+                  </operation>
+                  <link id="kyvqs5cf" targetId="kyvqs59w"/>
+               </assignment>
+               <assignment id="kyvqs59w">
+                  <title>Assignment to outdata</title>
+                  <operation source="formula" to="output.outdata">
+                     <expression language="XQuery">for $i in  $output.lookvaluesReference /element()
+return
+&lt;column&gt;
+    &lt;name&gt;{fn:name($i)}&lt;/name&gt;
+   &lt;countryCode&gt;$output.lookvaluesReference[$i]/elCode/text()&lt;/countryCode&gt; 
+&lt;/column&gt;</expression>
+                  </operation>
+                  <link id="kyvqs5a7" targetId="kyvqs5a6"/>
+               </assignment>
+               <end id="kyvqs5a6">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>8a4d5ad7-69de-4cfa-b80a-1139861e81b2</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>swapnil.shrungare@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T06:56:05Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-27T06:56:05Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>6uR8rQ5ZPZjgGZgecaO6Yw</types1:GUID>
+      <types1:DisplayName>ProcessGetCountryList</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-05-02T05:48:13.898Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

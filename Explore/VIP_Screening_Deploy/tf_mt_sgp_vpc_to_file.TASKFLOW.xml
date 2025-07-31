@@ -1,0 +1,194 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>omhwq9bdsreK8ZA-gt-6434489-2022-05-30T13:15:21.228Z::tf.xml</types1:EntryId>
+      <types1:Name>tf_mt_sgp_vpc_to_file</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2022-05-30T13:15:21Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2022-06-20T05:31:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tf_mt_sgp_vpc_to_file/tf_mt_sgp_vpc_to_file.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="tf_mt_sgp_vpc_to_file"
+                   name="tf_mt_sgp_vpc_to_file"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="run mt_sgp_vpc_to_file" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-sgp-vpc-to-file</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l1xfu2hn" targetId="l1xfu2hs"/>
+               </start>
+               <eventContainer id="l1xfu2hs">
+                  <service id="l1xfu2hm">
+                     <title>run mt_sgp_vpc_to_file</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_sgp_vpc_to_file</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">g4aoO9IuqYsitndfLv4DCq</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-sgp-vpc-to-file">temp.run mt_sgp_vpc_to_file</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Task_Status">Task Status</operation>
+                        <operation source="field"
+                                   to="temp.run mt_sgp_vpc_to_file/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.run mt_sgp_vpc_to_file/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.run mt_sgp_vpc_to_file/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.run mt_sgp_vpc_to_file/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.run mt_sgp_vpc_to_file/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="l1xfu2iw" targetId="l1xfu2iv"/>
+                  <events>
+                     <catch faultField="temp.run mt_sgp_vpc_to_file/fault"
+                            id="l1xfu2hq"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.run mt_sgp_vpc_to_file/fault"
+                            id="l1xfu2hr"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <container id="l1xfu2iv" type="exclusive">
+                  <title>Check Task status</title>
+                  <flow id="l1xfu2iz">
+                     <service id="l1xfu2jg">
+                        <title>Send Success Notification</title>
+                        <serviceName>emailNotificationService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="Email To" source="constant">swapnil.shrungare@vistra.com,philippe.paul@vistra.com,chaitanya.panjala@vistra.com</parameter>
+                           <parameter name="Email Cc" source="constant"/>
+                           <parameter name="Email Subject" source="constant">Singapore -  Data load completed </parameter>
+                           <parameter name="Email Content Type" source="constant">html</parameter>
+                           <parameter name="Email Body" source="constant">&lt;p&gt;&lt;strong&gt;Jurisdiction &lt;/strong&gt;- Singapore&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Status&amp;nbsp; &lt;/strong&gt;- Successful&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Start Time &lt;/strong&gt;- {$temp.runmt_sgp_vpc_to_file[1]/output[1]/Start_Time}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;End Time - &lt;/strong&gt;{$temp.runmt_sgp_vpc_to_file[1]/output[1]/End_Time}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Records count sent for SD -&amp;nbsp;&lt;/strong&gt;{$temp.runmt_sgp_vpc_to_file[1]/output[1]/Success_Target_Rows}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</parameter>
+                        </serviceInput>
+                        <serviceOutput/>
+                     </service>
+                     <link id="l1xfu2j0" targetId="l1xfu2iv" type="containerLink"/>
+                  </flow>
+                  <flow id="l1xfu2j2">
+                     <service id="l1xfu2kg">
+                        <title>Send Failure Notification</title>
+                        <serviceName>emailNotificationService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="Email To" source="constant">swapnil.shrungare@vistra.com,philippe.paul@vistra.com,chaitanya.panjala@vistra.com</parameter>
+                           <parameter name="Email Cc" source="constant"/>
+                           <parameter name="Email Subject" source="constant">Singapore -  Data load completed </parameter>
+                           <parameter name="Email Content Type" source="constant">html</parameter>
+                           <parameter name="Email Body" source="constant">&lt;p&gt;&lt;strong&gt;Jurisdiction &lt;/strong&gt;- Singapore&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Status&amp;nbsp; &lt;/strong&gt;- Failed&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Reason &lt;/strong&gt;- {$temp.runmt_sgp_vpc_to_file[1]/output[1]/Error_Message}&lt;/p&gt;
+&lt;p&gt;Please connect VIP team for further assistance&amp;nbsp;&lt;/p&gt;</parameter>
+                        </serviceInput>
+                        <serviceOutput/>
+                     </service>
+                     <link id="l1xfu2j3" targetId="l1xfu2iv" type="containerLink"/>
+                  </flow>
+                  <link id="l1xfu2iy" targetId="l1xfu2iz" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.runmt_sgp_vpc_to_file[1]/output[1]/Task_Status}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l1xfu2j1" targetId="l1xfu2j2" type="containerLink"/>
+                  <link id="l1xfu2ix" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-sgp-vpc-to-file"
+                              isByCopy="true"
+                              name="mt-sgp-vpc-to-file">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>daeuJcMDMA5e69eQLmpnKc</types1:GUID>
+      <types1:DisplayName>tf_mt_sgp_vpc_to_file</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-06-25T09:16:36.778Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

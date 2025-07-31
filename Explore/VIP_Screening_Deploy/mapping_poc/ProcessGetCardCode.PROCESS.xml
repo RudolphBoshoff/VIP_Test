@@ -1,0 +1,137 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>k7KsqeErhNzUzeA-gt-1646448-2022-01-27T10:55:48.171Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetCardCode-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T10:55:48Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-27T10:56:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetCardCode-1/ProcessGetCardCode-1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetCardCode"
+                  name="ProcessGetCardCode-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_refcode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="outCardData" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="carddata" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnCFVPIntegration1:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">eunwxqFEESZhs0sfs2ykMZ</option>
+                  </options>
+               </field>
+               <field description="" name="isnull" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kx8i1svb" targetId="kx8i1sva"/>
+               </start>
+               <assignment id="kx8i1sva">
+                  <title>GetDataFromDB</title>
+                  <operation source="query" to="temp.carddata">
+                     <query advanceQuery="false" from="AppConnCFVPIntegration1:RefMaster">
+                        <where> RefCode = '{$input.in_refcode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kx8i1t9g" targetId="kx8i1t9f"/>
+               </assignment>
+               <assignment id="kx8i1t9f">
+                  <title>Assignment to outCardData, isnull</title>
+                  <operation source="constant" to="output.outCardData">{$temp.carddata.AltName}</operation>
+                  <operation source="formula" to="temp.isnull">
+                     <expression language="XQuery">if (fn:empty($temp.carddata.AltName )) then "Y"
+
+else if (fn:starts-with($temp.carddata.AltName ,"00")) then "Y"
+
+else "N"</expression>
+                  </operation>
+                  <link id="kx8i1t9h" targetId="kx8i1svl"/>
+               </assignment>
+               <container id="kx8i1svl" type="exclusive">
+                  <title>outCardData</title>
+                  <flow id="kx8i1svp">
+                     <assignment id="kx8i1t8h">
+                        <title>Assignment to outCardData</title>
+                        <operation source="field" to="output.outCardData">temp.carddata.AltName</operation>
+                     </assignment>
+                     <link id="kx8i1svq" targetId="kx8i1svl" type="containerLink"/>
+                  </flow>
+                  <flow id="kx8i1svs">
+                     <link id="kx8i1t7g" targetId="kx8i1svl" type="containerLink"/>
+                  </flow>
+                  <link id="kx8i1svo" targetId="kx8i1svp" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.carddata.AltName}</arg>
+                           <arg name="right">{$temp.isnull}="Y"</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx8i1svr" targetId="kx8i1svs" type="containerLink"/>
+                  <link id="kx8i1svn" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0e415ae5-42d5-4e8a-b421-72839ff4f2be</ns1:Id>
+               <ns1:Name>sss</ns1:Name>
+               <ns1:CreatedBy>swapnil.shrungare@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T10:56:59Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-27T10:59:09Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_refcode": "RefMaster"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3D7nj4XcbvvbRah5HjcPYZ</types1:GUID>
+      <types1:DisplayName>ProcessGetCardCode</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-05-02T05:48:14.009Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,87 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>PCOkSSHCwkNmumf-gt-1456906-2022-01-27T06:27:36.674Z::svc.xml</types1:EntryId>
+      <types1:Name>Svc_GetAccessToken_VP8-1</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T06:27:37Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="Svc_GetAccessToken_VP8"
+                            label=""
+                            name="Svc_GetAccessToken_VP8-1"
+                            uuid="e41a49c6-5479-41b0-8e7f-98a72a687277">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="false"
+                       forSearch="false"
+                       label="GetAccessToken"
+                       maxRedirects="100"
+                       name="GetAccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                required="true"
+                                testWith="vipapi"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="true"
+                                testWith="Today123"
+                                type="string"/>
+                     <parameter label="grant_type"
+                                name="grant_type"
+                                required="true"
+                                testWith="password"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="true"
+                                testWith="https://web.clmvpcdev.vaws:443/rest"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($base_url  , '/token')}"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="accesstoken"
+                            property="access_token"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>6fCcHeVhqfhhS6691gNBIT</types1:GUID>
+      <types1:DisplayName>Svc_GetAccessToken_VP8</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-05-02T05:48:13.985Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
