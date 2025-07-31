@@ -1,0 +1,1051 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>5i4rswVYx8R8WrY-gt-41229214-2022-06-25T10:30:35.906Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_MDM_Vforce_Opportunity_To_C360</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-06-25T10:30:36Z</types1:CreationDate>
+      <types1:ModifiedBy>santosh.rpatil@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-07-27T09:51:32Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>santosh.rpatil@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-07-05T14:46:08Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Prc_MDM_Vforce_Opportunity_To_C360/Prc_MDM_Vforce_Opportunity_To_C360.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_MDM_Vforce_Opportunity_To_C360"
+                  name="Prc_MDM_Vforce_Opportunity_To_C360"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="event" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:APC-Conn-MDM-Vforce-Opportunity-CDC-RT</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">40De4QNdWn4gdB3YvzY0S0</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="Tmp_PayLoad" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SF_Opportunity_Data" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Vforce-Opportunity-CDC-RT:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">40De4QNdWn4gdB3YvzY0S0</option>
+                  </options>
+               </field>
+               <field description="" name="SF_Account_Data" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Vforce-Account-CDC-RT:Account</option>
+                     <option name="required">false</option>
+                     <option name="guid">6ON7JbAKBejkBJZjc2RYav</option>
+                  </options>
+               </field>
+               <field description="" name="ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_address_line_1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_city" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_county" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_postal_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="finance_address_line_1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="finance_city" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="finance_county" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="finance_country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="finance_postal_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="account_sector" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="entity_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="customer_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="physical_postal_code_prefix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Email_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Customer_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Customer_Company_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Record_Type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Record_Type_Check" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Name_Check" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Load_Type_Check" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="sourceSystem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Opportunity_Id" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Vforce-Opportunity-CDC-RT:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">40De4QNdWn4gdB3YvzY0S0</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Account_Id" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Vforce-Account-CDC-RT:Account</option>
+                     <option name="required">false</option>
+                     <option name="guid">6ON7JbAKBejkBJZjc2RYav</option>
+                  </options>
+               </field>
+               <field description="" name="Account_Id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Segmeent_values" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-R360:Account_Segment_Values</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4immPIto9S1h2TwJAL2I83</option>
+                  </options>
+               </field>
+               <field description="" name="Sector_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Validate_AccountSector" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Check_Physical_Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Check_Finance_Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Physical_Country" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-R360:Country_ISO_Conversion</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4immPIto9S1h2TwJAL2I83</option>
+                  </options>
+               </field>
+               <field description="" name="V_Finance_Country" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-R360:Country_ISO_Conversion</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4immPIto9S1h2TwJAL2I83</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_address_line_1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_city" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_county" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_postal_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_finance_address_line_1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_finance_city" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_finance_county" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_finance_country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_finance_postal_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_account_sector" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_entity_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_customer_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_physical_postal_code_prefix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_registered_address_line_1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_registered_city" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_registered_county" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_registered_country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_registered_postal_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_company_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_date_of_incorporation" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_country_of_incorporation" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_state_of_incorporation" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_local_identifier_value" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_global_identifier_value" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Physical_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Finance_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Registered_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Physical_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Finance_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="V_Registered_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Physical_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Finance_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Final_Physical_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email_Task" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-MDM-Email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dQZ0Vwjqiowl7Njn08C8mk</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="APC-Conn-MDM-Vforce-Opportunity-CDC-RT:Source"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l4mcdt75" targetId="l4mcdt74"/>
+               </start>
+               <assignment id="l4mcdt74">
+                  <title>Assignment to Tmp_PayLoad, ID etc.</title>
+                  <operation source="constant" to="temp.Tmp_PayLoad">{$input.event}</operation>
+                  <operation source="formula" to="temp.ID">
+                     <expression language="XQuery">$input.event/ChangeEventHeader/RecordIds</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Load_Type_Check">
+                     <expression language="XQuery">$input.event/ChangeEventHeader/ChangeType</expression>
+                  </operation>
+                  <link id="l4nzxirz" targetId="l4nzxiry"/>
+               </assignment>
+               <assignment id="l4nzxiry">
+                  <title>Assignment to Tmp_Opportunity_Id</title>
+                  <operation source="query" to="temp.Tmp_Opportunity_Id">
+                     <query advanceQuery="false"
+                            from="APC-Conn-MDM-Vforce-Opportunity-CDC-RT:Opportunity">
+                        <where>X18DigitID__c = '{$temp.ID}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4odrf0k" targetId="l4odrf0j"/>
+               </assignment>
+               <assignment id="l4odrf0j">
+                  <title>Assignment to Tmp_Account_Id</title>
+                  <operation source="query" to="temp.Tmp_Account_Id">
+                     <query advanceQuery="false" from="APC-Conn-MDM-Vforce-Account-CDC-RT:Account">
+                        <where>Id = '{$temp.Tmp_Opportunity_Id.Account.Id}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4odrf0l" targetId="l4mh9hek"/>
+               </assignment>
+               <assignment id="l4mh9hek">
+                  <title>Assignment to SF_Account_Data</title>
+                  <operation source="query" to="temp.SF_Account_Data">
+                     <query advanceQuery="false" from="APC-Conn-MDM-Vforce-Account-CDC-RT:Account">
+                        <where>X18_Digit_ID__c = '{$temp.Tmp_Account_Id}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4odrf4v" targetId="l4mh9gsm"/>
+               </assignment>
+               <assignment id="l4mh9gsm">
+                  <title>Assignment to name, Email_Address etc.</title>
+                  <operation source="formula" to="temp.name">
+                     <expression language="XQuery">util:iif(fn:contains("$temp.SF_Account_Data.Name ","!@#$%^*/?|.")  or util:isNull($temp.SF_Account_Data.Name )  or fn:matches("$temp.SF_Account_Data.Name ","[0-9]","s")  or  fn:string-length($temp.SF_Account_Data.Name )&lt;3,'Invalid', fn:normalize-space($temp.SF_Account_Data.Name))
+</expression>
+                  </operation>
+                  <operation source="field" to="temp.Email_Address">temp.SF_Account_Data.Billing_Contact_Email__c</operation>
+                  <operation source="formula" to="temp.physical_address_line_1">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.ShippingStreet ), fn:normalize-space($temp.SF_Account_Data.BillingStreet),util:iif(fn:string-length($temp.SF_Account_Data.ShippingStreet )&gt;1, fn:normalize-space($temp.SF_Account_Data.ShippingStreet)))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.physical_city">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.ShippingStreet) ,$temp.SF_Account_Data.BillingCity,(util:iif(fn:string-length($temp.SF_Account_Data.ShippingCity)&gt;3  or fn:contains("$temp.SF_Account_Data.ShippingCity ","-","s")  or fn:contains("$temp.SF_Account_Data.ShippingCity "," ","s") or fn:matches("$temp.SF_Account_Data.ShippingCity ","[a-z]","s"),fn:upper-case( fn:normalize-space($temp.SF_Account_Data.ShippingCity) ),'')))
+
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.physical_country">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.ShippingStreet  ), fn:normalize-space($temp.SF_Account_Data.BillingCountry)  , fn:normalize-space($temp.SF_Account_Data.ShippingCountry)) </expression>
+                  </operation>
+                  <operation source="formula" to="temp.physical_county">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.ShippingStreet), fn:normalize-space($temp.SF_Account_Data.BillingState), fn:normalize-space($temp.SF_Account_Data.ShippingState)) </expression>
+                  </operation>
+                  <operation source="formula" to="temp.physical_postal_code">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.ShippingStreet), fn:normalize-space($temp.SF_Account_Data.BillingPostalCode), fn:normalize-space($temp.SF_Account_Data.ShippingPostalCode))  
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.physical_postal_code_prefix">
+                     <expression language="XQuery">fn:substring($temp.SF_Account_Data.ShippingPostalCode,1,3 )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.finance_address_line_1">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.BillingStreet )  or fn:string-length($temp.SF_Account_Data.BillingStreet)&lt;2,'', fn:normalize-space($temp.SF_Account_Data.BillingStreet))
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.finance_city">
+                     <expression language="XQuery">util:iif(fn:string-length($temp.SF_Account_Data.BillingCity )&gt;3  or fn:contains("$temp.SF_Account_Data.BillingCity","-","s")  or fn:contains("$temp.SF_Account_Data.BillingCity"," ","s") or fn:matches("$temp.SF_Account_Data.BillingCity","[a-z]","s"),fn:upper-case( fn:normalize-space($temp.SF_Account_Data.BillingCity)),'')
+
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.finance_country">
+                     <expression language="XQuery">util:iif( util:isNull($temp.SF_Account_Data.BillingCountry),' ', fn:normalize-space($temp.SF_Account_Data.BillingCountry))  </expression>
+                  </operation>
+                  <operation source="formula" to="temp.finance_county">
+                     <expression language="XQuery">util:iif(fn:string-length($temp.SF_Account_Data.BillingState )&gt;3  or fn:contains("$temp.SF_Account_Data.BillingState","-","s")  or fn:contains("$temp.SF_Account_Data.BillingState"," ","s") or fn:matches("$temp.SF_Account_Data.BillingState","[a-z]","s"),fn:upper-case( fn:normalize-space($temp.SF_Account_Data.BillingState)),'')
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.finance_postal_code">
+                     <expression language="XQuery">util:iif((fn:string-length($temp.SF_Account_Data.BillingPostalCode )&gt;2  and fn:string-length($temp.SF_Account_Data.BillingPostalCode)&lt;11 )  or fn:contains("$temp.SF_Account_Data.BillingPostalCode","-","s")  or fn:contains("$temp.SF_Account_Data.BillingPostalCode"," ","s") or fn:matches("$temp.SF_Account_Data.BillingPostalCode","[a-z]","s") or fn:matches("$temp.SF_Account_Data.BillingPostalCode","[A-Z]","s") or  fn:matches("$temp.SF_Account_Data.BillingPostalCode","[0-9]","s"),fn:upper-case( fn:normalize-space($temp.SF_Account_Data.BillingPostalCode)),'')
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.account_sector">
+                     <expression language="XQuery"> fn:normalize-space($temp.SF_Account_Data.Sector__c)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.V_Customer_Status">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.Customer_Status__c ),'Active',util:iif(fn:contains("$temp.SF_Account_Data.Customer_Status__c "," ","s") or fn:matches("$temp.SF_Account_Data.Customer_Status__c ","[a-z]","s") or fn:matches("$temp.SF_Account_Data.Customer_Status__c ","[A-Z]","s"),  fn:normalize-space($temp.SF_Account_Data.Customer_Status__c) ))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.customer_status">
+                     <expression language="XQuery">util:iif(util:isNull($temp.V_Customer_Status   ),'Active',util:decode($temp.V_Customer_Status ,'Ad Hoc/Advisory Only','Active',('Active','Active','Terminating','Active','Parked by Vistra','Inactive','Suspended','Inactive','Terminated','Inactive'),'Inactive'))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.V_Customer_Company_Status">
+                     <expression language="XQuery">util:iif(util:isNull($temp.SF_Account_Data.Customer_Company_Status__c  ),'Active',util:iif(fn:contains("$temp.SF_Account_Data.Customer_Company_Status__c"," ","s") or fn:matches("$temp.SF_Account_Data.Customer_Company_Status__c ","[a-z]","s") or fn:matches("$temp.SF_Account_Data.Customer_Company_Status__c ","[A-Z]","s"),  fn:normalize-space($temp.SF_Account_Data.Customer_Company_Status__c )))
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.entity_status">
+                     <expression language="XQuery">util:iif(util:isNull($temp.V_Customer_Company_Status    ),'Active',util:decode($temp.V_Customer_Company_Status ,'Status Quo', 'Active',('Merger, Acquisition or Spinoff','Active','Key Contact Departure','Inactive','Customer Financial Distress or Bankruptcy
+','Inactive'),'Inactive'))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.sourceSystem">
+                     <expression language="XQuery">'sourcesystem_vforce'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Record_Type">
+                     <expression language="XQuery"> fn:normalize-space($temp.SF_Account_Data.RecordType.Id )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Account_Id">
+                     <expression language="XQuery"> fn:normalize-space($temp.SF_Account_Data.X18_Digit_ID__c )</expression>
+                  </operation>
+                  <link id="l59ee697" targetId="l59ee696"/>
+               </assignment>
+               <assignment id="l59ee696">
+                  <title>Assignment to V_Physical_Address, V_Finance_Address etc.</title>
+                  <operation source="formula" to="temp.V_Physical_Address">
+                     <expression language="XQuery">util:iif( util:isNull($temp.physical_address_line_1 ),$temp.physical_address_line_1 ,$temp.physical_address_line_1 )||
+util:iif( util:isNull($temp.physical_city ),$temp.physical_city ,' | '||$temp.physical_city )||
+util:iif( util:isNull($temp.physical_county ),$temp.physical_county ,' | '||$temp.physical_county )||
+util:iif( util:isNull($temp.physical_country   ),$temp.physical_country   ,' | '||$temp.physical_country  )||
+util:iif( util:isNull($temp.physical_postal_code ),$temp.physical_postal_code ,' | '||$temp.physical_postal_code )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.V_Finance_Address">
+                     <expression language="XQuery">util:iif( util:isNull($temp.finance_address_line_1  ),$temp.finance_address_line_1  ,$temp.finance_address_line_1  )||
+util:iif( util:isNull($temp.finance_city  ),$temp.finance_city  ,' | '||$temp.finance_city  )||
+util:iif( util:isNull($temp.finance_county  ),$temp.finance_county ,' | '||$temp.finance_county  )||
+util:iif( util:isNull($temp.finance_country    ),$temp.finance_country    ,' | '||$temp.finance_country )||
+util:iif( util:isNull($temp.finance_postal_code  ),$temp.finance_postal_code ,' | '||$temp.finance_postal_code )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.V_Registered_Address">
+                     <expression language="XQuery">''</expression>
+                  </operation>
+                  <link id="l59ee6m0" targetId="l59ee6lz"/>
+               </assignment>
+               <assignment id="l59ee6lz">
+                  <title>Assignment to O_Physical_Address, O_Finance_Address</title>
+                  <operation source="formula" to="temp.O_Physical_Address">
+                     <expression language="XQuery">util:iif(fn:substring($temp.V_Physical_Address ,1,3)=' | ',fn:substring($temp.V_Physical_Address ,4),$temp.V_Physical_Address )
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.O_Finance_Address">
+                     <expression language="XQuery">util:iif(fn:substring($temp.V_Finance_Address  ,1,3)=' | ',fn:substring($temp.V_Finance_Address  ,4),$temp.V_Finance_Address)
+
+
+</expression>
+                  </operation>
+                  <link id="l59ee6m1" targetId="l4xsmx6p"/>
+               </assignment>
+               <assignment id="l4xsmx6p">
+                  <title>Assignment to Segmeent_values</title>
+                  <operation source="query" to="temp.Segmeent_values">
+                     <query advanceQuery="false" from="APC-Conn-MDM-R360-1:Account_Segment_Values">
+                        <where>Segment_Value_Code = '{$temp.account_sector}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4xsmx9y" targetId="l4xsmx9x"/>
+               </assignment>
+               <assignment id="l4mh9hhs">
+                  <title>Assignment to Record_Type_Check, Name_Check etc.</title>
+                  <operation source="formula" to="temp.Record_Type_Check">
+                     <expression language="XQuery">util:iif($temp.Record_Type = '01209000000XqR1AAK' or $temp.Record_Type = '01209000000XqR2AAK','Y','N')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.Name_Check">
+                     <expression language="XQuery">util:iif(fn:string-length($temp.name)&lt;3,'Invalid','Valid') </expression>
+                  </operation>
+                  <operation source="field" to="temp.Sector_Code">temp.Validate_AccountSector</operation>
+                  <link id="l4odrfk9" targetId="l4odrfk8"/>
+               </assignment>
+               <container id="l4xsmx9x" type="exclusive">
+                  <title>Segmeent_values</title>
+                  <flow id="l4xsmxa1">
+                     <assignment id="l4xsmxap">
+                        <title>Assignment to Validate_AccountSector</title>
+                        <operation source="formula" to="temp.Validate_AccountSector">
+                           <expression language="XQuery"> fn:normalize-space($temp.Segmeent_values[1]/Segment_Value_Name )</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l4xsmxa2" targetId="l4xsmx9x" type="containerLink"/>
+                  </flow>
+                  <flow id="l4xsmxa4">
+                     <assignment id="l4xsmxb0">
+                        <title>Assignment to Validate_AccountSector</title>
+                        <operation source="constant" to="temp.Validate_AccountSector">NULL</operation>
+                     </assignment>
+                     <link id="l4xsmxa5" targetId="l4xsmx9x" type="containerLink"/>
+                  </flow>
+                  <link id="l4xsmxa0" targetId="l4xsmxa1" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.Segmeent_values}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4xsmxa3" targetId="l4xsmxa4" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.Segmeent_values}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4xsmxkw" targetId="l4xsmxkv"/>
+               </container>
+               <container id="l4xsmxkv" type="parallel">
+                  <title>Parallel Paths 1</title>
+                  <flow id="l4xsmxkz">
+                     <assignment id="l4xsmxpq">
+                        <title>Assignment to V_Physical_Country</title>
+                        <operation source="query" to="temp.V_Physical_Country">
+                           <query advanceQuery="false" from="APC-Conn-MDM-R360:Country_ISO_Conversion">
+                              <where>ISO2 = '{$temp.physical_country}'</where>
+                           </query>
+                        </operation>
+                        <link id="l4xsmxqh" targetId="l4xsmxqg"/>
+                     </assignment>
+                     <container id="l4xsmxqg" type="exclusive">
+                        <title>V_Physical_Country</title>
+                        <flow id="l4xsmxqj">
+                           <assignment id="l4xsmxyy">
+                              <title>Assignment to Check_Physical_Country</title>
+                              <operation source="formula" to="temp.Check_Physical_Country">
+                                 <expression language="XQuery"> fn:normalize-space($temp.physical_country )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l4xsmxqk" targetId="l4xsmxqg" type="containerLink"/>
+                        </flow>
+                        <flow id="l4xsmxqm">
+                           <assignment id="l4xsmxzf">
+                              <title>Assignment to Check_Physical_Country</title>
+                              <operation source="constant" to="temp.Check_Physical_Country">NULL</operation>
+                           </assignment>
+                           <link id="l4xsmxqn" targetId="l4xsmxqg" type="containerLink"/>
+                        </flow>
+                        <link id="l4xsmxqi" targetId="l4xsmxqj" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.V_Physical_Country}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l4xsmxql" targetId="l4xsmxqm" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.V_Physical_Country}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="l4xsmxl0" targetId="l4xsmxkv" type="containerLink"/>
+                  </flow>
+                  <flow id="l4xsmxl2">
+                     <assignment id="l4xsmxq3">
+                        <title>Assignment to V_Finance_Country</title>
+                        <operation source="query" to="temp.V_Finance_Country">
+                           <query advanceQuery="false" from="APC-Conn-MDM-R360:Country_ISO_Conversion">
+                              <where>ISO2 = '{$temp.finance_country}'</where>
+                           </query>
+                        </operation>
+                        <link id="l4xsmxr4" targetId="l4xsmxr3"/>
+                     </assignment>
+                     <container id="l4xsmxr3" type="exclusive">
+                        <title>V_Finance_Country</title>
+                        <flow id="l4xsmxr6">
+                           <assignment id="l4xsmxzw">
+                              <title>Assignment to Check_Finance_Country</title>
+                              <operation source="formula" to="temp.Check_Finance_Country">
+                                 <expression language="XQuery"> fn:normalize-space($temp.finance_country)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l4xsmxr7" targetId="l4xsmxr3" type="containerLink"/>
+                        </flow>
+                        <flow id="l4xsmxr9">
+                           <assignment id="l4xsmy0d">
+                              <title>Assignment to Check_Finance_Country</title>
+                              <operation source="constant" to="temp.Check_Finance_Country">NULL</operation>
+                           </assignment>
+                           <link id="l4xsmxra" targetId="l4xsmxr3" type="containerLink"/>
+                        </flow>
+                        <link id="l4xsmxr5" targetId="l4xsmxr6" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.V_Finance_Country}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l4xsmxr8" targetId="l4xsmxr9" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.V_Finance_Country}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="l4xsmxl3" targetId="l4xsmxkv" type="containerLink"/>
+                  </flow>
+                  <link id="l4xsmxky" targetId="l4xsmxkz" type="containerLink"/>
+                  <link id="l4xsmxl1" targetId="l4xsmxl2" type="containerLink"/>
+                  <link id="l4xsmxkx" targetId="l4mh9hhs"/>
+               </container>
+               <container id="l4odrfk8" type="exclusive">
+                  <title>Name_Check</title>
+                  <flow id="l4odrfkc">
+                     <container id="l4odrfkp" type="exclusive">
+                        <title>Record_Type_Check</title>
+                        <flow id="l4odrfkq">
+                           <assignment id="l4zllayf">
+                              <title>Assignment to Tmp_name, Tmp_physical_address_line_1 etc.</title>
+                              <operation source="field" to="temp.Tmp_name">temp.name</operation>
+                              <operation source="field" to="temp.Tmp_physical_address_line_1">temp.physical_address_line_1</operation>
+                              <operation source="field" to="temp.Tmp_physical_city">temp.physical_city</operation>
+                              <operation source="field" to="temp.Tmp_physical_county">temp.physical_county</operation>
+                              <operation source="formula" to="temp.Tmp_physical_country">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.Check_Physical_Country ),'"}')</expression>
+                              </operation>
+                              <operation source="field" to="temp.Tmp_physical_postal_code">temp.physical_postal_code</operation>
+                              <operation source="field" to="temp.Tmp_finance_address_line_1">temp.finance_address_line_1</operation>
+                              <operation source="field" to="temp.Tmp_finance_city">temp.finance_city</operation>
+                              <operation source="field" to="temp.Tmp_finance_county">temp.finance_county</operation>
+                              <operation source="formula" to="temp.Tmp_finance_country">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.Check_Finance_Country ),'"}')</expression>
+                              </operation>
+                              <operation source="field" to="temp.Tmp_finance_postal_code">temp.finance_postal_code</operation>
+                              <operation source="formula" to="temp.Tmp_account_sector">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.account_sector  ),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_entity_status">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.entity_status  ),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_customer_status">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.customer_status  ),'"}')</expression>
+                              </operation>
+                              <operation source="field" to="temp.Tmp_physical_postal_code_prefix">temp.physical_postal_code_prefix</operation>
+                              <operation source="formula" to="temp.Tmp_registered_address_line_1">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_registered_city">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_registered_county">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_registered_country">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"','NULL'),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_registered_postal_code">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_company_type">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"','NULL'),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_date_of_incorporation">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_country_of_incorporation">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"','NULL'),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_state_of_incorporation">
+                                 <expression language="XQuery">fn:concat(fn:concat('{"Code":"','NULL'),'"}')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_local_identifier_value">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_global_identifier_value">
+                                 <expression language="XQuery">''</expression>
+                              </operation>
+                              <operation source="field" to="temp.Tmp_Id">temp.Account_Id</operation>
+                              <operation source="field" to="temp.Tmp_Physical_Address">temp.O_Physical_Address</operation>
+                              <operation source="field" to="temp.Tmp_Finance_Address">temp.O_Finance_Address</operation>
+                              <operation source="field" to="temp.Tmp_Registered_Address">temp.V_Registered_Address</operation>
+                              <link id="l5tdqlo0" targetId="l5tdqlnz"/>
+                           </assignment>
+                           <assignment id="l5tdqlnz">
+                              <title>Assignment to Final_Physical_Address</title>
+                              <operation source="formula" to="temp.Final_Physical_Address">
+                                 <expression language="XQuery">util:iif(($temp.Tmp_physical_address_line_1  = ''  or util:isNull($temp.Tmp_physical_address_line_1 ))
+and  
+($temp.Tmp_physical_city  = ''  or util:isNull($temp.Tmp_physical_city ))
+and  
+($temp.Tmp_physical_county  = ''  or util:isNull($temp.Tmp_physical_county ))
+and  
+($temp.Tmp_physical_postal_code  = ''  or util:isNull($temp.Tmp_physical_postal_code ))
+, '' ,$temp.Tmp_Physical_Address 
+)</expression>
+                              </operation>
+                              <link id="l5tdqlo1" targetId="l4odrfkr"/>
+                           </assignment>
+                           <container id="l4odrfkr" type="exclusive">
+                              <title>Load_Type_Check</title>
+                              <flow id="l4odrfks">
+                                 <service id="l4odrfkt">
+                                    <title>Login</title>
+                                    <serviceName>APC-Conn-MDM-Vpoint-C360-Create:Login</serviceName>
+                                    <serviceGUID>3t6szpBxT10cGAUP8rLLkq</serviceGUID>
+                                    <serviceInput/>
+                                    <link id="l4odrfl5" targetId="l4zllavh"/>
+                                 </service>
+                                 <eventContainer id="l4zllavh">
+                                    <service id="l4odrfku">
+                                       <title>CC360_API</title>
+                                       <serviceName>APC-Conn-MDM-Vpoint-C360-Create:CC360_API</serviceName>
+                                       <serviceGUID>3t6szpBxT10cGAUP8rLLkq</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="Session_Id" source="field" updatable="true">output.sessionId</parameter>
+                                          <parameter name="sourcePKey" source="field" updatable="true">temp.Tmp_Id</parameter>
+                                          <parameter name="name" source="field" updatable="true">temp.Tmp_name</parameter>
+                                          <parameter name="physical_address" source="field" updatable="true">temp.Final_Physical_Address</parameter>
+                                          <parameter name="finance_address" source="field" updatable="true">temp.Tmp_Finance_Address</parameter>
+                                          <parameter name="entity_status" source="field" updatable="true">temp.Tmp_entity_status</parameter>
+                                          <parameter name="customer_status" source="field" updatable="true">temp.Tmp_customer_status</parameter>
+                                          <parameter name="sourceSystem" source="field" updatable="true">temp.sourceSystem</parameter>
+                                          <parameter name="company_type" source="field" updatable="true">temp.Tmp_company_type</parameter>
+                                          <parameter name="date_of_incorporation" source="field" updatable="true">temp.Tmp_date_of_incorporation</parameter>
+                                          <parameter name="country_of_incorporation" source="field" updatable="true">temp.Tmp_country_of_incorporation</parameter>
+                                          <parameter name="local_identifier_value" source="field" updatable="true">temp.Tmp_local_identifier_value</parameter>
+                                          <parameter name="global_identifier_value" source="field" updatable="true">temp.Tmp_global_identifier_value</parameter>
+                                          <parameter name="state_of_incorporation" source="field" updatable="true">temp.Tmp_state_of_incorporation</parameter>
+                                          <parameter name="account_sector" source="field" updatable="true">temp.Tmp_account_sector</parameter>
+                                          <parameter name="registered_address" source="field" updatable="true">temp.Tmp_Registered_Address</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="l4zllavj">
+                                       <end id="l628rhbz">
+                                          <title>End 3</title>
+                                       </end>
+                                    </flow>
+                                    <flow id="l4zllavm">
+                                       <assignment id="l628rhd6">
+                                          <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                          <operation source="constant" to="temp.Tmp_Email_Task[1]/to">santosh.rpatil@vistra.com</operation>
+                                          <operation source="formula" to="temp.Tmp_Email_Task[1]/subject">
+                                             <expression language="XQuery">fn:concat('PROD || ' ,'Prc_MDM_Vforce_Opportunity_To_C360 has failed for Account Name - ',$temp.name  )</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.Tmp_Email_Task[1]/body">
+                                             <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process Name : Prc_MDM_Vforce_Opportunity_To_C360 has failed while Inserting the record in Customer 360 ','&amp;#10;','&amp;#10;','Account Name : ',$temp.name ,'&amp;#10;','&amp;#10;','Error Code : ',$output.faultInfo[1]/code,'&amp;#10;','&amp;#10;','Error Details : ',$output.faultInfo[1]/reason ,'&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','&amp;#10;','MDM Support Team') </expression>
+                                          </operation>
+                                          <link id="l628rhe7" targetId="l628rhe6"/>
+                                       </assignment>
+                                       <service id="l628rhe6">
+                                          <title>sendEmailService</title>
+                                          <serviceName>APC-MDM-Email:sendEmailService</serviceName>
+                                          <serviceGUID>dQZ0Vwjqiowl7Njn08C8mk</serviceGUID>
+                                          <serviceInput>
+                                             <parameter name="emailTaskInput" source="field" updatable="true">temp.Tmp_Email_Task</parameter>
+                                          </serviceInput>
+                                          <link id="l628rhe8" targetId="l628rhb0"/>
+                                       </service>
+                                       <throw id="l628rhb0">
+                                          <title>Throw 1</title>
+                                          <throwInput>
+                                             <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                             <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                             <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                                          </throwInput>
+                                       </throw>
+                                    </flow>
+                                    <link id="l4zllavi" targetId="l4zllavj" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="l4zllavg" interrupting="true">
+                                          <link id="l4zllavl" targetId="l4zllavm" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                              </flow>
+                              <flow id="l4odrfkv">
+                                 <service id="l4odrfkw">
+                                    <title>Login</title>
+                                    <serviceName>APC-Conn-MDM-Vpoint-C360-Create:Login</serviceName>
+                                    <serviceGUID>3t6szpBxT10cGAUP8rLLkq</serviceGUID>
+                                    <serviceInput/>
+                                    <link id="l4odrfl7" targetId="l4zllawz"/>
+                                 </service>
+                                 <eventContainer id="l4zllawz">
+                                    <service id="l4odrfkx">
+                                       <title>CC360_API</title>
+                                       <serviceName>APC-Conn-MDM-Vpoint-C360-Create:CC360_API</serviceName>
+                                       <serviceGUID>3t6szpBxT10cGAUP8rLLkq</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="Session_Id" source="field" updatable="true">output.sessionId</parameter>
+                                          <parameter name="sourcePKey" source="field" updatable="true">temp.Tmp_Id</parameter>
+                                          <parameter name="name" source="field" updatable="true">temp.name</parameter>
+                                          <parameter name="physical_address" source="field" updatable="true">temp.Final_Physical_Address</parameter>
+                                          <parameter name="finance_address" source="field" updatable="true">temp.Tmp_Finance_Address</parameter>
+                                          <parameter name="entity_status" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.entity_status ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="customer_status" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.customer_status ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="sourceSystem" source="field" updatable="true">temp.sourceSystem</parameter>
+                                          <parameter name="company_type" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', 'NULL' ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="date_of_incorporation" source="formula">
+                                             <expression language="XQuery">''</expression>
+                                          </parameter>
+                                          <parameter name="country_of_incorporation" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', 'NULL' ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="local_identifier_value" source="formula">
+                                             <expression language="XQuery">''</expression>
+                                          </parameter>
+                                          <parameter name="global_identifier_value" source="formula">
+                                             <expression language="XQuery">''</expression>
+                                          </parameter>
+                                          <parameter name="state_of_incorporation" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', 'NULL' ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="account_sector" source="formula">
+                                             <expression language="XQuery">fn:concat(fn:concat('{"Code":"', $temp.account_sector ),'"}')</expression>
+                                          </parameter>
+                                          <parameter name="registered_address" source="field" updatable="true">temp.Tmp_Registered_Address</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="l4zllax1">
+                                       <end id="l628rhce">
+                                          <title>End 4</title>
+                                       </end>
+                                    </flow>
+                                    <flow id="l4zllax4">
+                                       <assignment id="l628rhek">
+                                          <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                          <operation source="constant" to="temp.Tmp_Email_Task[1]/to">santosh.rpatil@vistra.com</operation>
+                                          <operation source="formula" to="temp.Tmp_Email_Task[1]/subject">
+                                             <expression language="XQuery">fn:concat('PROD || ' ,'Prc_MDM_Vforce_Opportunity_To_C360 has failed for Account Name - ',$temp.name  )</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.Tmp_Email_Task[1]/body">
+                                             <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process Name : Prc_MDM_Vforce_Opportunity_To_C360 has failed while Updating the record in Customer 360 ','&amp;#10;','&amp;#10;','Account Name : ',$temp.name ,'&amp;#10;','&amp;#10;','Error Code : ',$output.faultInfo[1]/code,'&amp;#10;','&amp;#10;','Error Details : ',$output.faultInfo[1]/reason ,'&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','&amp;#10;','MDM Support Team') </expression>
+                                          </operation>
+                                          <link id="l628rhfl" targetId="l628rhfk"/>
+                                       </assignment>
+                                       <service id="l628rhfk">
+                                          <title>sendEmailService</title>
+                                          <serviceName>APC-MDM-Email:sendEmailService</serviceName>
+                                          <serviceGUID>dQZ0Vwjqiowl7Njn08C8mk</serviceGUID>
+                                          <serviceInput>
+                                             <parameter name="emailTaskInput" source="field" updatable="true">temp.Tmp_Email_Task</parameter>
+                                          </serviceInput>
+                                          <link id="l628rhfm" targetId="l628rhbi"/>
+                                       </service>
+                                       <throw id="l628rhbi">
+                                          <title>Throw 2</title>
+                                          <throwInput>
+                                             <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                             <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                             <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                                          </throwInput>
+                                       </throw>
+                                    </flow>
+                                    <link id="l4zllax0" targetId="l4zllax1" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="l4zllawy" interrupting="true">
+                                          <link id="l4zllax3" targetId="l4zllax4" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                              </flow>
+                              <link id="l4odrfl2" targetId="l4odrfks" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.Load_Type_Check}</arg>
+                                       <arg name="right">CREATE</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l4odrfl3" targetId="l4odrfkv" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="l4odrfky">
+                           <end id="l525nn70">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="l4odrfkz" targetId="l4odrfkq" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.Record_Type_Check}</arg>
+                                 <arg name="right">Y</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l4odrfl0" targetId="l4odrfky" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="l4odrfkf">
+                     <end id="l525nn7k">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="l4odrfkb" targetId="l4odrfkc" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.Name_Check}</arg>
+                           <arg name="right">Valid</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4odrfke" targetId="l4odrfkf" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>1zlxNZnqVqAkifTGI1Spyg</types1:GUID>
+      <types1:DisplayName>Prc_MDM_Vforce_Opportunity_To_C360</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-12T07:04:56.028Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
