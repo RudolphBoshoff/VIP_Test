@@ -1,0 +1,375 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Sv58pIO3M4WwOC2-gt-1525251-2022-06-30T07:56:48.723Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_MDM_C360_Outbound_API</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rahul.tiwari@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-06-30T07:56:49Z</types1:CreationDate>
+      <types1:ModifiedBy>Dhiraj.Dhandhaliya_tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-07-01T09:05:36Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Dhiraj.Dhandhaliya_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-07-01T09:05:41Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Prc_MDM_C360_Outbound_API/Prc_MDM_C360_Outbound_API.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_MDM_C360_Outbound_API"
+                  name="Prc_MDM_C360_Outbound_API"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="SourcePK" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="SourceSystem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="BusinessID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="O_MDM_SearchAPI" type="objectlist">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Outbound-API:PO-SearchAPI</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">05ObXYso3gniRcLdOpAOEL</option>
+                  </options>
+               </field>
+               <field description="" name="O_MDM_BuniessID" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Outbound-API:PO-MDM-C360-Record</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">05ObXYso3gniRcLdOpAOEL</option>
+                  </options>
+               </field>
+               <field description="" name="O_MDM_XREF" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-Conn-MDM-Outbound-API:PO-MDM-C360-Record</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">05ObXYso3gniRcLdOpAOEL</option>
+                  </options>
+               </field>
+               <field description="" name="O_BusinessID_Missing" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_SourcePK_SourceSystem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Name_Missing" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="InputDecision" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="_showContentMeta" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SourcePK" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SourceSystem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BuniessEntityName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l50l5t7h" targetId="l50l5t7g"/>
+               </start>
+               <assignment id="l50l5t7g">
+                  <title>Assignment to tmp_SourcePK, tmp_SourceSystem etc.</title>
+                  <operation source="field" to="temp.tmp_SourcePK">input.SourcePK</operation>
+                  <operation source="formula" to="temp.tmp_SourceSystem">
+                     <expression language="XQuery">util:iif(fn:lower-case($input.SourceSystem ) = 'viewpoint', 'sourcesystem_vpoint',
+util:iif(fn:lower-case($input.SourceSystem ) = 'vpoint', 'sourcesystem_vpoint',
+util:iif(fn:lower-case($input.SourceSystem ) = 'sourcesystem_viewpoint', 'sourcesystem_vpoint',
+util:iif(fn:lower-case($input.SourceSystem ) = 'sourcesystem_viewpoint', 'sourcesystem_vpoint',
+util:iif(fn:lower-case($input.SourceSystem ) = 'vpoint', 'sourcesystem_vpoint',
+util:iif(fn:lower-case($input.SourceSystem ) = 'sourcesystem_vforce', 'sourcesystem_vforce',
+util:iif(fn:lower-case($input.SourceSystem ) = 'vforce', 'sourcesystem_vforce',
+util:iif(fn:lower-case($input.SourceSystem ) = 'salesforce', 'sourcesystem_vforce',
+ fn:lower-case($input.SourceSystem )))))))))</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_BusinessID">input.BusinessID</operation>
+                  <operation source="field" to="temp.tmp_Name">input.Name</operation>
+                  <link id="l50l5t7i" targetId="l4w6g8p0"/>
+               </assignment>
+               <assignment id="l4w6g8p0">
+                  <title>Assignment to InputDecision</title>
+                  <operation source="formula" to="temp.InputDecision">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_SourcePK ), util:iif(util:isNull($temp.tmp_BusinessID ), 'SEARCH', 'BUSINESS'), 'XREF')</expression>
+                  </operation>
+                  <link id="l4w6g8sm" targetId="l4w6g8sl"/>
+               </assignment>
+               <assignment id="l4w6g8sl">
+                  <title>Assignment to _showContentMeta, tmp_BuniessEntityName</title>
+                  <operation source="constant" to="temp._showContentMeta">true</operation>
+                  <operation source="constant" to="temp.tmp_BuniessEntityName">vistra_organization_mdm</operation>
+                  <link id="l50l5tar" targetId="l50l5taq"/>
+               </assignment>
+               <service id="l50l5taq">
+                  <title>Login</title>
+                  <serviceName>APC-Conn-MDM-Outbound-API:Login</serviceName>
+                  <serviceGUID>05ObXYso3gniRcLdOpAOEL</serviceGUID>
+                  <serviceInput/>
+                  <link id="l50l5tas" targetId="l4w6g8nn"/>
+               </service>
+               <container id="l4w6g8nn" type="exclusive">
+                  <title>InputDecision</title>
+                  <flow id="l4w6g8nr">
+                     <service id="l4w6g8og">
+                        <title>MDM Search API</title>
+                        <serviceName>APC-Conn-MDM-Outbound-API:MDM Search API</serviceName>
+                        <serviceGUID>05ObXYso3gniRcLdOpAOEL</serviceGUID>
+                        <serviceInput>
+                           <parameter name="entityType" source="field" updatable="true">temp.tmp_BuniessEntityName</parameter>
+                           <parameter name="fields" source="field" updatable="true">temp.tmp_Name</parameter>
+                           <parameter name="sessionId" source="field" updatable="true">output.sessionId</parameter>
+                        </serviceInput>
+                        <link id="l527eycq" targetId="l527eycp"/>
+                     </service>
+                     <container id="l527eycp" type="exclusive">
+                        <title>O_SearchAPi</title>
+                        <flow id="l527eyct">
+                           <assignment id="l527eyf5">
+                              <title>Assignment to O_Name_Missing</title>
+                              <operation source="formula" to="output.O_Name_Missing">
+                                 <expression language="XQuery">'Searched Name record or related record is not available in Master Data Management C360'</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l527eycu" targetId="l527eycp" type="containerLink"/>
+                        </flow>
+                        <flow id="l527eycw">
+                           <assignment id="l527eyfg">
+                              <title>Assignment to O_MDM_SearchAPI</title>
+                              <operation source="field" to="output.O_MDM_SearchAPI">output.O_SearchAPi</operation>
+                           </assignment>
+                           <link id="l527eycx" targetId="l527eycp" type="containerLink"/>
+                        </flow>
+                        <link id="l527eycs" targetId="l527eyct" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.O_SearchAPi[1]/BusinessID}</arg>
+                                 <arg name="right">null</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l527eyd7" targetId="l50l5tfi"/>
+                        <link id="l527eycv" targetId="l527eycw" type="containerLink"/>
+                     </container>
+                     <end id="l50l5tfi">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <flow id="l4w6g8q8">
+                     <eventContainer id="l527ey7g">
+                        <service id="l4w6g8qd">
+                           <title>MDM Business ID</title>
+                           <serviceName>APC-Conn-MDM-Outbound-API:MDM Business ID</serviceName>
+                           <serviceGUID>05ObXYso3gniRcLdOpAOEL</serviceGUID>
+                           <serviceInput>
+                              <parameter name="_showContentMeta" source="constant">true</parameter>
+                              <parameter name="businessEntity" source="field" updatable="true">temp.tmp_BuniessEntityName</parameter>
+                              <parameter name="businessId" source="field" updatable="true">temp.tmp_BusinessID</parameter>
+                              <parameter name="sessionId" source="field" updatable="true">output.sessionId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l527ey7i">
+                           <link id="l527ey7j" targetId="l527ey7g" type="containerLink"/>
+                        </flow>
+                        <flow id="l527ey7l">
+                           <assignment id="l527ey85">
+                              <title>Assignment to O_BusinessID_Missing</title>
+                              <operation source="formula" to="output.O_BusinessID_Missing">
+                                 <expression language="XQuery">'Searched businessID missing in Master Data Management C360'</expression>
+                              </operation>
+                              <link id="l527ey87" targetId="l527ey7s"/>
+                           </assignment>
+                           <end id="l527ey7s">
+                              <title>End 5</title>
+                           </end>
+                        </flow>
+                        <link id="l527ey7h" targetId="l527ey7i" type="containerLink"/>
+                        <link id="l50m5qhr" targetId="l50m5qhq"/>
+                        <events>
+                           <catch faultField="MDM_BusinessID_Fault" id="l527ey7f" interrupting="true">
+                              <link id="l527ey7k" targetId="l527ey7l" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="l50m5qhq">
+                        <title>Assignment to O_MDM_BuniessID</title>
+                        <operation source="field" to="output.O_MDM_BuniessID">output.PO_MDM_BusinessID</operation>
+                        <link id="l50m5qhs" targetId="l4x49vet"/>
+                     </assignment>
+                     <end id="l4x49vet">
+                        <title>End 3</title>
+                     </end>
+                  </flow>
+                  <flow id="l4y23m9b">
+                     <eventContainer id="l527ey9m">
+                        <service id="l50l5te6">
+                           <title>MDM Xref Records</title>
+                           <serviceName>APC-Conn-MDM-Outbound-API:MDM Xref Records</serviceName>
+                           <serviceGUID>05ObXYso3gniRcLdOpAOEL</serviceGUID>
+                           <serviceInput>
+                              <parameter name="sessionId" source="field" updatable="true">output.sessionId</parameter>
+                              <parameter name="BE_Name" source="field" updatable="true">temp.tmp_BuniessEntityName</parameter>
+                              <parameter name="SourceSystem" source="field" updatable="true">temp.tmp_SourceSystem</parameter>
+                              <parameter name="sourcePKey" source="field" updatable="true">temp.tmp_SourcePK</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l527ey9o">
+                           <link id="l527ey9p" targetId="l527ey9m" type="containerLink"/>
+                        </flow>
+                        <flow id="l527ey9r">
+                           <assignment id="l527eyaa">
+                              <title>Assignment to O_SourcePK_SourceSystem</title>
+                              <operation source="formula" to="output.O_SourcePK_SourceSystem">
+                                 <expression language="XQuery">'Searched combination of SourcePK and SourceSystem is missing in Master Data Management C360'</expression>
+                              </operation>
+                              <link id="l527eyae" targetId="l527ey9y"/>
+                           </assignment>
+                           <end id="l527ey9y">
+                              <title>End 6</title>
+                           </end>
+                        </flow>
+                        <link id="l527ey9n" targetId="l527ey9o" type="containerLink"/>
+                        <link id="l50m5qhw" targetId="l50m5qhv"/>
+                        <events>
+                           <catch faultField="MDM_XRefFlow_Fault" id="l527ey9l" interrupting="true">
+                              <link id="l527ey9q" targetId="l527ey9r" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="l50m5qhv">
+                        <title>Assignment to O_MDM_XREF</title>
+                        <operation source="field" to="output.O_MDM_XREF">output.PO_MDM_Xref</operation>
+                        <link id="l50m5qhx" targetId="l4y23mbg"/>
+                     </assignment>
+                     <end id="l4y23mbg">
+                        <title>End 4</title>
+                     </end>
+                  </flow>
+                  <flow id="l4w6g8nu">
+                     <end id="l4w6g8qo">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l4w6g8nq" targetId="l4w6g8nr" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.InputDecision}</arg>
+                           <arg name="right">SEARCH</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4w6g8q7" targetId="l4w6g8q8" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.InputDecision}</arg>
+                           <arg name="right">BUSINESS</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4y23m9a" targetId="l4y23m9b" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.InputDecision}</arg>
+                           <arg name="right">XREF</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4w6g8nt" targetId="l4w6g8nu" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>273b54f1-8c6a-4fc7-80bf-3942c63f3146</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>rahul.tiwari@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-30T07:56:49Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rahul.tiwari@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-06-30T07:56:49Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "SourcePK": "12007656",
+	 "SourceSystem": "viewpoint",
+	 "BusinessID": "",
+	 "Name": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>i9hNFh2QMWdieIKWpgJj0S</types1:GUID>
+      <types1:DisplayName>Prc_MDM_C360_Outbound_API</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-12T07:04:56.055Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
