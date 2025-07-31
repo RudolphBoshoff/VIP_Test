@@ -1,0 +1,378 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZWlwUiQLnzYLnzY-gt-26005922-2023-02-08T13:36:59.823Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_PATCH_CustomerSalesArea</types1:Name>
+      <types1:ParentFlowIds>050AkRtO3M4WwOC-gt-67968418-2023-09-16T18:50:59.989Z::pd.xml,LxYOuVGTiPZx1Xm-gt-80585014-2023-09-21T11:29:43.603Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-02-08T13:37:00Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-21T11:46:04Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-21T11:48:23Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_PATCH_CustomerSalesArea/Process_PATCH_CustomerSalesArea.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_PATCH_CustomerSalesArea"
+                  name="Process_PATCH_CustomerSalesArea"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Body" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_SalesOrganization"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Customer" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_DistributionChannel"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Division" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Po" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_PATCH_A_CustomerSalesArea"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RetryFlag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llghb8yj" targetId="llghb8yi"/>
+               </start>
+               <assignment id="llghb8yi">
+                  <title>Set Process Variables</title>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/API_Name">{$input.in_ApiName}</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Data_Key">
+                     <expression language="XQuery">'Customer='||$input.in_Customer ||
+'^SalesOrganization='||$input.in_SalesOrganization  </expression>
+                  </operation>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Event_Name">{$input.in_EventName}</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/HelpFileLInk">
+                     <expression language="XQuery">'https://api.sap.com/api/API_BUSINESS_PARTNER/overview'</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/IICS_Run_ID">
+                     <expression language="XQuery">'Parent='||$input.in_IICS_Process_ID ||'^LoggedAt='||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="field"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/ProcessStartTime">input.in_ParentProcessStartTime</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/RequestPayload">
+                     <expression language="XQuery">util:toJSON($input.in_Body )</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner'</expression>
+                  </operation>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/X_TRANSACTION_ID">{$input.in_X_TRANSACTION_ID}</operation>
+                  <link id="llghb8yk" targetId="l7iyii5h"/>
+               </assignment>
+               <subflow id="l7iyii5h">
+                  <title>Process_GetERPToken</title>
+                  <subflowGUID>ayzWjWozBkwb3VgtMDpnwB</subflowGUID>
+                  <subflowPath>Process_GetERPToken</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_cookie" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_DateCreated" type="datetime">
+                        <options>
+                           <option name="thirtyMinutesIncrement">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="l7iyii5v" targetId="l7iyiihe"/>
+               </subflow>
+               <eventContainer id="l7iyiihe">
+                  <service id="l7iyii5u">
+                     <title>PATCH_CustomerSalesArea</title>
+                     <serviceName>AppSvcBusinessPartnerA2X:PATCH_CustomerSalesArea</serviceName>
+                     <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="formula">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                        </parameter>
+                        <parameter name="cookie" source="field" updatable="true">output.out_cookie</parameter>
+                        <parameter name="token" source="constant">{$output.out_token}</parameter>
+                        <parameter name="body" source="formula">
+                           <expression language="XQuery">$input.in_Body </expression>
+                        </parameter>
+                        <parameter name="Customer" source="constant">{$input.in_Customer}</parameter>
+                        <parameter name="SalesOrganization" source="constant">{$input.in_SalesOrganization} </parameter>
+                        <parameter name="DistributionChannel" source="constant">{$input.in_DistributionChannel}</parameter>
+                        <parameter name="Division" source="constant">{$input.in_Division}</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7iyiihg">
+                     <assignment id="llghb96i">
+                        <title>Add Response to Process Variables</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Code">{$output.o_HttpResponseStatusCode}</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Error">Success</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Description">{$output.o_Message}</operation>
+                        <link id="llghb96j" targetId="l7iyiip8"/>
+                     </assignment>
+                     <create id="l7iyiip8">
+                        <title>VIP_P2B_InterfaceErrorLog</title>
+                        <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                        <createInput>
+                           <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="IICS_Run_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                           <parameter name="Code" source="field" updatable="true">output.o_HttpResponseStatusCode</parameter>
+                           <parameter name="Error" source="field" updatable="true">output.o_Message</parameter>
+                           <parameter name="Description" source="formula" updatable="true">
+                              <expression language="XQuery">'Customer/BusinessPartner='||$input.in_Customer ||'~'||'CompanyCode'||$input.in_SalesOrganization </expression>
+                           </parameter>
+                           <parameter name="DateCreated" source="formula" updatable="true">
+                              <expression language="XQuery">fn:current-dateTime()</expression>
+                           </parameter>
+                           <parameter name="DateProcessStart" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                           <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="DATA_KEY" source="formula" updatable="true">
+                              <expression language="XQuery">'Customer/BusinessPartner='||$input.in_Customer ||'~'||'CompanyCode'||$input.in_SalesOrganization </expression>
+                           </parameter>
+                           <parameter name="IICS_PROCESS_NAME" source="constant" updatable="true">Process_PATCH_CustomerCompanyType</parameter>
+                           <parameter name="REST_URL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_CustomerCompany(Customer={$Customer},CompanyCode={$CompanyCode})'</expression>
+                           </parameter>
+                           <parameter name="REST_PAYLOAD" source="formula" updatable="true">
+                              <expression language="XQuery">util:toJSON($input.in_Body )</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="l8jwpbx5" targetId="l8jwpbx4"/>
+                     </create>
+                     <end id="l8jwpbx4"/>
+                  </flow>
+                  <flow id="l7iyiihj">
+                     <assignment id="l7iyiihr">
+                        <title>Assignment to tmp_Counter, tmp_RetryFlag</title>
+                        <operation source="formula" to="temp.tmp_Counter">
+                           <expression language="XQuery">$temp.tmp_Counter +1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_RetryFlag">
+                           <expression language="XQuery">util:iif($temp.tmp_Counter &lt;=3 and $output.faultInfo[1]/code = 'HTTP_401',1,0)</expression>
+                        </operation>
+                        <link id="l7iyiikc" targetId="l7iyiikb"/>
+                     </assignment>
+                     <container id="l7iyiikb" type="exclusive">
+                        <title>tmp_RetryFlag</title>
+                        <flow id="l7iyiikr">
+                           <wait id="l7iyiilw">
+                              <title>Wait 1</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">10</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                              <link id="l7iyiino" targetId="l7iyiinn"/>
+                           </wait>
+                           <jumpTo id="l7iyiinn">
+                              <link id="l7iyiio0" targetId="l7iyii5h"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="l7iyiikt">
+                           <assignment id="llghb98k">
+                              <title>Add Response to Process Variables 1</title>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Code">{$output.faultInfo[1]/code} </operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Error">{$output.faultInfo[1]/reason}</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Description">{$output.faultInfo[1]/detail}</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/FailedAtStep">SAP: Patch Customer SalesArea</operation>
+                              <link id="llghb9ac" targetId="llghb9ab"/>
+                           </assignment>
+                           <subflow id="llghb9ab">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_PATCH_A_CustomerSalesArea</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="llnonkx6" targetId="llnonkx5"/>
+                           </subflow>
+                           <end id="llnonkx5">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="l7iyiikk" targetId="l7iyiikr" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_RetryFlag}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l7iyiikn" targetId="l7iyiikt" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="l7iyiihf" targetId="l7iyiihg" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7iyiihd" interrupting="true">
+                        <link id="l7iyiihi" targetId="l7iyiihj" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>f9d50a1a-79db-4356-b6d9-5c9038fb5eb9</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-02-08T13:37:00Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-21T11:46:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Body": {"CustomerPaymentTerms": "NT14"},
+	 "in_X_TRANSACTION_ID": "1",
+	 "in_EventName": "2",
+	 "in_IICS_Process_ID": "3",
+	 "in_ApiName": "5",
+	 "in_SalesOrganization": "VG18",
+	 "in_Customer": "10543223",
+	 "in_DistributionChannel": "10",
+	 "in_Division": "10"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4hgoke6AZEWh3bEsppESu4</types1:GUID>
+      <types1:DisplayName>Process_PATCH_CustomerSalesArea</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-21T11:49:22.162Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

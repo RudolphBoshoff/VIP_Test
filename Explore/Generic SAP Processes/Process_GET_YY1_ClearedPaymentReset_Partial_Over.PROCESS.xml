@@ -1,0 +1,237 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>JJHQjATO9pH8sVY-gt-37356828-2022-10-12T10:48:10.579Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_YY1_ClearedPaymentReset_Partial_Over</types1:Name>
+      <types1:ParentFlowIds>VrSp7aa-gt-37242213-2022-10-12T10:48:21.763Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Retrieves the Cancelled/Reversed Invoice payment entries from SAP Custom API</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:11Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-17T06:35:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-17T06:41:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_YY1_ClearedPaymentReset_Partial_Over/Process_GET_YY1_ClearedPaymentReset_Partial_Over.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_YY1_ClearedPaymentReset_Partial_Over"
+                  name="Process_GET_YY1_ClearedPaymentReset_Partial_Over"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Retrieves the Cancelled/Reversed Invoice payment entries from SAP Custom API</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Body" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_ClearedPaymentReset_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="o_HttpResponseStatusCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l94c1b0b" targetId="l94c1b6x"/>
+               </assignment>
+               <eventContainer id="l94c1b6x">
+                  <service id="l94c1b0a">
+                     <title>GET_ClearedPaymentReset_Partial_Over</title>
+                     <serviceName>AppSvcYY1:GET_ClearedPaymentReset_Partial_Over</serviceName>
+                     <serviceGUID>0L8yRuv9VrIjvcbVfHmB68</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l94c1b6z">
+                     <assignment id="l94c1b9c">
+                        <title>Set ClearedPaymentResetEntries Array</title>
+                        <operation source="formula" to="output.o_HttpResponseStatusCode">
+                           <expression language="XQuery">$output.HttpResponseStatusCode </expression>
+                        </operation>
+                        <operation source="formula" to="output.o_ClearedPaymentReset_Array">
+                           <expression language="XQuery">$output.ClearedPaymentsReset_Array </expression>
+                        </operation>
+                     </assignment>
+                     <link id="l94c1b70" targetId="l94c1b6x" type="containerLink"/>
+                  </flow>
+                  <flow id="l94c1b72">
+                     <subflow id="l94c1b7n">
+                        <title>Log Fetch Data Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif($output.faultInfo[1]/code='HTTP_401', 'Not Authorized', $output.faultInfo[1]/reason  )</expression>
+                           </parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_DataKey" source="constant" updatable="true">Bulk data extraction from SAP failed</parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP : GET Cleared Payment Reset entries</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_PAYCLEAREDRESET_API_V1_CDS/YY1_PayClearedReset_API_v1'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="field" updatable="true">input.in_Body</parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom API)</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="l94c1b73" targetId="l94c1b6x" type="containerLink"/>
+                  </flow>
+                  <link id="l94c1b6y" targetId="l94c1b6z" type="containerLink"/>
+                  <link id="l94c1ba8" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l94c1b6w" interrupting="true">
+                        <link id="l94c1b71" targetId="l94c1b72" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a16e4f6d-9459-46de-9b23-e1dd7f603bde</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_X_TRANSACTION_ID": "123",
+	 "in_EventName": "abc",
+	 "in_IICS_Process_ID": "2345",
+	 "in_ParentProcessStartTime": "dffdf",
+	 "in_ApiName": "5b",
+	 "in_Body": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>83b2fc1e-a4b4-4e64-9293-3c00c0c4313a</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartner": "12500081",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "entity"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0WB10LRysQseuGshZqeMcr</types1:GUID>
+      <types1:DisplayName>Process_GET_YY1_ClearedPaymentReset_Partial_Over</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-25T08:21:46.598Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

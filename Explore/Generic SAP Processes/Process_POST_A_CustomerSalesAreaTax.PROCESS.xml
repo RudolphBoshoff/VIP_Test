@@ -1,0 +1,383 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>2Gjw4ARW8UBM7zs-gt-67798790-2023-09-16T18:50:56.857Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_POST_A_CustomerSalesAreaTax</types1:Name>
+      <types1:ParentFlowIds>EFpGY2KsJlv58pI-gt-67799091-2023-09-16T18:51:01.949Z::pd.xml,RtaaabbgdoGsF4X-gt-67968450-2023-09-16T18:51:00.269Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Handles the SAP Post call and related retry loop and error/success logging</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-09-16T18:50:57Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-16T19:02:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_POST_A_CustomerSalesAreaTax/Process_POST_A_CustomerSalesAreaTax.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_POST_A_CustomerSalesAreaTax"
+                  name="Process_POST_A_CustomerSalesAreaTax"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Handles the SAP Post call and related retry loop and error/success logging</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Body" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerSalesAreaTaxType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_POST_A_CustomerSalesAreaTax"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RetryFlag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Feedback detail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapErrorResponse</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jPuo6pbwMIHbYNmLSRsysE</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lf9jzzcz" targetId="lf9jzzcy"/>
+               </start>
+               <assignment id="lf9jzzcy">
+                  <title>Set Process Variables</title>
+                  <operation source="field"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/HelpFileLInk">
+                     <expression language="XQuery">'https://api.sap.com/api/API_BUSINESS_PARTNER/overview'</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/IICS_Run_ID">
+                     <expression language="XQuery"> 'Parent='||$input.in_ProcessVariables[1]/IICS_Run_ID ||'^LoggedAt='||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/RequestPayload">
+                     <expression language="XQuery">util:toJSON($input.in_Body )</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner'</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Data_Key">
+                     <expression language="XQuery">'Customer='||$input.in_Body[1]/Customer||
+'^SalesOrganization='||$input.in_Body[1]/SalesOrganization </expression>
+                  </operation>
+                  <link id="lf9jzzd0" targetId="l6g7v66g"/>
+               </assignment>
+               <subflow id="l6g7v66g">
+                  <title>Process_GetERPToken</title>
+                  <subflowGUID>ayzWjWozBkwb3VgtMDpnwB</subflowGUID>
+                  <subflowPath>Process_GetERPToken</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_cookie" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_DateCreated" type="datetime">
+                        <options>
+                           <option name="thirtyMinutesIncrement">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="l6kpk8f6" targetId="l6g7v6yl"/>
+               </subflow>
+               <subflow id="lm8yc28p">
+                  <title>Process_P2B_Event_ErrorLog</title>
+                  <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                  <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_POST_A_CustomerSalesAreaTax</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="lm8yc28r" targetId="l8cy4ppr"/>
+               </subflow>
+               <eventContainer id="l6g7v6yl">
+                  <service id="l6g7v6uk">
+                     <title>POST_A_CustomerSalesAreaTax</title>
+                     <serviceName>AppSvcBusinessPartnerA2X:POST_A_CustomerSalesAreaTax</serviceName>
+                     <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="formula">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                        </parameter>
+                        <parameter name="cookie" source="field" updatable="true">output.out_cookie</parameter>
+                        <parameter name="token" source="field" updatable="true">output.out_token</parameter>
+                        <parameter name="body" source="field">input.in_Body</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l6g7v6yn">
+                     <assignment id="lf9jzzh2">
+                        <title>Add Response to Process Variables</title>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Code">output.o_HttpResponseStatusCode</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Error">Success</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Description">output.o_Message</operation>
+                     </assignment>
+                     <link id="l8cy4ppc" targetId="l6g7v6yl" type="containerLink"/>
+                  </flow>
+                  <flow id="l6g7v6yq">
+                     <assignment id="l6kpk8fd">
+                        <title>Evaluate Retry</title>
+                        <operation source="formula" to="temp.tmp_Counter">
+                           <expression language="XQuery">$temp.tmp_Counter +1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Feedback detail">
+                           <expression language="XQuery">util:parseJSON($output.faultInfo[1]/reason)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_RetryFlag">
+                           <expression language="XQuery">if ($temp.tmp_Counter &lt;=3 and $output.faultInfo[1]/code = 'HTTP_401')
+then 1
+else
+		if ($temp.tmp_Feedbackdetail[1]/code = "CVI_EI/017" )
+		then (2)
+    	else (0)
+</expression>
+                        </operation>
+                        <link id="l6kpk8l5" targetId="l6kpk8l4"/>
+                     </assignment>
+                     <container id="l6kpk8l4" type="exclusive">
+                        <title>Retry Flag</title>
+                        <flow id="l6kpk8l8">
+                           <wait id="l6kpk8rr">
+                              <title>Wait</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">{$temp.tmp_Counter}</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                              <link id="l6kpk8rs" targetId="l6kpk8qe"/>
+                           </wait>
+                           <jumpTo id="l6kpk8qe">
+                              <link id="l6kpk8qf" targetId="l6g7v66g"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lm924d00">
+                           <assignment id="lm924d3g">
+                              <title>Add Response to INFO to Proc Var</title>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Code">HTTP_199</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Error">Miscellaneous warning</operation>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Description">
+                                 <expression language="XQuery">$temp.tmp_Feedbackdetail[1]/error[1]/message</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/FailedAtStep">SAP: Extend an existing Business Partner to a new Company Code</operation>
+                           </assignment>
+                           <link id="lm924d01" targetId="l6kpk8l4" type="containerLink"/>
+                        </flow>
+                        <flow id="l6kpk8lb">
+                           <assignment id="lf9jzzrh">
+                              <title>Add Response to ERROR to Proc Var</title>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Code">output.faultInfo[1]/code</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Error">output.faultInfo[1]/reason</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Description">output.faultInfo[1]/detail</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/FailedAtStep">SAP: Extend an existing Business Partner to a new Company Code</operation>
+                           </assignment>
+                           <link id="l8cy4ppp" targetId="l6kpk8l4" type="containerLink"/>
+                        </flow>
+                        <link id="l6kpk8l7" targetId="l6kpk8l8" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_RetryFlag}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm924czz" targetId="lm924d00" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_RetryFlag}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l6kpk8la" targetId="l6kpk8lb" type="containerLink"/>
+                     </container>
+                     <link id="l8cy4ppq" targetId="l6g7v6yl" type="containerLink"/>
+                  </flow>
+                  <link id="l6g7v6ym" targetId="l6g7v6yn" type="containerLink"/>
+                  <link id="lm8yc28q" targetId="lm8yc28p"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l6g7v6xy" interrupting="true">
+                        <link id="l6g7v6yp" targetId="l6g7v6yq" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="l8cy4ppr"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>63d96506-2451-4969-8d2b-9a1c0cf554a0</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-09-16T18:50:57Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:50:57Z</ns1:ModificationDate>
+               <ns1:Data format="json">{"in_Body": {
+  "Customer": "1059256",
+  "SalesOrganization": "GB30",
+  "DistributionChannel": "10",
+  "Division": "10",
+  "DepartureCountry": "GB",
+  "CustomerTaxCategory": "TTX1",
+  "CustomerTaxClassification": "0"
+
+},
+"in_ProcessVariables": {
+ "X_TRANSACTION_ID": "VR356_UnitTest_3-3",
+ "IICS_Run_ID": "4471186",
+ "IICS_Process_Name": "",
+ "Code": "",
+ "Error": "",
+ "Description": "",
+ "Event_Name": "MATTER_CREATED_Manual_RBTest",
+ "API_Name": "API08",
+ "Data_Key": "",
+ "RestURL": "",
+ "HelpFileLInk": "",
+ "RequestPayload": "",
+ "FailedAtStep": ""
+}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>baf5acf9-3e38-4734-8233-a7ed04c60acd</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-09-16T18:50:57Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:50:57Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"in_ProcessVariables": {
+		"X_TRANSACTION_ID": "0063O00000OCMTlQAP",
+		"IICS_Run_ID": "884072469444173824^884072474921934848^884072551505731584",
+		"IICS_Process_Name": "Process_NewBusinessPartner/NewCompany (US08c)",
+		"Code": "199",
+		"Error": "Miscellaneous Warning",
+		"Description": "No action taken",
+		"Event_Name": "ProcessCustomerOpportunity",
+		"API_Name": "US08^US23^US24",
+		"Data_Key": "OpportunityID=0063O00000OCMTlQAP",
+		"RestURL": "",
+		"HelpFileLInk": "",
+		"ProcessStartTime": "2023-09-06T13:48:21.988Z",
+		"RequestPayload": "",
+		"FailedAtStep": "",
+		"RevEntity": "GB30"
+	},
+	"in_Body": {
+		"Customer": 1059256,
+		"SalesOrganization": "GB30",
+		"DistributionChannel": "10",
+		"Division": "10",
+		"Currency": "GBP",
+		"CustomerPaymentTerms": "NT30",
+		"IncotermsClassification": "EXW",
+		"IncotermsLocation1": "EX-WORKS",
+		"IncotermsVersion": "2020",
+		"to_SalesAreaTax": {
+			"results": [
+				{
+					"SalesOrganization": "GB30",
+					"DistributionChannel": "10",
+					"Division": "10",
+					"DepartureCountry": "GB",
+					"CustomerTaxCategory": "TTX1",
+					"CustomerTaxClassification": "0"
+				}
+			]
+		}
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>6FwUXFwerOjbaG1e5YqCAE</types1:GUID>
+      <types1:DisplayName>Process_POST_A_CustomerSalesAreaTax</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T20:27:45.882Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

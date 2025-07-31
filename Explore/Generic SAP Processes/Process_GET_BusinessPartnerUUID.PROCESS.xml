@@ -1,0 +1,251 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>M2AeFz7M1reAFLK-gt-20540876-2022-10-12T10:48:11.623Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_BusinessPartnerUUID</types1:Name>
+      <types1:ParentFlowIds>1Owhz5chspiRASm-gt-22746281-2021-08-13T10:41:45.852Z::pd.xml,gdyOoMdtlI20hEL-gt-1645194-2023-08-23T10:01:31.03Z::pd.xml,hJ6gaabclvAhrsw-gt-67968478-2023-09-16T18:51:01.12Z::pd.xml,kRCU7uMydx2CGeF-gt-312811-2023-07-13T10:25:49.164Z::pd.xml,T7dwcnPCOkSSHCw-gt-23276945-2023-03-29T09:54:53.734Z::pd.xml,xaaaaaaaaaaaaaa-gt-44151168-2023-10-11T20:43:11.37Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>GET BPUUID by giving BP Email</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:12Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-11T20:56:15Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-11T21:01:36Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_BusinessPartnerUUID/Process_GET_BusinessPartnerUUID.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_BusinessPartnerUUID"
+                  name="Process_GET_BusinessPartnerUUID"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>GET BPUUID by giving BP Email</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_BusinessPartnerEmail"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_BusinessPartnerUUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_RestURL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PersonExternalID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_BusinessPartner_From_UUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>Assignment to tmp_hostname, tmp_username etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7hqi0xl" targetId="l7hqi0xv"/>
+               </assignment>
+               <eventContainer id="l7hqi0xv">
+                  <service id="l7hqi0xk">
+                     <title>GET_BusinessPartnerUUID</title>
+                     <serviceName>AppSvcYY1:GET_BusinessPartnerUUID</serviceName>
+                     <serviceGUID>0L8yRuv9VrIjvcbVfHmB68</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="Email" source="field" updatable="true">input.in_BusinessPartnerEmail</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7hqi0xx">
+                     <assignment id="l7kfbcru">
+                        <title>Assignment to out_BusinessPartnerUUID, out_PersonExternalID</title>
+                        <operation source="field" to="output.out_BusinessPartnerUUID">output.O_BusinessPartnerUUID</operation>
+                        <operation source="formula" to="output.out_PersonExternalID">
+                           <expression language="XQuery">$output.output/d/results/PersonExternalID </expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7hqi0xy" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <flow id="l7hqi0y0">
+                     <assignment id="l89rs299">
+                        <title>Assignment to out_RestURL</title>
+                        <operation source="formula" to="output.out_RestURL">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap
+/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID'</expression>
+                        </operation>
+                        <link id="l89rs29a" targetId="l892xh9u"/>
+                     </assignment>
+                     <throw id="l892xh9u">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="formula" updatable="true">
+                              <expression language="XQuery">"SAP GET Action failed for Business Partner UUID, Business Partner Email:"||$input.in_BusinessPartnerEmail </expression>
+                           </parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l7hqi0xw" targetId="l7hqi0xx" type="containerLink"/>
+                  <link id="lmj482ad" targetId="lmj482ac"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7hqi0xo" interrupting="true">
+                        <link id="l7hqi0xz" targetId="l7hqi0y0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="lmj482ac" type="exclusive">
+                  <title>O_BusinessPartnerUUID</title>
+                  <flow id="lmj482ag">
+                     <link id="lmj482ah" targetId="lmj482ac" type="containerLink"/>
+                  </flow>
+                  <flow id="lmj482aj">
+                     <eventContainer id="lmj482b4">
+                        <service id="lmj482b9">
+                           <title>GET_A_BusinessPartner</title>
+                           <serviceName>AppSvcBusinessPartnerA2X:GET_A_BusinessPartner</serviceName>
+                           <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="constant">{$temp.tmp_hostname}</parameter>
+                              <parameter name="username" source="constant">{$temp.tmp_username}</parameter>
+                              <parameter name="password" source="constant">{$temp.tmp_password}</parameter>
+                              <parameter name="__filter" source="formula">
+                                 <expression language="XQuery">'BusinessPartnerUUID eq guid''' || $output.O_BusinessPartnerUUID || ''''</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lmj482b5">
+                           <assignment id="lmj482bw">
+                              <title>Assignment to out_BusinessPartner_From_UUID</title>
+                              <operation source="field" to="output.out_BusinessPartner_From_UUID">output.svcBusinessPartnerA2X_BusinessPartner</operation>
+                           </assignment>
+                           <link id="lmj482bc" targetId="lmj482b4" type="containerLink"/>
+                        </flow>
+                        <flow id="lmj482b6">
+                           <assignment id="lmj482b7">
+                              <title>Assignment to out_RestURL 1</title>
+                              <operation source="formula" to="output.out_RestURL">
+                                 <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner?$filter=BusinessPartnerUUID eq guid'''||$output.O_BusinessPartnerUUID ||''</expression>
+                              </operation>
+                              <link id="lnjzu2pd" targetId="lnjzu2pc"/>
+                           </assignment>
+                           <end id="lnjzu2pc">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="lmj482ba" targetId="lmj482b5" type="containerLink"/>
+                        <events>
+                           <catch faultField="bp-faultInfo" id="lmhnxpxa" interrupting="true">
+                              <link id="lmj482bb" targetId="lmj482b6" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lmj482ak" targetId="lmj482ac" type="containerLink"/>
+                  </flow>
+                  <link id="lmj482af" targetId="lmj482ag" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.O_BusinessPartnerUUID}</arg>
+                           <arg name="right">''</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmj482ai" targetId="lmj482aj" type="containerLink"/>
+                  <link id="lmj482br" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ceff2a41-0874-4a48-9d05-94b93b7e17c8</ns1:Id>
+               <ns1:Name>ip</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-09-21T10:21:29Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-11T20:56:15Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartnerEmail": "david.dasilva@vistra.com"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>65cdf26f-c04c-41fe-b8f2-c5b9a04e037f</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-11T20:56:15Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartner": "12500081",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "entity"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0ej3pgHsNENkarCF9tNw49</types1:GUID>
+      <types1:DisplayName>Process_GET_BusinessPartnerUUID</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-11T21:06:56.124Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

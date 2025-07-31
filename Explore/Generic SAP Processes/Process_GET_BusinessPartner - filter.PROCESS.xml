@@ -1,0 +1,234 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>qgcm3rp3yD7tyGo-gt-67968296-2023-09-16T18:50:57.266Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_BusinessPartner_-_filter</types1:Name>
+      <types1:ParentFlowIds>050AkRtO3M4WwOC-gt-67968418-2023-09-16T18:50:59.989Z::pd.xml,EFpGY2KsJlv58pI-gt-67799091-2023-09-16T18:51:01.949Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-09-16T18:50:57Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-16T19:02:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_BusinessPartner_-_filter/Process_GET_BusinessPartner_-_filter.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_BusinessPartner - filter"
+                  name="Process_GET_BusinessPartner_-_filter"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Filter" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_BusinessPartner" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_RestURL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_BusinessPartnerExpanded" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:SvcGET_BusinessPartner_EntireResponse</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </field>
+               <field description="" name="out_PO_Get_BusinessPartner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+               <field description="" name="out_WebPage_ValidityStartDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>Assignment to tmp_hostname, tmp_username etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7hqi0xl" targetId="l7hqi0xv"/>
+               </assignment>
+               <assignment id="lf246eq0">
+                  <title>Set Output</title>
+                  <operation source="field" to="output.out_BusinessPartner">output.svcBusinessPartnerA2X_BusinessPartner</operation>
+                  <operation source="field" to="output.out_BusinessPartnerExpanded">output.output</operation>
+                  <operation source="formula" to="output.out_PO_Get_BusinessPartner">
+                     <expression language="XQuery">let $f := $output.faultInfo[1] return
+&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;{util:iif(util:isNull($f/code), 'HTTP_200', $f/code)}&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;{util:iif(util:isNull($f/detail), '', $f/detail)}&lt;/Detail&gt;
+   &lt;Reason&gt;{util:iif(util:isNull($f/reason), 'Verified Business Partner Exists in SAP', $f/reason)} &lt;/Reason&gt;
+   &lt;URL&gt;{util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('||$input.in_Filter||')'}&lt;/URL&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;BusinessPartner&lt;/Identifier&gt;
+      &lt;Value&gt;{$input.in_Filter}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   
+   &lt;!-- Get list of existing CompanyCodes --&gt;
+   {for $sap in $output.output[1]/d[1]/results/to_Customer[1]/to_CustomerCompany/results return
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;CompanyCode&lt;/Identifier&gt;
+      &lt;Value&gt;{$sap/CompanyCode/text()}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   }
+   
+   &lt;!-- Get list of existing SAP Addresses --&gt;
+   {for $sap in $output.output[1]/d[1]/results/to_BusinessPartnerAddress/results  return
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;AddressID&lt;/Identifier&gt;
+      &lt;Value&gt;{$sap/AddressID/text()}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   }
+   
+   &lt;!-- Get list of existing SAP Roles  --&gt;
+   {for $sap in $output.output[1]/d[1]/results/to_BusinessPartnerAddress/results  return
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;BusinessPartnerRole&lt;/Identifier&gt;
+      &lt;Value&gt;{$sap/BusinessPartnerRole}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   }
+&lt;/PoSapStdOutput&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('||$input.in_Filter||')'</expression>
+                  </operation>
+                  <operation source="constant" to="output.out_WebPage_ValidityStartDate">{$output.WebPage_ValidityStartDate}</operation>
+                  <link id="lf246eq2" targetId="c"/>
+               </assignment>
+               <eventContainer id="l7hqi0xv">
+                  <service id="l7hqi0xk">
+                     <title>GET_A_BusinessPartner</title>
+                     <serviceName>AppSvcBusinessPartnerA2X:GET_A_BusinessPartner</serviceName>
+                     <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="__filter" source="field" updatable="true">input.in_Filter</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7hqi0xx">
+                     <link id="l7hqi0xy" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <flow id="l7hqi0y0">
+                     <container id="lf246es8" type="exclusive">
+                        <title>Code</title>
+                        <flow id="lf246esa">
+                           <link id="lf246esb" targetId="lf246es8" type="containerLink"/>
+                        </flow>
+                        <flow id="lf246esd">
+                           <throw id="lf246esz">
+                              <title>Throw 1</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lf246es9" targetId="lf246esa" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                 <arg name="right">HTTP_404</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lf246esc" targetId="lf246esd" type="containerLink"/>
+                     </container>
+                     <link id="lf246eqx" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <link id="l7hqi0xw" targetId="l7hqi0xx" type="containerLink"/>
+                  <link id="lf246eq1" targetId="lf246eq0"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7hqi0xo" interrupting="true">
+                        <link id="l7hqi0xz" targetId="l7hqi0y0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>cd964412-e08c-484f-9ad3-9cb987212c30</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-09-16T18:50:57Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:50:57Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Filter": "BusinessPartner eq '1059254' or BusinessPartnerIDByExtSystem eq '0013O00001GZDGYQAP'"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5UY8XhyZhckl699JR1TFky</types1:GUID>
+      <types1:DisplayName>Process_GET_BusinessPartner - filter</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T20:27:45.761Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,1327 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>lDFIKUzeA8rJ4pb-gt-17338616-2022-09-20T15:48:24.186Z::svc.xml</types1:EntryId>
+      <types1:Name>svcYY1</types1:Name>
+      <types1:ParentFlowIds>iWVdzm5Y6tMFygl-gt-10088296-2022-09-20T15:48:25.133Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Custom SAP Components</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-20T15:48:24Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-11T20:56:12Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-11T20:56:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svcYY1/svcYY1_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="svcYY1"
+                            label=""
+                            name="svcYY1"
+                            uuid="f601f9fe-3b3d-480a-9798-1140362d588f">
+            <description>Custom SAP Components</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_GET"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_GET"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_POST"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_POST"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="cookie"
+                                name="cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=0wclHIAExWO5VtW40pQ6JfwKRuU00hHtkNn6Fj6c4eI%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="GuSdf4ZZ9JxxPdSQqgQ_OA=="
+                                type="string"/>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{    &#34;ID&#34;: &#34;VPC&#34;,    &#34;SubID&#34;: &#34;API05&#34;,    &#34;CompanyCode&#34;: &#34;SG02&#34;,    &#34;KeyValue1&#34;: &#34;1800001888&#34;,    &#34;KeyValue2&#34;: &#34;2022&#34;,    &#34;KeyValue3&#34;: &#34;1200000000&#34;,    &#34;KeyValue4&#34;: &#34;2022&#34;,    &#34;Value1&#34;: &#34;35001&#34;,    &#34;Success&#34;: true}"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-Token">{$token}</header>
+                        </httpHeaders>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_PATCH"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_PATCH"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="cookie"
+                                name="cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=W1DhTUUb1qQiKZ_HxKIREhCalu0OgxHulQ9JpRAMi-E%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="COb5pEW8cPiIOHi17J_43g=="
+                                type="string"/>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-Token">{$token}</header>
+                        </httpHeaders>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="CreditBlock"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_CreditBlock"
+                       maxRedirects="100"
+                       name="GET_CreditBlock"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_CREDITBLOCK_API_V1_CDS/YY1_CreditBlock_API_v1" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="blockDetails" type="reference">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                     <field description="" name="blockDetails_array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            name="blockDetails2"
+                            property="results"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">results_GET_CreditBlock</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="LoggingTable"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_LoggingTable"
+                       maxRedirects="100"
+                       name="POST_LoggingTable"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="exclude" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="exclude" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-Token" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{&#xA;    &#34;ID&#34;: &#34;VPC&#34;,&#xA;    &#34;SubID&#34;: &#34;API05&#34;,&#xA;    &#34;CompanyCode&#34;: &#34;SG02&#34;,&#xA;    &#34;KeyValue1&#34;: &#34;1800001888&#34;,&#xA;    &#34;KeyValue2&#34;: &#34;2022&#34;,&#xA;    &#34;KeyValue3&#34;: &#34;1200000000&#34;,&#xA;    &#34;KeyValue4&#34;: &#34;2022&#34;,&#xA;    &#34;Value1&#34;: &#34;35001&#34;,&#xA;    &#34;Success&#34;: true&#xA;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">SAPLogUpdateInput</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="o_Message" type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="LoggingTable"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_PATCH"
+                       label="PATCH_LoggingTable"
+                       maxRedirects="100"
+                       name="PATCH_LoggingTable"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="exclude" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-Token" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="UUID"
+                                name="UUID"
+                                required="false"
+                                testWith="fa163e9c-e1e2-1eed-86a9-36bc865e2495"
+                                type="string"/>
+                     <parameter name="body"
+                                required="false"
+                                testWith="{&#34;Value1&#34;: &#34;2&#34;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE(guid'{$UUID}')"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="CreditBlock"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_CreditBlock"
+                       maxRedirects="100"
+                       name="POST_CreditBlock"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="inherit" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-Token" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Business Partner"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_BusinessPartnerUUID"
+                       maxRedirects="100"
+                       name="GET_BusinessPartnerUUID"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="Email"
+                                nogen="true"
+                                required="true"
+                                testWith="paul.wright@vistra.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$filter">{'startswith(DefaultEmailAddress,'''|| $Email || ''') and EndDate gt datetime''' || fn:replace(xs:string(fn:current-date()), 'Z', 'T00:00:00') || ''''}</otherParam>
+                           <otherParam name="$top">1</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="O_BusinessPartnerUUID"
+                            property="BusinessPartnerUUID"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="ClearedPayments"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ClearedPaymentEntries"
+                       maxRedirects="100"
+                       name="GET_ClearedPaymentEntries"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="exclude" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_PAYMENTCLEARED_API_V2_CDS/YY1_PaymentCleared_API_v2"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$top">2</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="ClearedPaymentDetails_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">root_GET_ClearedPaymentEntries</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            name="HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            entireResponse="true"
+                            name="output_PO"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">results_GET_ClearedPaymentEntriesV2</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="ClearedPaymentReset"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ClearedPaymentResetEntries"
+                       maxRedirects="100"
+                       name="GET_ClearedPaymentResetEntries"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="exclude" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_PAYCLEAREDRESET_API_V1_CDS/YY1_PayClearedReset_API_v1"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description="" name="ClearedPaymentsReset_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">results_GET_ClearedPaymentResetEntries</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="ClearedPayments"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ClearedPayments_Partial_Over"
+                       maxRedirects="100"
+                       name="GET_ClearedPayments_Partial_Over"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_CUSTOMERPAYMENT_API_V1_CDS/YY1_CustomerPayment_API_v1"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="ClearedPaymentDetails_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            name="HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="GET_UUID_EmailID"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_UUID_EmailID_ECD"
+                       maxRedirects="100"
+                       name="GET_UUID_EmailID_ECD"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="in_DefaultEmailAddress"
+                                name="in_DefaultEmailAddress"
+                                required="true"
+                                testWith="Ayushi.Dhaka@vistra.com"
+                                type="string"/>
+                     <parameter label="in_CompanyCode"
+                                name="in_CompanyCode"
+                                required="true"
+                                testWith="ZZZZ"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$filter">startswith(DefaultEmailAddress,'{$in_DefaultEmailAddress}') and CompanyCode eq '{$in_CompanyCode}'</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="O_SAP_Response"
+                            type="string"/>
+                     <field description="" name="O_UUID" property="UUID" type="string"/>
+                     <field description=""
+                            name="O_CompanyCode"
+                            property="CompanyCode"
+                            type="string"/>
+                     <field description=""
+                            name="O_PersonWorkAgreement"
+                            property="PersonWorkAgreement"
+                            type="string"/>
+                     <field description=""
+                            name="O_ServiceCostLevel"
+                            property="ServiceCostLevel"
+                            type="string"/>
+                     <field description=""
+                            name="O_PersonExternalID"
+                            property="PersonExternalID"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="ClearedPaymentReset"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ClearedPaymentReset_Partial_Over"
+                       maxRedirects="100"
+                       name="GET_ClearedPaymentReset_Partial_Over"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/YY1_RESETCUSTPAY_API_V1_CDS/YY1_ResetCustPay_API_v1" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description="" name="ClearedPaymentsReset_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_GET_CreditBlock">
+                  <description/>
+                  <detail>
+                     <field name="SubID" nullable="true" required="false" type="string"/>
+                     <field name="SAP_UUID" nullable="true" required="false" type="string"/>
+                     <field name="BusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Block" nullable="true" required="false" type="int"/>
+                     <field name="SalesOrganization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Value1" nullable="true" required="false" type="int"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="SAPLogUpdateInput">
+                  <description/>
+                  <detail>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="SubID" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="KeyValue1" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue2" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue3" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue4" nullable="true" required="false" type="string"/>
+                     <field name="Value1" nullable="true" required="false" type="string"/>
+                     <field name="Success" nullable="true" required="false" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_ClearedPayments_Partial_Over">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="Code_1" nullable="true" required="false" type="string"/>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="FiscalYear" nullable="true" required="false" type="int"/>
+                     <field name="Description"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Customer" nullable="true" required="false" type="int"/>
+                     <field name="InvoiceFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="InvoiceAccountingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                     <field name="AccountingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PayAmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="PostingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VPointInvoiceNr"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvoiceCompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="InvoiceAccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_GET_ClearedPaymentResetEntries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="KeyValue1" nullable="true" required="false" type="int"/>
+                     <field name="ID_Text" nullable="true" required="false" type="string"/>
+                     <field name="SAP_UUID" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode_01"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">to_ID</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Sub_ID" nullable="true" required="false" type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="KeyValue4" nullable="true" required="false" type="int"/>
+                     <field name="KeyValue3" nullable="true" required="false" type="int"/>
+                     <field name="KeyValue2" nullable="true" required="false" type="int"/>
+                     <field name="ReceiptNumber"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_GET_ClearedPaymentReset_Partial_Over">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="KeyValue1" nullable="true" required="false" type="int"/>
+                     <field name="ID_Text" nullable="true" required="false" type="string"/>
+                     <field name="SAP_UUID" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode_01"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">to_ID</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Sub_ID" nullable="true" required="false" type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="KeyValue4" nullable="true" required="false" type="int"/>
+                     <field name="KeyValue3" nullable="true" required="false" type="int"/>
+                     <field name="KeyValue2" nullable="true" required="false" type="int"/>
+                     <field name="ReceiptNumber"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_ID">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="deferred">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_GET_ClearedPaymentEntries">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="FiscalYear" nullable="true" required="false" type="int"/>
+                     <field name="Customer" nullable="true" required="false" type="int"/>
+                     <field name="ClearingJournalEntry"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Code_01" nullable="true" required="false" type="string"/>
+                     <field name="ClearingFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="BalanceTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                     <field name="WBSElementExternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInBalanceTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ClearingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results_GET_ClearedPaymentEntriesV2">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="KeyValue1" nullable="true" required="false" type="string"/>
+                     <field name="FiscalYear" nullable="true" required="false" type="int"/>
+                     <field name="Customer" nullable="true" required="false" type="int"/>
+                     <field name="ClearingJournalEntry"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ClearingJournalEntryFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ClearingFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WBSElementExternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentHeaderText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInBalanceTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="NetPaymentAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VPointInvoiceNr"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ZUpdate" nullable="true" required="false" type="datetime"/>
+                     <field name="PostingKey" nullable="true" required="false" type="int"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PayAmount" nullable="true" required="false" type="double"/>
+                     <field name="Code_01" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode_1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BalanceTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                     <field name="AccountingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="InvAccountingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PayAmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ClearingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PayTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="KeyValue4" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="KeyValue3" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue2" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>48VBwvlznY1eU9SXawmlSx</types1:GUID>
+      <types1:DisplayName>svcYY1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-11T21:06:55.535Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

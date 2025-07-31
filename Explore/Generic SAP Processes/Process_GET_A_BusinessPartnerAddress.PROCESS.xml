@@ -1,0 +1,173 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fSSCWBFgaa-gt-20445456-2022-10-12T10:48:08.08Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_A_BusinessPartnerAddress</types1:Name>
+      <types1:ParentFlowIds>chCVf4VQT53nQci-gt-6833529-2021-09-17T11:48:56.03Z::pd.xml,KFxH2bfZk9EW4AR-gt-20323361-2021-09-17T11:48:55.587Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:08Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-18T11:14:50Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-18T11:15:01Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_A_BusinessPartnerAddress/Process_GET_A_BusinessPartnerAddress.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_A_BusinessPartnerAddress"
+                  name="Process_GET_A_BusinessPartnerAddress"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_BusinessPartner"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_AddressID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_AddressExist" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_RestUrl_GetBPAddress" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7omlcrw" targetId="l7omlcrv"/>
+               </start>
+               <assignment id="l7omlcrv">
+                  <title>Assignment to tmp_hostname, tmp_username etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7omlcrx" targetId="l7omlcsc"/>
+               </assignment>
+               <eventContainer id="l7omlcsc">
+                  <service id="l7omlcrh">
+                     <title>GET_A_BusinessPartnerAddress</title>
+                     <serviceName>AppSvcBusinessPartnerA2X:GET_A_BusinessPartnerAddress</serviceName>
+                     <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="BusinessPartner" source="field" updatable="true">input.in_BusinessPartner</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7omlcse">
+                     <assignment id="l7ptdrjd">
+                        <title>Assignment to out_AddressID, out_AddressExist</title>
+                        <operation source="field" to="output.out_AddressID">output.AddressID</operation>
+                        <operation source="field" to="output.out_AddressExist">output.AddressExists</operation>
+                     </assignment>
+                     <link id="l7omlcsf" targetId="l7omlcsc" type="containerLink"/>
+                  </flow>
+                  <flow id="l7omlcsh">
+                     <assignment id="l8bhx3dx">
+                        <title>Assignment to out_RestUrl_GetBPAddress</title>
+                        <operation source="formula" to="output.out_RestUrl_GetBPAddress">
+                           <expression language="XQuery">$temp.tmp_hostname ||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner('|| $input.in_BusinessPartner ||')/to_BusinessPartnerAddress'</expression>
+                        </operation>
+                        <link id="l8bhx3gm" targetId="l8bhx3gl"/>
+                     </assignment>
+                     <throw id="l8bhx3gl">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="formula" updatable="true">
+                              <expression language="XQuery">'SAP GET Action failed for BusinessPartnerAddress:'||$input.in_BusinessPartner</expression>
+                           </parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l7omlcsd" targetId="l7omlcse" type="containerLink"/>
+                  <link id="l7omlcrj" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7omlcs8" interrupting="true">
+                        <link id="l7omlcsg" targetId="l7omlcsh" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e1a5e464-5cd8-4e24-8d26-dba95bbbd479</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:08Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:08Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartner": "12500081",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "email"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9TIIk4KzC0nkcM3uxxKgOE</types1:GUID>
+      <types1:DisplayName>Process_GET_A_BusinessPartnerAddress</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-18T11:15:28.734Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

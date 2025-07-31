@@ -1,0 +1,198 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZCU7uMydx2CGeFR-gt-20540915-2022-10-12T10:48:11.833Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_CustomerCompany</types1:Name>
+      <types1:ParentFlowIds>DELlRkPUEbfV3HR-gt-19944002-2021-11-11T12:36:48.474Z::pd.xml,goXFtclq1iUsRvs-gt-37228579-2022-10-12T10:48:15.111Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>GET Customer Company and segment</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:12Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T11:37:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_CustomerCompany/Process_GET_CustomerCompany.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_CustomerCompany"
+                  name="Process_GET_CustomerCompany"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>GET Customer Company and segment</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Customer" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CustomerCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Customer" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_YY1_Customer_Segment_cco" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_RestURL_GETCustCompany" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>Assignment to tmp_hostname, tmp_username etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7hqi0xl" targetId="l7hqi0xv"/>
+               </assignment>
+               <eventContainer id="l7hqi0xv">
+                  <service id="l7hqi0xk">
+                     <title>GET_CustomerCompany</title>
+                     <serviceName>AppSvcBusinessPartnerA2X:GET_CustomerCompany</serviceName>
+                     <serviceGUID>afFo8bsepoBbEwruqpQxgJ</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="in_customer" source="field" updatable="true">input.in_Customer</parameter>
+                        <parameter name="in_companycode" source="field" updatable="true">input.in_CustomerCode</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7hqi0xx">
+                     <assignment id="l7kfbcru">
+                        <title>Assignment to out_CompanyCode, out_Company etc.</title>
+                        <operation source="field" to="output.out_CompanyCode">output.o_CompanyCode</operation>
+                        <operation source="field" to="output.out_Customer">output.o_Customer</operation>
+                        <operation source="field" to="output.out_YY1_Customer_Segment_cco">output.o_YY1_Customer_Segment_cco</operation>
+                     </assignment>
+                     <link id="l7hqi0xy" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <flow id="l7hqi0y0">
+                     <assignment id="l8wwpwon">
+                        <title>Assignment to out_RestURL_GETCustCompany</title>
+                        <operation source="formula" to="output.out_RestURL_GETCustCompany">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_CustomerCompany(Customer={$in_customer},CompanyCode={$in_companycode })'</expression>
+                        </operation>
+                        <link id="l8wwpwoo" targetId="l88tuwam"/>
+                     </assignment>
+                     <throw id="l88tuwam">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l7hqi0xw" targetId="l7hqi0xx" type="containerLink"/>
+                  <link id="l7hqi0xm" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7hqi0xo" interrupting="true">
+                        <link id="l7hqi0xz" targetId="l7hqi0y0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>50500215-c6b6-4bd4-87a3-48377c995956</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-10-12T10:48:12Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartner": "12500081",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "entity"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5F0TV2QoAf1jR86TLi7HKs</types1:GUID>
+      <types1:DisplayName>Process_GET_CustomerCompany</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T09:04:04.847Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,271 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9bdsreK8ZAZf5kc-gt-20445434-2022-10-12T10:48:07.97Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_YY1_ClearedPaymentEntries</types1:Name>
+      <types1:ParentFlowIds>qclNE6Eaaaaaaaa-gt-20541332-2022-10-12T10:48:22.265Z::pd.xml,tu2SHCwkNmumf6S-gt-11103528-2023-02-17T15:04:54.321Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Retrieves the Cleared Invoice payment entries from SAP Custom API</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:08Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-17T06:35:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-25T09:34:39Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_YY1_ClearedPaymentEntries/Process_GET_YY1_ClearedPaymentEntries.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_YY1_ClearedPaymentEntries"
+                  name="Process_GET_YY1_ClearedPaymentEntries"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Retrieves the Cleared Invoice payment entries from SAP Custom API</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Body" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="o_ClearedPaymentEntries_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="o_HttpResponseStatusCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7hqi0xl" targetId="l7hqi0xv"/>
+               </assignment>
+               <eventContainer id="l7hqi0xv">
+                  <service id="l7hqi0xk">
+                     <title>GET ClearedPayment Receipts</title>
+                     <serviceName>AppSvcYY1:GET_ClearedPaymentEntries</serviceName>
+                     <serviceGUID>0L8yRuv9VrIjvcbVfHmB68</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7hqi0xx">
+                     <assignment id="l7kfbcru">
+                        <title>Set ClearedPaymentEntries Array</title>
+                        <operation source="formula" to="output.o_HttpResponseStatusCode">
+                           <expression language="XQuery">$output.HttpResponseStatusCode </expression>
+                        </operation>
+                        <operation source="formula" to="output.o_ClearedPaymentEntries_Array">
+                           <expression language="XQuery">$output.ClearedPaymentDetails_Array </expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7hqi0xy" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <flow id="l7hqi0y0">
+                     <subflow id="l7hqi0y6">
+                        <title>Log Fetch Data Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif($output.faultInfo[1]/code='HTTP_401', 'Not Authorized', $output.faultInfo[1]/reason  )</expression>
+                           </parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_DataKey" source="constant" updatable="true">Bulk data extraction from SAP failed</parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP : GET Cleared Payment entries</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_PAYMENTCLEARED_API_V1_CDS/YY1_PaymentCleared_API_v1'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="field" updatable="true">input.in_Body</parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom API)</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="l7hqi0y1" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <link id="l7hqi0xw" targetId="l7hqi0xx" type="containerLink"/>
+                  <link id="l833h5ks" targetId="l833h5kr"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7hqi0xo" interrupting="true">
+                        <link id="l7hqi0xz" targetId="l7hqi0y0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="l833h5kr">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>225911ce-0a88-4e08-bea6-702d19fe69ef</ns1:Id>
+               <ns1:Name>SD443828</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-05-17T06:35:51Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_X_TRANSACTION_ID": "SDTicket443828",
+	 "in_EventName": "Batch of API05",
+	 "in_IICS_Process_ID": "RB-TEST-1",
+	 "in_ApiName": "API05 - Payment Clearance",
+	 "in_Body": {"value": "N/A"}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f60798d5-23d5-40f5-9a64-374737d78b13</ns1:Id>
+               <ns1:Name>SD473860</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-05-17T06:35:51Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_X_TRANSACTION_ID": "SD473860",
+	 "in_EventName": "SD473860",
+	 "in_IICS_Process_ID": "SD473860",
+	 "in_ApiName": "SD473860",
+	 "in_Body": {"root": "0"}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>50ad7e47-7238-424b-bd63-4248fe259b92</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-05-17T06:35:51Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_X_TRANSACTION_ID": "",
+	 "in_EventName": "",
+	 "in_IICS_Process_ID": "",
+	 "in_ParentProcessStartTime": "",
+	 "in_ApiName": "",
+	 "in_Body": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3fe5457c-4ded-4f56-a929-b10ef78ac1ed</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:08Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartner": "12500081",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "entity"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>66c6WhvbPYUlsygmuwOsKk</types1:GUID>
+      <types1:DisplayName>Process_GET_YY1_ClearedPaymentEntries</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-25T08:21:46.776Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

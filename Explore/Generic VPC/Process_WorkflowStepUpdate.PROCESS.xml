@@ -1,0 +1,159 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HCB4fYLnzYLnzYL-gt-1225627-2022-12-16T08:04:35.428Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_WorkflowStepUpdate</types1:Name>
+      <types1:ParentFlowIds>SJhtghGZ5i4rswV-gt-8030674-2022-12-29T07:15:50.718Z::pd.xml,Wq9bdsreK8ZAZf5-gt-1251750-2022-12-16T08:04:37.763Z::pd.xml,XE5lRuImXycotFg-gt-1251762-2022-12-16T08:04:37.968Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2022-12-16T08:04:35Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-01-06T13:05:24Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-01-07T14:00:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_WorkflowStepUpdate/Process_WorkflowStepUpdate.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_WorkflowStepUpdate"
+                  name="Process_WorkflowStepUpdate"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="WflowNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="WfPageNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="WfPageSeqNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="LineNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Message" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="FldKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_WflowFields" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowFields</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lav7zv3r" targetId="lav7zv3q"/>
+               </start>
+               <assignment id="lav7zv3q">
+                  <title>Assignment to tmp_WflowFields</title>
+                  <operation source="list" to="temp.tmp_WflowFields">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:WflowFields">
+                        <where>WflowNr = {$input.WflowNr}  and WfPageNr = {$input.WfPageNr} and FldKey = '{$input.FldKey}'</where>
+                     </query>
+                  </operation>
+                  <link id="lav8huax" targetId="lav8huaw"/>
+               </assignment>
+               <assignment id="lav8huaw">
+                  <title>Assignment to FldValue, FldShowValue</title>
+                  <operation source="field" to="temp.tmp_WflowFields.FldValue">input.Message</operation>
+                  <operation source="field" to="temp.tmp_WflowFields.FldShowValue">input.Message</operation>
+                  <link id="lav8huay" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>05a5f6e0-6f18-45d5-b5c9-318d06630ed4</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2022-12-16T08:04:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-06T13:05:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "WflowNr": 2387,
+	 "WfPageNr": 831,
+	 "WfPageSeqNr": 1,
+	 "LineNr": 7,
+"FldKey": "PR",
+	 "Message": "SAP S4 PurchaseRequisition Nr = 123456789 "
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3c26a1c6-48d7-4026-a7ee-6d9fc5f81236</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2022-12-16T08:04:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-06T13:05:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "WflowNr": 2387,
+	 "WfPageNr": 831,
+	 "WfPageSeqNr": 1,
+	 "LineNr": 10,
+"FldKey": "DOC",
+	 "Message": "Doc Nr(s)=123;124;125  "
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>00125ac3-5e5c-4c59-b1b6-f7e7dcf1604c</ns1:Id>
+               <ns1:Name>t3</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2022-12-16T08:04:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-06T13:05:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "WflowNr": 2387,
+	 "WfPageNr": 831,
+"FldKey": "FM",
+	 "Message": "Success / Failure details will be shown here"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0twKfpw6RfbkuEMqyNp2sc</types1:GUID>
+      <types1:DisplayName>Process_WorkflowStepUpdate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-01-07T18:44:30.866Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

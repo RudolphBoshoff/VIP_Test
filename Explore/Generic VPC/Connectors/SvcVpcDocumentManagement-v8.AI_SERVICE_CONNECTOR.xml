@@ -1,0 +1,838 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>DIKUzeA8rJ4pbgc-gt-1225539-2022-12-16T08:04:34.749Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcVpcDocumentManagement-v8</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>https://web.clmvpcdev.vaws/rest/apidoc/index#/DocumentManagement</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2022-12-16T08:04:35Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2022-12-16T08:05:50Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2022-12-16T08:05:59Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcVpcDocumentManagement_v8/SvcVpcDocumentManagement_v8_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcVpcDocumentManagement-v8"
+                            label=""
+                            name="SvcVpcDocumentManagement-v8"
+                            uuid="fae16c77-3f80-4eca-97bc-a74ce812c0a1">
+            <description>https://web.clmvpcdev.vaws/rest/apidoc/index#/DocumentManagement</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetAccessToken"
+                       maxRedirects="100"
+                       name="GetAccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description="svcintclmvpcqasch &#xA;svcintclmvpcdevrds"
+                                label="username"
+                                name="username"
+                                required="false"
+                                testWith="svcintclmvpcdevrds"
+                                type="string"/>
+                     <parameter description="Today123 &#xA;yNPEJ9dgCJkJA6MzvCykXbJPQFzLid"
+                                label="password"
+                                name="password"
+                                required="false"
+                                testWith="yNPEJ9dgCJkJA6MzvCykXbJPQFzLid"
+                                type="string"/>
+                     <parameter description="https://web.clmvpcqa.vaws/rest/&#xA;https://web.clmvpcdev.vaws:443/rest/"
+                                label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest/"
+                                type="string"/>
+                     <parameter label="grant_type"
+                                name="grant_type"
+                                required="false"
+                                testWith="password"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($base_url  , 'token')}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/x-www-form-urlencoded</header>
+                           <header name="Accept">*/*</header>
+                           <header name="Accept-Encoding">gzip, deflate, br</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="out_access_token"
+                            property="access_token"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_POST"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_POST"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description="https://web.clmvpcqa.vaws/rest/"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest"
+                                type="string"/>
+                     <parameter name="access_token"
+                                required="false"
+                                testWith="dsuLTVGbGTXh0CNPWo1KMDTROVGXegS6QLTkIFpZS_JyilmLAYGEIYuKJILPwOe-bjxHmcKTW6NYixQRN2Hg52n1FIEN68Wl1Qm7jqh_68bIauiq08mY-DREmJmSFL0pTwkjbZ3tG8lPitN5gO57ztK3v5INgWZRW-WPZe4p2e033OIgiwsRpCiNbt6vZNSm0287MMzCq-SYQo7nICpt9CVl-s6UmdcRbrC3p1RVtABHy4OpwRECXfYtP13w9xeFnLRZ1C9eSiFafKx6kC1sXy1jw6UcSGCAnUMhBJvxZRX6hIUvqwIjFPssqcDwwFeeMM6ZxEwdM4ihTyIYivNZ7V8onmxqUp8bzQEDKh_U2P2xmXCInSHPam-25TgUU15JUIz_8oCIVjxR_GvT0D_bNeiuNvDgvyxjqkVl3-F7fO1yCiSU_Q41Co4ksX6nQ1N95fQLhPu5z2aOn15X4Ts6S_3F_Sy1_EEUO6KoWzN3zhY4tNGE1eZBvEUaobJ_dGXUtu5_jomCQis-9PweXtsGdYvKYmq5P5q-0Q0tcueSxY1yzRapl2nfiWQOMc6SUxvewdy7DDA1ZMwoD3rh0Mqp9pOrtp6X-QAnOyXX70qZJF-BNAFldWBO6CmZet1qie0fzmEpALDr05yTiv2WX3PmrAVk6eL1T-hqTDYFy5TS-vfc2NV-KJeuWy0pd8rj5Y5rEL9K-aRr4rAltQqUKSvgc8izrCKQIPWIpxiHCTLqYTZf-UIA2h58fD15YOuuvxaQVCeTkjpPsbeoD7-M0fgXIEVyFrLFH92967vWof9xpK4l6udLJ3QxFJ_jb3pM_gWeLGDJaINehUJ9YEJTsHNiBTg0bIR6pOW3TDQwfkfFwvvkXHAQ6HetgZK9R6IbRi_xhq2VJ2Dn6hh1PIPCzI_uIiJGpEDX5ij4WMx8SjYG34p83e6yK5H6Dw-2sMat8xp7vZ9F3tGUVeUuAYqyRE26LWXucSMXy1rRKdMva0Pbz6gAHsDpPSTcQFA635MBfgbD8kDmG1e2-62xkYdLuyvlZF7eGRHZhbQyYAKB7yAeeJcaAqX4c0WSWjR1Ddlhn4gSxzSSPRlQo8VxvMlXV8l_HCHyG2qBLHagsrpxl3c2vESyvbxU4JGwUaQz0hyyiC1X"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$base_url}/api/V8.0/DocumentManagement"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$access_token)}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept-Encoding">gzip, deflate, br</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_PUT"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_PUT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws:443/rest"
+                                type="string"/>
+                     <parameter name="access_token" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$base_url}/api/V8.0/DocumentManagement"
+                                        verb="PUT">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="Authorization">{concat('Bearer ',$access_token)}</otherParam>
+                           <otherParam name="Accept">application/json</otherParam>
+                           <otherParam name="Content-Type">application/json</otherParam>
+                           <otherParam name="Accept-Encoding">gzip, deflate, br</otherParam>
+                        </otherParams>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_GET"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_GET"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description="svcintclmvpcqasch&#xA;svcintclmvpcdevrds"
+                                name="username"
+                                nogen="true"
+                                required="false"
+                                testWith="svcawsclmvpcdevts@vistra.com"
+                                type="string"/>
+                     <parameter description="Today123&#xA;yNPEJ9dgCJkJA6MzvCykXbJPQFzLid"
+                                name="password"
+                                nogen="true"
+                                required="false"
+                                testWith="Today1234"
+                                type="string"/>
+                     <parameter description="https://web.clmvpcqa.vaws/rest/&#xA;https://web.clmvpcdev.vaws:443/rest"
+                                name="base_url"
+                                nogen="true"
+                                required="true"
+                                testWith="https://web.clmvpcdev.vaws/rest"
+                                type="string"/>
+                     <parameter name="grant_type"
+                                nogen="true"
+                                required="false"
+                                testWith="password"
+                                type="string"/>
+                     <parameter name="access_token"
+                                nogen="true"
+                                required="true"
+                                testWith="GlylzsdOT5gwuREGNkN3xLkRZZsmHb0fJA4fYMtfSpC7MBSt4qpAthjQK1NLMut98MUvkhOISYg1Uwa3BjSsXj7wMvWIES4IFaCxpdTpPQV2Aj8lNPmfpNzsmMjgXwu07q_9fxIiCIAuMQvoE4fCmdIAxmlzyggHeCorPUDsMkeFiak7M1NEOgv0Y1aXPa3YhFmrZAYvjlo9AQgc0B4X-8gN19vXlTRH4O1XAyQl6_8ZL-y_dqCPeToOGr1TzPX0wKDkqmNbeWVOz9IBaRuIyH81_DLlFdL_XHKVwwGI3wI-TwkjmEQMdXEJMEQFXbXKqv6KBQtz9M5zfHP_EJEtmy3PTUNnCXbsORINTj7ACH_7vcdrEErGOMAfqvxj9i1U2zc_YW0zy9oXLYsRJG745FDmoZ95iwU1qJ0tQ8X0jDDY5RuzTz9e-mbiCw9PSPNR2ZFVqQKP5EXgEQHFcDNwnXgsGjkiqItTR6EJGZgArWPr_n9w-AyMHPWWOCce7PlU9KsBNLXfqn7FojN4f1NSfGatbXCK4Xm1m-4tgpYj__ZI6KlJ8AGCGnzKiNMH6nNqSfW1X9TTskiFCoKo2bqTR2kL1DkTIy_1-6q6cokcGtb0LgrVybsEPZsDwLz5kyS2GuvUg0KakXx8VgNzBmrWiqEB3iHVv-pfrVaEABOAr6Ul17DJjkpG5-savnX-pfaJLP9EHDSd4jMc4YS7pduYIxqoeCW6AYZyPtH1LT_PRTkyT9speR9RodJ3Y0z8g_3X5djHbzbmzLsRtjbGtt4dltsuMFbyQ_vWlPIc9C0-EO_NoLlbjiRIXYJwhknKbBPPI8eMLkrWJQJ-MevdcsVZnu8ep1DwceOQEQ_ogFmtC7SzO9dg_Dxdvf5pnxLQYuvSxu-6AGXg0X7-Cr5T6RVzTZ26hFEByVuwH5g48a7FOvA_-FjZ-c13g_AJXG8Yb5_gkqXt7yx4tKCvR3sXMKhEpL_TWDuTt5_1I5NGC7jC9kFGZRXpWtGF3SrvoTHf--yTJTtNom4K-daiNK_IzqYvO8i-sTwyhzRKedtCRXgTWgiV4Lp15vT38VVjiVpIsV2LVdDBo7fwYcn9AOCeov7tW1EUMtgcA3DG_781X0Zw6VguDIF7Adh09I-zgSOqK5QUwzZIOL7ryfCDlkYoHoYVp9To_MZWK2nILBktsynfeeM7NVkWVnLjeM4ydb1CWKtk5tvwrvN41IyUXuwtNSDGzoRwCVRNabcaskviSdPRiC8WbCgtiB6P_nsBNb5wLpw1X1IAwa8xWZF-yDr3wO5JNQ"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$base_url}/api/V8.0/DocumentManagement"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$access_token)}</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_Svc_http_ResponseCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Holders"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_Holders_Holders"
+                       maxRedirects="100"
+                       name="POST_Holders_Holders"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Create holder and upload file with files</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="ResponseStatusCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept-Encoding" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="holderModel" required="false" testWith="" type="string"/>
+                     <parameter name="file" required="false" testWith="" type="attachment"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/Holders/Holders" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="file">$file</otherParam>
+                           <otherParam name="holderModel">$holderModel</otherParam>
+                        </otherParams>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="out_holderNr"
+                            property="dixDocNr"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Holders"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_Holders_Documents"
+                       maxRedirects="100"
+                       name="POST_Holders_Documents"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Add a file to a holder</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="ResponseStatusCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept-Encoding" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="File" required="false" testWith="" type="attachment"/>
+                     <parameter name="HolderNr" required="false" testWith="189" type="string"/>
+                     <parameter name="FileDesc"
+                                required="false"
+                                testWith="RB_Test"
+                                type="string"/>
+                     <parameter name="FileDate"
+                                required="false"
+                                testWith="2022-11-21"
+                                type="date"/>
+                     <parameter name="ByChunck" required="false" testWith="false" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/Holders/Documents" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="out_holderNr"
+                            property="dixDocNr"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Holders"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_Holders_Ocr_HolderFile"
+                       maxRedirects="100"
+                       name="GET_Holders_Ocr_HolderFile"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Gets the list of HolderFileModel/DocFiles. Menu ID CBDORCTX is refered to menu (Caption: Document Store Validation and Update, Description: OCR Text Update)</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/Holders/Ocr/HolderFile" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Holders"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_Holders_Holders_CanAccessDocumentHolder"
+                       maxRedirects="100"
+                       name="GET_Holders_Holders_CanAccessDocumentHolder"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Check holder authority</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="holderNr" required="false" testWith="189" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/Holders/Holders/CanAccessDocumentholder/{$holderNr}" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="MasterFile"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_MasterFile_Enquiry_Document"
+                       maxRedirects="100"
+                       name="GET_MasterFile_Enquiry_Document"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get all documents for a specified Master File</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="fileCode"
+                                nogen="true"
+                                required="true"
+                                testWith="12047347"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/MasterFile/Enquiry/Document/{$fileCode}" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="o_ResponsePayload"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">MasterFile_Enquiry_Document</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="MasterFile"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_MasterFile_Enquiry_Holder"
+                       maxRedirects="100"
+                       name="GET_MasterFile_Enquiry_Holder"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get all holders for a specified Master File</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="fileCode"
+                                required="false"
+                                testWith="12047347"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/MasterFile/Enquiry/Holder/{$fileCode}" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="o_MasterFile_Enquiry_Holder"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">MasterFile_Enquiry_Holder</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Holders"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_Holders_Documents"
+                       maxRedirects="100"
+                       name="GET_Holders_Documents"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieve File, holder data including Relation, Tasks and Files records</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="holderNr" required="false" testWith="381" type="string"/>
+                     <parameter name="fileNr" required="false" testWith="1" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/Holders/Documents/{$holderNr}/{$fileNr}/download" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="o_svcVpcDoc_EResp"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">Holders_Documents</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="File"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_File_Files"
+                       maxRedirects="100"
+                       name="GET_File_Files"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieve files by file stream</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="base_url" type="parameter"/>
+                           <attribute inherit="inherit" name="grant_type" type="parameter"/>
+                           <attribute inherit="inherit" name="access_token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_Svc_http_ResponseCode" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Authorization" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="docField"
+                                nogen="true"
+                                required="false"
+                                testWith="4500"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/File/Files/{$docField}" verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field attachments="true"
+                            description=""
+                            name="o_docFile"
+                            type="attachment"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="MasterFile_Enquiry_Document">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="eventNrs" nullable="true" required="false" type="string"/>
+                     <field name="supportMultilingual"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="caption" nullable="true" required="false" type="string"/>
+                     <field name="errorCode" nullable="true" required="false" type="string"/>
+                     <field name="multilingualParameters"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="message" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">MasterFile_Enquiry_Document_Value</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="status" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="MasterFile_Enquiry_Document_Value">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="vpCode" nullable="true" required="false" type="string"/>
+                     <field name="descr" nullable="true" required="false" type="string"/>
+                     <field name="folderNr" nullable="true" required="false" type="int"/>
+                     <field name="fileNr" nullable="true" required="false" type="int"/>
+                     <field name="docNr" nullable="true" required="false" type="int"/>
+                     <field name="docDate" nullable="true" required="false" type="datetime"/>
+                     <field name="docFileId" nullable="true" required="false" type="int"/>
+                     <field name="storedStatus" nullable="true" required="false" type="int"/>
+                     <field name="fileNames" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="MasterFile_Enquiry_Holder">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="eventNrs" nullable="true" required="false" type="string"/>
+                     <field name="supportMultilingual"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="caption" nullable="true" required="false" type="string"/>
+                     <field name="errorCode" nullable="true" required="false" type="string"/>
+                     <field name="multilingualParameters"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="message" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">MasterFile_Enquiry_Holder_value</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="status" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="MasterFile_Enquiry_Holder_value">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="vpCode" nullable="true" required="false" type="string"/>
+                     <field name="note" nullable="true" required="false" type="string"/>
+                     <field name="ucodeUpdate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="docNr" nullable="true" required="false" type="int"/>
+                     <field name="docDate" nullable="true" required="false" type="datetime"/>
+                     <field name="storeStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="confRank" nullable="true" required="false" type="int"/>
+                     <field name="descr" nullable="true" required="false" type="string"/>
+                     <field name="procStatus" nullable="true" required="false" type="int"/>
+                     <field name="docStatus" nullable="true" required="false" type="int"/>
+                     <field name="docOrigin" nullable="true" required="false" type="int"/>
+                     <field name="folderNr" nullable="true" required="false" type="int"/>
+                     <field name="dateIndex" nullable="true" required="false" type="string"/>
+                     <field name="dateUpdate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="numFiles" nullable="true" required="false" type="int"/>
+                     <field name="ucodeIndex"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="mfNumber" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="type">
+                  <description>An automatically generated process object</description>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Holders_Documents">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="eventNrs" nullable="true" required="false" type="string"/>
+                     <field name="supportMultilingual"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="caption" nullable="true" required="false" type="string"/>
+                     <field name="errorCode" nullable="true" required="false" type="string"/>
+                     <field name="multilingualParameters"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="message" nullable="true" required="false" type="string"/>
+                     <field name="value" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">Holders_Documents_value</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="status" nullable="true" required="false" type="int"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Holders_Documents_value">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="fileOpen" nullable="true" required="false" type="string"/>
+                     <field name="fileName" nullable="true" required="false" type="string"/>
+                     <field name="fileSize" nullable="true" required="false" type="int"/>
+                     <field name="fileDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="fileBytes" nullable="true" required="false" type="string"/>
+                     <field name="fileDesc" nullable="true" required="false" type="string"/>
+                     <field name="fileType" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>21QKxUdZLsximdVTPgo1OD</types1:GUID>
+      <types1:DisplayName>SvcVpcDocumentManagement-v8</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-08T13:11:11.915Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

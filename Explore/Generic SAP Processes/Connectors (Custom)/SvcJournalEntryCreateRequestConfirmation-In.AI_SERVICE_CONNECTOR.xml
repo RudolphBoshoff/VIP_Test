@@ -1,0 +1,3083 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wMbgbdoPVm5Y6tM-gt-6715676-2022-09-14T08:26:03.55Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcJournalEntryCreateRequestConfirmation-In</types1:Name>
+      <types1:ParentFlowIds>5nBQ9WYzr3tfUbb-gt-6715860-2022-09-14T08:26:07.912Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>https://api.sap.com/api/OP_JOURNALENTRYCREATEREQUESTCONF_IN/overview</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-14T08:26:04Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:47:44Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:49:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcJournalEntryCreateRequestConfirmation_In/SvcJournalEntryCreateRequestConfirmation_In_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcJournalEntryCreateRequestConfirmation-In"
+                            label=""
+                            name="SvcJournalEntryCreateRequestConfirmation-In"
+                            uuid="8b772ee1-0b6d-4ec4-8ce2-bc6536865711">
+            <description>https://api.sap.com/api/OP_JOURNALENTRYCREATEREQUESTCONF_IN/overview</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_POST"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_POST"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">text/xml; charset=utf-8</header>
+                        </httpHeaders>
+                        <body/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_POST"
+                       label="JournalEntryBulkCreateRequest"
+                       maxRedirects="100"
+                       name="JournalEntryBulkCreateRequest"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <section type="body">
+                           <attribute inherit="overwrite" name="content" type="content"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="JournalEntryBulkCreateRequest"
+                                nogen="true"
+                                required="true"
+                                testWith="&lt;soap:Envelope xmlns:soap=&#34;http://schemas.xmlsoap.org/soap/envelope/&#34;&gt; &lt;soap:Header/&gt; &lt;soap:Body&gt; &lt;ns:JournalEntryBulkCreateRequest xmlns:ns=&#34;http://sap.com/xi/SAPSCORE/SFIN&#34;&gt; &lt;MessageHeader&gt; &lt;ID&gt;DISB053-SG01-USD-21&lt;/ID&gt; &lt;CreationDateTime&gt;2021-12-21T09:46:26.758Z&lt;/CreationDateTime&gt; &lt;SenderBusinessSystemID&gt;VIP&lt;/SenderBusinessSystemID&gt; &lt;/MessageHeader&gt; &lt;JournalEntryCreateRequest&gt; &lt;MessageHeader&gt; &lt;ID&gt;DISB053-SG01-USD-21&lt;/ID&gt; &lt;CreationDateTime&gt;2021-12-21T09:46:26.758Z&lt;/CreationDateTime&gt; &lt;/MessageHeader&gt; &lt;JournalEntry&gt; &lt;DocumentHeaderText&gt;Incorp No:TEST_2Item&lt;/DocumentHeaderText&gt; &lt;OriginalReferenceDocumentType&gt;BKPFF&lt;/OriginalReferenceDocumentType&gt; &lt;BusinessTransactionType&gt;RFBU&lt;/BusinessTransactionType&gt; &lt;AccountingDocumentType&gt;KR&lt;/AccountingDocumentType&gt; &lt;DocumentReferenceID&gt;Batch: 21&lt;/DocumentReferenceID&gt; &lt;CreatedByUser&gt;CC0000000022&lt;/CreatedByUser&gt; &lt;CompanyCode&gt;SG01&lt;/CompanyCode&gt; &lt;DocumentDate&gt;2021-12-21&lt;/DocumentDate&gt; &lt;PostingDate&gt;2021-12-21&lt;/PostingDate&gt; &lt;TaxDeterminationDate&gt;2018-04-24&lt;/TaxDeterminationDate&gt; &lt;DocumentHeaderText&gt;2021-12-21&lt;/DocumentHeaderText&gt; &lt;Reference1InDocumentHeader&gt;batch-21&lt;/Reference1InDocumentHeader&gt; &lt;Reference2InDocumentHeader&gt;VPC-API-06&lt;/Reference2InDocumentHeader&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;1&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;41000000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;-410&lt;/AmountInTransactionCurrency&gt; &lt;AccountAssignment&gt; &lt;AccountAssignmentType&gt;EO&lt;/AccountAssignmentType&gt; &lt;ProfitCenter&gt;1100&lt;/ProfitCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;2&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;41000000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;-28.7&lt;/AmountInTransactionCurrency&gt; &lt;AccountAssignment&gt; &lt;AccountAssignmentType&gt;EO&lt;/AccountAssignmentType&gt; &lt;ProfitCenter&gt;1100&lt;/ProfitCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;3&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;41000000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;-60&lt;/AmountInTransactionCurrency&gt; &lt;AccountAssignment&gt; &lt;AccountAssignmentType&gt;EO&lt;/AccountAssignmentType&gt; &lt;ProfitCenter&gt;1100&lt;/ProfitCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;DebtorItem&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;410&lt;/AmountInTransactionCurrency&gt; &lt;Debtor&gt;106023&lt;/Debtor&gt; &lt;ReferenceDocumentItem&gt;1&lt;/ReferenceDocumentItem&gt; &lt;/DebtorItem&gt; &lt;DebtorItem&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;28.7&lt;/AmountInTransactionCurrency&gt; &lt;Debtor&gt;106023&lt;/Debtor&gt; &lt;ReferenceDocumentItem&gt;2&lt;/ReferenceDocumentItem&gt; &lt;/DebtorItem&gt; &lt;DebtorItem&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;60&lt;/AmountInTransactionCurrency&gt; &lt;Debtor&gt;106023&lt;/Debtor&gt; &lt;ReferenceDocumentItem&gt;3&lt;/ReferenceDocumentItem&gt; &lt;/DebtorItem&gt; &lt;ProductTaxItem&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;0&lt;/AmountInTransactionCurrency&gt; &lt;TaxCode&gt;S0&lt;/TaxCode&gt; &lt;TaxItemClassification&gt;MWS&lt;/TaxItemClassification&gt; &lt;ConditionType&gt;MWAS&lt;/ConditionType&gt; &lt;TaxBaseAmountInTransCrcy currencyCode=&#34;SGD&#34;&gt;498.7&lt;/TaxBaseAmountInTransCrcy&gt; &lt;/ProductTaxItem&gt; &lt;/JournalEntry&gt; &lt;/JournalEntryCreateRequest&gt; &lt;/ns:JournalEntryBulkCreateRequest&gt; &lt;/soap:Body&gt; &lt;/soap:Envelope&gt;"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">$any</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi"
+                                        verb="POST">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="SOAPAction">"http://sap.com/xi/SAPSCORE/SFIN/JournalEntryCreateRequestConfirmation_In/JournalEntryCreateRequestConfirmation_InRequest"</header>
+                        </httpHeaders>
+                        <body>{$JournalEntryBulkCreateRequest}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="SeverityCode"
+                            property="MaximumLogItemSeverityCode"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">Log</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="SeverityCode_msg"
+                            property="Note"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">Log</option>
+                        </options>
+                     </field>
+                     <field description=""
+                            name="JournalEntryBulkCreateConfirmation"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateConfirmationBulkMessage</option>
+                        </options>
+                        <xquery>{util:simplifyXml(//*[local-name()='JournalEntryBulkCreateConfirmation'])}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AltvRecnclnAccts5_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="AltvRecnclnAccts"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AltvRecnclnAccts_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="AltvRecnclnAccts"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInCompanyCodeCurrency13_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInCompanyCodeCurrency17_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInCompanyCodeCurrency5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInCompanyCodeCurrency9_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInCompanyCodeCurrency_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInFreeDefinedCurrency113_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInFreeDefinedCurrency117_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInFreeDefinedCurrency15_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInFreeDefinedCurrency19_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInFreeDefinedCurrency1_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInGroupCurrency13_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInGroupCurrency17_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInGroupCurrency5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInGroupCurrency9_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInGroupCurrency_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInTransactionCurrency13_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInTransactionCurrency17_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInTransactionCurrency5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInTransactionCurrency9_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="AmountInTransactionCurrency_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeader">
+                  <description/>
+                  <detail>
+                     <field name="CreationDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="TestDataIndicator"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ReconciliationIndicator"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="SenderBusinessSystemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RecipientBusinessSystemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">ID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="UUID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">UUID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceUUID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceUUID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="SenderParty"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderParty</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="RecipientParty"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderParty</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="BusinessScope"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">BusinessScope</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeaderParty">
+                  <description/>
+                  <detail>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InternalID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="StandardID"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">StandardID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ContactPerson"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderPartyContactPerson</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeaderPartyContactPerson">
+                  <description/>
+                  <detail>
+                     <field name="OrganisationFormattedName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonFormattedName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InternalID6_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PhoneNumber"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PhoneNumber</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="FaxNumber"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PhoneNumber</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="EmailURI"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">EmailURI_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessScope">
+                  <description/>
+                  <detail>
+                     <field name="TypeCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TypeCode_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="InstanceID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InstanceID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">ID6_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CategoryCode_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CategoryCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CountryName_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CustomerGroup_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CustomerIndustry_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerIndustry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="DistributionChannel_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DistributionChannel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Division_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Division" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="EmailURI_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="EmailURI" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="GLAccount_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="GLAccount" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ID6_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InstanceID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InstanceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InternalID6_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InternalID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateConfirmationBulkMessage">
+                  <description/>
+                  <detail>
+                     <field name="ConfirmationInterfaceOrignName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="MessageHeader"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeader</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="JournalEntryCreateConfirmation"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateConfirmationMessage</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Log" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">Log</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateConfirmationJournalEntry">
+                  <description/>
+                  <detail>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateConfirmationMessage">
+                  <description/>
+                  <detail>
+                     <field name="MessageHeader"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeader</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="JournalEntryCreateConfirmation"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateConfirmationJournalEntry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Log" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">Log</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestBulkMessage">
+                  <description/>
+                  <detail>
+                     <field name="MessageHeader"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeader</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="JournalEntryCreateRequest"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestMessage</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntry">
+                  <description/>
+                  <detail>
+                     <field name="OriginalReferenceDocumentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OriginalReferenceDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OriginalReferenceDocumentLogicalSystem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OriginalPredecessorRefDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentHeaderText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReversalReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReversalReferenceDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReversalDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="CreatedByUser"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="PostingDate" nullable="true" required="false" type="date"/>
+                     <field name="TaxReportingDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="TaxDeterminationDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="InvoiceReceiptDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="ExchangeRateDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="ExchangeRate"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="IndirectQuotedExchangeRate"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="SourceSystemCompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SourceSystemAccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificRef1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificDate1"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="JrnlEntryCntrySpecificRef2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificDate2"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="JrnlEntryCntrySpecificRef3"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificDate3"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="JrnlEntryCntrySpecificRef4"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificDate4"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="JrnlEntryCntrySpecificRef5"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificDate5"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="JrnlEntryCntrySpecificBp1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JrnlEntryCntrySpecificBp2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Item" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="DebtorItem"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryDebtorItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="CreditorItem"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryCreditorItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ProductTaxItem"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryProductTaxItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="WithholdingTaxItem"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryWithholdingTaxItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryCashDiscountTerms">
+                  <description/>
+                  <detail>
+                     <field name="DueCalculationBaseDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="CashDiscount1Days"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscount1Percent"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="CashDiscount2Days"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscount2Percent"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="NetPaymentDays"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryCreditorItem">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Creditor" nullable="true" required="false" type="string"/>
+                     <field name="DebitCreditCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentItemText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AssignmentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference1IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference3IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="StateCentralBankPaymentReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OplAcctgDocItmCntrySpcfcRef1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VATRegistration"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BranchAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessPlace"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="HouseBank" nullable="true" required="false" type="string"/>
+                     <field name="HouseBankAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_SOPCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInTransactionCurrency9_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInCompanyCodeCurrency9_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInGroupCurrency9_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInFreeDefinedCurrency19_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AltvRecnclnAccts"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AltvRecnclnAccts5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="CashDiscountTerms"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryCashDiscountTerms</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PaymentDetails"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryCreditorItemPaymentDetails</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="DownPaymentTerms"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryDownPaymentCreditor</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="OneTimeVendorDetails"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryOneTimeVendor</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryCreditorItemPayeeBankAccount">
+                  <description/>
+                  <detail>
+                     <field name="Country" nullable="true" required="false" type="string"/>
+                     <field name="BankNumber"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SWIFTCode" nullable="true" required="false" type="string"/>
+                     <field name="BankAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IBAN" nullable="true" required="false" type="string"/>
+                     <field name="BankAccountHolderName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryCreditorItemPaymentDetails">
+                  <description/>
+                  <detail>
+                     <field name="PaymentMethod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentMethodSupplement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AlternativePayee"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">PaymentBlockingReason7_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PayeeBankAccount"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryCreditorItemPayeeBankAccount</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryDebtorItem">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Debtor" nullable="true" required="false" type="string"/>
+                     <field name="DebitCreditCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentItemText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AssignmentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference1IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference3IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="StateCentralBankPaymentReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReportingCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VATRegistration"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OplAcctgDocItmCntrySpcfcRef1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BranchAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JointVentureBillingType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessPlace"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="HouseBank" nullable="true" required="false" type="string"/>
+                     <field name="HouseBankAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_SOPCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInTransactionCurrency5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInCompanyCodeCurrency5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInGroupCurrency5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInFreeDefinedCurrency15_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AltvRecnclnAccts"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AltvRecnclnAccts_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="CashDiscountTerms"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryCashDiscountTerms</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PaymentDetails"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryDebtorItemPaymentDetails</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="DownPaymentTerms"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryDownPayment</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="OneTimeCustomerDetails"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryOneTimeCustomer</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryDebtorItemPaymentDetails">
+                  <description/>
+                  <detail>
+                     <field name="PaymentMethod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentMethodSupplement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SEPAMandate"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentServiceProvider"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentByPaymentServicePrvdr"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">PaymentBlockingReason_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryDownPayment">
+                  <description/>
+                  <detail>
+                     <field name="SpecialGLCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesOrderItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxItemGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxCode7_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxJurisdiction7_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryDownPaymentCreditor">
+                  <description/>
+                  <detail>
+                     <field name="SpecialGLCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxItemGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxCode13_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxJurisdiction13_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryItem">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ItemGroup" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DebitCreditCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentItemText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReasonCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OplAcctgDocItmCntrySpcfcRef1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AssignmentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FinancialTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Plant" nullable="true" required="false" type="string"/>
+                     <field name="Material" nullable="true" required="false" type="string"/>
+                     <field name="IsNotCashDiscountLiable"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="TradingPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ValueDate" nullable="true" required="false" type="date"/>
+                     <field name="HouseBank" nullable="true" required="false" type="string"/>
+                     <field name="HouseBankAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference1IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference3IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_SOPCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="GLAccount"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">GLAccount_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInTransactionCurrency_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInCompanyCodeCurrency_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInGroupCurrency_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInFreeDefinedCurrency1_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Tax" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryTaxDetails</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="QuantityInEntryUnit"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">QuantityInEntryUnit_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AccountAssignment"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryItemAccountAssignment</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ProfitabilitySupplement"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryItemProfitabilitySupplement</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AdditionalAttributes"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntryItemAdditionalAttributes</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryItemAccountAssignment">
+                  <description/>
+                  <detail>
+                     <field name="AccountAssignmentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PartnerProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Segment" nullable="true" required="false" type="string"/>
+                     <field name="PartnerSegment"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostCtrActivityType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WBSElement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="MasterFixedAsset"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FixedAsset"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesOrderItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocItemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_VistraCompany"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryItemAdditionalAttributes">
+                  <description/>
+                  <detail>
+                     <field name="PersonnelNumber"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryItemProfitabilitySupplement">
+                  <description/>
+                  <detail>
+                     <field name="Customer" nullable="true" required="false" type="string"/>
+                     <field name="CustomerCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesDistrict"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SoldMaterial"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SoldMaterialGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesOrganization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ShipToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonnelNumber"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WBSElement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceDocItemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerGroup"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">CustomerGroup_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="CustomerIndustry"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">CustomerIndustry_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="DistributionChannel"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">DistributionChannel_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Division"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">Division_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryOneTimeCustomer">
+                  <description/>
+                  <detail>
+                     <field name="Name" nullable="true" required="false" type="string"/>
+                     <field name="CityName" nullable="true" required="false" type="string"/>
+                     <field name="Country" nullable="true" required="false" type="string"/>
+                     <field name="TaxNumber1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxNumber2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxNumber3"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxNumber4"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxNumber5"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsNaturalPerson"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Region" nullable="true" required="false" type="string"/>
+                     <field name="VATLiability"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxNumberType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryOneTimeVendor">
+                  <description/>
+                  <detail>
+                     <field name="Name" nullable="true" required="false" type="string"/>
+                     <field name="CityName" nullable="true" required="false" type="string"/>
+                     <field name="Country" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryProductTaxItem">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxItemClassification"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ConditionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdictionLevel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxItemGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxRate" nullable="true" required="false" type="double"/>
+                     <field name="TaxDeterminationDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="IsDirectTaxPosting"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="TaxCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DebitCreditCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProductiveTaxText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_SOPCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxCode19_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxJurisdiction19_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="LowestLevelTaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">LowestLevelTaxJurisdiction_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInTransactionCurrency13_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInCompanyCodeCurrency13_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInGroupCurrency13_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInFreeDefinedCurrency113_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInTransCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInTransCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInCoCodeCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInGroupCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInFreeDefinedCrcy1_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryTaxDetails">
+                  <description/>
+                  <detail>
+                     <field name="TaxItemGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxCode_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxJurisdiction_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxExpenseAmountInTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxExpenseAmountInTransacCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxExpenseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxExpenseAmountInCoCodeCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxExpenseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxExpenseAmountInGroupCrcy_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxExpenseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxExpenseAmountInFreeDefinedCrcy1_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestJournalEntryWithholdingTaxItem">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WithholdingTaxType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WithholdingTaxCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxIsToBeCalculated"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="YY1_SOPCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInTransactionCurrency17_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInCompanyCodeCurrency17_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInGroupCurrency"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInGroupCurrency17_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="AmountInFreeDefinedCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">AmountInFreeDefinedCurrency117_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInTransCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInTransCrcy5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInCoCodeCrcy5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInGroupCrcy5_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TaxBaseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TaxBaseAmountInFreeDefinedCrcy15_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="JournalEntryCreateRequestMessage">
+                  <description/>
+                  <detail>
+                     <field name="MessageHeader"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeader</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="JournalEntry"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">JournalEntryCreateRequestJournalEntry</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Log">
+                  <description/>
+                  <detail>
+                     <field name="BusinessDocumentProcessingResultCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="MaximumLogItemSeverityCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Item" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">LogItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="LogItem">
+                  <description/>
+                  <detail>
+                     <field name="TypeID" nullable="true" required="false" type="string"/>
+                     <field name="SeverityCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceObjectNodeSenderTechnicalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceMessageElementName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Note" nullable="true" required="false" type="string"/>
+                     <field name="NoteTemplateText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WebURI" nullable="true" required="false" type="string"/>
+                     <field name="CategoryCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">CategoryCode_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="LogItemNotePlaceholderSubstitutionList"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">LogItemNotePlaceholderSubstitutionList</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="LogItemNotePlaceholderSubstitutionList">
+                  <description/>
+                  <detail>
+                     <field name="FirstPlaceholderID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SecondPlaceholderID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ThirdPlaceholderID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FourthPlaceholderID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FirstPlaceholderSubstitutionText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SecondPlaceholderSubstitutionText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ThirdPlaceholderSubstitutionText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FourthPlaceholderSubstitutionText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="LowestLevelTaxJurisdiction_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="LowestLevelTaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PaymentBlockingReason7_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PaymentBlockingReason_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PhoneNumber">
+                  <description/>
+                  <detail>
+                     <field name="AreaID" nullable="true" required="false" type="string"/>
+                     <field name="SubscriberID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ExtensionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryDiallingCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryName"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">CountryName_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="QuantityInEntryUnit_AT">
+                  <description/>
+                  <detail>
+                     <field name="unitCode" nullable="true" required="false" type="string"/>
+                     <field name="QuantityInEntryUnit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceUUID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceUUID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="StandardID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="StandardID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInCoCodeCrcy5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInCoCodeCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInFreeDefinedCrcy15_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInFreeDefinedCrcy1_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInGroupCrcy5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInGroupCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInTransCrcy5_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInTransCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxBaseAmountInTransCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxBaseAmountInTransCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxCode13_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxCode19_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxCode7_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxCode_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxExpenseAmountInCoCodeCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxExpenseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxExpenseAmountInFreeDefinedCrcy1_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxExpenseAmountInFreeDefinedCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxExpenseAmountInGroupCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxExpenseAmountInGroupCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxExpenseAmountInTransacCrcy_AT">
+                  <description/>
+                  <detail>
+                     <field name="currencyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxExpenseAmountInTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxJurisdiction13_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxJurisdiction19_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxJurisdiction7_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TaxJurisdiction_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TypeCode_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TypeCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="UUID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="UUID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>35hVXVDix7ThcsdpVVSgEV</types1:GUID>
+      <types1:DisplayName>SvcJournalEntryCreateRequestConfirmation-In</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T09:04:03.885Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

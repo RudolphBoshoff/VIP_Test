@@ -1,0 +1,192 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kdtEOvlp6oIuQaa-gt-37356704-2022-10-12T10:48:09.417Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_ProjectRoleType</types1:Name>
+      <types1:ParentFlowIds>kNmumf6S3wOLIFv-gt-22945939-2022-03-31T07:36:51.62Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>GET Project Role Type for Project</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:09Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-08T16:06:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-08T16:10:16Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_ProjectRoleType/Process_GET_ProjectRoleType.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_ProjectRoleType"
+                  name="Process_GET_ProjectRoleType"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>GET Project Role Type for Project</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Project" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ProjectEntitlementUUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_RestURL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PO_Get_ProjectRoleType" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7hqi0x4" targetId="l7hqi0x3"/>
+               </start>
+               <assignment id="l7hqi0x3">
+                  <title>Assignment to tmp_hostname, tmp_username etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="l7hqi0xl" targetId="l7hqi0xv"/>
+               </assignment>
+               <assignment id="lh8ufbdn">
+                  <title>Set Output</title>
+                  <operation source="formula" to="output.out_ProjectEntitlementUUID">
+                     <expression language="XQuery">for $x in $output.output//to_EntProjEntitlement
+return
+if ($x//ProjectRoleType/data()='YP_RL_0001') then
+&lt;to_EntProjEntitlement&gt;
+&lt;ProjectEntitlementUUID&gt;
+{$x//ProjectEntitlementUUID/data()}
+&lt;/ProjectEntitlementUUID&gt;
+&lt;/to_EntProjEntitlement&gt;
+else ()</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_PO_Get_ProjectRoleType">
+                     <expression language="XQuery">let $f := $output.faultInfo[1]  return 
+&lt;PoSapStdOutput&gt;
+	&lt;HttpStatusCode&gt;{util:iif(util:isNull($f/code), 'HTTP_200', $f/code)}&lt;/HttpStatusCode&gt;
+	&lt;Detail&gt;{util:iif(util:isNull($f/detail), '', $f/detail)}&lt;/Detail&gt;
+	&lt;Reason&gt;{util:iif(util:isNull($f/reason), 'Verified Project Role Exists in SAP', $f/reason)} &lt;/Reason&gt;
+	&lt;URL&gt;{util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject?$expand=to_EntProjTeamMember,to_EntProjTeamMember/to_EntProjEntitlement,to_EntProjRole,to_EnterpriseProjectElement,to_EnterpriseProjectJVA,to_EntProjBlkFunc&amp;amp;$filter=Project%20eq%20'''||$input.in_Project||''''}&lt;/URL&gt;
+	&lt;Parameters&gt;
+		&lt;Identifier&gt;Project&lt;/Identifier&gt;
+		&lt;Value&gt;{$input.in_Project}&lt;/Value&gt;
+	&lt;/Parameters&gt;	
+    {for $x in $output.output//to_EntProjEntitlement return
+	if ($x//ProjectRoleType/data()='YP_RL_0001') then
+    &lt;Parameters&gt;
+		&lt;Identifier&gt;ProjectEntitlementUUID&lt;/Identifier&gt;
+		&lt;Value&gt;{$x//ProjectEntitlementUUID/data()}&lt;/Value&gt;
+	&lt;/Parameters&gt;
+    else ()}
+&lt;/PoSapStdOutput&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject?$expand=to_EntProjTeamMember,to_EntProjTeamMember/to_EntProjEntitlement,to_EntProjRole,to_EnterpriseProjectElement,to_EnterpriseProjectJVA,to_EntProjBlkFunc&amp;amp;$filter=Project%20eq%20'''||$input.in_Project||''''</expression>
+                  </operation>
+                  <link id="lh8ypxjs" targetId="lh8ypxjr"/>
+               </assignment>
+               <eventContainer id="l7hqi0xv">
+                  <service id="l7hqi0xk">
+                     <title>GET_ProjectRoleType</title>
+                     <serviceName>AppsvcEnterpriseProjectSRV0002:GET_ProjectRoleType</serviceName>
+                     <serviceGUID>4lOcSO8yGSDk9iG48li5Qd</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="in_Project" source="field" updatable="true">input.in_Project</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l7hqi0xx">
+                     <link id="lh8ufbdj" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <flow id="l7hqi0y0">
+                     <link id="lh8ufbdz" targetId="l7hqi0xv" type="containerLink"/>
+                  </flow>
+                  <link id="l7hqi0xw" targetId="l7hqi0xx" type="containerLink"/>
+                  <link id="lh8ufbdo" targetId="lh8ufbdn"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7hqi0xo" interrupting="true">
+                        <link id="l7hqi0xz" targetId="l7hqi0y0" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="lh8ypxjr">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ec0692f5-0f2f-41fb-b9c1-7ee6265042e1</ns1:Id>
+               <ns1:Name>Role</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-08T16:06:07Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Project": "VPC-12500081-AN",
+	 "in_X_TRANSACTION_ID": "7",
+	 "in_EventName": "Proj"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>leFQzqTTrArbqnk6ODQUyW</types1:GUID>
+      <types1:DisplayName>Process_GET_ProjectRoleType</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-05-08T16:15:05.684Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

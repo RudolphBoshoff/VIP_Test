@@ -1,0 +1,1533 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f5nShsZvPP8KnBQ-gt-957958-2023-02-28T13:08:15.095Z::svc.xml</types1:EntryId>
+      <types1:Name>svcSapS4-AccountingDocumentRead_Custom</types1:Name>
+      <types1:ParentFlowIds>kQOgjjKPQE8jIw8-gt-4478549-2023-02-28T13:08:16.163Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>https://api.sap.com/api/API_CV_ATTACHMENT_SRV</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:15Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-27T08:47:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-27T08:47:56Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svcSapS4_AccountingDocumentRead_Custom/svcSapS4_AccountingDocumentRead_Custom_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="svcSapS4-AccountingDocumentRead_Custom"
+                            label=""
+                            name="svcSapS4-AccountingDocumentRead_Custom"
+                            uuid="340857a3-b172-46f9-ad4c-45a60526a676">
+            <description>https://api.sap.com/api/API_CV_ATTACHMENT_SRV</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_GET"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_GET"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="username"
+                                nogen="true"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter name="password"
+                                nogen="true"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_OPLACCTGDOCITEMCUBE_SRV"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_POST"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_POST"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=Njp7wHHTal7gjJw9cJuH86GZJQVrHhHtlGw9fEokhb0%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="BXUCJAiAYrsrmCu_Em7Tnw=="
+                                type="string"/>
+                     <parameter name="body" required="true" testWith="" type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_OPLACCTGDOCITEMCUBE_SRV"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">*/*</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                     <field description=""
+                            name="o_MessageDetail"
+                            property="innererror"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_PATCH"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_PATCH"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="cookie"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="token"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="body" required="false" testWith="" type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_OPLACCTGDOCITEMCUBE_SRV"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">*/*</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Operational Accounting Document Items"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_OperationalAcctgDocItemCube"
+                       maxRedirects="100"
+                       name="GET_A_OperationalAcctgDocItemCube"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get entities from A_OperationalAcctgDocItemCube</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="exclude" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="CompanyCode"
+                                nogen="true"
+                                required="false"
+                                testWith="VG18"
+                                type="string"/>
+                     <parameter name="BankRef"
+                                nogen="true"
+                                required="false"
+                                testWith="3392918039"
+                                type="string"/>
+                     <parameter name="AmountInTransactionCurrency"
+                                nogen="true"
+                                required="false"
+                                testWith="1015.00"
+                                type="string"/>
+                     <parameter name="PostingDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2022-10-06T05:30:00.000"
+                                type="datetime"/>
+                     <parameter name="DocumentItemText"
+                                nogen="true"
+                                required="false"
+                                testWith="3392918039"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_OperationalAcctgDocItemCube" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$top">3</otherParam>
+                           <otherParam name="$filter">CompanyCode eq '{$CompanyCode}' and DocumentItemText eq '{$DocumentItemText}' and AmountInTransactionCurrency eq {$AmountInTransactionCurrency}  and PostingDate eq datetime'{$PostingDate}' and IsCleared eq false</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="gET_A_OperationalAcctgDocItemCubeResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">GET_A_OperationalAcctgDocItemCubeResponse</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category="Operational Accounting Document Items"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_AccountingDocEntry"
+                       maxRedirects="100"
+                       name="GET_A_AccountingDocEntry"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get entities from A_OperationalAcctgDocItemCube</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="exclude" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="CompanyCode"
+                                nogen="true"
+                                required="false"
+                                testWith="VG18"
+                                type="string"/>
+                     <parameter name="BankRef"
+                                nogen="true"
+                                required="false"
+                                testWith="99999999"
+                                type="string"/>
+                     <parameter name="Ref_ID"
+                                nogen="true"
+                                required="false"
+                                testWith="FF"
+                                type="string"/>
+                     <parameter name="AmountInTransactionCurrency"
+                                nogen="true"
+                                required="false"
+                                testWith="1015"
+                                type="string"/>
+                     <parameter name="PostingDate"
+                                nogen="true"
+                                required="false"
+                                testWith="2022-10-31T00:00:00.000"
+                                type="datetime"/>
+                     <parameter name="AccountingDocCreatedByUser"
+                                nogen="true"
+                                required="false"
+                                testWith="CC0000000022"
+                                type="string"/>
+                     <parameter name="Reference2InDocumentHeader"
+                                nogen="true"
+                                required="false"
+                                testWith="VPC-API-20"
+                                type="string"/>
+                     <parameter name="GLAccount"
+                                nogen="true"
+                                required="false"
+                                testWith="11006080"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_OperationalAcctgDocItemCube" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$top">2</otherParam>
+                           <otherParam name="$filter">CompanyCode eq '{$CompanyCode}' and DocumentReferenceID eq '{$BankRef}' and Reference1InDocumentHeader eq '{$Ref_ID}' and AmountInTransactionCurrency eq {$AmountInTransactionCurrency}  and PostingDate eq datetime'{$PostingDate}' and Reference2InDocumentHeader eq '{$Reference2InDocumentHeader}' and GLAccount eq '{$GLAccount}'</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="AccountingDocument"
+                            property="AccountingDocument"
+                            type="string"/>
+                     <field description=""
+                            name="AccountingDocumentItem"
+                            property="AccountingDocumentItem"
+                            type="string"/>
+                     <field description=""
+                            name="FiscalYear"
+                            property="FiscalYear"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Operational Accounting Document Items"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_OperationalAcctgDocItemCube_api01"
+                       maxRedirects="100"
+                       name="GET_A_OperationalAcctgDocItemCube_api01"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Get entities from A_OperationalAcctgDocItemCube</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="DocumentReferenceID"
+                                nogen="true"
+                                required="false"
+                                testWith="80002459"
+                                type="string"/>
+                     <parameter name="CompanyCode"
+                                nogen="true"
+                                required="false"
+                                testWith="VG18"
+                                type="string"/>
+                     <parameter name="FiscalYear"
+                                nogen="true"
+                                required="false"
+                                testWith="2023"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_OperationalAcctgDocItemCube" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$top">2</otherParam>
+                           <otherParam name="$filter">CompanyCode eq '{$CompanyCode}' and FiscalYear eq '{$FiscalYear }' and DocumentReferenceID eq '{$DocumentReferenceID }'  and Reference2InDocumentHeader eq 'VPC-API-01'</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Reference2InDocumentHeader"
+                            property="Reference2InDocumentHeader"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="GET_A_OperationalAcctgDocItemCubeResponse">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">API_OPLACCTGDOCITEMCUBE_SRV_A_OperationalAcctgDocItemCubeType</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_OPLACCTGDOCITEMCUBE_SRV_A_OperationalAcctgDocItemCubeType">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="LogicalSystem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Customer" nullable="true" required="false" type="string"/>
+                     <field name="ProjectNetwork"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentCardItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Product" nullable="true" required="false" type="string"/>
+                     <field name="PartnerSegment"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AlternativeReferenceDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxAmount" nullable="true" required="false" type="double"/>
+                     <field name="SalesDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostCenterName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OperationalGLAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TransactionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BranchAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReverseDocumentFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="AccountingDocCreatedByUser"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="GLAccountName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalAreaName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Project" nullable="true" required="false" type="string"/>
+                     <field name="CashDiscount1DueDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PartnerBusinessArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashFlowType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CreationTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RealEstateObject"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="QuantityInEntryUnit"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="LatePaymentReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentItemText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReversalReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProfitCenterName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ControllingArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscountAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="PurchaseOrderQty"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="OriginalTaxBaseAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="PaymentReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PurchasingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="SEPAMandate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ScheduleLine" nullable="true" required="false" type="int"/>
+                     <field name="CostObject"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WithholdingTaxCertificate"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PartnerBudgetPeriod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CreditControlArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ClearingItem" nullable="true" required="false" type="int"/>
+                     <field name="TaxBaseAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AccountAssignmentNumber"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ValuationArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCodeName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DunningArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OffsettingAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="HouseBank" nullable="true" required="false" type="string"/>
+                     <field name="TransactionTypeDetermination"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="NetDueDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="GoodsMovementEntryUnit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonnelNumber"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="HasPaymentOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PlannedAmtInTransactionCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AssetTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PurchasingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxReportingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="AccountingDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TaxBaseAmountInTransCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ChartOfAccounts"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TreasuryContractType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentTypeName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InventoryValuationType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="WithholdingTaxBaseAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AdditionalCurrency2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AdditionalCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvoiceAmtInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="FinancialAccountType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscountAmtInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ProfitabilitySegment"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="NetPaymentDays"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="DunningBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="StateCentralBankPaymentReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostCtrActivityType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SegmentName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ClearingIsReversed"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentMethodSupplement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BalanceTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessAreaName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReverseDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FiscalPeriod" nullable="true" required="false" type="int"/>
+                     <field name="TaxType" nullable="true" required="false" type="string"/>
+                     <field name="LineItemDisplayIsEnabled"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="NumberOfItems"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Region" nullable="true" required="false" type="string"/>
+                     <field name="JointVenture"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsNegativePosting"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="PurchasingDocumentPriceUnit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WithholdingTaxCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ExchangeRate"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="SpecialGLTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Fund" nullable="true" required="false" type="string"/>
+                     <field name="PaymentTerms"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ExchangeRateType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PartnerCompany"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentHeaderText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Plant" nullable="true" required="false" type="string"/>
+                     <field name="ClearingAccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ClearingDocFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Branch" nullable="true" required="false" type="string"/>
+                     <field name="FundsCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="LedgerGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AssetContract"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostElement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceDocumentLogicalSystem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PartnerFunctionalArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsBalanceSheetAccount"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ValuationDiffAmtInAddlCrcy1"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ValuationDiffAmtInAddlCrcy2"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="WithholdingTaxAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AssignmentReference"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="DunningLevel" nullable="true" required="false" type="int"/>
+                     <field name="HouseBankAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesDocumentItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TaxSection"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInPaymentCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="Ledger" nullable="true" required="false" type="string"/>
+                     <field name="CostOriginGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsReversed"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="Material" nullable="true" required="false" type="string"/>
+                     <field name="InvoiceReferenceFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="MaterialPriceControl"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DueCalculationBaseDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="AccountingDocumentCategory"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscount2DueDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PartnerFund"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PlannedReversalDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="InvoiceReceiptDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="IsCompletelyDelivered"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ClearingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="BillOfExchangeUsage"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsCleared"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ControllingAreaName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="GrantID" nullable="true" required="false" type="string"/>
+                     <field name="SourceCompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscount1Percent"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="BusinessProcess"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DataExchangeInstruction3"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="DataExchangeInstruction4"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="DataExchangeInstruction1"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="DataExchangeInstruction2"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ClearingCreationDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PaymentCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FixedAsset"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ValuationDiffAmtInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="MasterFixedAsset"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FundedProgram"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CommitmentItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsAutomaticallyCreated"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="LastDunningDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="TaxDeterminationDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PartnerProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JointVentureEquityType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BaseUnit" nullable="true" required="false" type="string"/>
+                     <field name="GLAccountLongName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsNotCashDiscountLiable"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="VATRegistration"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CorporateGroupAccount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OrderIntBillOfOperationsItem"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PaymentCardPaymentSettlement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsEUTriangularDeal"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="IsUsedInPaymentTransaction"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="CashDiscount2Percent"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ProfitLossAccountType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SettlementReferenceDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="AlternativeGLAccount"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="InvoiceAmountInFrgnCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="OffsettingAccountType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PartnerGrant"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvoiceList" nullable="true" required="false" type="int"/>
+                     <field name="SpecialGLAccountAssignment"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BusinessPlace"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FinancialManagementArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentCreationDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ExchangeRateDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PostingKey" nullable="true" required="false" type="int"/>
+                     <field name="ValueDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="Supplier" nullable="true" required="false" type="string"/>
+                     <field name="IsSalesRelated"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="TaxDistributionCode3"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxDistributionCode2"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxDistributionCode1"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="JointVentureEquityGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="GLAccount" nullable="true" required="false" type="int"/>
+                     <field name="DunningKey"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DelivOfGoodsDestCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RecurringAccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvoiceItemReference"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="LastChangeDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="HedgedAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AccountingDocumentClass"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="BudgetPeriod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="MaterialPriceUnitQty"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="IsReversal"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="TaxAmountInCoCodeCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="TaxBaseAmountIsNetAmount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WBSElementInternalID"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="OrderID" nullable="true" required="false" type="string"/>
+                     <field name="AssetValueDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="CashDiscount1Days"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="JointVentureCostRecoveryCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInCompanyCodeCurrency"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="PaymentDifferenceReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SpecialGLCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerIsInExecution"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsOpenItemManaged"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="CreditControlAreaCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxIsCalculatedAutomatically"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentMethod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FinancialTransactionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReversalIsPlanned"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TaxExchangeRate"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="BranchCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvoiceReference"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OriginalReferenceDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesDocumentCondition"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FiscalYear" nullable="true" required="false" type="int"/>
+                     <field name="SupplyingCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BatchInputSession"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInAdditionalCurrency1"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AmountInAdditionalCurrency2"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="Segment" nullable="true" required="false" type="string"/>
+                     <field name="WithholdingTaxExemptionAmt"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="AmountInBalanceTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="TaxCode" nullable="true" required="false" type="string"/>
+                     <field name="CostCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentItemRef"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="NetPaymentAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="DebitCreditCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference3IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountsReceivableIsPledged"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Reference2IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FollowOnDocumentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Quantity" nullable="true" required="false" type="double"/>
+                     <field name="PlanningLevel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FixedCashDiscount"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="LedgerGLLineItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCodeCurrencyDetnMethod"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AccountingDocumentItemType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="OrderInternalBillOfOperations"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="AccountingDocumentCategoryName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SupplierName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceDocumentType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PostingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="CashDiscountBaseAmount"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="Reference1IDByBusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IntercompanyTransaction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CashDiscount2Days"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="BPBankAccountInternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PaymentBlockingReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>2Co7T0v7UaFfU4ofY2c5s7</types1:GUID>
+      <types1:DisplayName>svcSapS4-AccountingDocumentRead_Custom</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:24.933Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
