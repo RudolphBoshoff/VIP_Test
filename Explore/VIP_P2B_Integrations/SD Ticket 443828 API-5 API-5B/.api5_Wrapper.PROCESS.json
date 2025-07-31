@@ -1,0 +1,105 @@
+{
+  "objectInfo" : {
+    "id" : "38hKhlw27IYkDUDaToZLy1",
+    "name" : "api5_Wrapper",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "tu2SHCwkNmumf6S-gt-11103528-2023-02-17T15:04:54.321Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Wrapper process which invokes API5 (Invoice payment clearance posting) processes",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2023-08-28T07:53:35.430Z",
+  "objectRefs" : [ {
+    "id" : "66c6WhvbPYUlsygmuwOsKk",
+    "name" : "Process_GET_YY1_ClearedPaymentEntries",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9bdsreK8ZAZf5kc-gt-20445434-2022-10-12T10:48:07.97Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Retrieves the Cleared Invoice payment entries from SAP Custom API",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes (Queueing)"
+  }, {
+    "id" : "07bmeP8qUUzjnAwYUaz46x",
+    "name" : "P_VPC_GetToken",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Dt0x7bcoq3xgjAT-gt-37241474-2022-10-12T10:47:39.472Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic VPC"
+  }, {
+    "id" : "7N5uKhvv6kXg3zoRAbuggF",
+    "name" : "Process_P2B_Event_ErrorLog",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Records errors in SQL DB, File, and Email\nChangelog:\nhttps://vistra.atlassian.net/browse/VR-147",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations (Queueing)"
+  }, {
+    "id" : "bDkP4PQAOqUkjmeuv2KGe4",
+    "name" : "api5",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Hf5i4rswVYx8R8W-gt-46112804-2023-02-17T15:04:53.9Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Posts the Invoice clearance data to VPoint API and logs the same in SAP",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations (Queueing)/SD Ticket 443828\tAPI-5 API-5B"
+  } ]
+}

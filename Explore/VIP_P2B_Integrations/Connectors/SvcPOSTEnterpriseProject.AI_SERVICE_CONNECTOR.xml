@@ -1,0 +1,387 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>abbgdoGsF4Xkgbd-gt-9899034-2021-08-13T10:41:39.013Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcPOSTEnterpriseProject</types1:Name>
+      <types1:ParentFlowIds>chJEaaaaaaaaaaa-gt-23499176-2021-08-13T10:41:47.035Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Service created to POST Enterprise Project data into SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:39Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:47:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:48:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcPOSTEnterpriseProject/SvcPOSTEnterpriseProject_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcPOSTEnterpriseProject"
+                            label=""
+                            name="SvcPOSTEnterpriseProject"
+                            uuid="3b30857c-73b8-479b-a121-05a43476b73b">
+            <description>Service created to POST Enterprise Project data into SAP</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="project"
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_API_ENTERPRISE_PROJECT_SRV"
+                       maxRedirects="100"
+                       name="POST_API_ENTERPRISE_PROJECT_SRV"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Creating Enterprise Project creation elements based on the mapping specification.</description>
+                  <input>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{&#xA;        &#34;Project&#34;: &#34;VPC-80002515-FF5&#34;,&#xA;        &#34;ProjectDescription&#34;: &#34;14 VPC Test-Project-30&#34;,&#xA;        &#34;PriorityCode&#34;: &#34;3&#34;,&#xA;        &#34;ProjectStartDate&#34;: &#34;/Date(1623715200000)/&#34;,&#xA;        &#34;ProjectEndDate&#34;: &#34;/Date(1632960000000)/&#34;,&#xA;        &#34;ResponsibleCostCenter&#34;: &#34;GB01910001&#34;,&#xA;        &#34;ProfitCenter&#34;: &#34;9100&#34;,&#xA;        &#34;ProjectProfileCode&#34;: &#34;YP03&#34;,&#xA;        &#34;ProjectCurrency&#34;: &#34;GBP&#34;,&#xA;        &#34;YY1_Customer_PPH&#34;: &#34;22000000&#34;,&#xA;&#x9;&#x9;&#34;to_EntProjTeamMember&#34; : [&#xA;    {&#xA;      &#34;BusinessPartnerUUID&#34;: &#34;dummy@vistra.com&#34;,&#xA;      &#34;to_EntProjEntitlement&#34;: [&#xA;            {&#xA;              &#34;ProjectRoleType&#34;: &#34;YP_RL_0001&#34;&#xA;            }&#xA;         ]&#xA;&#x9;&#x9;}&#xA;&#x9;&#x9;]&#xA;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                     <parameter name="in_X_CSRF_TOKEN"
+                                nogen="true"
+                                required="true"
+                                testWith="XiNzeRjte1HmQn0q7iSVkg=="
+                                type="string"/>
+                     <parameter name="in_Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=x5ZZ7bRPON-APpjeHVQcIGNuW4cO-hHslS_6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-TOKEN">{$in_X_CSRF_TOKEN}</header>
+                           <header name="Cookie">{$in_Cookie}</header>
+                        </httpHeaders>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ProjectUUID"
+                            property="ProjectUUID"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="project"
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_UpdateProcessingStatus"
+                       maxRedirects="100"
+                       name="POST_UpdateProcessingStatus"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="Cookie"
+                                name="Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=nkwc0OxG2tig_Qtb1Tfen7HwRRTidxHrmL36Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="sX0BAl7PJJQj7Ap7IFZsMQ=="
+                                type="string"/>
+                     <parameter label="ProjectUUID"
+                                name="ProjectUUID"
+                                nogen="true"
+                                required="true"
+                                testWith="fa163e10-1bf5-1edb-b8ce-3b1d1a7f967c"
+                                type="string"/>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="ProcessingStatus"
+                                name="ProcessingStatus"
+                                nogen="true"
+                                required="true"
+                                testWith="10"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/ChangeEntProjProcgStatus?ProjectUUID=guid'{$ProjectUUID}'&amp;amp;ProcessingStatus='{$ProcessingStatus}'"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                           <header name="Cookie">{$Cookie}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="accept">application/json</header>
+                           <header name="If-Match">*</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="project"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_UUID_EmailID"
+                       maxRedirects="100"
+                       name="GET_UUID_EmailID"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                     <parameter label="hostname"
+                                name="in_hostname"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="DefaultEmailAddress"
+                                name="in_DefaultEmailAddress"
+                                required="true"
+                                testWith="20005032@vistra.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="commaSeparated"
+                                        url="{fn:concat($in_hostname , '/sap/opu/odata/sap/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID',&#xA;'?$filter=startswith(DefaultEmailAddress,' ,'''', $in_DefaultEmailAddress,''')')}"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="O_SAP_Response"
+                            type="string"/>
+                     <field description=""
+                            name="O_UUID"
+                            property="BusinessPartnerUUID"
+                            type="string"/>
+                     <field description=""
+                            name="O_CompanyCode"
+                            property="CompanyCode"
+                            type="string"/>
+                     <field description=""
+                            name="O_PersonWorkAgreement"
+                            property="PersonWorkAgreement"
+                            type="string"/>
+                     <field description=""
+                            name="O_ServiceCostLevel"
+                            property="ServiceCostLevel"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="project"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_ProjectUUID_ProcessingStatus"
+                       maxRedirects="100"
+                       name="GET_ProjectUUID_ProcessingStatus"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="in_hostname"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="Project"
+                                name="in_Project"
+                                required="false"
+                                testWith="VPC-80002615-FF"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{fn:concat($in_hostname , '/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject',&#xA;'?$filter=Project%20eq%20'&#xA;,'''',$in_Project,'''' )}"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="O_SAP_Response"
+                            type="string"/>
+                     <field description=""
+                            name="O_ProjectUUID"
+                            property="ProjectUUID"
+                            type="string"/>
+                     <field description=""
+                            name="O_ProcessingStatus"
+                            property="ProcessingStatus"
+                            type="string"/>
+                     <field description=""
+                            name="O_Project"
+                            property="Project"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="project"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_UUID_EmailID_ECD"
+                       maxRedirects="100"
+                       name="GET_UUID_EmailID_ECD"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                     <parameter label="in_hostname"
+                                name="in_hostname"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="in_DefaultEmailAddress"
+                                name="in_DefaultEmailAddress"
+                                required="false"
+                                testWith="anmol.garg@vistra.com"
+                                type="string"/>
+                     <parameter label="in_CompanyCode"
+                                name="in_CompanyCode"
+                                required="false"
+                                testWith="SG03"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="commaSeparated"
+                                        url="{fn:concat($in_hostname , '/sap/opu/odata/sap/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID',&#xA;'?$filter=DefaultEmailAddress%20eq%20','''',$in_DefaultEmailAddress,''''&#xA;,'&amp;amp;&amp;amp;CompanyCode%20eq%20', '''', $in_CompanyCode,'''' )}"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="O_SAP_Response"
+                            type="string"/>
+                     <field description=""
+                            name="O_UUID"
+                            property="BusinessPartnerUUID"
+                            type="string"/>
+                     <field description=""
+                            name="O_CompanyCode"
+                            property="CompanyCode"
+                            type="string"/>
+                     <field description=""
+                            name="O_PersonWorkAgreement"
+                            property="PersonWorkAgreement"
+                            type="string"/>
+                     <field description=""
+                            name="O_ServiceCostLevel"
+                            property="ServiceCostLevel"
+                            type="string"/>
+                     <field description=""
+                            name="O_PersonExternalID"
+                            property="PersonExternalID"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>aDISzTBzLq2eXb2wzn8nOM</types1:GUID>
+      <types1:DisplayName>SvcPOSTEnterpriseProject</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T08:58:09.65Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

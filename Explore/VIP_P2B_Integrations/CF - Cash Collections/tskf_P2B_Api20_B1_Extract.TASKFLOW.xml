@@ -1,0 +1,418 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>sgk0m0zFMi4tciS-gt-4295360-2023-02-28T13:08:19.301Z::tf.xml</types1:EntryId>
+      <types1:Name>tskf_P2B_Api20_B1_Extract</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:19Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-28T13:08:22Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tskf_P2B_Api20_B1_Extract/tskf_P2B_Api20_B1_Extract.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="tskf_P2B_Api20_B1_Extract"
+                   name="tskf_P2B_Api20_B1_Extract"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fl_P2B_Api20_B1_Extract" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cVEHrlyOBCAj0IRP6D7IgF</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_Filename" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FileList" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="MoveFileToDone" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:INFA-commandTask</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+               <field description="" name="Generate Individual Extracts" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:tsk-m-P2B-Api20-B1-Extract</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <event eventSource="fileListenerTask:fl_P2B_Api20_B1_Extract"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ldwvpa6j" targetId="ldwvpa6i"/>
+               </start>
+               <assignment id="ldwvpa6i">
+                  <title>Get Filelist</title>
+                  <operation source="formula" to="temp.tmp_FileList">
+                     <expression language="XQuery">let $fl := $input.fl_P2B_Api20_B1_Extract 
+for $file in $fl[1]/arrivedFiles 
+return &lt;Filename&gt;{$file}&lt;/Filename&gt;</expression>
+                  </operation>
+                  <link id="ldwvpa8k" targetId="ldwvpa8j"/>
+               </assignment>
+               <container id="ldwvpa8j" type="exclusive">
+                  <title>SourceFiles Array</title>
+                  <flow id="ldwvpa8n">
+                     <assignment id="ldwvpa9p">
+                        <title>Fetch a Filename</title>
+                        <operation source="formula" to="temp.tmp_Filename">
+                           <expression language="XQuery">$temp.tmp_FileList[1]/arrivedFiles[1]/name</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_FileList">
+                           <expression language="XQuery">list:tail($temp.tmp_FileList)</expression>
+                        </operation>
+                        <link id="ldx3pb9q" targetId="ldx3pb9w"/>
+                     </assignment>
+                     <eventContainer id="ldx3pb9w">
+                        <service id="ldx3pb9p">
+                           <title>Generate Individual Extracts</title>
+                           <serviceName>ICSExecuteDataTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                              <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                              <parameter name="Task Name" source="constant" updatable="true">tsk_m_P2B_Api20_B1_Extract</parameter>
+                              <parameter name="GUID" source="constant" updatable="true">geAJ2buvtGgcznXLRaROS0</parameter>
+                              <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                              <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="tsk-m-P2B-Api20-B1-Extract">temp.Generate Individual Extracts</operation>
+                                 <operation source="field"
+                                            to="tsk-m-P2B-Api20-B1-Extract/input[1]/source[1]/B1_Extract_FF[1]/object">temp.tmp_Filename</operation>
+                                 <operation source="field"
+                                            to="temp.Generate Individual Extracts[1]/input[1]/source[1]/B1_Extract_FF[1]/object">temp.tmp_Filename</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Object_Name">Object Name</operation>
+                              <operation source="field" to="temp.Generate Individual Extracts/output/Run_Id">Run Id</operation>
+                              <operation source="field" to="temp.Generate Individual Extracts/output/Log_Id">Log Id</operation>
+                              <operation source="field" to="temp.Generate Individual Extracts/output/Task_Id">Task Id</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Task_Status">Task Status</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Success_Source_Rows">Success Source Rows</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Failed_Source_Rows">Failed Source Rows</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Success_Target_Rows">Success Target Rows</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Failed_Target_Rows">Failed Target Rows</operation>
+                              <operation source="field" to="temp.Generate Individual Extracts/output/Start_Time">Start Time</operation>
+                              <operation source="field" to="temp.Generate Individual Extracts/output/End_Time">End Time</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/Error_Message">Error Message</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/TotalTransErrors">Total Transformation Errors</operation>
+                              <operation source="field"
+                                         to="temp.Generate Individual Extracts/output/FirstErrorCode">First Error Code</operation>
+                           </serviceOutput>
+                        </service>
+                        <link id="ldx5t96a" targetId="ldx0tkk5"/>
+                        <events>
+                           <catch faultField="temp.Generate Individual Extracts/fault"
+                                  id="ldx3pb9u"
+                                  interrupting="true"
+                                  name="error">
+                              <suspend/>
+                           </catch>
+                           <catch faultField="temp.Generate Individual Extracts/fault"
+                                  id="ldx3pb9v"
+                                  interrupting="true"
+                                  name="warning"/>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="ldx0tkk5">
+                        <service id="ldx0tkj8">
+                           <title>MoveFileToDone</title>
+                           <serviceName>ICSExecuteCommandTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Task Name" source="constant">MoveFileToDone</parameter>
+                              <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                              <parameter name="Runtime Environment" source="constant">010OPL25000000000003:VIP_IICS_SA_SG_ONPREM_GROUP</parameter>
+                              <parameter name="Script Name" source="constant"/>
+                              <parameter name="Input Arguments" source="constant"/>
+                              <parameter name="Work Directory" source="constant"/>
+                              <parameter name="RuntimeEnvGUID" source="constant">6wjEZKwEnGPkb19XNEszGg</parameter>
+                              <parameter name="FailTaskIfAnyScriptFails" source="constant">true</parameter>
+                              <parameter name="taskField" source="nested">
+                                 <operation source="field" to="INFA-commandTask">temp.Command Task 1</operation>
+                                 <operation source="constant" to="INFA-commandTask/input[1]/script-1/name">Script1</operation>
+                                 <operation source="constant" to="INFA-commandTask/input[1]/script-1/scriptName">E:/data/SAP B1/Cash Collections/Scripts/Move_Parsed_File_To_Done.bat</operation>
+                                 <operation source="constant"
+                                            to="INFA-commandTask/input[1]/script-1/inputArguments">"{$temp.tmp_Filename}"</operation>
+                                 <operation source="constant" to="INFA-commandTask/input[1]/script-1/workDir">E:/data/SAP B1/Cash Collections/</operation>
+                              </parameter>
+                           </serviceInput>
+                           <serviceOutput>
+                              <operation source="field" to="temp.MoveFileToDone/output/Run_Id">Run Id</operation>
+                              <operation source="field" to="temp.MoveFileToDone/output/Start_Time">Start Time</operation>
+                              <operation source="field" to="temp.MoveFileToDone/output/End_Time">End Time</operation>
+                              <operation source="field" to="temp.MoveFileToDone/output/Exit_Code">Exit Code</operation>
+                              <operation source="field" to="temp.MoveFileToDone/output/Execution_Status">Execution Status</operation>
+                              <operation source="field" to="temp.MoveFileToDone/output/Std_Error">Std Error</operation>
+                           </serviceOutput>
+                        </service>
+                        <link id="ldx0tkja" targetId="ldwvpaaq"/>
+                        <events>
+                           <catch faultField="temp.MoveFileToDone/fault"
+                                  id="ldx0tkk4"
+                                  interrupting="true"
+                                  name="error">
+                              <suspend/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <jumpTo id="ldwvpaaq">
+                        <link id="ldwvpaar" targetId="ldwvpa8j"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="ldwvpa8q">
+                     <link id="ldwvpa8r" targetId="ldwvpa8j" type="containerLink"/>
+                  </flow>
+                  <link id="ldwvpa8m" targetId="ldwvpa8n" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_FileList[1]/arrivedFiles}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ldwvpa8p" targetId="ldwvpa8q" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_FileList[1]/arrivedFiles}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ldwvpa8x" targetId="ldwvpa7g"/>
+               </container>
+               <end id="ldwvpa7g">
+                  <title>End</title>
+               </end>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895">
+                  <description>This process object represents a taskflow specific file task field details.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Arrived Files"
+                            name="arrivedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-arrivedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field label="Update Files"
+                            name="updatedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-updatedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field label="Deleted Files"
+                            name="deletedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-deletedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INFA-commandTask"
+                              isByCopy="true"
+                              name="INFA-commandTask">
+                  <description>This process object represents a taskflow specific command task output field details.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="tsk-m-P2B-Api20-B1-Extract"
+                              isByCopy="true"
+                              name="tsk-m-P2B-Api20-B1-Extract">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-arrivedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-arrivedFiles">
+                  <description>This process object represents a arrivedFiles structure of the file task field.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-updatedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-updatedFiles">
+                  <description>This process object represents a updatedFiles structure of the file task field.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-deletedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-deletedFiles">
+                  <description>This process object represents file listener task deletedFiles structure.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>ko7Enu9sMacfO2qgdvLMMg</types1:GUID>
+      <types1:DisplayName>tskf_P2B_Api20_B1_Extract</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:28.391Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

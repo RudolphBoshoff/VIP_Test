@@ -1,0 +1,658 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Qnbf6riX2FNBeNT-gt-6270359-2021-09-16T20:23:46.687Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessPostRevenueRecog01</types1:Name>
+      <types1:ParentFlowIds>HIk3aaa-gt-37242184-2022-10-12T10:48:21.534Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Fetch data for revenue recognition at monthly basis and runs on schedule</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>roger.fbaatjes@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-09-16T20:23:47Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-04T09:22:06Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-04T09:23:58Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessPostRevenueRecog01/ProcessPostRevenueRecog01.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessPostRevenueRecog01"
+                  name="ProcessPostRevenueRecog01"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Fetch data for revenue recognition at monthly basis and runs on schedule</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_DelimitedContent" type="reference">
+                  <options>
+                     <option name="referenceTo">AppGetJERevenueRecogPosting01:JERevenueRecogPosting01Content</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bWpSfNqXvW7f7IqyNQDuEd</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Process_Variables_API11" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_RequestHeader_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogRequestHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kHLSg4jJQuwkvbwWlufjcQ</option>
+                  </options>
+               </field>
+               <field description="" name="out_JournalHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bsmxDuzxqKzgqTmarRvkOw</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_Process_Variables_RevRecog"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_ItemXML" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ItemXML_Full" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_RevenueRecog" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_requestHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogRequestHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kHLSg4jJQuwkvbwWlufjcQ</option>
+                  </options>
+               </field>
+               <field description="" name="work_requestHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogRequestHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kHLSg4jJQuwkvbwWlufjcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bsmxDuzxqKzgqTmarRvkOw</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iMJpA6E46yYcykj5J3t1SG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryItem_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryRevenueRecogItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iMJpA6E46yYcykj5J3t1SG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_content" type="reference">
+                  <options>
+                     <option name="referenceTo">AppGetJERevenueRecogPosting01:JERevenueRecogPosting01Record</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bWpSfNqXvW7f7IqyNQDuEd</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_content_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppGetJERevenueRecogPosting01:JERevenueRecogPosting01Record</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bWpSfNqXvW7f7IqyNQDuEd</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_error_detail" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProfitCenter_APIT_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProfitCenter_APIT_Record_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServCode_Prefix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">d0q7dA0y08bcbPhzJRYZoR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_API_Name" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProformaNr" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Transaction_ID" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_ID" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Event_Name" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Process_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8lfaaio" targetId="l8jo3ni0"/>
+               </start>
+               <assignment id="l8jo3ni0">
+                  <title>Assignment to out_Process_Variables_RevRecog, IICS_Run_ID etc.</title>
+                  <operation source="field" to="output.out_Process_Variables_RevRecog">input.in_Process_Variables_API11</operation>
+                  <operation source="formula"
+                             to="output.out_Process_Variables_RevRecog[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_Process_Variables_API11[1]/IICS_Run_ID ||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_Process_Variables_RevRecog[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()
+</expression>
+                  </operation>
+                  <link id="l8jo3ni2" targetId="krjdjfzo"/>
+               </assignment>
+               <assignment id="krjdjfzo">
+                  <title>set wrk variables</title>
+                  <operation source="formula" to="temp.tmp_content_list">
+                     <expression language="XQuery">$input.in_DelimitedContent[1]/record </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_content">
+                     <expression language="XQuery">list:head($temp.tmp_content_list )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.work_requestHeader[1]/ID">
+                     <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                  </operation>
+                  <link id="ktbigrx4" targetId="ktbigrwc"/>
+               </assignment>
+               <container id="ktbigrwc" type="exclusive">
+                  <title>ID</title>
+                  <flow id="ktbigrwd">
+                     <assignment id="l475r8ls">
+                        <title>Assignment to tmp_ServCode_Prefix</title>
+                        <operation source="formula" to="temp.tmp_ServCode_Prefix">
+                           <expression language="XQuery">fn:substring($temp.tmp_content[1]/Material , 1, 4)</expression>
+                        </operation>
+                        <link id="l475r8xb" targetId="l475r8xa"/>
+                     </assignment>
+                     <assignment id="l475r8xa">
+                        <title>Assignment to tmp_ProfitCenter_APIT_Record, tmp_ProfitCenter_APIT_Record_Count</title>
+                        <operation source="query" to="temp.tmp_ProfitCenter_APIT_Record">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:UserTables">
+                              <where>TabCode = 'APIT' and Name = 'ProfitCenter' and ElNote = '{$temp.tmp_ServCode_Prefix}' and InUse = '1'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ProfitCenter_APIT_Record_Count">
+                           <expression language="XQuery">list:count($temp.tmp_ProfitCenter_APIT_Record)</expression>
+                        </operation>
+                        <link id="l475r8xc" targetId="ktbigrwe"/>
+                     </assignment>
+                     <assignment id="ktbigrwe">
+                        <title>assign current record</title>
+                        <operation source="constant" to="temp.tmp_requestHeader[1]/CreationDate">{$temp.tmp_content[1]/Creationdate}</operation>
+                        <operation source="formula" to="temp.tmp_requestHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_requestHeader[1]/SenderBusinessSystemId">
+                           <expression language="XQuery">$temp.tmp_content[1]/SenderBusinessSystemId </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/AccountingDocumentType">
+                           <expression language="XQuery">$temp.tmp_content[1]/AccountingDocumentType </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/BusinessTransactionType">
+                           <expression language="XQuery">$temp.tmp_content[1]/BusinessTransactionType </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/CompanyCode">
+                           <expression language="XQuery">$temp.tmp_content[1]/CompanyCode </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/CreatedByUser">
+                           <expression language="XQuery">$temp.tmp_content[1]/CreatedByUser </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/CreationDateTime">{$temp.tmp_content[1]/Creationdate}</operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/DocumentDate">{$temp.tmp_content[1]/DocumentDate}</operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/DocumentHeaderText">
+                           <expression language="XQuery">$temp.tmp_content[1]/DocumentHeaderText </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/OriginalReferenceDocumentType">
+                           <expression language="XQuery">$temp.tmp_content[1]/OriginalReferenceDocumentType </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/PostingDate">{$temp.tmp_content[1]/PostingDate}</operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/SenderBusinessSystemId">
+                           <expression language="XQuery">$temp.tmp_content[1]/SenderBusinessSystemId </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/Reference1InDocumentHeader">
+                           <expression language="XQuery">$temp.tmp_content[1]/Reference1InDocumentHeader </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/Reference2InDocumentHeader">
+                           <expression language="XQuery">$temp.tmp_content[1]/Reference2InDocumentHeader</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryItem[1]/AccountAssignmentType">{$temp.tmp_content[1]/AccountAssignmentType}</operation>
+                        <operation source="formula" to="temp.tmp_entryItem[1]/AmountInTransactionCurrency">
+                           <expression language="XQuery">$temp.tmp_content[1]/AmountInTransactionCurrency </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryItem[1]/CurrencyCode">{$temp.tmp_content[1]/CurrencyCode}</operation>
+                        <operation source="formula" to="temp.tmp_entryItem[1]/GLAccount">
+                           <expression language="XQuery">$temp.tmp_content[1]/GLAccount </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryItem[1]/Material">{$temp.tmp_content[1]/Material}</operation>
+                        <operation source="constant" to="temp.tmp_entryItem[1]/SoldMaterial">{$temp.tmp_content[1]/SoldMaterial}</operation>
+                        <operation source="formula" to="temp.tmp_entryItem[1]/WBSElement">
+                           <expression language="XQuery">fn:substring($temp.tmp_content[1]/WBSElement, 1, 24)</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryItem[1]/YY1_SOPCustomer">{$temp.tmp_content[1]/YY1_SOPCustomer}</operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/DocumentReferenceID">{$temp.tmp_content[1]/DocumentReferenceID}</operation>
+                        <operation source="constant" to="temp.tmp_requestHeader[1]/TestDataIndicator">{$temp.tmp_content[1]/TestDataIndicator}</operation>
+                        <operation source="formula" to="temp.tmp_entryItem[1]/DocumentItemText">
+                           <expression language="XQuery">fn:substring($temp.tmp_content[1]/DocumentItemText , 1, 50)</expression>
+                        </operation>
+                        <link id="l475r97m" targetId="l475r97l"/>
+                     </assignment>
+                     <assignment id="ktbigrwf">
+                        <title>ammend Items</title>
+                        <operation source="formula" to="temp.tmp_entryItem_list">
+                           <expression language="XQuery">list:append($temp.tmp_entryItem_list  , $temp.tmp_entryItem  )</expression>
+                        </operation>
+                        <link id="ktbigrwu" targetId="ktbigrwg"/>
+                     </assignment>
+                     <assignment id="ktbigrwg">
+                        <title>Assignment to tmp_content_list, tmp_content</title>
+                        <operation source="formula" to="temp.tmp_content_list">
+                           <expression language="XQuery">list:tail($temp.tmp_content_list )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_content">
+                           <expression language="XQuery">list:head($temp.tmp_content_list )</expression>
+                        </operation>
+                     </assignment>
+                     <container id="l475r97l" type="exclusive">
+                        <title>tmp_ProfitCenter_APIT_Record_Count</title>
+                        <flow id="l475r97p">
+                           <assignment id="l475r9aq">
+                              <title>Assignment to ProfitCenter from APIT</title>
+                              <operation source="formula" to="temp.tmp_entryItem[1]/ProfitCenter">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_ProfitCenter_APIT_Record.TagValues), '9900', $temp.tmp_ProfitCenter_APIT_Record.TagValues) </expression>
+                              </operation>
+                           </assignment>
+                           <link id="l475r97q" targetId="l475r97l" type="containerLink"/>
+                        </flow>
+                        <flow id="l475r97s">
+                           <assignment id="l476jc0h">
+                              <title>Assignment to ProfitCenter</title>
+                              <operation source="constant" to="temp.tmp_entryItem[1]/ProfitCenter">9900</operation>
+                           </assignment>
+                           <link id="l475r97t" targetId="l475r97l" type="containerLink"/>
+                        </flow>
+                        <link id="l475r97o" targetId="l475r97p" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-than">
+                                 <arg name="left">{$temp.tmp_ProfitCenter_APIT_Record_Count}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l475r97r" targetId="l475r97s" type="containerLink"/>
+                        <link id="l475r97n" targetId="ktbigrwf"/>
+                     </container>
+                     <link id="ktbigrws" targetId="ktbigrwc" type="containerLink"/>
+                  </flow>
+                  <flow id="ktbigrwh">
+                     <assignment id="ktbigrwi">
+                        <title>build payload</title>
+                        <operation source="formula" to="temp.tmp_ItemXML_Full">
+                           <expression language="XQuery">for $x in $temp.tmp_entryItem_list return
+&lt;Item&gt;
+    &lt;DocumentItemText&gt;{$x/DocumentItemText/text()}&lt;/DocumentItemText&gt;
+	&lt;GLAccount&gt;{$x/GLAccount/text()}&lt;/GLAccount&gt;
+    &lt;Material&gt;{$x/Material/text()}&lt;/Material&gt;
+	&lt;AmountInTransactionCurrency currencyCode="{$x/CurrencyCode/text()}"&gt;{$x/AmountInTransactionCurrency/text()}&lt;/AmountInTransactionCurrency&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$x/YY1_SOPCustomer/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+{ if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (		
+    &lt;AccountAssignment&gt;
+		&lt;AccountAssignmentType&gt;{$x/AccountAssignmentType/text()}&lt;/AccountAssignmentType&gt;
+		&lt;ProfitCenter&gt;{$x/ProfitCenter/text()}&lt;/ProfitCenter&gt;
+	&lt;/AccountAssignment&gt;
+) else()
+}
+
+{ if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (	
+
+	&lt;ProfitabilitySupplement&gt;
+		&lt;Customer&gt;{$x/YY1_SOPCustomer/text()}&lt;/Customer&gt;
+		&lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+		&lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+	&lt;/ProfitabilitySupplement&gt;
+) else (
+    	&lt;AccountAssignment&gt;
+		&lt;Customer&gt;{$x/YY1_SOPCustomer/text()}&lt;/Customer&gt;
+		&lt;ProfitCenter&gt;{$x/ProfitCenter/text()}&lt;/ProfitCenter&gt;
+        &lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+    &lt;/AccountAssignment&gt;
+)
+}	
+	
+{ if (fn:starts-with($x/GLAccount/text(), "1") or fn:starts-with($x/GLAccount/text(), "2") or fn:starts-with($x/GLAccount/text(), "3")) then (	
+	&lt;ProfitabilitySupplement&gt;
+		&lt;Customer&gt;{$x/YY1_SOPCustomer/text()}&lt;/Customer&gt;
+		&lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+		&lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+	&lt;/ProfitabilitySupplement&gt;
+) else()
+}	
+	
+&lt;/Item&gt;
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Payload_RevenueRecog">
+                           <expression language="XQuery">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" &gt;
+	&lt;soap:Header/&gt;
+	&lt;soap:Body&gt;
+		&lt;ns:JournalEntryBulkCreateRequest xmlns:ns="http://sap.com/xi/SAPSCORE/SFIN"&gt;
+			&lt;MessageHeader&gt;
+				&lt;ID&gt;{$temp.tmp_requestHeader[1]/ID/text()} &lt;/ID&gt;
+				&lt;CreationDateTime&gt;{$temp.tmp_requestHeader[1]/CreationDate/text() }&lt;/CreationDateTime&gt;
+				&lt;SenderBusinessSystemId&gt;{$temp.tmp_requestHeader[1]/SenderBusinessSystemId/text()} &lt;/SenderBusinessSystemId&gt;
+				&lt;TestDataIndicator&gt;{$temp.tmp_requestHeader[1]/TestDataIndicator/text()}&lt;/TestDataIndicator&gt;
+			&lt;/MessageHeader&gt;
+            
+            &lt;JournalEntryCreateRequest&gt;
+	&lt;MessageHeader&gt;
+		&lt;ID&gt;{$temp.tmp_entryHeader[1]/ID/text() } &lt;/ID&gt;
+		&lt;CreationDateTime&gt;{$temp.tmp_requestHeader[1]/CreationDate/text()} &lt;/CreationDateTime&gt;
+	&lt;/MessageHeader&gt;
+	&lt;JournalEntry&gt;
+		&lt;OriginalReferenceDocumentType&gt;{$temp.tmp_entryHeader[1]/OriginalReferenceDocumentType/text()} &lt;/OriginalReferenceDocumentType&gt;
+		&lt;DocumentItemText&gt;{$temp.tmp_entryHeader[1]/DocumentItemText  /text() }&lt;/DocumentItemText&gt;
+		&lt;DocumentHeaderText&gt;{$temp.tmp_entryHeader[1]/DocumentHeaderText /text()} &lt;/DocumentHeaderText&gt;
+		&lt;BusinessTransactionType&gt;{$temp.tmp_entryHeader[1]/BusinessTransactionType/text()} &lt;/BusinessTransactionType&gt;
+		&lt;AccountingDocumentType&gt;{$temp.tmp_entryHeader[1]/AccountingDocumentType/text()} &lt;/AccountingDocumentType&gt;
+		&lt;DocumentReferenceID&gt;{$temp.tmp_entryHeader[1]/DocumentReferenceID/text()}&lt;/DocumentReferenceID&gt;
+		&lt;Reference1InDocumentHeader&gt;{$temp.tmp_entryHeader[1]/Reference1InDocumentHeader/text()} &lt;/Reference1InDocumentHeader&gt;
+		&lt;Reference2InDocumentHeader&gt;{$temp.tmp_entryHeader[1]/Reference2InDocumentHeader/text()} &lt;/Reference2InDocumentHeader&gt;
+		&lt;CreatedByUser&gt;{$temp.tmp_entryHeader[1]/CreatedByUser/text()} &lt;/CreatedByUser&gt;
+		&lt;CompanyCode&gt;{$temp.tmp_entryHeader[1]/CompanyCode/text()} &lt;/CompanyCode&gt;
+		&lt;DocumentDate&gt;{$temp.tmp_entryHeader[1]/DocumentDate/text()} &lt;/DocumentDate&gt;
+		&lt;PostingDate&gt;{$temp.tmp_entryHeader[1]/PostingDate/text()} &lt;/PostingDate&gt;
+		
+{$temp.tmp_ItemXML_Full  }
+
+	&lt;/JournalEntry&gt;
+&lt;/JournalEntryCreateRequest&gt;
+
+		&lt;/ns:JournalEntryBulkCreateRequest&gt;
+	&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</expression>
+                        </operation>
+                        <link id="l8jmb1rg" targetId="l8jmb1rf"/>
+                     </assignment>
+                     <assignment id="lm4nqtqh">
+                        <title>Update Process Variables</title>
+                        <operation source="field" to="output.out_Process_Variables_RevRecog[1]/Code">output.out_ProcessVariables_PostJournal[1]/Code</operation>
+                        <operation source="field" to="output.out_Process_Variables_RevRecog[1]/Error">output.out_ProcessVariables_PostJournal[1]/Error</operation>
+                        <operation source="field"
+                                   to="output.out_Process_Variables_RevRecog[1]/Description">output.out_ProcessVariables_PostJournal[1]/Description</operation>
+                        <operation source="formula"
+                                   to="output.out_Process_Variables_RevRecog[1]/IICS_Run_ID">
+                           <expression language="XQuery">'Parent='||$input.in_Process_Variables_API11[1]/IICS_Run_ID  ||'^LoggedAt='||util:getProcessId()
+</expression>
+                        </operation>
+                        <link id="lm4nqtqj" targetId="l8jmb1xj"/>
+                     </assignment>
+                     <assignment id="l8jmb1xj">
+                        <title>reset wrk variable</title>
+                        <operation source="formula" to="temp.work_requestHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID</expression>
+                        </operation>
+                        <link id="l8jmb1yi" targetId="l8jmb1yh"/>
+                     </assignment>
+                     <assignment id="l8jmb1yh">
+                        <title>reset item list</title>
+                        <operation source="formula" to="temp.tmp_entryItem_list">
+                           <expression language="XQuery">list:tail(list:head($temp.tmp_entryItem_list ))</expression>
+                        </operation>
+                        <link id="l8jmxueg" targetId="ktbigry0"/>
+                     </assignment>
+                     <subflow id="l8jmb1rf">
+                        <title>ProcessCreateJournalInvoiceEntry</title>
+                        <subflowGUID>2GoHM40fVmKjlTZ5291uoI</subflowGUID>
+                        <subflowPath>Process_POST_JournalEntryBulkCreateRequest</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">temp.tmp_Payload_RevenueRecog</parameter>
+                           <parameter name="in_Process_Variables" source="field" updatable="true">input.in_Process_Variables_API11</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_JournalConfirmation_Payload" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:$any</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                           <field name="out_ResponseCode" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessVariables_PostJournal" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lm4nqtqi" targetId="lm4nqtqh"/>
+                     </subflow>
+                     <container id="ktbigry0" type="exclusive">
+                        <title>tmp_content</title>
+                        <flow id="ktbigry1">
+                           <link id="ktbigry6" targetId="ktbigry0" type="containerLink"/>
+                        </flow>
+                        <flow id="ktbigry2">
+                           <end id="ktbigry3">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="ktbigry4" targetId="ktbigry1" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_content_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ktbigry5" targetId="ktbigry2" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_content_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="ktbigrwv" targetId="ktbigrwc" type="containerLink"/>
+                  </flow>
+                  <link id="ktbigrwq" targetId="ktbigrwd" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.work_requestHeader[1]/ID}</arg>
+                           <arg name="right">{$temp.tmp_content[1]/ID}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ktbigrwr" targetId="ktbigrwh" type="containerLink"/>
+                  <link id="ktbigrxv" targetId="krjdjfwv"/>
+               </container>
+               <jumpTo id="krjdjfwv">
+                  <link id="krjdjfx2" targetId="ktbigrwc"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>effa35ce-99f1-45ba-a36a-3db4d2247384</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>roger.fbaatjes@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T20:23:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:15Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "delimitedContent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "totalRowsCount": "",
+	 	 "record": {
+	 	 	 "index": "",
+	 	 	 "CreationDate": "",
+	 	 	 "HeaderID": "",
+	 	 	 "SenderBusinessSystemId": "",
+	 	 	 "ItemCreationDate": "",
+	 	 	 "ID": "",
+	 	 	 "OriginalReferenceDocumentType": "",
+	 	 	 "BusinessTransactionType": "",
+	 	 	 "AccountingDocumentType": "",
+	 	 	 "DocumentHeaderText": "",
+	 	 	 "CreatedByUser": "",
+	 	 	 "ReversalReason": "",
+	 	 	 "ReversalDate": "",
+	 	 	 "CompanyCode": "",
+	 	 	 "DocumentDate": "",
+	 	 	 "PostingDate": "",
+	 	 	 "GLAccount": "",
+	 	 	 "AmountInTransactionCurrency": "",
+	 	 	 "CurrencyCode": "",
+	 	 	 "Customer": "",
+	 	 	 "SoldMaterial": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>c7OxLUaJyyMcKLogsqj34r</types1:GUID>
+      <types1:DisplayName>ProcessPostRevenueRecog01</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-04T10:00:22.221Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

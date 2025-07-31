@@ -1,0 +1,592 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>0wbgdwUiQLnzYLn-gt-4572362-2023-02-28T13:08:18.996Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_BankClearing_ReadFileData</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:19Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-28T14:15:25Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_BankClearing_ReadFileData/Process_BankClearing_ReadFileData.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_BankClearing_ReadFileData"
+                  name="Process_BankClearing_ReadFileData"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="delimitedContent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppConSapB1:DelimitedContentParser-CSVContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3nUaEdfFodDeR6XOelI54i</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_bankRef" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_B1Ref" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ValueDate" type="date">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PostDate" type="date">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SumAmount" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecordList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConSapB1:DelimitedContentParser-CSVRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3nUaEdfFodDeR6XOelI54i</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Content" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConSapB1:DelimitedContentParser-CSVContent</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3nUaEdfFodDeR6XOelI54i</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecordCurrent" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConSapB1:DelimitedContentParser-CSVRecord</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3nUaEdfFodDeR6XOelI54i</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PoCfBankClearing" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBankClearing</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0JVqzomCOu8bVwS3drDw0P</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Bank_Account" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_GL_Control_Account" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocumentItemText" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AuditLog" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnVIPIntegrations-CF:api_20_Transaction_Log</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TransId_LineId_List" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">''</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FailureReason" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FailedAtStep" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error_Reason" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error_Detail" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppConSapB1:DelimitedContentParser-CSV"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="le41tfa7" targetId="le41tfa6"/>
+               </start>
+               <assignment id="le41tfa6">
+                  <title>Set Parent process attributes</title>
+                  <operation source="constant" to="temp.tmp_ApiName">API-20</operation>
+                  <operation source="constant" to="temp.tmp_EventName">FileEvent : {$input.delimitedContent[1]/fileInfo[1]/name} </operation>
+                  <operation source="formula" to="temp.tmp_IICS_Process_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_X_TRANSACTION_ID">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/B1_Ref || '^' || $input.delimitedContent[1]/record[1]/B1_Account </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <link id="le41tfa8" targetId="le2nyqlc"/>
+               </assignment>
+               <assignment id="le2nyqlc">
+                  <title>Assign Field values</title>
+                  <operation source="constant" to="temp.tmp_GL_Control_Account">12102000</operation>
+                  <operation source="constant" to="temp.tmp_CompanyCode">VG18</operation>
+                  <operation source="formula" to="temp.tmp_B1Ref">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/B1_Ref </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_bankRef">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/Bank_Ref </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Currency">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/Cur </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_PostDate">
+                     <expression language="XQuery">date:toDate($input.delimitedContent[1]/record[1]/PostDate , "YYYY-MM-DD")  </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ValueDate">
+                     <expression language="XQuery">date:toDate($input.delimitedContent[1]/record[1]/ValueDate , "YYYY-MM-DD")  </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Bank_Account">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/B1_Account </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_DocumentItemText">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/S4_JE_Text </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SumAmount">
+                     <expression language="XQuery">let $c := $input.delimitedContent[1]/record return
+fn:sum($c/Amount)</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_RecordList">input.delimitedContent[1]/record</operation>
+                  <operation source="formula" to="temp.tmp_Content">
+                     <expression language="XQuery">$input.delimitedContent </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_PoCfBankClearing">
+                     <expression language="XQuery">&lt;PoCfBankClearing&gt;   
+   &lt;B1_Ref_ID&gt;{$temp.tmp_B1Ref/text()}&lt;/B1_Ref_ID&gt;
+   &lt;BankRef&gt;{$temp.tmp_bankRef/text() }&lt;/BankRef&gt;
+   &lt;BankAccount&gt;{$temp.tmp_Bank_Account/text()}&lt;/BankAccount&gt;
+   &lt;GL_CashReceipt_B1&gt;{$temp.tmp_Bank_Account/text()}&lt;/GL_CashReceipt_B1&gt;
+   &lt;GL_Target_B1&gt;12010&lt;/GL_Target_B1&gt;
+   &lt;GL_CashReceipt_S4&gt;{switch($temp.tmp_Bank_Account) case "11644" return "11001580" case "11646" return "11003080" case "11647" return "11004080" case "11638" return "11001380" case "11639" return "11006080" default return "NOT IN S4"}&lt;/GL_CashReceipt_S4&gt;
+   &lt;GL_Target_S4&gt;{$temp.tmp_GL_Control_Account/text()}&lt;/GL_Target_S4&gt;
+   &lt;AmountReceived&gt;{$temp.tmp_SumAmount}&lt;/AmountReceived&gt;
+ 
+   &lt;ValueDate&gt;{$temp.tmp_ValueDate/text() }&lt;/ValueDate&gt;
+   &lt;PostDate&gt;{$temp.tmp_PostDate/text() }&lt;/PostDate&gt;
+   &lt;BankCurrency&gt;{$temp.tmp_Currency/text()}&lt;/BankCurrency&gt;
+   &lt;CompanyCode&gt;{$temp.tmp_CompanyCode/text()}&lt;/CompanyCode&gt;
+   &lt;DocumentItemText&gt;{$temp.tmp_DocumentItemText/text()}&lt;/DocumentItemText&gt;
+&lt;/PoCfBankClearing&gt;</expression>
+                  </operation>
+                  <link id="le2tnubs" targetId="ldtzc1r0"/>
+               </assignment>
+               <container id="ldtzc1r0" type="exclusive">
+                  <title>RecordList</title>
+                  <flow id="ldtzc1r4">
+                     <assignment id="le2tnubu">
+                        <title>Next Record</title>
+                        <operation source="formula" to="temp.tmp_RecordCurrent">
+                           <expression language="XQuery">list:head($temp.tmp_RecordList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TransId_LineId_List">
+                           <expression language="XQuery">$temp.tmp_TransId_LineId_List || fn:concat(fn:concat(',''', $temp.tmp_RecordCurrent[1]/TransId || '~' || $temp.tmp_RecordCurrent[1]/Line_ID),'''')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_RecordList">
+                           <expression language="XQuery">list:tail($temp.tmp_RecordList )</expression>
+                        </operation>
+                        <link id="le2tnucg" targetId="le2xuesb"/>
+                     </assignment>
+                     <eventContainer id="le2xuesb">
+                        <create id="le2ovz5s">
+                           <title>Insert Transaction Log entry</title>
+                           <entityName>AppConnVIPIntegrations-CF:api_20_Transaction_Log</entityName>
+                           <createInput>
+                              <parameter name="CreateDate" source="field" updatable="true">temp.tmp_RecordCurrent[1]/CreateDate</parameter>
+                              <parameter name="TransId" source="field" updatable="true">temp.tmp_RecordCurrent[1]/TransId</parameter>
+                              <parameter name="Line_ID" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Line_ID</parameter>
+                              <parameter name="PostDate" source="formula" updatable="true">
+                                 <expression language="XQuery">$temp.tmp_RecordCurrent[1]/PostDate </expression>
+                              </parameter>
+                              <parameter name="B1_Account" source="field" updatable="true">temp.tmp_RecordCurrent[1]/B1_Account</parameter>
+                              <parameter name="S4_Account" source="field" updatable="true">temp.tmp_RecordCurrent[1]/S4_Account</parameter>
+                              <parameter name="B1_Ref" source="field" updatable="true">temp.tmp_RecordCurrent[1]/B1_Ref</parameter>
+                              <parameter name="S4_Ref" source="field" updatable="true">temp.tmp_RecordCurrent[1]/S4_Ref</parameter>
+                              <parameter name="Cur" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Cur</parameter>
+                              <parameter name="Amount" source="formula" updatable="true">
+                                 <expression language="XQuery">$temp.tmp_RecordCurrent[1]/Amount </expression>
+                              </parameter>
+                              <parameter name="Ref1" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Ref1</parameter>
+                              <parameter name="Ref2" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Ref2</parameter>
+                              <parameter name="Ref3Line" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Ref3Line</parameter>
+                              <parameter name="LineMemo" source="field" updatable="true">temp.tmp_RecordCurrent[1]/LineMemo</parameter>
+                              <parameter name="USETYPE" source="field" updatable="true">temp.tmp_RecordCurrent[1]/USETYPE</parameter>
+                              <parameter name="ValueDate" source="formula" updatable="true">
+                                 <expression language="XQuery">$temp.tmp_RecordCurrent[1]/ValueDate </expression>
+                              </parameter>
+                              <parameter name="Bank_Ref" source="field" updatable="true">temp.tmp_RecordCurrent[1]/Bank_Ref</parameter>
+                              <parameter name="S4_JE_Text" source="field" updatable="true">temp.tmp_RecordCurrent[1]/S4_JE_Text</parameter>
+                              <parameter name="DateCreated" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                           </createInput>
+                        </create>
+                        <flow id="le2xuesd">
+                           <link id="le2xuese" targetId="le2xuesb" type="containerLink"/>
+                        </flow>
+                        <flow id="le2xuesg">
+                           <assignment id="le41th75">
+                              <title>Set Failure Attributes</title>
+                              <operation source="constant" to="temp.tmp_FailedAtStep">Transaction Log record entry</operation>
+                              <operation source="constant" to="temp.tmp_Error_Code">{$output.TL_faultInfo[1]/code}</operation>
+                              <operation source="constant" to="temp.tmp_Error_Reason">{$output.TL_faultInfo[1]/reason}</operation>
+                              <operation source="constant" to="temp.tmp_Error_Detail">{$output.TL_faultInfo[1]/detail}</operation>
+                              <operation source="formula" to="temp.tmp_FailureReason">
+                                 <expression language="XQuery">$output.TL_faultInfo[1]/reason ||'; '||$output.TL_faultInfo[1]/detail  </expression>
+                              </operation>
+                              <link id="le41th76" targetId="le41tgk3"/>
+                           </assignment>
+                           <subflow id="le41tgk3">
+                              <title>Log Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$temp.tmp_X_TRANSACTION_ID}</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="constant" updatable="true">{$temp.tmp_IICS_Process_ID}</parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">temp.tmp_Error_Code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">temp.tmp_Error_Reason</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">temp.tmp_Error_Detail</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">{$temp.tmp_ApiName}</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">{$temp.tmp_EventName}</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'Ref_ID=' || $input.delimitedContent[1]/record[1]/$temp.tmp_RecordCurrent[1]/B1_Ref || '^BankCode=' || $temp.tmp_RecordCurrent[1]/B1_Account || 'TransId=' || $temp.tmp_RecordCurrent[1]/TransId || '^Line_ID=' || $temp.tmp_RecordCurrent[1]/Line_ID </expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                                 <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_RequestPayload" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="le41th6y" targetId="le41teum"/>
+                           </subflow>
+                           <subflow id="le41teum">
+                              <title>Delete TransactionLog records</title>
+                              <subflowGUID>3VuWJBCBkS5iXkA0HAf3eA</subflowGUID>
+                              <subflowPath>Process_DELETE_or_UPDATE_api_20_Transaction_Log</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_B1_Ref" source="field" updatable="true">temp.tmp_B1Ref</parameter>
+                                 <parameter name="in_Status" source="constant" updatable="true">Failed</parameter>
+                                 <parameter name="in_IICS_Message" source="field" updatable="true">temp.tmp_FailureReason</parameter>
+                                 <parameter name="in_CreatedDate" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="le49177a" targetId="le491779"/>
+                           </subflow>
+                           <create id="le491779">
+                              <title>Insert Failure Log entry</title>
+                              <entityName>AppConnVIPIntegrations-CF:api_20_Failure_Log</entityName>
+                              <createInput>
+                                 <parameter name="B1_Ref_ID" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/B1_Ref_ID</parameter>
+                                 <parameter name="BankRef" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankRef</parameter>
+                                 <parameter name="BankAccount" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankAccount</parameter>
+                                 <parameter name="GL_CashReceipt_B1" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_CashReceipt_B1</parameter>
+                                 <parameter name="GL_ControlAccount_B1" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_Target_B1</parameter>
+                                 <parameter name="GL_CashReceipt_S4" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_CashReceipt_S4</parameter>
+                                 <parameter name="GL_ControlAccount_S4" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_Target_S4</parameter>
+                                 <parameter name="BankCurrrency" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankCurrency</parameter>
+                                 <parameter name="Rece_Amount" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/AmountReceived </expression>
+                                 </parameter>
+                                 <parameter name="PostDate" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/PostDate </expression>
+                                 </parameter>
+                                 <parameter name="ValueDate" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/ValueDate </expression>
+                                 </parameter>
+                                 <parameter name="CompanyCode" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/CompanyCode</parameter>
+                                 <parameter name="Document_Item_Text" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/DocumentItemText</parameter>
+                                 <parameter name="IICS_Status" source="constant" updatable="true">Failed</parameter>
+                                 <parameter name="IICS_Message" source="field" updatable="true">temp.tmp_FailureReason</parameter>
+                                 <parameter name="IICS_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                                 <parameter name="IICS_FailureDate" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:current-dateTime()</expression>
+                                 </parameter>
+                                 <parameter name="DateCreated" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </createInput>
+                              <link id="le49177b" targetId="le48hl24"/>
+                           </create>
+                           <end id="le48hl24">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="le2xuesc" targetId="le2xuesd" type="containerLink"/>
+                        <link id="le2ovz5u" targetId="ldtzc1u0"/>
+                        <events>
+                           <catch faultField="TL_faultInfo" id="le2xuery" interrupting="true">
+                              <link id="le2xuesf" targetId="le2xuesg" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <jumpTo id="ldtzc1u0">
+                        <link id="ldtzc1u1" targetId="ldtzc1r0"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="ldtzc1r7">
+                     <eventContainer id="le41ti99">
+                        <subflow id="le2ovz4d">
+                           <title>Process BankClearing Transaction</title>
+                           <subflowGUID>7ZTYQCxRrdffaMNpebcWqL</subflowGUID>
+                           <subflowPath>Process_BankClearing_SapB1-SapS4</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Payload" source="field" updatable="true">temp.tmp_PoCfBankClearing</parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_B1Ref</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                              <parameter name="in_ApiName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                              <parameter name="in_DataKey" source="formula" updatable="true">
+                                 <expression language="XQuery">let $x:= $temp.tmp_PoCfBankClearing[1] return
+"B1_Ref_ID="||$x/B1_Ref_ID||
+"^PostDate="|| $x/PostDate/text()||
+"^AmountReceived="||$x/AmountReceived||"^"</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcess_StartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_Final_Status" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Final_FailedAtStep" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Final_Message" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Final_FailureCount" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="le41ti9b">
+                           <link id="le41ti9c" targetId="le41ti99" type="containerLink"/>
+                        </flow>
+                        <flow id="le41ti9e">
+                           <assignment id="le41tiey">
+                              <title>Set Process Failure Attributes</title>
+                              <operation source="constant" to="temp.tmp_FailedAtStep">Uncaught error from subprocess Process_BankClearing_SapB1-SapS4</operation>
+                              <operation source="field" to="temp.tmp_Error_Code">output.Processing_faultInfo[1]/code</operation>
+                              <operation source="field" to="temp.tmp_Error_Detail">output.Processing_faultInfo[1]/detail</operation>
+                              <operation source="field" to="temp.tmp_Error_Reason">output.Processing_faultInfo[1]/reason</operation>
+                              <operation source="formula" to="temp.tmp_FailureReason">
+                                 <expression language="XQuery">$output.Processing_faultInfo[1]/reason ||'; '||$output.Processing_faultInfo[1]/detail  </expression>
+                              </operation>
+                              <link id="le41tikj" targetId="le41tiki"/>
+                           </assignment>
+                           <subflow id="le41tiki">
+                              <title>Log Process Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$temp.tmp_X_TRANSACTION_ID}</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="constant" updatable="true">{$temp.tmp_IICS_Process_ID}</parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.Processing_faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.Processing_faultInfo[1]/reason</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.Processing_faultInfo[1]/detail</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">{$temp.tmp_ApiName}</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">{$temp.tmp_EventName}</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'Ref_ID=' || $temp.tmp_PoCfBankClearing[1]/B1_Ref_ID || '^BankCode=' || $temp.tmp_PoCfBankClearing[1]/BankAccount || '^BankRef=' || $temp.tmp_PoCfBankClearing[1]/BankRef || '^PostDate=' || $temp.tmp_PoCfBankClearing[1]/PostDate || '^Amount=' || $temp.tmp_PoCfBankClearing[1]/AmountReceived </expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                                 <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_RequestPayload" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="le41tipa" targetId="le41tip9"/>
+                           </subflow>
+                           <subflow id="le41tip9">
+                              <title>Delete TransactionLog record</title>
+                              <subflowGUID>3VuWJBCBkS5iXkA0HAf3eA</subflowGUID>
+                              <subflowPath>Process_DELETE_or_UPDATE_api_20_Transaction_Log</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_B1_Ref" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/B1_Ref_ID</parameter>
+                                 <parameter name="in_Status" source="constant" updatable="true">Failed</parameter>
+                                 <parameter name="in_IICS_Message" source="field" updatable="true">temp.tmp_FailureReason</parameter>
+                                 <parameter name="in_CreatedDate" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="le471j50" targetId="le471j4t"/>
+                           </subflow>
+                           <create id="le471j4t">
+                              <title>Insert Process Failure Log entry</title>
+                              <entityName>AppConnVIPIntegrations-CF:api_20_Failure_Log</entityName>
+                              <createInput>
+                                 <parameter name="B1_Ref_ID" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/B1_Ref_ID</parameter>
+                                 <parameter name="BankRef" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankRef</parameter>
+                                 <parameter name="BankAccount" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankAccount</parameter>
+                                 <parameter name="GL_CashReceipt_B1" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_CashReceipt_B1</parameter>
+                                 <parameter name="GL_ControlAccount_B1" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_Target_B1</parameter>
+                                 <parameter name="GL_CashReceipt_S4" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_CashReceipt_S4</parameter>
+                                 <parameter name="GL_ControlAccount_S4" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/GL_Target_S4</parameter>
+                                 <parameter name="BankCurrrency" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/BankCurrency</parameter>
+                                 <parameter name="Rece_Amount" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/AmountReceived </expression>
+                                 </parameter>
+                                 <parameter name="PostDate" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/PostDate </expression>
+                                 </parameter>
+                                 <parameter name="ValueDate" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_PoCfBankClearing[1]/ValueDate </expression>
+                                 </parameter>
+                                 <parameter name="CompanyCode" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/CompanyCode</parameter>
+                                 <parameter name="Document_Item_Text" source="field" updatable="true">temp.tmp_PoCfBankClearing[1]/DocumentItemText</parameter>
+                                 <parameter name="IICS_Status" source="constant" updatable="true">Failed</parameter>
+                                 <parameter name="IICS_Message" source="field" updatable="true">temp.tmp_FailureReason</parameter>
+                                 <parameter name="IICS_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                                 <parameter name="IICS_FailureDate" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:current-dateTime()</expression>
+                                 </parameter>
+                                 <parameter name="DateCreated" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </createInput>
+                           </create>
+                           <link id="le41ti9f" targetId="le41ti99" type="containerLink"/>
+                        </flow>
+                        <link id="le41ti9a" targetId="le41ti9b" type="containerLink"/>
+                        <events>
+                           <catch faultField="Processing_faultInfo" id="le41ti78" interrupting="true">
+                              <link id="le41ti9d" targetId="le41ti9e" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ldtzc1r8" targetId="ldtzc1r0" type="containerLink"/>
+                  </flow>
+                  <link id="ldtzc1r3" targetId="ldtzc1r4" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_RecordList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ldtzc1r6" targetId="ldtzc1r7" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_RecordList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ldtzc1rr" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7PwLwamiaPXch3qhJqPxaW</types1:GUID>
+      <types1:DisplayName>Process_BankClearing_ReadFileData</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:30.08Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

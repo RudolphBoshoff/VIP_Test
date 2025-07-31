@@ -1,0 +1,623 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9T3WabeAzu2JQht-gt-6296701-2023-05-02T14:50:22.983Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_EmailAddressChanged_Detail</types1:Name>
+      <types1:ParentFlowIds>ImXycotFgpKi9zh-gt-6296735-2023-05-02T14:50:23.549Z::pd.xml,KFxH2bfZk9EW4AR-gt-20323361-2021-09-17T11:48:55.587Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Updates BP Address and Creates BP Roles if missing</types1:Description>
+      <types1:AppliesTo>AppConnectionVPCdbo:RmClients</types1:AppliesTo>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-05-02T14:50:23Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-13T13:04:22Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-13T13:05:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_EmailAddressChanged_Detail/Process_EmailAddressChanged_Detail.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_EmailAddressChanged_Detail"
+                  name="Process_EmailAddressChanged_Detail"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo>AppConnectionVPCdbo:RmClients</appliesTo>
+            <description>Updates BP Address and Creates BP Roles if missing</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_AddressDetail"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POAddressDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0z8tcswLCClcvbG6YOn9oq</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ErrorDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:BusinessPartner_Expand</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">73TzrNfMb3we8PZAvKue2p</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_EmailAddressChanged_Detail"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Body_EmailPatch" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressEmailAddressType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body_AddressPost" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_BusinessPartnerAddressType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body_EmailPost" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressEmailAddressType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressExistsFlag" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailExistsFlag" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCodeList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput_Parameters-1</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cX9YzMwTIKQiJcr7JFNa2o</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCodeCurrent" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput_Parameters-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cX9YzMwTIKQiJcr7JFNa2o</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyCompanyPatch" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerCompanyType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyAddressEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ResponseCodes" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lgv3t7b5" targetId="lexbwfbh"/>
+               </start>
+               <assignment id="lexbwfbh">
+                  <title>Set Process Variables</title>
+                  <operation source="field"
+                             to="output.out_ProcessVariables_EmailAddressChanged_Detail">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/IICS_Run_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="field" to="input.in_AddressDetail[1]/RefCode">AddrCode</operation>
+                  <link id="ljobt3oy" targetId="lg4za7jl"/>
+               </assignment>
+               <subflow id="lg4za7jl">
+                  <title>Get BP</title>
+                  <subflowGUID>1doZwOn6OsIdr4fl7VUHE1</subflowGUID>
+                  <subflowPath>Process_GET_BusinessPartner</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_BusinessPartner" source="field" updatable="true">input.in_AddressDetail[1]/RefCode</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_BusinessPartner" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_RestURL" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_BusinessPartnerExpanded" type="reference">
+                        <options>
+                           <option name="referenceTo">AppSvcBusinessPartnerA2X:SvcGET_BusinessPartner_EntireResponse</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                        </options>
+                     </field>
+                     <field name="out_PO_Get_BusinessPartner" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lg4za80w" targetId="lg4za806"/>
+               </subflow>
+               <container id="lg4za806" type="exclusive">
+                  <title>HttpStatusCode</title>
+                  <flow id="lg4ztvu8">
+                     <container id="lgv3t7zi" type="exclusive">
+                        <title>Email Address</title>
+                        <flow id="lgv3t7zl">
+                           <assignment id="lgv3t846">
+                              <title>Check if Address Exists</title>
+                              <operation source="formula" to="temp.tmp_AddressID">
+                                 <expression language="XQuery">$output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/AddressID/text() </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_AddressExistsFlag">
+                                 <expression language="XQuery">(:let $AddressID := $output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/AddressID/text() 
+	
+return
+if ( fn:string-length($AddressID)=0)
+then 0
+else 1:)
+
+if ( fn:string-length($temp.tmp_AddressID)=0)
+then 0
+else 1</expression>
+                              </operation>
+                              <link id="lgv3t85w" targetId="lgv3t85v"/>
+                           </assignment>
+                           <assignment id="lgv3t85v">
+                              <title>Prepare Payloads</title>
+                              <operation source="formula" to="temp.tmp_Body_EmailPost">
+                                 <expression language="XQuery">&lt;to_EmailAddress&gt;
+	&lt;AddressID&gt;{$temp.tmp_AddressID }&lt;/AddressID&gt;
+	&lt;EmailAddress&gt;{$input.in_AddressDetail[1]/EmailAddress}&lt;/EmailAddress&gt;
+&lt;/to_EmailAddress&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Body_EmailPatch">
+                                 <expression language="XQuery">&lt;to_EmailAddress&gt;
+  &lt;EmailAddress&gt;{$input.in_AddressDetail[1]/EmailAddress}&lt;/EmailAddress&gt;
+&lt;/to_EmailAddress&gt;
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Body_AddressPost">
+                                 <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+        	&lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode  }&lt;/BusinessPartner&gt;
+        	&lt;CityName&gt;{$input.in_AddressDetail[1]/CityName}&lt;/CityName&gt;
+            &lt;PostalCode&gt;{$input.in_AddressDetail[1]/PostalCode} &lt;/PostalCode&gt;
+            &lt;Language&gt;{$input.in_AddressDetail[1]/Language} &lt;/Language&gt;
+            &lt;Country&gt;{$input.in_AddressDetail[1]/Country}&lt;/Country&gt;
+            &lt;StreetPrefixName&gt;{$input.in_AddressDetail[1]/Address } &lt;/StreetPrefixName&gt;
+            &lt;AdditionalStreetPrefixName&gt;{$input.in_AddressDetail[1]/Address2 }&lt;/AdditionalStreetPrefixName&gt;
+            &lt;StreetName&gt;{$input.in_AddressDetail[1]/Address3 }&lt;/StreetName&gt;
+            &lt;StreetSuffixName&gt;{$input.in_AddressDetail[1]/Address4 }&lt;/StreetSuffixName&gt;
+            &lt;AdditionalStreetSuffixName&gt;{$input.in_AddressDetail[1]/Address5 }&lt;/AdditionalStreetSuffixName&gt;            
+            &lt;to_EmailAddress&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;EmailAddress&gt; {$input.in_AddressDetail[1]/EmailAddress }&lt;/EmailAddress&gt;
+            	&lt;/results&gt;
+       		&lt;/to_EmailAddress&gt;
+            &lt;to_AddressUsage&gt;
+				&lt;results m:isArray="true"&gt;
+					&lt;AddressUsage&gt;XXDEFAULT&lt;/AddressUsage&gt;
+					&lt;ValidityEndDate&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidityEndDate&gt;
+				&lt;/results&gt;
+			&lt;/to_AddressUsage&gt;
+&lt;/root&gt; </expression>
+                              </operation>
+                              <link id="lgv3t884" targetId="lgv3t87l"/>
+                           </assignment>
+                           <container id="lgv3t87l" type="exclusive">
+                              <title>Address Exists</title>
+                              <flow id="lgv3t87m">
+                                 <assignment id="lgv3t87n">
+                                    <title>Check if Email Exists</title>
+                                    <operation source="formula" to="temp.tmp_EmailExistsFlag">
+                                       <expression language="XQuery">let $Email := $output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/to_EmailAddress[1]/results[1]/EmailAddress/text() 
+	
+return
+if ( fn:string-length($Email)=0)
+then 0
+else 1</expression>
+                                    </operation>
+                                    <link id="lgv3t87y" targetId="lgv3t87o"/>
+                                 </assignment>
+                                 <container id="lgv3t87o" type="exclusive">
+                                    <title>Email Exists</title>
+                                    <flow id="lgv3t87p">
+                                       <subflow id="lgv3t87q">
+                                          <title>Update Email</title>
+                                          <subflowGUID>gRFUGO8p188dY45BgzagOq</subflowGUID>
+                                          <subflowPath>Process_PATCH_BusinessPartnerEmailAddress</subflowPath>
+                                          <runForEach>false</runForEach>
+                                          <input>
+                                             <parameter name="in_Body" source="field" updatable="true">temp.tmp_Body_EmailPatch</parameter>
+                                             <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail</parameter>
+                                             <parameter name="in_AddressID" source="field" updatable="true">temp.tmp_AddressID</parameter>
+                                          </input>
+                                          <outputDef>
+                                             <field name="out_ProcessVariables_PATCH_BusinessPartnerEmailAddress"
+                                                    type="reference">
+                                                <options>
+                                                   <option name="referenceTo">$po:PoErrorDetails</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                   <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_PatchEmailStatus" type="string">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                          </outputDef>
+                                       </subflow>
+                                       <link id="lgv3t881" targetId="lgv3t87o" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lgv3t87r">
+                                       <subflow id="lgv3t87s">
+                                          <title>Create Email</title>
+                                          <subflowGUID>9rqSTEzRgHBjEs5M85hQSx</subflowGUID>
+                                          <subflowPath>Process_POST_BusinessPartnerEmailAddress</subflowPath>
+                                          <runForEach>false</runForEach>
+                                          <input>
+                                             <parameter name="in_Body" source="field" updatable="true">temp.tmp_Body_EmailPost</parameter>
+                                             <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail</parameter>
+                                          </input>
+                                          <outputDef>
+                                             <field name="out_ProcessVariables_PATCH_BusinessPartnerEmailAddress"
+                                                    type="reference">
+                                                <options>
+                                                   <option name="referenceTo">$po:PoErrorDetails</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                   <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_PatchEmailStatus" type="string">
+                                                <options>
+                                                   <option name="required">false</option>
+                                                </options>
+                                             </field>
+                                          </outputDef>
+                                       </subflow>
+                                       <link id="lgv3t882" targetId="lgv3t87o" type="containerLink"/>
+                                    </flow>
+                                    <link id="lgv3t87z" targetId="lgv3t87p" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="equals">
+                                             <arg name="left">{$temp.tmp_EmailExistsFlag}</arg>
+                                             <arg name="right">{1}</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="lgv3t880" targetId="lgv3t87r" type="containerLink"/>
+                                 </container>
+                                 <link id="lgv3t87x" targetId="lgv3t87l" type="containerLink"/>
+                              </flow>
+                              <flow id="lgv3t87t">
+                                 <subflow id="lgv3t87u">
+                                    <title>Create BP Address</title>
+                                    <subflowGUID>3rJtcfeL7Oti7pPunYfweI</subflowGUID>
+                                    <subflowPath>Process_POST_A_BusinessPartnerAddress</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Body_AddressPost </expression>
+                                       </parameter>
+                                       <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail[1]/X_TRANSACTION_ID</parameter>
+                                       <parameter name="in_EventName" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Event_Name</parameter>
+                                       <parameter name="in_IICS_Process_ID" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail[1]/IICS_Run_ID</parameter>
+                                       <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail[1]/ProcessStartTime</parameter>
+                                       <parameter name="in_ApiName" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail[1]/API_Name</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_PostBPAddressStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="lgv3t883" targetId="lgv3t87l" type="containerLink"/>
+                              </flow>
+                              <link id="lgv3t87v" targetId="lgv3t87m" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_AddressExistsFlag}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lgv3t87w" targetId="lgv3t87t" type="containerLink"/>
+                           </container>
+                           <link id="lgv3t7zm" targetId="lgv3t7zi" type="containerLink"/>
+                        </flow>
+                        <flow id="lgv3t7zo">
+                           <link id="lgv3t7zp" targetId="lgv3t7zi" type="containerLink"/>
+                        </flow>
+                        <link id="lgv3t7zk" targetId="lgv3t7zl" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$input.in_AddressDetail[1]/EmailAddress}</arg>
+                                 <arg name="right">@</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lgv3t7zn" targetId="lgv3t7zo" type="containerLink"/>
+                     </container>
+                     <link id="lgunnnxz" targetId="lg4za806" type="containerLink"/>
+                  </flow>
+                  <flow id="lg4za80j">
+                     <assignment id="ljobt3su">
+                        <title>Update Process Variables Error</title>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Code">output.out_PO_Get_BusinessPartner[1]/HttpStatusCode</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Error">output.out_PO_Get_BusinessPartner[1]/Reason</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Description">output.out_PO_Get_BusinessPartner[1]/Detail</operation>
+                        <link id="ljobt3sv" targetId="lg4ztx0e"/>
+                     </assignment>
+                     <subflow id="lg4ztx0e">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_EmailAddressChanged_Detail</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lg4ztx76" targetId="lg4ztx75"/>
+                     </subflow>
+                     <end id="lg4ztx75">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lg4ztvu7" targetId="lg4ztvu8" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$output.out_PO_Get_BusinessPartner[1]/HttpStatusCode}</arg>
+                           <arg name="right">HTTP_2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lg4za80n" targetId="lg4za80j" type="containerLink"/>
+                  <link id="lgv3t8bg" targetId="lgv3t8bf"/>
+               </container>
+               <container id="lgv3t8bf" type="exclusive">
+                  <title>EmailInvoiceReminder</title>
+                  <flow id="lgv3t8bj">
+                     <assignment id="lgv3t8ew">
+                        <title>Fetch Company Codes List</title>
+                        <operation source="formula" to="temp.tmp_CompanyCodeList">
+                           <expression language="XQuery">$output.out_PO_Get_BusinessPartner[1]/Parameters[Identifier="CompanyCode"]</expression>
+                        </operation>
+                        <link id="lgv3t8hb" targetId="lgv3t8gz"/>
+                     </assignment>
+                     <container id="lgv3t8gz" type="exclusive">
+                        <title>Company Code List</title>
+                        <flow id="lgv3t8h0">
+                           <assignment id="lgv3t8h1">
+                              <title>Next Company Code</title>
+                              <operation source="formula" to="temp.tmp_CompanyCodeCurrent">
+                                 <expression language="XQuery">list:head($temp.tmp_CompanyCodeList )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CompanyCodeList">
+                                 <expression language="XQuery">list:tail($temp.tmp_CompanyCodeList )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_BodyCompanyPatch">
+                                 <expression language="XQuery">&lt;to_CustomerCompany&gt;   
+   &lt;AccountingClerkInternetAddress&gt;{$input.in_AddressDetail[1]/EmailInvoiceReminder }&lt;/AccountingClerkInternetAddress&gt;   
+&lt;/to_CustomerCompany&gt;
+</expression>
+                              </operation>
+                              <link id="lgv3t8h8" targetId="lgv3t8h2"/>
+                           </assignment>
+                           <subflow id="lgv3t8h2">
+                              <title>Update Company Email</title>
+                              <subflowGUID>53tNCcacMInbZAYwzMg62k</subflowGUID>
+                              <subflowPath>Process_PATCH_CustomerCompanyType</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="field" updatable="true">temp.tmp_BodyCompanyPatch</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress</parameter>
+                                 <parameter name="in_Customer" source="field" updatable="true">output.out_BusinessPartner</parameter>
+                                 <parameter name="in_CompanyCode" source="field" updatable="true">temp.tmp_CompanyCodeCurrent[1]/Value</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_ProcessVariables_PATCH_CustomerCompanyType" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PatchCustomerCompanyStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lgv3t8h9" targetId="lgv3t8h3"/>
+                           </subflow>
+                           <jumpTo id="lgv3t8h3">
+                              <link id="lgv3t8ha" targetId="lgv3t8gz"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lgv3t8h4">
+                           <jumpTo id="lk15uvsu">
+                              <link id="lk15uvsv" targetId="ljobt4ma"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lgv3t8h6" targetId="lgv3t8h0" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_CompanyCodeList}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lgv3t8h7" targetId="lgv3t8h4" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_CompanyCodeList}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lgv3t8bm">
+                     <assignment id="ljobt4ma">
+                        <title>Assign Output</title>
+                        <operation source="formula" to="temp.tmp_ResponseCodes">
+                           <expression language="XQuery">let $bpa_ch := $output.out_PostBPAddressStatus[1]/HttpStatusCode, 
+$cc := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code,  
+$em_cr := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code,
+$em_ch := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code
+ return 
+
+
+replace( $bpa_ch||';'||$cc||';'||$em_cr||';'||$em_ch, 'HTTP_','' )</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Code">
+                           <expression language="XQuery">'HTTP_'||fn:max(list:sequence($temp.tmp_ResponseCodes))</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Error">
+                           <expression language="XQuery">let $bpa_cr := $output.out_PostBPAddressStatus[1]/Reason, 
+$cc := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Error,  
+$em_cr := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Error,
+$em_ch := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Error
+ return 
+
+
+ (if ($temp.tmp_AddressExistsFlag = 1)  
+ then 
+ 		(if ($temp.tmp_EmailExistsFlag = 1)
+        then '^PATCH_BusinessPartnerEmailAddress='||$em_ch
+        else '^POST_BusinessPartnerEmailAddress='||$em_cr) 
+ else '^POST_A_BusinessPartnerAddress='||$bpa_cr) || 
+ 
+'^PATCH_CustomerCompanyType='||$cc</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_EmailAddressChanged_Detail[1]/Description">
+                           <expression language="XQuery">let $bpa_cr := $output.out_PostBPAddressStatus[1]/Details, 
+$cc := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Description,  
+$em_cr := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Description,
+$em_ch := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Description
+ return 
+
+
+ (if ($temp.tmp_AddressExistsFlag = 1)  
+ then 
+ 		(if ($temp.tmp_EmailExistsFlag = 1)
+        then '^PATCH_BusinessPartnerEmailAddress='||$em_ch
+        else '^POST_BusinessPartnerEmailAddress='||$em_cr) 
+ else '^POST_A_BusinessPartnerAddress='||$bpa_cr) || 
+ 
+'^PATCH_CustomerCompanyType='||$cc</expression>
+                        </operation>
+                        <link id="ljobt4mb" targetId="lgv3t8md"/>
+                     </assignment>
+                     <end id="lgv3t8md">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="lgv3t8bi" targetId="lgv3t8bj" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.in_AddressDetail[1]/EmailInvoiceReminder}</arg>
+                           <arg name="right">@</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lgv3t8bl" targetId="lgv3t8bm" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>bX2HwQ0v6CAlMtBzprfRUb</types1:GUID>
+      <types1:DisplayName>Process_EmailAddressChanged_Detail</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-07-13T13:08:24.792Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

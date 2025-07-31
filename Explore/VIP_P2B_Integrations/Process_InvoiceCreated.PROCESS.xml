@@ -1,0 +1,708 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>eKu8QhxOSM8NciZ-gt-1944127-2022-08-26T13:11:39.077Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_InvoiceCreated</types1:Name>
+      <types1:ParentFlowIds>i31CHdqwx8R8WrY-gt-7140119-2023-07-10T13:21:41.137Z::pd.xml,oZBJRvDINciZBpD-gt-37242393-2022-10-12T10:48:28.241Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates Invoice in SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-08-26T13:11:39Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-27T07:42:29Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_InvoiceCreated/Process_InvoiceCreated.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_InvoiceCreated"
+                  name="Process_InvoiceCreated"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates Invoice in SAP</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProformaNr"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_InvoiceCreated"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Target_RevEntity_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Target_RevEntity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lij1ttaf" targetId="lij1tsxn"/>
+               </start>
+               <assignment id="lij1tsxn">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="output.out_ProcessVariables_InvoiceCreated">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+ &lt;X_TRANSACTION_ID&gt;{$input.in_X_TRANSACTION_ID }&lt;/X_TRANSACTION_ID&gt;
+ &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+ &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt; 
+ &lt;Code&gt;&lt;/Code&gt;
+ &lt;Error&gt;&lt;/Error&gt;
+ &lt;Description&gt;&lt;/Description&gt;
+ &lt;Event_Name&gt;{$input.in_EventName  }&lt;/Event_Name&gt;
+ &lt;API_Name&gt;{$input.in_ApiName }&lt;/API_Name&gt;
+ &lt;Data_Key&gt;{ 'ProformaNr='||$input.in_ProformaNr  }&lt;/Data_Key&gt;
+ &lt;RestURL&gt;N/A&lt;/RestURL&gt;
+ &lt;HelpFileLInk&gt;N/A&lt;/HelpFileLInk&gt;
+ &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+ &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+ &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <link id="lij1tsxp" targetId="licu8jfj"/>
+               </assignment>
+               <assignment id="l8n0fzf1">
+                  <title>Set Target RevEntity List</title>
+                  <operation source="field" to="temp.tmp_Target_RevEntity_Array">output.out_Intercompany_RevEntities</operation>
+                  <link id="l8n0fzf3" targetId="l8kbr6ow"/>
+               </assignment>
+               <container id="licu8jfj" type="exclusive">
+                  <title>Event Name</title>
+                  <flow id="licu8jfn">
+                     <link id="licu8jfo" targetId="licu8jfj" type="containerLink"/>
+                  </flow>
+                  <flow id="licu8jfq">
+                     <assignment id="licu8jv4">
+                        <title>Update Error Details</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Code">405</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Error">Method Not Allowed</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Description">The event type name does not correspond to the process invoked</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/FailedAtStep">Event Type validation</operation>
+                        <link id="licu8k21" targetId="licu8k20"/>
+                     </assignment>
+                     <subflow id="licu8k20">
+                        <title>Log Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="licu8nfo" targetId="licu8nfn"/>
+                     </subflow>
+                     <end id="licu8nfn">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="licu8jfm" targetId="licu8jfn" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_EventName}</arg>
+                           <arg name="right">INVOICE_CREATED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="licu8jfp" targetId="licu8jfq" type="containerLink"/>
+                  <link id="licu8jfl" targetId="l8kbr51g"/>
+               </container>
+               <container id="licu8ly1" type="exclusive">
+                  <title>InvoiceTotal</title>
+                  <flow id="licu8ly5">
+                     <assignment id="licu8mp4">
+                        <title>Update Nil Invoice Error Details</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Code">199</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Error">InvoiceTotal=0</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Description">Warning : Zero InvoiceTotal</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/FailedAtStep">Zero InvoiceTotal in VPoint</operation>
+                        <link id="liczec3p" targetId="liczec3n"/>
+                     </assignment>
+                     <jumpTo id="liczec3n">
+                        <link id="liczec3o" targetId="licu8k20"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="licu8ly8">
+                     <link id="licu8ly9" targetId="licu8ly1" type="containerLink"/>
+                  </flow>
+                  <link id="licu8ly4" targetId="licu8ly5" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$output.out_PO_JournallnvoiceEntry[1]/ih_InvoiceTotal}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="licu8ly7" targetId="licu8ly8" type="containerLink"/>
+                  <link id="licu8ly3" targetId="l8n0fzf1"/>
+               </container>
+               <container id="l8kbr6ow" type="exclusive">
+                  <title>Intercompany</title>
+                  <flow id="l8kbr6p0">
+                     <subflow id="l8lbenkn">
+                        <title>Process_API01 NewInvoice</title>
+                        <subflowGUID>0SoDuOB8pu4fyg2DBviRIj</subflowGUID>
+                        <subflowPath>Process_API01_NewInvoice</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Payload" source="field" updatable="true">output.out_PO_JournallnvoiceEntry</parameter>
+                           <parameter name="in_Process_Variables" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_JournalEntryPO" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:$any</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                           <field name="out_Process_Variables_NewInvoice" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="l8n0fy7p" targetId="l8n0fy7o"/>
+                     </subflow>
+                     <container id="l8n0fy7o" type="exclusive">
+                        <title>Target RevEntity</title>
+                        <flow id="l8n0fy7s">
+                           <assignment id="l8n0fyfc">
+                              <title>Pick a Target RevEntity</title>
+                              <operation source="formula" to="temp.tmp_Target_RevEntity">
+                                 <expression language="XQuery">list:head($temp.tmp_Target_RevEntity_Array )</expression>
+                              </operation>
+                              <link id="l8n0fyj7" targetId="l8n0fyj6"/>
+                           </assignment>
+                           <assignment id="l8n0fyh9">
+                              <title>Remove processed Target RevEntity</title>
+                              <operation source="formula" to="temp.tmp_Target_RevEntity_Array">
+                                 <expression language="XQuery">list:tail($temp.tmp_Target_RevEntity_Array )</expression>
+                              </operation>
+                              <link id="l8n184xs" targetId="l8n184xq"/>
+                           </assignment>
+                           <subflow id="l8n0fyj6">
+                              <title>Process_API16 NewInvoice</title>
+                              <subflowGUID>0SoDuOB8pu4fyg2DBviRIj</subflowGUID>
+                              <subflowPath>Process_API01_NewInvoice</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Payload" source="field" updatable="true">output.out_PO_JournallnvoiceEntry</parameter>
+                                 <parameter name="in_TargetRevEnt" source="field" updatable="true">temp.tmp_Target_RevEntity</parameter>
+                                 <parameter name="in_Process_Variables" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_JournalEntryPO" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:$any</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_Process_Variables_NewInvoice" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="l8n0fym8" targetId="l8n0fym7"/>
+                           </subflow>
+                           <subflow id="l8n0fym7">
+                              <title>Process_API17 NewInvoice</title>
+                              <subflowGUID>0SoDuOB8pu4fyg2DBviRIj</subflowGUID>
+                              <subflowPath>Process_API01_NewInvoice</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Payload" source="field" updatable="true">output.out_PO_JournallnvoiceEntry</parameter>
+                                 <parameter name="in_TargetRevEnt" source="field" updatable="true">temp.tmp_Target_RevEntity</parameter>
+                                 <parameter name="in_Process_Variables" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_JournalEntryPO" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:$any</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_Process_Variables_NewInvoice" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="l8n0fym9" targetId="l8n0fyh9"/>
+                           </subflow>
+                           <jumpTo id="l8n184xq">
+                              <link id="l8n184xr" targetId="l8n0fy7o"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="l8n0fy7v">
+                           <assignment id="liklghie">
+                              <title>Update IC Output properties</title>
+                              <operation source="field" to="output.out_ProcessVariables_InvoiceCreated">output.out_Process_Variables_NewInvoice</operation>
+                              <link id="liklghif" targetId="l8n1851m"/>
+                           </assignment>
+                           <end id="l8n1851m">
+                              <title>End Intercompany Flow</title>
+                           </end>
+                        </flow>
+                        <link id="l8n0fy7r" targetId="l8n0fy7s" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Target_RevEntity_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8n0fy7u" targetId="l8n0fy7v" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Target_RevEntity_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="l8kbr6p3">
+                     <eventContainer id="liklggdh">
+                        <subflow id="l8kbradw">
+                           <title>Process_API1 NewInvoice</title>
+                           <subflowGUID>0SoDuOB8pu4fyg2DBviRIj</subflowGUID>
+                           <subflowPath>Process_API01_NewInvoice</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Payload" source="field" updatable="true">output.out_PO_JournallnvoiceEntry</parameter>
+                              <parameter name="in_Process_Variables" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_JournalEntryPO" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:$any</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                 </options>
+                              </field>
+                              <field name="out_Process_Variables_NewInvoice" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="liklggdj">
+                           <link id="liklggdk" targetId="liklggdh" type="containerLink"/>
+                        </flow>
+                        <flow id="liklggdm">
+                           <assignment id="liklggjt">
+                              <title>Update Post Error Details</title>
+                              <operation source="field" to="output.out_ProcessVariables_InvoiceCreated[1]/Code">output.subfaultInfo[1]/code</operation>
+                              <operation source="field" to="output.out_ProcessVariables_InvoiceCreated[1]/Error">output.subfaultInfo[1]/reason</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_InvoiceCreated[1]/Description">output.subfaultInfo[1]/detail</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_InvoiceCreated[1]/FailedAtStep">Subprocess Uncaught Error : Process_API01 NewInvoice</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_InvoiceCreated[1]/IICS_Process_Name">Process_InvoiceCreated^Process_API1 NewInvoice</operation>
+                              <link id="liklggml" targetId="liklggmj"/>
+                           </assignment>
+                           <jumpTo id="liklggmj">
+                              <link id="liklggmk" targetId="licu8k20"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="liklggdi" targetId="liklggdj" type="containerLink"/>
+                        <link id="liczecel" targetId="liczecek"/>
+                        <events>
+                           <catch faultField="subfaultInfo" id="liklggcm" interrupting="true">
+                              <link id="liklggdl" targetId="liklggdm" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="liczecek">
+                        <title>Update Output properties</title>
+                        <operation source="field" to="output.out_ProcessVariables_InvoiceCreated">output.out_Process_Variables_NewInvoice</operation>
+                     </assignment>
+                     <link id="l8kbr6p4" targetId="l8kbr6ow" type="containerLink"/>
+                  </flow>
+                  <link id="l8kbr6oz" targetId="l8kbr6p0" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.out_Intercompany_Flag}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l8kbr6p2" targetId="l8kbr6p3" type="containerLink"/>
+                  <link id="l8kbr77d" targetId="l8k7owjl"/>
+               </container>
+               <eventContainer id="l8kbr51g">
+                  <subflow id="l8k80hdh">
+                     <title>Get Invoice data from VPC</title>
+                     <subflowGUID>d1WqXkL9jkSlDl7b6c1Das</subflowGUID>
+                     <subflowPath>Process_Mapping_JournalInvoiceEntry</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_ProformaNr" source="field" updatable="true">input.in_ProformaNr</parameter>
+                        <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated[1]/X_TRANSACTION_ID</parameter>
+                        <parameter name="in_EventName" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated[1]/Event_Name</parameter>
+                        <parameter name="in_IICS_Process_ID" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated[1]/IICS_Run_ID</parameter>
+                        <parameter name="in_ApiName" source="field" updatable="true">output.out_ProcessVariables_InvoiceCreated[1]/API_Name</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_PO_JournallnvoiceEntry" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:P2bApi01</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                           </options>
+                        </field>
+                        <field name="out_Status" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_Intercompany_Flag" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_Intercompany_RevEntities" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:$any</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l8kbr51i">
+                     <link id="l8kbr51j" targetId="l8kbr51g" type="containerLink"/>
+                  </flow>
+                  <flow id="l8kbr51l">
+                     <assignment id="liczeab2">
+                        <title>Update Get VPC Data Error Details</title>
+                        <operation source="field" to="output.out_ProcessVariables_InvoiceCreated[1]/Code">output.GetData-faultInfo[1]/code</operation>
+                        <operation source="field" to="output.out_ProcessVariables_InvoiceCreated[1]/Error">output.GetData-faultInfo[1]/reason</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/Description">output.GetData-faultInfo[1]/detail</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/FailedAtStep">VPC : Get VPC Invoice data</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_InvoiceCreated[1]/IICS_Process_Name">Process_InvoiceCreated^Process_Mapping_JournalInvoiceEntry</operation>
+                        <link id="liczebfl" targetId="liczebfj"/>
+                     </assignment>
+                     <jumpTo id="liczebfj">
+                        <link id="liczebfk" targetId="licu8k20"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="l8kbr51h" targetId="l8kbr51i" type="containerLink"/>
+                  <link id="licu8ly2" targetId="licu8ly1"/>
+                  <events>
+                     <catch faultField="GetData-faultInfo" id="l8kbr506" interrupting="true">
+                        <link id="l8kbr51k" targetId="l8kbr51l" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="l8k7owjl">
+                  <title>End Non Intercompany Flow</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>540fd92e-df54-443d-b793-dc4895bb4be7</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1040",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "106023"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>53bcbef5-cb20-403c-9e56-edcc8aa92cb9</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>147612e8-9098-4b50-87e5-c69d04bdde01</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-07-10T13:21:40Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_X_TRANSACTION_ID": "228981",
+	 "in_EventName": "INVOICE_CREATED",
+	 "in_IICS_Process_ID": "102",
+	 "in_ParentProcessStartTime": "2023-03-02T00:00:00.00Z",
+	 "in_ApiName": "API-01",
+	 "in_ProformaNr": "250079"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d48265e0-97dc-478a-a95e-15d6f23aa192</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>94a2efd0-b172-48c8-af00-56165e242975</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "543",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4dd020ff-87ae-49e9-a300-82eaa632d753</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1043",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8798e897-1468-4ff3-8329-409834cd1300</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9ee48875-6adc-4634-abc9-db51c658db55</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e20b7dd8-9cf2-4c46-9861-82ef6f28da67</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T13:11:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4HNJE2i8L6sbgc3NHIfuye</types1:GUID>
+      <types1:DisplayName>Process_InvoiceCreated</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-07-10T13:25:36.83Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

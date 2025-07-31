@@ -1,0 +1,75 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>porzYLnzYLnzYLn-gt-20039627-2021-08-19T13:06:22.249Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessPostAccrualsToSAP</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>roger.fbaatjes@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-08-19T13:06:22Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:08Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:54:46Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessPostAccrualsToSAP/ProcessPostAccrualsToSAP.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessPostAccrualsToSAP"
+                  name="ProcessPostAccrualsToSAP"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ks8zqj0n" targetId="ks8z98ah"/>
+               </start>
+               <service id="ks8z98ah">
+                  <title>JournalEntryCreateRequestConfirmation_In</title>
+                  <serviceName>AppSvcPOSTJournalEntry-1:JournalEntryCreateRequestConfirmation_In</serviceName>
+                  <serviceGUID>kQE8pjy3TyQimoreNAEJEu</serviceGUID>
+                  <serviceInput>
+                     <parameter name="JournalEntryBulkCreateRequest" source="formula">
+                        <expression language="XQuery">$input.in_Payload </expression>
+                     </parameter>
+                     <parameter name="username" source="constant">VISTRA_CPI_DEV_INBOUND_Q</parameter>
+                     <parameter name="password" source="constant">CJDeVjoBFPFUvqBn\3YRbABKlRYJYDEstMTgVRvJ</parameter>
+                     <parameter name="hostname" source="constant">https://my305570-api.s4hana.ondemand.com</parameter>
+                  </serviceInput>
+                  <link id="ks8z98aj" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8UvBTVFlZN3hB1Zlkz1YyO</types1:GUID>
+      <types1:DisplayName>ProcessPostAccrualsToSAP</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T08:58:08.51Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

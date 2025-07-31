@@ -1,0 +1,255 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>UigdpIO3M4WwOC2-gt-21752389-2021-11-11T12:36:46.749Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetBusinessPartnerTax</types1:Name>
+      <types1:ParentFlowIds>1UAjllCYAOTMneB-gt-14407389-2021-09-16T07:13:33.847Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>ProcessGetBusinessPartnerTax</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-11-11T12:36:47Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:04Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T11:37:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetBusinessPartnerTax/ProcessGetBusinessPartnerTax.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetBusinessPartnerTax"
+                  name="ProcessGetBusinessPartnerTax"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>ProcessGetBusinessPartnerTax</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_BusinessPartnerTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_BusinessPartnerTax_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_IdentityRegister" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:IdentityRegister</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IdentityRegisterList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:IdentityRegister</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountryChk" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kv9ynoc3" targetId="kv9ynoc2"/>
+               </start>
+               <assignment id="kv9ynoc2">
+                  <title>Assignment to tmp_IdentityRegisterList</title>
+                  <operation source="list" to="temp.tmp_IdentityRegisterList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:IdentityRegister">
+                        <where>RefCode = '{$input.in_RefCode}' and IdType in ('INC','VAT')</where>
+                     </query>
+                  </operation>
+                  <link id="kwbtr7og" targetId="kv9ynocs"/>
+               </assignment>
+               <container id="kv9ynocs" type="exclusive">
+                  <title>tmp_IdentityRegisterList</title>
+                  <flow id="kv9ynocw">
+                     <assignment id="kv9ynod7">
+                        <title>Assignment to tmp_IdentityRegister</title>
+                        <operation source="formula" to="temp.tmp_IdentityRegister">
+                           <expression language="XQuery">list:head($temp.tmp_IdentityRegisterList )</expression>
+                        </operation>
+                        <link id="kwdbla1p" targetId="kwdbla1o"/>
+                     </assignment>
+                     <assignment id="kwdbla1o">
+                        <title>Assignment to tmp_Matters</title>
+                        <operation source="query" to="temp.tmp_Matters">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                              <where>RefCode = '{$input.in_RefCode}' and MatterCode = '{$input.in_MatterCode}'</where>
+                           </query>
+                        </operation>
+                        <link id="kwdbla1q" targetId="kwbtr7oh"/>
+                     </assignment>
+                     <assignment id="kwbtr7oh">
+                        <title>Assignment to tmp_Country</title>
+                        <operation source="formula" to="temp.tmp_Country">
+                           <expression language="XQuery">fn:substring($temp.tmp_Matters.RevEntity, 1, 2)</expression>
+                        </operation>
+                        <link id="kwbtr7oj" targetId="kvsc3v5q"/>
+                     </assignment>
+                     <assignment id="kvsc3v5q">
+                        <title>Assignment to tmp_UserTables</title>
+                        <operation source="query" to="temp.tmp_UserTables">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:UserTables">
+                              <where>TabCode = 'APIT' and Name = 'API8' and ElNote = '{fn:concat($temp.tmp_Country ,$temp.tmp_IdentityRegister.IdType )}'</where>
+                           </query>
+                        </operation>
+                        <link id="kxhe0etw" targetId="kxhe0etv"/>
+                     </assignment>
+                     <assignment id="kxhe0etv">
+                        <title>Assignment to tmp_Flag</title>
+                        <operation source="formula" to="temp.tmp_Flag">
+                           <expression language="XQuery">util:iif(util:isNull($temp.tmp_IdentityRegister.IdCode ) , 'N', util:iif($temp.tmp_IdentityRegister.IdCode ='' , 'N', 'Y'))</expression>
+                        </operation>
+                        <link id="kxhe0eu3" targetId="kxhe0eu2"/>
+                     </assignment>
+                     <assignment id="kvsc3v69">
+                        <title>Assignment to tmp_IdentityRegisterList</title>
+                        <operation source="formula" to="temp.tmp_IdentityRegisterList">
+                           <expression language="XQuery">list:tail($temp.tmp_IdentityRegisterList )</expression>
+                        </operation>
+                        <link id="kvsc3v71" targetId="kvsc3v6z"/>
+                     </assignment>
+                     <container id="kxhe0eu2" type="exclusive">
+                        <title>tmp_Flag</title>
+                        <flow id="kxhe0eu6">
+                           <assignment id="kxhe0euf">
+                              <title>Assignment to BPTaxType, BPTaxNumber etc.</title>
+                              <operation source="field" to="output.out_BusinessPartnerTax[1]/BPTaxType">temp.tmp_UserTables.TagValues</operation>
+                              <operation source="field" to="output.out_BusinessPartnerTax[1]/BPTaxNumber">temp.tmp_IdentityRegister.IdCode</operation>
+                              <operation source="formula" to="output.out_BusinessPartnerTax_Array">
+                                 <expression language="XQuery">list:append($output.out_BusinessPartnerTax_Array ,$output.out_BusinessPartnerTax )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="kxhe0eu7" targetId="kxhe0eu2" type="containerLink"/>
+                        </flow>
+                        <flow id="kxhe0eu9">
+                           <link id="kxhe0eua" targetId="kxhe0eu2" type="containerLink"/>
+                        </flow>
+                        <link id="kxhe0eu5" targetId="kxhe0eu6" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_Flag}</arg>
+                                 <arg name="right">Y</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kxhe0eu8" targetId="kxhe0eu9" type="containerLink"/>
+                        <link id="kxhe0eue" targetId="kvsc3v69"/>
+                     </container>
+                     <jumpTo id="kvsc3v6z">
+                        <link id="kvsc3v70" targetId="kv9ynocs"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kv9ynocz">
+                     <end id="kv9ynodv">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kv9ynocv" targetId="kv9ynocw" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_IdentityRegisterList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kv9ynocy" targetId="kv9ynocz" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_IdentityRegisterList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e66c5bad-61d8-45ef-950f-19a51f53d851</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-24T09:49:07Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-10-12T10:48:05Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "15004772",
+	 "in_MatterCode": "TNCC1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5QK9vpzEXdJg1Kgw9q7O6H</types1:GUID>
+      <types1:DisplayName>ProcessGetBusinessPartnerTax</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T08:58:12.558Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

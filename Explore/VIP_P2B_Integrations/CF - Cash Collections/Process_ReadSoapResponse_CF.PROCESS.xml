@@ -1,0 +1,182 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>GuabdwyOoMdtlI2-gt-4478596-2023-02-28T13:08:16.522Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_ReadSoapResponse_CF</types1:Name>
+      <types1:ParentFlowIds>iVsKKkhEuHWvJ4r-gt-957979-2023-02-28T13:08:17.132Z::pd.xml,NKVlDjAqQHhwq9b-gt-1595267-2023-08-23T09:16:51.637Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:17Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-16T15:17:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_ReadSoapResponse_CF/Process_ReadSoapResponse_CF.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_ReadSoapResponse_CF"
+                  name="Process_ReadSoapResponse_CF"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_MessageHeaderID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_SoapResponse" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnVIPIntegrations-CF:soap_response</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_AttemptCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lck4ju5f" targetId="lck4ju5e"/>
+               </start>
+               <wait id="lck4ju5e">
+                  <title>Wait 20 secs</title>
+                  <duration source="formula">
+                     <function name="duration_expression">
+                        <arg name="value">20</arg>
+                        <arg name="scale">S</arg>
+                        <arg name="businessDays"/>
+                     </function>
+                  </duration>
+                  <link id="lck4ju5g" targetId="lb0xoleo"/>
+               </wait>
+               <assignment id="lb0xoleo">
+                  <title>Read Soap Response</title>
+                  <operation source="query" to="output.out_SoapResponse">
+                     <query advanceQuery="true" from="AppConnVIPIntegrations-CF:soap_response">
+                        <where>confirmation_id = '{$input.in_MessageHeaderID}' Order By created_date desc</where>
+                     </query>
+                  </operation>
+                  <link id="lb0xolf5" targetId="lb0xolf4"/>
+               </assignment>
+               <container id="lb0xolf4" type="exclusive">
+                  <title>out_SoapResponse</title>
+                  <flow id="lb0xolf8">
+                     <end id="lb0xolfk">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="lb0xolfb">
+                     <assignment id="lb0xolfv">
+                        <title>Increment Attempt count</title>
+                        <operation source="formula" to="temp.tmp_AttemptCount">
+                           <expression language="XQuery">$temp.tmp_AttemptCount + 1</expression>
+                        </operation>
+                        <link id="lb0xolgm" targetId="lb0xolgl"/>
+                     </assignment>
+                     <wait id="lb0xolgl">
+                        <title>Wait</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">5</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="lb0xolgn" targetId="lb0xolg7"/>
+                     </wait>
+                     <container id="lb0xolg7" type="exclusive">
+                        <title>AttemptCount</title>
+                        <flow id="lb0xolga">
+                           <jumpTo id="lb0xolgw">
+                              <link id="lb0xolgx" targetId="lb0xoleo"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lb0xolgd">
+                           <throw id="lb0xolh2">
+                              <title>Throw Error</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">408</parameter>
+                                 <parameter name="detail" source="formula" updatable="true">
+                                    <expression language="XQuery">'SOAP Acknowledgement not received from ['||util:resolveURN('URN_SAP_Hostname')||'] for Message Header ID ['||$input.in_MessageHeaderID||']'</expression>
+                                 </parameter>
+                                 <parameter name="reason" source="constant" updatable="true">Request timeout</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lb0xolg9" targetId="lb0xolga" type="containerLink">
+                           <condition source="formula">
+                              <function name="less-or-equals">
+                                 <arg name="left">{$temp.tmp_AttemptCount}</arg>
+                                 <arg name="right">{5}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lb0xolgc" targetId="lb0xolgd" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="lb0xolf7" targetId="lb0xolf8" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$output.out_SoapResponse}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lb0xolfa" targetId="lb0xolfb" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$output.out_SoapResponse}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1ad5bc03-abf7-4ab6-b908-3913004c9095</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-02-28T13:08:17Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-02-28T13:08:17Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_MessageHeaderID": "20221003~31981067~7771.5"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9aEkH2h1AfWgTJQBwsvGg1</types1:GUID>
+      <types1:DisplayName>Process_ReadSoapResponse_CF</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:27.297Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

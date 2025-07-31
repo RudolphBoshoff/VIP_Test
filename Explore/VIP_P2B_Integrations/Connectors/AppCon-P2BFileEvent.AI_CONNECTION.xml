@@ -1,0 +1,587 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>s3IH0Fdw8jIw8jI-gt-4367217-2021-09-16T07:13:31.298Z::conn.xml</types1:EntryId>
+      <types1:Name>AppCon-P2BFileEvent</types1:Name>
+      <types1:ParentFlowIds>16Eaaaaaaaaaaaa-gt-29056038-2023-01-06T15:26:32.842Z::pd.xml,9Em2kVNKSmvD4te-gt-41519609-2022-06-26T06:21:04.977Z::pd.xml,aaaaa-gt-14407407-2021-09-16T07:13:34.008Z::pd.xml,B1T4W6jKsJlv58p-gt-5544605-2023-03-01T09:56:56.445Z::pd.xml,bdypLK2D86CjqFV-gt-11242275-2022-09-14T08:26:12.025Z::pd.xml,BOL8NTYglxbdypK-gt-37242431-2022-10-12T10:48:28.443Z::pd.xml,BxZmtK9hCHbf2XZ-gt-433211-2022-09-01T09:56:51.451Z::pd.xml,ImXycotFgpKi9zh-gt-6296735-2023-05-02T14:50:23.549Z::pd.xml,jDXJqEhynzYLnzY-gt-20445862-2022-10-12T10:48:28.157Z::pd.xml,Jk7KsqeErhNzUze-gt-32077239-2022-06-15T07:22:30.567Z::pd.xml,jznKKvvNtLSVMTo-gt-37242383-2022-10-12T10:48:28.155Z::pd.xml,lRkPUEbfV3HRvsG-gt-26246336-2023-03-13T09:24:51.192Z::pd.xml,MvrhFdw8jIw8jIw-gt-19944016-2021-11-11T12:36:48.627Z::pd.xml,mY6pkTjFIMeINci-gt-10157118-2022-09-20T15:48:30.195Z::pd.xml,OAPbdutaaabbgdo-gt-31625132-2022-08-23T12:42:30.651Z::pd.xml,oZBJRvDINciZBpD-gt-37242393-2022-10-12T10:48:28.241Z::pd.xml,Q4ciQlBWlD2pHAL-gt-15430389-2022-12-29T07:15:51.692Z::pd.xml,qDHFKi9zhFtybdu-gt-10157128-2022-09-20T15:48:30.273Z::pd.xml,RtaaabbgdoGsF4X-gt-24674928-2022-08-18T16:11:32.695Z::pd.xml,uBxiggor3rp3yD7-gt-37242407-2022-10-12T10:48:28.338Z::pd.xml,UZaaaa-gt-1863985-2022-08-26T11:24:28.747Z::pd.xml,vnMUvIw8jIw8jIw-gt-1149296-2023-03-01T09:56:03.349Z::pd.xml,wQuoJ49ARJi4tci-gt-14163796-2021-09-16T07:13:34.356Z::pd.xml,yKAWa-gt-37242419-2022-10-12T10:48:28.39Z::pd.xml,Z8DfYLnzYLnzYLn-gt-530587-2022-12-16T08:04:38.304Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Application connection for VPCEVENTS parameters.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-09-16T07:13:31Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-02T14:50:21Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-02T14:50:40Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppCon-P2BFileEvent/AppCon-P2BFileEvent.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppCon-P2BFileEvent"
+                     label="AppCon-P2BFileEvent"
+                     name="AppCon-P2BFileEvent">
+            <description>Application connection for VPCEVENTS parameters.</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <agent>VIP_IICS_SA_SG_ONPREM_GROUP</agent>
+            <attributes/>
+            <consumers>
+               <consumer enabled="true"
+                         name="AppCon-MatterUpdatedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\matterupdated"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="10"/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="true"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-ProjManagerChangedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\projmanagerchanged"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-AddressChangedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\addresschanged"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-EmailAddressChangedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\emailaddresschanged"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-MatterCreateFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\mattercreated"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="0"/>
+                     <attribute encrypted="false" name="readLock" value="none"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="PlainText"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-PaymentBatchClosedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\paymentbatchclosed"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-InvoiceCreatedFileParser"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\invoicecreated"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-EntityNameChanged"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\entitynamechanged"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="5"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="Api8BulkLoad"
+                         typeName="DelimitedContentParser">
+                  <description>Use this event source to monitor folders for new delimited content files, such as CSV, and parse them.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="E:\data\DataMigration\Test Rudolph\api-08"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="true"/>
+                     <attribute encrypted="false" name="delimiter" value="|"/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="AuthorizationGroup,BusinessPartnerCategory,BusinessPartner,Language,BusinessPartnerGrouping,FirstName,OrganizationBPName1,OrganizationBPName2,BusinessPartnerIDByExtSystem,AddrNr,CityName,PostalCode,address,address2,address3,address4,address5,Country,EmailAddress,E-mail - Invoice,E-mail - Invoice - CC,Email (not EI or EC),AddressUsage,ValidityEndDate,Customer,CompanyCode,ReconciliationAccount,MatterCode,SegmentElCode,YY1_Customer_Segment_cco,ValueAdjustmentKey,PayTerm,PaymentTerms,CashPlanningGroup,AccountingClerkInternetAddress,SalesOrganization,DistributionChannel,Division,Currency,CustomerPaymentTerms,BusinessPartnerRole,ValidFrom,ValidTo,MatterCount,FileStatus,FileStatusName"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="API14BulkLoad"
+                         typeName="DelimitedContentParser">
+                  <description>Use this event source to monitor folders for new delimited content files, such as CSV, and parse them.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="E:\data\DataMigration\Test Rudolph\api-14"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="10"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="25"/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="false"/>
+                     <attribute encrypted="false" name="delimiter" value="|"/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="Project,ProjectDescription,PriorityCode,ProjectStartDate,ProjectEndDate,ResponsibleCostCenter,ProfitCenter,ProjectProfileCode,ProjectCurrency,YY1_Customer_PPH,BusinessPartnerUUID,ProjectRoleType"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="API01BulkLoad"
+                         typeName="DelimitedContentParser">
+                  <description>Use this event source to monitor folders for new delimited content files, such as CSV, and parse them.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="E:\data\DataMigration\Test Rudolph\api-01"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="5"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="20"/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="false"/>
+                     <attribute encrypted="false" name="delimiter" value="|"/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="ih_RevEntity,ih_InvoiceNr,ih_ProformaNr,ih_DateCreate,ih_InvoiceType,ih_InvoiceRef,ih_DateInvoice,ih_DateVoucher,ih_MatterCode,ih_MatterType,ii_MatterCode,ii_MatterType,ii_LineNr,atr_LineRef,atr_LineNr,atr_AcctCode,ii_LineInvCur,ih_CurCode,ii_Description,sm_Description,ii_TaxCode,ii_ServCode,ii_ServiceType,rf_UserLookval,ProdExt,ih_RefCode,ih_InvoiceTotal,ih_InvoiceBase,ii_VatLineCur,ii_CurCode,ii_LinePrice,ii_VATperc,ii_ProfitCenter,ii_Exchange"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="AppCon-BillingFileClosed"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\billingfileclosed"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="changed"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="JSON"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="API18-InitiateProcurement"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\INITIATE_PROCUREMENT"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="PlainText"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="API18-InitiateProcurementTS"
+                         typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\INITIATE_PROCUREMENT_TS"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="PlainText"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="Api8AddressChangedDetail"
+                         typeName="DelimitedContentParser">
+                  <description>Use this event source to monitor folders for new delimited content files, such as CSV, and parse them.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\addresschanged_detail"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="false"/>
+                     <attribute encrypted="false" name="delimiter" value=","/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="AddrNr,CityName,PostalCode,Address,Address2,Address3,Address4,Address5,Country,EmailAddress,EmailInvoice,EmailInvoiceCC,EmailOther,Language,Active,AddrType,SeqNr,RefCode"/>
+                  </attributes>
+               </consumer>
+               <consumer enabled="true"
+                         name="Api8EmailAddressChangedDetail"
+                         typeName="DelimitedContentParser">
+                  <description>Use this event source to monitor folders for new delimited content files, such as CSV, and parse them.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\emailaddresschanged_detail"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value=""/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="false"/>
+                     <attribute encrypted="false" name="delimiter" value=","/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="AddrNr,CityName,PostalCode,Address,Address2,Address3,Address4,Address5,Country,EmailAddress,EmailInvoice,EmailInvoiceCC,EmailInvoiceReminder,EmailOther,Language,Active,AddrType,SeqNr,RefCode"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>6pHx2vkTVgpeQMefvNTXsp</types1:GUID>
+      <types1:DisplayName>AppCon-P2BFileEvent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-05-02T14:57:09.956Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

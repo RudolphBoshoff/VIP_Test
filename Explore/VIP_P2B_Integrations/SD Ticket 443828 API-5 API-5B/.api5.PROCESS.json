@@ -1,0 +1,105 @@
+{
+  "objectInfo" : {
+    "id" : "bDkP4PQAOqUkjmeuv2KGe4",
+    "name" : "api5",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Hf5i4rswVYx8R8W-gt-46112804-2023-02-17T15:04:53.9Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Posts the Invoice clearance data to VPoint API and logs the same in SAP",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2023-08-28T07:53:35.539Z",
+  "objectRefs" : [ {
+    "id" : "ac0TllrrteyhAvhPAqHnWT",
+    "name" : "ProcessGetAPI5Data",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "vG8H36I1dq2ME9p-gt-45156479-2023-02-17T15:04:53.39Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Retrieves the Invoice and BankAccount data from VPoint tables for a given Invoice payment clearance entry",
+        "contentType" : "Binary",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations (Queueing)/SD Ticket 443828\tAPI-5 API-5B"
+  }, {
+    "id" : "dz3hd9kqiUDgzx2JbzI8gU",
+    "name" : "Process_POST_YY1_LoggingTable",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "OImXycotFgpKi9z-gt-24314699-2022-09-28T15:03:20.652Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Handles the SAP Post call and related retry/logging",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes (Queueing)"
+  }, {
+    "id" : "3FTHYFEl7ebeNravAPmXkT",
+    "name" : "AppSvcAPI-5-VPC",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BwDPWNMZQELaabc-gt-27825646-2021-08-20T07:34:35.451Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations (Queueing)/Connectors"
+  }, {
+    "id" : "7N5uKhvv6kXg3zoRAbuggF",
+    "name" : "Process_P2B_Event_ErrorLog",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Records errors in SQL DB, File, and Email\nChangelog:\nhttps://vistra.atlassian.net/browse/VR-147",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations (Queueing)"
+  } ]
+}

@@ -1,0 +1,277 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HIk3aaa-gt-37242184-2022-10-12T10:48:21.534Z::pd.xml</types1:EntryId>
+      <types1:Name>api11_wrapper</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:22Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-04T09:23:18Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-04T09:23:58Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.api11_wrapper/api11_wrapper.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="api11_wrapper"
+                  name="api11_wrapper"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="delimitedContent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppGetJERevenueRecogPosting01:JERevenueRecogPosting01Content</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bWpSfNqXvW7f7IqyNQDuEd</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_api11_wrapper"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_error" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RevenueRecog_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Transaction_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Event_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Process_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_API_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartDateTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppGetJERevenueRecogPosting01:JERevenueRecogPosting01"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8lemgzt" targetId="l8lemgzs"/>
+               </start>
+               <assignment id="l8lemgzs">
+                  <title>Define Parent Process Fields</title>
+                  <operation source="constant" to="temp.tmp_API_Name">API11</operation>
+                  <operation source="constant" to="temp.tmp_Event_Name">API11-RevenueRecognition Posting</operation>
+                  <operation source="formula" to="temp.tmp_IICS_Run_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_Process_Name">api11_wrapper</operation>
+                  <operation source="formula" to="temp.tmp_Transaction_ID">
+                     <expression language="XQuery">fn:concat(fn:concat(fn:concat('API11-', $input.delimitedContent[1]/record[1]/ID), '-'),fn:current-date() )
+
+ </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartDateTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RevenueRecog_ID">
+                     <expression language="XQuery">$input.delimitedContent[1]/record[1]/ID </expression>
+                  </operation>
+                  <operation source="formula" to="output.out_ProcessVariables_api11_wrapper">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt; &lt;X_TRANSACTION_ID&gt;{$temp.tmp_Transaction_ID  }&lt;/X_TRANSACTION_ID&gt; &lt;IICS_Run_ID&gt;{$temp.tmp_IICS_Run_ID }&lt;/IICS_Run_ID&gt; &lt;IICS_Process_Name&gt;{$temp.tmp_Process_Name }&lt;/IICS_Process_Name&gt; &lt;Code&gt;&lt;/Code&gt; &lt;Error&gt;&lt;/Error&gt; &lt;Description&gt;&lt;/Description&gt; &lt;Event_Name&gt;{$temp.tmp_Event_Name }&lt;/Event_Name&gt; &lt;API_Name&gt;{$temp.tmp_API_Name }&lt;/API_Name&gt; &lt;Data_Key&gt;{ 'ID=' || $temp.tmp_RevenueRecog_ID  }&lt;/Data_Key&gt; &lt;RestURL&gt;N/A&lt;/RestURL&gt; &lt;HelpFileLInk&gt;N/A&lt;/HelpFileLInk&gt; &lt;ProcessStartTime&gt;{$temp.tmp_ProcessStartDateTime }&lt;/ProcessStartTime&gt; &lt;RequestPayload&gt;&lt;/RequestPayload&gt; &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt; &lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <link id="l8lemi0r" targetId="l8lemi0q"/>
+               </assignment>
+               <milestone id="l8lemi0q">
+                  <title>Milestone</title>
+                  <link id="l8lie53p" targetId="ktmjtp6l"/>
+               </milestone>
+               <eventContainer id="ktmjtp6l">
+                  <subflow id="ktlh6alr">
+                     <title>ProcessPostRevenueRecog01</title>
+                     <subflowGUID>c7OxLUaJyyMcKLogsqj34r</subflowGUID>
+                     <subflowPath>ProcessPostRevenueRecog01</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_DelimitedContent" source="field" updatable="true">input.delimitedContent</parameter>
+                        <parameter name="in_Process_Variables_API11" source="field" updatable="true">output.out_ProcessVariables_api11_wrapper</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_RequestHeader_list" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:POJournalEntryRevenueRecogRequestHeader</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">kHLSg4jJQuwkvbwWlufjcQ</option>
+                           </options>
+                        </field>
+                        <field name="out_JournalHeader" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:POJournalEntryRevenueRecogHeader</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">bsmxDuzxqKzgqTmarRvkOw</option>
+                           </options>
+                        </field>
+                        <field name="out_Process_Variables_RevRecog" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PoErrorDetails</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="ktmjtp6n">
+                     <link id="ktmjtp6o" targetId="ktmjtp6l" type="containerLink"/>
+                  </flow>
+                  <flow id="ktmjtp6q">
+                     <assignment id="lm4mszh3">
+                        <title>Assignment to Code, Error etc.</title>
+                        <operation source="field" to="output.out_ProcessVariables_api11_wrapper[1]/Code">output.faultInfo_subpro[1]/code</operation>
+                        <operation source="field" to="output.out_ProcessVariables_api11_wrapper[1]/Error">output.faultInfo_subpro[1]/reason</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_api11_wrapper[1]/Description">output.faultInfo_subpro[1]/detail</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_api11_wrapper[1]/FailedAtStep">Process: ProcessPostRevenueRecog01</operation>
+                        <link id="lm4mszh4" targetId="ktmjtp7h"/>
+                     </assignment>
+                     <subflow id="ktmjtp7h">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_api11_wrapper</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="ktmjtp6r" targetId="ktmjtp6l" type="containerLink"/>
+                  </flow>
+                  <link id="ktmjtp6m" targetId="ktmjtp6n" type="containerLink"/>
+                  <link id="ktlh6alt" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo_subpro" id="ktmjtp5k" interrupting="true">
+                        <link id="ktmjtp6p" targetId="ktmjtp6q" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ab2689ae-0c93-44a7-bd42-574a508a8eaf</ns1:Id>
+               <ns1:Name>inpu</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-30T13:32:31Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-30T13:32:31Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "delimitedContent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "totalRowsCount": "",
+	 	 "record": {
+	 	 	 "index": "",
+	 	 	 "TestDataIndicator": "",
+	 	 	 "Creationdate": "",
+	 	 	 "ID": "",
+	 	 	 "SenderBusinessSystemId": "",
+	 	 	 "OriginalReferenceDocumentType": "",
+	 	 	 "BusinessTransactionType": "",
+	 	 	 "AccountingDocumentType": "",
+	 	 	 "DocumentItemText": "",
+	 	 	 "DocumentHeaderText": "",
+	 	 	 "DocumentReferenceID": "",
+	 	 	 "Reference1InDocumentHeader": "",
+	 	 	 "Reference2InDocumentHeader": "",
+	 	 	 "CreatedByUser": "",
+	 	 	 "CompanyCode": "",
+	 	 	 "DocumentDate": "",
+	 	 	 "PostingDate": "",
+	 	 	 "Itm": "",
+	 	 	 "GLAccount": "",
+	 	 	 "AmountInTransactionCurrency": "",
+	 	 	 "CurrencyCode": "",
+	 	 	 "YY1_SOPCustomer": "",
+	 	 	 "AccountAssignmentType": "",
+	 	 	 "WBSElement": "",
+	 	 	 "Material": "",
+	 	 	 "SoldMaterial": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5kLGhgSxXOKfUR19HnhA2v</types1:GUID>
+      <types1:DisplayName>api11_wrapper</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-04T10:00:22.522Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

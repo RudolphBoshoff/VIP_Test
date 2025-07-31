@@ -1,0 +1,783 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RMloVVVVVVVVVVV-gt-23167176-2021-08-13T10:41:49.704Z::pd.xml</types1:EntryId>
+      <types1:Name>vpcevents</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This endpoint receives event notifications from VPoint, interprets the payload and writes the payload to a JSON file, which is picked up by the respective file events</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:50Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-08-11T11:26:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-08-11T11:27:13Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.vpcevents/vpcevents.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="vpcevents"
+                  name="vpcevents"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This endpoint receives event notifications from VPoint, interprets the payload and writes the payload to a JSON file, which is picked up by the respective file events</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Payload" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description=""
+                      name="tmp_VIP_P2B_InterfaceAuditLog"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_InterfaceAuditLog</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_json_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2pXtdn8cZ4hcSRDTk1q9IQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventDetails_LimitedList" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails-LimitedList</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQPdN3MjQgQbd1LiGzIw2R</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedUsers>
+                     <user>veerabh-vistra-dev </user>
+                     <user> veerabhadra.dhikonda </user>
+                     <user> anupama.rao@vistra.com </user>
+                     <user> dhiraj.dhandhaliya@vistra.com </user>
+                     <user> Dhiraj.Dhandhaliya </user>
+                     <user> swapnil.shrungare@vistra.com.SAML </user>
+                     <user> vipapiconsumer_dev </user>
+                     <user> vipapiconsumer_tst </user>
+                     <user> vipapiconsumer_prd </user>
+                     <user> anupama.rao@vistra.com.SAML </user>
+                     <user> rudolph.boshoff@vistra.com.SAML </user>
+                     <user> veerabh-vistra-tst </user>
+                     <user> swapnil.shrungare@vistra.com.SAML2 </user>
+                     <user> kumari.nimisha@vistra.com </user>
+                     <user> rudolph.boshoff@vistra.com </user>
+                     <user> Rudolph.Boshoff</user>
+                     <user>veerabh-vistra-dev</user>
+                     <user>veerabhadra.dhikonda</user>
+                     <user>anupama.rao@vistra.com</user>
+                     <user>dhiraj.dhandhaliya@vistra.com</user>
+                     <user>Dhiraj.Dhandhaliya</user>
+                     <user>swapnil.shrungare@vistra.com.SAML</user>
+                     <user>vipapiconsumer_dev</user>
+                     <user>vipapiconsumer_tst</user>
+                     <user>vipapiconsumer_prd</user>
+                     <user>anupama.rao@vistra.com.SAML</user>
+                     <user>rudolph.boshoff@vistra.com.SAML</user>
+                     <user>veerabh-vistra-tst</user>
+                     <user>swapnil.shrungare@vistra.com.SAML2</user>
+                     <user>kumari.nimisha@vistra.com</user>
+                     <user>rudolph.boshoff@vistra.com</user>
+                     <user>Rudolph.Boshoff</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lhysm86o" targetId="lhysm86n"/>
+               </start>
+               <milestone id="lhysm86n">
+                  <title>Milestone 1</title>
+                  <link id="lhysm86p" targetId="kpmvx8z9"/>
+               </milestone>
+               <assignment id="kpmvx8z9">
+                  <title>Decode File Content</title>
+                  <operation source="formula" to="temp.tmp_json_text">
+                     <expression language="XQuery">util:toJSON($input.Payload )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_event_name">
+                     <expression language="XQuery">$input.Payload[1]/eventTypeName </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_event_type">
+                     <expression language="XQuery">$input.Payload[1]/eventChangeType </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_EventDetails_LimitedList">
+                     <expression language="XQuery">$input.Payload </expression>
+                  </operation>
+                  <link id="ljwpl41d" targetId="ljwpl414"/>
+               </assignment>
+               <eventContainer id="ljwpl414">
+                  <create id="ljwpl418">
+                     <title>VIP Audit Log</title>
+                     <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceAuditLog</entityName>
+                     <createInput>
+                        <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                        <parameter name="Payload" source="field" updatable="true">temp.tmp_json_text</parameter>
+                        <parameter name="DateReceived" source="formula" updatable="true">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </parameter>
+                     </createInput>
+                  </create>
+                  <flow id="ljwpl415">
+                     <link id="ljwpl41b" targetId="ljwpl414" type="containerLink"/>
+                  </flow>
+                  <flow id="ljwpl416">
+                     <subflow id="ljwpl417">
+                        <title>Log Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.Payload[1]/eventTypeName</parameter>
+                           <parameter name="i_DataKey" source="formula" updatable="true">
+                              <expression language="XQuery">fn:string-join(list:sequence($input.Payload[1]/identifiers),'^')</expression>
+                           </parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Failed to insert into TPQ</parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">util:toJSON($input.Payload )</expression>
+                           </parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="ll6i66rw" targetId="ll6i66rv"/>
+                     </subflow>
+                     <end id="ll6i66rv">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="ljwpl419" targetId="ljwpl415" type="containerLink"/>
+                  <link id="ljwpl41e" targetId="ljwpl3nn"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lhoukygg" interrupting="true">
+                        <link id="ljwpl41a" targetId="ljwpl416" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="ljwpl3nn" type="exclusive">
+                  <title>tmp_event_name</title>
+                  <flow id="ljwpl3nr">
+                     <assignment id="ljwpl434">
+                        <title>Prepare JSON</title>
+                        <operation source="constant" to="temp.tmp_Writer[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_Writer[1]/fileName">
+                           <expression language="XQuery">fn:concat($input.X_TRANSACTION_ID ,'.json')</expression>
+                        </operation>
+                        <operation source="field" to="temp.tmp_Writer[1]/content">temp.tmp_json_text</operation>
+                        <operation source="formula" to="temp.tmp_Writer[1]/filePath">
+                           <expression language="XQuery">'\data\vpcevents\'|| (switch($temp.tmp_event_name) case "INVOICE_CREATED" return "invoicecreated" case "MATTER_CREATED" return "mattercreated" case "MATTER_CHANGED" return "matterupdated" case "PROJ_MANAGER_CHANGED" return "projmanagerchanged" case "ADDRESS_CHANGED" return "addresschanged" case "EMAIL_ADDRESS_CHANGED" return "emailaddresschanged" case "ENTITY_NAME_CHANGED" return "entitynamechanged" default return $temp.tmp_event_name)</expression>
+                        </operation>
+                        <link id="ljwpl4ej" targetId="ljwpl4on"/>
+                     </assignment>
+                     <eventContainer id="ljwpl4on">
+                        <service id="ljwpl4ei">
+                           <title>Generic</title>
+                           <serviceName>AppCon-JsonWtiter:Generic</serviceName>
+                           <serviceGUID>2pXtdn8cZ4hcSRDTk1q9IQ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_Writer</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ljwpl4op">
+                           <link id="ljwpl4oq" targetId="ljwpl4on" type="containerLink"/>
+                        </flow>
+                        <flow id="ljwpl4os">
+                           <jumpTo id="ljwpl4pl">
+                              <link id="ljwpl4pm" targetId="ljwpl417"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="ljwpl4oo" targetId="ljwpl4op" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="ljwpl4g6" interrupting="true">
+                              <link id="ljwpl4or" targetId="ljwpl4os" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ljwpl3ns" targetId="ljwpl3nn" type="containerLink"/>
+                  </flow>
+                  <flow id="ljwpl3nu">
+                     <eventContainer id="ljwpl3z3">
+                        <create id="ljwpl3z7">
+                           <title>Insert TPQ</title>
+                           <entityName>AppConn-VIPP2B:Transaction_Processing_Queue</entityName>
+                           <createInput>
+                              <parameter name="EventTypeName" source="field" updatable="true">input.Payload[1]/eventTypeName</parameter>
+                              <parameter name="RevEntity" source="constant" updatable="true">TBD</parameter>
+                              <parameter name="Identifier1" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[1]/identifierValue </expression>
+                              </parameter>
+                              <parameter name="Identifier2" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[2]/identifierValue </expression>
+                              </parameter>
+                              <parameter name="Identifier3" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[3]/identifierValue </expression>
+                              </parameter>
+                              <parameter name="Identifier4" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[4]/identifierValue </expression>
+                              </parameter>
+                              <parameter name="Identifier5" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[5]/identifierValue </expression>
+                              </parameter>
+                              <parameter name="CreatedDate" source="formula" updatable="true">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </parameter>
+                              <parameter name="ProcessingStatus" source="constant" updatable="true">QUEUED</parameter>
+                              <parameter name="RetryCount" source="constant" updatable="true">0</parameter>
+                              <parameter name="X_Transaction_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                              <parameter name="eventChangeType" source="field" updatable="true">input.Payload[1]/eventChangeType</parameter>
+                              <parameter name="Identifier1Name" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[1]/identifierName </expression>
+                              </parameter>
+                              <parameter name="Identifier2Name" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[2]/identifierName </expression>
+                              </parameter>
+                              <parameter name="Identifier3Name" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[3]/identifierName </expression>
+                              </parameter>
+                              <parameter name="Identifier4Name" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[4]/identifierName </expression>
+                              </parameter>
+                              <parameter name="Identifier5Name" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.Payload[1]/identifiers[5]/identifierName </expression>
+                              </parameter>
+                           </createInput>
+                        </create>
+                        <flow id="ljwpl3z4">
+                           <link id="ljwpl3za" targetId="ljwpl3z3" type="containerLink"/>
+                        </flow>
+                        <flow id="ljwpl3z5">
+                           <jumpTo id="ljwpl3z6">
+                              <link id="ljwpl3zb" targetId="ljwpl417"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="ljwpl3z8" targetId="ljwpl3z4" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhost8fi" interrupting="true">
+                              <link id="ljwpl3z9" targetId="ljwpl3z5" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ljwpl3nv" targetId="ljwpl3nn" type="containerLink"/>
+                  </flow>
+                  <link id="ljwpl3nq" targetId="ljwpl3nr" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$temp.tmp_event_name}</arg>
+                           <arg name="right">INITIATE_PROCUREMENT</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ljwpl3nt" targetId="ljwpl3nu" type="containerLink"/>
+                  <link id="ljwpl4fa" targetId="ljwpl4f9"/>
+               </container>
+               <subflow id="ljwpl4f9">
+                  <title>Prc_MDM_Vpoint_To_C360</title>
+                  <subflowGUID>5pYhzmV5VJAc07Hjxk8bQK</subflowGUID>
+                  <subflowPath>Prc_MDM_Vpoint_To_C360</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                     <parameter name="Payload" source="field" updatable="true">input.Payload</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="ljwpl4fb" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>d6db4411-d628-41ec-b0d6-5ba4bddca120</ns1:Id>
+               <ns1:Name>Address_Changed</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "99999992",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "Matters.RefCode",
+				"identifierValue": "12000006"
+			},
+			{
+				"identifierName": "Matters.MatterCode",
+				"identifierValue": "TSAC1-4"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "MATTER_CREATED"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>6c4b82a4-6b03-4d55-9eda-830755e73d6c</ns1:Id>
+               <ns1:Name>API-18</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-07-10T13:21:38Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "DIPS-161_TEST001",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "WFlowHeader.FileCode",
+				"identifierValue": "12345678"
+			},
+			{
+				"identifierName": "WFlowHeader.WflowNr",
+				"identifierValue": "99999"
+			},
+			{
+				"identifierName": "WFlowFields.FldValue",
+				"identifierValue": "XX00"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "INITIATE_PROCUREMENT"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5752da60-b8d8-4f18-bbbb-a9212ca03074</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "80006315"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>ff0ed277-22be-40ee-9979-794a5709e052</ns1:Id>
+               <ns1:Name>BillingFileClosed</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CLOSED",
+	 	 "identifiers": {
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "80001215"
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5b49f096-b490-4059-93bb-94b57f158197</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>c487609c-99ff-4b63-87aa-c950a3738c96</ns1:Id>
+               <ns1:Name>email_address_Changed</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "112051359"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8c455d83-caa1-44a3-b784-a168afb467c8</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "33",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "39097"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0b14b043-89ed-4a0f-a387-b18a7c609651</ns1:Id>
+               <ns1:Name>INVOICE_CREDIT_NOTE_CREATED</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-20T17:37:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-20T17:38:02Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "106807",
+	"Payload": {
+		"eventChangeType": "UPDATE",
+		"eventTypeName": "INVOICE_CREDIT_NOTE_CREATED",
+		"identifiers": [
+			{
+				"identifierName": "InvoiceHeader.ProformaNr",
+				"identifierValue": "210045"
+			}
+		]
+	}
+}
+
+</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4c282f8d-df8d-4997-94b1-996273d759f0</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "77",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "112051359"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "AN"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8796c2b8-8091-42ae-8697-12f2faa27420</ns1:Id>
+               <ns1:Name>MatterCreated</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:10Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-14T07:27:46Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "99999991",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "Matters.RefCode",
+				"identifierValue": "10456816"
+			},
+			{
+				"identifierName": "Matters.MatterCode",
+				"identifierValue": "CF"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "MATTER_CREATED"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9f34e5d5-934d-41b5-b182-db0cac39233f</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "12500223"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "AN01"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f1e89373-51cb-42ce-90cf-6cf242591e33</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>roger.fbaatjes@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-02T18:55:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-07-14T11:09:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "102",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "3"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "DISB042"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>54466edf-f013-48ff-8927-3017b79e4861</ns1:Id>
+               <ns1:Name>PaymentRequestSIT</ns1:Name>
+               <ns1:CreatedBy>roger.fbaatjes@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-15T13:15:51Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-07-14T11:09:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "450",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "4"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "DISB042"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>ec44d472-fd51-4b89-a316-035485a95eb8</ns1:Id>
+               <ns1:Name>ProjManager</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-05-10T09:47:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:38Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+     "X_TRANSACTION_ID": "25",
+     "Payload": {
+          "eventChangeType": "UPDATED",
+          "eventTypeName": "PROJ_MANAGER_CHANGED",
+          "identifiers": [{
+               "identifierName": "RmClients.AddrCode",
+               "identifierValue": "12051401"
+          }
+
+ 
+
+               ]
+     }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>99d48a10-4b0e-4c4a-b719-633264698ac8</ns1:Id>
+               <ns1:Name>ProjManagerChanged</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-25T09:49:00Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7437575",
+	 "Payload": 
+{"identifiers":[{"identifierName":"WFlowHeader.FileCode","identifierValue":"11918093"},{"identifierName":"WFlowHeader.WflowNr","identifierValue":"42299"}],"eventChangeType":"NEW","eventTypeName":"INITIATE_PROCUREMENT"}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>6fcaaf99-47cd-4a4b-8e24-dd65a6266325</ns1:Id>
+               <ns1:Name>t</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-04T08:50:00Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ENTITY_NAME_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "EntNameChanges.Entcode",
+	 	 	 "identifierValue": "12500081"
+	 	 },
+                 {
+	 	 	 "identifierName": "EntNameChanges.SeqNr",
+	 	 	 "identifierValue": "1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>322a9193-d7d1-4f16-bb56-f52036ce5184</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "RBTEST221216-2",
+	 "Payload": {
+		"identifiers": [
+			{
+				"identifierName": "WFlowHeader.WflowNr",
+				"identifierValue": "2158"
+			},
+			{
+				"identifierName": "WFlowHeader.FileCode",
+				"identifierValue": "12500178"
+			},
+			{
+				"identifierName": "WFlowFields.FldValue",
+				"identifierValue": "BAH-E"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "INITIATE_PROCUREMENT"
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>47c5791a-a552-4e3b-97fd-2c5f3f30f35f</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-07-14T11:09:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>lmf7A1L822zcWAaa2p6zeH</types1:GUID>
+      <types1:DisplayName>vpcevents</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-25T04:39:53.192Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

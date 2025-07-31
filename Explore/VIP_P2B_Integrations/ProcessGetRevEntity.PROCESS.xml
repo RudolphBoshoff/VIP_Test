@@ -1,0 +1,209 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wmoTCOshBnJKoJB-gt-9899507-2021-08-13T10:41:46.363Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetRevEntity</types1:Name>
+      <types1:ParentFlowIds>9R0aa-gt-21752433-2021-11-11T12:36:46.978Z::pd.xml,bcmw7dvB8aabbgd-gt-22241867-2022-03-30T09:47:45.021Z::pd.xml,chCVf4VQT53nQci-gt-6833529-2021-09-17T11:48:56.03Z::pd.xml,eFRqXpIW7WHK80F-gt-2903851-2021-09-27T12:12:36.07Z::pd.xml,f5i4rswVYx8R8Wr-gt-5637160-2022-07-25T10:28:59.095Z::pd.xml,goXFtclq1iUsRvs-gt-37228579-2022-10-12T10:48:15.111Z::pd.xml,MFhBJQWSwxF1T4W-gt-6060593-2022-07-22T13:56:29.628Z::pd.xml,MvrhFdw8jIw8jIw-gt-19944016-2021-11-11T12:36:48.627Z::pd.xml,oBbeAzu2JQhtGci-gt-23166653-2021-08-13T10:41:48.233Z::pd.xml,sSbdpsaaaa-gt-9932274-2022-07-26T07:23:26.295Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:46Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:07Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T11:34:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetRevEntity/ProcessGetRevEntity.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetRevEntity"
+                  name="ProcessGetRevEntity"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_MatterRevEntity" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PORevEntity</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                  </options>
+               </field>
+               <field description="" name="out_MatterRevEntity_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PORevEntity</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_MatterRevEntity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterRevEntity_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterRevEntityCompare" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">xyz</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kqs7psuv" targetId="kqs7psuu"/>
+               </start>
+               <assignment id="kqs7psuu">
+                  <title>Assignment to tmp_MatterRevEntity_list</title>
+                  <operation source="list" to="temp.tmp_MatterRevEntity_list">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_RefCode}' Order By RevEntity</where>
+                     </query>
+                  </operation>
+                  <link id="kqs7psvs" targetId="kqs7psvr"/>
+               </assignment>
+               <container id="kqs7psvr" type="exclusive">
+                  <title>RecordsLoop</title>
+                  <flow id="kqs7psvv">
+                     <assignment id="kqs7pswd">
+                        <title>Assignment to tmp_MatterRevEntity Head</title>
+                        <operation source="formula" to="temp.tmp_MatterRevEntity">
+                           <expression language="XQuery">list:head($temp.tmp_MatterRevEntity_list )</expression>
+                        </operation>
+                        <link id="kqsbfpv7" targetId="kqsbfpv6"/>
+                     </assignment>
+                     <container id="kqsbfpv6" type="exclusive">
+                        <title>RevEntity</title>
+                        <flow id="kqsbfpva">
+                           <assignment id="kqsd3vip">
+                              <title>Assignment to tmp_MatterRevEntityCompare</title>
+                              <operation source="field" to="temp.tmp_MatterRevEntityCompare">temp.tmp_MatterRevEntity.RevEntity</operation>
+                              <link id="kqsd3viq" targetId="kqsd3vho"/>
+                           </assignment>
+                           <assignment id="kqsd3vho">
+                              <title>Assignment to tmp_MatterRevEntity_list 1</title>
+                              <operation source="formula" to="temp.tmp_MatterRevEntity_list">
+                                 <expression language="XQuery">list:tail($temp.tmp_MatterRevEntity_list )</expression>
+                              </operation>
+                              <link id="kqsd3vhp" targetId="kqsd3vgz"/>
+                           </assignment>
+                           <jumpTo id="kqsd3vgz">
+                              <link id="kqsd3vh0" targetId="kqs7psvr"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="kqsbfpvd">
+                           <assignment id="kqsbfpvu">
+                              <title>Assignment to RevEntity, RefCode etc.</title>
+                              <operation source="formula" to="output.out_MatterRevEntity[1]/RevEntity">
+                                 <expression language="XQuery">util:iif(fn:string-length($temp.tmp_MatterRevEntity.RevEntity)=5, fn:substring($temp.tmp_MatterRevEntity.RevEntity, 1, 2) || fn:substring($temp.tmp_MatterRevEntity.RevEntity, 4, 2) ,$temp.tmp_MatterRevEntity.RevEntity)</expression>
+                              </operation>
+                              <operation source="field" to="output.out_MatterRevEntity[1]/RefCode">temp.tmp_MatterRevEntity.RefCode</operation>
+                              <operation source="field" to="output.out_MatterRevEntity[1]/MatterCode">temp.tmp_MatterRevEntity.MatterCode</operation>
+                              <operation source="formula" to="output.out_MatterRevEntity_Array">
+                                 <expression language="XQuery">list:append($output.out_MatterRevEntity_Array ,$output.out_MatterRevEntity)</expression>
+                              </operation>
+                              <operation source="field" to="temp.tmp_MatterRevEntityCompare">temp.tmp_MatterRevEntity.RevEntity</operation>
+                              <link id="kqsd3vhk" targetId="kqsbfpw6"/>
+                           </assignment>
+                           <assignment id="kqsbfpw6">
+                              <title>Assignment to tmp_MatterRevEntity_list</title>
+                              <operation source="formula" to="temp.tmp_MatterRevEntity_list">
+                                 <expression language="XQuery">list:tail($temp.tmp_MatterRevEntity_list )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="kqsbfpve" targetId="kqsbfpv6" type="containerLink"/>
+                        </flow>
+                        <link id="kqsbfpv9" targetId="kqsbfpva" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_MatterRevEntity.RevEntity}</arg>
+                                 <arg name="right">{$temp.tmp_MatterRevEntityCompare}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kqsbfpvc" targetId="kqsbfpvd" type="containerLink"/>
+                     </container>
+                     <link id="kqs7psvw" targetId="kqs7psvr" type="containerLink"/>
+                  </flow>
+                  <flow id="kqs7psvy">
+                     <end id="kqs7pswx"/>
+                  </flow>
+                  <link id="kqs7psvu" targetId="kqs7psvv" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_MatterRevEntity_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kqs7psvx" targetId="kqs7psvy" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_MatterRevEntity_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kqs7pswu" targetId="kqs7pswt"/>
+               </container>
+               <jumpTo id="kqs7pswt">
+                  <link id="kqs7psx0" targetId="kqs7psvr"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>d69e026e-358b-427d-9b96-e6d216a05ea2</ns1:Id>
+               <ns1:Name>matter_Refcode</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:46Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-10-12T10:48:07Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12500113"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>fEtZTQEJrQKfhQxvOFh9Oh</types1:GUID>
+      <types1:DisplayName>ProcessGetRevEntity</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T08:58:12.665Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

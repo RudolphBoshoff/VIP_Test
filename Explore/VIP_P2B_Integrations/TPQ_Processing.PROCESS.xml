@@ -1,0 +1,692 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>i31CHdqwx8R8WrY-gt-7140119-2023-07-10T13:21:41.137Z::pd.xml</types1:EntryId>
+      <types1:Name>TPQ_Processing</types1:Name>
+      <types1:ParentFlowIds>AeN7Y3AxtPk7HNC-gt-7140133-2023-07-10T13:21:41.425Z::pd.xml,G8H36I1dq2ME9pa-gt-7140145-2023-07-10T13:21:41.519Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo>AppConn-VIPP2B:Transaction_Processing_Queue</types1:AppliesTo>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-07-10T13:21:41Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="TPQ_Processing"
+                  name="TPQ_Processing"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo>AppConn-VIPP2B:Transaction_Processing_Queue</appliesTo>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_ProcessVariables_TPQ" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lhsx60nw" targetId="lhsx60nv"/>
+               </start>
+               <assignment id="lhsx60nv">
+                  <title>Assignment to out_ProcessVariables_TPQ, ProcessingStatus etc.</title>
+                  <operation source="formula" to="output.out_ProcessVariables_TPQ">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$X_Transaction_ID }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;{$EventTypeName }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;{switch($EventTypeName) 
+   case 'MATTER_CREATED' 			return 'API14'
+   case 'MATTER_CHANGED' 			return 'API14'
+   case 'PROJ_MANAGER_CHANGED' 		return 'API14'
+   case 'ENTITY_NAME_CHANGED' 		return 'API08'
+   case 'ADDRESS_CHANGED' 			return 'API08'
+   case 'EMAIL_ADDRESS_CHANGED' 	return 'API08'
+   case 'INVOICE_CREATED' 			return 'API01'
+   case 'INITIATE_PROCUREMENT' 		return 'API18'
+   case 'INITIATE_PROCUREMENT_TS' 	return 'API18'
+   default return 'TBD'}&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{
+   	'Identifier1='||$Identifier1|| 
+    '^Identifier2='||$Identifier2||
+    '^Identifier3='||$Identifier3||
+    '^Identifier4='||$Identifier4||
+    '^Identifier5='||$Identifier5
+   }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <operation source="constant" to="ProcessingStatus">PROCESSING</operation>
+                  <operation source="formula" to="IicsRunId">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <link id="lhyq5idm" targetId="lhyq5idl"/>
+               </assignment>
+               <milestone id="lhyq5idl">
+                  <title>202 Accepted</title>
+                  <httpStatus>202</httpStatus>
+                  <link id="lhyq5idn" targetId="lhugfk6l"/>
+               </milestone>
+               <container id="lhugfk6l" type="exclusive">
+                  <title>API 08 Events</title>
+                  <flow id="lhugfk6m">
+                     <eventContainer id="lhugfmiw">
+                        <subflow id="lhugfk6n">
+                           <title>Address Changed</title>
+                           <subflowGUID>f3ehDcxoraWk49OVAXo3Oj</subflowGUID>
+                           <subflowPath>Process_AddressChanged</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_Api_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier2</parameter>
+                              <parameter name="in_SeqNr" source="field" updatable="true">Identifier1</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_AddressChanged" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfmiy">
+                           <assignment id="lhugfphi">
+                              <title>Update TPQ ADC</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_AddressChanged[1]/Code   return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ">output.out_ProcessVariables_AddressChanged</operation>
+                           </assignment>
+                           <link id="lhugfmiz" targetId="lhugfmiw" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfmj1">
+                           <jumpTo id="lhugfpvn">
+                              <link id="lhugfpvo" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfmix" targetId="lhugfmiy" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfmia" interrupting="true">
+                              <link id="lhugfmj0" targetId="lhugfmj1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk7i" targetId="lhugfk6l" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk6p">
+                     <eventContainer id="lhugfn8q">
+                        <subflow id="lhugfk6r">
+                           <title>Email Address Changed</title>
+                           <subflowGUID>gr9sVBwBqG8cweM8XP5JkE</subflowGUID>
+                           <subflowPath>Process_EmailAddressChanged</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_Api_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier1</parameter>
+                              <parameter name="in_SeqNr" source="field" updatable="true">Identifier2</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_EmailAddressChanged" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfn8s">
+                           <assignment id="lhugfpke">
+                              <title>Update TPQ EAC</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_EmailAddressChanged[1]/Code   return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lhugfn8t" targetId="lhugfn8q" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfn8v">
+                           <jumpTo id="lhugfpsd">
+                              <link id="lhugfpse" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfn8r" targetId="lhugfn8s" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfn7v" interrupting="true">
+                              <link id="lhugfn8u" targetId="lhugfn8v" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk7k" targetId="lhugfk6l" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk72">
+                     <eventContainer id="lhugfnl7">
+                        <subflow id="lhugfk73">
+                           <title>Entity Name Changed</title>
+                           <subflowGUID>22Hd68nR1CCi0P1H9LjD8z</subflowGUID>
+                           <subflowPath>Process_EntityNameChanged</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier1</parameter>
+                              <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_SeqNr" source="formula" updatable="true">
+                                 <expression language="XQuery">$Identifier2 </expression>
+                              </parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_EntityNameChanged" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfnl9">
+                           <assignment id="lhugfpmo">
+                              <title>Update ENC</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_EntityNameChanged[1]/Code  return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ">output.out_ProcessVariables_EntityNameChanged</operation>
+                           </assignment>
+                           <link id="lhugfnla" targetId="lhugfnl7" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfnlc">
+                           <jumpTo id="lhugfpp1">
+                              <link id="lhugfpp2" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfnl8" targetId="lhugfnl9" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfnj6" interrupting="true">
+                              <link id="lhugfnlb" targetId="lhugfnlc" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk7t" targetId="lhugfk6l" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk78">
+                     <link id="lhugfq2n" targetId="lhugfk6l" type="containerLink"/>
+                  </flow>
+                  <link id="lhugfk7a" targetId="lhugfk6m" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">ADDRESS_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk7b" targetId="lhugfk6p" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">EMAIL_ADDRESS_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk7f" targetId="lhugfk72" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">ENTITY_NAME_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk7h" targetId="lhugfk78" type="containerLink"/>
+                  <link id="lhugfk7y" targetId="lhugfk20"/>
+               </container>
+               <container id="lhugfk20" type="exclusive">
+                  <title>API 14 Events</title>
+                  <flow id="lhugfk28">
+                     <eventContainer id="lhugfnpt">
+                        <subflow id="lhugfk29">
+                           <title>Project Manager Changed</title>
+                           <subflowGUID>95ipWN711x5fAtiI6V2McA</subflowGUID>
+                           <subflowPath>Process_ProjManagerChanged</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier1</parameter>
+                              <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_ProjManagerChanged" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfnpv">
+                           <assignment id="lhugfp9y">
+                              <title>Update TPQ PMC</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_ProjManagerChanged[1]/Code return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ">output.out_ProcessVariables_ProjManagerChanged</operation>
+                           </assignment>
+                           <link id="lhugfnpw" targetId="lhugfnpt" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfnpy">
+                           <jumpTo id="lhugfoxe">
+                              <link id="lhugfoxf" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfnpu" targetId="lhugfnpv" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfnpc" interrupting="true">
+                              <link id="lhugfnpx" targetId="lhugfnpy" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk32" targetId="lhugfk20" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk2b">
+                     <eventContainer id="lhugfns1">
+                        <subflow id="lhugfk2c">
+                           <title>Matter Changed</title>
+                           <subflowGUID>4B9VqpplSP0ek07nM77DE3</subflowGUID>
+                           <subflowPath>Process_MatterChanged</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_MatterCode" source="field" updatable="true">Identifier2</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier1</parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_MatterChanged" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfns3">
+                           <assignment id="lhugfpc9">
+                              <title>Update TPQ MCR</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_MatterChanged[1]/Code return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ">output.out_ProcessVariables_MatterChanged</operation>
+                           </assignment>
+                           <link id="lhugfns4" targetId="lhugfns1" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfns6">
+                           <jumpTo id="lhugfp36">
+                              <link id="lhugfp37" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfns2" targetId="lhugfns3" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfnrm" interrupting="true">
+                              <link id="lhugfns5" targetId="lhugfns6" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk34" targetId="lhugfk20" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk2e">
+                     <eventContainer id="lhugfnuw">
+                        <subflow id="lhugfk2f">
+                           <title>Matter Created</title>
+                           <subflowGUID>5FxEG3udRoMljY1OlVhcay</subflowGUID>
+                           <subflowPath>Process_MatterCreated</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_ParentProcessStartTime" source="formula" updatable="true">
+                                 <expression language="XQuery">util:getInstanceStartTime()</expression>
+                              </parameter>
+                              <parameter name="in_Event_Name" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_RefCode" source="field" updatable="true">Identifier1</parameter>
+                              <parameter name="in_MatterCode" source="field" updatable="true">Identifier2</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_FailedAtStep" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_ProcessVariables_MatterCreated" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfnuy">
+                           <assignment id="lhugfpek">
+                              <title>Update TPQ MCH</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_MatterCreated[1]/Code  return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ">output.out_ProcessVariables_MatterCreated</operation>
+                           </assignment>
+                           <link id="lhugfnuz" targetId="lhugfnuw" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfnv1">
+                           <jumpTo id="lhugfp6m">
+                              <link id="lhugfp6n" targetId="lhugfo1x"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lhugfnux" targetId="lhugfnuy" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfntw" interrupting="true">
+                              <link id="lhugfnv0" targetId="lhugfnv1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhugfk36" targetId="lhugfk20" type="containerLink"/>
+                  </flow>
+                  <flow id="lhugfk2n">
+                     <link id="lhugflct" targetId="lhugfk20" type="containerLink"/>
+                  </flow>
+                  <link id="lhugfk2r" targetId="lhugfk28" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">PROJ_MANAGER_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk2s" targetId="lhugfk2b" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">MATTER_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk2t" targetId="lhugfk2e" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">MATTER_CREATED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhugfk2w" targetId="lhugfk2n" type="containerLink"/>
+                  <link id="lhugfk3d" targetId="lhrrkhig"/>
+               </container>
+               <container id="lhrrkhig" type="exclusive">
+                  <title>API 01 Events</title>
+                  <flow id="lhrrkht8">
+                     <eventContainer id="lhugfmkw">
+                        <subflow id="lhrrkjxu">
+                           <title>Invoice Created</title>
+                           <subflowGUID>4HNJE2i8L6sbgc3NHIfuye</subflowGUID>
+                           <subflowPath>Process_InvoiceCreated</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">X_Transaction_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">EventTypeName</parameter>
+                              <parameter name="in_ApiName" source="field" updatable="true">output.out_ProcessVariables_TPQ[1]/API_Name</parameter>
+                              <parameter name="in_ProformaNr" source="field" updatable="true">Identifier1</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_InvoiceCreated" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lhugfmky">
+                           <assignment id="lhynb600">
+                              <title>Update TPQ INV</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">let $Code := $output.out_ProcessVariables_InvoiceCreated[1]/Code return
+if (
+fn:starts-with($Code, '1') or
+fn:starts-with($Code, '2') or 
+fn:starts-with($Code, 'HTTP_1') or
+fn:starts-with($Code, 'HTTP_2') )
+then ('SUCCESS')
+else ('ERROR_QUEUE')</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lhugfmkz" targetId="lhugfmkw" type="containerLink"/>
+                        </flow>
+                        <flow id="lhugfml1">
+                           <assignment id="lhugfo1x">
+                              <title>Sub Process Error</title>
+                              <operation source="formula" to="RetryCount">
+                                 <expression language="XQuery">$RetryCount + 1</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                              <operation source="formula" to="ProcessingStatus">
+                                 <expression language="XQuery">'ERROR_QUEUE'</expression>
+                              </operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ[1]/Code">output.faultInfo[1]/code</operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ[1]/Error">output.faultInfo[1]/reason</operation>
+                              <operation source="field" to="output.out_ProcessVariables_TPQ[1]/Description">output.faultInfo[1]/detail</operation>
+                              <link id="lhynb62u" targetId="lhynb62t"/>
+                           </assignment>
+                           <subflow id="lhynb62t">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_TPQ</parameter>
+                              </input>
+                              <outputDef/>
+                           </subflow>
+                           <link id="lhugfml2" targetId="lhugfmkw" type="containerLink"/>
+                        </flow>
+                        <link id="lhugfmkx" targetId="lhugfmky" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lhugfmkh" interrupting="true">
+                              <link id="lhugfml0" targetId="lhugfml1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="lhrrkht9" targetId="lhrrkhig" type="containerLink"/>
+                  </flow>
+                  <flow id="lhrrkhta">
+                     <link id="lhynb5ug" targetId="lhrrkhig" type="containerLink"/>
+                  </flow>
+                  <link id="lhrrkhsy" targetId="lhrrkht8" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$EventTypeName}</arg>
+                           <arg name="right">INVOICE_CREATED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhrrkhsz" targetId="lhrrkhta" type="containerLink"/>
+                  <link id="liinfjir" targetId="liinfjiq"/>
+               </container>
+               <container id="liinfjiq" type="exclusive">
+                  <title>ProcessingStatus</title>
+                  <flow id="liinfjlt">
+                     <end id="liinfjxi">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="liinfjlv">
+                     <container id="liinfk51" type="exclusive">
+                        <title>RetryCount</title>
+                        <flow id="liinfk52">
+                           <assignment id="liinfk53">
+                              <title>Move to DLQ</title>
+                              <operation source="constant" to="ProcessingStatus">DEAD LETTER QUEUE</operation>
+                           </assignment>
+                           <link id="liinfk57" targetId="liinfk51" type="containerLink"/>
+                        </flow>
+                        <flow id="liinfk54">
+                           <link id="liinfk58" targetId="liinfk51" type="containerLink"/>
+                        </flow>
+                        <link id="liinfk55" targetId="liinfk52" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-than">
+                                 <arg name="left">{$RetryCount}</arg>
+                                 <arg name="right">{3}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="liinfk56" targetId="liinfk54" type="containerLink"/>
+                        <link id="liinfk8u" targetId="liinfk8t"/>
+                     </container>
+                     <end id="liinfk8t"/>
+                  </flow>
+                  <link id="liinfjlm" targetId="liinfjlt" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$ProcessingStatus}</arg>
+                           <arg name="right">SUCCESS</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="liinfjlp" targetId="liinfjlv" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7HhivybSWMtcUDoMWicoKM</types1:GUID>
+      <types1:DisplayName>TPQ_Processing</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-07-10T13:25:36.952Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

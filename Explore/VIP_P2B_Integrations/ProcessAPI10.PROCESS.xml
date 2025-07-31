@@ -1,0 +1,559 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>MMnGbciZBpDUQbg-gt-12498717-2021-10-08T06:53:46.21Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessAPI10</types1:Name>
+      <types1:ParentFlowIds>jznKKvvNtLSVMTo-gt-37242282-2022-10-12T10:48:23.155Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>master process to get batch of open Time and Disbursement entries</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-10-08T06:53:46Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-31T14:30:09Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-31T14:31:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessAPI10/ProcessAPI10.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessAPI10"
+                  name="ProcessAPI10"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>master process to get batch of open Time and Disbursement entries</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_SAP_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">https://my305570-api.s4hana.ondemand.com</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">VIEW_POINT_CLOUD_Q</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_KeyValue1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_KeyValue2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_KeyValue3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_Value1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_Value2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Any" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Cnt" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_usernameAPI" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_TimeBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecFee" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RecurringFees</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SEQNR" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_ApproveBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TIM_DIS_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WBSElementExternalID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DisBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Debug" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8sjerbs" targetId="l8sjerbr"/>
+               </start>
+               <assignment id="l8sjerbr">
+                  <title>Assignment to tmp_ApiName, tmp_EventName etc.</title>
+                  <operation source="constant" to="temp.tmp_ApiName">API10</operation>
+                  <operation source="constant" to="temp.tmp_EventName">Process: ProcessAPI10</operation>
+                  <operation source="formula" to="temp.tmp_IICS_Run_id">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_ProcessName">ProcessAPI10</operation>
+                  <link id="l8sjerbt" targetId="kwxgu45u"/>
+               </assignment>
+               <assignment id="kwxgu45u">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_SAP_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SAP_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SAP_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_password">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_usernameAPI">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Username')</expression>
+                  </operation>
+                  <link id="kz3rh23a" targetId="kz3rh239"/>
+               </assignment>
+               <assignment id="lfwn1len">
+                  <title>Assignment to tmp_Cnt, O_Disbursement_Array etc.</title>
+                  <operation source="formula" to="temp.tmp_Cnt">
+                     <expression language="XQuery">$temp.tmp_Cnt  - 1</expression>
+                  </operation>
+                  <operation source="formula" to="output.O_Disbursement_Array">
+                     <expression language="XQuery">list:tail($output.O_Disbursement_Array  )</expression>
+                  </operation>
+                  <operation source="formula" to="output.O_DisTim_ArrayID">
+                     <expression language="XQuery">list:head($output.O_Disbursement_Array )</expression>
+                  </operation>
+                  <link id="lfwn1lgm" targetId="lfwn1lgk"/>
+               </assignment>
+               <service id="kz3rh239">
+                  <title>Clear OLD API10_Processing_STG table</title>
+                  <serviceName>ICSExecuteTask</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="Task Name" source="constant">mct_m_API10_Processing_STG [MCT]</parameter>
+                     <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                     <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                     <parameter name="GUID" source="constant">9XvfTlQOcWfgKilGOPtcya</parameter>
+                  </serviceInput>
+                  <link id="lfwn1kd0" targetId="lfwn1kcz"/>
+               </service>
+               <subflow id="lfwn1kcz">
+                  <title>Process_GetERPToken</title>
+                  <subflowGUID>ayzWjWozBkwb3VgtMDpnwB</subflowGUID>
+                  <subflowPath>Process_GetERPToken</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_cookie" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_DateCreated" type="datetime">
+                        <options>
+                           <option name="thirtyMinutesIncrement">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lfwn1kqg" targetId="lfwn1kqf"/>
+               </subflow>
+               <subflow id="lfwn1kqf">
+                  <title>P_VPC_GetToken</title>
+                  <subflowGUID>07bmeP8qUUzjnAwYUaz46x</subflowGUID>
+                  <subflowPath>P_VPC_GetToken-2</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_vpc_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lfwn1ld4" targetId="lfwn1lbt"/>
+               </subflow>
+               <eventContainer id="lfwn1lbt">
+                  <service id="lfwn1lch">
+                     <title>GET_ALL_DISBURSEMENT</title>
+                     <serviceName>AppSvcAPI10:GET_ALL_DISBURSEMENT</serviceName>
+                     <serviceGUID>4WE5iKT9iC3iPQhWZtgEeB</serviceGUID>
+                     <serviceInput>
+                        <parameter name="in_X_CSRF_TOKEN" source="field" updatable="true">output.out_token</parameter>
+                        <parameter name="in_Cookie" source="field" updatable="true">output.out_cookie</parameter>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_hostname</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lfwn1lbu">
+                     <assignment id="lfwn1lbv">
+                        <title>Assignment to O_DisTim_ArrayID, tmp_Cnt</title>
+                        <operation source="formula" to="output.O_DisTim_ArrayID">
+                           <expression language="XQuery">list:head($output.O_Disbursement_Array)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Cnt">
+                           <expression language="XQuery">list:count($output.O_Disbursement_Array  )</expression>
+                        </operation>
+                        <link id="lfwn1lcl" targetId="lfwn1lbw"/>
+                     </assignment>
+                     <container id="lfwn1lbw" type="exclusive">
+                        <title>tmp_Cnt</title>
+                        <flow id="lfwn1lbx">
+                           <throw id="lfwn1lby">
+                              <title>Throw end of Process</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">999</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">No Active queue in SAP</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">No active time or Disbursement entry found in SAP for processing</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <flow id="lfwn1lbz">
+                           <create id="lfwn1lc0">
+                              <title>insert NEW API10_Processing_STG</title>
+                              <entityName>ConnectionDQMetadata-1:API10_Processing_STG</entityName>
+                              <createInput>
+                                 <parameter name="ID" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:concat($output.O_DisTim_ArrayID[1]/ID , util:random())</expression>
+                                 </parameter>
+                                 <parameter name="WBSElementInternalID" source="field" updatable="true">output.O_DisTim_ArrayID[1]/WBSElementExternalID</parameter>
+                                 <parameter name="SourceLedger" source="field" updatable="true">output.O_DisTim_ArrayID[1]/SourceLedger</parameter>
+                                 <parameter name="CompanyCode" source="field" updatable="true">output.O_DisTim_ArrayID[1]/CompanyCode</parameter>
+                                 <parameter name="FiscalYear" source="field" updatable="true">output.O_DisTim_ArrayID[1]/FiscalYear</parameter>
+                                 <parameter name="AccountingDocument" source="field" updatable="true">output.O_DisTim_ArrayID[1]/AccountingDocument</parameter>
+                                 <parameter name="LedgerGLLineItem" source="field" updatable="true">output.O_DisTim_ArrayID[1]/LedgerGLLineItem</parameter>
+                                 <parameter name="Ledger" source="field" updatable="true">output.O_DisTim_ArrayID[1]/Ledger</parameter>
+                                 <parameter name="Code" source="field" updatable="true">output.O_DisTim_ArrayID[1]/Code</parameter>
+                                 <parameter name="Code_1" source="field" updatable="true">output.O_DisTim_ArrayID[1]/Code_01</parameter>
+                                 <parameter name="WBSElementExternalID" source="field" updatable="true">output.O_DisTim_ArrayID[1]/WBSElementExternalID</parameter>
+                                 <parameter name="YY1_Customer_PPH" source="field" updatable="true">output.O_DisTim_ArrayID[1]/YY1_Customer_PPH</parameter>
+                                 <parameter name="AmountInTransactionCurrency" source="field" updatable="true">output.O_DisTim_ArrayID[1]/AmountInTransactionCurrency</parameter>
+                                 <parameter name="TransactionCurrency" source="field" updatable="true">output.O_DisTim_ArrayID[1]/TransactionCurrency</parameter>
+                                 <parameter name="Quantity" source="field" updatable="true">output.O_DisTim_ArrayID[1]/Quantity</parameter>
+                                 <parameter name="BaseUnit" source="field" updatable="true">output.O_DisTim_ArrayID[1]/BaseUnit</parameter>
+                                 <parameter name="ServiceCode" source="field" updatable="true">output.O_DisTim_ArrayID[1]/ServiceCode</parameter>
+                                 <parameter name="ServiceCodeDescription" source="field" updatable="true">output.O_DisTim_ArrayID[1]/ServiceCodeDescription</parameter>
+                                 <parameter name="ServiceCodeValidFrom" source="field" updatable="true">output.O_DisTim_ArrayID[1]/ServiceCodeValidFrom</parameter>
+                                 <parameter name="IsTime" source="field" updatable="true">output.O_DisTim_ArrayID[1]/IsTime</parameter>
+                              </createInput>
+                           </create>
+                           <link id="lfwn1lcq" targetId="lfwn1lbw" type="containerLink"/>
+                        </flow>
+                        <flow id="lfwn1lc1">
+                           <end id="lfwn1lc2">
+                              <title>End of loop</title>
+                           </end>
+                        </flow>
+                        <link id="lfwn1lcm" targetId="lfwn1lbx" type="containerLink">
+                           <condition source="formula">
+                              <function name="less-than">
+                                 <arg name="left">{$temp.tmp_Cnt}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lfwn1lcn" targetId="lfwn1lbz" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-than">
+                                 <arg name="left">{$temp.tmp_Cnt}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lfwn1lco" targetId="lfwn1lc1" type="containerLink"/>
+                        <link id="lfwn1lcp" targetId="lfwn1lc3"/>
+                     </container>
+                     <container id="lfwn1lc3" type="exclusive">
+                        <title>IsTime</title>
+                        <flow id="lfwn1lc4">
+                           <eventContainer id="lfwn1lc5">
+                              <subflow id="lfwn1lc8">
+                                 <title>Time</title>
+                                 <subflowGUID>30rmMNRRzswkqxfUOaljUM</subflowGUID>
+                                 <subflowPath>ProcessAPI10PostTime</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_AccountDoc" source="field" updatable="true">output.O_DisTim_ArrayID[1]/AccountingDocument</parameter>
+                                    <parameter name="in_VPCToken" source="field" updatable="true">output.out_vpc_token</parameter>
+                                    <parameter name="in_LedgerGLLineItem" source="field" updatable="true">output.O_DisTim_ArrayID[1]/LedgerGLLineItem</parameter>
+                                    <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                    <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                    <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                    <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                                 </input>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lfwn1lc6">
+                                 <link id="lfwn1lcw" targetId="lfwn1lc5" type="containerLink"/>
+                              </flow>
+                              <flow id="lfwn1lc7">
+                                 <link id="lfwn1lcx" targetId="lfwn1lc5" type="containerLink"/>
+                              </flow>
+                              <link id="lfwn1lcu" targetId="lfwn1lc6" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo_SUB_TIME" id="kz3rh2a5" interrupting="true">
+                                    <link id="lfwn1lcv" targetId="lfwn1lc7" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lfwn1lct" targetId="lfwn1lc3" type="containerLink"/>
+                        </flow>
+                        <flow id="lfwn1lc9">
+                           <eventContainer id="lfwn1lca">
+                              <subflow id="lfwn1lcd">
+                                 <title>Disbursement</title>
+                                 <subflowGUID>6xXjtYR5nQper43fCiWICb</subflowGUID>
+                                 <subflowPath>ProcessAPI10PostDis</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_AccountDoc" source="field" updatable="true">output.O_DisTim_ArrayID[1]/AccountingDocument</parameter>
+                                    <parameter name="in_VPCToken" source="field" updatable="true">output.out_vpc_token</parameter>
+                                    <parameter name="in_LedgerGLLineItem" source="field" updatable="true">output.O_DisTim_ArrayID[1]/LedgerGLLineItem</parameter>
+                                    <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                    <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                    <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                    <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                                 </input>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="lfwn1lcb">
+                                 <link id="lfwn1ld1" targetId="lfwn1lca" type="containerLink"/>
+                              </flow>
+                              <flow id="lfwn1lcc">
+                                 <link id="lfwn1ld2" targetId="lfwn1lca" type="containerLink"/>
+                              </flow>
+                              <link id="lfwn1lcz" targetId="lfwn1lcb" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo-SUB_DIS" id="kz3rh2c5" interrupting="true">
+                                    <link id="lfwn1ld0" targetId="lfwn1lcc" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="lfwn1lcy" targetId="lfwn1lc3" type="containerLink"/>
+                        </flow>
+                        <link id="lfwn1lcr" targetId="lfwn1lc4" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.O_DisTim_ArrayID[1]/IsTime}</arg>
+                                 <arg name="right">true</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lfwn1lcs" targetId="lfwn1lc9" type="containerLink"/>
+                     </container>
+                     <link id="lfwn1lck" targetId="lfwn1lbt" type="containerLink"/>
+                  </flow>
+                  <flow id="lfwn1lce">
+                     <subflow id="lfwn1lcf">
+                        <title>Process_P2B_Event_ErrorLog 5</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo_GET_DISBURSEMENT_API[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo_GET_DISBURSEMENT_API[1]/detail</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo_GET_DISBURSEMENT_API[1]/reason</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_IICSProcessname" source="constant" updatable="true">ProcessAPI10</parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Get All Disbursment</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_SAP_hostname || '
+/sap/opu/odata/sap/YY1_DISBURSEMENTS_API_V1_CDS/YY1_Disbursements_API_v1'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="constant" updatable="true"/>
+                           <parameter name="i_ProcessStartTime" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lfwn1ld3" targetId="lfwn1lcg"/>
+                     </subflow>
+                     <end id="lfwn1lcg">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lfwn1lci" targetId="lfwn1lbu" type="containerLink"/>
+                  <link id="lfwn1leo" targetId="lfwn1len"/>
+                  <events>
+                     <catch faultField="faultInfo_GET_DISBURSEMENT_API"
+                            id="ks8nijsa"
+                            interrupting="true">
+                        <link id="lfwn1lcj" targetId="lfwn1lce" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <jumpTo id="lfwn1lgk">
+                  <link id="lfwn1lgl" targetId="lfwn1lbw"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e4144945-0ba1-49aa-bebe-28715fcacf88</ns1:Id>
+               <ns1:Name>API_10_Test</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-10-08T06:53:46Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3shOEvhz6sZls3WewPxNmv</types1:GUID>
+      <types1:DisplayName>ProcessAPI10</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-05-26T09:20:54.304Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

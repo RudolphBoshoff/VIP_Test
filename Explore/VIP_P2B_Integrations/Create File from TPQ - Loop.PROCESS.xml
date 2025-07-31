@@ -1,0 +1,101 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>hr5wq9bdsreK8ZA-gt-6979342-2023-08-25T10:28:45.113Z::pd.xml</types1:EntryId>
+      <types1:Name>Create_File_from_TPQ_-_Loop</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-08-25T10:28:45Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-08-25T11:09:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-08-25T11:10:23Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Create_File_from_TPQ_-_Loop/Create_File_from_TPQ_-_Loop.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Create File from TPQ - Loop"
+                  name="Create_File_from_TPQ_-_Loop"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_TPQ_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConn-VIPP2B:Transaction_Processing_Queue</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">2h6nZL5WJyPeuPP7RyFC0O</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TPQ_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llqgi3mp" targetId="llqgi3mo"/>
+               </start>
+               <assignment id="llqgi3mo">
+                  <title>Assignment to tmp_TPQ_List, tmp_TPQ_Count</title>
+                  <operation source="list" to="temp.tmp_TPQ_List">
+                     <query advanceQuery="false" from="AppConn-VIPP2B:Transaction_Processing_Queue">
+                        <where>EventTypeName = 'ADDRESS_CHANGED' and ProcessingStatus != 'FILE CREATED' and Id = 6569</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_TPQ_Count">
+                     <expression language="XQuery">list:count($temp.tmp_TPQ_List )</expression>
+                  </operation>
+                  <link id="llqgi3mq" targetId="llqg382c"/>
+               </assignment>
+               <subflow id="llqg382c">
+                  <title>Create file from TPQ</title>
+                  <subflowGUID>9m4Ty2N8fWblFoZWjKHI0z</subflowGUID>
+                  <subflowPath>Create_file_from_TPQ</subflowPath>
+                  <appliesTo>AppConn-VIPP2B:Transaction_Processing_Queue</appliesTo>
+                  <appliesToDataName source="field">temp.tmp_TPQ_List</appliesToDataName>
+                  <runForEach>true</runForEach>
+                  <input/>
+                  <outputDef/>
+                  <link id="llqg382e" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>b1152d0e-6846-49a6-bc4a-c1f6641e2955</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:32:29Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:32:29Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>6nEEpfkTAXpfVpk8cXsY2n</types1:GUID>
+      <types1:DisplayName>Create File from TPQ - Loop</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:29.727Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

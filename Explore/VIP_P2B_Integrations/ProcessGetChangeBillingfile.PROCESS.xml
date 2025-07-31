@@ -1,0 +1,351 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Ev18pNz6HKoJBUh-gt-16161461-2021-08-13T10:41:47.493Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetChangeBillingfile</types1:Name>
+      <types1:ParentFlowIds>aaaaa-gt-14407407-2021-09-16T07:13:34.008Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:47Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-14T05:00:48Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetChangeBillingfile"
+                  name="ProcessGetChangeBillingfile"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_AddrCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ChangeBillingFileFields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POEntityDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefAddress</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Addresses</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContact" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddCode2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillAdd2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ks7gjwi1" targetId="ks7gjwi0"/>
+               </start>
+               <assignment id="ks7gjwi0">
+                  <title>Assignment to tmp_RmClients</title>
+                  <operation source="query" to="temp.tmp_RmClients">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:RmClients">
+                        <where>AddrCode = '{$input.in_AddrCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="ks7gjwi6" targetId="ks7gjwi5"/>
+               </assignment>
+               <assignment id="ks7gjwi5">
+                  <title>Assignment Flag Billing vs Addrcode</title>
+                  <operation source="formula" to="temp.tmp_Flag">
+                     <expression language="XQuery">util:iif(
+
+($input.in_AddrCode = $temp.tmp_RmClients.AddrCode )
+and
+($input.in_AddrCode = $temp.tmp_RmClients.BillAddress  )
+
+, 1, util:iif(util:isNull($temp.tmp_RmClients.BillAddress) , 1 , util:iif(empty($temp.tmp_RmClients.BillAddress), 1 , 2 )))</expression>
+                  </operation>
+                  <link id="ks7gjwim" targetId="ks7gjwil"/>
+               </assignment>
+               <container id="ks7gjwil" type="exclusive">
+                  <title>tmp_Flag</title>
+                  <flow id="ks7gjwip">
+                     <assignment id="ks7gjwj3">
+                        <title>Assignment to tmp_RmClients, tmp_RefMaster etc.</title>
+                        <operation source="query" to="temp.tmp_RmClients">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                              <where>AddrCode = '{$input.in_AddrCode}'</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefMaster">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefMaster">
+                              <where>RefCode in ( select distinct AddrCode from dbo.RmClients rc where AddrCode= '{$input.in_AddrCode}' ) </where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContact">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode in (select distinct AddrCode from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode where rc.AddrCode ='{$input.in_AddrCode}' )  and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_AddrCode}'  and cType like 'E%' )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefAddress">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefAddress">
+                              <where>RefCode in (select Addrcode from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode where rc.AddrCode ='{$input.in_AddrCode}' )  and AddrType='BI'  and Active=1</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_Addresses">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:Addresses">
+                              <where>AddrNr in ( select distinct ad.AddrNr from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode INNER JOIN  dbo.RefAddress ra ON rm.RefCode=ra.RefCode inner join dbo.Addresses ad on ra.AddrNr=ad.AddrNr where rc.AddrCode ='{$input.in_AddrCode}'  and AddrType='BI' and Active=1)</where>
+                           </query>
+                        </operation>
+                        <link id="ksookytn" targetId="ksookytm"/>
+                     </assignment>
+                     <container id="ksookytm" type="exclusive">
+                        <title>AddrNr1</title>
+                        <flow id="ksookytw">
+                           <assignment id="ksookyuc">
+                              <title>AAssignment with Address values 1</title>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrCode">temp.tmp_RmClients.AddrCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/BillAddress">temp.tmp_RmClients.BillAddress</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefMasterName">temp.tmp_RefMaster.Name</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefType">temp.tmp_RefMaster.RefType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address">temp.tmp_Addresses.Address</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/City">temp.tmp_Addresses.City</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Country">temp.tmp_Addresses.Country</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrNr">temp.tmp_Addresses.AddrNr</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrType">temp.tmp_RefAddress.AddrType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cType">temp.tmp_RefContact.cType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cText">temp.tmp_RefContact.cText</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Language">temp.tmp_RefMaster.LangCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/PostalCode">temp.tmp_Addresses.PostalCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address2">temp.tmp_Addresses.Address2</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address3">temp.tmp_Addresses.Address3</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address4">temp.tmp_Addresses.Address4</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address5">temp.tmp_Addresses.Address5</operation>
+                              <link id="ksopl5xu" targetId="ksopl5xt"/>
+                           </assignment>
+                           <end id="ksopl5xt">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <flow id="ksookyty">
+                           <assignment id="ksookz2x">
+                              <title>Assignment without Address values 1</title>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrCode">temp.tmp_RmClients.AddrCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/BillAddress">temp.tmp_RmClients.BillAddress</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefMasterName">temp.tmp_RefMaster.Name</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefType">temp.tmp_RefMaster.RefType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cType">temp.tmp_RefContact.cType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cText">temp.tmp_RefContact.cText</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Language">temp.tmp_RefMaster.LangCode</operation>
+                           </assignment>
+                           <link id="ksookytz" targetId="ksookytm" type="containerLink"/>
+                        </flow>
+                        <link id="ksookytp" targetId="ksookytw" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_RefAddress}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ksookyts" targetId="ksookyty" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_RefAddress}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ksookyub" targetId="ks7gjwk7"/>
+                     </container>
+                     <end id="ks7gjwk7"/>
+                  </flow>
+                  <flow id="ks7gjwis">
+                     <assignment id="ks7gjwkn">
+                        <title>Assignment to tmp_AddCode2, tmp_BillAdd2</title>
+                        <operation source="field" to="temp.tmp_AddCode2">temp.tmp_RmClients.AddrCode</operation>
+                        <operation source="field" to="temp.tmp_BillAdd2">temp.tmp_RmClients.BillAddress</operation>
+                        <link id="ks7gjwlw" targetId="ks7gjwlv"/>
+                     </assignment>
+                     <assignment id="ks7gjwlv">
+                        <title>Assignment to tmp_RmClients, tmp_RefMaster etc. 1</title>
+                        <operation source="query" to="temp.tmp_RmClients">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                              <where>AddrCode = '{$input.in_AddrCode}'</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefMaster">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefMaster">
+                              <where>RefCode in ( select distinct AddrCode from dbo.RmClients rc where AddrCode = '{$input.in_AddrCode}' ) </where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContact">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode in (select distinct AddrCode from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode where rc.AddrCode ='{$input.in_AddrCode}' )  and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_AddrCode}'  and cType like 'E%' )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefAddress">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefAddress">
+                              <where>RefCode in (select Addrcode from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode where rc.AddrCode ='{$temp.tmp_BillAdd2}' )  and AddrType='BI'  and Active=1</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_Addresses">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:Addresses">
+                              <where>AddrNr in ( select distinct ad.AddrNr from dbo.RmClients rc inner join dbo.RefMaster rm on rc.AddrCode=rm.RefCode INNER JOIN  dbo.RefAddress ra ON rm.RefCode=ra.RefCode inner join dbo.Addresses ad on ra.AddrNr=ad.AddrNr where rc.AddrCode ='{$temp.tmp_BillAdd2}'   and AddrType='BI' and Active=1)</where>
+                           </query>
+                        </operation>
+                        <link id="ksookyuz" targetId="ksookyuy"/>
+                     </assignment>
+                     <container id="ksookyuy" type="exclusive">
+                        <title>AddrNr2</title>
+                        <flow id="ksookywu">
+                           <assignment id="ksookyxg">
+                              <title>Assignment to AddrCode, BillAddress etc.</title>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrCode">temp.tmp_RmClients.AddrCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/BillAddress">temp.tmp_RmClients.BillAddress</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefMasterName">temp.tmp_RefMaster.Name</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefType">temp.tmp_RefMaster.RefType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address">temp.tmp_Addresses.Address</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/City">temp.tmp_Addresses.City</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Country">temp.tmp_Addresses.Country</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrNr">temp.tmp_Addresses.AddrNr</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrType">temp.tmp_RefAddress.AddrType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cType">temp.tmp_RefContact.cType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cText">temp.tmp_RefContact.cText</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Language">temp.tmp_RefMaster.LangCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/PostalCode">temp.tmp_Addresses.PostalCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address2">temp.tmp_Addresses.Address2</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address3">temp.tmp_Addresses.Address3</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address4">temp.tmp_Addresses.Address4</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Address5">temp.tmp_Addresses.Address5</operation>
+                              <link id="ksoqwxac" targetId="ksoqwxab"/>
+                           </assignment>
+                           <end id="ksoqwxab">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <flow id="ksookyww">
+                           <assignment id="ksookyz8">
+                              <title>Assignment without Address values 2</title>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/AddrCode">temp.tmp_RmClients.AddrCode</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/BillAddress">temp.tmp_RmClients.BillAddress</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefMasterName">temp.tmp_RefMaster.Name</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/RefType">temp.tmp_RefMaster.RefType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cType">temp.tmp_RefContact.cType</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/cText">temp.tmp_RefContact.cText</operation>
+                              <operation source="field" to="output.out_ChangeBillingFileFields[1]/Language">temp.tmp_RefMaster.LangCode</operation>
+                              <link id="ksoqwxb0" targetId="ksoqwxaz"/>
+                           </assignment>
+                           <end id="ksoqwxaz">
+                              <title>End 3</title>
+                           </end>
+                        </flow>
+                        <link id="ksookywn" targetId="ksookywu" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_RefAddress}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ksookywq" targetId="ksookyww" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_RefAddress}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <link id="ks7gjwio" targetId="ks7gjwip" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_Flag}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ks7gjwir" targetId="ks7gjwis" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>993ec9c0-9061-42ac-b4a4-36e6cd4c006c</ns1:Id>
+               <ns1:Name>test_billingfile</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-06-14T05:00:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_AddrCode": "80006515"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3TU3Uqa9WmtkuA4j5ENjWB</types1:GUID>
+      <types1:DisplayName>ProcessGetChangeBillingfile</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-11-22T04:31:40.478Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

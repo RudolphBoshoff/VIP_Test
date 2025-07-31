@@ -1,0 +1,104 @@
+{
+  "objectInfo" : {
+    "id" : "izyToLJyK0EgPkBQ0JsPyR",
+    "name" : "api5b_Wrapper_Partial_Over_Payments",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "VrSp7aa-gt-37242213-2022-10-12T10:48:21.763Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Wrapper process which invokes API5B (Cancellation of Invoice payment posting) processes",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "0WB10LRysQseuGshZqeMcr",
+    "name" : "Process_GET_YY1_ClearedPaymentReset_Partial_Over",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "JJHQjATO9pH8sVY-gt-37356828-2022-10-12T10:48:10.579Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Retrieves the Cancelled/Reversed Invoice payment entries from SAP Custom API",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes"
+  }, {
+    "id" : "07bmeP8qUUzjnAwYUaz46x",
+    "name" : "P_VPC_GetToken",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Dt0x7bcoq3xgjAT-gt-37241474-2022-10-12T10:47:39.472Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic VPC"
+  }, {
+    "id" : "7N5uKhvv6kXg3zoRAbuggF",
+    "name" : "Process_P2B_Event_ErrorLog",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Records errors in SQL DB, File, and Email\nChangelog:\nhttps://vistra.atlassian.net/browse/VR-147",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  }, {
+    "id" : "4hdgIp3S9qje9nbpzJ8MO9",
+    "name" : "API_5b_Partial_Over_Payments",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "SCT53nQciSrZMSP-gt-37228536-2022-10-12T10:48:14.717Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Posts the cancelled Invoice clearance data to VPoint API and logs the same in SAP",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  } ]
+}

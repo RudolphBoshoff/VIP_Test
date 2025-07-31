@@ -1,0 +1,275 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>rY6tMFyglsO7RY6-gt-23276900-2023-03-29T09:54:52.79Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Generic_SplitLongText</types1:Name>
+      <types1:ParentFlowIds>dxbdypKwKBqRi92-gt-5605340-2023-03-13T09:24:50.061Z::pd.xml,T7dwcnPCOkSSHCw-gt-23276945-2023-03-29T09:54:53.734Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-03-29T09:54:53Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-17T13:29:19Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-26T07:29:33Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Generic_SplitLongText/Process_Generic_SplitLongText.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Generic_SplitLongText"
+                  name="Process_Generic_SplitLongText"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Text" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MaxStringLength"
+                          required="true"
+                          type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_TextList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_ShortTextCurrent" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WordsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FlagContinue" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Word_Current" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Counter2" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TextList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TextNormalized" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lf7xe4b3" targetId="lf7xe49j"/>
+               </start>
+               <assignment id="lf7xe49j">
+                  <title>Split text into words</title>
+                  <operation source="formula" to="temp.tmp_WordsList">
+                     <expression language="XQuery">fn:tokenize(fn:normalize-space($input.in_Text) , ' ')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_TextNormalized">
+                     <expression language="XQuery">fn:normalize-space($input.in_Text )</expression>
+                  </operation>
+                  <link id="lf82up4g" targetId="lf7xe4aa"/>
+               </assignment>
+               <container id="lf7xe4aa" type="exclusive">
+                  <title>Word List</title>
+                  <flow id="lf7xe4ae">
+                     <assignment id="lf82up4i">
+                        <title>Next Word</title>
+                        <operation source="formula" to="temp.tmp_Word_Current">
+                           <expression language="XQuery">list:head($temp.tmp_WordsList)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_WordsList">
+                           <expression language="XQuery">list:tail($temp.tmp_WordsList)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_FlagContinue">
+                           <expression language="XQuery">if (fn:string-length($temp.tmp_ShortTextCurrent||' '||$temp.tmp_Word_Current) &lt;= $input.in_MaxStringLength  
+	and fn:string-length($temp.tmp_Word_Current) &gt; 0)
+then (1)
+else (0)</expression>
+                        </operation>
+                        <link id="lf82upfy" targetId="lf82up5e"/>
+                     </assignment>
+                     <container id="lf82up5e" type="exclusive">
+                        <title>Add or New</title>
+                        <flow id="lf82up5i">
+                           <assignment id="lf82up60">
+                              <title>Add</title>
+                              <operation source="formula" to="temp.tmp_ShortTextCurrent">
+                                 <expression language="XQuery">$temp.tmp_ShortTextCurrent||' '||$temp.tmp_Word_Current</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Counter">
+                                 <expression language="XQuery">$temp.tmp_Counter+1 </expression>
+                              </operation>
+                              <link id="lf82upe3" targetId="lf82upe1"/>
+                           </assignment>
+                           <jumpTo id="lf82upe1">
+                              <link id="lf82upe2" targetId="lf7xe4aa"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lf82up5l">
+                           <assignment id="lf82up8m">
+                              <title>New</title>
+                              <operation source="formula" to="temp.tmp_TextList">
+                                 <expression language="XQuery">list:append($temp.tmp_TextList , fn:substring($temp.tmp_ShortTextCurrent,1,$input.in_MaxStringLength ) )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ShortTextCurrent">
+                                 <expression language="XQuery">$temp.tmp_Word_Current </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Counter2">
+                                 <expression language="XQuery">$temp.tmp_Counter2 +1</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_FlagContinue">
+                                 <expression language="XQuery">if ( fn:string-length($temp.tmp_Word_Current) &gt; 0)
+then (1)
+else (0)</expression>
+                              </operation>
+                              <link id="lf82updg" targetId="lf82updf"/>
+                           </assignment>
+                           <container id="lf82updf" type="exclusive">
+                              <title>Word Empty Check</title>
+                              <flow id="lf82updi">
+                                 <jumpTo id="lf82upej">
+                                    <link id="lf82upey" targetId="lf7xe4aa"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="lf82updl">
+                                 <assignment id="lf82upgv">
+                                    <title>Assignment to txt_list2</title>
+                                    <operation source="formula" to="output.out_TextList">
+                                       <expression language="XQuery">list:sequence($temp.tmp_TextList  )</expression>
+                                    </operation>
+                                    <link id="lf8asm27" targetId="lf82upeu"/>
+                                 </assignment>
+                                 <end id="lf82upeu">
+                                    <title>End 1</title>
+                                 </end>
+                              </flow>
+                              <link id="lf82updh" targetId="lf82updi" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_FlagContinue}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lf82updk" targetId="lf82updl" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="lf82up5h" targetId="lf82up5i" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_FlagContinue}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lf82up5k" targetId="lf82up5l" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="lf7xe4ah">
+                     <end id="lf82upa2"/>
+                  </flow>
+                  <link id="lf7xe4ad" targetId="lf7xe4ae" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_WordsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lf7xe4ag" targetId="lf7xe4ah" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_WordsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>fd72d1d2-b502-455a-abbf-6310681398bf</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-29T09:54:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T13:33:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Text": "Some garbage Value !#$@#&amp;*^@(**$)(@&amp;$*&amp;^@*&amp;#^*&amp;@&amp;$(*@&amp;($^@*&amp;$*@%#&amp;@#*^@*#&amp;^@*&amp;#^*&amp;@^#*&amp;@^#*^@#*&amp;^@*&amp;#^jkdshfkjhskjf shdkashdkj jksahdjkahsd sahdkjhaskjd haskdhkashd hdhkjashdkashdkj asjkhd",
+"in_MaxStringLength":"40"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e75033d0-6e25-4962-8e9b-393c26fa45c3</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-29T09:54:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-29T09:54:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Text": "the quick brown fox jumps over the lazy dog 1234567890 THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG 1234567890 The Quick Brown Fox Jumps Over The Lazy Dog 1234567890 tHE qUICK bROWN fOX jUMPS oVER tHE lAZY dOG 1234567890",
+"in_MaxStringLength": 40
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>86gc7kurfu0kqqKCTpI3SP</types1:GUID>
+      <types1:DisplayName>Process_Generic_SplitLongText</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-05-26T08:30:29.179Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,944 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Q7ousWTzIf6riX2-gt-11387280-2022-09-14T08:26:11.685Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_API01_NewInvoice</types1:Name>
+      <types1:ParentFlowIds>bdypLK2D86CjqFV-gt-11242275-2022-09-14T08:26:12.025Z::pd.xml,eKu8QhxOSM8NciZ-gt-1944127-2022-08-26T13:11:39.077Z::pd.xml,mY6pkTjFIMeINci-gt-10157118-2022-09-20T15:48:30.195Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-14T08:26:12Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:38Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-06-06T07:29:19Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_API01_NewInvoice/Process_API01_NewInvoice.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_API01 NewInvoice"
+                  name="Process_API01_NewInvoice"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_Payload"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </parameter>
+               <parameter description="Required for Intercompany"
+                          name="in_TargetRevEnt"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Process_Variables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_JournalEntryPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_Process_Variables_NewInvoice"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_JournalEntryPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateItem_JE" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7DNzTf8uK84iRNP8a0OpAq</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreteDebtorItem_JE" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryDebtorItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lYcMMhwenmAgHJcl4g1eWs</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestBulkMessage</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kXvCcycrfYyfl9UaTpjRKx</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateProductTaxItem_JE" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryProductTaxItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2aiMy4c9Y6MhknHLTXj1Kx</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CreateProductTaxItem_SecDep_JE"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryProductTaxItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2aiMy4c9Y6MhknHLTXj1Kx</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CreteDebtorItem_SecDep_JE"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryDebtorItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lYcMMhwenmAgHJcl4g1eWs</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_Transformed" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DebtorAmount" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_LinePrice" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_VATPrice" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Payload_Transformed_SecDep"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Payload_Transformed_NonSecDep"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_LinePriceT" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_VATPriceT" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="ih_DateCreate" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_Transformed2" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocumentReferenceID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_APIT_API8" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SegmentVPC" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TargetRevEnt" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateCreditorItem_JE" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryCreditorItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8mjDRz7DuObd9jqoEuLa4a</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lij0g0pa" targetId="lij0g0p9"/>
+               </start>
+               <assignment id="lij0g0p9">
+                  <title>Set Process Variables</title>
+                  <operation source="field" to="output.out_Process_Variables_NewInvoice">input.in_Process_Variables</operation>
+                  <operation source="formula"
+                             to="output.out_Process_Variables_NewInvoice[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_Process_Variables_NewInvoice[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_Process_Variables[1]/IICS_Run_ID   ||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <link id="lij0g0pb" targetId="l7rcg3cl"/>
+               </assignment>
+               <assignment id="l7rcg3cl">
+                  <title>Transformation</title>
+                  <operation source="field" to="temp.tmp_Payload_Transformed">input.in_Payload</operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed[1]/ih_InvoiceType">
+                     <expression language="XQuery">util:iif(fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR"), "DG",util:iif(fn:starts-with($input.in_Payload[1]/ih_InvoiceType , "DR"),"DR",util:iif(fn:starts-with($input.in_Payload[1]/ih_InvoiceType , "A"),"DR",$input.in_Payload[1]/ih_InvoiceType)))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed[1]/ih_InvoiceBase">
+                     <expression language="XQuery">(:#BugID# https://vistra.atlassian.net/browse/VCB-12989
+
+util:iif (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR")
+,-1 * $input.in_Payload[1]/ih_InvoiceBase 
+,$input.in_Payload[1]/ih_InvoiceBase)
+:)
+$input.in_Payload[1]/ih_InvoiceBase </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed[1]/ih_InvoiceTotal">
+                     <expression language="XQuery">util:iif (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR")
+,-1 * $input.in_Payload[1]/ih_InvoiceTotal  
+,$input.in_Payload[1]/ih_InvoiceTotal )
+
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed[1]/ih_RevEntity">
+                     <expression language="XQuery">fn:substring($temp.tmp_Payload_Transformed[1]/ih_RevEntity,1,4 )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed[1]/Lines">
+                     <expression language="XQuery">for $x in $input.in_Payload[1]/Lines  
+return
+&lt;Lines&gt;
+   {$x/ii_LineNr}
+   {$x/atr_LineRef}
+   {$x/atr_LineNr}
+   {$x/atr_AcctCode}
+   {$x/ii_Description}
+   {$x/sm_Description}
+   {$x/ii_TaxCode}
+   
+   {if ($x/ii_ServiceType/text() = 'DB')
+   then ($x/ii_ServCode)  
+   else(&lt;ii_ServCode&gt;{fn:substring($x/ii_ServCode/text(),1,9)||fn:substring($input.in_Payload[1]/ih_RevEntity,1,2)||$x/ProdExt/text()}&lt;/ii_ServCode&gt;)}
+   
+        
+   {$x/ii_ServiceType}
+   {$x/ii_MatterCode}
+   {$x/ii_MatterType}
+   {$x/rf_UserLookval}
+   {$x/ProdExt}   
+   {$x/ii_CurCode}
+   
+   {if (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR"))     
+   then(&lt;ii_VatLineCur&gt;{-1 * $x/ii_VatLineCur/text() }&lt;/ii_VatLineCur&gt;)
+   else($x/ii_VatLineCur)}
+   
+   {if (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR"))   
+   then(&lt;ii_LinePrice&gt;{-1 * $x/ii_LinePrice/text()} &lt;/ii_LinePrice&gt;)
+   else($x/ii_LinePrice)}
+   
+   {if (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR"))   
+   then(&lt;ii_LineInvCur&gt;{-1 * $x/ii_LineInvCur/text() }&lt;/ii_LineInvCur&gt;)
+   else($x/ii_LineInvCur)}
+   
+   {$x/ii_VATPerc }
+   {$x/ii_ProfitCenter} 
+      
+   {if (fn:starts-with($input.in_Payload[1]/ih_InvoiceType  , "CR"))   
+   then(&lt;ii_VatLine_Calc&gt;{fn:round(-1 * $x/ii_VatLineCur * $x/ii_Exchange,2) }&lt;/ii_VatLine_Calc&gt;)
+   else(&lt;ii_VatLine_Calc&gt;{fn:round(		$x/ii_VatLineCur * $x/ii_Exchange,2) }&lt;/ii_VatLine_Calc&gt;)}   
+&lt;/Lines&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed2">
+                     <expression language="XQuery">util:toDecimal($input.in_Payload[1]/Lines[1]/ii_LineInvCur/text()) * util:toDecimal($input.in_Payload[1]/Lines[1]/ii_VATPerc/text())</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed2[1]/Lines">
+                     <expression language="XQuery">for $Line in $input.in_Payload[1]/Lines  
+return
+&lt;Lines&gt;
+	&lt;ii_LineNr&gt;{$Line/LineNr/text()}&lt;/ii_LineNr&gt;
+      &lt;atr_LineRef&gt;{$Line/atr_LineRef/text()}&lt;/atr_LineRef&gt;
+      &lt;atr_LineNr&gt;{$Line/atr_LineNr/text()}&lt;/atr_LineNr&gt;
+      &lt;atr_AcctCode&gt;{$Line/atr_AcctCode/text()}&lt;/atr_AcctCode&gt;
+      &lt;ii_LineInvCur&gt;{$Line/ii_LineInvCur/text()}&lt;/ii_LineInvCur&gt;
+      &lt;ii_Description&gt;{$Line/ii_Description/text()}&lt;/ii_Description&gt;
+      &lt;sm_Description&gt;{$Line/sm_Description/text()}&lt;/sm_Description&gt;
+      &lt;ii_TaxCode&gt;{$Line/ii_TaxCode/text()}&lt;/ii_TaxCode&gt;
+      &lt;ii_ServCode&gt;{$Line/ii_ServCode/text()}&lt;/ii_ServCode&gt;
+      &lt;ii_ServiceType&gt;{$Line/ii_ServiceType/text()}&lt;/ii_ServiceType&gt;
+      &lt;ii_MatterType&gt;{$Line/ii_MatterType/text()}&lt;/ii_MatterType&gt;
+      &lt;rf_UserLookval&gt;{$Line/rf_UserLookval/text()}&lt;/rf_UserLookval&gt;
+      &lt;ProdExt&gt;{$Line/ProdExt/text()}&lt;/ProdExt&gt;
+      &lt;ii_VatLineCur&gt;{$Line/ii_VatLineCur/text()}&lt;/ii_VatLineCur&gt;
+      &lt;ii_CurCode&gt;{$Line/ii_CurCode/text()}&lt;/ii_CurCode&gt;
+      &lt;ii_LinePrice&gt;{$Line/ii_LinePrice/text()}&lt;/ii_LinePrice&gt;
+      &lt;ii_VatLine_Calc&gt;{($Line/ii_VatLineCur) * ($Line/ii_LineInvCur) }&lt;/ii_VatLine_Calc&gt;
+      &lt;ii_ProfitCenter&gt;{$Line/ii_LinePrice/text()}&lt;/ii_ProfitCenter&gt;
+&lt;/Lines&gt;
+</expression>
+                  </operation>
+                  <link id="l7st87ob" targetId="l7st87oa"/>
+               </assignment>
+               <assignment id="l7st87oa">
+                  <title>Split out Security Deposit</title>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed_SecDep[1]/Lines">
+                     <expression language="XQuery">for $L in $temp.tmp_Payload_Transformed[1]/Lines 
+return
+if ($L/ii_ServCode = 'DISB063' )
+then ($L)
+else ()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Payload_Transformed_NonSecDep[1]/Lines">
+                     <expression language="XQuery">for $L in $temp.tmp_Payload_Transformed[1]/Lines 
+return
+if ($L/ii_ServCode != 'DISB063' )
+then ($L)
+else ()</expression>
+                  </operation>
+                  <link id="lfasayhe" targetId="lfasayhd"/>
+               </assignment>
+               <assignment id="lfasayhd">
+                  <title>Calculations</title>
+                  <operation source="formula" to="temp.tmp_SecurityDeposit_LinePrice">
+                     <expression language="XQuery">fn:sum(
+  for $L in $input.in_Payload[1]/Lines return
+  if ($L/ii_ServCode = 'DISB063') then ($L/LineInvCur) else (0)
+    )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SecurityDeposit_VATPrice">
+                     <expression language="XQuery">fn:sum(
+  for $L in $input.in_Payload[1]/Lines return
+  if ($L/ii_ServCode = 'DISB063') then ($L/VatLineCur) else (0)
+    )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_DebtorAmount">
+                     <expression language="XQuery">util:iif($temp.tmp_Payload_Transformed[1]/ih_CurCode  = 'USD'
+,$temp.tmp_Payload_Transformed[1]/ih_InvoiceBase  
+,$temp.tmp_Payload_Transformed[1]/ih_InvoiceTotal)
+ </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SecurityDeposit_LinePriceT">
+                     <expression language="XQuery">fn:sum($temp.tmp_Payload_Transformed_SecDep/Lines/ii_LineInvCur )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SecurityDeposit_VATPriceT">
+                     <expression language="XQuery">fn:sum($temp.tmp_Payload_Transformed_SecDep/Lines/ii_VatLineCur  )</expression>
+                  </operation>
+                  <link id="lfasayhf" targetId="lfasaxzw"/>
+               </assignment>
+               <assignment id="l7ofqw9y">
+                  <title>Prepare Payload</title>
+                  <operation source="formula" to="temp.tmp_DocumentReferenceID">
+                     <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1] return
+if(util:isNull($H/ih_InvoiceRef/text()) or $H/ih_InvoiceRef/text()='' )  
+then($H/ih_InvoiceNr/text()  )  
+else($H/ih_InvoiceRef/text() )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_JournalEntryPO">
+                     <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1] 
+return
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;soap:Header/&gt;
+   &lt;soap:Body&gt;
+      &lt;ns:JournalEntryBulkCreateRequest xmlns:ns="http://sap.com/xi/SAPSCORE/SFIN"&gt;
+  &lt;MessageHeader&gt;
+    &lt;ID&gt;{$H/ih_RevEntity/text()||'-'||$H/ih_InvoiceNr/text()||'-'||fn:current-date()}&lt;/ID&gt;   
+    &lt;CreationDateTime&gt;{fn:current-dateTime()}&lt;/CreationDateTime&gt;
+    &lt;SenderBusinessSystemID&gt;VIP&lt;/SenderBusinessSystemID&gt; 
+  &lt;/MessageHeader&gt;
+  &lt;JournalEntryCreateRequest&gt;
+    &lt;MessageHeader&gt;
+      &lt;ID&gt;{$H/ih_RevEntity||'-'||$H/ih_InvoiceNr}&lt;/ID&gt;
+      &lt;CreationDateTime&gt;{fn:format-dateTime($temp.tmp_Payload_Transformed[1]/ih_DateCreate , "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]Z")}&lt;/CreationDateTime&gt;      
+    &lt;/MessageHeader&gt;
+    &lt;JournalEntry&gt;
+      &lt;OriginalReferenceDocumentType&gt;BKPFF&lt;/OriginalReferenceDocumentType&gt;
+      &lt;BusinessTransactionType&gt;RFBU&lt;/BusinessTransactionType&gt;
+      &lt;AccountingDocumentType&gt;{$H/ih_InvoiceType/text() }&lt;/AccountingDocumentType&gt;      
+      &lt;DocumentReferenceID&gt;{$temp.tmp_DocumentReferenceID }&lt;/DocumentReferenceID&gt;              
+      &lt;CreatedByUser&gt;CC0000000022&lt;/CreatedByUser&gt;
+      &lt;CompanyCode&gt;{fn:substring($H/ih_RevEntity/text(),1,4)}&lt;/CompanyCode&gt;
+      &lt;DocumentDate&gt;{fn:substring($H/ih_DateInvoice/text(), 1,10) }&lt;/DocumentDate&gt;
+      &lt;PostingDate&gt;{fn:substring($H/ih_DateVoucher/text(), 1,10) }&lt;/PostingDate&gt;
+      &lt;TaxDeterminationDate&gt;{fn:substring($H/ih_DateVoucher/text(), 1,10) }&lt;/TaxDeterminationDate&gt;
+      &lt;DocumentHeaderText&gt;{'VPC-Billing-'||$H/ih_InvoiceType/text() }&lt;/DocumentHeaderText&gt;
+      &lt;Reference1InDocumentHeader&gt;{$H/ih_MatterCode/text() }&lt;/Reference1InDocumentHeader&gt;
+      &lt;Reference2InDocumentHeader&gt;VPC-API-01&lt;/Reference2InDocumentHeader&gt; 
+      {$temp.tmp_CreateItem_JE }
+      {$temp.tmp_CreteDebtorItem_JE }
+      {$temp.tmp_CreteDebtorItem_SecDep_JE}
+	  {$temp.tmp_CreateProductTaxItem_JE}
+      {$temp.tmp_CreateProductTaxItem_SecDep_JE}
+    &lt;/JournalEntry&gt;
+  &lt;/JournalEntryCreateRequest&gt;
+&lt;/ns:JournalEntryBulkCreateRequest&gt;
+&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</expression>
+                  </operation>
+                  <operation source="field" to="output.out_JournalEntryPO">temp.tmp_JournalEntryPO</operation>
+                  <link id="lix3s8nd" targetId="lesev9kz"/>
+               </assignment>
+               <container id="lfasaxzw" type="exclusive">
+                  <title>InterCo Check</title>
+                  <flow id="lfasay00">
+                     <link id="lfasay01" targetId="lfasaxzw" type="containerLink"/>
+                  </flow>
+                  <flow id="lfasay03">
+                     <assignment id="lfasaycs">
+                        <title>QUERY RefMaster</title>
+                        <operation source="query" to="temp.tmp_RefMaster">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:RefMaster">
+                              <where>RefCode = '{$temp.tmp_Payload_Transformed[1]/ih_RefCode}'</where>
+                           </query>
+                        </operation>
+                        <link id="lfasayct" targetId="lfasay2r"/>
+                     </assignment>
+                     <assignment id="lfasay2r">
+                        <title>Partner Segment</title>
+                        <operation source="formula" to="temp.tmp_SegmentVPC">
+                           <expression language="XQuery">fn:substring($temp.tmp_Payload_Transformed[1]/ih_RevEntity,1,2)||$temp.tmp_RefMaster.OrgUnit1 </expression>
+                        </operation>
+                        <operation source="query" to="temp.tmp_APIT_API8">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:UserTables">
+                              <where>TabCode = 'APIT' and Name = 'API8' and ElCode = '{$temp.tmp_SegmentVPC}'</where>
+                           </query>
+                        </operation>
+                     </assignment>
+                     <link id="lfasay04" targetId="lfasaxzw" type="containerLink"/>
+                  </flow>
+                  <link id="lfasaxzz" targetId="lfasay00" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_TargetRevEnt}</arg>
+                           <arg name="right">{$temp.tmp_Payload_Transformed[1]/ih_RevEntity}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lfasay02" targetId="lfasay03" type="containerLink"/>
+                  <link id="lfasayhc" targetId="l7u82wk3"/>
+               </container>
+               <container id="l7u82wk3" type="exclusive">
+                  <title>in_API_Name</title>
+                  <flow id="l7u82wk7">
+                     <assignment id="l7u82wly">
+                        <title>Item / DebtorItem / ProductTaxItem</title>
+                        <operation source="formula" to="temp.tmp_CreateItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+for $L in $temp.tmp_Payload_Transformed_NonSecDep/Lines
+return 
+&lt;Item&gt;
+  &lt;GLAccount&gt;{$L/atr_AcctCode/text()} &lt;/GLAccount&gt;
+  {if (util:isNull($L/ii_Description/text() ) )
+  then(&lt;DocumentItemText&gt;{fn:substring($L/sm_Description/text(),1,50)}&lt;/DocumentItemText&gt;)
+  else(&lt;DocumentItemText&gt;{fn:substring($L/ii_Description/text(),1,50)}&lt;/DocumentItemText&gt;)}
+  
+  &lt;AssignmentReference&gt;{$H/ih_MatterCode/text() }&lt;/AssignmentReference&gt;
+  &lt;Material&gt;{$L/ii_ServCode/text()}&lt;/Material&gt;  
+  &lt;ns3:YY1_SOPCustomer  xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RefCode/text() }&lt;/ns3:YY1_SOPCustomer&gt;
+  &lt;CompanyCode&gt;{$H/ih_RevEntity/text() }&lt;/CompanyCode&gt;
+  
+  {if (fn:starts-with($L/atr_AcctCode/text(), "4") or fn:starts-with($L/atr_AcctCode/text(), "5")) 
+  then (
+  &lt;AccountAssignment&gt;
+		&lt;AccountAssignmentType&gt;{util:iif(fn:starts-with($L/atr_AcctCode/text() , '4'), 'EO','PR')}&lt;/AccountAssignmentType&gt;
+		&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+  &lt;/AccountAssignment&gt;	)
+  else (
+  &lt;AccountAssignment&gt;
+	&lt;Customer&gt;{$H/ih_RefCode/text() }&lt;/Customer&gt;
+	&lt;SoldMaterial&gt;{$L/ii_ServCode/text()}&lt;/SoldMaterial&gt;
+	&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+  &lt;/AccountAssignment&gt;	) }
+  
+  &lt;ProfitabilitySupplement&gt;
+	&lt;Customer&gt;{$H/ih_RefCode/text() }&lt;/Customer&gt;
+    &lt;SoldMaterial&gt;{$L/ii_ServCode/text()}&lt;/SoldMaterial&gt;
+    &lt;WBSElement&gt;{fn:substring('VPC-'||$H/ih_RefCode/text()||'-'||$H/ih_MatterCode/text(), 1, 24)}&lt;/WBSElement&gt;
+  &lt;/ProfitabilitySupplement&gt;
+
+  &lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}"&gt;{fn:format-number((-1) * $L/ii_LineInvCur , '#0.##')}&lt;/AmountInTransactionCurrency&gt;  
+  &lt;Tax&gt;
+      &lt;TaxCode&gt;{$L/ii_TaxCode/text()}&lt;/TaxCode&gt;
+  &lt;/Tax&gt;
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreteDebtorItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+let $L := $temp.tmp_Payload_Transformed_NonSecDep[1]/Lines
+return
+&lt;DebtorItem&gt; &lt;!-- Normal Items --&gt;
+	&lt;!--AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}" &gt;{fn:format-number(fn:sum($L/ii_LineInvCur) + fn:sum($L/ii_VatLine_Calc), '#0.##')}&lt;/AmountInTransactionCurrency--&gt;
+    &lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}" &gt;{fn:format-number($temp.tmp_DebtorAmount - $temp.tmp_SecurityDeposit_LinePriceT, '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+	&lt;Debtor&gt;{$H/ih_RefCode/text()}&lt;/Debtor&gt;
+	&lt;ReferenceDocumentItem&gt;1&lt;/ReferenceDocumentItem&gt;
+    &lt;DocumentItemText&gt;&lt;/DocumentItemText&gt;
+	&lt;AssignmentReference&gt;&lt;/AssignmentReference&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RefCode/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/DebtorItem&gt;
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreteDebtorItem_SecDep_JE">
+                           <expression language="XQuery">for $LSecDep in $temp.tmp_Payload_Transformed_SecDep[1]/Lines
+   ,$SpGL in ("H", "I")
+let $H := $temp.tmp_Payload_Transformed[1]
+return
+&lt;DebtorItem&gt; &lt;!-- Security Deposit Items --&gt;
+	{if ($SpGL = 'I') 
+    then (
+	&lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}" &gt;{fn:format-number(fn:sum($LSecDep/ii_LineInvCur) + fn:sum($LSecDep/ii_VatLine_Calc), '#0.##')}&lt;/AmountInTransactionCurrency&gt; ) else()}	
+    {if ($SpGL = 'H') then
+    (&lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}" &gt;{fn:format-number(fn:sum($LSecDep/ii_LineInvCur)*(-1), '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+    
+	&lt;Debtor&gt;{$H/ih_RefCode/text()}&lt;/Debtor&gt;
+	&lt;ReferenceDocumentItem&gt;{util:iif($SpGL='H', 1,  2)}&lt;/ReferenceDocumentItem&gt;
+    &lt;DocumentItemText&gt;&lt;/DocumentItemText&gt;
+	&lt;AssignmentReference&gt;&lt;/AssignmentReference&gt;
+    &lt;DownPaymentTerms&gt;
+		&lt;SpecialGLCode&gt;{$SpGL}&lt;/SpecialGLCode&gt;  
+		&lt;TaxCode&gt;{$LSecDep/ii_TaxCode/text()}&lt;/TaxCode&gt;
+	&lt;/DownPaymentTerms&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RefCode/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/DebtorItem&gt;
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreateProductTaxItem_JE">
+                           <expression language="XQuery">for $Tx in distinct-values($temp.tmp_Payload_Transformed/Lines/ii_TaxCode) 
+let $LAll		:= $temp.tmp_Payload_Transformed[1]/Lines
+   ,$LSecDep 	:= $temp.tmp_Payload_Transformed_SecDep[1]/Lines
+   ,$H 			:= $temp.tmp_Payload_Transformed[1]
+(:let $LNonSecDep := $temp.tmp_Payload_Transformed_NonSecDep[1]/Lines :)
+return 
+if(fn:sum($LAll[ii_TaxCode=$Tx]/ii_VatLine_Calc)=0 and fn:sum($LAll[ii_TaxCode=$Tx]/ii_LineInvCur)=0) 
+then ()
+else (
+&lt;ProductTaxItem&gt; &lt;!--Normal Items--&gt; 	
+	&lt;AmountInTransactionCurrency  currencyCode="{$H/ih_CurCode/text()}"&gt;{
+    fn:format-number(
+    util:iif(fn:sum($LAll[ii_TaxCode=$Tx]/ii_VatLine_Calc)=0
+   			 ,0
+    		 ,(fn:sum($LAll[ii_TaxCode=$Tx]/ii_VatLine_Calc)
+       		  +fn:sum($LAll[ii_TaxCode=$Tx]/ii_LineInvCur)-round(fn:sum($LAll[ii_TaxCode=$Tx]/ii_LineInvCur),2)
+       		  )*(-1)) 
+    , '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+    &lt;TaxBaseAmountInTransCrcy  currencyCode="{$H/ih_CurCode/text()}"&gt;{fn:format-number(util:iif(fn:sum($LAll[ii_TaxCode=$Tx]/ii_LineInvCur)=0,0,fn:sum($LAll[ii_TaxCode=$Tx]/ii_LineInvCur)*(-1))  , '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;
+    &lt;TaxCode&gt;{$Tx}&lt;/TaxCode&gt; 
+	&lt;!--TaxItemClassification&gt;{util:iif($Tx = '0A' or $Tx = 'Y2' , 'MWAS', 'MWS') }&lt;/TaxItemClassification--&gt;
+    &lt;TaxItemClassification&gt;MWS&lt;/TaxItemClassification&gt;    
+    &lt;ConditionType&gt;MWAS&lt;/ConditionType&gt; 
+&lt;/ProductTaxItem&gt;)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreateProductTaxItem_SecDep_JE">
+                           <expression language="XQuery">for $Tx in distinct-values($temp.tmp_Payload_Transformed/Lines/ii_TaxCode) 
+let $LAll		:= $temp.tmp_Payload_Transformed[1]/Lines
+   ,$LSecDep 	:= $temp.tmp_Payload_Transformed_SecDep[1]/Lines
+   ,$H 			:= $temp.tmp_Payload_Transformed[1]
+(:let $LNonSecDep := $temp.tmp_Payload_Transformed_NonSecDep[1]/Lines :)
+return 
+if(fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_VatLine_Calc)=0 and fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_LineInvCur)=0) 
+then () 
+else (
+&lt;ProductTaxItem&gt; &lt;!--Security Deposit Items--&gt; 	
+	&lt;AmountInTransactionCurrency  currencyCode="{$H/ih_CurCode/text()}"&gt;{
+    fn:format-number(
+      util:iif(fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_VatLine_Calc)=0
+      		  ,0
+              ,fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_VatLine_Calc)
+              +fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_LineInvCur)-round(fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_LineInvCur),2)
+              ) 
+      , '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+    &lt;TaxBaseAmountInTransCrcy  currencyCode="{$H/ih_CurCode/text()}"&gt;{fn:format-number(util:iif(fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_LineInvCur)=0,0,fn:sum($LSecDep[ii_TaxCode=$Tx]/ii_LineInvCur))  , '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;
+    &lt;TaxCode&gt;{$Tx}&lt;/TaxCode&gt; 
+	&lt;!--TaxItemClassification&gt;{util:iif($Tx = '0A' or $Tx = 'Y2' , 'MWAS', 'MWS') }&lt;/TaxItemClassification--&gt;
+    &lt;TaxItemClassification&gt;MWS&lt;/TaxItemClassification&gt;  
+    &lt;ConditionType&gt;MWAS&lt;/ConditionType&gt; 
+&lt;/ProductTaxItem&gt;)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7u82wk8" targetId="l7u82wk3" type="containerLink"/>
+                  </flow>
+                  <flow id="l7u82wka">
+                     <assignment id="lfarljby">
+                        <title>Item CreditorItem</title>
+                        <operation source="formula" to="temp.tmp_CreateItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+for $L in $temp.tmp_Payload_Transformed/Lines[ii_InterRevEntity!=$H/ih_RevEntity]
+return 
+&lt;Item&gt;
+  &lt;GLAccount&gt;{$L/atr_AcctCode/text()} &lt;/GLAccount&gt;
+  {if (util:isNull($L/ii_Description/text() ) )
+  then(&lt;DocumentItemText&gt;{fn:substring($L/sm_Description/text(),1,50)}&lt;/DocumentItemText&gt;)
+  else(&lt;DocumentItemText&gt;{fn:substring($L/ii_Description/text(),1,50)}&lt;/DocumentItemText&gt;)}
+  
+  &lt;AssignmentReference&gt;{$H/ih_MatterCode/text() }&lt;/AssignmentReference&gt;
+  &lt;Material&gt;{$L/ii_ServCode/text()}&lt;/Material&gt; 
+  &lt;TradingPartner&gt;{$temp.tmp_TargetRevEnt}&lt;/TradingPartner&gt;
+  &lt;ns3:YY1_SOPCustomer  xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RevEntity/text() }&lt;/ns3:YY1_SOPCustomer&gt;
+  &lt;!--CompanyCode&gt;{$H/ih_RevEntity/text() }&lt;/CompanyCode--&gt;  
+  
+  {if (fn:starts-with($L/atr_AcctCode/text(), "4") or fn:starts-with($L/atr_AcctCode/text(), "5")) 
+  then (
+  &lt;AccountAssignment&gt;
+		&lt;AccountAssignmentType&gt;{util:iif(fn:starts-with($L/atr_AcctCode/text() , '4'), 'EO','PR')}&lt;/AccountAssignmentType&gt;
+		&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+        &lt;PartnerSegment&gt;{$temp.tmp_APIT_API8.TagValues}&lt;/PartnerSegment&gt;
+  &lt;/AccountAssignment&gt;	)
+  else (
+  &lt;AccountAssignment&gt;
+	&lt;Customer&gt;{$H/ih_RefCode/text() }&lt;/Customer&gt;
+	&lt;SoldMaterial&gt;{$L/ii_ServCode/text()}&lt;/SoldMaterial&gt;
+	&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+  &lt;/AccountAssignment&gt;	) }
+  
+  &lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}"&gt;{fn:format-number((-1) * $L/ii_LineInvCur , '#0.##')}&lt;/AmountInTransactionCurrency&gt;  
+  &lt;Tax&gt;
+      &lt;TaxCode&gt;SE&lt;/TaxCode&gt;
+  &lt;/Tax&gt;
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreateCreditorItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+let $L := $H/Lines
+return
+&lt;CreditorItem&gt;
+   &lt;ReferenceDocumentItem&gt;{$L/ii_LineNr/text()}&lt;/ReferenceDocumentItem&gt;
+   &lt;Creditor&gt;{$temp.tmp_TargetRevEnt}&lt;/Creditor&gt;
+   &lt;AmountInTransactionCurrency&gt;
+      &lt;Value&gt;{fn:format-number( fn:sum($L[ii_InterRevEntity!=$H/ih_RevEntity]/ii_LineInvCur) , '#0.##')}&lt;/Value&gt;
+      &lt;currencyCode&gt;{$H/ih_CurCode/text()}&lt;/currencyCode&gt;
+   &lt;/AmountInTransactionCurrency&gt;  
+   &lt;ns3:YY1_SOPCustomer  xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RevEntity/text() }&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/CreditorItem&gt;
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7u82wkb" targetId="l7u82wk3" type="containerLink"/>
+                  </flow>
+                  <flow id="l7u82wsk">
+                     <assignment id="lfarljho">
+                        <title>Item DebtorItem</title>
+                        <operation source="formula" to="temp.tmp_CreateItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+for $L in $temp.tmp_Payload_Transformed/Lines[ii_InterRevEntity!=$H/ih_RevEntity]
+return 
+&lt;Item&gt;
+  &lt;GLAccount&gt;{$L/atr_AcctCode/text()} &lt;/GLAccount&gt;
+  {if (util:isNull($L/ii_Description/text() ) )
+  then(&lt;DocumentItemText&gt;{fn:substring($L/sm_Description/text(),1,50)}&lt;/DocumentItemText&gt;)
+  else(&lt;DocumentItemText&gt;{fn:substring($L/ii_Description/text(),1,50)}&lt;/DocumentItemText&gt;)}
+  
+  &lt;AssignmentReference&gt;{$H/ih_MatterCode/text() }&lt;/AssignmentReference&gt;
+  &lt;Material&gt;{$L/ii_ServCode/text()}&lt;/Material&gt; 
+  &lt;TradingPartner&gt;{$temp.tmp_TargetRevEnt}&lt;/TradingPartner&gt;
+  &lt;ns3:YY1_SOPCustomer  xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RevEntity/text() }&lt;/ns3:YY1_SOPCustomer&gt;
+  &lt;!--CompanyCode&gt;{$H/ih_RevEntity/text() }&lt;/CompanyCode--&gt;  
+  
+  {if (fn:starts-with($L/atr_AcctCode/text(), "4") or fn:starts-with($L/atr_AcctCode/text(), "5")) 
+  then (
+  &lt;AccountAssignment&gt;
+		&lt;AccountAssignmentType&gt;{util:iif(fn:starts-with($L/atr_AcctCode/text() , '4'), 'EO','PR')}&lt;/AccountAssignmentType&gt;
+		&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+        &lt;PartnerSegment&gt;{$temp.tmp_APIT_API8.TagValues}&lt;/PartnerSegment&gt;
+  &lt;/AccountAssignment&gt;	)
+  else (
+  &lt;AccountAssignment&gt;
+	&lt;Customer&gt;{$H/ih_RefCode/text() }&lt;/Customer&gt;
+	&lt;SoldMaterial&gt;{$L/ii_ServCode/text()}&lt;/SoldMaterial&gt;
+	&lt;ProfitCenter&gt;{$L/ii_ProfitCenter/text()}&lt;/ProfitCenter&gt;
+  &lt;/AccountAssignment&gt;	) }
+  
+  &lt;AmountInTransactionCurrency currencyCode="{$H/ih_CurCode/text()}"&gt;{fn:format-number( $L/ii_LineInvCur , '#0.##')}&lt;/AmountInTransactionCurrency&gt;  
+  &lt;Tax&gt;
+      &lt;TaxCode&gt;PE&lt;/TaxCode&gt;
+  &lt;/Tax&gt;
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CreteDebtorItem_JE">
+                           <expression language="XQuery">let $H := $temp.tmp_Payload_Transformed[1]
+let $L := $H/Lines
+return
+&lt;DebtorItem&gt;
+   &lt;ReferenceDocumentItem&gt;{$L/ii_LineNr/text()}&lt;/ReferenceDocumentItem&gt;
+   &lt;Debtor&gt;{$H/ih_RevEntity/text() }&lt;/Debtor&gt;
+   &lt;AmountInTransactionCurrency&gt;
+      &lt;Value&gt;{fn:format-number((-1) * fn:sum($L[ii_InterRevEntity!=$H/ih_RevEntity]/ii_LineInvCur) , '#0.##')}&lt;/Value&gt;
+      &lt;currencyCode&gt;{$H/ih_CurCode/text()}&lt;/currencyCode&gt;
+   &lt;/AmountInTransactionCurrency&gt;  
+   &lt;ns3:YY1_SOPCustomer  xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$H/ih_RevEntity/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/DebtorItem&gt;
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7u82wsl" targetId="l7u82wk3" type="containerLink"/>
+                  </flow>
+                  <flow id="l7u82wsm">
+                     <throw id="l7u82wv5">
+                        <title>405 Method not allowed</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">405</parameter>
+                           <parameter name="detail" source="constant" updatable="true">Method Not Allowed</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Must Specify API_Name as API-01, API-16, or API-17</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l7u82wk6" targetId="l7u82wk7" type="containerLink">
+                     <condition source="formula">
+                        <function name="ends-with">
+                           <arg name="left">{$input.in_Process_Variables[1]/API_Name}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7u82wk9" targetId="l7u82wka" type="containerLink">
+                     <condition source="formula">
+                        <function name="ends-with">
+                           <arg name="left">{$input.in_Process_Variables[1]/API_Name}</arg>
+                           <arg name="right">16</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7u82wsi" targetId="l7u82wsk" type="containerLink">
+                     <condition source="formula">
+                        <function name="ends-with">
+                           <arg name="left">{$input.in_Process_Variables[1]/API_Name}</arg>
+                           <arg name="right">17</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7u82wsj" targetId="l7u82wsm" type="containerLink"/>
+                  <link id="l7u82wlp" targetId="l7ofqw9y"/>
+               </container>
+               <container id="l7olandb" type="exclusive">
+                  <title>Header Ref</title>
+                  <flow id="l7olandf">
+                     <assignment id="liwyh5l7">
+                        <title>Update Error Details</title>
+                        <operation source="constant" to="output.out_Process_Variables_NewInvoice[1]/Code">409</operation>
+                        <operation source="constant" to="output.out_Process_Variables_NewInvoice[1]/Error">Record Already Exists</operation>
+                        <operation source="formula"
+                                   to="output.out_Process_Variables_NewInvoice[1]/Description">
+                           <expression language="XQuery">'Journal not posted because a record already exists for DocumentReferenceID ['||
+$temp.tmp_DocumentReferenceID||
+'] and CompanyCode ['||
+$temp.tmp_Payload_Transformed[1]/ih_RevEntity ||
+'] and FiscalYear ['||
+date:getDatePart($temp.tmp_Payload_Transformed[1]/ih_DateVoucher , "YYYY")||
+']'</expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_Process_Variables_NewInvoice[1]/FailedAtStep">Duplicate Check</operation>
+                        <operation source="formula"
+                                   to="output.out_Process_Variables_NewInvoice[1]/RestURL">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||
+'/sap/opu/odata/sap/API_OPLACCTGDOCITEMCUBE_SRV'||
+'/A_OperationalAcctgDocItemCube'||
+'?$filter=CompanyCode eq '''||$temp.tmp_Payload_Transformed[1]/ih_RevEntity||
+''' and FiscalYear eq '''||date:getDatePart($temp.tmp_Payload_Transformed[1]/ih_DateVoucher , "YYYY")||
+''' and DocumentReferenceID eq '''||$temp.tmp_DocumentReferenceID||
+''' and Reference2InDocumentHeader eq ''VPC-API-01'''</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_Process_Variables_NewInvoice[1]/RequestPayload">
+                           <expression language="XQuery">util:toXML($input.in_Payload )</expression>
+                        </operation>
+                        <link id="liwyh5v8" targetId="liwyh5v7"/>
+                     </assignment>
+                     <subflow id="liwyh5v7">
+                        <title>Log Duplicate Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_Process_Variables_NewInvoice</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="liwyh5kr" targetId="l7olandb" type="containerLink"/>
+                  </flow>
+                  <flow id="l7olandi">
+                     <subflow id="lix3s8ne">
+                        <title>POST Journal Entry</title>
+                        <subflowGUID>2GoHM40fVmKjlTZ5291uoI</subflowGUID>
+                        <subflowPath>Process_POST_JournalEntryBulkCreateRequest</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">temp.tmp_JournalEntryPO</parameter>
+                           <parameter name="in_Process_Variables" source="field" updatable="true">output.out_Process_Variables_NewInvoice</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_JournalConfirmation_Payload" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:$any</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                           <field name="out_ResponseCode" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessVariables_PostJournal" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lix3s8nf" targetId="lix3s8m9"/>
+                     </subflow>
+                     <assignment id="lix3s8m9">
+                        <title>Add Output to Process Variables</title>
+                        <operation source="field" to="output.out_Process_Variables_NewInvoice[1]/Code">output.out_ProcessVariables_PostJournal[1]/Code</operation>
+                        <operation source="field" to="output.out_Process_Variables_NewInvoice[1]/Error">output.out_Process_Variables_NewInvoice[1]/Error</operation>
+                        <operation source="field"
+                                   to="output.out_Process_Variables_NewInvoice[1]/Description">output.out_Process_Variables_NewInvoice[1]/Description</operation>
+                        <operation source="formula"
+                                   to="output.out_Process_Variables_NewInvoice[1]/IICS_Run_ID">
+                           <expression language="XQuery">'Parent='||$input.in_Process_Variables[1]/IICS_Run_ID   ||'^LoggedAt='||util:getProcessId()</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l7olandj" targetId="l7olandb" type="containerLink"/>
+                  </flow>
+                  <link id="l7olande" targetId="l7olandf" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.Reference2InDocumentHeader}</arg>
+                           <arg name="right">VPC-API-01</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7olandh" targetId="l7olandi" type="containerLink"/>
+                  <link id="liwyh5jv" targetId="c"/>
+               </container>
+               <service id="lesev9kz">
+                  <title>Check Invoice Exists</title>
+                  <serviceName>AppsvcSapS4-AccountingDocumentRead-Custom:GET_A_OperationalAcctgDocItemCube_api01</serviceName>
+                  <serviceGUID>3VZyEkGkNjxcf47SnZiTww</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="formula">
+                        <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                     </parameter>
+                     <parameter name="username" source="formula">
+                        <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                     </parameter>
+                     <parameter name="password" source="formula">
+                        <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                     </parameter>
+                     <parameter name="DocumentReferenceID" source="field" updatable="true">temp.tmp_DocumentReferenceID</parameter>
+                     <parameter name="CompanyCode" source="field" updatable="true">temp.tmp_Payload_Transformed[1]/ih_RevEntity</parameter>
+                     <parameter name="FiscalYear" source="formula">
+                        <expression language="XQuery">date:getDatePart($temp.tmp_Payload_Transformed[1]/ih_DateVoucher , "YYYY")</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="lesev9l1" targetId="l7olandb"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0SoDuOB8pu4fyg2DBviRIj</types1:GUID>
+      <types1:DisplayName>Process_API01 NewInvoice</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-07-10T13:25:36.58Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

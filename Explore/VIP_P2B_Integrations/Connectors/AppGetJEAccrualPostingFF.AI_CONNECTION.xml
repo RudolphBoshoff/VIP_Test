@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kabchspiRASmvD4-gt-13812698-2021-08-19T13:06:21.73Z::conn.xml</types1:EntryId>
+      <types1:Name>AppGetJEAccrualPostingFF</types1:Name>
+      <types1:ParentFlowIds>DACUtoVVVVVVVVV-gt-26739900-2021-08-19T13:06:22.473Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>FixedFee</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>roger.fbaatjes@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-08-19T13:06:22Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:38Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>nitish.kumar_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-04-01T04:48:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppGetJEAccrualPostingFF/AppGetJEAccrualPostingFF.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppGetJEAccrualPostingFF"
+                     label="AppGetJEAccrualPostingFF"
+                     name="AppGetJEAccrualPostingFF">
+            <description>FixedFee</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <agent>VIP_IICS_SA_SG_ONPREM_GROUP</agent>
+            <attributes/>
+            <consumers>
+               <consumer enabled="true"
+                         name="JEAccrualsPostingFF"
+                         typeName="DelimitedContentParser">
+                  <description>Event to pick up Fixed Fee Posting file</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\JEAccrualsPosting"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value="^API15-FF.*\.csv$"/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value="0"/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="true"/>
+                     <attribute encrypted="false" name="delimiter" value=","/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="Creationdate,ID,SenderBusinessSystemId,OriginalReferenceDocumentType,BusinessTransactionType,AccountingDocumentType,DocumentItemText,DocumentHeaderText,Reference1InDocumentHeader,Reference2InDocumentHeader,CreatedByUser,ReversalReason,ReversalDate,CompanyCode,DocumentDate,PostingDate,Itm,GLAccount,AmountInTransactionCurrency,CurrencyCode,YY1_SOPCustomer,AccountAssignmentType,WBSElement,SAPProject,SoldMaterial"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>3bgIDpknL6icbGt6Y7QUKl</types1:GUID>
+      <types1:DisplayName>AppGetJEAccrualPostingFF</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-13T08:58:11.136Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

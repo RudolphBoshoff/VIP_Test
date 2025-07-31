@@ -1,0 +1,236 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>zHfSTu0kMVX3cjk-gt-4478582-2023-02-28T13:08:16.418Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_DELETE_or_UPDATE_api_20_Transaction_Log</types1:Name>
+      <types1:ParentFlowIds>0wbgdwUiQLnzYLn-gt-4572362-2023-02-28T13:08:18.996Z::pd.xml,7qaaaa-gt-957994-2023-02-28T13:08:17.944Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Deletes all records from VIPIntegrations.cf.api_20_Transaction_Log for a given B1_Ref</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:16Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-16T15:17:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_DELETE_or_UPDATE_api_20_Transaction_Log/Process_DELETE_or_UPDATE_api_20_Transaction_Log.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_DELETE_or_UPDATE_api_20_Transaction_Log"
+                  name="Process_DELETE_or_UPDATE_api_20_Transaction_Log"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Deletes all records from VIPIntegrations.cf.api_20_Transaction_Log for a given B1_Ref</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_B1_Ref" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Status" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Message" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CreatedDate"
+                          required="true"
+                          type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_Record_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnVIPIntegrations-CF:api_20_Transaction_Log</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnVIPIntegrations-CF:api_20_Transaction_Log</option>
+                     <option name="required">false</option>
+                     <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowedUsers>
+                     <user>anupama.rao@vistra.com</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lecy5sng" targetId="lecy5sn4"/>
+               </start>
+               <assignment id="lecy5sn4">
+                  <title>Fetch Records</title>
+                  <operation source="list" to="temp.tmp_Record_List">
+                     <query advanceQuery="true"
+                            from="AppConnVIPIntegrations-CF:api_20_Transaction_Log">
+                        <where>B1_Ref = '{$input.in_B1_Ref}' and DateCreated = '{$input.in_CreatedDate}'</where>
+                     </query>
+                  </operation>
+                  <link id="lecy5sn6" targetId="le414i17"/>
+               </assignment>
+               <container id="le414i17" type="exclusive">
+                  <title>Input Status</title>
+                  <flow id="le414i1b">
+                     <container id="lee8m1q3" type="exclusive">
+                        <title>Transaction Record loop</title>
+                        <flow id="lee8m1q4">
+                           <assignment id="lee8m1q5">
+                              <title>Next Transaction Record</title>
+                              <operation source="formula" to="temp.tmp_Record">
+                                 <expression language="XQuery">list:head($temp.tmp_Record_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Record_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_Record_List )</expression>
+                              </operation>
+                              <link id="lee8m1qr" targetId="lee8m1qq"/>
+                           </assignment>
+                           <assignment id="lee8m1qq">
+                              <title>Update Transaction Log Record</title>
+                              <operation source="field" to="temp.tmp_Record.IICS_Status">input.in_Status</operation>
+                              <operation source="field" to="temp.tmp_Record.IICS_Message">input.in_IICS_Message</operation>
+                              <link id="lee8m1qs" targetId="lee8m1q7"/>
+                           </assignment>
+                           <jumpTo id="lee8m1q7">
+                              <link id="lee8m1qe" targetId="lee8m1q3"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lee8m1q8">
+                           <end id="lee8m1q9"/>
+                        </flow>
+                        <link id="lee8m1qa" targetId="lee8m1q4" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Record_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lee8m1qb" targetId="lee8m1q8" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Record_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="le414i1e">
+                     <container id="le414i1x" type="exclusive">
+                        <title>Record loop</title>
+                        <flow id="le414i1y">
+                           <assignment id="le414i1z">
+                              <title>Next Record</title>
+                              <operation source="formula" to="temp.tmp_Record">
+                                 <expression language="XQuery">list:head($temp.tmp_Record_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Record_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_Record_List )</expression>
+                              </operation>
+                              <link id="le414i26" targetId="le414i20"/>
+                           </assignment>
+                           <service id="le414i20">
+                              <title>Delete Object</title>
+                              <serviceName>avDeleteAnyEntityService</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="Connection Name" source="constant">AppConnVIPIntegrations-CF</parameter>
+                                 <parameter name="Object Type" source="constant">api_20_Transaction_Log</parameter>
+                                 <parameter name="Object Id" source="field">temp.tmp_Record.api_20_Transaction_Log_IID</parameter>
+                              </serviceInput>
+                              <link id="le414i27" targetId="le414i21"/>
+                           </service>
+                           <jumpTo id="le414i21">
+                              <link id="le414i28" targetId="le414i1x"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="le414i22">
+                           <end id="le414i23"/>
+                        </flow>
+                        <link id="le414i24" targetId="le414i1y" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Record_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="le414i25" targetId="le414i22" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Record_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <link id="le414i1a" targetId="le414i1b" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_Status}</arg>
+                           <arg name="right">Success</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="le414i1d" targetId="le414i1e" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>42a682e5-89ba-4ad7-8001-64a89f7107e5</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-02-28T13:08:16Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-02-28T13:08:16Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_B1_Ref": "CHU230131029"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5000611d-5ab3-45b8-9555-08c3525f16bc</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-02-28T13:08:16Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-02-28T13:08:16Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_B1_Ref": "CHU230106067",
+	 "in_Status": "Success",
+	 "in_IICS_Message": "Successfully cleared"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3VuWJBCBkS5iXkA0HAf3eA</types1:GUID>
+      <types1:DisplayName>Process_DELETE_or_UPDATE_api_20_Transaction_Log</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-28T07:53:27.751Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

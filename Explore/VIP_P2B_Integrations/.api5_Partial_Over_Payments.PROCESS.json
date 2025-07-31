@@ -1,0 +1,144 @@
+{
+  "objectInfo" : {
+    "id" : "esv78GClDOUhRWsfyoSTEX",
+    "name" : "api5_Partial_Over_Payments",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hOTGBdxPVIKchzt-gt-24162087-2022-09-28T15:03:21.128Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Posts the Invoice clearance data to VPoint API and logs the same in SAP",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "objectRefs" : [ {
+    "id" : "dz3hd9kqiUDgzx2JbzI8gU",
+    "name" : "Process_POST_YY1_LoggingTable",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "OImXycotFgpKi9z-gt-24314699-2022-09-28T15:03:20.652Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Handles the SAP Post call and related retry/logging",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes"
+  }, {
+    "id" : "3FTHYFEl7ebeNravAPmXkT",
+    "name" : "AppSvcAPI-5-VPC",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "BwDPWNMZQELaabc-gt-27825646-2021-08-20T07:34:35.451Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations/Connectors"
+  }, {
+    "id" : "2fviXGZTx4Rdp7hXW62A4K",
+    "name" : "ProcessGetAPI5Data",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "K8ZAZf5kck8jKBm-gt-27825684-2021-08-20T07:34:35.591Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Retrieves the Invoice and BankAccount data from VPoint tables for a given Invoice payment clearance entry",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  }, {
+    "id" : "48IWXcpluKJki95qyLOgaB",
+    "name" : "PoErrorDetails",
+    "type" : "PROCESS_OBJECT",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Ciaaa-gt-1225520-2022-12-16T08:04:34.598Z::po.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes/ProcessObjects SAP Cust"
+  }, {
+    "id" : "7N5uKhvv6kXg3zoRAbuggF",
+    "name" : "Process_P2B_Event_ErrorLog",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Records errors in SQL DB, File, and Email\nChangelog:\nhttps://vistra.atlassian.net/browse/VR-147",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  }, {
+    "id" : "2k0VOKhPhwUiJh4QHcAXok",
+    "name" : "ConnectionDQMetadata",
+    "type" : "AI_CONNECTION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "clHV8F4MTD86Cjq-gt-9899046-2021-08-13T10:41:39.043Z::conn.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Check",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations/Connectors"
+  } ]
+}

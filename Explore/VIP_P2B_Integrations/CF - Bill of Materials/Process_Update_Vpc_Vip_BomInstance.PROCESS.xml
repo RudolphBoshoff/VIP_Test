@@ -1,0 +1,123 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>zVi1Njtaaabbgdo-gt-28595366-2023-01-06T13:05:24.409Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Update_Vpc_Vip_BomInstance</types1:Name>
+      <types1:ParentFlowIds>XE5lRuImXycotFg-gt-1251762-2022-12-16T08:04:37.968Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-01-06T13:05:24Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-01-07T14:00:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Update_Vpc_Vip_BomInstance/Process_Update_Vpc_Vip_BomInstance.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Update_Vpc_Vip_BomInstance"
+                  name="Process_Update_Vpc_Vip_BomInstance"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_WflowNr" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_FeedbackMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_PurchaseReq" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_SAPDocNrs" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ProcessingStatus" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_BomInstance" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip2:BomInstance</option>
+                     <option name="required">false</option>
+                     <option name="guid">l2tzLhXRmgslIpdlLob4it</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lcityoh9" targetId="lcityoh8"/>
+               </start>
+               <assignment id="lcityoh8">
+                  <title>Assignment to tmp_BomInstance</title>
+                  <operation source="query" to="temp.tmp_BomInstance">
+                     <query advanceQuery="false" from="AppConnectionVPCvip2:BomInstance">
+                        <where>WflowNr = {$input.in_WflowNr}</where>
+                     </query>
+                  </operation>
+                  <link id="lcityohn" targetId="lcityohm"/>
+               </assignment>
+               <assignment id="lcityohm">
+                  <title>Assignment to VIPMessage, SAPDocNr etc.</title>
+                  <operation source="field" to="temp.tmp_BomInstance.VIPMessage">input.in_FeedbackMessage</operation>
+                  <operation source="field" to="temp.tmp_BomInstance.SAPDocNr">input.in_SAPDocNrs</operation>
+                  <operation source="field" to="temp.tmp_BomInstance.PurchseReq">input.in_PurchaseReq</operation>
+                  <operation source="field" to="temp.tmp_BomInstance.ProcessingStatus">input.in_ProcessingStatus</operation>
+                  <link id="lcityoho" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>7a8bc76f-744e-405f-9e95-2a6ab6ee375c</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-01-06T13:05:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-06T13:05:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_WflowNr": 2910,
+	 "in_FeedbackMessage": "Processing complete. ",
+	 "in_PurchaseReq": "PurchaseRequisition=20000022",
+	 "in_SAPDocNrs": "3D7C4A2485BD1EEDA389DAE4EEDAA975",
+	 "in_ProcessingStatus": "SUCCESS"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>fal6aORRWYeejmqxpPQRu2</types1:GUID>
+      <types1:DisplayName>Process_Update_Vpc_Vip_BomInstance</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-01-07T15:53:11.438Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

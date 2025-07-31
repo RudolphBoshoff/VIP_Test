@@ -1,0 +1,334 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>TypKwKBqRi92qBb-gt-1225783-2022-12-16T08:04:37.375Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_MoveDocs_VPC-SAP</types1:Name>
+      <types1:ParentFlowIds>Wq9bdsreK8ZAZf5-gt-1251750-2022-12-16T08:04:37.763Z::pd.xml,XE5lRuImXycotFg-gt-1251762-2022-12-16T08:04:37.968Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2022-12-16T08:04:37Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-01-06T13:05:25Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-01-07T14:00:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_MoveDocs_VPC-SAP/Process_MoveDocs_VPC-SAP.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_MoveDocs_VPC-SAP"
+                  name="Process_MoveDocs_VPC-SAP"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_DocFileId"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_FileName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_KeyVariables"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_FileExtension"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_MoveDocs_Feedback" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_ContentType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FileExtension" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbdw2vz3" targetId="lbdw2vz2"/>
+               </start>
+               <assignment id="lbdw2vz2">
+                  <title>Assignment to tmp_ContentType</title>
+                  <operation source="formula" to="temp.tmp_ContentType">
+                     <expression language="XQuery">switch(fn:upper-case($input.in_FileExtension ) )
+case "PDF" return "application/pdf"
+case "DOCX" return "applicaiton/msword"
+case "DOC" return "applicaiton/msword"
+default return "applicaiton/octet-stream"</expression>
+                  </operation>
+                  <link id="lbdw2vz4" targetId="lbdw2u0a"/>
+               </assignment>
+               <subflow id="lbdw2u0a">
+                  <title>Download Docs from VPC as Binary</title>
+                  <subflowGUID>16yWNyWQZU0lAIDPuuhi6C</subflowGUID>
+                  <subflowPath>Process_DownloadDocsVPC_Single</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                     <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                     <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                     <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                     <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                     <parameter name="in_DocFormat" source="constant" updatable="true">Binary</parameter>
+                     <parameter name="in_DocFileId" source="field" updatable="true">input.in_DocFileId</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_DownloadDocsVPC_Feedback" type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                        </options>
+                     </field>
+                     <field name="out_Doc_Base64" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Doc_Binary" type="attachment">
+                        <options>
+                           <option hide="true" name="count">1</option>
+                           <option name="maxsize">5242880</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Doc_Base64_Full" type="reference">
+                        <options>
+                           <option name="referenceTo">AppSvcVpcDocumentManagement-v8:Holders_Documents</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">7H3QhWxWnzVfusEDt4618O</option>
+                        </options>
+                     </field>
+                     <field name="out_Doc_Binary_Full" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lbdw2ueh" targetId="lbdw2ueg"/>
+               </subflow>
+               <container id="lbdw2ueg" type="exclusive">
+                  <title>Response Code</title>
+                  <flow id="lbdw2uek">
+                     <subflow id="lbdw2ul4">
+                        <title>Process_POST_AttachmentContentSet - Binary</title>
+                        <subflowGUID>8xU6RvHWbYSd7cwEmHltaO</subflowGUID>
+                        <subflowPath>Process_POST_AttachmentContentSet_-_Binary</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">output.out_Doc_Binary</parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                           <parameter name="in_FileName" source="field" updatable="true">input.in_FileName</parameter>
+                           <parameter name="in_SapBusinessObject" source="constant" updatable="true">EBAN</parameter>
+                           <parameter name="in_KeyVariables" source="field" updatable="true">input.in_KeyVariables</parameter>
+                           <parameter name="in_ContentType" source="field" updatable="true">temp.tmp_ContentType</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_AttachmentContentSetBinary_Feedback" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                              </options>
+                           </field>
+                           <field name="out_AttachmentContentSetBinary_PostDocStatus" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_AttachmentContentSetBinary_SapDocNumber" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_AttachmentContentSetBinary_ProcessVariables" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lbe05va6" targetId="lbe05va5"/>
+                     </subflow>
+                     <container id="lbe05va5" type="exclusive">
+                        <title>HttpStatusCode</title>
+                        <flow id="lbe05va9">
+                           <assignment id="lbe05vba">
+                              <title>Set Output for Success</title>
+                              <operation source="formula" to="output.out_MoveDocs_Feedback">
+                                 <expression language="XQuery">&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;201&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;Document successfully uploaded to SAP&lt;/Detail&gt;
+   &lt;Reason&gt;Created&lt;/Reason&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;SAP Doc Nr&lt;/Identifier&gt;
+      &lt;Value&gt;{$output.out_AttachmentContentSetBinary_SapDocNumber}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+&lt;/PoSapStdOutput&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lbe05vaa" targetId="lbe05va5" type="containerLink"/>
+                        </flow>
+                        <flow id="lbe05vac">
+                           <assignment id="lbe05vc9">
+                              <title>Set Output for SAP Failure</title>
+                              <operation source="formula" to="output.out_MoveDocs_Feedback">
+                                 <expression language="XQuery">&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;400&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;&lt;/Detail&gt;
+   &lt;Reason&gt;Failed to Upload document to SAP&lt;/Reason&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;Original Error from SAP&lt;/Identifier&gt;
+      &lt;Value&gt;{$output.out_AttachmentContentSetBinary_Feedback}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+&lt;/PoSapStdOutput&gt;
+</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lbe05vad" targetId="lbe05va5" type="containerLink"/>
+                        </flow>
+                        <link id="lbe05va8" targetId="lbe05va9" type="containerLink">
+                           <condition source="formula">
+                              <function name="starts-with">
+                                 <arg name="left">{$output.out_AttachmentContentSetBinary_Feedback[1]/HttpStatusCode}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lbe05vab" targetId="lbe05vac" type="containerLink"/>
+                     </container>
+                     <link id="lbe05vgs" targetId="lbdw2ueg" type="containerLink"/>
+                  </flow>
+                  <flow id="lbdw2uen">
+                     <assignment id="lbe05v4e">
+                        <title>Set Output for VPOINT Failure</title>
+                        <operation source="formula" to="output.out_MoveDocs_Feedback">
+                           <expression language="XQuery">&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;400&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;&lt;/Detail&gt;
+   &lt;Reason&gt;Failed to Upload document to SAP&lt;/Reason&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;Original Error from SAP&lt;/Identifier&gt;
+      &lt;Value&gt;{$output.out_DownloadDocsVPC_Feedback}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+&lt;/PoSapStdOutput&gt;
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lbe05vfw" targetId="lbdw2ueg" type="containerLink"/>
+                  </flow>
+                  <link id="lbdw2uej" targetId="lbdw2uek" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$output.out_DownloadDocsVPC_Feedback[1]/HttpStatusCode}</arg>
+                           <arg name="right">2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lbe05vgu" targetId="lbe05vgt"/>
+                  <link id="lbdw2uem" targetId="lbdw2uen" type="containerLink"/>
+               </container>
+               <end id="lbe05vgt"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7Xtd2NWWJoml4sRdO6GUyr</types1:GUID>
+      <types1:DisplayName>Process_MoveDocs_VPC-SAP</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-01-07T15:53:11.226Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

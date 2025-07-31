@@ -1,0 +1,130 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>doYsjqluQgabcjk-gt-23325358-2022-03-30T08:14:23.049Z::pd.xml</types1:EntryId>
+      <types1:Name>P_VPC_GetToken</types1:Name>
+      <types1:ParentFlowIds>f5i4rswVYx8R8Wr-gt-1965445-2022-06-30T14:52:07.809Z::pd.xml,KAWy0CR3aaa-gt-5369819-2022-07-04T09:00:45.868Z::pd.xml,ncjIw8jIw8jIw8j-gt-24152861-2022-06-08T05:54:42.224Z::pd.xml,VPTlGUGeFRqXpIW-gt-5501280-2022-07-04T09:41:07.759Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2022-03-30T08:14:23Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:27Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="P_VPC_GetToken"
+                  name="P_VPC_GetToken"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_vpc_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="t_Token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="t_var" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l0kp05v5" targetId="l0ki0ip8"/>
+               </start>
+               <service id="l0ki0ip8">
+                  <title>batch file to generate token using CURL</title>
+                  <serviceName>avShellService</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="command" source="constant">E:\CurlScript\gettoken.bat</parameter>
+                     <parameter name="workingDirPath" source="constant">C:\Windows\System32 </parameter>
+                  </serviceInput>
+                  <link id="l0kp05te" targetId="l0kp05td"/>
+               </service>
+               <container id="l0kp05td" type="exclusive">
+                  <title>Response Code</title>
+                  <flow id="l0kp05tn">
+                     <assignment id="l0kp05ua">
+                        <title>get values</title>
+                        <operation source="formula" to="temp.t_var">
+                           <expression language="XQuery">$output.outputString </expression>
+                        </operation>
+                        <link id="l0kp05ui" targetId="l0kp05uh"/>
+                     </assignment>
+                     <assignment id="l0kp05uh">
+                        <title>Set Token Out</title>
+                        <operation source="formula" to="output.out_vpc_token">
+                           <expression language="XQuery">fn:substring-before(fn:substring-after($temp.t_var,'access_token":"'),'","token_type')</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l0kp05to" targetId="l0kp05td" type="containerLink"/>
+                  </flow>
+                  <flow id="l0kp05tp">
+                     <throw id="l0kp05up">
+                        <title>Throw Failed to get</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">999</parameter>
+                           <parameter name="detail" source="constant" updatable="true">failed to get token</parameter>
+                           <parameter name="reason" source="constant" updatable="true">failed to generate token</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l0kp05tg" targetId="l0kp05tn" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.responseCode}</arg>
+                           <arg name="right">0</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l0kp05tj" targetId="l0kp05tp" type="containerLink"/>
+                  <link id="l0kp05ug" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>f3c65604-3db4-4961-a2f0-4d7563bfd7c2</ns1:Id>
+               <ns1:Name>test_run</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-30T08:14:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3JIjly5DzEhiOHkQC2HAsJ</types1:GUID>
+      <types1:DisplayName>P_VPC_GetToken</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-11-22T04:31:15.812Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

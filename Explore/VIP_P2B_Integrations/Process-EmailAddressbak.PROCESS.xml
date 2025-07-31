@@ -1,0 +1,175 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>JeDuYZ06NYcmYsG-gt-10619245-2022-02-06T04:37:43.566Z::pd.xml</types1:EntryId>
+      <types1:Name>Process-EmailAddressbak</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2022-02-06T04:37:44Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>nitish.kumar_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-06T04:41:52Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process-EmailAddressbak/Process-EmailAddressbak.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process-EmailAddressbak"
+                  name="Process-EmailAddressbak"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_RefContacts" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContactsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EmailAddress</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">819WPsSwCuAiqelnwkrg46</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddressArray" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:EmailAddress</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">819WPsSwCuAiqelnwkrg46</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Count" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Email" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Email1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Email_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowedUsers>
+                     <user>veerabhadra.dhikonda</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kz3z8cq5" targetId="kz3z8cq4"/>
+               </start>
+               <assignment id="kz3z8cq4">
+                  <title>Assignment to tmp_RefContacts</title>
+                  <operation source="query" to="temp.tmp_RefContacts">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                        <where>RefCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kz3z8cqs" targetId="kz3z8cqr"/>
+               </assignment>
+               <assignment id="kz3z8cqr">
+                  <title>Assignment to tmp_Email, tmp_Email1</title>
+                  <operation source="formula" to="temp.tmp_Email">
+                     <expression language="XQuery">for $x in fn:tokenize($temp.tmp_RefContacts.cText , ";") return util:iif(fn:starts-with($x, ";") and fn:ends-with($x, ";"), fn:substring($x, 2, fn:string-length($x)-2),util:iif(fn:starts-with($x, ";"), fn:substring-after($x, ";"), util:iif(fn:ends-with($x, ";"), fn:substring($x, 1, fn:string-length($x)-1), $x)))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Email1">
+                     <expression language="XQuery">for $x in fn:tokenize($temp.tmp_RefContacts.cText , ";") return &lt;EmailAddress&gt;{$x}&lt;/EmailAddress&gt;</expression>
+                  </operation>
+                  <link id="kz3z8cr9" targetId="kz3z8cr8"/>
+               </assignment>
+               <assignment id="kz3z8cr8">
+                  <title>Assignment to tmp_Email_PO</title>
+                  <operation source="formula" to="temp.tmp_Email_PO">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($temp.tmp_RefContacts.cText))) then (
+       &lt;to_EmailAddress&gt;
+       &lt;results m:isArray="true"&gt;
+       &lt;EmailAddress&gt;{$temp.tmp_EmailAddressArray }&lt;/EmailAddress&gt;
+            &lt;/results&gt;
+       &lt;/to_EmailAddress&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="kz3z8cra" targetId="kz3z8cqi"/>
+               </assignment>
+               <assignment id="kz3z8cqi">
+                  <title>Assignment to tmp_Count</title>
+                  <operation source="formula" to="temp.tmp_Count">
+                     <expression language="XQuery">fn:string-length($temp.tmp_RefContacts.cText ) - fn:string-length(fn:replace($temp.tmp_RefContacts.cText , ";", ""))</expression>
+                  </operation>
+                  <link id="kz3z8cqk" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>10d4e07d-dd86-4fb4-a6f9-3bca6b3a4e87</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-02-06T04:37:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>nitish.kumar_tst</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-02-06T04:37:44Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "10000019"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7jbBdaUJAQKf1qte86ofoX</types1:GUID>
+      <types1:DisplayName>Process-EmailAddressbak</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-03-28T14:23:02.226Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

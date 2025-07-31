@@ -1,0 +1,638 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>chCVf4VQT53nQci-gt-6833529-2021-09-17T11:48:56.03Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_AddressChanged</types1:Name>
+      <types1:ParentFlowIds>i31CHdqwx8R8WrY-gt-7140119-2023-07-10T13:21:41.137Z::pd.xml,uBxiggor3rp3yD7-gt-37242407-2022-10-12T10:48:28.338Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Identifies the new address details of the MasterFile (RefMaster) that has been changed.
+Identifies the Billing Files (RmClients) affected by the change 
+Creates one file per affected billing file, which will be picked up by Process_AddressChangedDetails_FileEvent</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-09-17T11:48:56Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:41Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-22T10:22:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_AddressChanged/Process_AddressChanged.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_AddressChanged"
+                  name="Process_AddressChanged"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Identifies the new address details of the MasterFile (RefMaster) that has been changed.
+Identifies the Billing Files (RmClients) affected by the change 
+Creates one file per affected billing file, which will be picked up by Process_AddressChangedDetails_FileEvent</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Event_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Api_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_SeqNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_AddressChanged"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_event_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClientsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ClientListCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PrepCSV" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnFileReadWriter:SerializeToDelimitedContentTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">67wFvEv4UeWbV2wAanUNOe</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PrepCSV_Content" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi08</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8Z6PPjKmZ4QdF9FwZIbICo</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ClientListCountProcessed" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressDetails_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppCon-P2BFileEvent:Api8AddressChangedDetailRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressDetails" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppCon-P2BFileEvent:Api8AddressChangedDetailRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8jwy3ue" targetId="kpmvx8z9"/>
+               </start>
+               <assignment id="kpmvx8z9">
+                  <title>Read File Content</title>
+                  <operation source="formula" to="temp.tmp_event_name">
+                     <expression language="XQuery">if (util:isNull($input.in_Event_Name ))
+then $input.Payload[1]/EventDetails/eventTypeName
+else $input.in_Event_Name </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_event_type">
+                     <expression language="XQuery">$input.Payload[1]/EventDetails/eventChangeType</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RefAddress_RefCode">
+                     <expression language="XQuery">if (util:isNull($input.in_RefCode ))
+then (
+  let $ids :=  $input.Payload[1]/EventDetails/identifiers[identifierName="RefAddress.RefCode"]
+  return $ids/identifierValue/text()  
+)
+else ($input.in_RefCode )
+      </expression>
+                  </operation>
+                  <operation source="formula" to="output.out_ProcessVariables_AddressChanged">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.X_TRANSACTION_ID }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.in_Event_Name }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;{$input.in_Api_Name  }&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{
+   'RefCode='||$input.in_RefCode ||
+   '^SeqNr='||$input.in_SeqNr 
+   }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;https://api.sap.com/api/API_BUSINESS_PARTNER/overview&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <link id="ktmr6bvm" targetId="kpzdw0ag"/>
+               </assignment>
+               <container id="kpzdw0ag" type="exclusive">
+                  <title>Check Event Name</title>
+                  <flow id="kpzdw0e2">
+                     <subflow id="lez9jr6q">
+                        <title>ProcessGetAddressDetails</title>
+                        <subflowGUID>3btoyx4ThaIfiOpIudai8F</subflowGUID>
+                        <subflowPath>ProcessGetAddressDetails</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_RefCode" source="field" updatable="true">temp.tmp_RefAddress_RefCode</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_AddressDetails" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:POEntityDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lez9jr6r" targetId="l4msgli8"/>
+                     </subflow>
+                     <subflow id="ljofaj7a">
+                        <title>Address Changed Detail</title>
+                        <subflowGUID>aJDEnNXz2Uwf8GadECPgoZ</subflowGUID>
+                        <subflowPath>Process_AddressChanged_Detail-1</subflowPath>
+                        <appliesTo>AppConnectionVPCdbo:RmClients</appliesTo>
+                        <appliesToDataName source="field">temp.tmp_RmClientsList</appliesToDataName>
+                        <runForEach>true</runForEach>
+                        <input>
+                           <parameter name="in_AddressDetail" source="formula" updatable="true">
+                              <expression language="XQuery">$output.out_AddressDetails </expression>
+                           </parameter>
+                           <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AddressChanged</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_ErrorDetails" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:BusinessPartner_Expand</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">73TzrNfMb3we8PZAvKue2p</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessVariables_AddressChanged_Detail" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="ljofaj9t" targetId="ljofaj9s"/>
+                     </subflow>
+                     <assignment id="l4msgli8">
+                        <title>Get List of affected RmClients</title>
+                        <operation source="list" to="temp.tmp_RmClientsList">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                              <where>BillAddress = '{$temp.tmp_RefAddress_RefCode}'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ClientListCount">
+                           <expression language="XQuery">list:count($temp.tmp_RmClientsList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AddressDetails">
+                           <expression language="XQuery">&lt;Api8AddressChangedDetailRecord&gt;
+   &lt;index&gt;&lt;/index&gt;
+   &lt;AddrNr&gt;{$output.out_AddressDetails[1]/AddrNr }&lt;/AddrNr&gt;
+   &lt;CityName&gt;{$output.out_AddressDetails[1]/City }&lt;/CityName&gt;
+   &lt;PostalCode&gt;{$output.out_AddressDetails[1]/PostalCode }&lt;/PostalCode&gt;
+   &lt;Address&gt;{$output.out_AddressDetails[1]/Address }&lt;/Address&gt;
+   &lt;Address2&gt;{$output.out_AddressDetails[1]/Address2 }&lt;/Address2&gt;
+   &lt;Address3&gt;{$output.out_AddressDetails[1]/Address3 }&lt;/Address3&gt;
+   &lt;Address4&gt;{$output.out_AddressDetails[1]/Address4 }&lt;/Address4&gt;
+   &lt;Address5&gt;{$output.out_AddressDetails[1]/Address5 }&lt;/Address5&gt;
+   &lt;Country&gt;$output.out_AddressDetails[1]/Country &lt;/Country&gt;
+   &lt;EmailAddress&gt;{$output.out_AddressDetails[1]/EmailAddress }&lt;/EmailAddress&gt;
+   &lt;EmailInvoice&gt;{$output.out_AddressDetails[1]/EmailInvoice }&lt;/EmailInvoice&gt;
+   &lt;EmailInvoiceCC&gt;{$output.out_AddressDetails[1]/EmailInvoiceCC }&lt;/EmailInvoiceCC&gt;
+   &lt;EmailOther&gt;{$output.out_AddressDetails[1]/EmailOther }&lt;/EmailOther&gt;
+   &lt;Language&gt;{$output.out_AddressDetails[1]/Language }&lt;/Language&gt;
+   &lt;Active&gt;{$output.out_AddressDetails[1]/Active }&lt;/Active&gt;
+   &lt;AddrType&gt;{$output.out_AddressDetails[1]/AddrType }&lt;/AddrType&gt;
+   &lt;SeqNr&gt;{$output.out_AddressDetails[1]/SeqNr}&lt;/SeqNr&gt;
+   &lt;RefCode&gt;{list:head($temp.tmp_RmClients)/AddrCode }&lt;/RefCode&gt;
+&lt;/Api8AddressChangedDetailRecord&gt;
+</expression>
+                        </operation>
+                        <link id="ljofaj7b" targetId="ljofaj7a"/>
+                     </assignment>
+                     <assignment id="ljofaj9s">
+                        <title>Set Output</title>
+                        <operation source="field" to="output.out_ProcessVariables_AddressChanged">output.out_ProcessVariables_AddressChanged_Detail</operation>
+                     </assignment>
+                     <link id="ljmxl06b" targetId="kpzdw0ag" type="containerLink"/>
+                  </flow>
+                  <flow id="kpzdw0e6">
+                     <assignment id="lhsxx77n">
+                        <title>Update Error Details</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AddressChanged[1]/Code">HTTP_405</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AddressChanged[1]/Error">Method Not Allowed</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AddressChanged[1]/Description">The event type name does not correspond to the process invoked</operation>
+                        <link id="lhsxx77o" targetId="kwwj3ryn"/>
+                     </assignment>
+                     <subflow id="kwwj3ryn">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AddressChanged</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="ljmxl08c" targetId="kpzdw0ag" type="containerLink"/>
+                  </flow>
+                  <link id="kpzdw0dz" targetId="kpzdw0e2" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_event_name}</arg>
+                           <arg name="right">ADDRESS_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kpzdw0e1" targetId="kpzdw0e6" type="containerLink"/>
+                  <link id="ljmxl069" targetId="ljmxl068"/>
+               </container>
+               <end id="ljmxl068">
+                  <title>End 2</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c8e3bf4d-6b0f-44e1-a474-93b453bce4dc</ns1:Id>
+               <ns1:Name>Address_changed</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-25T07:30:57Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "fileEvent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "content": "\n   "
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>33b7618b-2d51-454b-8e92-b7a5ae7ef47f</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1040",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "106023"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8bd733c6-d006-4486-8175-6d4ef01d8272</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>bb15f4dc-98f8-4b33-ab65-b595776875e4</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>1f81b0d8-d95a-4d19-b0cc-1a2b39bf20a4</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "543",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>1eb2012f-b27c-411c-abec-d004ab883993</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1043",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b57e6061-3221-48dd-a6e2-2730f2042f23</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>be3ae3cd-84e8-4785-a8aa-4a03a401f55e</ns1:Id>
+               <ns1:Name>RB_Test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-07-14T10:58:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "fileEvent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "content": "\n   "
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f4e82c81-c7a4-44be-88c6-036cf87ff5df</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-07-10T13:21:41Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "VE-2580_T1",
+"Payload": {
+ "eventChangeType": "UPDATED",
+ "eventTypeName": "ADDRESS_CHANGED",
+ "identifiers": {
+  "identifierName": "RefAddress.RefCode",
+  "identifierValue": "12000603"
+ }
+}
+
+	
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4dfb9b98-d383-4217-991f-e3eb230047df</ns1:Id>
+               <ns1:Name>t11</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-07-10T13:21:41Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "",
+	 "Payload": {
+	 	 "eventChangeType": "",
+	 	 "eventTypeName": "",
+	 	 "identifiers": {
+	 	 	 "identifierName": "",
+	 	 	 "identifierValue": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8f82978b-5ad1-4e36-ba15-acb863a7aa06</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>06dc78aa-2096-40e7-8ccd-3058b7d4a172</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-17T11:48:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:41Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>f3ehDcxoraWk49OVAXo3Oj</types1:GUID>
+      <types1:DisplayName>Process_AddressChanged</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-07-10T13:25:36.902Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

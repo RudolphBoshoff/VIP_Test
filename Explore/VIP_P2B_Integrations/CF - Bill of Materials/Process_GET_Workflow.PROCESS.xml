@@ -1,0 +1,507 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>TD86CjqFVNN5Kaa-gt-47102023-2023-01-16T07:16:53.738Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_Workflow</types1:Name>
+      <types1:ParentFlowIds>aa-gt-13442292-2023-01-12T09:05:10Z::pd.xml,EYrwn2H0Fdw8jIw-gt-47025309-2023-01-16T06:23:39.498Z::pd.xml,sfYmWR7hsAVR3aa-gt-5546832-2023-03-01T09:58:37.301Z::pd.xml,sqy3eHRi92qBbbe-gt-1318513-2023-03-01T09:59:13.304Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-01-16T07:16:54Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-08-23T08:17:05Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-08-23T08:17:23Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_Workflow/Process_GET_Workflow.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_Workflow"
+                  name="Process_GET_Workflow"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_WflowNr" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_BomHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomHead-Prepared</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3TOuBiqwuKsdp5eqlzJ2wG</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_VPC_WflowHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_WflowFields" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowFields</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DocIndex_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:DocIndex</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DocFiles_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:DocFiles</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_WflowLinks_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowLinks</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_BomInstance_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:BomInstance</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SalesCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DocFile_Current" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:DocFiles</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DocIndex_Current" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:DocIndex</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocPrep" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocPrep_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocFilter" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WFServiceType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DocFilterLength" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_WflowFieldsProforma" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowFields</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_InvoiceHeader_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProformaNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_WflowFields_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowFields</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_VPC_WflowFields_Proforma_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:WflowFields</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes>There is some strange behavior with the VPC connection: when connecting to the VIP schema, the data supports a loop inside XQuery, however when connecting to the DBO schema, this is not supported, and the manual process of list:head and list:tail is used to construct the data elements</notes>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lb5d2jq1" targetId="lb5c2yhi"/>
+               </start>
+               <assignment id="lb5c2yhi">
+                  <title>Query VPC Workflow</title>
+                  <operation source="query" to="temp.tmp_VPC_WflowHeader">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:WflowHeader">
+                        <where>WflowNr = {$input.in_WflowNr}</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_VPC_WflowFields_List">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:WflowFields">
+                        <where>WflowNr = {$input.in_WflowNr} and FldKey = 'SCODE'</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_WflowFields">
+                     <expression language="XQuery">list:head($temp.tmp_VPC_WflowFields_List )</expression>
+                  </operation>
+                  <operation source="list" to="temp.tmp_VPC_WflowLinks_List">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:WflowLinks">
+                        <where>WflowNr = {$input.in_WflowNr} and LinkType = 'DH'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_VPC_WflowFields_Proforma_List">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:WflowFields">
+                        <where>WflowNr = {$input.in_WflowNr} and FldKey = 'DRAFT_INV_NO'</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_WflowFieldsProforma">
+                     <expression language="XQuery">list:head($temp.tmp_VPC_WflowFields_Proforma_List)</expression>
+                  </operation>
+                  <link id="lbaryhib" targetId="lbaryhia"/>
+               </assignment>
+               <assignment id="lbaryhia">
+                  <title>Query VPC BomInstance</title>
+                  <operation source="list" to="temp.tmp_VPC_BomInstance_List">
+                     <query advanceQuery="false" from="AppConnectionVPCvip:BomInstance">
+                        <where>RefCode = '{$input.in_RefCode}' and WflowNr = {$input.in_WflowNr}</where>
+                     </query>
+                  </operation>
+                  <link id="lbaryhic" targetId="lb5g4r3d"/>
+               </assignment>
+               <assignment id="lb5g4r3d">
+                  <title>Prepare Document Filter</title>
+                  <operation source="formula" to="temp.tmp_DocFilter">
+                     <expression language="XQuery">fn:string-join(
+for $bom in $temp.tmp_VPC_BomInstance_List
+return $bom/HolderNr/text()
+, ",")</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_DocFilterLength">
+                     <expression language="XQuery">fn:string-length($temp.tmp_DocFilter )</expression>
+                  </operation>
+                  <link id="lcyfaqtl" targetId="lcyfaqtk"/>
+               </assignment>
+               <container id="lcyfaqtk" type="exclusive">
+                  <title>Wflow Fields Proforma</title>
+                  <flow id="lcyfaqto">
+                     <assignment id="lcyfaquc">
+                        <title>Query VPC Invoices</title>
+                        <operation source="field" to="temp.tmp_ProformaNr">temp.tmp_VPC_WflowFieldsProforma.FldValue</operation>
+                        <operation source="list" to="temp.tmp_VPC_InvoiceHeader_List">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:InvoiceHeader">
+                              <where>ProformaNr = {$temp.tmp_VPC_WflowFieldsProforma.FldValue }</where>
+                           </query>
+                        </operation>
+                        <link id="lcyfaqwh" targetId="lcyfaqwg"/>
+                     </assignment>
+                     <container id="lcyfaqwg" type="exclusive">
+                        <title>Invoice Header</title>
+                        <flow id="lcyfaqwj">
+                           <assignment id="lcyfaqxf">
+                              <title>Set InvoiceNr</title>
+                              <operation source="formula" to="temp.tmp_InvoiceNr">
+                                 <expression language="XQuery">$temp.tmp_VPC_InvoiceHeader_List.InvoiceNr </expression>
+                              </operation>
+                           </assignment>
+                           <link id="lcyfaqwk" targetId="lcyfaqwg" type="containerLink"/>
+                        </flow>
+                        <flow id="lcyfaqwm">
+                           <link id="lcyfaqwn" targetId="lcyfaqwg" type="containerLink"/>
+                        </flow>
+                        <link id="lcyfaqwi" targetId="lcyfaqwj" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_VPC_InvoiceHeader_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lcyfaqwl" targetId="lcyfaqwm" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_VPC_InvoiceHeader_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="lcyfaqtp" targetId="lcyfaqtk" type="containerLink"/>
+                  </flow>
+                  <flow id="lcyfaqtr">
+                     <link id="lcyfaqts" targetId="lcyfaqtk" type="containerLink"/>
+                  </flow>
+                  <link id="lcyfaqtn" targetId="lcyfaqto" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_VPC_WflowFields_Proforma_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lcyfaqtq" targetId="lcyfaqtr" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_VPC_WflowFields_Proforma_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lcyfaqtm" targetId="lckd332j"/>
+               </container>
+               <container id="lckd332j" type="exclusive">
+                  <title>Doc Length</title>
+                  <flow id="lckd332n">
+                     <assignment id="lckd332w">
+                        <title>Query VPC Documents</title>
+                        <operation source="list" to="temp.tmp_VPC_DocFiles_List">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:DocFiles">
+                              <where>DixDocNr in ({$temp.tmp_DocFilter})</where>
+                           </query>
+                        </operation>
+                        <operation source="list" to="temp.tmp_VPC_DocIndex_List">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:DocIndex">
+                              <where>DocNr in ({$temp.tmp_DocFilter})</where>
+                           </query>
+                        </operation>
+                     </assignment>
+                     <link id="lckd332o" targetId="lckd332j" type="containerLink"/>
+                  </flow>
+                  <flow id="lckd332q">
+                     <link id="lckd334q" targetId="lckd332j" type="containerLink"/>
+                  </flow>
+                  <link id="lckd332m" targetId="lckd332n" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-than">
+                           <arg name="left">{$temp.tmp_DocFilterLength}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lckd332p" targetId="lckd332q" type="containerLink"/>
+                  <link id="lckd332v" targetId="lbaryhl6"/>
+               </container>
+               <container id="lbaryhl6" type="exclusive">
+                  <title>Loop Doc List</title>
+                  <flow id="lbaryhl7">
+                     <assignment id="lbaryhl8">
+                        <title>Next Record</title>
+                        <operation source="formula" to="temp.tmp_VPC_DocFile_Current">
+                           <expression language="XQuery">list:head($temp.tmp_VPC_DocFiles_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_VPC_DocFiles_List">
+                           <expression language="XQuery">list:tail($temp.tmp_VPC_DocFiles_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_VPC_DocIndex_Current">
+                           <expression language="XQuery">list:head($temp.tmp_VPC_DocIndex_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_VPC_DocIndex_List">
+                           <expression language="XQuery">list:tail($temp.tmp_VPC_DocIndex_List )</expression>
+                        </operation>
+                        <link id="lbaryhle" targetId="lbaryhl9"/>
+                     </assignment>
+                     <assignment id="lbaryhl9">
+                        <title>Prepare Document</title>
+                        <operation source="formula" to="temp.tmp_DocPrep">
+                           <expression language="XQuery">&lt;Document&gt;
+  &lt;DocIndex_DocNr&gt;{$temp.tmp_VPC_DocIndex_Current.DocNr }&lt;/DocIndex_DocNr&gt;
+  &lt;DocIndex_FolderNr&gt;{$temp.tmp_VPC_DocIndex_Current.FolderNr }&lt;/DocIndex_FolderNr&gt;
+  &lt;DocFile_DocFileId&gt;{$temp.tmp_VPC_DocFile_Current.DocFileId }&lt;/DocFile_DocFileId&gt;
+  &lt;DocFile_FileNr&gt;{$temp.tmp_VPC_DocFile_Current.FileNr }&lt;/DocFile_FileNr&gt;
+  &lt;DocFile_FileNames&gt;{$temp.tmp_VPC_DocFile_Current.FileNames }&lt;/DocFile_FileNames&gt;
+  &lt;DocFile_StoredStatus&gt;{$temp.tmp_VPC_DocFile_Current.StoredStatus }&lt;/DocFile_StoredStatus&gt;
+  &lt;DocIndex_Descr&gt;{$temp.tmp_VPC_DocIndex_Current.Descr }&lt;/DocIndex_Descr&gt;
+  &lt;DocIndex_Note&gt;{$temp.tmp_VPC_DocIndex_Current.Note }&lt;/DocIndex_Note&gt;     
+&lt;/Document&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_DocPrep_List">
+                           <function name="list:append">
+                              <arg name="dest_field">{$temp.tmp_DocPrep_List}</arg>
+                              <arg name="new_field">{$temp.tmp_DocPrep}</arg>
+                           </function>
+                        </operation>
+                        <link id="lbaryhlf" targetId="lbaryhla"/>
+                     </assignment>
+                     <jumpTo id="lbaryhla">
+                        <link id="lbaryhlg" targetId="lbaryhl6"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lbaryhlb">
+                     <assignment id="lbaryhlr">
+                        <title>Set Output</title>
+                        <operation source="formula" to="output.out_BomHeader">
+                           <expression language="XQuery">let $bom := $temp.tmp_VPC_BomInstance_List[1] 
+return
+&lt;Header&gt;
+		&lt;SalesCode&gt;{util:iif($bom/SalesCodeType/text() = 'NI', $bom/SalesCode/text(), 'TS')  }&lt;/SalesCode&gt;
+		{$bom/BomCode }
+		{$bom/RefCode }
+		{$bom/Jurisdiction }
+		{$bom/Description }
+		{$bom/ShortDesc }
+		{$bom/WflowNr }
+        &lt;WF_ServiceType&gt;{$bom/SalesCodeType/text() }&lt;/WF_ServiceType&gt;
+        &lt;WfTemplateNr&gt;{$temp.tmp_VPC_WflowHeader.WfTemplateNr}&lt;/WfTemplateNr&gt;
+        &lt;WfDescr&gt;{$temp.tmp_VPC_WflowHeader.WflowDescr }&lt;/WfDescr&gt;
+        &lt;InvoiceNr&gt;{$temp.tmp_InvoiceNr }&lt;/InvoiceNr&gt;
+        &lt;ProformaNr&gt;{$temp.tmp_ProformaNr }&lt;/ProformaNr&gt;
+        {for $c in $temp.tmp_VPC_BomInstance_List  
+         let $dM := $temp.tmp_DocPrep_List[DocIndex_DocNr=$c/HolderNr] 
+             return
+		&lt;Components&gt; 
+			{$c/ItemGroupId} 
+			{$c/ComponentOrder } 
+			{$c/ComponentCode } 
+			{$c/ComponentDescription } 
+			{$c/Qty } 
+			{$c/Currency } 
+			{$c/UnitPrice } 
+			{$c/TotalComponentPrice} 
+			{$c/ExchangeRate} 
+			{$c/TotalComponentPrice_USD } 
+			{$c/PreferredVendor } 
+			{$c/RequirePO} 
+			{$c/ProcessingStatus } 
+			{$c/HolderNr } 
+			{$c/FileNr } 
+            {$c/SendingCostCenter }
+            {$c/SendingGLAccount }
+            {$c/CogsGLAccount }
+                        
+            &lt;!-- Pre-Constructed Document--&gt;
+            {$dM/DocIndex_DocNr}
+            {$dM/DocIndex_FolderNr}           
+            {$dM/DocIndex_Descr}
+            {$dM/DocIndex_Note}    
+            {$dM/DocFile_DocFileId}
+            {$dM/DocFile_FileNr}
+            {$dM/DocFile_StoredStatus}
+            {$dM/DocFile_FileNames}
+           
+		&lt;/Components&gt; } 
+&lt;/Header&gt;</expression>
+                        </operation>
+                        <link id="lbaryhm8" targetId="lbaryhm7"/>
+                     </assignment>
+                     <end id="lbaryhm7">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lbaryhlc" targetId="lbaryhl7" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_VPC_DocFiles_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lbaryhld" targetId="lbaryhlb" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_VPC_DocFiles_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0c9aa911-5627-4b0f-8d0a-2123158b1f5c</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-01-16T07:16:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-10T10:39:00Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_WflowNr": "20315",
+	 "in_RefCode": "11803375"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>eq3jGtbRmMocZO4JRhMA4Z</types1:GUID>
+      <types1:DisplayName>Process_GET_Workflow</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-08-25T08:33:15.496Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,166 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>pbeGoQwg74Rpf6J-gt-38368450-2022-10-13T13:59:12.245Z::pd.xml</types1:EntryId>
+      <types1:Name>api12_wrapper</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-13T13:59:12Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-14T17:57:17Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-14T17:58:02Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.api12_wrapper/api12_wrapper.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="api12_wrapper"
+                  name="api12_wrapper"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_API_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Event_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Process_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Transaction_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartDateTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l98o34qw" targetId="l98o34qv"/>
+               </start>
+               <assignment id="l98o34qv">
+                  <title>Define Parent Process Fields</title>
+                  <operation source="constant" to="temp.tmp_API_Name">API12</operation>
+                  <operation source="constant" to="temp.tmp_Event_Name">Scheduled Batch of API12</operation>
+                  <operation source="formula" to="temp.tmp_IICS_Run_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartDateTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Transaction_ID">
+                     <expression language="XQuery">'API12_ActualTime' || date:toChar($temp.tmp_ProcessStartDateTime , 'YYYY-MM-DD hh.mm.ss')</expression>
+                  </operation>
+                  <link id="l98o34qx" targetId="ktmjtp6l"/>
+               </assignment>
+               <eventContainer id="ktmjtp6l">
+                  <subflow id="ktlh6alr">
+                     <title>Process-API12-ActualTime</title>
+                     <subflowGUID>47fEu7d4FlueqgYrZWmM2C</subflowGUID>
+                     <subflowPath>Process-API12-ActualTime</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_API_Name" source="constant" updatable="true">{$temp.tmp_API_Name}</parameter>
+                        <parameter name="in_Event_Name" source="constant" updatable="true">{$temp.tmp_Event_Name}</parameter>
+                        <parameter name="in_IICS_Run_ID" source="constant" updatable="true">{$temp.tmp_IICS_Run_ID}</parameter>
+                        <parameter name="in_Transaction_ID" source="constant" updatable="true">{$temp.tmp_Transaction_ID}</parameter>
+                        <parameter name="in_ProcessStartDateTime" source="field" updatable="true">temp.tmp_ProcessStartDateTime</parameter>
+                     </input>
+                     <outputDef/>
+                  </subflow>
+                  <flow id="ktmjtp6n">
+                     <link id="ktmjtp6o" targetId="ktmjtp6l" type="containerLink"/>
+                  </flow>
+                  <flow id="ktmjtp6q">
+                     <subflow id="ktmjtp7h">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$temp.tmp_Transaction_ID}</parameter>
+                           <parameter name="i_IICS_Run_ID" source="constant" updatable="true">{$temp.tmp_IICS_Run_ID}</parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo_subpro[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo_subpro[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo_subpro[1]/detail</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">{$temp.tmp_API_Name}</parameter>
+                           <parameter name="i_EventName" source="constant" updatable="true">{$temp.tmp_Event_Name}</parameter>
+                           <parameter name="i_DataKey" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_IICSProcessname" source="constant" updatable="true">{$temp.tmp_Process_Name}</parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Uncaught Error in sub process [Process-API12-ActualTime]</parameter>
+                           <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_RequestPayload" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartDateTime</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="ktmjtp6r" targetId="ktmjtp6l" type="containerLink"/>
+                  </flow>
+                  <link id="ktmjtp6m" targetId="ktmjtp6n" type="containerLink"/>
+                  <link id="ktlh6alt" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo_subpro" id="ktmjtp5k" interrupting="true">
+                        <link id="ktmjtp6p" targetId="ktmjtp6q" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>46db01ba-d194-41cd-8c55-2d3fed2027b1</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-13T13:59:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-14T17:54:14Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7rWXxVsv9p5cc5pye5qvcC</types1:GUID>
+      <types1:DisplayName>api12_wrapper</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-17T08:06:36.824Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
