@@ -1,0 +1,1575 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>X89SfSmbduaa-gt-17828620-2022-01-18T09:58:24.793Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Mapping_OpptyToContract</types1:Name>
+      <types1:ParentFlowIds>iYBeMHck5qbbfUr-gt-23835261-2022-01-18T09:58:27.134Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:25Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-08-31T07:33:08Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-08-31T06:34:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Mapping_OpptyToContract/Process_Mapping_OpptyToContract.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Mapping_OpptyToContract"
+                  name="Process_Mapping_OpptyToContract"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="VF_OpportunityDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunity-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9bPEBY0uh2ucOA2MHKoqge</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="VF_OpportunityProductDetails"
+                          type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="VF_AccountDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8f3H4sp3c1He13JDZ84XSu</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_opportunity_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_event_label" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Jurisdication" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_main_transaction_id"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_PrimaryContact_SAPID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Customer_SAPID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_SCItemsExists" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_SCID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_MaxSCItemID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_BillingParty_SAPID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_process_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Existing_ReferenceServiceContract_ID"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ServiceContractRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequestMessage</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="out_NumberofItems" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Contract_MessageHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:BusinessDocumentMessageHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OrgUnit" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractOrgUnitReq</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Partners" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractPartnerReqHdr</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TextCollection" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:TextCollectionIn</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequestItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ServiceContractDescription"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractDescription_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PriceComponent" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:PriceComponentReqItm</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServiceContract" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequest</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ConditionalQuantity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ConditionQuantity_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Quantity_UnitCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Quantity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:Quantity_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ContentText" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ContentText_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JSON_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">US-AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6qWzesXeEs2ee967mLUyWy</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JSON_Body" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_HeaderCreationDate" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SenderBusinessSystemID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ServiceContractStartDateTime"
+                      type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ServiceContractEndDateTime"
+                      type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opp_ContentText" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ContentText_AT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opp_TextCollection" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:TextCollectionIn</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SalesOrganization" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SoldToParty" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PersonResponsible" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServiceContractItemCategory" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opp_TypeCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_TypeCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opp_ActionCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_ActionCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_XML_Filename" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opportunity_Products" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opportunity_Lineitem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Individual_Item" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequestItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_update" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Max_SCItem_ID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Is_Item_Valid" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hA0375FEVqeeZPZ04hnRM2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SCText_AcionCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Oppty_Text_Language" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_Text_Language" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_Condition_Type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_ProductCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_ObjectList_ProductCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Distribution_Channel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Division" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Oppty_Check_in_VForce" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillToParty" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AdvisoryProduct_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Email_Input" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-USI-Email:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">24TAOHqkGg5hCNC80o7Piy</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ky89sijt" targetId="ky89sijs"/>
+               </start>
+               <assignment id="ky89sijs">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Oppty_Check_in_VForce">
+                     <expression language="XQuery">util:iif(util:isNull($input.VF_OpportunityDetails[1]/ID) or $input.VF_OpportunityDetails[1]/ID='', 'N' ,'Y')</expression>
+                  </operation>
+                  <link id="ky9tp3tr" targetId="ky9tp3tq"/>
+               </assignment>
+               <assignment id="kxe9glfe">
+                  <title>Parameters with Logic</title>
+                  <operation source="formula" to="temp.tmp_Opp_ActionCode">
+                     <expression language="XQuery">util:iif($input.in_Action='Update' , '02', '01')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_HeaderCreationDate">
+                     <expression language="XQuery">fn:format-dateTime(fn:current-dateTime(), "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01].0000000Z")</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_SenderBusinessSystemID">VFORCE_Q</operation>
+                  <operation source="formula" to="temp.tmp_ServiceContractStartDateTime">
+                     <expression language="XQuery">util:iif(util:isNull($input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c), $input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c/text(), fn:concat($input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c/text(),'T00:00:00'))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ServiceContractEndDateTime">
+                     <expression language="XQuery">util:iif(util:isNull($input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c) or $input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c='' or $input.VF_OpportunityDetails[1]/Contract_Length_months__c='' or util:isNull($input.VF_OpportunityDetails[1]/Contract_Length_months__c ), '', fn:concat(fn:format-dateTime(date:addToDate(date:toDate($input.VF_OpportunityDetails[1]/Revenue_Generation_Date__c/text(), 'YYYY-MM-DD'), 'YY', $input.VF_OpportunityDetails[1]/Contract_Length_months__c ), "[Y0001]-[M01]-[D01]"), 'T00:00:00'))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Opp_ContentText">
+                     <expression language="XQuery">util:iif(fn:string-length($input.VF_OpportunityDetails[1]/Description)&gt;40,fn:substring($input.VF_OpportunityDetails[1]/Description, 41),'')</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_SalesOrganization">input.VF_OpportunityDetails[1]/Legal_Billing_Entity__c</operation>
+                  <operation source="field" to="temp.tmp_SoldToParty">input.in_Customer_SAPID</operation>
+                  <operation source="constant" to="temp.tmp_PersonResponsible">9980003361</operation>
+                  <operation source="constant" to="temp.tmp_ServiceContractItemCategory">SCN1</operation>
+                  <operation source="constant" to="temp.tmp_Opp_TypeCode">0003</operation>
+                  <operation source="constant" to="temp.tmp_Item_TypeCode">0001</operation>
+                  <operation source="formula" to="temp.tmp_XML_Filename">
+                     <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||'].xml'</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_Opportunity_Products">input.VF_OpportunityProductDetails</operation>
+                  <operation source="formula" to="temp.tmp_update">
+                     <expression language="XQuery">util:iif($input.in_Action='Update' and $input.in_SCItemsExists='Y', 'Y', 'N')</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_Max_SCItem_ID">input.in_MaxSCItemID</operation>
+                  <operation source="constant" to="temp.tmp_Distribution_Channel">10</operation>
+                  <operation source="constant" to="temp.tmp_Division">10</operation>
+                  <operation source="constant" to="temp.tmp_Item_Text_Language">EN</operation>
+                  <operation source="constant" to="temp.tmp_Oppty_Text_Language">EN</operation>
+                  <operation source="field" to="temp.tmp_BillToParty">input.in_BillingParty_SAPID</operation>
+                  <operation source="constant" to="temp.tmp_Item_ActionCode">01</operation>
+                  <link id="kxe9glfg" targetId="kxdetyqo"/>
+               </assignment>
+               <assignment id="kxdetyqo">
+                  <title>Child Process Objects</title>
+                  <operation source="formula" to="temp.tmp_Contract_MessageHeader">
+                     <expression language="XQuery">&lt;MessageHeader&gt;
+&lt;ID&gt;{$input.VF_OpportunityDetails[1]/ID}&lt;/ID&gt;
+            &lt;CreationDateTime&gt;{$temp.tmp_HeaderCreationDate }&lt;/CreationDateTime&gt; &lt;SenderBusinessSystemID&gt;{$temp.tmp_SenderBusinessSystemID} &lt;/SenderBusinessSystemID&gt;
+&lt;/MessageHeader&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_OrgUnit">
+                     <expression language="XQuery">util:iif($input.in_Action='Create',(if(not(util:isNull($temp.tmp_SalesOrganization)) and fn:string-length($temp.tmp_SalesOrganization)&lt;=4) then (&lt;OrgUnit&gt;
+       &lt;SalesOrganization&gt;{$temp.tmp_SalesOrganization}&lt;/SalesOrganization&gt;
+               &lt;DistributionChannel&gt;{$temp.tmp_Distribution_Channel}&lt;/DistributionChannel&gt;
+               &lt;Division&gt;{$temp.tmp_Division}&lt;/Division&gt;&lt;/OrgUnit&gt;
+   )
+   else ()), ())</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Partners">
+                     <expression language="XQuery">util:iif($input.in_Action='Create',(if(not(util:isNull($temp.tmp_SoldToParty))) then (&lt;Partners&gt;
+       &lt;SoldToParty&gt;{$temp.tmp_SoldToParty} &lt;/SoldToParty&gt;
+	   &lt;ShipToParty&gt;{$temp.tmp_SoldToParty}&lt;/ShipToParty&gt;
+	   &lt;PersonResponsible&gt;{$temp.tmp_PersonResponsible} &lt;/PersonResponsible&gt;
+	   &lt;BillToParty&gt;{$temp.tmp_BillToParty}&lt;/BillToParty&gt;
+       &lt;PayerParty&gt;{$temp.tmp_SoldToParty}&lt;/PayerParty&gt;
+       &lt;ContactPerson&gt;{$temp.tmp_SoldToParty}&lt;/ContactPerson&gt;
+    &lt;/Partners&gt;
+   ) else ()), util:iif($input.in_Action='Update',(&lt;Partners&gt;
+	   &lt;PersonResponsible&gt;{$temp.tmp_PersonResponsible} &lt;/PersonResponsible&gt;
+       &lt;BillToParty&gt;{$temp.tmp_BillToParty}&lt;/BillToParty&gt;
+    &lt;/Partners&gt;), ''))</expression>
+                  </operation>
+                  <link id="ky2z7wi7" targetId="ky2z7wi6"/>
+               </assignment>
+               <assignment id="kxej361h">
+                  <title>Parent Process Object</title>
+                  <operation source="formula" to="output.out_ServiceContractRequest">
+                     <expression language="XQuery">&lt;s4c:ServiceContractRequest xmlns:s4c="http://sap.com/xi/S4CRM/"&gt;
+{$temp.tmp_Contract_MessageHeader }
+{$temp.tmp_ServiceContract} 
+&lt;/s4c:ServiceContractRequest&gt;</expression>
+                  </operation>
+                  <link id="kxelyisp" targetId="kxelyiso"/>
+               </assignment>
+               <assignment id="kxelyiso">
+                  <title>Prepare  XML</title>
+                  <operation source="constant" to="temp.tmp_JSON_Writer[1]/format">PlainText</operation>
+                  <operation source="formula" to="temp.tmp_JSON_Writer[1]/fileName">
+                     <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||'].xml'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_JSON_Writer[1]/content">
+                     <expression language="XQuery">util:toXML(&lt;s4c:ServiceContractRequest xmlns:s4c="http://sap.com/xi/S4CRM/"&gt;
+{$temp.tmp_Contract_MessageHeader }
+{$temp.tmp_ServiceContract} 
+&lt;/s4c:ServiceContractRequest&gt;)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_JSON_Writer[1]/filePath">
+                     <expression language="XQuery">'\'||$input.in_process_name||'['||$input.in_main_transaction_id||']'</expression>
+                  </operation>
+                  <link id="kxelyit0" targetId="kxelyisz"/>
+               </assignment>
+               <container id="ky9tp3tq" type="exclusive">
+                  <title>Oppty in VForce ?</title>
+                  <flow id="ky9tp3tu">
+                     <link id="ky9tp3tv" targetId="ky9tp3tq" type="containerLink"/>
+                  </flow>
+                  <flow id="ky9tp3tx">
+                     <throw id="ky9tp46z">
+                        <title>Throw Oppty missing in VForce Fault</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">Opportunity missing in VForce</parameter>
+                           <parameter name="reason" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat(fn:concat('Opportunity ', $input.in_opportunity_id), ' does not exist in VForce')</expression>
+                           </parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="ky9tp3tt" targetId="ky9tp3tu" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Oppty_Check_in_VForce}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ky9tp3tw" targetId="ky9tp3tx" type="containerLink"/>
+                  <link id="ky9tp3ts" targetId="kxe9glfe"/>
+               </container>
+               <container id="ky2z7wi6" type="exclusive">
+                  <title>SC and Items exists ?</title>
+                  <flow id="ky2z7wia">
+                     <assignment id="ky2z7x1b">
+                        <title>Derive Item list</title>
+                        <operation source="formula" to="temp.tmp_Item">
+                           <expression language="XQuery">for $itm at $cntr in $input.VF_OpportunityProductDetails 
+let $catg:="SCN1" 
+return 
+if($itm/ProductCode != '' and $itm/Prod_Service__c != 'Advisory &amp;amp; Transaction Support') then ( 
+&lt;Item actionCode="01"&gt;
+	&lt;ServiceContractItem&gt;{fn:concat($cntr,'00')}&lt;/ServiceContractItem&gt;
+	&lt;ServiceContractItemCategory&gt;{$temp.tmp_ServiceContractItemCategory/text()} &lt;/ServiceContractItemCategory&gt;
+	&lt;yy1:YY1_ExecutionCountry xmlns:yy1="http://SAPCustomFields.com/YY1_"&gt;{$itm/CountryIsoCode__c/text()} &lt;/yy1:YY1_ExecutionCountry&gt;
+	&lt;Product&gt;{util:iif($itm/ProductCode='', $itm/ProductCode/text(), fn:concat(fn:replace($itm/ProductCode/text(), '-', ''),'C'))}&lt;/Product&gt; {if($itm/Frequency__c = 'ZPS1') then ( 
+	&lt;Quantity unitCode="C62"&gt;
+	{util:iif(util:isNull($itm/Quantity), $itm/Quantity, fn:round($itm/Quantity/number(), 3))}&lt;/Quantity&gt; ) else ( 
+	&lt;Quantity unitCode="EA"&gt; {util:iif(util:isNull($itm/Quantity), $itm/Quantity, fn:round($itm/Quantity/number(), 3))}&lt;/Quantity&gt; )} 
+	{ if($catg='SCN1' and not(util:isNull($itm/Net_Unit_Price__c) or $itm/Net_Unit_Price__c &lt;= 0)) then (&lt;PriceComponent actionCode="01"&gt;
+		&lt;ConditionType&gt;{$itm/Frequency__c/text()}&lt;/ConditionType&gt;
+		&lt;ConditionRateValue&gt;{util:iif(util:isNull($itm/Net_Unit_Price__c), $itm/Net_Unit_Price__c, fn:round($itm/Net_Unit_Price__c/number(), 2))}&lt;/ConditionRateValue&gt;
+		&lt;ConditionCurrency&gt;{$itm/Billing_Currency__c/text()}&lt;/ConditionCurrency&gt; {if($itm/Frequency__c = 'ZPS1') then ( &lt;ConditionQuantity unitCode="C62"&gt;{util:iif(util:isNull($itm/SBQQ__EffectiveQuantity__c), $itm/SBQQ__EffectiveQuantity__c, fn:round($itm/SBQQ__EffectiveQuantity__c/number(),0))}&lt;/ConditionQuantity&gt; ) else ( &lt;ConditionQuantity unitCode="EA"&gt;{util:iif(util:isNull($itm/SBQQ__EffectiveQuantity__c), $itm/SBQQ__EffectiveQuantity__c, fn:round($itm/SBQQ__EffectiveQuantity__c/number(),0))}&lt;/ConditionQuantity&gt;)} &lt;/PriceComponent&gt; ) else () } &lt;TextCollection&gt;
+		&lt;Text actionCode="01"&gt;
+			&lt;TypeCode&gt;{$temp.tmp_Item_TypeCode/text()}&lt;/TypeCode&gt;
+			&lt;ContentText languageCode="EN"&gt;{$itm/Description/text()}&lt;/ContentText&gt;
+		&lt;/Text&gt;
+	&lt;/TextCollection&gt;
+	&lt;ServiceContrItemStartDateTime&gt;{util:iif(util:isNull($itm/Operational_Start_Date__c),$itm/Operational_Start_Date__c,fn:concat($itm/Operational_Start_Date__c/text(),'T00:00:00'))}&lt;/ServiceContrItemStartDateTime&gt;
+	&lt;ServiceContrItemEndDateTime&gt;{util:iif(util:isNull($itm/Service_End_Date__c),$itm/Service_End_Date__c,fn:concat($itm/Service_End_Date__c/text(),'T00:00:00'))} &lt;/ServiceContrItemEndDateTime&gt;
+	&lt;SettlementPeriodRule&gt;{$itm/Billing_Frequency__c/text()}&lt;/SettlementPeriodRule&gt;
+	&lt;BillingPlanBillingDateRule&gt;{$itm/Billing_Plan_Billing_Date_Rule/text()}&lt;/BillingPlanBillingDateRule&gt; {util:iif($catg='SCN2', &lt;PriceAdaptationEntry&gt;
+		&lt;SettlementStartDateTime/&gt;
+		&lt;SettlementEndDateTime/&gt;
+		&lt;ConditionType/&gt;
+		&lt;ConditionRateValue/&gt;
+		&lt;ConditionCurrency/&gt;
+	&lt;/PriceAdaptationEntry&gt; ,'')} &lt;ReferenceServiceContractItem&gt;{fn:concat($cntr,'00')}&lt;/ReferenceServiceContractItem&gt;
+	&lt;ServiceContractObjectList actionCode="01"&gt;
+		&lt;Product&gt;{util:iif($itm/ProductCode='', $itm/ProductCode/text(),fn:concat(fn:replace($itm/ProductCode/text(), '-', ''),'P'))} &lt;/Product&gt;
+	&lt;/ServiceContractObjectList&gt;
+&lt;/Item&gt; ) else ()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AdvisoryProduct_List">
+                           <expression language="XQuery">for $itm in $input.VF_OpportunityProductDetails
+return 
+if($itm/Prod_Service__c = 'Advisory &amp;amp; Transaction Support') then (list:append($temp.tmp_AdvisoryProduct_List,$itm/ProductCode/text()))
+else ()</expression>
+                        </operation>
+                     </assignment>
+                     <link id="ky2z7wib" targetId="ky2z7wi6" type="containerLink"/>
+                  </flow>
+                  <flow id="ky2z7wid">
+                     <container id="ky2z7wp2" type="exclusive">
+                        <title>Oppty Products</title>
+                        <flow id="ky2z7wp3">
+                           <assignment id="ky2z7wp4">
+                              <title>Pick a product for processing</title>
+                              <operation source="formula" to="temp.tmp_Opportunity_Lineitem">
+                                 <expression language="XQuery">list:head($temp.tmp_Opportunity_Products)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Is_Item_Valid">
+                                 <expression language="XQuery">util:iif(fn:not(util:isNull($temp.tmp_Opportunity_Lineitem[1]/ProductCode)) and $temp.tmp_Opportunity_Lineitem[1]/ProductCode != '' and $temp.tmp_Opportunity_Lineitem[1]/Prod_Service__c != 'Advisory &amp;amp; Transaction Support', 'Y', 'N')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Item_Condition_Type">
+                                 <expression language="XQuery">$temp.tmp_Opportunity_Lineitem[1]/Frequency__c/text()</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Item_ProductCode">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_Opportunity_Lineitem[1]/ProductCode) or $temp.tmp_Opportunity_Lineitem[1]/ProductCode='', $temp.tmp_Opportunity_Lineitem[1]/ProductCode/text(), fn:concat(fn:concat(fn:replace($temp.tmp_Opportunity_Lineitem[1]/ProductCode/text(), '-', ''),$temp.tmp_Opportunity_Lineitem[1]/CountryIsoCode__c/text()),'SC'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Item_ObjectList_ProductCode">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_Opportunity_Lineitem[1]/ProductCode) or $temp.tmp_Opportunity_Lineitem[1]/ProductCode='', $temp.tmp_Opportunity_Lineitem[1]/ProductCode/text(),fn:concat(fn:concat(fn:replace($temp.tmp_Opportunity_Lineitem[1]/ProductCode/text(), '-', ''),$temp.tmp_Opportunity_Lineitem[1]/CountryIsoCode__c/text() ),util:iif($temp.tmp_Opportunity_Lineitem[1]/custom_pricing_method__c/text()='Block','SB','SMB')))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_AdvisoryProduct_List">
+                                 <expression language="XQuery">util:iif($temp.tmp_Opportunity_Lineitem[1]/Prod_Service__c = 'Advisory &amp;amp; Transaction Support', list:append($temp.tmp_AdvisoryProduct_List, $temp.tmp_Opportunity_Lineitem[1]/ProductCode ))</expression>
+                              </operation>
+                              <link id="ky3197gx" targetId="ky3197gw"/>
+                           </assignment>
+                           <container id="ky3197gw" type="exclusive">
+                              <title>tmp_Is_Item_Valid</title>
+                              <flow id="ky3197h0">
+                                 <assignment id="kzia7we3">
+                                    <title>Derive next SCItem_ID</title>
+                                    <operation source="formula" to="temp.tmp_Max_SCItem_ID">
+                                       <expression language="XQuery">$temp.tmp_Max_SCItem_ID + 100</expression>
+                                    </operation>
+                                    <link id="kzia7we4" targetId="ky3197vx"/>
+                                 </assignment>
+                                 <assignment id="ky3197vx">
+                                    <title>Process Product data</title>
+                                    <operation source="formula" to="temp.tmp_Individual_Item">
+                                       <expression language="XQuery">for $itm in $temp.tmp_Opportunity_Lineitem 
+let $catg:="SCN1" 
+return 
+&lt;Item actionCode="01"&gt;
+	&lt;ServiceContractItem&gt;{$temp.tmp_Max_SCItem_ID/text()}&lt;/ServiceContractItem&gt;
+	&lt;ServiceContractItemCategory&gt;{$temp.tmp_ServiceContractItemCategory/text()} &lt;/ServiceContractItemCategory&gt;
+	&lt;yy1:YY1_ExecutionCountry xmlns:yy1="http://SAPCustomFields.com/YY1_"&gt;{$itm/CountryIsoCode__c/text()} &lt;/yy1:YY1_ExecutionCountry&gt;
+	&lt;Product&gt;{util:iif($itm/ProductCode='', $itm/ProductCode/text(), fn:concat(fn:replace($itm/ProductCode/text(), '-', ''),'C'))}&lt;/Product&gt; { if($itm/Frequency__c = 'ZPS1') then ( &lt;Quantity unitCode="C62"&gt;{util:iif(util:isNull($itm/Quantity), $itm/Quantity, fn:round($itm/Quantity/number(), 3))}&lt;/Quantity&gt; ) else ( &lt;Quantity unitCode="EA"&gt; {util:iif(util:isNull($itm/Quantity), $itm/Quantity, fn:round($itm/Quantity/number(), 3))}&lt;/Quantity&gt;)} { if($catg='SCN1' and not(util:isNull($itm/Net_Unit_Price__c) or $itm/Net_Unit_Price__c &lt;= 0)) then (&lt;PriceComponent actionCode="01"&gt;
+		&lt;ConditionType&gt;{$itm/Frequency__c/text()}&lt;/ConditionType&gt;
+		&lt;ConditionRateValue&gt;{util:iif(util:isNull($itm/Net_Unit_Price__c), $itm/Net_Unit_Price__c, fn:round($itm/Net_Unit_Price__c/number(), 2))} &lt;/ConditionRateValue&gt;
+		&lt;ConditionCurrency&gt;{$itm/Billing_Currency__c/text()}&lt;/ConditionCurrency&gt; {if($itm/Frequency__c = 'ZPS1') then ( &lt;ConditionQuantity unitCode="C62"&gt;{util:iif(util:isNull($itm/SBQQ__EffectiveQuantity__c), $itm/SBQQ__EffectiveQuantity__c, fn:round($itm/SBQQ__EffectiveQuantity__c/number(),0))}&lt;/ConditionQuantity&gt; ) else ( &lt;ConditionQuantity unitCode="EA"&gt;{util:iif(util:isNull($itm/SBQQ__EffectiveQuantity__c), $itm/SBQQ__EffectiveQuantity__c, fn:round($itm/SBQQ__EffectiveQuantity__c/number(),0))}&lt;/ConditionQuantity&gt; )} &lt;/PriceComponent&gt; ) else () } &lt;TextCollection&gt;
+		&lt;Text actionCode="01"&gt;
+			&lt;TypeCode&gt;{$temp.tmp_Item_TypeCode/text()}&lt;/TypeCode&gt;
+			&lt;ContentText languageCode="EN"&gt;{$itm/Description/text()}&lt;/ContentText&gt;
+		&lt;/Text&gt;
+	&lt;/TextCollection&gt;
+	&lt;ServiceContrItemStartDateTime&gt;{util:iif(util:isNull($itm/Operational_Start_Date__c),$itm/Operational_Start_Date__c,fn:concat($itm/Operational_Start_Date__c/text(),'T00:00:00'))}&lt;/ServiceContrItemStartDateTime&gt;
+	&lt;ServiceContrItemEndDateTime&gt;{util:iif(util:isNull($itm/Service_End_Date__c),$itm/Service_End_Date__c,fn:concat($itm/Service_End_Date__c/text(),'T00:00:00'))} &lt;/ServiceContrItemEndDateTime&gt;
+	&lt;SettlementPeriodRule&gt;{$itm/Billing_Frequency__c/text()}&lt;/SettlementPeriodRule&gt;
+	&lt;BillingPlanBillingDateRule&gt;{$itm/Billing_Plan_Billing_Date_Rule/text()} &lt;/BillingPlanBillingDateRule&gt; {util:iif($catg='SCN2', &lt;PriceAdaptationEntry&gt;
+		&lt;SettlementStartDateTime/&gt;
+		&lt;SettlementEndDateTime/&gt;
+		&lt;ConditionType/&gt;
+		&lt;ConditionRateValue/&gt;
+		&lt;ConditionCurrency/&gt;
+	&lt;/PriceAdaptationEntry&gt; ,'')} &lt;ReferenceServiceContractItem&gt;{$temp.tmp_Max_SCItem_ID/text()}&lt;/ReferenceServiceContractItem&gt;
+	&lt;ServiceContractObjectList actionCode="01"&gt;
+		&lt;Product&gt;{util:iif($itm/ProductCode='', $itm/ProductCode/text(),fn:concat(fn:replace($itm/ProductCode/text(), '-', ''),'P'))} &lt;/Product&gt;
+	&lt;/ServiceContractObjectList&gt;
+&lt;/Item&gt;</expression>
+                                    </operation>
+                                    <link id="ky3197vz" targetId="ky3197oj"/>
+                                 </assignment>
+                                 <assignment id="ky3197oj">
+                                    <title>Move to the next Product</title>
+                                    <operation source="formula" to="temp.tmp_Opportunity_Products">
+                                       <expression language="XQuery">list:tail($temp.tmp_Opportunity_Products)</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_Item">
+                                       <expression language="XQuery">list:append($temp.tmp_Item , $temp.tmp_Individual_Item )</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="ky3197h1" targetId="ky3197gw" type="containerLink"/>
+                              </flow>
+                              <flow id="ky3197h3">
+                                 <assignment id="ky3197t4">
+                                    <title>Skip Current and Iterate to next Product</title>
+                                    <operation source="formula" to="temp.tmp_Opportunity_Products">
+                                       <expression language="XQuery">list:tail($temp.tmp_Opportunity_Products)</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="ky3197h4" targetId="ky3197gw" type="containerLink"/>
+                              </flow>
+                              <link id="ky3197gz" targetId="ky3197h0" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_Is_Item_Valid}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ky3197h2" targetId="ky3197h3" type="containerLink"/>
+                              <link id="ky3197vw" targetId="ky2z7wp7"/>
+                           </container>
+                           <jumpTo id="ky2z7wp7">
+                              <link id="ky2z7wpe" targetId="ky2z7wp2"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="ky2z7wp8">
+                           <link id="ky2z7wpf" targetId="ky2z7wp2" type="containerLink"/>
+                        </flow>
+                        <link id="ky2z7wp9" targetId="ky2z7wp3" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Opportunity_Products}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ky2z7wpa" targetId="ky2z7wp8" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Opportunity_Products}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="ky2z7wie" targetId="ky2z7wi6" type="containerLink"/>
+                  </flow>
+                  <link id="ky2z7wi9" targetId="ky2z7wia" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_update}</arg>
+                           <arg name="right">N</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ky2z7wic" targetId="ky2z7wid" type="containerLink"/>
+                  <link id="ky8anj4x" targetId="ky8anj4w"/>
+               </container>
+               <container id="ky8anj4w" type="exclusive">
+                  <title>Oppty in SAP ?</title>
+                  <flow id="ky8anj50">
+                     <eventContainer id="ky8anjch">
+                        <service id="ky8anjco">
+                           <title>Get SCTextCode from SC</title>
+                           <serviceName>AppSvcCheckServiceContract:GET_A_ServiceContract_TextTypeCode</serviceName>
+                           <serviceGUID>hXntEmkuW0PiEorW9h6IeA</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                              <parameter name="in_TypeCode" source="field" updatable="true">temp.tmp_Opp_TypeCode</parameter>
+                              <parameter name="in_ServiceContract_ID" source="field" updatable="true">input.in_SCID</parameter>
+                              <parameter name="in_Language" source="field" updatable="true">temp.tmp_Oppty_Text_Language</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky8anjci">
+                           <link id="ky8anjcr" targetId="ky8anjch" type="containerLink"/>
+                        </flow>
+                        <flow id="ky8anjcj">
+                           <container id="ky8anjck" type="exclusive">
+                              <title>Error Reason</title>
+                              <flow id="ky8anjcl">
+                                 <link id="ky8anjcv" targetId="ky8anjck" type="containerLink"/>
+                              </flow>
+                              <flow id="ky8anjcm">
+                                 <throw id="ky8anjcn">
+                                    <title>Throw Oppty Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.GetSCText-FaultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.GetSCText-FaultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.GetSCText-FaultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="ky8anjct" targetId="ky8anjcl" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.GetSCTextFaultInfo[1]/reason}</arg>
+                                       <arg name="right">Resource not found for segment</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ky8anjcu" targetId="ky8anjcm" type="containerLink"/>
+                           </container>
+                           <link id="ky8anjcs" targetId="ky8anjch" type="containerLink"/>
+                        </flow>
+                        <link id="ky8anjcp" targetId="ky8anjci" type="containerLink"/>
+                        <events>
+                           <catch faultField="GetSCText-FaultInfo" id="ky89siy2" interrupting="true">
+                              <link id="ky8anjcq" targetId="ky8anjcj" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ky8anj51" targetId="ky8anj4w" type="containerLink"/>
+                  </flow>
+                  <flow id="ky8anj53">
+                     <link id="ky8anj54" targetId="ky8anj4w" type="containerLink"/>
+                  </flow>
+                  <link id="ky8anj4z" targetId="ky8anj50" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Opp_ActionCode}</arg>
+                           <arg name="right">02</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ky8anj52" targetId="ky8anj53" type="containerLink"/>
+                  <link id="l77rze3e" targetId="l77rzdil"/>
+               </container>
+               <container id="l77rzdil" type="exclusive">
+                  <title>in_Action</title>
+                  <flow id="l77rzdip">
+                     <assignment id="l77rze3v">
+                        <title>Decide Oppty Text Action</title>
+                        <operation source="formula" to="temp.tmp_SCText_AcionCode">
+                           <expression language="XQuery">util:iif($temp.tmp_Opp_ActionCode='01','01',
+util:iif(util:isNull($output.out_TextID) or $output.out_TextID='','01','02'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Opp_TextCollection">
+                           <expression language="XQuery">&lt;TextCollection&gt;
+{ if(not(util:isNull($temp.tmp_Opp_ContentText/text()))) 
+	then ( 
+	&lt;Text actionCode="02"&gt;
+		&lt;TypeCode&gt;{$temp.tmp_Opp_TypeCode/text()} &lt;/TypeCode&gt;
+		&lt;ContentText languageCode="EN"&gt;{$temp.tmp_Opp_ContentText/text()}&lt;/ContentText&gt;
+	&lt;/Text&gt;) 
+	else()} 
+&lt;/TextCollection&gt;    </expression>
+                        </operation>
+                        <link id="l77rze3w" targetId="l77rzdko"/>
+                     </assignment>
+                     <assignment id="l77rzdko">
+                        <title>Intermediate Parent Process Objects</title>
+                        <operation source="formula" to="temp.tmp_ServiceContract">
+                           <expression language="XQuery">&lt;ServiceContract actionCode="02"&gt;
+{util:iif($input.in_Action='Update',(&lt;ServiceContract&gt;{$input.in_SCID}&lt;/ServiceContract&gt;),())}
+            &lt;ServiceContractType&gt;SC1&lt;/ServiceContractType&gt;
+            &lt;ServiceContractDescription languageCode="EN"&gt;{fn:substring($input.VF_OpportunityDetails[1]/Description , 1, 40)} &lt;/ServiceContractDescription&gt;
+            {$temp.tmp_OrgUnit}
+            {$temp.tmp_Partners }
+            &lt;ServiceContractStartDateTime&gt;{$temp.tmp_ServiceContractStartDateTime }&lt;/ServiceContractStartDateTime&gt;
+            &lt;ServiceContractEndDateTime&gt;{$temp.tmp_ServiceContractEndDateTime }&lt;/ServiceContractEndDateTime&gt;
+            {util:iif($input.in_Action='Create',(&lt;ReferenceServiceContract&gt;{$input.VF_OpportunityDetails[1]/ID} &lt;/ReferenceServiceContract&gt;),(&lt;ReferenceServiceContract&gt;{$input.in_Existing_ReferenceServiceContract_ID/text()} &lt;/ReferenceServiceContract&gt;))}
+            &lt;TransactionCurrency&gt;{$input.VF_OpportunityDetails[1]/Currency_Type__c }&lt;/TransactionCurrency&gt;
+ {$temp.tmp_Opp_TextCollection }
+ {$temp.tmp_Item}
+         &lt;/ServiceContract&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_NumberofItems">
+                           <expression language="XQuery">list:count($temp.tmp_Item)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l77rzdiq" targetId="l77rzdil" type="containerLink"/>
+                  </flow>
+                  <flow id="l77rzdis">
+                     <assignment id="l77rzeaq">
+                        <title>Decide Oppty Text Action 1</title>
+                        <operation source="formula" to="temp.tmp_SCText_AcionCode">
+                           <expression language="XQuery">util:iif($temp.tmp_Opp_ActionCode='01','01',
+util:iif(util:isNull($output.out_TextID) or $output.out_TextID='','01','02'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Opp_TextCollection">
+                           <expression language="XQuery">&lt;TextCollection&gt;
+{ if(not(util:isNull($temp.tmp_Opp_ContentText/text()))) 
+	then ( 
+	&lt;Text actionCode="01"&gt;
+		&lt;TypeCode&gt;{$temp.tmp_Opp_TypeCode/text()} &lt;/TypeCode&gt;
+		&lt;ContentText languageCode="EN"&gt;{$temp.tmp_Opp_ContentText/text()}&lt;/ContentText&gt;
+	&lt;/Text&gt;) 
+	else()} 
+&lt;/TextCollection&gt;    </expression>
+                        </operation>
+                        <link id="l77rzear" targetId="l77rzdri"/>
+                     </assignment>
+                     <assignment id="l77rzdri">
+                        <title>Intermediate Parent Process Objects 1</title>
+                        <operation source="formula" to="temp.tmp_ServiceContract">
+                           <expression language="XQuery">&lt;ServiceContract actionCode="01"&gt;
+{util:iif($input.in_Action='Update',(&lt;ServiceContract&gt;{$input.in_SCID}&lt;/ServiceContract&gt;),())}
+            &lt;ServiceContractType&gt;SC1&lt;/ServiceContractType&gt;
+            &lt;ServiceContractDescription languageCode="EN"&gt;{fn:substring($input.VF_OpportunityDetails[1]/Description , 1, 40)} &lt;/ServiceContractDescription&gt;
+            {$temp.tmp_OrgUnit}
+            {$temp.tmp_Partners }
+            &lt;ServiceContractStartDateTime&gt;{$temp.tmp_ServiceContractStartDateTime }&lt;/ServiceContractStartDateTime&gt;
+            &lt;ServiceContractEndDateTime&gt;{$temp.tmp_ServiceContractEndDateTime }&lt;/ServiceContractEndDateTime&gt;
+            {util:iif($input.in_Action='Create',(&lt;ReferenceServiceContract&gt;{$input.VF_OpportunityDetails[1]/ID} &lt;/ReferenceServiceContract&gt;),(&lt;ReferenceServiceContract&gt;{$input.in_Existing_ReferenceServiceContract_ID/text()} &lt;/ReferenceServiceContract&gt;))}
+            &lt;TransactionCurrency&gt;{$input.VF_OpportunityDetails[1]/Currency_Type__c }&lt;/TransactionCurrency&gt;
+ {$temp.tmp_Opp_TextCollection }
+ {$temp.tmp_Item}
+         &lt;/ServiceContract&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_NumberofItems">
+                           <expression language="XQuery">list:count($temp.tmp_Item)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l77rzdit" targetId="l77rzdil" type="containerLink"/>
+                  </flow>
+                  <link id="l77rzdio" targetId="l77rzdip" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_Action}</arg>
+                           <arg name="right">Update</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l77rzdir" targetId="l77rzdis" type="containerLink"/>
+                  <link id="l77rzdkn" targetId="kxej361h"/>
+               </container>
+               <container id="l4hdt1e7" type="exclusive">
+                  <title>tmp_AdvisoryProduct_List</title>
+                  <flow id="l4hdt1eb">
+                     <subflow id="l4jzq279">
+                        <title>Log Advisory Products</title>
+                        <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                        <subflowPath>uslogging1_mapping</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                           <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                           <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                           <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                              <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                           </parameter>
+                           <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                           <parameter name="in_saleforce_payload" source="formula" updatable="true">
+                              <expression language="XQuery">&lt;AdvisoryProducts&gt;{$temp.tmp_AdvisoryProduct_List}&lt;/AdvisoryProducts&gt;</expression>
+                           </parameter>
+                           <parameter name="in_sap_payload" source="formula" updatable="true">
+                              <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                           </parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l4jzq27a" targetId="l4in8ous"/>
+                     </subflow>
+                     <assignment id="l4in8ous">
+                        <title>Set Email Details</title>
+                        <operation source="formula" to="temp.tmp_Email_Input[1]/to">
+                           <expression language="XQuery">util:resolveURN('URN_C_VIP_AdvisoryProduct_Exception_EmailList')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Email_Input[1]/subject">
+                           <expression language="XQuery">fn:concat(util:resolveURN('URN_C_VIP_Environment') ,fn:concat('- USI Advisory Products - ', $input.in_opportunity_id ))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Email_Input[1]/body">
+                           <expression language="XQuery">fn:concat('Hi User,','&amp;#10;','&amp;#10;', 'Please find below the Advisory Product(s) for Opportunity ', $input.in_opportunity_id, '.&amp;#10;','&amp;#10;', fn:replace($temp.tmp_AdvisoryProduct_List, ';', '&amp;#10;'), '&amp;#10;','&amp;#10;', '&amp;#10;', 'Thanks','&amp;#10;', '--Vistra IICS Support Team','&amp;#10;','&amp;#10;', '--This is system generated email , please do not reply.' )</expression>
+                        </operation>
+                        <link id="l4in8out" targetId="l4hdt1hl"/>
+                     </assignment>
+                     <service id="l4hdt1hl">
+                        <title>Send Email</title>
+                        <serviceName>AppConn-USI-Email:sendEmailService</serviceName>
+                        <serviceGUID>24TAOHqkGg5hCNC80o7Piy</serviceGUID>
+                        <serviceInput>
+                           <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_Email_Input</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="l4hdt1ec" targetId="l4hdt1e7" type="containerLink"/>
+                  </flow>
+                  <flow id="l4hdt1ee">
+                     <link id="l4hdt1ef" targetId="l4hdt1e7" type="containerLink"/>
+                  </flow>
+                  <link id="l4hdt1ea" targetId="l4hdt1eb" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_AdvisoryProduct_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4hdt1ed" targetId="l4hdt1ee" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_AdvisoryProduct_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4hdt1e9" targetId="c"/>
+               </container>
+               <service id="kxelyisz">
+                  <title>XMLWriter-ServiceContract</title>
+                  <serviceName>US-AppCon-JsonWtiter:JsonWriter-Opportunity</serviceName>
+                  <serviceGUID>6qWzesXeEs2ee967mLUyWy</serviceGUID>
+                  <serviceInput>
+                     <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_JSON_Writer</parameter>
+                  </serviceInput>
+                  <link id="kxq5u3c6" targetId="kxq5u3c5"/>
+               </service>
+               <subflow id="kxq5u3c5">
+                  <title>Log Opportunity</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="field" updatable="true">input.VF_OpportunityDetails</parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kxq5u3jk" targetId="kxq5u3jj"/>
+               </subflow>
+               <subflow id="kxq5u3jj">
+                  <title>Log Opportunity Item</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="field" updatable="true">input.VF_OpportunityProductDetails</parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kxq5u3m9" targetId="kxq5u3m8"/>
+               </subflow>
+               <subflow id="kxq5u3m8">
+                  <title>Log Account</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="field" updatable="true">input.VF_AccountDetails</parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kxq5u3px" targetId="kxq5u3pw"/>
+               </subflow>
+               <subflow id="kxq5u3pw">
+                  <title>Log BP Primary Contact</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="formula" updatable="true">
+                        <expression language="XQuery">&lt;PrimaryContact&gt;{$input.in_PrimaryContact_SAPID}&lt;/PrimaryContact&gt;</expression>
+                     </parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kzkwsqol" targetId="kzkwsqok"/>
+               </subflow>
+               <subflow id="kzkwsqok">
+                  <title>Log BP Billing Contact</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="formula" updatable="true">
+                        <expression language="XQuery">&lt;BillingContact&gt;{$input.in_BillingParty_SAPID}&lt;/BillingContact&gt;</expression>
+                     </parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kzkwsqom" targetId="kxq5u3s7"/>
+               </subflow>
+               <subflow id="kxq5u3s7">
+                  <title>Log BP Customer</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                     <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_OpptyToContract['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="formula" updatable="true">
+                        <expression language="XQuery">&lt;Customer&gt;{$input.in_Customer_SAPID}&lt;/Customer&gt;</expression>
+                     </parameter>
+                     <parameter name="in_sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">$output.out_ServiceContractRequest </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="l4hdt1e8" targetId="l4hdt1e7"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>6426f969-6e86-41ad-b328-2a9a91b358b8</ns1:Id>
+               <ns1:Name>i</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-08-26T14:00:49Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "VF_AccountDetails": {
+	 	 "AccountName": "China Payroll Demo Customer D",
+	 	 "AccountType": "Client",
+	 	 "Billing_Contact_Email__c": "brahma.reddy@vistra.com",
+	 	 "Fax": "",
+	 	 "Website": "",
+	 	 "Phone": "",
+	 	 "X18_Digit_ID__c": "0013O00000nGQOcQAO",
+	 	 "ShippingCity": "bejing",
+	 	 "ShippingCountry": "CN",
+	 	 "ShippingPostalCode": "443220",
+	 	 "ShippingState": "Beijing",
+	 	 "ShippingStreet": "This is an HQ street Updated 3",
+	 	 "Payment_Term__c": "NT30",
+	 	 "Sector__c": "Corporate",
+	 	 "Entity_Code__c": "US11",
+	 	 "Currency__c": "USD",
+	 	 "AccountID": "0013O00000nGQOcQAO",
+	 	 "BillingContactFirstName__c": "brahma22222",
+	 	 "BillingContactLastName__c": "reddy",
+	 	 "Billing_Contact_Phone__c": "",
+	 	 "BillingStreet": "This is a billing street Updated 2",
+	 	 "BillingCity": "bejing",
+	 	 "BillingState": "Beijing",
+	 	 "BillingPostalCode": "223210",
+	 	 "BillingCountry": "CN",
+	 	 "SBQQ__TaxExempt__c": "No"
+	 },
+	 "in_opportunity_id": "0063O00000GImTvQAL07",
+	 "in_event_label": "Opportunity",
+	 "in_Jurisdication": "US",
+	 "in_main_transaction_id": "12345",
+	 "in_Action": "Create",
+	 "in_PrimaryContact_SAPID": "1047215",
+	 "in_Customer_SAPID": "1047208",
+	 "VF_OpportunityProductDetails": [
+	 	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL07",
+	 	 	 "LineItemID": "00k3O000008FiVMQA0",
+	 	 	 "ProductCode": "",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "0.00",
+	 	 	 "Description": "",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27",
+	 	 	 "custom_pricing_method__c": "",
+	 	 	 "Frequency__c": "",
+	 	 	 "Output_Amount__c": "0.00",
+	 	 	 "Billing_Currency__c": "USD",
+	 	 	 "SBQQ__EffectiveQuantity__c": "1.00",
+	 	 	 "Billing_Frequency__c": ""
+	 	 },
+	 	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL07",
+	 	 	 "LineItemID": "00k3O000008FiVPQA0",
+	 	 	 "ProductCode": "FA-FR-EA-034",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "1200.00",
+	 	 	 "Description": "Group Reporting",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27",
+	 	 	 "custom_pricing_method__c": "List",
+	 	 	 "Frequency__c": "PPR0",
+	 	 	 "Output_Amount__c": "100.00",
+	 	 	 "Billing_Currency__c": "USD",
+	 	 	 "SBQQ__EffectiveQuantity__c": "1.00",
+	 	 	 "Billing_Frequency__c": "BILL0001"
+	 	 },
+	 	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL07",
+	 	 	 "LineItemID": "00k3O000008FiVOQA0",
+	 	 	 "ProductCode": "FA-FR-EA-035",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "100.00",
+	 	 	 "Description": "Financial Statement Preparation",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27",
+	 	 	 "custom_pricing_method__c": "List",
+	 	 	 "Frequency__c": "PPR0",
+	 	 	 "Output_Amount__c": "100.00",
+	 	 	 "Billing_Currency__c": "USD",
+	 	 	 "SBQQ__EffectiveQuantity__c": "1.00",
+	 	 	 "Billing_Frequency__c": ""
+	 	 },
+	 	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL07",
+	 	 	 "LineItemID": "00k3O000008FiVQQA0",
+	 	 	 "ProductCode": "GR-ES-SP-056",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "12000.00",
+	 	 	 "Description": "Registered Office Address Services",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27",
+	 	 	 "custom_pricing_method__c": "List",
+	 	 	 "Frequency__c": "PPR0",
+	 	 	 "Output_Amount__c": "1000.00",
+	 	 	 "Billing_Currency__c": "USD",
+	 	 	 "SBQQ__EffectiveQuantity__c": "1.00",
+	 	 	 "Billing_Frequency__c": ""
+	 	 },
+	 	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL07",
+	 	 	 "LineItemID": "00k3O000008FiVNQA0",
+	 	 	 "ProductCode": "GR-SC-AC-008",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "100.00",
+	 	 	 "Description": "Audit  &amp;amp; Audit Support",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27",
+	 	 	 "custom_pricing_method__c": "List",
+	 	 	 "Frequency__c": "PPR0",
+	 	 	 "Output_Amount__c": "100.00",
+	 	 	 "Billing_Currency__c": "USD",
+	 	 	 "SBQQ__EffectiveQuantity__c": "1.00",
+	 	 	 "Billing_Frequency__c": "BILL0004"
+	 	 }
+	 ],
+	 "VF_OpportunityDetails": {
+	 	 "ID": "0063O00000GImTvQAL07",
+	 	 "AccountID": "0013O00000nGQOcQAO",
+	 	 "CreatedDate": "2018-10-15T10:14:42Z",
+	 	 "Description": "Testing DEMO Client",
+	 	 "Currency_Type__c": "USD",
+	 	 "Primary_Contact_c": {
+	 	 	 "ContactID": "0033O00000kefskQAA",
+	 	 	 "FirstName": "Rudolph",
+	 	 	 "LastName": "Boshoff",
+	 	 	 "Email": "rudolph.boshoff@vistra.com",
+	 	 	 "Phone": "+27846833157",
+			 "X18_Digit_ID__c": "",
+	 	 	 "MailingCountry": "ZA"	 	 	 
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>13426a3b-4d63-4f84-beb6-81d3d47c93ea</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-08-26T14:00:49Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "VF_OpportunityDetails": {
+	 	 "ID": "0063O00000GImTvQAL",
+	 	 "AccountID": "0013O00000nGQOcQAO",
+	 	 "CreatedDate": "2018-10-15T10:14:42Z",
+	 	 "Description": "Testing DEMO Client",
+	 	 "Currency_Type__c": "USD"
+	 },
+	 "VF_OpportunityProductDetails": [
+	 	 {
+	 	 	 "OpportunityID": "00k3O000008FiVQQA0",
+	 	 	 "LineItemID": "0063O00000GImTvQAL",
+	 	 	 "ProductCode": "Registered Office Address Services",
+	 	 	 "CountryIsoCode__c": "US",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "12000.00",
+	 	 	 "Description": "",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2019-11-27"
+	 	 },
+	 {
+	 	 	 "OpportunityID": "0063O00000GImTvQAL",
+	 	 	 "LineItemID": "00k3O000008FiVPQA0",
+	 	 	 "ProductCode": "FA-FR-EA-034",
+	 	 	 "CountryIsoCode__c": "USD",
+	 	 	 "Quantity": "1.00",
+	 	 	 "VForceSalesPrice__c": "1200.56",
+	 	 	 "Description": "Group Reporting",
+	 	 	 "Operational_Start_Date__c": "2018-11-27",
+	 	 	 "Service_End_Date__c": "2018-10-15T10:14:42Z"
+	 	 }
+	 ]
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9575f438-4413-40e8-8301-b3f4a4528617</ns1:Id>
+               <ns1:Name>new</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-02-06T12:46:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-08-26T14:00:49Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_opportunity_id": "",
+	 "in_event_label": "",
+	 "in_Jurisdication": "",
+	 "in_main_transaction_id": "",
+	 "in_Action": "",
+	 "in_PrimaryContact_SAPID": "",
+	 "in_Customer_SAPID": "",
+	 "in_SCItemsExists": "",
+	 "in_SCID": "",
+	 "in_MaxSCItemID": "",
+	 "in_BillingParty_SAPID": "",
+	 "VF_OpportunityProductDetails": [
+	 	 {
+	 	 	 "OpportunityID": "",
+	 	 	 "LineItemID": "",
+	 	 	 "ProductCode": "",
+	 	 	 "CountryIsoCode__c": "",
+	 	 	 "Quantity": "",
+	 	 	 "VForceSalesPrice__c": "",
+	 	 	 "Description": "",
+	 	 	 "Operational_Start_Date__c": "",
+	 	 	 "Service_End_Date__c": "",
+	 	 	 "custom_pricing_method__c": "",
+	 	 	 "Frequency__c": "",
+	 	 	 "Output_Amount__c": "",
+	 	 	 "Billing_Currency__c": "",
+	 	 	 "SBQQ__EffectiveQuantity__c": "",
+	 	 	 "Billing_Frequency__c": "",
+	 	 	 "Billing_Plan_Billing_Date_Rule": ""
+	 	 }
+	 ],
+	 "VF_AccountDetails": {
+	 	 "AccountName": "",
+	 	 "AccountType": "",
+	 	 "Billing_Contact_Email__c": "",
+	 	 "Fax": "",
+	 	 "Website": "",
+	 	 "Phone": "",
+	 	 "X18_Digit_ID__c": "",
+	 	 "ShippingCity": "",
+	 	 "ShippingCountry": "",
+	 	 "ShippingPostalCode": "",
+	 	 "ShippingState": "",
+	 	 "ShippingStreet": "",
+	 	 "Payment_Term__c": "",
+	 	 "Sector__c": "",
+	 	 "Entity_Code__c": "",
+	 	 "Currency__c": "",
+	 	 "AccountID": "",
+	 	 "BillingContactFirstName__c": "",
+	 	 "BillingContactLastName__c": "",
+	 	 "Billing_Contact_Phone__c": "",
+	 	 "BillingStreet": "",
+	 	 "BillingCity": "",
+	 	 "BillingState": "",
+	 	 "BillingPostalCode": "",
+	 	 "BillingCountry": "",
+	 	 "SBQQ__TaxExempt__c": ""
+	 },
+	 "VF_OpportunityDetails": {
+	 	 "AccountName": "",
+	 	 "AccountType": "",
+	 	 "Billing_Contact_Email__c": "",
+	 	 "Fax": "",
+	 	 "Website": "",
+	 	 "Phone": "",
+	 	 "X18_Digit_ID__c": "",
+	 	 "ShippingCity": "",
+	 	 "ShippingCountry": "",
+	 	 "ShippingPostalCode": "",
+	 	 "ShippingState": "",
+	 	 "ShippingStreet": "",
+	 	 "Payment_Term__c": "",
+	 	 "Sector__c": "",
+	 	 "Entity_Code__c": "",
+	 	 "Currency__c": "",
+	 	 "AccountID": "",
+	 	 "BillingContactFirstName__c": "",
+	 	 "BillingContactLastName__c": "",
+	 	 "Billing_Contact_Phone__c": "",
+	 	 "BillingStreet": "",
+	 	 "BillingCity": "",
+	 	 "BillingState": "",
+	 	 "BillingPostalCode": "",
+	 	 "BillingCountry": "",
+	 	 "SBQQ__TaxExempt__c": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8c9a5a63-e600-4be1-98ae-5b4b41000984</ns1:Id>
+               <ns1:Name>rb_test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-26T14:00:49Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-08-26T14:00:49Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "VF_AccountDetails": {
+	 	 "AccountName": "",
+	 	 "AccountType": "",
+	 	 "Billing_Contact_Email__c": "",
+	 	 "Fax": "",
+	 	 "Website": "",
+	 	 "Phone": "",
+	 	 "X18_Digit_ID__c": "",
+	 	 "ShippingCity": "",
+	 	 "ShippingCountry": "",
+	 	 "ShippingPostalCode": "",
+	 	 "ShippingState": "",
+	 	 "ShippingStreet": "",
+	 	 "Payment_Term__c": "",
+	 	 "Sector__c": "",
+	 	 "Entity_Code__c": "",
+	 	 "Currency__c": "",
+	 	 "AccountID": "",
+	 	 "BillingContactFirstName__c": "",
+	 	 "BillingContactLastName__c": "",
+	 	 "Billing_Contact_Phone__c": "",
+	 	 "BillingStreet": "",
+	 	 "BillingCity": "",
+	 	 "BillingState": "",
+	 	 "BillingPostalCode": "",
+	 	 "BillingCountry": "",
+	 	 "SBQQ__TaxExempt__c": ""
+	 },
+	 "in_opportunity_id": "",
+	 "in_event_label": "",
+	 "in_Jurisdication": "",
+	 "in_main_transaction_id": "",
+	 "in_Action": "",
+	 "in_PrimaryContact_SAPID": "",
+	 "in_Customer_SAPID": "",
+	 "in_SCItemsExists": "",
+	 "in_SCID": "",
+	 "in_MaxSCItemID": "",
+	 "in_BillingParty_SAPID": "",
+	 "in_process_name": "",
+	 "in_Existing_ReferenceServiceContract_ID": "",
+	 "VF_OpportunityProductDetails": [
+	 	 {
+	 	 	 "OpportunityID": "",
+	 	 	 "LineItemID": "",
+	 	 	 "ProductCode": "",
+	 	 	 "CountryIsoCode__c": "",
+	 	 	 "Quantity": "",
+	 	 	 "VForceSalesPrice__c": "",
+	 	 	 "Description": "",
+	 	 	 "Operational_Start_Date__c": "",
+	 	 	 "Service_End_Date__c": "",
+	 	 	 "custom_pricing_method__c": "",
+	 	 	 "Frequency__c": "",
+	 	 	 "Output_Amount__c": "",
+	 	 	 "Billing_Currency__c": "",
+	 	 	 "SBQQ__EffectiveQuantity__c": "",
+	 	 	 "Billing_Frequency__c": "",
+	 	 	 "Billing_Plan_Billing_Date_Rule": "",
+	 	 	 "Prod_Service__c": "",
+	 	 	 "Custom_Discount__c": "",
+	 	 	 "Custom_DiscountAmount__c": "",
+	 	 	 "Net_Unit_Price__c": ""
+	 	 }
+	 ],
+	 "VF_OpportunityDetails": {
+	 	 "OpportunityID": "",
+	 	 "LineItemID": "",
+	 	 "ProductCode": "",
+	 	 "CountryIsoCode__c": "",
+	 	 "Quantity": "",
+	 	 "VForceSalesPrice__c": "",
+	 	 "Description": "",
+	 	 "Operational_Start_Date__c": "",
+	 	 "Service_End_Date__c": "",
+	 	 "custom_pricing_method__c": "",
+	 	 "Frequency__c": "",
+	 	 "Output_Amount__c": "",
+	 	 "Billing_Currency__c": "",
+	 	 "SBQQ__EffectiveQuantity__c": "",
+	 	 "Billing_Frequency__c": "",
+	 	 "Billing_Plan_Billing_Date_Rule": "",
+	 	 "Prod_Service__c": "",
+	 	 "Custom_Discount__c": "",
+	 	 "Custom_DiscountAmount__c": "",
+	 	 "Net_Unit_Price__c": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2rnHnnXjIlfhvDK9cF4OK7</types1:GUID>
+      <types1:DisplayName>Process_Mapping_OpptyToContract</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-06T11:16:23.741Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

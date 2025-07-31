@@ -1,0 +1,646 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>E7ppppppppppppp-gt-17828646-2022-01-18T09:58:24.99Z::pd.xml</types1:EntryId>
+      <types1:Name>process_GetAll_VForce_MAIN</types1:Name>
+      <types1:ParentFlowIds>iYBeMHck5qbbfUr-gt-23835261-2022-01-18T09:58:27.134Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:25Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-09-16T18:09:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-09-27T11:10:17Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_GetAll_VForce_MAIN/process_GetAll_VForce_MAIN.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_GetAll_VForce_MAIN"
+                  name="process_GetAll_VForce_MAIN"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventLabel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_main_runid" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_process_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="VF_OpportunityDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunity-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9bPEBY0uh2ucOA2MHKoqge</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="VF_OpportunityProductDetails"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </field>
+               <field description="" name="VF_AccountDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8f3H4sp3c1He13JDZ84XSu</option>
+                  </options>
+               </field>
+               <field description="" name="VF_ContactDetails" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cpMJrQ1ePaAbMbDU55a4Y2</option>
+                  </options>
+               </field>
+               <field description="" name="o_EntityCode_inScope" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_user_details" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-User-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">egTHnhDTPEjbcRR3LGonwq</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Error_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-EventDetials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">elhTRmT4fkWlNffcGW9Yg2</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kx47hf53" targetId="kx47hfu1"/>
+               </start>
+               <eventContainer id="kx47hfu1">
+                  <subflow id="kwpbl4c6">
+                     <title>process_GetOpportunity</title>
+                     <subflowGUID>50Z1Hfk0BspggKK1twaScK</subflowGUID>
+                     <subflowPath>process_GetOpportunity</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_OpportunityID" source="formula" updatable="true">
+                           <expression language="XQuery">$input.in_OpportunityID </expression>
+                        </parameter>
+                     </input>
+                     <outputDef>
+                        <field name="Out_Opportunity_SF" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PO-VFOpportunity-1</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">9bPEBY0uh2ucOA2MHKoqge</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="kx47hfu3">
+                     <link id="kx47hfu4" targetId="kx47hfu1" type="containerLink"/>
+                  </flow>
+                  <flow id="kx47hfu6">
+                     <subflow id="kx47hg2u">
+                        <title>Opportunity_Error Log</title>
+                        <subflowGUID>5O07Lg9dQKSgURychi74Wo</subflowGUID>
+                        <subflowPath>process_US_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_TransactionID" source="formula" updatable="true">
+                              <expression language="XQuery">'process_GetOpportunity'</expression>
+                           </parameter>
+                           <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoOppty[1]/code</parameter>
+                           <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoOppty[1]/detail</parameter>
+                           <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoOppty[1]/reason</parameter>
+                           <parameter name="in_Full_Payload" source="formula" updatable="true">
+                              <expression language="XQuery">&lt;PO-EventDetials&gt;
+   &lt;eventTypeName&gt;{$input.in_EventLabel}&lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;'in_OpportunityID'&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$input.in_OpportunityID}&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;
+&lt;/PO-EventDetials&gt;
+
+
+</expression>
+                           </parameter>
+                           <parameter name="in_main_runid" source="field" updatable="true">input.in_main_runid</parameter>
+                           <parameter name="in_process_name" source="field" updatable="true">input.in_process_name</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="kx47hg2v" targetId="kx47hfxw"/>
+                     </subflow>
+                     <end id="kx47hfxw">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="kx47hfu2" targetId="kx47hfu3" type="containerLink"/>
+                  <link id="kx47hf9j" targetId="kx47hf9i"/>
+                  <events>
+                     <catch faultField="faultInfoOppty" id="kx47hftw" interrupting="true">
+                        <link id="kx47hfu5" targetId="kx47hfu6" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="kx47hf9i" type="exclusive">
+                  <title>Opportunity</title>
+                  <flow id="kx47hf9m">
+                     <container id="kx47hfad" type="parallel">
+                        <title>Parallel Paths 1</title>
+                        <flow id="kx47hfae">
+                           <eventContainer id="kx47hfg0">
+                              <subflow id="kx47hfaf">
+                                 <title>process_GetAccountDetails</title>
+                                 <subflowGUID>8uinkfCvuy2fpFpzIWQIUk</subflowGUID>
+                                 <subflowPath>process_GetAccountDetails</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_AccountID" source="field" updatable="true">output.Out_Opportunity_SF[1]/AccountID</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_AccountDetails_SF" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:PO-VFAccount</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8f3H4sp3c1He13JDZ84XSu</option>
+                                       </options>
+                                    </field>
+                                    <field name="Out_EntityCode_inScope" type="boolean">
+                                       <options>
+                                          <option name="defaultvalue">false</option>
+                                          <option name="boolean_show_as">checkbox</option>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="kx47hfg2">
+                                 <link id="kx47hfg3" targetId="kx47hfg0" type="containerLink"/>
+                              </flow>
+                              <flow id="kx47hfg5">
+                                 <subflow id="kx47hg06">
+                                    <title>Account_Details_Error Log</title>
+                                    <subflowGUID>5O07Lg9dQKSgURychi74Wo</subflowGUID>
+                                    <subflowPath>process_US_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_TransactionID" source="formula" updatable="true">
+                                          <expression language="XQuery">'process_GetAccountDetails'</expression>
+                                       </parameter>
+                                       <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoAccount[1]/code</parameter>
+                                       <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoAccount[1]/detail</parameter>
+                                       <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoAccount[1]/reason</parameter>
+                                       <parameter name="in_Full_Payload" source="formula" updatable="true">
+                                          <expression language="XQuery">&lt;PO-EventDetials&gt;
+   &lt;eventTypeName&gt;$input.in_EventLabel &lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;'in_Account'&lt;/identifierName&gt;
+      &lt;objectIdentifier&gt;$output.VF_AccountDetails[1]/AccountID &lt;/objectIdentifier&gt;
+   &lt;/identifiers&gt;
+&lt;/PO-EventDetials&gt;
+</expression>
+                                       </parameter>
+                                       <parameter name="in_main_runid" source="field" updatable="true">input.in_main_runid</parameter>
+                                       <parameter name="in_process_name" source="field" updatable="true">input.in_process_name</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="kx47hg87" targetId="kx47hg86"/>
+                                 </subflow>
+                                 <end id="kx47hg86">
+                                    <title>End 3</title>
+                                 </end>
+                              </flow>
+                              <link id="kx47hfg1" targetId="kx47hfg2" type="containerLink"/>
+                              <link id="kx47hfbu" targetId="kx47hfbt"/>
+                              <events>
+                                 <catch faultField="faultInfoAccount" id="kx47hffv" interrupting="true">
+                                    <link id="kx47hfg4" targetId="kx47hfg5" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="kx47hfbt" type="exclusive">
+                              <title>Account</title>
+                              <flow id="kx47hfbw">
+                                 <link id="kx47hfbx" targetId="kx47hfbt" type="containerLink"/>
+                              </flow>
+                              <flow id="kx47hfbz">
+                                 <link id="kx47hfex" targetId="kx47hfbt" type="containerLink"/>
+                              </flow>
+                              <link id="kx47hfbv" targetId="kx47hfbw" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="set">
+                                       <arg name="field">{$output.out_AccountDetails_SF}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kx47hfby" targetId="kx47hfbz" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="unset">
+                                       <arg name="field">{$output.out_AccountDetails_SF}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                           </container>
+                           <link id="kx47hfak" targetId="kx47hfad" type="containerLink"/>
+                        </flow>
+                        <flow id="kx47hfag">
+                           <eventContainer id="kx47hfgr">
+                              <subflow id="kx47hfah">
+                                 <title>process_GetOpportunityProduct</title>
+                                 <subflowGUID>8Ii4Dy24gyikUNQpPcCKEC</subflowGUID>
+                                 <subflowPath>process_GetOpportunityProduct</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_OpportunityID" source="field" updatable="true">input.in_OpportunityID</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_OpportunityLineItem_List_PO" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="kx47hfgt">
+                                 <link id="kx47hfgu" targetId="kx47hfgr" type="containerLink"/>
+                              </flow>
+                              <flow id="kx47hfgw">
+                                 <subflow id="kx47hg6x">
+                                    <title>Opportunity_Products_Error Log</title>
+                                    <subflowGUID>5O07Lg9dQKSgURychi74Wo</subflowGUID>
+                                    <subflowPath>process_US_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_TransactionID" source="formula" updatable="true">
+                                          <expression language="XQuery">'process_GetOpportunityProduct'</expression>
+                                       </parameter>
+                                       <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoOppProd[1]/code</parameter>
+                                       <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoOppProd[1]/detail</parameter>
+                                       <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoOppProd[1]/reason</parameter>
+                                       <parameter name="in_Full_Payload" source="formula" updatable="true">
+                                          <expression language="XQuery">&lt;PO-EventDetials&gt;
+   &lt;eventTypeName&gt;$input.in_EventLabel &lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;'in_ProductDetails'&lt;/identifierName&gt;      &lt;objectIdentifier&gt;$output.VF_OpportunityProductDetails[1]/ProductCode &lt;/objectIdentifier&gt;
+   &lt;/identifiers&gt;
+&lt;/PO-EventDetials&gt;
+</expression>
+                                       </parameter>
+                                       <parameter name="in_main_runid" source="field" updatable="true">input.in_main_runid</parameter>
+                                       <parameter name="in_process_name" source="field" updatable="true">input.in_process_name</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="kx47hga2" targetId="kx47hga1"/>
+                                 </subflow>
+                                 <end id="kx47hga1">
+                                    <title>End 4</title>
+                                 </end>
+                              </flow>
+                              <link id="kx47hfgs" targetId="kx47hfgt" type="containerLink"/>
+                              <link id="kx47hfcr" targetId="kx47hfcq"/>
+                              <events>
+                                 <catch faultField="faultInfoOppProd" id="kx47hfgm" interrupting="true">
+                                    <link id="kx47hfgv" targetId="kx47hfgw" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="kx47hfcq" type="exclusive">
+                              <title>OpptyProd</title>
+                              <flow id="kx47hfct">
+                                 <link id="kx47hfcu" targetId="kx47hfcq" type="containerLink"/>
+                              </flow>
+                              <flow id="kx47hfcw">
+                                 <link id="kx47hffh" targetId="kx47hfcq" type="containerLink"/>
+                              </flow>
+                              <link id="kx47hfcs" targetId="kx47hfct" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="not-empty">
+                                       <arg name="field">{$output.out_OpportunityLineItem_List_PO}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kx47hfcv" targetId="kx47hfcw" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="empty">
+                                       <arg name="field">{$output.out_OpportunityLineItem_List_PO}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                           </container>
+                           <link id="kx47hfal" targetId="kx47hfad" type="containerLink"/>
+                        </flow>
+                        <flow id="kyejmiqj">
+                           <eventContainer id="kyejmj8d">
+                              <subflow id="kyejmirx">
+                                 <title>Process_Get_User</title>
+                                 <subflowGUID>3HE1WBB4W6mk1eY5G9WzSM</subflowGUID>
+                                 <subflowPath>Process_User_details</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_opp_ownere_id" source="field" updatable="true">output.Out_Opportunity_SF[1]/Owner_Id</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_user_details" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:PO-User-2</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">bzpd3aqoEsQgpHJz8ihNGH</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="kyejmj8f">
+                                 <link id="kyejmj8g" targetId="kyejmj8d" type="containerLink"/>
+                              </flow>
+                              <flow id="kyejmj8i">
+                                 <subflow id="kyejmja2">
+                                    <title>User_Error Log</title>
+                                    <subflowGUID>5O07Lg9dQKSgURychi74Wo</subflowGUID>
+                                    <subflowPath>process_US_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_TransactionID" source="formula" updatable="true">
+                                          <expression language="XQuery">'process_User'</expression>
+                                       </parameter>
+                                       <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                       <parameter name="in_Full_Payload" source="formula" updatable="true">
+                                          <expression language="XQuery">&lt;PO-EventDetials&gt;
+   &lt;eventTypeName&gt;$input.in_EventLabel &lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;'in_users'&lt;/identifierName&gt;      &lt;objectIdentifier&gt;$output.out_user_details  &lt;/objectIdentifier&gt;
+   &lt;/identifiers&gt;
+&lt;/PO-EventDetials&gt;
+</expression>
+                                       </parameter>
+                                       <parameter name="in_main_runid" source="field" updatable="true">input.in_main_runid</parameter>
+                                       <parameter name="in_process_name" source="field" updatable="true">input.in_process_name</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="kyejmjci" targetId="kyejmjch"/>
+                                 </subflow>
+                                 <end id="kyejmjch">
+                                    <title>End 5</title>
+                                 </end>
+                              </flow>
+                              <link id="kyejmj8e" targetId="kyejmj8f" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="kyejmj88" interrupting="true">
+                                    <link id="kyejmj8h" targetId="kyejmj8i" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="kyejmiqk" targetId="kx47hfad" type="containerLink"/>
+                        </flow>
+                        <link id="kx47hfai" targetId="kx47hfae" type="containerLink"/>
+                        <link id="kx47hfaj" targetId="kx47hfag" type="containerLink"/>
+                        <link id="kyejmiqi" targetId="kyejmiqj" type="containerLink"/>
+                        <link id="kx47hgca" targetId="kx47hgf0"/>
+                     </container>
+                     <eventContainer id="kx47hgf0">
+                        <subflow id="kx47hgc9">
+                           <title>process_GetContact</title>
+                           <subflowGUID>3Mj0Gd2aQB8iJOqGbELr08</subflowGUID>
+                           <subflowPath>process_GetContact</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_AccoutID" source="field" updatable="true">output.Out_Opportunity_SF[1]/AccountID</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ContactDetails_List_PO" type="objectlist">
+                                 <options>
+                                    <option name="referenceTo">$po:PO-VFContact</option>
+                                    <option hide="true" name="multiSelect">true</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">cpMJrQ1ePaAbMbDU55a4Y2</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="kx47hgf2">
+                           <link id="kx47hgf3" targetId="kx47hgf0" type="containerLink"/>
+                        </flow>
+                        <flow id="kx47hgf5">
+                           <subflow id="kx47hgfs">
+                              <title>Contct_Error Log</title>
+                              <subflowGUID>5O07Lg9dQKSgURychi74Wo</subflowGUID>
+                              <subflowPath>process_US_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_TransactionID" source="formula" updatable="true">
+                                    <expression language="XQuery">'process_GetContact'</expression>
+                                 </parameter>
+                                 <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoContacts[1]/code</parameter>
+                                 <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoContacts[1]/detail</parameter>
+                                 <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoContacts[1]/reason</parameter>
+                                 <parameter name="in_Full_Payload" source="formula" updatable="true">
+                                    <expression language="XQuery">&lt;PO-EventDetials&gt;
+   &lt;eventTypeName&gt;$input.in_EventLabel &lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;'in_ContactDetails'&lt;/identifierName&gt;
+      &lt;objectIdentifier&gt;$output.VF_ContactDetails[1]/ContactID &lt;/objectIdentifier&gt;
+   &lt;/identifiers&gt;
+&lt;/PO-EventDetials&gt;
+</expression>
+                                 </parameter>
+                                 <parameter name="in_main_runid" source="field" updatable="true">input.in_main_runid</parameter>
+                                 <parameter name="in_process_name" source="field" updatable="true">input.in_process_name</parameter>
+                              </input>
+                              <outputDef/>
+                           </subflow>
+                           <link id="kx47hgf6" targetId="kx47hgf0" type="containerLink"/>
+                        </flow>
+                        <link id="kx47hgf1" targetId="kx47hgf2" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfoContacts" id="kx47hgd1" interrupting="true">
+                              <link id="kx47hgf4" targetId="kx47hgf5" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="kx47hf9n" targetId="kx47hf9i" type="containerLink"/>
+                  </flow>
+                  <flow id="kx47hf9p">
+                     <end id="kx47hfbc">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kx47hf9l" targetId="kx47hf9m" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$output.Out_Opportunity_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx47hf9o" targetId="kx47hf9p" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$output.Out_Opportunity_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx47hfa7" targetId="kx47hf6c"/>
+               </container>
+               <assignment id="kx47hf6c">
+                  <title>CollectOutput</title>
+                  <operation source="field" to="output.VF_AccountDetails">output.out_AccountDetails_SF</operation>
+                  <operation source="field" to="output.VF_OpportunityDetails">output.Out_Opportunity_SF</operation>
+                  <operation source="field" to="output.VF_OpportunityProductDetails">output.out_OpportunityLineItem_List_PO</operation>
+                  <operation source="formula" to="output.VF_ContactDetails">
+                     <expression language="XQuery">$output.out_ContactDetails_List_PO </expression>
+                  </operation>
+                  <operation source="field" to="output.o_EntityCode_inScope">output.Out_EntityCode_inScope</operation>
+                  <operation source="constant" to="output.VF_OpportunityDetails[1]/ID">{$input.in_OpportunityID}</operation>
+                  <link id="kx47hf6e" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>914a4be0-812a-4269-8c00-92e4eef03719</ns1:Id>
+               <ns1:Name>account</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:09:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0067Y00000Cts5zQAB"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5e0b642f-3f54-41f4-a33b-ed65ec6f2638</ns1:Id>
+               <ns1:Name>ID_Oppty</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:09:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0063O00000GrywvQAB"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5cbbf1f7-f048-4e48-8b7d-5f1a5e3326fc</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:09:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "Opportunity",
+	 "objectIdentifier": "0063O00000GImTpQAL",
+	 "jurisdiction": "US"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>da293fbf-11e8-4699-a24d-1a6c894a4ba5</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:09:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "123",
+	 "in_EventLabel": "ProspectOpportunity"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>df052265-7d02-480b-87c1-f8356a2d9e3d</ns1:Id>
+               <ns1:Name>Test with Oppty only</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:25Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-09-16T18:09:40Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "",
+	 "objectIdentifier": "",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1RFs3XjwwkuhABrvepTsu4</types1:GUID>
+      <types1:DisplayName>process_GetAll_VForce_MAIN</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-21T10:29:50.174Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

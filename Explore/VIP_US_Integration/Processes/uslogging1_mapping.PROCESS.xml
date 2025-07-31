@@ -1,0 +1,152 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>pNVMTonQYWeIssj-gt-24260907-2022-01-18T09:58:20.257Z::pd.xml</types1:EntryId>
+      <types1:Name>uslogging1_mapping</types1:Name>
+      <types1:ParentFlowIds>5Y6tMFyglsO7RY6-gt-24261041-2022-01-18T09:58:25.904Z::pd.xml,9VtsDaaabdvhxiQ-gt-24261053-2022-01-18T09:58:25.973Z::pd.xml,msvE3C7snSDg8SO-gt-24261077-2022-01-18T09:58:26.207Z::pd.xml,X89SfSmbduaa-gt-17828620-2022-01-18T09:58:24.793Z::pd.xml,ZigdpIO3M4WwOC2-gt-24261029-2022-01-18T09:58:25.825Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:20Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T13:56:03Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T13:56:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.uslogging1_mapping/uslogging1_mapping.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="uslogging1_mapping"
+                  name="uslogging1_mapping"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_opportunity_id"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_event_label"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Jurisdication"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_subtransaction_name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_main_transaction_id"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_saleforce_payload"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_sap_payload"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_main_transaction_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_input_json" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxfprj7u" targetId="kxfprj7t"/>
+               </start>
+               <assignment id="kxfprj7t">
+                  <title>Assignment to tmp_input_json</title>
+                  <operation source="formula" to="temp.tmp_input_json">
+                     <expression language="XQuery">'{"OpportunityId":'||$input.in_opportunity_id ||
+',"EventLablel":'||$input.in_event_label ||
+',"Jurisdication":'||$input.in_Jurisdication ||')'</expression>
+                  </operation>
+                  <link id="kxomg2q3" targetId="kxomg2q2"/>
+               </assignment>
+               <create id="kxomg2q2">
+                  <title>uslogging1_mapping</title>
+                  <entityName>US-MSSQL-DB-VForce:uslogging1_mapping</entityName>
+                  <createInput>
+                     <parameter name="transaction_id" source="constant" updatable="true">{$input.in_main_transaction_id}</parameter>
+                     <parameter name="Input" source="constant" updatable="true">{$temp.tmp_input_json}</parameter>
+                     <parameter name="SubTransaction_name" source="constant" updatable="true">{$input.in_subtransaction_name}</parameter>
+                     <parameter name="vfroce_payload" source="formula" updatable="true">
+                        <expression language="XQuery">util:toJSON($input.in_saleforce_payload )</expression>
+                     </parameter>
+                     <parameter name="sap_payload" source="formula" updatable="true">
+                        <expression language="XQuery">util:toJSON($input.in_sap_payload )</expression>
+                     </parameter>
+                  </createInput>
+                  <link id="kxomg2q4" targetId="c"/>
+               </create>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>dafBeKeiskgjnHiGqkoyIF</types1:GUID>
+      <types1:DisplayName>uslogging1_mapping</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T14:04:22.953Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

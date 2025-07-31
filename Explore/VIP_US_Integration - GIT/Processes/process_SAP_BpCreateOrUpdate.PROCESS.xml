@@ -1,0 +1,1995 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>J2oTVMTonQYWeIs-gt-17855758-2022-01-10T15:25:13.573Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_BpCreateOrUpdate</types1:Name>
+      <types1:ParentFlowIds>2xn2H0Fdw8jIw8j-gt-17990943-2022-01-10T14:24:44.868Z::pd.xml,grHnJKoJBUhtyco-gt-7948816-2021-12-27T14:29:04.711Z::pd.xml,y9RuuB3uopz4KhP-gt-7541940-2021-12-27T06:08:53.996Z::pd.xml,yS24FsWTzIf6riX-gt-20741309-2022-01-13T14:46:24.396Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Checks whether a VFORCE ID (can be account ID or contact ID) has been used to create a Business Partner in SAP. Updates the SAP record if found, Creates new if not found. Test Git</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>harshavardhan.makeneni@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-01-10T15:25:14Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-01-18T17:57:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-18T17:58:06Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_BpCreateOrUpdate/process_SAP_BpCreateOrUpdate.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_BpCreateOrUpdate"
+                  name="process_SAP_BpCreateOrUpdate"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Checks whether a VFORCE ID (can be account ID or contact ID) has been used to create a Business Partner in SAP. Updates the SAP record if found, Creates new if not found. Test Git</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_SAP_BusinessPartner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_BusinessPartnerAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_BusinessPartnerEmailAddress"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Customer Sales Area" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Sales Area Tax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_PartnerFunction" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="SalesOrganization" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerPaymentTerms" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerTaxClassification" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerAccountAssignmentGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CashPlanningGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="YY1_Customer_Segment_cco" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Account_Id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Main_Transaction_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_SAP_BusinessPartnerID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartner-1:API_BUSINESS_PARTNER_A_BusinessPartnerType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9LTgOLEQnNTkMGk8lpG5wg</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartner-1:API_BUSINESS_PARTNER_A_BusinessPartnerAddressType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9LTgOLEQnNTkMGk8lpG5wg</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpEmailAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcPatchBusinessPartnerAll:API_BUSINESS_PARTNER_A_AddressEmailAddressType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dJfY2uQkiewfZhBLUbhikX</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpCustomerSalesArea" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpAddressExt" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_SalesOrganization" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_CustomerPaymentTerms" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_DepartureCountry" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_CustomerTaxClassification" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerCompany" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerCompanyDunning" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Account" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Account</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxg7u40b" targetId="kxg7u40a"/>
+               </start>
+               <assignment id="kxg7u40a">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BpHeader">
+                     <expression language="XQuery">'{
+    "BusinessPartnerCategory": "1",
+    "BusinessPartnerGrouping": "BP02",
+    "Language": "EN",
+    "FirstName": "VFORCE First Name 1",
+    "LastName": "VFORCE Last Name 1",
+    "BusinessPartnerIDByExtSystem": "0013O00000NGQOCQAO-3",
+    "to_BusinessPartnerAddress": {
+        "results": [
+            {
+                "Country": "US",
+                "to_EmailAddress": {
+                    "results": [
+                        {
+                            "EmailAddress": "vforce_contact1@vistra.com"
+                        }
+                    ]
+                },
+                "to_PhoneNumber": {
+                    "results": [
+                        {
+                            "PhoneNumber": "11111111"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}'</expression>
+                  </operation>
+                  <link id="kxg7u40c" targetId="kxg7u3yv"/>
+               </assignment>
+               <service id="kxg7u3yv">
+                  <title>Get SAP Token</title>
+                  <serviceName>AppSvcERPGettoken:getAccessToken</serviceName>
+                  <serviceGUID>6qLDvZu1QGie19DXyPldkv</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostName" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                     <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                     <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                  </serviceInput>
+                  <link id="kxg7u400" targetId="kxg7u3zz"/>
+               </service>
+               <service id="kxg7u3zz">
+                  <title>Get BP</title>
+                  <serviceName>AppSvcCheckBusinessPartner-1:GET_A_BusinessPartner_BusinessPartnerIDByExtSystem</serviceName>
+                  <serviceGUID>1Lj2JzLBPI7dXzNmTXNcOV</serviceGUID>
+                  <serviceInput>
+                     <parameter name="VForceID" source="formula">
+                        <expression language="XQuery">fn:upper-case($input.in_SAP_BusinessPartner[1]/BusinessPartnerIDByExtSystem)</expression>
+                     </parameter>
+                     <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                     <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                     <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                     <parameter name="$expand" source="formula">
+                        <expression language="XQuery">'to_BuPaIdentification,to_BuPaIndustry,to_BusinessPartnerAddress,to_BusinessPartnerAddress/to_AddressUsage,to_BusinessPartnerAddress/to_EmailAddress,to_BusinessPartnerAddress/to_FaxNumber,to_BusinessPartnerAddress/to_MobilePhoneNumber,to_BusinessPartnerAddress/to_PhoneNumber,to_BusinessPartnerAddress/to_URLAddress,to_BusinessPartnerBank,to_BusinessPartnerContact,to_BusinessPartnerContact/to_ContactAddress,to_BusinessPartnerContact/to_ContactAddress/to_EmailAddress,to_BusinessPartnerContact/to_ContactAddress/to_FaxNumber,to_BusinessPartnerContact/to_ContactAddress/to_MobilePhoneNumber,to_BusinessPartnerContact/to_ContactAddress/to_PhoneNumber,to_BusinessPartnerContact/to_ContactAddress/to_URLAddress,to_BusinessPartnerContact/to_ContactRelationship,to_BusinessPartnerRole,to_BusinessPartnerTax,to_Customer,to_Customer/to_CustomerCompany,to_Customer/to_CustomerCompany/to_CompanyText,to_Customer/to_CustomerCompany/to_CustomerDunning,to_Customer/to_CustomerCompany/to_WithHoldingTax,to_Customer/to_CustomerSalesArea,to_Customer/to_CustomerSalesArea/to_PartnerFunction,to_Customer/to_CustomerSalesArea/to_SalesAreaTax,to_Customer/to_CustomerSalesArea/to_SalesAreaText,to_Customer/to_CustomerTaxGrouping,to_Customer/to_CustomerText,to_Customer/to_CustomerUnloadingPoint'</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="kxgglyum" targetId="kxgglyul"/>
+               </service>
+               <container id="kxgglyul" type="exclusive">
+                  <title>BP Found</title>
+                  <flow id="kxgglyup">
+                     <assignment id="kycz3ns0">
+                        <title>Break into sub-sets</title>
+                        <operation source="formula" to="temp.tmp_BpHeader">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;BusinessPartnerCategory&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerCategory} &lt;/BusinessPartnerCategory&gt;
+	&lt;BusinessPartnerGrouping&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerGrouping}&lt;/BusinessPartnerGrouping&gt;
+	&lt;Language&gt;{$input.in_SAP_BusinessPartner[1]/Language}&lt;/Language&gt;
+	&lt;FirstName&gt;{$input.in_SAP_BusinessPartner[1]/FirstName} &lt;/FirstName&gt;
+    &lt;LastName&gt;{$input.in_SAP_BusinessPartner[1]/LastName}&lt;/LastName&gt;
+    &lt;OrganizationBPName1&gt;{$input.in_SAP_BusinessPartner[1]/OrganizationBPName1}&lt;/OrganizationBPName1&gt;
+    &lt;OrganizationBPName2&gt;{$input.in_SAP_BusinessPartner[1]/OrganizationBPName2}&lt;/OrganizationBPName2&gt;
+    &lt;SearchTerm1&gt;{$input.in_SAP_BusinessPartner[1]/SearchTerm1}&lt;/SearchTerm1&gt;
+    &lt;BusinessPartnerIDByExtSystem&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerIDByExtSystem}&lt;/BusinessPartnerIDByExtSystem&gt;    
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BpAddress">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;   
+      &lt;results m:isArray="true"&gt;
+         &lt;CityName&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/CityName}&lt;/CityName&gt;
+         &lt;PostalCode&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/PostalCode}&lt;/PostalCode&gt;
+         &lt;Language&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/Language}&lt;/Language&gt;           
+         &lt;StreetName&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/StreetName}&lt;/StreetName&gt;
+         &lt;Country&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/Country}&lt;/Country&gt;              
+      &lt;/results&gt;   
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BpEmailAddress">
+                           <expression language="XQuery">&lt;root&gt;
+   &lt;SearchEmailAddress&gt;{$input.in_BusinessPartnerEmailAddress }&lt;/SearchEmailAddress&gt;
+   &lt;EmailAddress&gt;{$input.in_BusinessPartnerEmailAddress} &lt;/EmailAddress&gt;
+&lt;/root&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="temp.temp_SalesOrganization">input.SalesOrganization</operation>
+                        <operation source="field" to="temp.temp_Currency">input.Currency</operation>
+                        <operation source="field" to="temp.temp_CustomerPaymentTerms">input.CustomerPaymentTerms</operation>
+                        <operation source="field" to="temp.temp_CustomerTaxClassification">input.CustomerTaxClassification</operation>
+                        <operation source="formula" to="temp.temp_DepartureCountry">
+                           <expression language="XQuery">fn:substring($input.SalesOrganization  ,1,2)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BpCustomerSalesArea">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+	&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+	&lt;Division&gt;10&lt;/Division&gt;
+	&lt;Currency&gt;{$temp.temp_Currency }&lt;/Currency&gt;
+	&lt;CustomerAccountAssignmentGroup&gt;01&lt;/CustomerAccountAssignmentGroup&gt;
+	&lt;CustomerGroup&gt;&lt;/CustomerGroup&gt;
+	&lt;CustomerPaymentTerms&gt;{$temp.temp_CustomerPaymentTerms }&lt;/CustomerPaymentTerms&gt;
+	&lt;CustomerPriceGroup&gt;&lt;/CustomerPriceGroup&gt;
+	&lt;CustomerPricingProcedure&gt;&lt;/CustomerPricingProcedure&gt;
+	&lt;IncotermsClassification&gt;EXW&lt;/IncotermsClassification&gt;
+	&lt;IncotermsLocation1&gt;EX-WORKS&lt;/IncotermsLocation1&gt;
+	&lt;IncotermsLocation2&gt;&lt;/IncotermsLocation2&gt;
+	&lt;IncotermsVersion&gt;2020&lt;/IncotermsVersion&gt;
+	&lt;PriceListType&gt;&lt;/PriceListType&gt;
+	&lt;SupplyingPlant&gt;&lt;/SupplyingPlant&gt;
+	&lt;CustomerAccountGroup&gt;CUST&lt;/CustomerAccountGroup&gt;
+	&lt;to_SalesAreaTax&gt;
+		&lt;results m:isArray="true"&gt;
+			&lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+			&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+			&lt;Division&gt;10&lt;/Division&gt;
+			&lt;DepartureCountry&gt;{$temp.temp_DepartureCountry}&lt;/DepartureCountry&gt;
+			&lt;CustomerTaxCategory&gt;TTX1&lt;/CustomerTaxCategory&gt;
+			&lt;CustomerTaxClassification&gt;{$temp.temp_CustomerTaxClassification }&lt;/CustomerTaxClassification&gt;
+		&lt;/results&gt;
+	&lt;/to_SalesAreaTax&gt;
+	&lt;to_PartnerFunction&gt;
+		&lt;results m:isArray="true"&gt;
+			&lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+			&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+			&lt;Division&gt;10&lt;/Division&gt;
+			&lt;PartnerFunction&gt;SP&lt;/PartnerFunction&gt;
+		&lt;/results&gt;
+		&lt;results m:isArray="true"&gt;
+			&lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+			&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+			&lt;Division&gt;10&lt;/Division&gt;
+			&lt;PartnerFunction&gt;BP&lt;/PartnerFunction&gt;			
+		&lt;/results&gt;
+		&lt;results m:isArray="true"&gt;
+          &lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+          &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+          &lt;Division&gt;10&lt;/Division&gt;
+          &lt;PartnerFunction&gt;PY&lt;/PartnerFunction&gt;
+      	&lt;/results&gt;
+		&lt;results m:isArray="true"&gt;
+          &lt;SalesOrganization&gt;{$temp.temp_SalesOrganization }&lt;/SalesOrganization&gt;
+          &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+          &lt;Division&gt;10&lt;/Division&gt;
+          &lt;PartnerFunction&gt;SH&lt;/PartnerFunction&gt;
+      &lt;/results&gt;
+  &lt;/to_PartnerFunction&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CustomerCompany">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  &lt;CompanyCode&gt;{$input.SalesOrganization }&lt;/CompanyCode&gt;
+  &lt;ReconciliationAccount&gt;12100000&lt;/ReconciliationAccount&gt;
+  &lt;YY1_Customer_Segment_cco&gt;{$input.YY1_Customer_Segment_cco }&lt;/YY1_Customer_Segment_cco&gt;
+  &lt;ValueAdjustmentKey&gt;Z1&lt;/ValueAdjustmentKey&gt;
+  &lt;PaymentTerms&gt;{$input.CustomerPaymentTerms }&lt;/PaymentTerms&gt;
+  &lt;CashPlanningGroup&gt;{$input.CashPlanningGroup }&lt;/CashPlanningGroup&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CustomerCompanyDunning">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;CompanyCode&gt;{$input.SalesOrganization}&lt;/CompanyCode&gt;
+    &lt;DunningProcedure&gt;Z002&lt;/DunningProcedure&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="kydd4vtw" targetId="kycz3nsg"/>
+                     </assignment>
+                     <assignment id="kycz3nt7">
+                        <title>Output BP (Update)</title>
+                        <operation source="field" to="output.out_SAP_BusinessPartnerID">output.o_BusinessPartner_ID</operation>
+                     </assignment>
+                     <service id="kycz3nsg">
+                        <title>Update BP Header</title>
+                        <serviceName>AppSvcPatchBusinessPartner-1:PATCH_A_BusinessPartner_BusinessPartner_</serviceName>
+                        <serviceGUID>0CjOxE6L9yhfYOUZHI6lWk</serviceGUID>
+                        <serviceInput>
+                           <parameter name="body" source="formula">
+                              <expression language="XQuery">$temp.tmp_BpHeader  </expression>
+                           </parameter>
+                           <parameter name="BusinessPartnerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                           <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                           <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                           <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                        </serviceInput>
+                        <link id="kydle4oa" targetId="kydle4nt"/>
+                     </service>
+                     <container id="kydle4nt" type="exclusive">
+                        <title>o_AddressID</title>
+                        <flow id="kydle4nu">
+                           <eventContainer id="kyjo51lt">
+                              <service id="kydle4nv">
+                                 <title>Update BusinessPartnerAddress</title>
+                                 <serviceName>AppSvcPatchBusinessPartnerAll:PATCH_A_BusinessPartner_BusinessPartnerAddress</serviceName>
+                                 <serviceGUID>dJfY2uQkiewfZhBLUbhikX</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="body" source="formula">
+                                       <expression language="XQuery">$temp.tmp_BpAddress </expression>
+                                    </parameter>
+                                    <parameter name="BusinessPartnerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                                    <parameter name="BusinessPartnerAddressPathParam"
+                                               source="field"
+                                               updatable="true">output.o_AddressID</parameter>
+                                    <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                    <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                    <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="kyjo51lv">
+                                 <link id="kyjo51lw" targetId="kyjo51lt" type="containerLink"/>
+                              </flow>
+                              <flow id="kyjo51ly">
+                                 <subflow id="kyjo51mh">
+                                    <title>process_US_ErrorLog</title>
+                                    <subflowGUID>9mlrXLLOFIXkt9y0guBbmJ</subflowGUID>
+                                    <subflowPath>process_US_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_TransactionID" source="field" updatable="true">input.in_Main_Transaction_ID</parameter>
+                                       <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                          <expression language="XQuery">'process_SAP_BpCreateOrUpdate ['||util:getProcessId() || ']'</expression>
+                                       </parameter>
+                                       <parameter name="in_ErrorCode" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                       <parameter name="in_ErrorDetail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                       <parameter name="in_ErrorReason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="kyjo51n2" targetId="kyjo51n0"/>
+                                 </subflow>
+                                 <jumpTo id="kyjo51n0">
+                                    <link id="kyjo51n1" targetId="kydle4ox"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="kyjo51lu" targetId="kyjo51lv" type="containerLink"/>
+                              <link id="kydle4o4" targetId="kydle4nw"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="kyjo51ls" interrupting="true">
+                                    <link id="kyjo51lx" targetId="kyjo51ly" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="kydle4nw" type="exclusive">
+                              <title>tmp_BpEmailAddress</title>
+                              <flow id="kydle4nx">
+                                 <service id="kydle4ny">
+                                    <title>Update  BusinessPartnerEmailAddress</title>
+                                    <serviceName>AppSvcPatchBusinessPartner-1:PATCH_A_BusinessPartner_BusinessPartnerEmailAddress</serviceName>
+                                    <serviceGUID>0CjOxE6L9yhfYOUZHI6lWk</serviceGUID>
+                                    <serviceInput>
+                                       <parameter name="body" source="formula">
+                                          <expression language="XQuery">$temp.tmp_BpEmailAddress </expression>
+                                       </parameter>
+                                       <parameter name="BusinessPartnerAddressPathParam"
+                                                  source="field"
+                                                  updatable="true">output.o_AddressID</parameter>
+                                       <parameter name="PersonPathParam" source="field" updatable="true">output.o_Person</parameter>
+                                       <parameter name="OrdinalNumberPathParam" source="field" updatable="true">output.o_OrdinalNumber</parameter>
+                                       <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                       <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                       <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                                    </serviceInput>
+                                 </service>
+                                 <link id="kydle4o7" targetId="kydle4nw" type="containerLink"/>
+                              </flow>
+                              <flow id="kydle4nz">
+                                 <link id="kydle4o8" targetId="kydle4nw" type="containerLink"/>
+                              </flow>
+                              <link id="kydle4o5" targetId="kydle4nx" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="set">
+                                       <arg name="field">{$input.in_BusinessPartnerEmailAddress}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kydle4o6" targetId="kydle4nz" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="unset">
+                                       <arg name="field">{$input.in_BusinessPartnerEmailAddress}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                           </container>
+                           <link id="kydle4o3" targetId="kydle4nt" type="containerLink"/>
+                        </flow>
+                        <flow id="kydle4o0">
+                           <link id="kydle4o9" targetId="kydle4nt" type="containerLink"/>
+                        </flow>
+                        <link id="kydle4o1" targetId="kydle4nu" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.o_AddressID}</arg>
+                                 <arg name="right">{$output.o_AddressID}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kydle4o2" targetId="kydle4o0" type="containerLink"/>
+                        <link id="kydle4p5" targetId="kydle4ox"/>
+                     </container>
+                     <container id="kydle4ox" type="exclusive">
+                        <title>Bp Category</title>
+                        <flow id="kydle4oy">
+                           <eventContainer id="kydle4qo">
+                              <service id="kydle4oz">
+                                 <title>POST_A_Customer_CustomerSalesareaType</title>
+                                 <serviceName>AppSvcPatchBusinessPartnerAll:POST_A_Customer_CustomerSalesareaType</serviceName>
+                                 <serviceGUID>dJfY2uQkiewfZhBLUbhikX</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="body" source="formula">
+                                       <expression language="XQuery">$temp.tmp_BpCustomerSalesArea </expression>
+                                    </parameter>
+                                    <parameter name="CustomerPathParam" source="field" updatable="true">output.o_Customer</parameter>
+                                    <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                    <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                    <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="kydle4qq">
+                                 <link id="kydle4qr" targetId="kydle4qo" type="containerLink"/>
+                              </flow>
+                              <flow id="kydle4qt">
+                                 <container id="kydle4r7" type="exclusive">
+                                    <title>Reason</title>
+                                    <flow id="kydle4r9">
+                                       <link id="kydle4ra" targetId="kydle4r7" type="containerLink"/>
+                                    </flow>
+                                    <flow id="kydus2eo">
+                                       <link id="kydus2ep" targetId="kydle4r7" type="containerLink"/>
+                                    </flow>
+                                    <flow id="kydle4rc">
+                                       <throw id="kydle4sz">
+                                          <title>Throw 1</title>
+                                          <throwInput>
+                                             <parameter name="code" source="field" updatable="true">output.faultInfoCustomerSalesArea[1]/code</parameter>
+                                             <parameter name="detail" source="field" updatable="true">output.faultInfoCustomerSalesArea[1]/detail</parameter>
+                                             <parameter name="reason" source="field" updatable="true">output.faultInfoCustomerSalesArea[1]/reason</parameter>
+                                          </throwInput>
+                                       </throw>
+                                    </flow>
+                                    <link id="kydle4r8" targetId="kydle4r9" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$output.faultInfoCustomerSalesArea[1]/reason}</arg>
+                                             <arg name="right">are already available for the customer</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="kydus2en" targetId="kydus2eo" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$output.faultInfoCustomerSalesArea[1]/reason}</arg>
+                                             <arg name="right">TTX1 already exists</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="kydle4rb" targetId="kydle4rc" type="containerLink"/>
+                                 </container>
+                                 <link id="kydle4qu" targetId="kydle4qo" type="containerLink"/>
+                              </flow>
+                              <link id="kydle4qp" targetId="kydle4qq" type="containerLink"/>
+                              <link id="kydvr4io" targetId="kyjo51x9"/>
+                              <events>
+                                 <catch faultField="faultInfoCustomerSalesArea"
+                                        id="kydle4qn"
+                                        interrupting="true">
+                                    <link id="kydle4qs" targetId="kydle4qt" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <eventContainer id="kyjo51x9">
+                              <service id="kydvr4in">
+                                 <title>PATCH_A_Customer_CustomerCompanyType</title>
+                                 <serviceName>AppSvcPatchBusinessPartnerAll:PATCH_A_Customer_CustomerCompanyType</serviceName>
+                                 <serviceGUID>dJfY2uQkiewfZhBLUbhikX</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="body" source="formula">
+                                       <expression language="XQuery">$temp.tmp_CustomerCompany </expression>
+                                    </parameter>
+                                    <parameter name="CustomerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                                    <parameter name="CompanyCodePathParam" source="field" updatable="true">input.SalesOrganization</parameter>
+                                    <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                    <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                    <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="kyjo51xb">
+                                 <eventContainer id="kyjo523v">
+                                    <service id="kyjo522l">
+                                       <title>PATCH_A_Customer_CustomerDunningType</title>
+                                       <serviceName>AppSvcPatchBusinessPartnerAll:PATCH_A_Customer_CustomerDunningType</serviceName>
+                                       <serviceGUID>dJfY2uQkiewfZhBLUbhikX</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="body" source="formula">
+                                             <expression language="XQuery">$temp.tmp_CustomerCompanyDunning </expression>
+                                          </parameter>
+                                          <parameter name="CustomerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                                          <parameter name="CompanyCodePathParam" source="field" updatable="true">input.SalesOrganization</parameter>
+                                          <parameter name="DunningAreaPathParam" source="formula">
+                                             <expression language="XQuery">''</expression>
+                                          </parameter>
+                                          <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                          <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                          <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="kyjo523x">
+                                       <link id="kyjo523y" targetId="kyjo523v" type="containerLink"/>
+                                    </flow>
+                                    <flow id="kyjo5240">
+                                       <jumpTo id="kyjo524q">
+                                          <link id="kyjo525v" targetId="kycz3nt7"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="kyjo523w" targetId="kyjo523x" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="kyjo523o" interrupting="true">
+                                          <link id="kyjo523z" targetId="kyjo5240" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <link id="kyjo51xc" targetId="kyjo51x9" type="containerLink"/>
+                              </flow>
+                              <flow id="kyjo51xe">
+                                 <jumpTo id="kyjo51y3">
+                                    <link id="kyjo51z6" targetId="kycz3nt7"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="kyjo51xa" targetId="kyjo51xb" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="kyjo51x8" interrupting="true">
+                                    <link id="kyjo51xd" targetId="kyjo51xe" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="kydle4p3" targetId="kydle4ox" type="containerLink"/>
+                        </flow>
+                        <flow id="kydle4p0">
+                           <link id="kydle4p4" targetId="kydle4ox" type="containerLink"/>
+                        </flow>
+                        <link id="kydle4p1" targetId="kydle4oy" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.o_BusinessPartnerCategory}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kydle4p2" targetId="kydle4p0" type="containerLink"/>
+                        <link id="kydle4pr" targetId="kycz3nt7"/>
+                     </container>
+                     <link id="kxgglyuq" targetId="kxgglyul" type="containerLink"/>
+                  </flow>
+                  <flow id="kxgglyus">
+                     <service id="kxn3nzw3">
+                        <title>Create BP</title>
+                        <serviceName>AppSvcBusinessPartner-1:POST_A_BusinessPartner</serviceName>
+                        <serviceGUID>9LTgOLEQnNTkMGk8lpG5wg</serviceGUID>
+                        <serviceInput>
+                           <parameter name="body" source="formula">
+                              <expression language="XQuery">$input.in_SAP_BusinessPartner </expression>
+                           </parameter>
+                           <parameter name="in_X_CSRF_TOKEN" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                           <parameter name="in_Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                           <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                        </serviceInput>
+                        <link id="kyekf235" targetId="kyekf234"/>
+                     </service>
+                     <container id="kyekf234" type="exclusive">
+                        <title>BusinessPartnerCategory</title>
+                        <flow id="kyekf238">
+                           <assignment id="kykf5105">
+                              <title>Assignment to tmp_Account</title>
+                              <operation source="query" to="temp.tmp_Account">
+                                 <query advanceQuery="false" from="AppConnSalesForce:Account">
+                                    <where>X18_Digit_ID__c = '{$input.in_Account_Id }'</where>
+                                 </query>
+                              </operation>
+                              <link id="kykf511b" targetId="kykf511a"/>
+                           </assignment>
+                           <assignment id="kykf511a">
+                              <title>Assignment to SAP ID</title>
+                              <operation source="formula" to="temp.tmp_Account.SAP_ID__c">
+                                 <expression language="XQuery">$output.o_BusinessPartner </expression>
+                              </operation>
+                           </assignment>
+                           <link id="kyekf239" targetId="kyekf234" type="containerLink"/>
+                        </flow>
+                        <flow id="kyekf23b">
+                           <link id="kyekf23c" targetId="kyekf234" type="containerLink"/>
+                        </flow>
+                        <link id="kyekf237" targetId="kyekf238" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.o_BusinessPartnerCategory}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kyekf23a" targetId="kyekf23b" type="containerLink"/>
+                        <link id="kyekf236" targetId="kxoabone"/>
+                     </container>
+                     <assignment id="kxoabone">
+                        <title>Output BP</title>
+                        <operation source="field" to="output.out_SAP_BusinessPartnerID">output.o_BusinessPartner</operation>
+                        <link id="kydus2i0" targetId="kydus2hz"/>
+                     </assignment>
+                     <end id="kydus2hz">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kxgglyuo" targetId="kxgglyup" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with-any-of">
+                           <arg name="left">{$output.o_BusinessPartnerCategory}</arg>
+                           <arg name="right">1,2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxgglyur" targetId="kxgglyus" type="containerLink"/>
+                  <link id="kxgglyun" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>d8ac5faf-57f2-45b7-a719-e6e5731dfe66</ns1:Id>
+               <ns1:Name>BpContact</ns1:Name>
+               <ns1:CreatedBy>harshavardhan.makeneni@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-10T15:25:14Z</ns1:CreationDate>
+               <ns1:ModifiedBy>harshavardhan.makeneni@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-10T15:25:14Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	"in_SAP_BusinessPartner": {
+		"BusinessPartnerCategory": "1",
+		"BusinessPartnerGrouping": "BP02",
+		"Language": "EN",
+		"FirstName": "",
+		"LastName": "",
+		"BusinessPartnerIDByExtSystem": "0013O00000NGQOCQAO-3",
+		"to_BusinessPartnerAddress": {
+			"results": {
+				"CityName": "bejing",
+				"StreetName": "",
+				"HouseNumber": "",
+				"Country": "",
+				"PostalCode": "22321",
+				"Region": "Bejing",
+				"Language": "EN",
+				"to_EmailAddress": {
+					"results": {
+						"EmailAddress": "Brahma.reddy@vistra.com"
+					}
+				},
+				"to_FaxNumber": {
+					"results": {
+						"FaxNumber": ""
+					}
+				},
+				"to_PhoneNumber": {
+					"results": {
+						"PhoneNumber": "111111111"
+					}
+				},
+				"to_URLAddress": {
+					"results": {
+						"SearchURLAddress": "",
+						"WebsiteURL": ""
+					}
+				}
+			}
+		}
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>415f0072-f0c1-4a1d-a220-91a2db043b86</ns1:Id>
+               <ns1:Name>BpContact_Allen</ns1:Name>
+               <ns1:CreatedBy>harshavardhan.makeneni@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-10T15:25:14Z</ns1:CreationDate>
+               <ns1:ModifiedBy>harshavardhan.makeneni@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-10T15:25:14Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{"in_SAP_BusinessPartner" : ""}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>19a12fb7-fc2e-42eb-bb6c-9d7d4b907097</ns1:Id>
+               <ns1:Name>hardcode</ns1:Name>
+               <ns1:CreatedBy>harshavardhan.makeneni@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-10T15:25:14Z</ns1:CreationDate>
+               <ns1:ModifiedBy>harshavardhan.makeneni@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-10T15:25:14Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4f21651c-5567-4c30-bb74-e22a91cd13f5</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-13T22:14:01Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-13T22:14:01Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_BusinessPartnerEmailAddress": "",
+	 "in_Customer Sales Area": "",
+	 "in_Sales Area Tax": "",
+	 "in_PartnerFunction": "",
+	 "in_SAP_BusinessPartner": {
+	 	 "AcademicTitle": "",
+	 	 "AdditionalLastName": "",
+	 	 "AuthorizationGroup": "",
+	 	 "BirthDate": "",
+	 	 "BusinessPartner": "",
+	 	 "BusinessPartnerBirthDateStatus": "",
+	 	 "BusinessPartnerBirthplaceName": "",
+	 	 "BusinessPartnerCategory": "",
+	 	 "BusinessPartnerFullName": "",
+	 	 "BusinessPartnerGrouping": "",
+	 	 "BusinessPartnerIDByExtSystem": "",
+	 	 "BusinessPartnerIsBlocked": "",
+	 	 "BusinessPartnerName": "",
+	 	 "BusinessPartnerType": "",
+	 	 "BusinessPartnerUUID": "",
+	 	 "CorrespondenceLanguage": "",
+	 	 "CreatedByUser": "",
+	 	 "CreationDate": "",
+	 	 "CreationTime": "",
+	 	 "Customer": "",
+	 	 "ETag": "",
+	 	 "FirstName": "",
+	 	 "FormOfAddress": "",
+	 	 "GenderCodeName": "",
+	 	 "GroupBusinessPartnerName1": "",
+	 	 "GroupBusinessPartnerName2": "",
+	 	 "IndependentAddressID": "",
+	 	 "Industry": "",
+	 	 "InternationalLocationNumber1": "",
+	 	 "InternationalLocationNumber2": "",
+	 	 "InternationalLocationNumber3": "",
+	 	 "IsFemale": "",
+	 	 "IsMale": "",
+	 	 "IsMarkedForArchiving": "",
+	 	 "IsNaturalPerson": "",
+	 	 "IsSexUnknown": "",
+	 	 "Language": "",
+	 	 "LastChangeDate": "",
+	 	 "LastChangeTime": "",
+	 	 "LastChangedByUser": "",
+	 	 "LastName": "",
+	 	 "LegalForm": "",
+	 	 "MiddleName": "",
+	 	 "NameCountry": "",
+	 	 "NameFormat": "",
+	 	 "OrganizationBPName1": "",
+	 	 "OrganizationBPName2": "",
+	 	 "OrganizationBPName3": "",
+	 	 "OrganizationBPName4": "",
+	 	 "OrganizationFoundationDate": "",
+	 	 "OrganizationLiquidationDate": "",
+	 	 "PersonFullName": "",
+	 	 "PersonNumber": "",
+	 	 "SearchTerm1": "",
+	 	 "SearchTerm2": "",
+	 	 "Supplier": "",
+	 	 "TradingPartner": "",
+	 	 "to_BuPaIdentification": "",
+	 	 "to_BuPaIndustry": "",
+	 	 "to_BusinessPartnerAddress": {
+	 	 	 "AdditionalStreetPrefixName": "",
+	 	 	 "AdditionalStreetSuffixName": "",
+	 	 	 "AddressID": "",
+	 	 	 "AddressIDByExternalSystem": "",
+	 	 	 "AddressTimeZone": "",
+	 	 	 "AddressUUID": "",
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BusinessPartner": "",
+	 	 	 "CareOfName": "",
+	 	 	 "CityCode": "",
+	 	 	 "CityName": "",
+	 	 	 "CompanyPostalCode": "",
+	 	 	 "Country": "",
+	 	 	 "County": "",
+	 	 	 "CountyCode": "",
+	 	 	 "DeliveryServiceNumber": "",
+	 	 	 "DeliveryServiceTypeCode": "",
+	 	 	 "District": "",
+	 	 	 "FormOfAddress": "",
+	 	 	 "FullName": "",
+	 	 	 "HomeCityName": "",
+	 	 	 "HouseNumber": "",
+	 	 	 "HouseNumberSupplementText": "",
+	 	 	 "Language": "",
+	 	 	 "POBox": "",
+	 	 	 "POBoxDeviatingCityName": "",
+	 	 	 "POBoxDeviatingCountry": "",
+	 	 	 "POBoxDeviatingRegion": "",
+	 	 	 "POBoxIsWithoutNumber": "",
+	 	 	 "POBoxLobbyName": "",
+	 	 	 "POBoxPostalCode": "",
+	 	 	 "Person": "",
+	 	 	 "PostalCode": "",
+	 	 	 "PrfrdCommMediumType": "",
+	 	 	 "Region": "",
+	 	 	 "StreetName": "",
+	 	 	 "StreetPrefixName": "",
+	 	 	 "StreetSuffixName": "",
+	 	 	 "TaxJurisdiction": "",
+	 	 	 "TownshipCode": "",
+	 	 	 "TownshipName": "",
+	 	 	 "TransportZone": "",
+	 	 	 "ValidityEndDate": "",
+	 	 	 "ValidityStartDate": "",
+	 	 	 "to_AddressUsage": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "AddressUsage": "",
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "BusinessPartner": "",
+	 	 	 	 	 "StandardUsage": "",
+	 	 	 	 	 "ValidityEndDate": "",
+	 	 	 	 	 "ValidityStartDate": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_EmailAddress": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "EmailAddress": "",
+	 	 	 	 "IsDefaultEmailAddress": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "SearchEmailAddress": ""
+	 	 	 },
+	 	 	 "to_FaxNumber": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "FaxCountry": "",
+	 	 	 	 "FaxNumber": "",
+	 	 	 	 "FaxNumberExtension": "",
+	 	 	 	 "InternationalFaxNumber": "",
+	 	 	 	 "IsDefaultFaxNumber": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": ""
+	 	 	 },
+	 	 	 "to_MobilePhoneNumber": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 "Person": "",
+	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_PhoneNumber": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "PhoneNumber": "",
+	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 "PhoneNumberType": ""
+	 	 	 },
+	 	 	 "to_URLAddress": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "IsDefaultURLAddress": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "SearchURLAddress": "",
+	 	 	 	 "URLFieldLength": "",
+	 	 	 	 "ValidityStartDate": "",
+	 	 	 	 "WebsiteURL": ""
+	 	 	 }
+	 	 },
+	 	 "to_BusinessPartnerBank": "",
+	 	 "to_BusinessPartnerContact": {
+	 	 	 "BusinessPartnerCompany": "",
+	 	 	 "BusinessPartnerPerson": "",
+	 	 	 "IsStandardRelationship": "",
+	 	 	 "RelationshipCategory": "",
+	 	 	 "RelationshipNumber": "",
+	 	 	 "ValidityEndDate": "",
+	 	 	 "ValidityStartDate": "",
+	 	 	 "to_ContactAddress": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AdditionalStreetPrefixName": "",
+	 	 	 	 	 "AdditionalStreetSuffixName": "",
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "AddressNumber": "",
+	 	 	 	 	 "AddressRepresentationCode": "",
+	 	 	 	 	 "AddressTimeZone": "",
+	 	 	 	 	 "BusinessPartnerCompany": "",
+	 	 	 	 	 "BusinessPartnerPerson": "",
+	 	 	 	 	 "CareOfName": "",
+	 	 	 	 	 "CityCode": "",
+	 	 	 	 	 "CityName": "",
+	 	 	 	 	 "CompanyPostalCode": "",
+	 	 	 	 	 "ContactPersonBuilding": "",
+	 	 	 	 	 "ContactPersonPrfrdCommMedium": "",
+	 	 	 	 	 "ContactRelationshipDepartment": "",
+	 	 	 	 	 "ContactRelationshipFunction": "",
+	 	 	 	 	 "CorrespondenceShortName": "",
+	 	 	 	 	 "Country": "",
+	 	 	 	 	 "County": "",
+	 	 	 	 	 "DeliveryServiceNumber": "",
+	 	 	 	 	 "DeliveryServiceTypeCode": "",
+	 	 	 	 	 "District": "",
+	 	 	 	 	 "Floor": "",
+	 	 	 	 	 "FormOfAddress": "",
+	 	 	 	 	 "FullName": "",
+	 	 	 	 	 "HomeCityName": "",
+	 	 	 	 	 "HouseNumber": "",
+	 	 	 	 	 "HouseNumberSupplementText": "",
+	 	 	 	 	 "InhouseMail": "",
+	 	 	 	 	 "Language": "",
+	 	 	 	 	 "POBox": "",
+	 	 	 	 	 "POBoxDeviatingCityName": "",
+	 	 	 	 	 "POBoxDeviatingCountry": "",
+	 	 	 	 	 "POBoxDeviatingRegion": "",
+	 	 	 	 	 "POBoxIsWithoutNumber": "",
+	 	 	 	 	 "POBoxLobbyName": "",
+	 	 	 	 	 "POBoxPostalCode": "",
+	 	 	 	 	 "Person": "",
+	 	 	 	 	 "PostalCode": "",
+	 	 	 	 	 "PrfrdCommMediumType": "",
+	 	 	 	 	 "Region": "",
+	 	 	 	 	 "RelationshipNumber": "",
+	 	 	 	 	 "RoomNumber": "",
+	 	 	 	 	 "StreetName": "",
+	 	 	 	 	 "StreetPrefixName": "",
+	 	 	 	 	 "StreetSuffixName": "",
+	 	 	 	 	 "TaxJurisdiction": "",
+	 	 	 	 	 "TransportZone": "",
+	 	 	 	 	 "ValidityEndDate": "",
+	 	 	 	 	 "to_EmailAddress": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "EmailAddress": "",
+	 	 	 	 	 	 	 "IsDefaultEmailAddress": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "SearchEmailAddress": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_FaxNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "FaxCountry": "",
+	 	 	 	 	 	 	 "FaxNumber": "",
+	 	 	 	 	 	 	 "FaxNumberExtension": "",
+	 	 	 	 	 	 	 "InternationalFaxNumber": "",
+	 	 	 	 	 	 	 "IsDefaultFaxNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_MobilePhoneNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_PhoneNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_URLAddress": {
+	 	 	 	 	 	 "results": "\n               "
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_ContactRelationship": ""
+	 	 },
+	 	 "to_BusinessPartnerRole": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BusinessPartner": "",
+	 	 	 "BusinessPartnerRole": "",
+	 	 	 "ValidFrom": "",
+	 	 	 "ValidTo": ""
+	 	 },
+	 	 "to_BusinessPartnerTax": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BPTaxLongNumber": "",
+	 	 	 "BPTaxNumber": "",
+	 	 	 "BPTaxType": "",
+	 	 	 "BusinessPartner": ""
+	 	 },
+	 	 "to_Customer": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BillingIsBlockedForCustomer": "",
+	 	 	 "CreatedByUser": "",
+	 	 	 "CreationDate": "",
+	 	 	 "Customer": "",
+	 	 	 "CustomerAccountGroup": "",
+	 	 	 "CustomerClassification": "",
+	 	 	 "CustomerCorporateGroup": "",
+	 	 	 "CustomerFullName": "",
+	 	 	 "CustomerName": "",
+	 	 	 "DeletionIndicator": "",
+	 	 	 "DeliveryIsBlocked": "",
+	 	 	 "FiscalAddress": "",
+	 	 	 "Industry": "",
+	 	 	 "IndustryCode1": "",
+	 	 	 "IndustryCode2": "",
+	 	 	 "IndustryCode3": "",
+	 	 	 "IndustryCode4": "",
+	 	 	 "IndustryCode5": "",
+	 	 	 "InternationalLocationNumber1": "",
+	 	 	 "NFPartnerIsNaturalPerson": "",
+	 	 	 "NielsenRegion": "",
+	 	 	 "OrderIsBlockedForCustomer": "",
+	 	 	 "PostingIsBlocked": "",
+	 	 	 "ResponsibleType": "",
+	 	 	 "Supplier": "",
+	 	 	 "TaxNumber1": "",
+	 	 	 "TaxNumber2": "",
+	 	 	 "TaxNumber3": "",
+	 	 	 "TaxNumber4": "",
+	 	 	 "TaxNumber5": "",
+	 	 	 "TaxNumberType": "",
+	 	 	 "VATRegistration": "",
+	 	 	 "to_CustomerCompany": {
+	 	 	 	 "APARToleranceGroup": "",
+	 	 	 	 "AccountByCustomer": "",
+	 	 	 	 "AccountingClerk": "",
+	 	 	 	 "AccountingClerkFaxNumber": "",
+	 	 	 	 "AccountingClerkInternetAddress": "",
+	 	 	 	 "AccountingClerkPhoneNumber": "",
+	 	 	 	 "AlternativePayerAccount": "",
+	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 "CashPlanningGroup": "",
+	 	 	 	 "CollectiveInvoiceVariant": "",
+	 	 	 	 "CompanyCode": "",
+	 	 	 	 "Customer": "",
+	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 "CustomerAccountNote": "",
+	 	 	 	 "CustomerHeadOffice": "",
+	 	 	 	 "CustomerSupplierClearingIsUsed": "",
+	 	 	 	 "DeletionIndicator": "",
+	 	 	 	 "HouseBank": "",
+	 	 	 	 "InterestCalculationCode": "",
+	 	 	 	 "InterestCalculationDate": "",
+	 	 	 	 "IntrstCalcFrequencyInMonths": "",
+	 	 	 	 "IsToBeLocallyProcessed": "",
+	 	 	 	 "ItemIsToBePaidSeparately": "",
+	 	 	 	 "KnownOrNegotiatedLeave": "",
+	 	 	 	 "LayoutSortingRule": "",
+	 	 	 	 "PaymentBlockingReason": "",
+	 	 	 	 "PaymentMethodsList": "",
+	 	 	 	 "PaymentTerms": "",
+	 	 	 	 "PaytAdviceIsSentbyEDI": "",
+	 	 	 	 "PhysicalInventoryBlockInd": "",
+	 	 	 	 "ReconciliationAccount": "",
+	 	 	 	 "RecordPaymentHistoryIndicator": "",
+	 	 	 	 "UserAtCustomer": "",
+	 	 	 	 "ValueAdjustmentKey": "",
+	 	 	 	 "to_CompanyText": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "Language": "",
+	 	 	 	 	 	 "LongText": "",
+	 	 	 	 	 	 "LongTextID": ""
+	 	 	 	 	 }
+	 	 	 	 },
+	 	 	 	 "to_CustomerDunning": {
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 	 "DunningArea": "",
+	 	 	 	 	 "DunningBlock": "",
+	 	 	 	 	 "DunningClerk": "",
+	 	 	 	 	 "DunningLevel": "",
+	 	 	 	 	 "DunningProcedure": "",
+	 	 	 	 	 "DunningRecipient": "",
+	 	 	 	 	 "LastDunnedOn": "",
+	 	 	 	 	 "LegDunningProcedureOn": ""
+	 	 	 	 },
+	 	 	 	 "to_WithHoldingTax": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "ExemptionDateBegin": "",
+	 	 	 	 	 	 "ExemptionDateEnd": "",
+	 	 	 	 	 	 "ExemptionReason": "",
+	 	 	 	 	 	 "ObligationDateBegin": "",
+	 	 	 	 	 	 "ObligationDateEnd": "",
+	 	 	 	 	 	 "WithholdingTaxAgent": "",
+	 	 	 	 	 	 "WithholdingTaxCertificate": "",
+	 	 	 	 	 	 "WithholdingTaxCode": "",
+	 	 	 	 	 	 "WithholdingTaxExmptPercent": "",
+	 	 	 	 	 	 "WithholdingTaxNumber": "",
+	 	 	 	 	 	 "WithholdingTaxType": ""
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerSalesArea": {
+	 	 	 	 "AccountByCustomer": "",
+	 	 	 	 "AdditionalCustomerGroup1": "",
+	 	 	 	 "AdditionalCustomerGroup2": "",
+	 	 	 	 "AdditionalCustomerGroup3": "",
+	 	 	 	 "AdditionalCustomerGroup4": "",
+	 	 	 	 "AdditionalCustomerGroup5": "",
+	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 "BillingIsBlockedForCustomer": "",
+	 	 	 	 "CompleteDeliveryIsDefined": "",
+	 	 	 	 "Currency": "",
+	 	 	 	 "Customer": "",
+	 	 	 	 "CustomerABCClassification": "",
+	 	 	 	 "CustomerAccountAssignmentGroup": "",
+	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 "CustomerGroup": "",
+	 	 	 	 "CustomerPaymentTerms": "",
+	 	 	 	 "CustomerPriceGroup": "",
+	 	 	 	 "CustomerPricingProcedure": "",
+	 	 	 	 "DeletionIndicator": "",
+	 	 	 	 "DeliveryIsBlockedForCustomer": "",
+	 	 	 	 "DeliveryPriority": "",
+	 	 	 	 "DistributionChannel": "",
+	 	 	 	 "Division": "",
+	 	 	 	 "ExchangeRateType": "",
+	 	 	 	 "IncotermsClassification": "",
+	 	 	 	 "IncotermsLocation1": "",
+	 	 	 	 "IncotermsLocation2": "",
+	 	 	 	 "IncotermsTransferLocation": "",
+	 	 	 	 "IncotermsVersion": "",
+	 	 	 	 "InvoiceDate": "",
+	 	 	 	 "InvoiceListSchedule": "",
+	 	 	 	 "ItemOrderProbabilityInPercent": "",
+	 	 	 	 "OrderCombinationIsAllowed": "",
+	 	 	 	 "OrderIsBlockedForCustomer": "",
+	 	 	 	 "PartialDeliveryIsAllowed": "",
+	 	 	 	 "PaymentGuaranteeProcedure": "",
+	 	 	 	 "PriceListType": "",
+	 	 	 	 "SalesDistrict": "",
+	 	 	 	 "SalesGroup": "",
+	 	 	 	 "SalesOffice": "",
+	 	 	 	 "SalesOrganization": "",
+	 	 	 	 "ShippingCondition": "",
+	 	 	 	 "SupplyingPlant": "",
+	 	 	 	 "to_PartnerFunction": {
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "BPCustomerNumber": "",
+	 	 	 	 	 "ContactPerson": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerPartnerDescription": "",
+	 	 	 	 	 "DefaultPartner": "",
+	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 "Division": "",
+	 	 	 	 	 "PartnerCounter": "",
+	 	 	 	 	 "PartnerFunction": "",
+	 	 	 	 	 "PersonnelNumber": "",
+	 	 	 	 	 "SalesOrganization": "",
+	 	 	 	 	 "Supplier": ""
+	 	 	 	 },
+	 	 	 	 "to_SalesAreaTax": {
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerTaxCategory": "",
+	 	 	 	 	 "CustomerTaxClassification": "",
+	 	 	 	 	 "DepartureCountry": "",
+	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 "Division": "",
+	 	 	 	 	 "SalesOrganization": ""
+	 	 	 	 },
+	 	 	 	 "to_SalesAreaText": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 	 "Division": "",
+	 	 	 	 	 	 "Language": "",
+	 	 	 	 	 	 "LongText": "",
+	 	 	 	 	 	 "LongTextID": "",
+	 	 	 	 	 	 "SalesOrganization": ""
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerTaxGrouping": {
+	 	 	 	 "results": {
+	 	 	 	 	 "CustTaxGroupExemptionEndDate": "",
+	 	 	 	 	 "CustTaxGroupExemptionRate": "",
+	 	 	 	 	 "CustTaxGroupExemptionStartDate": "",
+	 	 	 	 	 "CustTaxGroupSubjectedEndDate": "",
+	 	 	 	 	 "CustTaxGroupSubjectedStartDate": "",
+	 	 	 	 	 "CustTaxGrpExemptionCertificate": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerTaxGroupingCode": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerText": {
+	 	 	 	 "results": {
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "Language": "",
+	 	 	 	 	 "LongText": "",
+	 	 	 	 	 "LongTextID": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerUnloadingPoint": {
+	 	 	 	 "results": {
+	 	 	 	 	 "BPGoodsReceivingHoursCode": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerFactoryCalenderCode": "",
+	 	 	 	 	 "FridayAfternoonClosingTime": "",
+	 	 	 	 	 "FridayAfternoonOpeningTime": "",
+	 	 	 	 	 "FridayMorningClosingTime": "",
+	 	 	 	 	 "FridayMorningOpeningTime": "",
+	 	 	 	 	 "IsDfltBPUnloadingPoint": "",
+	 	 	 	 	 "MondayAfternoonClosingTime": "",
+	 	 	 	 	 "MondayAfternoonOpeningTime": "",
+	 	 	 	 	 "MondayMorningClosingTime": "",
+	 	 	 	 	 "MondayMorningOpeningTime": "",
+	 	 	 	 	 "SaturdayAfternoonClosingTime": "",
+	 	 	 	 	 "SaturdayAfternoonOpeningTime": "",
+	 	 	 	 	 "SaturdayMorningClosingTime": "",
+	 	 	 	 	 "SaturdayMorningOpeningTime": "",
+	 	 	 	 	 "SundayAfternoonClosingTime": "",
+	 	 	 	 	 "SundayAfternoonOpeningTime": "",
+	 	 	 	 	 "SundayMorningClosingTime": "",
+	 	 	 	 	 "SundayMorningOpeningTime": "",
+	 	 	 	 	 "ThursdayAfternoonClosingTime": "",
+	 	 	 	 	 "ThursdayAfternoonOpeningTime": "",
+	 	 	 	 	 "ThursdayMorningClosingTime": "",
+	 	 	 	 	 "ThursdayMorningOpeningTime": "",
+	 	 	 	 	 "TuesdayAfternoonClosingTime": "",
+	 	 	 	 	 "TuesdayAfternoonOpeningTime": "",
+	 	 	 	 	 "TuesdayMorningClosingTime": "",
+	 	 	 	 	 "TuesdayMorningOpeningTime": "",
+	 	 	 	 	 "UnloadingPointName": "",
+	 	 	 	 	 "WednesdayAfternoonClosingTime": "",
+	 	 	 	 	 "WednesdayAfternoonOpeningTime": "",
+	 	 	 	 	 "WednesdayMorningClosingTime": "",
+	 	 	 	 	 "WednesdayMorningOpeningTime": ""
+	 	 	 	 }
+	 	 	 }
+	 	 },
+	 	 "to_Supplier": ""
+	 },
+	 "in_BusinessPartnerAddress": {
+	 	 "AcademicTitle": "",
+	 	 "AdditionalLastName": "",
+	 	 "AuthorizationGroup": "",
+	 	 "BirthDate": "",
+	 	 "BusinessPartner": "",
+	 	 "BusinessPartnerBirthDateStatus": "",
+	 	 "BusinessPartnerBirthplaceName": "",
+	 	 "BusinessPartnerCategory": "",
+	 	 "BusinessPartnerFullName": "",
+	 	 "BusinessPartnerGrouping": "",
+	 	 "BusinessPartnerIDByExtSystem": "",
+	 	 "BusinessPartnerIsBlocked": "",
+	 	 "BusinessPartnerName": "",
+	 	 "BusinessPartnerType": "",
+	 	 "BusinessPartnerUUID": "",
+	 	 "CorrespondenceLanguage": "",
+	 	 "CreatedByUser": "",
+	 	 "CreationDate": "",
+	 	 "CreationTime": "",
+	 	 "Customer": "",
+	 	 "ETag": "",
+	 	 "FirstName": "",
+	 	 "FormOfAddress": "",
+	 	 "GenderCodeName": "",
+	 	 "GroupBusinessPartnerName1": "",
+	 	 "GroupBusinessPartnerName2": "",
+	 	 "IndependentAddressID": "",
+	 	 "Industry": "",
+	 	 "InternationalLocationNumber1": "",
+	 	 "InternationalLocationNumber2": "",
+	 	 "InternationalLocationNumber3": "",
+	 	 "IsFemale": "",
+	 	 "IsMale": "",
+	 	 "IsMarkedForArchiving": "",
+	 	 "IsNaturalPerson": "",
+	 	 "IsSexUnknown": "",
+	 	 "Language": "",
+	 	 "LastChangeDate": "",
+	 	 "LastChangeTime": "",
+	 	 "LastChangedByUser": "",
+	 	 "LastName": "",
+	 	 "LegalForm": "",
+	 	 "MiddleName": "",
+	 	 "NameCountry": "",
+	 	 "NameFormat": "",
+	 	 "OrganizationBPName1": "",
+	 	 "OrganizationBPName2": "",
+	 	 "OrganizationBPName3": "",
+	 	 "OrganizationBPName4": "",
+	 	 "OrganizationFoundationDate": "",
+	 	 "OrganizationLiquidationDate": "",
+	 	 "PersonFullName": "",
+	 	 "PersonNumber": "",
+	 	 "SearchTerm1": "",
+	 	 "SearchTerm2": "",
+	 	 "Supplier": "",
+	 	 "TradingPartner": "",
+	 	 "to_BuPaIdentification": "",
+	 	 "to_BuPaIndustry": "",
+	 	 "to_BusinessPartnerAddress": {
+	 	 	 "AdditionalStreetPrefixName": "",
+	 	 	 "AdditionalStreetSuffixName": "",
+	 	 	 "AddressID": "",
+	 	 	 "AddressIDByExternalSystem": "",
+	 	 	 "AddressTimeZone": "",
+	 	 	 "AddressUUID": "",
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BusinessPartner": "",
+	 	 	 "CareOfName": "",
+	 	 	 "CityCode": "",
+	 	 	 "CityName": "",
+	 	 	 "CompanyPostalCode": "",
+	 	 	 "Country": "",
+	 	 	 "County": "",
+	 	 	 "CountyCode": "",
+	 	 	 "DeliveryServiceNumber": "",
+	 	 	 "DeliveryServiceTypeCode": "",
+	 	 	 "District": "",
+	 	 	 "FormOfAddress": "",
+	 	 	 "FullName": "",
+	 	 	 "HomeCityName": "",
+	 	 	 "HouseNumber": "",
+	 	 	 "HouseNumberSupplementText": "",
+	 	 	 "Language": "",
+	 	 	 "POBox": "",
+	 	 	 "POBoxDeviatingCityName": "",
+	 	 	 "POBoxDeviatingCountry": "",
+	 	 	 "POBoxDeviatingRegion": "",
+	 	 	 "POBoxIsWithoutNumber": "",
+	 	 	 "POBoxLobbyName": "",
+	 	 	 "POBoxPostalCode": "",
+	 	 	 "Person": "",
+	 	 	 "PostalCode": "",
+	 	 	 "PrfrdCommMediumType": "",
+	 	 	 "Region": "",
+	 	 	 "StreetName": "",
+	 	 	 "StreetPrefixName": "",
+	 	 	 "StreetSuffixName": "",
+	 	 	 "TaxJurisdiction": "",
+	 	 	 "TownshipCode": "",
+	 	 	 "TownshipName": "",
+	 	 	 "TransportZone": "",
+	 	 	 "ValidityEndDate": "",
+	 	 	 "ValidityStartDate": "",
+	 	 	 "to_AddressUsage": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "AddressUsage": "",
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "BusinessPartner": "",
+	 	 	 	 	 "StandardUsage": "",
+	 	 	 	 	 "ValidityEndDate": "",
+	 	 	 	 	 "ValidityStartDate": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_EmailAddress": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "EmailAddress": "",
+	 	 	 	 "IsDefaultEmailAddress": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "SearchEmailAddress": ""
+	 	 	 },
+	 	 	 "to_FaxNumber": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "FaxCountry": "",
+	 	 	 	 "FaxNumber": "",
+	 	 	 	 "FaxNumberExtension": "",
+	 	 	 	 "InternationalFaxNumber": "",
+	 	 	 	 "IsDefaultFaxNumber": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": ""
+	 	 	 },
+	 	 	 "to_MobilePhoneNumber": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 "Person": "",
+	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_PhoneNumber": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "PhoneNumber": "",
+	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 "PhoneNumberType": ""
+	 	 	 },
+	 	 	 "to_URLAddress": {
+	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 "AddressID": "",
+	 	 	 	 "IsDefaultURLAddress": "",
+	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 "Person": "",
+	 	 	 	 "SearchURLAddress": "",
+	 	 	 	 "URLFieldLength": "",
+	 	 	 	 "ValidityStartDate": "",
+	 	 	 	 "WebsiteURL": ""
+	 	 	 }
+	 	 },
+	 	 "to_BusinessPartnerBank": "",
+	 	 "to_BusinessPartnerContact": {
+	 	 	 "BusinessPartnerCompany": "",
+	 	 	 "BusinessPartnerPerson": "",
+	 	 	 "IsStandardRelationship": "",
+	 	 	 "RelationshipCategory": "",
+	 	 	 "RelationshipNumber": "",
+	 	 	 "ValidityEndDate": "",
+	 	 	 "ValidityStartDate": "",
+	 	 	 "to_ContactAddress": {
+	 	 	 	 "results": {
+	 	 	 	 	 "AdditionalStreetPrefixName": "",
+	 	 	 	 	 "AdditionalStreetSuffixName": "",
+	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 "AddressNumber": "",
+	 	 	 	 	 "AddressRepresentationCode": "",
+	 	 	 	 	 "AddressTimeZone": "",
+	 	 	 	 	 "BusinessPartnerCompany": "",
+	 	 	 	 	 "BusinessPartnerPerson": "",
+	 	 	 	 	 "CareOfName": "",
+	 	 	 	 	 "CityCode": "",
+	 	 	 	 	 "CityName": "",
+	 	 	 	 	 "CompanyPostalCode": "",
+	 	 	 	 	 "ContactPersonBuilding": "",
+	 	 	 	 	 "ContactPersonPrfrdCommMedium": "",
+	 	 	 	 	 "ContactRelationshipDepartment": "",
+	 	 	 	 	 "ContactRelationshipFunction": "",
+	 	 	 	 	 "CorrespondenceShortName": "",
+	 	 	 	 	 "Country": "",
+	 	 	 	 	 "County": "",
+	 	 	 	 	 "DeliveryServiceNumber": "",
+	 	 	 	 	 "DeliveryServiceTypeCode": "",
+	 	 	 	 	 "District": "",
+	 	 	 	 	 "Floor": "",
+	 	 	 	 	 "FormOfAddress": "",
+	 	 	 	 	 "FullName": "",
+	 	 	 	 	 "HomeCityName": "",
+	 	 	 	 	 "HouseNumber": "",
+	 	 	 	 	 "HouseNumberSupplementText": "",
+	 	 	 	 	 "InhouseMail": "",
+	 	 	 	 	 "Language": "",
+	 	 	 	 	 "POBox": "",
+	 	 	 	 	 "POBoxDeviatingCityName": "",
+	 	 	 	 	 "POBoxDeviatingCountry": "",
+	 	 	 	 	 "POBoxDeviatingRegion": "",
+	 	 	 	 	 "POBoxIsWithoutNumber": "",
+	 	 	 	 	 "POBoxLobbyName": "",
+	 	 	 	 	 "POBoxPostalCode": "",
+	 	 	 	 	 "Person": "",
+	 	 	 	 	 "PostalCode": "",
+	 	 	 	 	 "PrfrdCommMediumType": "",
+	 	 	 	 	 "Region": "",
+	 	 	 	 	 "RelationshipNumber": "",
+	 	 	 	 	 "RoomNumber": "",
+	 	 	 	 	 "StreetName": "",
+	 	 	 	 	 "StreetPrefixName": "",
+	 	 	 	 	 "StreetSuffixName": "",
+	 	 	 	 	 "TaxJurisdiction": "",
+	 	 	 	 	 "TransportZone": "",
+	 	 	 	 	 "ValidityEndDate": "",
+	 	 	 	 	 "to_EmailAddress": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "EmailAddress": "",
+	 	 	 	 	 	 	 "IsDefaultEmailAddress": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "SearchEmailAddress": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_FaxNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "FaxCountry": "",
+	 	 	 	 	 	 	 "FaxNumber": "",
+	 	 	 	 	 	 	 "FaxNumberExtension": "",
+	 	 	 	 	 	 	 "InternationalFaxNumber": "",
+	 	 	 	 	 	 	 "IsDefaultFaxNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_MobilePhoneNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_PhoneNumber": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "DestinationLocationCountry": "",
+	 	 	 	 	 	 	 "InternationalPhoneNumber": "",
+	 	 	 	 	 	 	 "IsDefaultPhoneNumber": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "PhoneNumber": "",
+	 	 	 	 	 	 	 "PhoneNumberExtension": "",
+	 	 	 	 	 	 	 "PhoneNumberType": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 },
+	 	 	 	 	 "to_URLAddress": {
+	 	 	 	 	 	 "results": {
+	 	 	 	 	 	 	 "AddressCommunicationRemarkText": "",
+	 	 	 	 	 	 	 "AddressID": "",
+	 	 	 	 	 	 	 "IsDefaultURLAddress": "",
+	 	 	 	 	 	 	 "OrdinalNumber": "",
+	 	 	 	 	 	 	 "Person": "",
+	 	 	 	 	 	 	 "SearchURLAddress": "",
+	 	 	 	 	 	 	 "URLFieldLength": "",
+	 	 	 	 	 	 	 "ValidityStartDate": "",
+	 	 	 	 	 	 	 "WebsiteURL": ""
+	 	 	 	 	 	 }
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_ContactRelationship": ""
+	 	 },
+	 	 "to_BusinessPartnerRole": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BusinessPartner": "",
+	 	 	 "BusinessPartnerRole": "",
+	 	 	 "ValidFrom": "",
+	 	 	 "ValidTo": ""
+	 	 },
+	 	 "to_BusinessPartnerTax": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BPTaxLongNumber": "",
+	 	 	 "BPTaxNumber": "",
+	 	 	 "BPTaxType": "",
+	 	 	 "BusinessPartner": ""
+	 	 },
+	 	 "to_Customer": {
+	 	 	 "AuthorizationGroup": "",
+	 	 	 "BillingIsBlockedForCustomer": "",
+	 	 	 "CreatedByUser": "",
+	 	 	 "CreationDate": "",
+	 	 	 "Customer": "",
+	 	 	 "CustomerAccountGroup": "",
+	 	 	 "CustomerClassification": "",
+	 	 	 "CustomerCorporateGroup": "",
+	 	 	 "CustomerFullName": "",
+	 	 	 "CustomerName": "",
+	 	 	 "DeletionIndicator": "",
+	 	 	 "DeliveryIsBlocked": "",
+	 	 	 "FiscalAddress": "",
+	 	 	 "Industry": "",
+	 	 	 "IndustryCode1": "",
+	 	 	 "IndustryCode2": "",
+	 	 	 "IndustryCode3": "",
+	 	 	 "IndustryCode4": "",
+	 	 	 "IndustryCode5": "",
+	 	 	 "InternationalLocationNumber1": "",
+	 	 	 "NFPartnerIsNaturalPerson": "",
+	 	 	 "NielsenRegion": "",
+	 	 	 "OrderIsBlockedForCustomer": "",
+	 	 	 "PostingIsBlocked": "",
+	 	 	 "ResponsibleType": "",
+	 	 	 "Supplier": "",
+	 	 	 "TaxNumber1": "",
+	 	 	 "TaxNumber2": "",
+	 	 	 "TaxNumber3": "",
+	 	 	 "TaxNumber4": "",
+	 	 	 "TaxNumber5": "",
+	 	 	 "TaxNumberType": "",
+	 	 	 "VATRegistration": "",
+	 	 	 "to_CustomerCompany": {
+	 	 	 	 "APARToleranceGroup": "",
+	 	 	 	 "AccountByCustomer": "",
+	 	 	 	 "AccountingClerk": "",
+	 	 	 	 "AccountingClerkFaxNumber": "",
+	 	 	 	 "AccountingClerkInternetAddress": "",
+	 	 	 	 "AccountingClerkPhoneNumber": "",
+	 	 	 	 "AlternativePayerAccount": "",
+	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 "CashPlanningGroup": "",
+	 	 	 	 "CollectiveInvoiceVariant": "",
+	 	 	 	 "CompanyCode": "",
+	 	 	 	 "Customer": "",
+	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 "CustomerAccountNote": "",
+	 	 	 	 "CustomerHeadOffice": "",
+	 	 	 	 "CustomerSupplierClearingIsUsed": "",
+	 	 	 	 "DeletionIndicator": "",
+	 	 	 	 "HouseBank": "",
+	 	 	 	 "InterestCalculationCode": "",
+	 	 	 	 "InterestCalculationDate": "",
+	 	 	 	 "IntrstCalcFrequencyInMonths": "",
+	 	 	 	 "IsToBeLocallyProcessed": "",
+	 	 	 	 "ItemIsToBePaidSeparately": "",
+	 	 	 	 "KnownOrNegotiatedLeave": "",
+	 	 	 	 "LayoutSortingRule": "",
+	 	 	 	 "PaymentBlockingReason": "",
+	 	 	 	 "PaymentMethodsList": "",
+	 	 	 	 "PaymentTerms": "",
+	 	 	 	 "PaytAdviceIsSentbyEDI": "",
+	 	 	 	 "PhysicalInventoryBlockInd": "",
+	 	 	 	 "ReconciliationAccount": "",
+	 	 	 	 "RecordPaymentHistoryIndicator": "",
+	 	 	 	 "UserAtCustomer": "",
+	 	 	 	 "ValueAdjustmentKey": "",
+	 	 	 	 "to_CompanyText": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "Language": "",
+	 	 	 	 	 	 "LongText": "",
+	 	 	 	 	 	 "LongTextID": ""
+	 	 	 	 	 }
+	 	 	 	 },
+	 	 	 	 "to_CustomerDunning": {
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 	 "DunningArea": "",
+	 	 	 	 	 "DunningBlock": "",
+	 	 	 	 	 "DunningClerk": "",
+	 	 	 	 	 "DunningLevel": "",
+	 	 	 	 	 "DunningProcedure": "",
+	 	 	 	 	 "DunningRecipient": "",
+	 	 	 	 	 "LastDunnedOn": "",
+	 	 	 	 	 "LegDunningProcedureOn": ""
+	 	 	 	 },
+	 	 	 	 "to_WithHoldingTax": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 	 "CompanyCode": "",
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "ExemptionDateBegin": "",
+	 	 	 	 	 	 "ExemptionDateEnd": "",
+	 	 	 	 	 	 "ExemptionReason": "",
+	 	 	 	 	 	 "ObligationDateBegin": "",
+	 	 	 	 	 	 "ObligationDateEnd": "",
+	 	 	 	 	 	 "WithholdingTaxAgent": "",
+	 	 	 	 	 	 "WithholdingTaxCertificate": "",
+	 	 	 	 	 	 "WithholdingTaxCode": "",
+	 	 	 	 	 	 "WithholdingTaxExmptPercent": "",
+	 	 	 	 	 	 "WithholdingTaxNumber": "",
+	 	 	 	 	 	 "WithholdingTaxType": ""
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerSalesArea": {
+	 	 	 	 "AccountByCustomer": "",
+	 	 	 	 "AdditionalCustomerGroup1": "",
+	 	 	 	 "AdditionalCustomerGroup2": "",
+	 	 	 	 "AdditionalCustomerGroup3": "",
+	 	 	 	 "AdditionalCustomerGroup4": "",
+	 	 	 	 "AdditionalCustomerGroup5": "",
+	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 "BillingIsBlockedForCustomer": "",
+	 	 	 	 "CompleteDeliveryIsDefined": "",
+	 	 	 	 "Currency": "",
+	 	 	 	 "Customer": "",
+	 	 	 	 "CustomerABCClassification": "",
+	 	 	 	 "CustomerAccountAssignmentGroup": "",
+	 	 	 	 "CustomerAccountGroup": "",
+	 	 	 	 "CustomerGroup": "",
+	 	 	 	 "CustomerPaymentTerms": "",
+	 	 	 	 "CustomerPriceGroup": "",
+	 	 	 	 "CustomerPricingProcedure": "",
+	 	 	 	 "DeletionIndicator": "",
+	 	 	 	 "DeliveryIsBlockedForCustomer": "",
+	 	 	 	 "DeliveryPriority": "",
+	 	 	 	 "DistributionChannel": "",
+	 	 	 	 "Division": "",
+	 	 	 	 "ExchangeRateType": "",
+	 	 	 	 "IncotermsClassification": "",
+	 	 	 	 "IncotermsLocation1": "",
+	 	 	 	 "IncotermsLocation2": "",
+	 	 	 	 "IncotermsTransferLocation": "",
+	 	 	 	 "IncotermsVersion": "",
+	 	 	 	 "InvoiceDate": "",
+	 	 	 	 "InvoiceListSchedule": "",
+	 	 	 	 "ItemOrderProbabilityInPercent": "",
+	 	 	 	 "OrderCombinationIsAllowed": "",
+	 	 	 	 "OrderIsBlockedForCustomer": "",
+	 	 	 	 "PartialDeliveryIsAllowed": "",
+	 	 	 	 "PaymentGuaranteeProcedure": "",
+	 	 	 	 "PriceListType": "",
+	 	 	 	 "SalesDistrict": "",
+	 	 	 	 "SalesGroup": "",
+	 	 	 	 "SalesOffice": "",
+	 	 	 	 "SalesOrganization": "",
+	 	 	 	 "ShippingCondition": "",
+	 	 	 	 "SupplyingPlant": "",
+	 	 	 	 "to_PartnerFunction": {
+	 	 	 	 	 "AuthorizationGroup": "",
+	 	 	 	 	 "BPCustomerNumber": "",
+	 	 	 	 	 "ContactPerson": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerPartnerDescription": "",
+	 	 	 	 	 "DefaultPartner": "",
+	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 "Division": "",
+	 	 	 	 	 "PartnerCounter": "",
+	 	 	 	 	 "PartnerFunction": "",
+	 	 	 	 	 "PersonnelNumber": "",
+	 	 	 	 	 "SalesOrganization": "",
+	 	 	 	 	 "Supplier": ""
+	 	 	 	 },
+	 	 	 	 "to_SalesAreaTax": {
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerTaxCategory": "",
+	 	 	 	 	 "CustomerTaxClassification": "",
+	 	 	 	 	 "DepartureCountry": "",
+	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 "Division": "",
+	 	 	 	 	 "SalesOrganization": ""
+	 	 	 	 },
+	 	 	 	 "to_SalesAreaText": {
+	 	 	 	 	 "results": {
+	 	 	 	 	 	 "Customer": "",
+	 	 	 	 	 	 "DistributionChannel": "",
+	 	 	 	 	 	 "Division": "",
+	 	 	 	 	 	 "Language": "",
+	 	 	 	 	 	 "LongText": "",
+	 	 	 	 	 	 "LongTextID": "",
+	 	 	 	 	 	 "SalesOrganization": ""
+	 	 	 	 	 }
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerTaxGrouping": {
+	 	 	 	 "results": {
+	 	 	 	 	 "CustTaxGroupExemptionEndDate": "",
+	 	 	 	 	 "CustTaxGroupExemptionRate": "",
+	 	 	 	 	 "CustTaxGroupExemptionStartDate": "",
+	 	 	 	 	 "CustTaxGroupSubjectedEndDate": "",
+	 	 	 	 	 "CustTaxGroupSubjectedStartDate": "",
+	 	 	 	 	 "CustTaxGrpExemptionCertificate": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerTaxGroupingCode": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerText": {
+	 	 	 	 "results": {
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "Language": "",
+	 	 	 	 	 "LongText": "",
+	 	 	 	 	 "LongTextID": ""
+	 	 	 	 }
+	 	 	 },
+	 	 	 "to_CustomerUnloadingPoint": {
+	 	 	 	 "results": {
+	 	 	 	 	 "BPGoodsReceivingHoursCode": "",
+	 	 	 	 	 "Customer": "",
+	 	 	 	 	 "CustomerFactoryCalenderCode": "",
+	 	 	 	 	 "FridayAfternoonClosingTime": "",
+	 	 	 	 	 "FridayAfternoonOpeningTime": "",
+	 	 	 	 	 "FridayMorningClosingTime": "",
+	 	 	 	 	 "FridayMorningOpeningTime": "",
+	 	 	 	 	 "IsDfltBPUnloadingPoint": "",
+	 	 	 	 	 "MondayAfternoonClosingTime": "",
+	 	 	 	 	 "MondayAfternoonOpeningTime": "",
+	 	 	 	 	 "MondayMorningClosingTime": "",
+	 	 	 	 	 "MondayMorningOpeningTime": "",
+	 	 	 	 	 "SaturdayAfternoonClosingTime": "",
+	 	 	 	 	 "SaturdayAfternoonOpeningTime": "",
+	 	 	 	 	 "SaturdayMorningClosingTime": "",
+	 	 	 	 	 "SaturdayMorningOpeningTime": "",
+	 	 	 	 	 "SundayAfternoonClosingTime": "",
+	 	 	 	 	 "SundayAfternoonOpeningTime": "",
+	 	 	 	 	 "SundayMorningClosingTime": "",
+	 	 	 	 	 "SundayMorningOpeningTime": "",
+	 	 	 	 	 "ThursdayAfternoonClosingTime": "",
+	 	 	 	 	 "ThursdayAfternoonOpeningTime": "",
+	 	 	 	 	 "ThursdayMorningClosingTime": "",
+	 	 	 	 	 "ThursdayMorningOpeningTime": "",
+	 	 	 	 	 "TuesdayAfternoonClosingTime": "",
+	 	 	 	 	 "TuesdayAfternoonOpeningTime": "",
+	 	 	 	 	 "TuesdayMorningClosingTime": "",
+	 	 	 	 	 "TuesdayMorningOpeningTime": "",
+	 	 	 	 	 "UnloadingPointName": "",
+	 	 	 	 	 "WednesdayAfternoonClosingTime": "",
+	 	 	 	 	 "WednesdayAfternoonOpeningTime": "",
+	 	 	 	 	 "WednesdayMorningClosingTime": "",
+	 	 	 	 	 "WednesdayMorningOpeningTime": ""
+	 	 	 	 }
+	 	 	 }
+	 	 },
+	 	 "to_Supplier": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0Tjhd41zMluiy9V2bXhdCp</types1:GUID>
+      <types1:DisplayName>process_SAP_BpCreateOrUpdate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:15:03.735Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

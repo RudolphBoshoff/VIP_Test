@@ -1,0 +1,464 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>y9RuuB3uopz4KhP-gt-7541940-2021-12-27T06:08:53.996Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_Persons</types1:Name>
+      <types1:ParentFlowIds>68YybdsMkdypKwK-gt-21504828-2022-01-14T13:17:27.92Z::pd.xml,8cmbeMVX3cjk91p-gt-19663189-2022-01-12T09:49:49.959Z::pd.xml,CY4vSyIRJi4tciS-gt-9105276-2021-12-29T08:24:24.56Z::pd.xml,E1ZT1cnFKi9zhFt-gt-20619352-2022-01-13T12:44:49.488Z::pd.xml,fZ3r0x7bcoq3xgj-gt-24057176-2022-01-18T07:18:09.1Z::pd.xml,jz8Uuopz4KhPVEQ-gt-3061025-2021-12-23T07:36:40.155Z::pd.xml,Kx6I1dq2ME9paab-gt-12327086-2022-01-10T10:41:27.586Z::pd.xml,tRBjISUXL86zqzm-gt-9851013-2021-12-30T09:54:05.311Z::pd.xml,uBs5Uz3gnKLLsci-gt-13015389-2022-01-11T07:14:01.323Z::pd.xml,v58pIO3M4WwOC2X-gt-23210386-2022-01-17T13:52:01.234Z::pd.xml,XqfOZ3NjDg8SOlA-gt-18060052-2022-01-10T15:48:57.795Z::pd.xml,XxWCQaaaaaa-gt-12465677-2022-01-03T05:41:36.802Z::pd.xml,YabdvhxiQLnzYLn-gt-21136564-2022-01-13T20:59:20.812Z::pd.xml,yVgglxbdypKwKBq-gt-21549527-2022-01-14T14:11:45.397Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Intermediary step to orchestrate the different types of contacts to be created: Billing Contact, Primary Contact and others. The process returns a distinct list of SAP Business Partner IDs</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2021-12-27T06:08:54Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-01-18T05:38:25Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-18T13:51:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_Persons/process_SAP_Persons.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_Persons"
+                  name="process_SAP_Persons"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Intermediary step to orchestrate the different types of contacts to be created: Billing Contact, Primary Contact and others. The process returns a distinct list of SAP Business Partner IDs</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_OtherContactPersons_array"
+                          type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_BillingContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_PrimaryContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_main_process_id"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="BillingContactEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="PrimaryContactEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_SAP_BpId_BillingContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0T8vkya0ggrbCV2N19gGa2</option>
+                  </options>
+               </field>
+               <field description="" name="out_SAP_BpId_PrimaryContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0T8vkya0ggrbCV2N19gGa2</option>
+                  </options>
+               </field>
+               <field description="" name="out_SAP_BpId_OtherContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0T8vkya0ggrbCV2N19gGa2</option>
+                  </options>
+               </field>
+               <field description="" name="out_SAP_BpID_array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0T8vkya0ggrbCV2N19gGa2</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_OtherContactPerson" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_OtherContactPerson_array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxob546g" targetId="kxoq9h7a"/>
+               </start>
+               <eventContainer id="kxoq9h7a">
+                  <subflow id="kxo9wwpy">
+                     <title>Create Billing Contact</title>
+                     <subflowGUID>0Tjhd41zMluiy9V2bXhdCp</subflowGUID>
+                     <subflowPath>process_SAP_BpCreateOrUpdate</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_SAP_BusinessPartner" source="field" updatable="true">input.in_BillingContact</parameter>
+                        <parameter name="in_BusinessPartnerEmailAddress"
+                                   source="field"
+                                   updatable="true">input.BillingContactEmail</parameter>
+                        <parameter name="in_Main_Transaction_ID" source="field" updatable="true">input.in_main_process_id</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_SAP_BusinessPartnerID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="kxoq9h7c">
+                     <link id="kxoq9h7d" targetId="kxoq9h7a" type="containerLink"/>
+                  </flow>
+                  <flow id="kxoq9h7f">
+                     <subflow id="kxoq9h8v">
+                        <title>Error Log</title>
+                        <subflowGUID>9mlrXLLOFIXkt9y0guBbmJ</subflowGUID>
+                        <subflowPath>process_US_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_TransactionID" source="formula" updatable="true">
+                              <expression language="XQuery">'process_SAP_Persons\process_SAP_BpCreateOrUpdate(Billing Contact)'</expression>
+                           </parameter>
+                           <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoContactBilling[1]/code</parameter>
+                           <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoContactBilling[1]/detail</parameter>
+                           <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoContactBilling[1]/reason</parameter>
+                           <parameter name="in_Full_Payload" source="field" updatable="true">input.in_BillingContact</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="kxoq9hbq" targetId="kxoq9hbp"/>
+                     </subflow>
+                     <end id="kxoq9hbp">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="kxoq9h7b" targetId="kxoq9h7c" type="containerLink"/>
+                  <link id="kxob549s" targetId="kxoaweop"/>
+                  <events>
+                     <catch faultField="faultInfoContactBilling"
+                            id="kxoq9h73"
+                            interrupting="true">
+                        <link id="kxoq9h7e" targetId="kxoq9h7f" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="kxoe2602">
+                  <subflow id="kxob546i">
+                     <title>Create Primary Contact</title>
+                     <subflowGUID>0Tjhd41zMluiy9V2bXhdCp</subflowGUID>
+                     <subflowPath>process_SAP_BpCreateOrUpdate</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_SAP_BusinessPartner" source="field" updatable="true">input.in_PrimaryContact</parameter>
+                        <parameter name="in_BusinessPartnerEmailAddress"
+                                   source="field"
+                                   updatable="true">input.PrimaryContactEmail</parameter>
+                        <parameter name="in_Main_Transaction_ID" source="field" updatable="true">input.in_main_process_id</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_SAP_BusinessPartnerID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="kxoe2604">
+                     <link id="kxoe2605" targetId="kxoe2602" type="containerLink"/>
+                  </flow>
+                  <flow id="kxoe2607">
+                     <subflow id="kxoe260t">
+                        <title>Error Log</title>
+                        <subflowGUID>9mlrXLLOFIXkt9y0guBbmJ</subflowGUID>
+                        <subflowPath>process_US_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_TransactionID" source="formula" updatable="true">
+                              <expression language="XQuery">'process_SAP_Persons\process_SAP_BpCreateOrUpdate(Primary Contact)'</expression>
+                           </parameter>
+                           <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoContactPrimary[1]/code</parameter>
+                           <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoContactPrimary[1]/detail</parameter>
+                           <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoContactPrimary[1]/reason</parameter>
+                           <parameter name="in_Full_Payload" source="field" updatable="true">input.in_PrimaryContact</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="kxoe263w" targetId="kxoe263v"/>
+                     </subflow>
+                     <assignment id="kxoe263v">
+                        <title>Primary Contact = Billing Contact</title>
+                        <operation source="formula" to="output.out_SAP_BpId_PrimaryContact">
+                           <expression language="XQuery">&lt;PoSapBpId&gt;
+   &lt;BusinessPartnerCategory&gt;Person&lt;/BusinessPartnerCategory&gt;
+   &lt;BpType&gt;PrimaryContact&lt;/BpType&gt;
+   &lt;BusinessPartner&gt;{$output.out_SAP_BpId_BillingContact[1]/BusinessPartner}&lt;/BusinessPartner&gt;
+&lt;/PoSapBpId&gt;
+</expression>
+                        </operation>
+                        <link id="kxoe263x" targetId="kxoe261u"/>
+                     </assignment>
+                     <jumpTo id="kxoe261u">
+                        <link id="kxoe261v" targetId="kxob54jx"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="kxoe2603" targetId="kxoe2604" type="containerLink"/>
+                  <link id="kxoe263q" targetId="kxob547z"/>
+                  <events>
+                     <catch faultField="faultInfoContactPrimary"
+                            id="kxoe25zv"
+                            interrupting="true">
+                        <link id="kxoe2606" targetId="kxoe2607" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <assignment id="kxoaweop">
+                  <title>Billing Contact SAP ID</title>
+                  <operation source="formula" to="output.out_SAP_BpId_BillingContact">
+                     <expression language="XQuery">&lt;PoSapBpId&gt;
+   &lt;BusinessPartnerCategory&gt;Person&lt;/BusinessPartnerCategory&gt;
+   &lt;BpType&gt;BillingContact&lt;/BpType&gt;
+   &lt;BusinessPartner&gt;{$output.out_SAP_BusinessPartnerID}&lt;/BusinessPartner&gt;
+&lt;/PoSapBpId&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_SAP_BpID_array">
+                     <expression language="XQuery">list:append($output.out_SAP_BpID_array , $output.out_SAP_BpId_BillingContact )</expression>
+                  </operation>
+                  <link id="kxob546j" targetId="kxoe2602"/>
+               </assignment>
+               <assignment id="kxob547z">
+                  <title>Primary Contact SAP ID</title>
+                  <operation source="formula" to="output.out_SAP_BpId_PrimaryContact">
+                     <expression language="XQuery">&lt;PoSapBpId&gt;
+   &lt;BusinessPartnerCategory&gt;Person&lt;/BusinessPartnerCategory&gt;
+   &lt;BpType&gt;PrimaryContact&lt;/BpType&gt;
+   &lt;BusinessPartner&gt;{$output.out_SAP_BusinessPartnerID}&lt;/BusinessPartner&gt;
+&lt;/PoSapBpId&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_SAP_BpID_array">
+                     <expression language="XQuery">list:append($output.out_SAP_BpID_array , $output.out_SAP_BpId_PrimaryContact )</expression>
+                  </operation>
+                  <link id="kxob54jy" targetId="kxob54jx"/>
+               </assignment>
+               <assignment id="kxob54jx">
+                  <title>Initiate Array</title>
+                  <operation source="field" to="temp.tmp_OtherContactPerson_array">input.in_OtherContactPersons_array</operation>
+                  <link id="kxob54jz" targetId="kxob54b0"/>
+               </assignment>
+               <container id="kxob54b0" type="exclusive">
+                  <title>Other Contacts</title>
+                  <flow id="kxob54b4">
+                     <assignment id="kxob54c0">
+                        <title>Head Array</title>
+                        <operation source="formula" to="temp.tmp_OtherContactPerson">
+                           <expression language="XQuery">list:head($temp.tmp_OtherContactPerson_array)</expression>
+                        </operation>
+                        <link id="kxoq9hwx" targetId="kxoq9hww"/>
+                     </assignment>
+                     <assignment id="kxob54fd">
+                        <title>Tail Array</title>
+                        <operation source="formula" to="temp.tmp_OtherContactPerson_array">
+                           <expression language="XQuery">list:tail($temp.tmp_OtherContactPerson_array)</expression>
+                        </operation>
+                     </assignment>
+                     <container id="kxoq9hww" type="exclusive">
+                        <title>VForce ID</title>
+                        <flow id="kxoq9hx0">
+                           <link id="kxoq9hx1" targetId="kxoq9hww" type="containerLink"/>
+                        </flow>
+                        <flow id="kxoq9hx3">
+                           <link id="kxoq9hx4" targetId="kxoq9hww" type="containerLink"/>
+                        </flow>
+                        <flow id="kxoq9i46">
+                           <eventContainer id="kxoq9i54">
+                              <subflow id="kxoq9i59">
+                                 <title>Create Other Contact</title>
+                                 <subflowGUID>0Tjhd41zMluiy9V2bXhdCp</subflowGUID>
+                                 <subflowPath>process_SAP_BpCreateOrUpdate</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_SAP_BusinessPartner" source="field" updatable="true">temp.tmp_OtherContactPerson</parameter>
+                                    <parameter name="in_BusinessPartnerEmailAddress"
+                                               source="field"
+                                               updatable="true">temp.tmp_OtherContactPerson[1]/to_BusinessPartnerAddress[1]/to_EmailAddress</parameter>
+                                    <parameter name="in_Main_Transaction_ID" source="field" updatable="true">input.in_main_process_id</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_SAP_BusinessPartnerID" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="kxoq9i55">
+                                 <assignment id="kxoq9i56">
+                                    <title>Other Contact SAP ID</title>
+                                    <operation source="formula" to="output.out_SAP_BpId_OtherContact">
+                                       <expression language="XQuery">if(not(util:isNull($output.out_SAP_BusinessPartnerID))) then (
+&lt;PoSapBpId&gt;
+   &lt;BusinessPartnerCategory&gt;Person&lt;/BusinessPartnerCategory&gt;
+   &lt;BpType&gt;OtherContact&lt;/BpType&gt;
+   &lt;BusinessPartner&gt;{$output.out_SAP_BusinessPartnerID}&lt;/BusinessPartner&gt;   
+&lt;/PoSapBpId&gt;
+) else()</expression>
+                                    </operation>
+                                    <operation source="formula" to="output.out_SAP_BpID_array">
+                                       <expression language="XQuery">list:append($output.out_SAP_BpID_array , $output.out_SAP_BpId_OtherContact )</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="kxoq9i5c" targetId="kxoq9i54" type="containerLink"/>
+                              </flow>
+                              <flow id="kxoq9i57">
+                                 <subflow id="kxoq9i58">
+                                    <title>Error Log</title>
+                                    <subflowGUID>9mlrXLLOFIXkt9y0guBbmJ</subflowGUID>
+                                    <subflowPath>process_US_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_TransactionID" source="formula" updatable="true">
+                                          <expression language="XQuery">'process_SAP_Persons\process_SAP_BpCreateOrUpdate(Other Contact)'</expression>
+                                       </parameter>
+                                       <parameter name="in_IICS_RunID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="in_ErrorCode" source="field" updatable="true">output.faultInfoContactOther[1]/code</parameter>
+                                       <parameter name="in_ErrorDetail" source="field" updatable="true">output.faultInfoContactOther[1]/detail</parameter>
+                                       <parameter name="in_ErrorReason" source="field" updatable="true">output.faultInfoContactOther[1]/reason</parameter>
+                                       <parameter name="in_Full_Payload" source="field" updatable="true">temp.tmp_OtherContactPerson</parameter>
+                                    </input>
+                                    <outputDef/>
+                                 </subflow>
+                                 <link id="kxoq9i5d" targetId="kxoq9i54" type="containerLink"/>
+                              </flow>
+                              <link id="kxoq9i5a" targetId="kxoq9i55" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfoContactOther"
+                                        id="kxoe268q"
+                                        interrupting="true">
+                                    <link id="kxoq9i5b" targetId="kxoq9i57" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="kxoq9i47" targetId="kxoq9hww" type="containerLink"/>
+                        </flow>
+                        <link id="kxoq9hwz" targetId="kxoq9hx0" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_OtherContactPerson[1]/BusinessPartnerIDByExtSystem}</arg>
+                                 <arg name="right">{$input.in_BillingContact[1]/BusinessPartnerIDByExtSystem}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kxoq9hx2" targetId="kxoq9hx3" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_OtherContactPerson[1]/BusinessPartnerIDByExtSystem}</arg>
+                                 <arg name="right">{$input.in_PrimaryContact[1]/BusinessPartnerIDByExtSystem}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kxoq9i45" targetId="kxoq9i46" type="containerLink"/>
+                        <link id="kxoq9hy1" targetId="kxob54fd"/>
+                     </container>
+                     <link id="kxob54b5" targetId="kxob54b0" type="containerLink"/>
+                  </flow>
+                  <flow id="kxob54b7">
+                     <end id="kxob54bi">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kxob54b3" targetId="kxob54b4" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_OtherContactPerson_array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxob54b6" targetId="kxob54b7" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_OtherContactPerson_array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxob54dl" targetId="kxob54dj"/>
+               </container>
+               <jumpTo id="kxob54dj">
+                  <link id="kxob54dk" targetId="kxob54b0"/>
+               </jumpTo>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>9SOtilUqjp3l3WrhgBZpgC</types1:GUID>
+      <types1:DisplayName>process_SAP_Persons</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:17:34.761Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

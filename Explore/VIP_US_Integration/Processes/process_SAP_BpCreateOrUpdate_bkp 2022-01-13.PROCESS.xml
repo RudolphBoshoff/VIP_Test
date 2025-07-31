@@ -1,0 +1,360 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CJljxcghuImXyco-gt-1340759-2022-01-27T08:55:47.464Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_BpCreateOrUpdate_bkp_2022-01-13</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Checks whether a VFORCE ID (can be account ID or contact ID) has been used to create a Business Partner in SAP. Updates the SAP record if found, Creates new if not found. Test Git</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T08:55:47Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-29T05:25:18Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-06-29T05:25:22Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_BpCreateOrUpdate_bkp_2022-01-13/process_SAP_BpCreateOrUpdate_bkp_2022-01-13.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_BpCreateOrUpdate_bkp 2022-01-13"
+                  name="process_SAP_BpCreateOrUpdate_bkp_2022-01-13"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Checks whether a VFORCE ID (can be account ID or contact ID) has been used to create a Business Partner in SAP. Updates the SAP record if found, Creates new if not found. Test Git</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_SAP_BusinessPartner" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Original_Oppty" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="BpEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_SAP_BusinessPartnerID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hA0375FEVqeeZPZ04hnRM2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartner-1:API_BUSINESS_PARTNER_A_BusinessPartnerType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lxZ0cPWRAW6bLBoJI33YWq</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartner-1:API_BUSINESS_PARTNER_A_BusinessPartnerAddressType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">lxZ0cPWRAW6bLBoJI33YWq</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxg7u40b" targetId="kxg7u40a"/>
+               </start>
+               <assignment id="kxg7u40a">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BpHeader">
+                     <expression language="XQuery">'{
+    "BusinessPartnerCategory": "1",
+    "BusinessPartnerGrouping": "BP02",
+    "Language": "EN",
+    "FirstName": "VFORCE First Name 1",
+    "LastName": "VFORCE Last Name 1",
+    "BusinessPartnerIDByExtSystem": "0013O00000NGQOCQAO-3",
+    "to_BusinessPartnerAddress": {
+        "results": [
+            {
+                "Country": "US",
+                "to_EmailAddress": {
+                    "results": [
+                        {
+                            "EmailAddress": "vforce_contact1@vistra.com"
+                        }
+                    ]
+                },
+                "to_PhoneNumber": {
+                    "results": [
+                        {
+                            "PhoneNumber": "11111111"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}'</expression>
+                  </operation>
+                  <link id="kxg7u40c" targetId="kxg7u3yv"/>
+               </assignment>
+               <service id="kxg7u3yv">
+                  <title>Get SAP Token</title>
+                  <serviceName>AppSvcERPGettoken:getAccessToken</serviceName>
+                  <serviceGUID>0EoJwpq6x7hdWNHksaAcyI</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostName" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                     <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                     <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                  </serviceInput>
+                  <link id="kxg7u400" targetId="kxg7u3zz"/>
+               </service>
+               <service id="kxg7u3zz">
+                  <title>Get BP</title>
+                  <serviceName>AppSvcCheckBusinessPartner-1:GET_A_BusinessPartner_BusinessPartnerIDByExtSystem</serviceName>
+                  <serviceGUID>bEaPLvdCno4eENDS5BRQ8W</serviceGUID>
+                  <serviceInput>
+                     <parameter name="VForceID" source="formula">
+                        <expression language="XQuery">fn:upper-case($input.in_SAP_BusinessPartner[1]/BusinessPartnerIDByExtSystem)</expression>
+                     </parameter>
+                     <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                     <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                     <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                     <parameter name="$expand" source="constant">to_BusinessPartnerAddress</parameter>
+                  </serviceInput>
+                  <link id="kxgglyum" targetId="kxgglyul"/>
+               </service>
+               <container id="kxgglyul" type="exclusive">
+                  <title>BP Found</title>
+                  <flow id="kxgglyup">
+                     <assignment id="kxn514ju">
+                        <title>Break into sub-sets</title>
+                        <operation source="formula" to="temp.tmp_BpHeader">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;BusinessPartnerCategory&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerCategory} &lt;/BusinessPartnerCategory&gt;
+	&lt;BusinessPartnerGrouping&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerGrouping}&lt;/BusinessPartnerGrouping&gt;
+	&lt;Language&gt;{$input.in_SAP_BusinessPartner[1]/Language}&lt;/Language&gt;
+	&lt;FirstName&gt;{$input.in_SAP_BusinessPartner[1]/FirstName} &lt;/FirstName&gt;
+    &lt;LastName&gt;{$input.in_SAP_BusinessPartner[1]/LastName}&lt;/LastName&gt;	
+	&lt;BusinessPartnerIDByExtSystem&gt;{$input.in_SAP_BusinessPartner[1]/BusinessPartnerIDByExtSystem}&lt;/BusinessPartnerIDByExtSystem&gt;   
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BpAddress">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;   
+      &lt;results m:isArray="true"&gt;
+         &lt;CityName&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/CityName}&lt;/CityName&gt;
+         &lt;PostalCode&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/PostalCode}&lt;/PostalCode&gt;
+         &lt;Language&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/Language}&lt;/Language&gt;           
+         &lt;StreetName&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/StreetName}&lt;/StreetName&gt;
+         &lt;Country&gt;{$input.in_SAP_BusinessPartner[1]/to_BusinessPartnerAddress[1]/results/Country}&lt;/Country&gt;              
+      &lt;/results&gt;   
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="kxn514jv" targetId="kxn3nzwf"/>
+                     </assignment>
+                     <assignment id="kxoabomf">
+                        <title>Output BP</title>
+                        <operation source="field" to="output.out_SAP_BusinessPartnerID">output.o_BusinessPartner_ID</operation>
+                     </assignment>
+                     <service id="kxn3nzwf">
+                        <title>Update BP Header</title>
+                        <serviceName>AppSvcPatchBusinessPartnerAll:PATCH_A_BusinessPartner_BusinessPartner_</serviceName>
+                        <serviceGUID>1iiXK6f516HiquSoT5QUYm</serviceGUID>
+                        <serviceInput>
+                           <parameter name="body" source="formula">
+                              <expression language="XQuery">$temp.tmp_BpHeader </expression>
+                           </parameter>
+                           <parameter name="BusinessPartnerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                           <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                           <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                           <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                        </serviceInput>
+                        <link id="kxoe92sj" targetId="kxoe92si"/>
+                     </service>
+                     <container id="kxoe92si" type="exclusive">
+                        <title>o_AddressID</title>
+                        <flow id="kxoe92sm">
+                           <service id="kxoe92te">
+                              <title>Update Bp Address</title>
+                              <serviceName>AppSvcPatchBusinessPartnerAll:PATCH_A_BusinessPartner_BusinessPartnerAddress</serviceName>
+                              <serviceGUID>1iiXK6f516HiquSoT5QUYm</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="body" source="field">temp.tmp_BpAddress</parameter>
+                                 <parameter name="BusinessPartnerPathParam" source="field" updatable="true">output.o_BusinessPartner_ID</parameter>
+                                 <parameter name="BusinessPartnerAddressPathParam"
+                                            source="field"
+                                            updatable="true">output.o_AddressID</parameter>
+                                 <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                                 <parameter name="Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                                 <parameter name="token" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                              </serviceInput>
+                           </service>
+                           <link id="kxoe92sn" targetId="kxoe92si" type="containerLink"/>
+                        </flow>
+                        <flow id="kxoe92sp">
+                           <link id="kxoe92sq" targetId="kxoe92si" type="containerLink"/>
+                        </flow>
+                        <link id="kxoe92sl" targetId="kxoe92sm" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.o_AddressID}</arg>
+                                 <arg name="right">util:iif(util:isNull($output.o_AddressID ), 'ErrBLANK', $output.o_AddressID )</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kxoe92so" targetId="kxoe92sp" type="containerLink"/>
+                        <link id="kxoe92td" targetId="kxoabomf"/>
+                     </container>
+                     <link id="kxgglyuq" targetId="kxgglyul" type="containerLink"/>
+                  </flow>
+                  <flow id="kxgglyus">
+                     <service id="kxn3nzw3">
+                        <title>Create BP</title>
+                        <serviceName>AppSvcBusinessPartner-1:POST_A_BusinessPartner</serviceName>
+                        <serviceGUID>lxZ0cPWRAW6bLBoJI33YWq</serviceGUID>
+                        <serviceInput>
+                           <parameter name="body" source="formula">
+                              <expression language="XQuery">$input.in_SAP_BusinessPartner </expression>
+                           </parameter>
+                           <parameter name="in_X_CSRF_TOKEN" source="field" updatable="true">output.o_SvcERPGetToken_X_CSRF_TOKEN</parameter>
+                           <parameter name="in_Cookie" source="field" updatable="true">output.o_SvcERPGetToken_Cookie</parameter>
+                           <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                        </serviceInput>
+                        <link id="kxoabonf" targetId="kxoabone"/>
+                     </service>
+                     <assignment id="kxoabone">
+                        <title>Output BP</title>
+                        <operation source="field" to="output.out_SAP_BusinessPartnerID">output.o_BusinessPartner</operation>
+                     </assignment>
+                     <link id="kxgglyut" targetId="kxgglyul" type="containerLink"/>
+                  </flow>
+                  <link id="kxgglyuo" targetId="kxgglyup" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with-any-of">
+                           <arg name="left">{$output.o_BusinessPartnerCategory}</arg>
+                           <arg name="right">1,2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxgglyur" targetId="kxgglyus" type="containerLink"/>
+                  <link id="kxgglyun" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a6e75a62-e706-4b9c-bdb4-85f19a47dda1</ns1:Id>
+               <ns1:Name>BpContact</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T08:55:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-03-04T09:35:58Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	"in_SAP_BusinessPartner": {
+		"BusinessPartnerCategory": "1",
+		"BusinessPartnerGrouping": "BP02",
+		"Language": "EN",
+		"FirstName": "",
+		"LastName": "",
+		"BusinessPartnerIDByExtSystem": "0013O00000NGQOCQAO-3",
+		"to_BusinessPartnerAddress": {
+			"results": {
+				"CityName": "bejing",
+				"StreetName": "",
+				"HouseNumber": "",
+				"Country": "",
+				"PostalCode": "22321",
+				"Region": "Bejing",
+				"Language": "EN",
+				"to_EmailAddress": {
+					"results": {
+						"EmailAddress": "Brahma.reddy@vistra.com"
+					}
+				},
+				"to_FaxNumber": {
+					"results": {
+						"FaxNumber": ""
+					}
+				},
+				"to_PhoneNumber": {
+					"results": {
+						"PhoneNumber": "111111111"
+					}
+				},
+				"to_URLAddress": {
+					"results": {
+						"SearchURLAddress": "",
+						"WebsiteURL": ""
+					}
+				}
+			}
+		}
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>20b228f6-035c-4c79-9bf3-4b4645af9d53</ns1:Id>
+               <ns1:Name>BpContact_Allen</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T08:55:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-03-04T09:35:58Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{"in_SAP_BusinessPartner" : ""}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>988f1ab1-0d67-4c33-9937-fb41e6cee81d</ns1:Id>
+               <ns1:Name>hardcode</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T08:55:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-03-04T09:35:58Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>e69M8TEysW1lxiiclmqtaN</types1:GUID>
+      <types1:DisplayName>process_SAP_BpCreateOrUpdate_bkp 2022-01-13</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-07-07T08:56:47.919Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

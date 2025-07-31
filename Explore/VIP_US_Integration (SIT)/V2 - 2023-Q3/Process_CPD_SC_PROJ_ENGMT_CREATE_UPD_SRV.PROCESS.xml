@@ -1,0 +1,363 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>J0RKWa-gt-53318370-2023-10-15T09:40:49.574Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:50Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV"
+                  name="Process_CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProjectID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_BusinessPartner"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_CommercialProject"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Project_Create" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_Project_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Project_Create__List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_Project_create</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ProjectRole_Create__List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_ProjectRole_create</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_WorkPackage_Create__List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_WorkPackage_create</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ll0wlzdf" targetId="ll0wlzde"/>
+               </start>
+               <container id="ll0wlzde" type="exclusive">
+                  <title>Current User</title>
+                  <flow id="ll0wlzdi">
+                     <assignment id="ll0wlzi0">
+                        <title>Prepare Payload 1</title>
+                        <operation source="formula" to="temp.tmp_ProjectRole_Create__List">
+                           <expression language="XQuery">&lt;ProjectRoleSet xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+{for $x in ("P1", "P2", "P3", "P4") return
+  &lt;results m:isArray="true"&gt;
+    &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+    &lt;ProjectRoleID&gt;{$x}&lt;/ProjectRoleID&gt;
+    &lt;BusinessPartnerID&gt;{$input.in_BusinessPartner}&lt;/BusinessPartnerID&gt;
+  &lt;/results&gt;}
+&lt;/ProjectRoleSet&gt;
+</expression>
+                        </operation>
+                        <link id="ll0wlzi8" targetId="ll0wlzi7"/>
+                     </assignment>
+                     <assignment id="ll0wlzi7">
+                        <title>Prepare Payload 2</title>
+                        <operation source="formula" to="temp.tmp_WorkPackage_Create__List">
+                           <expression language="XQuery">&lt;WorkPackageSet xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  {for $x in (1 to 5)
+   let $Type := "U" return
+  &lt;results m:isArray="true"&gt;
+     &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+     &lt;WorkPackageID&gt;{$input.in_ProjectID||'.1.'||$x}&lt;/WorkPackageID&gt;
+     &lt;WorkPackageName&gt;Entity Set Up&lt;/WorkPackageName&gt;
+     &lt;Description&gt;&lt;/Description&gt;
+     &lt;WPStartDate&gt;{date:toDate('2023-10-01', 'YYYY-MM-DD') }&lt;/WPStartDate&gt;
+     &lt;WPEndDate&gt;{date:toDate('2028-10-01', 'YYYY-MM-DD') }&lt;/WPEndDate&gt;     
+     &lt;DemandSet&gt;
+     {for $t in (1 to 9) return
+       &lt;results m:isArray="true"&gt;
+         &lt;BillingControlCategory&gt;&lt;/BillingControlCategory&gt;          
+         &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+         &lt;Skills&gt;&lt;/Skills&gt;
+         &lt;WorkPackageID&gt;{$input.in_ProjectID||'.1.'||$x}&lt;/WorkPackageID&gt;
+         &lt;ResType&gt;0ACT&lt;/ResType&gt;
+         &lt;ResourceId&gt;{'T00'||$t}&lt;/ResourceId&gt;    
+         &lt;Effort&gt;1&lt;/Effort&gt;
+         &lt;Workitem&gt;&lt;/Workitem&gt;
+       &lt;/results&gt;
+     }
+     &lt;/DemandSet&gt;
+  &lt;/results&gt;}
+&lt;/WorkPackageSet&gt;
+</expression>
+                        </operation>
+                        <link id="ll0wlzig" targetId="ll0wlzif"/>
+                     </assignment>
+                     <assignment id="ll0wlzif">
+                        <title>Prepare Payload 3</title>
+                        <operation source="formula" to="temp.tmp_Project_Create">
+                           <expression language="XQuery">&lt;ProjectSet&gt;
+  &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+  &lt;ProjectName&gt;VIP Pilot Test1 (Rudolph)&lt;/ProjectName&gt;
+  &lt;ProjectStage&gt;P001&lt;/ProjectStage&gt;
+  &lt;OrgID&gt;US11&lt;/OrgID&gt;
+  &lt;ProjectCategory&gt;C&lt;/ProjectCategory&gt;
+  &lt;Currency&gt;USD&lt;/Currency&gt;
+  &lt;StartDate&gt;/Date(1688083200000)/&lt;/StartDate&gt;
+  &lt;EndDate&gt;/Date(1719705600000)/&lt;/EndDate&gt;
+  &lt;ProjManagerExtId&gt;DDASILVA&lt;/ProjManagerExtId&gt;
+  &lt;Customer&gt;50304072&lt;/Customer&gt;
+  &lt;CostCenter&gt;US11823001&lt;/CostCenter&gt;
+  &lt;ProfitCenter&gt;9900&lt;/ProfitCenter&gt;
+  &lt;ProjectDesc&gt;Hardcoded values entered to check that the basic payload stuructre is valid and working&lt;/ProjectDesc&gt;
+  &lt;UseProjectBilling&gt;X&lt;/UseProjectBilling&gt;
+  &lt;RestrictTimePosting&gt;N&lt;/RestrictTimePosting&gt;
+  &lt;ProjectRoleSet&gt;
+    &lt;results&gt;
+      &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+      &lt;ProjectRoleID&gt;YP_RL_0001&lt;/ProjectRoleID&gt;
+      &lt;BusinessPartnerID&gt;9980000005&lt;/BusinessPartnerID&gt;
+    &lt;/results&gt;
+  &lt;/ProjectRoleSet&gt;
+  {$temp.tmp_WorkPackage_Create__List }
+&lt;/ProjectSet&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="ll0wlzdj" targetId="ll0wlzde" type="containerLink"/>
+                  </flow>
+                  <flow id="ll0wlzdl">
+                     <link id="ll0wlzdm" targetId="ll0wlzde" type="containerLink"/>
+                  </flow>
+                  <link id="ll0wlzdh" targetId="ll0wlzdi" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.CurrentUser}</arg>
+                           <arg name="right">FORCE SKIP</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ll0wlzdk" targetId="ll0wlzdl" type="containerLink"/>
+                  <link id="ll0wlzie" targetId="ll0wlzhn"/>
+               </container>
+               <assignment id="ll0wlzhn">
+                  <title>Prepare Payload</title>
+                  <operation source="formula" to="temp.tmp_ProjectRole_Create__List">
+                     <expression language="XQuery">&lt;ProjectRoleSet xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+{for $x in ("SP", "SH", "BP", "PY") return
+  &lt;results m:isArray="true"&gt;
+    &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+    &lt;ProjectRoleID&gt;{$x}&lt;/ProjectRoleID&gt;
+    &lt;BusinessPartnerID&gt;{$input.in_BusinessPartner}&lt;/BusinessPartnerID&gt;
+  &lt;/results&gt;}
+&lt;/ProjectRoleSet&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_WorkPackage_Create__List">
+                     <expression language="XQuery">&lt;WorkPackageSet xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  {for $x in (1 to 5)
+   let $Type := "U" return
+  &lt;results m:isArray="true"&gt;
+     &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+     &lt;WorkPackageID&gt;{$input.in_ProjectID||'.1.'||$x}&lt;/WorkPackageID&gt;
+     &lt;WorkPackageName&gt;Entity Set Up&lt;/WorkPackageName&gt;
+     &lt;Description&gt;&lt;/Description&gt;
+     &lt;WPStartDate&gt;{date:toDate('2023-10-01', 'YYYY-MM-DD') }&lt;/WPStartDate&gt;
+     &lt;WPEndDate&gt;{date:toDate('2028-10-01', 'YYYY-MM-DD') }&lt;/WPEndDate&gt;     
+     &lt;DemandSet&gt;
+     {for $t in (1 to 9) return
+       &lt;results m:isArray="true"&gt;
+         &lt;BillingControlCategory&gt;&lt;/BillingControlCategory&gt;          
+         &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+         &lt;Skills&gt;&lt;/Skills&gt;
+         &lt;WorkPackageID&gt;{$input.in_ProjectID||'.1.'||$x}&lt;/WorkPackageID&gt;
+         &lt;ResType&gt;0ACT&lt;/ResType&gt;
+         &lt;ResourceId&gt;{'T00'||$t}&lt;/ResourceId&gt;    
+         &lt;Effort&gt;1&lt;/Effort&gt;
+         &lt;Workitem&gt;&lt;/Workitem&gt;
+       &lt;/results&gt;
+     }
+     &lt;/DemandSet&gt;
+  &lt;/results&gt;}
+&lt;/WorkPackageSet&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Project_Create">
+                     <expression language="XQuery">&lt;ProjectSet&gt;
+  &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+  &lt;ProjectName&gt;VIP Pilot Test1 (Rudolph)&lt;/ProjectName&gt;
+  &lt;ProjectStage&gt;P001&lt;/ProjectStage&gt;
+  &lt;OrgID&gt;US11&lt;/OrgID&gt;
+  &lt;ProjectCategory&gt;C&lt;/ProjectCategory&gt;
+  &lt;Currency&gt;USD&lt;/Currency&gt;
+  &lt;StartDate&gt;/Date(1688083200000)/&lt;/StartDate&gt;
+  &lt;EndDate&gt;/Date(1719705600000)/&lt;/EndDate&gt;
+  &lt;ProjManagerExtId&gt;DDASILVA&lt;/ProjManagerExtId&gt;
+  &lt;Customer&gt;50304072&lt;/Customer&gt;
+  &lt;CostCenter&gt;US11823001&lt;/CostCenter&gt;
+  &lt;ProfitCenter&gt;9900&lt;/ProfitCenter&gt;
+  &lt;ProjectDesc&gt;Hardcoded values entered to check that the basic payload stuructre is valid and working&lt;/ProjectDesc&gt;
+  &lt;UseProjectBilling&gt;X&lt;/UseProjectBilling&gt;
+  &lt;RestrictTimePosting&gt;N&lt;/RestrictTimePosting&gt;
+  &lt;ProjectRoleSet&gt;
+    &lt;results&gt;
+      &lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+      &lt;ProjectRoleID&gt;YP_RL_0001&lt;/ProjectRoleID&gt;
+      &lt;BusinessPartnerID&gt;9980000005&lt;/BusinessPartnerID&gt;
+    &lt;/results&gt;
+  &lt;/ProjectRoleSet&gt;
+  &lt;!--{$temp.tmp_WorkPackage_Create__List }--&gt;
+&lt;/ProjectSet&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_ProcessVariables_CommercialProject">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;VIP_US_0001&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;400&lt;/Code&gt;
+   &lt;Error&gt;Not Initialized&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;Prospect Opportunity&lt;/Event_Name&gt;
+   &lt;API_Name&gt;US-01&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'ProjectID='||$input.in_ProjectID ||'^OpportunityID='||'asdfasdfasdf89hojjlm' }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;https://api.sap.com/api/_CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV/overview&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_CommercialProject[1]/RequestPayload">
+                     <expression language="XQuery">util:toJSON($temp.tmp_Project_Create )</expression>
+                  </operation>
+                  <link id="ll0wlzir" targetId="ll0wlziq"/>
+               </assignment>
+               <subflow id="ll0wlziq">
+                  <title>Create Commercial Project</title>
+                  <subflowGUID>gSqBBVYN1gqbcz2r4wOJUv</subflowGUID>
+                  <subflowPath>Process_POST_A_CommercialProject</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_Body" source="field" updatable="true">temp.tmp_Project_Create</parameter>
+                     <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_CommercialProject</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_Po" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoSapStdOutput</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                        </options>
+                     </field>
+                     <field name="out_RestURL" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ProcessVariables_POST_A_BusinessPartner" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoErrorDetails</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                        </options>
+                     </field>
+                     <field name="out_PostBpStatus" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="ll0wlzis" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0bad684e-0a72-4289-8eb0-5d453d85da91</ns1:Id>
+               <ns1:Name>T1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProjectID": "VIP_PILOT_T01",
+	 "in_BusinessPartner": "9980000005"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3eQ8PaJ0LqFjETO4a8Dx4P</types1:GUID>
+      <types1:DisplayName>Process_CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.455Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

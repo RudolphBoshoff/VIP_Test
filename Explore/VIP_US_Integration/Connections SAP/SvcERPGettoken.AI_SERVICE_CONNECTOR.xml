@@ -1,0 +1,101 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>joGsciQlBWlD2pH-gt-24060846-2022-01-18T09:58:19.149Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcERPGettoken-1</types1:Name>
+      <types1:ParentFlowIds>mq9dwMbgbdoPVm5-gt-24260955-2022-01-18T09:58:22.206Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>This service enables you to Get cookie for ERP connection, needed for subsequent post operations</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:19Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-08-22T14:55:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-09-06T11:11:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcERPGettoken_1/SvcERPGettoken_1_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcERPGettoken"
+                            label=""
+                            name="SvcERPGettoken-1"
+                            uuid="9338b16e-6395-4cfd-99d7-5c163e6a0bdf">
+            <description>This service enables you to Get cookie for ERP connection, needed for subsequent post operations</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="Business Partner"
+                       failOnError="true"
+                       forSearch="false"
+                       label="getAccessToken"
+                       maxRedirects="100"
+                       name="getAccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>This service enables you to Get cookie for ERP connection, needed for subsequent post operations</description>
+                  <input>
+                     <parameter description="Host name for ERP environment"
+                                label="hostname"
+                                name="hostName"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter description="Username for login"
+                                label="username"
+                                name="username"
+                                required="true"
+                                testWith="VIP_DM_1"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="true"
+                                testWith="RtTBEWMlKLeXRV7zp-MMRNNEKgdqFCyhqKoKBQev"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostName}/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner?$top=0"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-Token">fetch</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="o_SvcERPGetToken_Cookie" type="string">
+                        <xquery>{let $cookies := svc:getResponseHeader($ResponseHeaders , "set-cookie")
+return fn:concat($cookies[1], ';', $cookies[2])}</xquery>
+                     </field>
+                     <field description="" name="o_SvcERPGetToken_X_CSRF_TOKEN" type="string">
+                        <xquery>{svc:getResponseHeader($ResponseHeaders , "x-csrf-token")}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1bFIKxCajjMdoBtwRh1okJ</types1:GUID>
+      <types1:DisplayName>SvcERPGettoken</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:23:42.449Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

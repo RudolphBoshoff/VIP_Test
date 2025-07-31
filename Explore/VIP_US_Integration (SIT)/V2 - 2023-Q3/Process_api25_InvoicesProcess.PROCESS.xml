@@ -1,0 +1,298 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>aaaaa-gt-53364199-2023-10-15T09:40:50.008Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_api25_InvoicesProcess-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:50Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_api25_InvoicesProcess"
+                  name="Process_api25_InvoicesProcess-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_last_invoice_sent_date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_db_api25" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce2:api25</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">14aJO0bE5OGbSJoodSA26c</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_invoices_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnBillingDocument:PO_DocumentList</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">35nOt6KTbkglExDPtmgtKM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_current_invoice" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnBillingDocument:PO_DocumentList</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">35nOt6KTbkglExDPtmgtKM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_api25log" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce2:api25_log</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">14aJO0bE5OGbSJoodSA26c</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_file" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnInvoiceFileWriter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8Ywa7hQG091fYGlukHP2mk</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_external_customer_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llz6mr94" targetId="llz6mr93"/>
+               </start>
+               <assignment id="llz6mr93">
+                  <title>Get Sap DETAILS</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <link id="lm0323f0" targetId="llz5vq87"/>
+               </assignment>
+               <assignment id="llz5vq87">
+                  <title>Get Last Invoice Sent date</title>
+                  <operation source="query" to="temp.tmp_db_api25">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce2:api25">
+                        <where>LIMIT 1</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_last_invoice_sent_date">
+                     <expression language="XQuery">$temp.tmp_db_api25[1]/LastInvoiceSentDate</expression>
+                  </operation>
+                  <link id="llz66kp9" targetId="llz66kp8"/>
+               </assignment>
+               <assignment id="llz6mrai">
+                  <title>Assignment to tmp_invoices_list</title>
+                  <operation source="field" to="temp.tmp_invoices_list">output.InvoiceList</operation>
+                  <link id="llz6mrbj" targetId="llz6mrbi"/>
+               </assignment>
+               <service id="llz66kp8">
+                  <title>Get List of Invoices to be processed</title>
+                  <serviceName>AppConnBillingDocument:GET_ListOfBillingDocuments</serviceName>
+                  <serviceGUID>35nOt6KTbkglExDPtmgtKM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                     <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                     <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                     <parameter name="invoice_send_date" source="formula">
+                        <expression language="XQuery">$temp.tmp_last_invoice_sent_date </expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="llz6mraj" targetId="llz6mrai"/>
+               </service>
+               <container id="llz6mrbi" type="exclusive">
+                  <title>tmp_invoices_list</title>
+                  <flow id="llz6mrbs">
+                     <assignment id="llz6mrc3">
+                        <title>Get Current Document</title>
+                        <operation source="formula" to="temp.tmp_current_invoice">
+                           <expression language="XQuery">list:head($temp.tmp_invoices_list )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_invoices_list">
+                           <expression language="XQuery">list:tail($temp.tmp_invoices_list )</expression>
+                        </operation>
+                        <link id="lm081h0j" targetId="lm081h0i"/>
+                     </assignment>
+                     <assignment id="lm0eksrw">
+                        <title>Get External Customer Id</title>
+                        <operation source="formula" to="temp.tmp_external_customer_id">
+                           <expression language="XQuery">let $input:= $output.out_SvcGET_BusinessPartner_EntireResponse 
+
+
+for $i in $input/d
+return(
+&lt;root&gt;
+      {$i/BusinessPartnerIDByExtSystem/text()}
+    
+&lt;/root&gt;)</expression>
+                        </operation>
+                        <link id="lm0eksry" targetId="lm04wgqn"/>
+                     </assignment>
+                     <assignment id="lm081gxi">
+                        <title>Assignment to Content Format, File name etc.</title>
+                        <operation source="constant" to="temp.tmp_file[1]/format">Attachment</operation>
+                        <operation source="formula" to="temp.tmp_file[1]/fileName">
+                           <expression language="XQuery">$output.o_AttachmentName </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_file[1]/content">{$output.o_Atachment}</operation>
+                        <link id="lm081gxk" targetId="lm06t8y4"/>
+                     </assignment>
+                     <service id="lm081h0i">
+                        <title>Get BP details</title>
+                        <serviceName>AppSvcBusinessPartnerA2X:GET_BusinessPartner_BusinessPartner</serviceName>
+                        <serviceGUID>hUQMEqpCyaBbALRxQ37LcQ</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="constant">{$temp.tmp_hostname}</parameter>
+                           <parameter name="username" source="constant">{$temp.tmp_username}</parameter>
+                           <parameter name="password" source="constant">{$temp.tmp_password}</parameter>
+                           <parameter name="in_BusinessPartner" source="constant">{$temp.tmp_current_invoice[1]/Customer}</parameter>
+                        </serviceInput>
+                        <link id="lm0eksrx" targetId="lm0eksrw"/>
+                     </service>
+                     <service id="lm04wgqn">
+                        <title>Process_GetInvoicePDF</title>
+                        <serviceName>Process_GetInvoicePDF</serviceName>
+                        <serviceGUID>3Dq0Vv0pAMGdvNpuzOyy6B</serviceGUID>
+                        <serviceInput>
+                           <parameter name="in_BillingDocument" source="formula">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument </expression>
+                           </parameter>
+                           <parameter name="in_hostname" source="formula">
+                              <expression language="XQuery">$temp.tmp_hostname </expression>
+                           </parameter>
+                           <parameter name="in_password" source="formula">
+                              <expression language="XQuery">$temp.tmp_password </expression>
+                           </parameter>
+                           <parameter name="in_username" source="formula">
+                              <expression language="XQuery">$temp.tmp_username </expression>
+                           </parameter>
+                           <parameter name="in_CustomerId" source="formula">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/Customer </expression>
+                           </parameter>
+                           <parameter name="In_DocumentDate" source="formula">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocumentDate </expression>
+                           </parameter>
+                        </serviceInput>
+                        <link id="lm081gxj" targetId="lm081gxi"/>
+                     </service>
+                     <service id="lm06t8y4">
+                        <title>FileWriter</title>
+                        <serviceName>AppConnInvoiceFileWriter:FileWriter</serviceName>
+                        <serviceGUID>8Ywa7hQG091fYGlukHP2mk</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_file</parameter>
+                           <parameter name="attachment" source="field" updatable="true">output.o_Atachment</parameter>
+                        </serviceInput>
+                        <link id="lm06t8y6" targetId="llz6mrdl"/>
+                     </service>
+                     <create id="llz6mrdl">
+                        <title>api25_log</title>
+                        <entityName>US-MSSQL-DB-VForce2:api25_log</entityName>
+                        <createInput>
+                           <parameter name="BillingDocument" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument </expression>
+                           </parameter>
+                           <parameter name="BillingDocumentDate" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocumentDate </expression>
+                           </parameter>
+                           <parameter name="Customer" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_current_invoice[1]/Customer </expression>
+                           </parameter>
+                           <parameter name="PDF_Name" source="field" updatable="true">output.o_AttachmentName</parameter>
+                           <parameter name="PDF_Content" source="field" updatable="true">output.o_Atachment</parameter>
+                        </createInput>
+                        <link id="llz6mrdn" targetId="llz6mrd9"/>
+                     </create>
+                     <jumpTo id="llz6mrd9">
+                        <link id="llz6mrdf" targetId="llz6mrbi"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="llz6mrbu">
+                     <link id="llz6mrbv" targetId="llz6mrbi" type="containerLink"/>
+                  </flow>
+                  <link id="llz6mrbl" targetId="llz6mrbs" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_invoices_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llz6mrbo" targetId="llz6mrbu" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_invoices_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llz6mrc2" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>2e61ce1d-01ab-4cd8-bfc8-53028579f397</ns1:Id>
+               <ns1:Name>Demo</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1Ssd8uqHBaIeG5bL005dsG</types1:GUID>
+      <types1:DisplayName>Process_api25_InvoicesProcess</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:11.98Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

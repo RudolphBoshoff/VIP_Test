@@ -1,0 +1,168 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oE4bcggaaaaa-gt-1583581-2022-01-27T09:54:14.234Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_Org_api07</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T09:54:14Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T13:51:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T13:51:45Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_Org_api07/process_SAP_Org_api07.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_Org_api07"
+                  name="process_SAP_Org_api07"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="SAP_BusinessPartner"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2SfErhZ0v5Fjpq6cXxK32J</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Account_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="SalesOrganization" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerPaymentTerms" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerTaxClassification" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CustomerAccountAssignmentGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="CashPlanningGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="YY1_Customer_Segment_cco" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Main_TransactionID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_SAP_BpId_Customer" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">chgXBI7i2yoleuziZOFtIL</option>
+                  </options>
+               </field>
+            </output>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxorst51" targetId="kxorst50"/>
+               </start>
+               <subflow id="kxorst50">
+                  <title>Create Customer</title>
+                  <subflowGUID>knqJLHfOX8og8qanWQkFCf</subflowGUID>
+                  <subflowPath>process_SAP_BpCreateOrUpdate_api07</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_SAP_BusinessPartner" source="field" updatable="true">input.SAP_BusinessPartner</parameter>
+                     <parameter name="in_BusinessPartnerEmailAddress"
+                                source="field"
+                                updatable="true">input.CustomerEmail</parameter>
+                     <parameter name="SalesOrganization" source="field" updatable="true">input.SalesOrganization</parameter>
+                     <parameter name="Currency" source="field" updatable="true">input.Currency</parameter>
+                     <parameter name="CustomerPaymentTerms" source="field" updatable="true">input.CustomerPaymentTerms</parameter>
+                     <parameter name="CustomerTaxClassification" source="field" updatable="true">input.CustomerTaxClassification</parameter>
+                     <parameter name="CustomerAccountAssignmentGroup"
+                                source="field"
+                                updatable="true">input.CustomerAccountAssignmentGroup</parameter>
+                     <parameter name="CashPlanningGroup" source="field" updatable="true">input.CashPlanningGroup</parameter>
+                     <parameter name="YY1_Customer_Segment_cco" source="field" updatable="true">input.YY1_Customer_Segment_cco</parameter>
+                     <parameter name="in_Account_Id" source="field" updatable="true">input.in_Account_id</parameter>
+                     <parameter name="in_Main_Transaction_ID" source="field" updatable="true">input.in_Main_TransactionID</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_SAP_BusinessPartnerID" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="kxorst6k" targetId="kxorst6j"/>
+               </subflow>
+               <assignment id="kxorst6j">
+                  <title>Set Output</title>
+                  <operation source="formula" to="output.out_SAP_BpId_Customer">
+                     <expression language="XQuery">&lt;PoSapBpId&gt;
+   &lt;BusinessPartnerCategory&gt;Organization&lt;/BusinessPartnerCategory&gt;
+   &lt;BpType&gt;Customer&lt;/BpType&gt;
+   &lt;BusinessPartner&gt;{$output.out_SAP_BusinessPartnerID}&lt;/BusinessPartner&gt;
+&lt;/PoSapBpId&gt;
+</expression>
+                  </operation>
+                  <link id="kxorst6l" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>6f5wSTb1Z2gcXnQjNtOI8e</types1:GUID>
+      <types1:DisplayName>process_SAP_Org_api07</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T14:04:23.463Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

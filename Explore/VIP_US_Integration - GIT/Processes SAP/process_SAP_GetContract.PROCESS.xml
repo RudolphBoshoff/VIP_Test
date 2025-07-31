@@ -1,0 +1,237 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>huImXycotFgpKi9-gt-13429149-2022-01-11T12:11:58.115Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_GetContract-4</types1:Name>
+      <types1:ParentFlowIds>68YybdsMkdypKwK-gt-21504828-2022-01-14T13:17:27.92Z::pd.xml,8cmbeMVX3cjk91p-gt-19663189-2022-01-12T09:49:49.959Z::pd.xml,E1ZT1cnFKi9zhFt-gt-20619352-2022-01-13T12:44:49.488Z::pd.xml,fZ3r0x7bcoq3xgj-gt-24057176-2022-01-18T07:18:09.1Z::pd.xml,jz8Uuopz4KhPVEQ-gt-3061025-2021-12-23T07:36:40.155Z::pd.xml,RjxcghuImXycotF-gt-17986104-2022-01-10T14:14:13.701Z::pd.xml,v58pIO3M4WwOC2X-gt-23210386-2022-01-17T13:52:01.234Z::pd.xml,YabdvhxiQLnzYLn-gt-21136564-2022-01-13T20:59:20.812Z::pd.xml,yVgglxbdypKwKBq-gt-21549527-2022-01-14T14:11:45.397Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-01-11T12:11:58Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-01-11T12:15:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-18T13:51:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_GetContract-4/process_SAP_GetContract-4.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_GetContract"
+                  name="process_SAP_GetContract-4"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SCID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SC_Exists" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="SCItemsExists" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="MaxReferenceItemID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_ContractID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxg7u40b" targetId="kxg7u40a"/>
+               </start>
+               <assignment id="kxg7u40a">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_VF_OpportunityID">input.in_OpportunityID</operation>
+                  <link id="kxzrxrs2" targetId="kxhustrr"/>
+               </assignment>
+               <assignment id="kxslue35">
+                  <title>Assignment to SC_Exists</title>
+                  <operation source="formula" to="output.SC_Exists">
+                     <expression language="XQuery">util:iif(util:isNull($output.o_ServiceContract_ID) or fn:string-length($output.o_ServiceContract_ID)=0, 'N', 'Y')</expression>
+                  </operation>
+                  <link id="kxslue37" targetId="kxq6wmr5"/>
+               </assignment>
+               <eventContainer id="kxhustrr">
+                  <service id="kxhustqq">
+                     <title>Get SC By VForceID</title>
+                     <serviceName>AppSvcCheckServiceContract-4:GET_A_ServiceContract_ServiceContractIDByExtSystem</serviceName>
+                     <serviceGUID>4FgmbN58ZqXjGduPBU7ZQA</serviceGUID>
+                     <serviceInput>
+                        <parameter name="VForceID" source="field" updatable="true">input.in_OpportunityID</parameter>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="kxhustrt">
+                     <link id="kxhustru" targetId="kxhustrr" type="containerLink"/>
+                  </flow>
+                  <flow id="kxhustrw">
+                     <throw id="kxhusts7">
+                        <title>Throw SC Check Fault</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="kxhustrs" targetId="kxhustrt" type="containerLink"/>
+                  <link id="ky2ufs4l" targetId="kxslue35"/>
+                  <events>
+                     <catch faultField="faultInfo" id="kxhustrp" interrupting="true">
+                        <link id="kxhustrv" targetId="kxhustrw" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="kxq6wmr5" type="exclusive">
+                  <title>SC in SAP ?</title>
+                  <flow id="kxq6wmr9">
+                     <eventContainer id="ky33tbr0">
+                        <service id="ky2ufs4v">
+                           <title>Get Max SCItem ID from SC</title>
+                           <serviceName>AppSvcCheckServiceContract-4:GET_A_ServiceContract_MaxServiceContractItemID</serviceName>
+                           <serviceGUID>4FgmbN58ZqXjGduPBU7ZQA</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                              <parameter name="ServiceContractID" source="field" updatable="true">output.o_ServiceContract_ID</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky33tbr2">
+                           <link id="ky33tbr3" targetId="ky33tbr0" type="containerLink"/>
+                        </flow>
+                        <flow id="ky33tbr5">
+                           <throw id="ky33tbrj">
+                              <title>Throw MaxSCItem ID Fault</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.MaxSC-faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.MaxSC-faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.MaxSC-faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="ky33tbr1" targetId="ky33tbr2" type="containerLink"/>
+                        <link id="ky8a5qre" targetId="kxslue42"/>
+                        <events>
+                           <catch faultField="MaxSC-faultInfo" id="ky33tbqw" interrupting="true">
+                              <link id="ky33tbr4" targetId="ky33tbr5" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="kxslue42">
+                        <title>Set Action Update</title>
+                        <operation source="constant" to="output.Action">Update</operation>
+                        <operation source="field" to="output.SCID">output.o_ServiceContract_ID</operation>
+                        <operation source="formula" to="output.SCItemsExists">
+                           <expression language="XQuery">util:iif($output.NumberofItems &gt; 0, 'Y', 'N')</expression>
+                        </operation>
+                        <operation source="field" to="output.MaxReferenceItemID">output.MaxSCItemID</operation>
+                     </assignment>
+                     <link id="kxq6wmra" targetId="kxq6wmr5" type="containerLink"/>
+                  </flow>
+                  <flow id="kxq6wmrc">
+                     <assignment id="kxslue4d">
+                        <title>Set Action Create</title>
+                        <operation source="constant" to="output.Action">Create</operation>
+                     </assignment>
+                     <link id="kxq6wmrd" targetId="kxq6wmr5" type="containerLink"/>
+                  </flow>
+                  <link id="kxq6wmr8" targetId="kxq6wmr9" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.SC_Exists}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxq6wmrb" targetId="kxq6wmrc" type="containerLink"/>
+                  <link id="kxq6wmr7" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>54a68d46-8d8c-4e76-82fe-7ca7b5262afd</ns1:Id>
+               <ns1:Name>gc</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-11T12:11:58Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-11T12:11:58Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0051M000008DXEA208_1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>eQKi8dHXEkmiGEd7ygHwSq</types1:GUID>
+      <types1:DisplayName>process_SAP_GetContract</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:16:33.193Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

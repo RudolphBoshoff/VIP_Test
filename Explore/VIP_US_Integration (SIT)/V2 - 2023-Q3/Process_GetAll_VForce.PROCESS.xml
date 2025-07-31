@@ -1,0 +1,1765 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>1bbfRLdqcgm8lnC-gt-33327035-2023-10-31T11:55:52.854Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GetAll_VForce-4</types1:Name>
+      <types1:ParentFlowIds>99WvbeGoQwg74Rp-gt-53364423-2023-10-15T09:40:53.969Z::pd.xml,kP31abck0Kn7wpo-gt-53364382-2023-10-15T09:40:53.163Z::pd.xml,upnMUvIw8jIw8jI-gt-53395984-2023-10-15T09:40:54.335Z::pd.xml,WnMnS24FsWTzIf6-gt-53396022-2023-10-15T09:40:54.782Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-31T11:55:53Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-31T12:15:18Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-31T12:54:58Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GetAll_VForce-4/Process_GetAll_VForce-4.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GetAll_VForce"
+                  name="Process_GetAll_VForce-4"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+               <parameter description="Sent if the data is sourced from VForce"
+                          name="in_OpportunityID"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="Sent if the data is sourced from OSC"
+                          name="in_OSC_Details"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_OpptyType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_OpportunityLineItem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="VF_SemiStructured_ALL" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </field>
+               <field description="" name="VF_SemiStructured_ALL2" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_VF_Opportunity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_Contact_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Contact</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_OpportunityProduct" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:OpportunityLineItem</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_VF_OpportunityProduct_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:OpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_Contact" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Contact</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_PO_Product_SemiStructured"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Contact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3AFOA0PsJ6dcReNZta4f8q</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DefaultProduct_DRE" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DefaultProduct_GAM" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductCategoryListPO" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POProductCategoryList</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hpVE71ho8gEjmCrkFcir0t</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DefaultProduct_Country" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Source" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Account" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bOFOoUr3KomhFLN7Nah4uD</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_Account" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Account</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OscLegal" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OscProd" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:OSCADVISORYPRODUCTS</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5LvnrQZq8PDbL2SeRYtGkm</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VF_AccountTeamMember" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:AccountTeamMember</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductCategoryList_DB" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConn-VIPP2B:EntityLight_ProductCategoryList</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">gJpzdG9MEeqh0tvYWNhhOC</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SingleProduct" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ln1mvrbm" targetId="ln1mvrbl"/>
+               </start>
+               <assignment id="ln1mvrbl">
+                  <title>Determine Data Source</title>
+                  <operation source="formula" to="temp.tmp_Source">
+                     <expression language="XQuery">if (fn:string-length($input.in_OpportunityID)=18)
+then ("VForce")
+else (
+		if (list:count($input.in_OSC_Details[1]/OpportunityProductDetails)&gt;0)
+        then ("OSC")
+        else ("Invalid Input")
+)</expression>
+                  </operation>
+                  <operation source="list" to="temp.tmp_ProductCategoryList_DB">
+                     <query advanceQuery="false"
+                            from="AppConn-VIPP2B:EntityLight_ProductCategoryList">
+                        <where>IsActive = true limit 0</where>
+                     </query>
+                  </operation>
+                  <link id="lnpukz00" targetId="ln1mvrb0"/>
+               </assignment>
+               <container id="ln1mvrb0" type="exclusive">
+                  <title>Source</title>
+                  <flow id="ln1mvrb4">
+                     <assignment id="ln1mvrsg">
+                        <title>GET Opportunity</title>
+                        <operation source="query" to="temp.tmp_VF_Opportunity">
+                           <query advanceQuery="false" from="AppConnSalesForce:Opportunity">
+                              <where>X18DigitID__c = '{$input.in_OpportunityID}'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_SingleProduct">
+                           <expression language="XQuery">if (util:isNull($input.in_OpportunityLineItem ))
+then 0
+else 1</expression>
+                        </operation>
+                        <link id="lnlm1dcg" targetId="lnlm1dcf"/>
+                     </assignment>
+                     <assignment id="lnlm1dcf">
+                        <title>GET Project Manager</title>
+                        <operation source="query" to="temp.tmp_VF_AccountTeamMember">
+                           <query advanceQuery="false" from="AppConnSalesForce:AccountTeamMember">
+                              <where>AccountId = '{$temp.tmp_VF_Opportunity.Account.Id}' and TeamMemberRole = 'Advisory Billing Associate'</where>
+                           </query>
+                        </operation>
+                        <link id="lnlm1dch" targetId="ln1mvrsq"/>
+                     </assignment>
+                     <assignment id="ln1mvrsq">
+                        <title>ADD Account and Oppty to output</title>
+                        <operation source="formula" to="output.VF_SemiStructured_ALL">
+                           <expression language="XQuery">&lt;VForce&gt;
+  &lt;OpportunityHeader&gt;
+    &lt;ID&gt;{$temp.tmp_VF_Opportunity.Id }&lt;/ID&gt;
+    &lt;OpportunityType&gt;{$temp.tmp_VF_Opportunity.RecordType.Name}&lt;/OpportunityType&gt;
+    &lt;AccountID&gt;{$temp.tmp_VF_Opportunity.Account.Id }&lt;/AccountID&gt;
+    &lt;CreatedDate&gt;{$temp.tmp_VF_Opportunity.CreatedDate }&lt;/CreatedDate&gt;
+    &lt;Description&gt;{$temp.tmp_VF_Opportunity.Description }&lt;/Description&gt;
+    &lt;Currency_Type__c&gt;{$temp.tmp_VF_Opportunity.Currency_Type__c }&lt;/Currency_Type__c&gt;
+    &lt;Primary_Contact_c&gt;
+      &lt;ContactID&gt;{$temp.tmp_VF_Opportunity.Primary_Contact__r.Id  } &lt;/ContactID&gt;
+      &lt;FirstName&gt;{$temp.tmp_VF_Opportunity.Primary_Contact_FirstName__c  }&lt;/FirstName&gt;
+      &lt;LastName&gt;{$temp.tmp_VF_Opportunity.Primary_Contact_LastName__c  }&lt;/LastName&gt;
+      &lt;Email&gt;{$temp.tmp_VF_Opportunity.Primary_Contact_Email__c  }&lt;/Email&gt;
+      &lt;Phone&gt;{$temp.tmp_VF_Opportunity.Primary_Contact__r.Phone }&lt;/Phone&gt;
+      &lt;X18_Digit_ID__c&gt;{$temp.tmp_VF_Opportunity.Primary_Contact__r.Contact_Long_ID__c }&lt;/X18_Digit_ID__c&gt;
+      &lt;MailingCountry&gt;{$temp.tmp_VF_Opportunity.Primary_Contact__r.MailingCountryCode }&lt;/MailingCountry&gt;
+      &lt;State&gt;{$temp.tmp_VF_Opportunity.Primary_Contact__r.MailingStateCode }&lt;/State&gt;
+    &lt;/Primary_Contact_c&gt;
+    &lt;Revenue_Generation_Date__c&gt;{$temp.tmp_VF_Opportunity.Revenue_Generation_Date__c }&lt;/Revenue_Generation_Date__c&gt;
+    &lt;Contract_Length_months__c&gt;{$temp.tmp_VF_Opportunity.Contract_Length_months__c }&lt;/Contract_Length_months__c&gt;
+    &lt;Owner_Id&gt;{$temp.tmp_VF_Opportunity.Owner.Id  }&lt;/Owner_Id&gt;
+    &lt;Legal_Billing_Entity__c&gt;{$temp.tmp_VF_Opportunity.Legal_Billing_Entity__c }&lt;/Legal_Billing_Entity__c&gt;
+    &lt;BPServiceContractId__c&gt;{$temp.tmp_VF_Opportunity.BPServiceContractId__c }&lt;/BPServiceContractId__c&gt;
+&lt;OwnerEmail&gt;{$temp.tmp_VF_Opportunity.Owner.Email } &lt;/OwnerEmail&gt;
+&lt;Out_Of_Scope__c&gt;{$temp.tmp_VF_Opportunity.Out_Of_Scope__c}&lt;/Out_Of_Scope__c&gt;
+  &lt;/OpportunityHeader&gt;
+  &lt;Account&gt;
+    &lt;AccountName&gt;{$temp.tmp_VF_Opportunity.Account.Name }&lt;/AccountName&gt;
+    &lt;AccountType&gt;{$temp.tmp_VF_Opportunity.Account.Type }&lt;/AccountType&gt;
+    &lt;Billing_Contact_Email__c&gt;{$temp.tmp_VF_Opportunity.Account.Billing_Contact_Email__c }&lt;/Billing_Contact_Email__c&gt;
+    &lt;Fax&gt;{$temp.tmp_VF_Opportunity.Account.Fax }&lt;/Fax&gt;
+    &lt;Website&gt;{$temp.tmp_VF_Opportunity.Account.Website }&lt;/Website&gt;
+    &lt;Phone&gt;{$temp.tmp_VF_Opportunity.Account.Phone }&lt;/Phone&gt;
+    &lt;X18_Digit_ID__c&gt;{$temp.tmp_VF_Opportunity.Account.Id }&lt;/X18_Digit_ID__c&gt;
+    &lt;ShippingCity&gt;{$temp.tmp_VF_Opportunity.Account.ShippingCity }&lt;/ShippingCity&gt;
+    &lt;ShippingCountry&gt;{$temp.tmp_VF_Opportunity.Account.ShippingCountry }&lt;/ShippingCountry&gt;
+    &lt;ShippingPostalCode&gt;{$temp.tmp_VF_Opportunity.Account.ShippingPostalCode }&lt;/ShippingPostalCode&gt;
+    &lt;ShippingState&gt;{$temp.tmp_VF_Opportunity.Account.ShippingState }&lt;/ShippingState&gt;
+    &lt;ShippingStreet&gt;{$temp.tmp_VF_Opportunity.Account.ShippingStreet }&lt;/ShippingStreet&gt;
+    &lt;Payment_Term__c&gt;{$temp.tmp_VF_Opportunity.Account.Payment_Term__c }&lt;/Payment_Term__c&gt;
+    &lt;Sector__c&gt;{$temp.tmp_VF_Opportunity.Account.Sector__c }&lt;/Sector__c&gt;
+    &lt;Entity_Code__c&gt;{$temp.tmp_VF_Opportunity.Account.Entity_Code__c }&lt;/Entity_Code__c&gt;
+    &lt;Currency__c&gt;{$temp.tmp_VF_Opportunity.Account.Currency__c }&lt;/Currency__c&gt;
+    &lt;AccountID&gt;{$temp.tmp_VF_Opportunity.Account.Id }&lt;/AccountID&gt;
+     &lt;ProjectManagerName&gt;{$temp.tmp_VF_AccountTeamMember.Account_Team_Member_Name__c }&lt;/ProjectManagerName&gt;
+    &lt;ProjectManagerEmail&gt;{$temp.tmp_VF_AccountTeamMember.User.Email }&lt;/ProjectManagerEmail&gt;
+    &lt;BillingContactFirstName__c&gt;{$temp.tmp_VF_Opportunity.Account.BillingContactFirstName__c }&lt;/BillingContactFirstName__c&gt;
+    &lt;BillingContactLastName__c&gt;{$temp.tmp_VF_Opportunity.Account.BillingContactLastName__c }&lt;/BillingContactLastName__c&gt;
+    &lt;Billing_Contact_Phone__c&gt;{$temp.tmp_VF_Opportunity.Account.Billing_Contact_Phone__c }&lt;/Billing_Contact_Phone__c&gt;
+    &lt;BillingStreet&gt;{$temp.tmp_VF_Opportunity.Account.BillingStreet }&lt;/BillingStreet&gt;
+    &lt;BillingCity&gt;{$temp.tmp_VF_Opportunity.Account.BillingCity }&lt;/BillingCity&gt;
+    &lt;BillingState&gt;{$temp.tmp_VF_Opportunity.Account.BillingStateCode }&lt;/BillingState&gt;
+    &lt;BillingPostalCode&gt;{$temp.tmp_VF_Opportunity.Account.BillingPostalCode }&lt;/BillingPostalCode&gt;
+    &lt;BillingCountry&gt;{$temp.tmp_VF_Opportunity.Account.BillingCountryCode }&lt;/BillingCountry&gt;
+    &lt;SBQQ__TaxExempt__c&gt;{$temp.tmp_VF_Opportunity.Account.SBQQ__TaxExempt__c }&lt;/SBQQ__TaxExempt__c&gt;
+    &lt;Agresso_ID__c&gt;{$temp.tmp_VF_Opportunity.Account.Agresso_ID__c }&lt;/Agresso_ID__c&gt;
+    &lt;BPAccountID__c&gt;{$temp.tmp_VF_Opportunity.Account.BPAccountID__c }&lt;/BPAccountID__c&gt;
+    &lt;POI_DRE__c&gt;{$temp.tmp_VF_Opportunity.Account.POI_DRE__c }&lt;/POI_DRE__c&gt;
+  &lt;/Account&gt;
+&lt;/VForce&gt;</expression>
+                        </operation>
+                     </assignment>
+                     <link id="ln1mvrb5" targetId="ln1mvrb0" type="containerLink"/>
+                  </flow>
+                  <flow id="ln1mvres">
+                     <assignment id="lne6nzp8">
+                        <title>Assignment to tmp_VF_Account</title>
+                        <operation source="query" to="temp.tmp_VF_Account">
+                           <query advanceQuery="false" from="AppConnSalesForce:Account">
+                              <where>X18_Digit_ID__c = '{$input.in_OSC_Details[1]/Account[1]/AccountID}'</where>
+                           </query>
+                        </operation>
+                        <link id="lnljpjei" targetId="lnljpjeh"/>
+                     </assignment>
+                     <assignment id="lnljpjeh">
+                        <title>Assignment to tmp_OscProd, tmp_OscLegal</title>
+                        <operation source="query" to="temp.tmp_OscProd">
+                           <query advanceQuery="false" from="US-MSSQL-DB-VForce:OSCADVISORYPRODUCTS">
+                              <where>OSCItemCode = '{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_ProductCode}'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_OscLegal">
+                           <expression language="XQuery">switch($input.in_OSC_Details[1]/OpportunityHeader[1]/Legal_Billing_Entity__c )
+      case "01" return "GB29-Vistra IE (UK)"
+      case "1" return "GB29-Vistra IE (UK)"
+	  case "02" return "GB30-VISTRA IE (BRISTOL)"
+      case "2" return "GB30-VISTRA IE (BRISTOL)"
+	  case "21" return "US11-Vistra International Expansion (USA) Inc"
+	  case "40" return "IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Mumbai"
+	  case "41" return "IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Indore"
+	  case "60" return "SG09-VISTRA INTERNATIONAL EXPANSION(SINGAPORE)PTE.LTD"
+	  case "61" return "SG08-Vistra IE PTE Ltd"
+	  case "92" return "GB26-Vistra IE Bidco"
+      default return $input.in_OSC_Details[1]/OpportunityHeader[1]/Legal_Billing_Entity__c </expression>
+                        </operation>
+                        <link id="lnljpjej" targetId="lne6nzon"/>
+                     </assignment>
+                     <assignment id="lne6nzon">
+                        <title>Set OSC Input to Working Variable</title>
+                        <operation source="formula" to="output.VF_SemiStructured_ALL">
+                           <expression language="XQuery">&lt;PO_GetAll_VForce&gt;
+   &lt;Account&gt;
+      &lt;AccountName&gt;{$temp.tmp_VF_Account.Name }&lt;/AccountName&gt;
+      &lt;AccountType&gt;{$temp.tmp_VF_Account.Type }&lt;/AccountType&gt;
+      &lt;Billing_Contact_Email__c&gt;{$temp.tmp_VF_Account.Billing_Contact_Email__c }&lt;/Billing_Contact_Email__c&gt;
+      &lt;Fax&gt;{$temp.tmp_VF_Account.Fax }&lt;/Fax&gt;
+      &lt;Website&gt;{$temp.tmp_VF_Account.Website }&lt;/Website&gt;
+      &lt;Phone&gt;{$temp.tmp_VF_Account.Phone}&lt;/Phone&gt;
+      &lt;X18_Digit_ID__c&gt;{$input.in_OSC_Details[1]/Account[1]/X18_Digit_ID__c }&lt;/X18_Digit_ID__c&gt;
+      &lt;ShippingCity&gt;{$temp.tmp_VF_Account.ShippingCity }&lt;/ShippingCity&gt;
+      &lt;ShippingCountry&gt;{$temp.tmp_VF_Account.ShippingCountry }&lt;/ShippingCountry&gt;
+      &lt;ShippingPostalCode&gt;{$temp.tmp_VF_Account.ShippingPostalCode }&lt;/ShippingPostalCode&gt;
+      &lt;ShippingState&gt;{$temp.tmp_VF_Account.ShippingStreet }&lt;/ShippingState&gt;
+      &lt;ShippingStreet&gt;{$temp.tmp_VF_Account.ShippingStreet }&lt;/ShippingStreet&gt;
+      &lt;Payment_Term__c&gt;{$temp.tmp_VF_Account.Payment_Term__c }&lt;/Payment_Term__c&gt;
+      &lt;Sector__c&gt;{$temp.tmp_VF_Account.Sector__c }&lt;/Sector__c&gt;
+      &lt;Entity_Code__c&gt;{$temp.tmp_VF_Account.Entity_Code__c }&lt;/Entity_Code__c&gt;
+      &lt;Currency__c&gt;{$temp.tmp_VF_Account.Currency__c }&lt;/Currency__c&gt;
+      &lt;AccountID&gt;{$temp.tmp_VF_Account.Id }&lt;/AccountID&gt;
+      &lt;BillingContactFirstName__c&gt;{$temp.tmp_VF_Account.BillingContactFirstName__c }&lt;/BillingContactFirstName__c&gt;
+      &lt;BillingContactLastName__c&gt;{$temp.tmp_VF_Account.BillingContactLastName__c }&lt;/BillingContactLastName__c&gt;
+      &lt;Billing_Contact_Phone__c&gt;{$temp.tmp_VF_Account.Billing_Contact_Phone__c }&lt;/Billing_Contact_Phone__c&gt;
+      &lt;BillingStreet&gt;{$temp.tmp_VF_Account.BillingStreet }&lt;/BillingStreet&gt;
+      &lt;BillingCity&gt;{$temp.tmp_VF_Account.BillingCity }&lt;/BillingCity&gt;
+      &lt;BillingState&gt;{$temp.tmp_VF_Account.BillingState }&lt;/BillingState&gt;
+      &lt;BillingPostalCode&gt;{$temp.tmp_VF_Account.BillingPostalCode }&lt;/BillingPostalCode&gt;
+      &lt;BillingCountry&gt;{$temp.tmp_VF_Account.BillingCountry }&lt;/BillingCountry&gt;
+      &lt;SBQQ__TaxExempt__c&gt;{$temp.tmp_VF_Account.SBQQ__TaxExempt__c }&lt;/SBQQ__TaxExempt__c&gt;
+      &lt;BPAccountID__c&gt;{$temp.tmp_VF_Account.BPAccountID__c }&lt;/BPAccountID__c&gt;
+      &lt;Agresso_ID__c&gt;{$temp.tmp_VF_Account.Agresso_ID__c }&lt;/Agresso_ID__c&gt;
+      &lt;POI_DRE__c&gt;{$temp.tmp_VF_Account.POI_DRE__c }&lt;/POI_DRE__c&gt;
+   &lt;/Account&gt;
+   &lt;OpportunityHeader&gt;
+      &lt;ID&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/ID }&lt;/ID&gt;
+      &lt;AccountID&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/AccountID }&lt;/AccountID&gt;
+      &lt;CreatedDate&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/CreatedDate }&lt;/CreatedDate&gt;
+      &lt;Description&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Description }&lt;/Description&gt;
+      &lt;Currency_Type__c&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Currency_Type__c }&lt;/Currency_Type__c&gt;
+      &lt;Primary_Contact_c&gt;
+         &lt;ContactID&gt;&lt;/ContactID&gt;
+         &lt;FirstName&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Primary_Contact_c[1]/FirstName }&lt;/FirstName&gt;
+         &lt;LastName&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Primary_Contact_c[1]/LastName }&lt;/LastName&gt;
+         &lt;Email&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Primary_Contact_c[1]/Email }&lt;/Email&gt;
+         &lt;Phone&gt;&lt;/Phone&gt;
+         &lt;X18_Digit_ID__c&gt;&lt;/X18_Digit_ID__c&gt;
+         &lt;MailingCountry&gt;&lt;/MailingCountry&gt;
+         &lt;State&gt;&lt;/State&gt;
+      &lt;/Primary_Contact_c&gt;
+      &lt;Revenue_Generation_Date__c&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Revenue_Generation_Date__c }&lt;/Revenue_Generation_Date__c&gt;
+      &lt;Contract_Length_months__c&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/Contract_Length_months__c }&lt;/Contract_Length_months__c&gt;
+      &lt;Owner_Id&gt;&lt;/Owner_Id&gt;
+      &lt;Legal_Billing_Entity__c&gt;{$temp.tmp_OscLegal }&lt;/Legal_Billing_Entity__c&gt;
+      &lt;BPServiceContractId__c&gt;&lt;/BPServiceContractId__c&gt;
+      &lt;OwnerEmail&gt;&lt;/OwnerEmail&gt;
+      &lt;OpportunityType&gt;OSCAdvisoryOpportunity&lt;/OpportunityType&gt;
+      &lt;Out_Of_Scope__c&gt;&lt;/Out_Of_Scope__c&gt;
+   &lt;/OpportunityHeader&gt;
+   &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/Opportunity_ID }&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_ID }&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;{$temp.tmp_OscProd[1]/ProductCode }&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_CountryIsoCode }&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_Quantity }&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_VForceSalesPrice }&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;{$temp.tmp_OscProd[1]/ProductName }&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_Operational_Start_Date }&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/OpportunityProduct_Service_End_Date }&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/Product2_Custom_Pricing_Method }&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/Product2_Frequency }&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ__QuoteLine_Billing_Frequency }&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ__QuoteLine_Billing_Currency }&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ__QuoteLine_EffectiveQuantity }&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ__QuoteLine_Output_Amount }&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ__QuoteLine_Custom_DiscountAmount }&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;{$input.in_OSC_Details[1]/OpportunityProductDetails[1]/SBQQ_QuoteLine_Net_Unit_Price }&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;
+      &lt;BillingPlan&gt;
+         &lt;CustomerProject&gt;&lt;/CustomerProject&gt;
+         &lt;SalesOrder&gt;&lt;/SalesOrder&gt;
+         &lt;SalesOrderItem&gt;&lt;/SalesOrderItem&gt;
+         &lt;BillingPlanItem&gt;&lt;/BillingPlanItem&gt;
+         &lt;BillingPlanBillingDate&gt;&lt;/BillingPlanBillingDate&gt;
+         &lt;BillingPlanRelatedBillgStatus&gt;&lt;/BillingPlanRelatedBillgStatus&gt;
+         &lt;BillingPlanAmount&gt;&lt;/BillingPlanAmount&gt;
+         &lt;TransactionCurrency&gt;&lt;/TransactionCurrency&gt;
+         &lt;BillingPlanItemUsage&gt;&lt;/BillingPlanItemUsage&gt;
+         &lt;BillingPlanItemDescription&gt;&lt;/BillingPlanItemDescription&gt;
+         &lt;BillingPlanServiceStartDate&gt;&lt;/BillingPlanServiceStartDate&gt;
+         &lt;BillingPlanServiceEndDate&gt;&lt;/BillingPlanServiceEndDate&gt;
+      &lt;/BillingPlan&gt;
+      &lt;TBD_BillingType&gt;&lt;/TBD_BillingType&gt;
+      &lt;TBD_ContractLanguage&gt;&lt;/TBD_ContractLanguage&gt;
+      &lt;TBD_BillingTiming&gt;&lt;/TBD_BillingTiming&gt;
+      &lt;ItemCategory&gt;&lt;/ItemCategory&gt;
+      &lt;CalcTotal&gt;&lt;/CalcTotal&gt;
+   &lt;/OpportunityProductDetails&gt;
+&lt;/PO_GetAll_VForce&gt;
+</expression>
+                        </operation>
+                        <link id="lniwbzqx" targetId="ln1mvrjd"/>
+                     </assignment>
+                     <jumpTo id="ln1mvrjd">
+                        <link id="ln1mvrje" targetId="loe8m2i3"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="ln1mvrb7">
+                     <throw id="ln1mvrg6">
+                        <title>Invalid Input</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">HTTP_422</parameter>
+                           <parameter name="detail" source="constant" updatable="true">Input from VForce requires an 18-digit opportunity id; Input from OSC requires structured data containing at least 1 product</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Unprocessable Content</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="ln1mvrb3" targetId="ln1mvrb4" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Source}</arg>
+                           <arg name="right">VForce</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ln1mvrer" targetId="ln1mvres" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Source}</arg>
+                           <arg name="right">OSC</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ln1mvrb6" targetId="ln1mvrb7" type="containerLink"/>
+                  <link id="ln1mvrsp" targetId="lkqnsiwv"/>
+               </container>
+               <container id="lkqnsiwv" type="exclusive">
+                  <title>tmp_VF_Opportunity</title>
+                  <flow id="lkqnsiwz">
+                     <container id="loe8m22z" type="exclusive">
+                        <title>Single Product</title>
+                        <flow id="loe8m232">
+                           <assignment id="loe8m27b">
+                              <title>GET Product</title>
+                              <operation source="list" to="temp.tmp_VF_OpportunityProduct_List">
+                                 <query advanceQuery="false" from="AppConnSalesForce:OpportunityLineItem">
+                                    <where>Id = '{$input.in_OpportunityLineItem}'</where>
+                                 </query>
+                              </operation>
+                           </assignment>
+                           <link id="loe8m233" targetId="loe8m22z" type="containerLink"/>
+                        </flow>
+                        <flow id="loe8m235">
+                           <assignment id="loe8m25w">
+                              <title>GET Product List</title>
+                              <operation source="list" to="temp.tmp_VF_OpportunityProduct_List">
+                                 <query advanceQuery="false" from="AppConnSalesForce:OpportunityLineItem">
+                                    <where>OpportunityId = '{$temp.tmp_VF_Opportunity.Id}'  </where>
+                                 </query>
+                              </operation>
+                           </assignment>
+                           <link id="loe8m236" targetId="loe8m22z" type="containerLink"/>
+                        </flow>
+                        <link id="loe8m231" targetId="loe8m232" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_SingleProduct}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="loe8m234" targetId="loe8m235" type="containerLink"/>
+                        <link id="loe8m25v" targetId="lkqocee4"/>
+                     </container>
+                     <container id="lkqocee4" type="exclusive">
+                        <title>Loop Products</title>
+                        <flow id="lkqpnq3t">
+                           <assignment id="lkqpnq43">
+                              <title>Next Record</title>
+                              <operation source="formula" to="temp.tmp_VF_OpportunityProduct">
+                                 <expression language="XQuery">list:head($temp.tmp_VF_OpportunityProduct_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_VF_OpportunityProduct_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_VF_OpportunityProduct_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Counter">
+                                 <expression language="XQuery">$temp.tmp_Counter +1</expression>
+                              </operation>
+                              <link id="lnyo30l8" targetId="lnyo30l7"/>
+                           </assignment>
+                           <container id="lnyo30l7" type="exclusive">
+                              <title>Oppty Type</title>
+                              <flow id="lnyo30lb">
+                                 <assignment id="lnyo30mt">
+                                    <title>ADD Product to output No Quote</title>
+                                    <operation source="formula" to="temp.tmp_PO_Product_SemiStructured">
+                                       <expression language="XQuery">&lt;PO_GetAll_VForce_Product&gt;
+   &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+   &lt;OpportunityProduct_ID&gt;{$temp.tmp_VF_OpportunityProduct.Id }&lt;/OpportunityProduct_ID&gt;
+   &lt;OpportunityProduct_ProductCode&gt;{$temp.tmp_VF_OpportunityProduct.ProductCode }&lt;/OpportunityProduct_ProductCode&gt;
+     &lt;OpportunityProduct_CountryIsoCode&gt;{$temp.tmp_VF_OpportunityProduct.CountryIsoCode__c }&lt;/OpportunityProduct_CountryIsoCode&gt;
+   &lt;Country__c&gt;{$temp.tmp_VF_OpportunityProduct.Country__c }&lt;/Country__c&gt;
+   &lt;OpportunityProduct_Quantity&gt;{if(util:isNull($temp.tmp_VF_OpportunityProduct.Quantity)) 
+   								 then (0) 
+                                 else ($temp.tmp_VF_OpportunityProduct.Quantity)  }&lt;/OpportunityProduct_Quantity&gt;
+   &lt;OpportunityProduct_VForceSalesPrice&gt;{$temp.tmp_VF_OpportunityProduct.VForceSalesPrice__c }&lt;/OpportunityProduct_VForceSalesPrice&gt;
+   &lt;OpportunityProduct_Name&gt;{$temp.tmp_VF_OpportunityProduct.Name }&lt;/OpportunityProduct_Name&gt;
+   &lt;Product2_Description&gt;{$temp.tmp_VF_OpportunityProduct.Product2.Description }&lt;/Product2_Description&gt;
+   &lt;OpportunityProduct_Operational_Start_Date&gt;{date:toDate($temp.tmp_VF_OpportunityProduct.Operational_Start_Date__c,"YYYY-MM-DD") }&lt;/OpportunityProduct_Operational_Start_Date&gt;
+   &lt;OpportunityProduct_Service_End_Date&gt;{date:lastDay(date:toDate($temp.tmp_VF_OpportunityProduct.Operational_Start_Date__c,"YYYY-MM-DD"))}&lt;/OpportunityProduct_Service_End_Date&gt;   
+   &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+   &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+   &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;   
+   &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c }&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+   &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;{if (util:isNull($temp.tmp_VF_OpportunityProduct.Quantity )) then ("0.00") else ($temp.tmp_VF_OpportunityProduct.Quantity ) }&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+   &lt;SBQQ__QuoteLine_Output_Amount&gt;{	if (util:isNull($temp.tmp_VF_OpportunityProduct.Sales_Price__c )) 
+   									then (0) 
+   									else ($temp.tmp_VF_OpportunityProduct.Sales_Price__c ) }&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+   &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;{	if (util:isNull($temp.tmp_VF_OpportunityProduct.discount)) 
+   											then (0) 
+                                            else ($temp.tmp_VF_OpportunityProduct.discount)}&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+   &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;{	if (util:isNull($temp.tmp_VF_OpportunityProduct.Sales_Price__c)) 
+   									then (0) 
+                                    else ($temp.tmp_VF_OpportunityProduct.Sales_Price__c) }&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+   &lt;!-- Alternative Currency Fields --&gt;
+   &lt;Country_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Country_Currency__c&gt;
+&lt;Output_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Output_Currency__c&gt;
+&lt;Package_Output_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Package_Output_Currency__c&gt;
+&lt;Product_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Product_Currency__c&gt;
+&lt;Market__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Market__c&gt;
+&lt;Bundle_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Bundle_Currency__c&gt;
+&lt;Billing_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.Sales_Currency__c}&lt;/Billing_Currency__c&gt;
+
+&lt;/PO_GetAll_VForce_Product&gt;</expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="output.VF_SemiStructured_ALL[1]/OpportunityProductDetails">
+                                       <function name="list:append">
+                                          <arg name="dest_field">{$output.VF_SemiStructured_ALL[1]/OpportunityProductDetails}</arg>
+                                          <arg name="new_field">{$temp.tmp_PO_Product_SemiStructured}</arg>
+                                       </function>
+                                    </operation>
+                                 </assignment>
+                                 <link id="lnyo30lc" targetId="lnyo30l7" type="containerLink"/>
+                              </flow>
+                              <flow id="lnyo30le">
+                                 <assignment id="lnyo30ln">
+                                    <title>ADD Product to output</title>
+                                    <operation source="formula" to="temp.tmp_PO_Product_SemiStructured">
+                                       <expression language="XQuery">&lt;PO_GetAll_VForce_Product&gt;
+   &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+   &lt;OpportunityProduct_ID&gt;{$temp.tmp_VF_OpportunityProduct.Id }&lt;/OpportunityProduct_ID&gt;
+   &lt;OpportunityProduct_ProductCode&gt;{$temp.tmp_VF_OpportunityProduct.ProductCode }&lt;/OpportunityProduct_ProductCode&gt;
+     &lt;OpportunityProduct_CountryIsoCode&gt;{$temp.tmp_VF_OpportunityProduct.CountryIsoCode__c }&lt;/OpportunityProduct_CountryIsoCode&gt;
+   &lt;Country__c&gt;{$temp.tmp_VF_OpportunityProduct.Country__c }&lt;/Country__c&gt;
+   &lt;OpportunityProduct_Quantity&gt;{if(util:isNull($temp.tmp_VF_OpportunityProduct.Quantity)) then (0) else ($temp.tmp_VF_OpportunityProduct.Quantity)  }&lt;/OpportunityProduct_Quantity&gt;
+   &lt;OpportunityProduct_VForceSalesPrice&gt;{$temp.tmp_VF_OpportunityProduct.VForceSalesPrice__c }&lt;/OpportunityProduct_VForceSalesPrice&gt;
+   &lt;OpportunityProduct_Name&gt;{$temp.tmp_VF_OpportunityProduct.Name }&lt;/OpportunityProduct_Name&gt;
+   &lt;Product2_Description&gt;{$temp.tmp_VF_OpportunityProduct.Product2.Description }&lt;/Product2_Description&gt;
+   &lt;OpportunityProduct_Operational_Start_Date&gt;{date:toDate($temp.tmp_VF_OpportunityProduct.Operational_Start_Date__c,"YYYY-MM-DD") }&lt;/OpportunityProduct_Operational_Start_Date&gt;
+   &lt;OpportunityProduct_Service_End_Date&gt;{date:toDate($temp.tmp_VF_OpportunityProduct.Service_End_Date__c,"YYYY-MM-DD") }&lt;/OpportunityProduct_Service_End_Date&gt;
+   &lt;Product2_Custom_Pricing_Method&gt;{$temp.tmp_VF_OpportunityProduct.Product2.Custom_Pricing_Method__c }&lt;/Product2_Custom_Pricing_Method&gt;
+   &lt;Product2_Frequency&gt;{$temp.tmp_VF_OpportunityProduct.Product2.Frequency__c }&lt;/Product2_Frequency&gt;
+   &lt;SBQQ__QuoteLine_Billing_Frequency&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Billing_Frequency__c }&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+   &lt;!--SBQQ__QuoteLine_Billing_Currency&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Billing_Currency__c }&lt;/SBQQ__QuoteLine_Billing_Currency--&gt;
+   &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Product_Currency__c }&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+   &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;{if (util:isNull($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.SBQQ__EffectiveQuantity__c)) then ("0.00") else ($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.SBQQ__EffectiveQuantity__c) }&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+   &lt;SBQQ__QuoteLine_Output_Amount&gt;{if (util:isNull($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Output_Amount__c)) then (0) else ($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Output_Amount__c) }&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+   &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;{if (util:isNull($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Custom_Discount__c)) then (0) else ($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Custom_Discount__c)}&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+   &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;{if (util:isNull($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Net_Unit_Price__c)) then (0) else ($temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Net_Unit_Price__c) }&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+   &lt;!-- Alternative Currency Fields --&gt;
+   &lt;Country_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Country_Currency__c}&lt;/Country_Currency__c&gt;
+&lt;Output_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Output_Currency__c}&lt;/Output_Currency__c&gt;
+&lt;Package_Output_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Package_Output_Currency__c}&lt;/Package_Output_Currency__c&gt;
+&lt;Product_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Product_Currency__c}&lt;/Product_Currency__c&gt;
+&lt;Market__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Market__c}&lt;/Market__c&gt;
+&lt;Bundle_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Bundle_Currency__c}&lt;/Bundle_Currency__c&gt;
+&lt;Billing_Currency__c&gt;{$temp.tmp_VF_OpportunityProduct.SBQQ__QuoteLine__r.Billing_Currency__c}&lt;/Billing_Currency__c&gt;
+&lt;Sequence&gt;{$temp.tmp_Counter }&lt;/Sequence&gt;
+&lt;/PO_GetAll_VForce_Product&gt;</expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="output.VF_SemiStructured_ALL[1]/OpportunityProductDetails">
+                                       <function name="list:append">
+                                          <arg name="dest_field">{$output.VF_SemiStructured_ALL[1]/OpportunityProductDetails}</arg>
+                                          <arg name="new_field">{$temp.tmp_PO_Product_SemiStructured}</arg>
+                                       </function>
+                                    </operation>
+                                 </assignment>
+                                 <link id="lnyo30lf" targetId="lnyo30l7" type="containerLink"/>
+                              </flow>
+                              <link id="lnyo30la" targetId="lnyo30lb" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$temp.tmp_VF_Opportunity.RecordType.Name}</arg>
+                                       <arg name="right">Change Note</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lnyo30ld" targetId="lnyo30le" type="containerLink"/>
+                              <link id="lnyo30lm" targetId="lkqpnq82"/>
+                           </container>
+                           <jumpTo id="lkqpnq82">
+                              <link id="lkqpnq83" targetId="lkqocee4"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lkqpnq3v">
+                           <assignment id="loe8m2kc">
+                              <title>Do not add default Products</title>
+                              <operation source="field" to="temp.tmp_DefaultProduct_Country">output.VF_SemiStructured_ALL</operation>
+                              <link id="loe8m2kd" targetId="lmm7rp9r"/>
+                           </assignment>
+                           <assignment id="llwfgr2c">
+                              <title>Final Output ADD Billing Plan</title>
+                              <operation source="formula" to="temp.tmp_ProductCategoryListPO">
+                                 <expression language="XQuery">for $xx in $temp.tmp_ProductCategoryList_DB
+let $x := list:head($xx)
+	,$b := list:tail($xx)
+return
+&lt;POProductCategoryList&gt;
+   &lt;ProductCode&gt;{$x/ProductCode/text()}&lt;/ProductCode&gt;
+   &lt;ItemCategory&gt;{$x/ItemCategory/text()}&lt;/ItemCategory&gt;
+   &lt;IsActive&gt;{$x/IsActive/text()}&lt;/IsActive&gt;
+   &lt;CreatedDate&gt;{$x/CreatedDate/text()}&lt;/CreatedDate&gt;
+   &lt;id&gt;{$x/id/text()}&lt;/id&gt;
+&lt;/POProductCategoryList&gt;
+</expression>
+                              </operation>
+                              <operation source="formula" to="output.VF_SemiStructured_ALL2">
+                                 <expression language="XQuery">let $VF  := $temp.tmp_DefaultProduct_Country[1] ,
+	$VFa := $VF/Account[1],
+    $VFo := $VF/OpportunityHeader[1]    
+return
+&lt;VForceData xmlns:ns2="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd" xmlns:ns4="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:type="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt;
+	{$VFa}
+    {$VFo}
+    {for $VFp in $VF/OpportunityProductDetails 
+     let 
+     	 (:Last day of the CURRENT Month:)	
+         $LastDayCurMo := date:lastDay($VFp/OpportunityProduct_Operational_Start_Date)
+         
+         (:first day of the NEXT month:)
+     	 ,$FirstDayNextMo := date:addToDate( date:lastDay($VFp/OpportunityProduct_Operational_Start_Date), "DD",1) 
+         
+         (:first day of the CURRENT month:)
+     	 ,$FirstDayCurMo := date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "YYYY")||"-"|| 
+         								date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "MM") ||"-01"
+                                   	  ,"YYYY-MM-DD")
+                                      
+		 (:WIP first day of the CURRENT Quarter:)
+     	 ,$FirstDayCurQ := date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "YYYY")||"-"|| 
+         								(switch (date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "MM"))
+                                        	case 1  return 1  (:Q1 Starts in Jan:)
+                                            case 2  return 1  (:Q1 Starts in Jan:)
+                                            case 3  return 1  (:Q1 Starts in Jan:)
+                                            case 4  return 4  (:Q2 Starts in Apr:)
+                                            case 5  return 4  (:Q2 Starts in Apr:)
+                                            case 6  return 4  (:Q2 Starts in Apr:)
+                                            case 7  return 7  (:Q3 Starts in Jul:)
+                                            case 8  return 7  (:Q3 Starts in Jul:)
+                                            case 9  return 7  (:Q3 Starts in Jul:)
+                                            case 10 return 10 (:Q4 Starts in Oct:)
+                                            case 11 return 10 (:Q4 Starts in Oct:)
+                                            case 12 return 10 (:Q4 Starts in Oct:)
+                                            default return 1)
+                                        ||"-01"
+                                   	  ,"YYYY-MM-DD")    
+                                      
+         (:first day of the next STD Quarter:)
+     	 ,$FirstDayStdQ := 
+         (
+         	switch (date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "MM"))  
+         	 (:Services Starting in Jul-Sep start billing on 1 Oct:)
+             case 7  return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")||"-10-01","YYYY-MM-DD")
+             case 8  return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")||"-10-01","YYYY-MM-DD")
+             case 9  return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")||"-10-01","YYYY-MM-DD")
+             (:Services Starting in Oct-Dec start billing on 1 Jan of the following year:)
+             case 10 return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")+1||"-01-01","YYYY-MM-DD")
+             case 11 return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")+1||"-01-01","YYYY-MM-DD")
+             case 12 return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")+1||"-01-01","YYYY-MM-DD")
+             (:Services Starting in Jan-Jun start billing on 1 Jul:)
+             default return date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")||"-07-01","YYYY-MM-DD")
+         )
+         
+          ,$StdQ_ServStartDate 	:= date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")||"-07-01","YYYY-MM-DD")
+          ,$StdQ_ServEndDate	:= date:toDate( date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date,"YYYY")+1||"-06-30","YYYY-MM-DD")
+                                                       
+		 ,$ProRataFactor := (3 - date:getDatePart($FirstDayCurMo, "MM") + date:getDatePart($FirstDayCurQ, "MM")) div 3                                                      
+                                               		                                      
+        ,$FreqProd := 	switch(fn:upper-case($VFp/Product2_Frequency)) (:Numerator:)
+     				   		case fn:upper-case("Annual") return 1
+                            case fn:upper-case("Annually") return 1
+                            case fn:upper-case("One Time") return 1
+                            case fn:upper-case("50% UpFront - 50% on Completion") return 2
+                            case fn:upper-case("Semi-Annual") return 2
+                       		case fn:upper-case("Quarterly") return 4
+                            case fn:upper-case("Quarterly NonStd") return 4
+                            case fn:upper-case("Monthly") return 12
+                       		default return 1
+                            
+		,$FreqBill := switch(fn:upper-case($VFp/SBQQ__QuoteLine_Billing_Frequency)) (:Denominator:)
+     						case fn:upper-case("Annual") return 1
+                            case fn:upper-case("Annually") return 1
+                            case fn:upper-case("One Time") return 1
+                            case fn:upper-case("50% UpFront - 50% on Completion") return 2
+                            case fn:upper-case("Semi-Annual") return 2
+                       		case fn:upper-case("Quarterly") return 4
+                            case fn:upper-case("Quarterly NonStd") return 4
+                            case fn:upper-case("Monthly") return 12
+                            default return 1                            
+                                    
+        ,$itemCat := $temp.tmp_ProductCategoryListPO[ProductCode=$VFp/OpportunityProduct_ProductCode]/ItemCategory/text() 
+		,$RuleSet_temp := switch($VFp/Product2_Custom_Pricing_Method)
+        			 case "Block" return 6
+                     default return switch($itemCat)
+        			 				case "PTE" return 5
+                     				case "PFP" return 1
+                                    case "PPS" return 	switch ($FreqBill)
+                                    					case 4 return 	switch ($VFp/OpportunityProduct_ProductCode) 
+                                                                        case "GR-SC-AC-007" return 4 (:exception is standard quarters:)
+																		case "GR-SC-AC-009" return 4
+                                                                        case "GR-SC-AC-010" return 4
+                                                                        case "GR-SC-AC-026" return 4
+                                                                        case "GR-SC-AC-117" return 4
+                                                                        case "GR-SC-AC-118" return 4
+                                                                        case "GR-SC-AC-119" return 4
+                                                                        case "FA-PP-PY-051" return 4
+                                                                        default return 3 (:default is pro-rata quarterly:)                                                       
+                                                        default return 1
+                     				default return 1
+        
+        ,$RuleSet :=  switch ($VFp/OpportunityProduct_ProductCode) 
+                      case "AD-PE-PP-081" return 7
+                      case "AD-PE-PP-082" return 7
+                      case "AD-PE-PP-083" return 7
+                      case "AD-PE-PP-084" return 7
+                      case "AD-PE-PP-085" return 7
+                      case "AD-PE-PP-086" return 7
+                      case "AD-TX-SC-003" return 7
+                      case "AD-TX-SC-004" return 7
+                      case "AD-TX-SC-005" return 7
+                      case "AD-TX-SC-006" return 7
+                      case "AD-TX-SC-007" return 7
+                      case "AD-TX-SC-008" return 7
+                      default return $RuleSet_temp
+        
+        
+                            
+       ,$FreqBillQty := 
+       if ($VFo/OpportunityType = "6- Change Note" ) 
+       then (1) 
+       else(       
+       		if($RuleSet=4) 
+       		then(switch (date:getDatePart($VFp/OpportunityProduct_Operational_Start_Date, "MM"))  
+                                 (:Services Starting in Jul-Sep have 3 installments: Oct/Jan/Apr :)
+                                 case 7  return 3 
+                                 case 8  return 3
+                                 case 9  return 3
+                                 (:Services Starting in Oct-Dec have 2 installments: Jan/Apr :)
+                                 case 10 return 2
+                                 case 11 return 2
+                                 case 12 return 2
+                                 (:Services Starting in Jan-Jun have 4 installments: Jul/Oct/Jan/Apr:)
+                                 default return 4)
+       		else (
+            		if ($RuleSet=3 and $ProRataFactor != 1 ) 
+                    then(5) 
+                    else ($FreqBill)
+                 )
+        )
+                 
+	   ,$RoundedTotal 	:= fn:round($VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBillQty,2)*$FreqBillQty  
+       ,$UnroundedTotal	:= $VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd 
+       ,$RoundingAdj 	:= 	if( $RoundedTotal &gt; $UnroundedTotal)
+                        	then (0.01)
+                        	else (0)
+       
+    return
+    &lt;OpportunityProductDetails&gt;
+    	{$VFp/Opportunity_ID}
+        {$VFp/OpportunityProduct_CountryIsoCode}
+        {$VFp/Country__c}
+        {$VFp/OpportunityProduct_ID}
+        {$VFp/OpportunityProduct_Operational_Start_Date}
+        {$VFp/OpportunityProduct_ProductCode}
+        {$VFp/OpportunityProduct_Quantity}
+        {$VFp/OpportunityProduct_Service_End_Date}
+        {$VFp/OpportunityProduct_VForceSalesPrice}
+        {$VFp/Product2_Custom_Pricing_Method}
+        {$VFp/Product2_Description}
+        {$VFp/Product2_Frequency}
+        {$VFp/SBQQ__QuoteLine_Billing_Currency}
+        {$VFp/SBQQ__QuoteLine_Billing_Frequency}
+        {$VFp/SBQQ__QuoteLine_Custom_DiscountAmount}
+        {$VFp/SBQQ__QuoteLine_EffectiveQuantity}
+        {$VFp/SBQQ__QuoteLine_Output_Amount}
+        {$VFp/SBQQ_QuoteLine_Net_Unit_Price}
+        &lt;CalcTotal&gt;{$VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd}&lt;/CalcTotal&gt;
+        &lt;RoundedTotal&gt;{$RoundedTotal}&lt;/RoundedTotal&gt;
+        &lt;UnroundedTotal&gt;{$UnroundedTotal}&lt;/UnroundedTotal&gt;
+        &lt;RoundingAdj&gt;{$RoundingAdj}&lt;/RoundingAdj&gt;
+		&lt;ItemCategory&gt;{$itemCat}&lt;/ItemCategory&gt;
+		&lt;LastDayCurMo&gt;{$LastDayCurMo}&lt;/LastDayCurMo&gt;
+		&lt;FirstDayNextMo&gt;{$FirstDayNextMo}&lt;/FirstDayNextMo&gt;
+		&lt;FirstDayCurMo&gt;{$FirstDayCurMo}&lt;/FirstDayCurMo&gt;
+		&lt;FirstDayCurQ&gt;{$FirstDayCurQ}&lt;/FirstDayCurQ&gt;
+		&lt;FirstDayStdQ&gt;{$FirstDayStdQ}&lt;/FirstDayStdQ&gt;
+		&lt;ProRataFactor&gt;{fn:format-number($ProRataFactor,"#0.000")}&lt;/ProRataFactor&gt;
+		&lt;FreqProd&gt;{$FreqProd}&lt;/FreqProd&gt;
+		&lt;FreqBill&gt;{$FreqBill}&lt;/FreqBill&gt;
+		&lt;RuleSet&gt;{$RuleSet}&lt;/RuleSet&gt; 
+        {if (fn:string-length($VFp/OpportunityProduct_ProductCode)=0)
+         then () else (
+         for $i in 1 to $FreqBillQty return         
+            &lt;BillingPlan&gt;
+			&lt;BillingPlanItem&gt;{$i}&lt;/BillingPlanItem&gt;
+			&lt;BillingPlanItemDescription&gt;{$VFp/Product2_Description/text()}&lt;/BillingPlanItemDescription&gt;
+			&lt;!--Option 1: Unit Price as determined per Product Frequency compensating for differences between Product Frequency and Billing Frequency--&gt;
+			&lt;BillingPlanAmount1&gt;{$VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBill}&lt;/BillingPlanAmount1&gt;
+			&lt;!--Option 2: Annual Price divided by number of invoices--&gt;
+			&lt;BillingPlanAmount2&gt;{$VFp/OpportunityProduct_VForceSalesPrice div $FreqBill}&lt;/BillingPlanAmount2&gt;
+			&lt;!-- BillingPlanAmount(1/2) are not used, only BillingPlanAmount --&gt;
+			&lt;!-- Quarterly Pro Rata Q1 --&gt;
+              {if ($i=1 and $RuleSet=3) 
+              then(&lt;BillingPlanAmount&gt;{fn:round($VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBill * $ProRataFactor,2)}&lt;/BillingPlanAmount&gt;) 
+              else()}
+              
+              &lt;!-- Quarterly Pro Rata Q5 --&gt;
+              {if ($i=5 and $RuleSet=3) 
+              then(&lt;BillingPlanAmount&gt;{fn:round($VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBill * (1-$ProRataFactor),2)}&lt;/BillingPlanAmount&gt;) 
+              else()}
+              
+              &lt;!-- Standard Quarters --&gt;
+              {if ($RuleSet=4)
+              then(&lt;BillingPlanAmount&gt;{fn:round($VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBillQty,2) - $RoundingAdj }&lt;/BillingPlanAmount&gt;) 
+              else()}
+              
+              &lt;!-- Default --&gt;
+              {if ($RuleSet=1 or $RuleSet=2 or $RuleSet=5 or $RuleSet=6 or $RuleSet=7 or ($RuleSet=3 and $i != 1 and $i != 5))
+              then(&lt;BillingPlanAmount&gt;{fn:round($VFp/SBQQ_QuoteLine_Net_Unit_Price * $FreqProd div $FreqBill,2) - $RoundingAdj }&lt;/BillingPlanAmount&gt;) 
+              else()}
+              
+              
+               
+              &lt;TransactionCurrency&gt;{$VFp/SBQQ__QuoteLine_Billing_Currency/text()}&lt;/TransactionCurrency&gt;
+			&lt;BillingPlanItemUsage&gt;{ if ($VF/Product2_Custom_Pricing_Method/text() = "Block") 
+            						then ("U003") 
+                                    else (	if ($RuleSet=7) 
+                                    		then (4) 
+                                            else ())}&lt;/BillingPlanItemUsage&gt;
+&lt;!-- Rule set #1: “Normal” Periodic Service – Billed in Advance and #2 in Arrears (NOT USED)--&gt;
+              {if($RuleSet=1  or $RuleSet=2) then (
+              &lt;BillingPlanServiceStartDate&gt;{date:addToDate($FirstDayCurMo , "MM", (12 div $FreqBill)*($i - 1))}&lt;/BillingPlanServiceStartDate&gt;) else ()}
+              
+              {if($RuleSet=1 or $RuleSet=2) 
+              then ( 
+              		if ($VFo/OpportunityType/text() = "6- Change Note") 
+              		then (
+              &lt;BillingPlanServiceEndDate&gt;{$LastDayCurMo}&lt;/BillingPlanServiceEndDate&gt;) 
+              
+              		else (
+              &lt;BillingPlanServiceEndDate&gt;{date:addToDate( 
+              							  	date:addToDate($FirstDayCurMo, "MM", (12 div $FreqBill)*($i))
+                                          	,"DD",-1)}&lt;/BillingPlanServiceEndDate&gt;)) else () }                                            
+              
+              {if($RuleSet=1) then (&lt;BillingPlanBillingDate&gt;{date:addToDate($FirstDayCurMo, "MM", (12 div $FreqBill)*($i - 1)) }&lt;/BillingPlanBillingDate&gt; ) else ()}
+              {if($RuleSet=2) then (&lt;BillingPlanBillingDate&gt;{date:addToDate( 
+              							  	date:addToDate($FirstDayCurMo, "MM", (12 div $FreqBill)*($i))
+                                          	,"DD",-1)}&lt;/BillingPlanBillingDate&gt; ) else ()}
+              
+&lt;!-- Rule set #3: Quarterly Pro Rata--&gt;  
+              {if($RuleSet=3) then (
+              &lt;BillingPlanServiceStartDate&gt;{date:addToDate($FirstDayCurQ , "MM", (12 div $FreqBill)*($i - 1))}&lt;/BillingPlanServiceStartDate&gt;) else ()}
+              
+              {if($RuleSet=3) then (
+              &lt;BillingPlanServiceEndDate&gt;{date:addToDate( 
+              							  	date:addToDate($FirstDayCurQ, "MM", (12 div $FreqBill)*($i))
+                                          	,"DD",-1)}&lt;/BillingPlanServiceEndDate&gt;) else ()}
+              
+              {if($RuleSet=3 and $i=1) 
+              then (&lt;BillingPlanBillingDate&gt;{date:addToDate($FirstDayCurMo, "MM", (12 div $FreqBill)*($i - 1)) }&lt;/BillingPlanBillingDate&gt; ) 
+              else ()}
+              {if($RuleSet=3 and $i!=1) 
+              then (&lt;BillingPlanBillingDate&gt;{date:addToDate($FirstDayCurQ, "MM", (12 div $FreqBill)*($i - 1)) }&lt;/BillingPlanBillingDate&gt; ) 
+              else ()}
+
+&lt;!-- Rule set #4: Std Quarters--&gt;    
+              {if($RuleSet=4) then (
+              &lt;BillingPlanServiceStartDate&gt;{date:addToDate($StdQ_ServStartDate , "MM", (12 div $FreqBill)*($i - 1))}&lt;/BillingPlanServiceStartDate&gt;) else ()}
+              
+              {if($RuleSet=4) then (
+              &lt;BillingPlanServiceEndDate&gt;{date:addToDate( 
+              							  	date:addToDate($StdQ_ServStartDate, "MM", (12 div $FreqBill)*($i))
+                                          	,"DD",-1)}&lt;/BillingPlanServiceEndDate&gt;) else ()}
+              
+              {if($RuleSet=4) then (&lt;BillingPlanBillingDate&gt;{date:addToDate($FirstDayStdQ, "MM", (12 div $FreqBill)*($i - 1)) }&lt;/BillingPlanBillingDate&gt; ) else ()}
+
+
+&lt;!-- Rule set #5: Usage (M) and #6: T&amp;E (M/Q/A)--&gt;  
+              {if($RuleSet=5 or $RuleSet=6) then (
+              &lt;BillingPlanBillingDate&gt;{date:addToDate(switch ($FreqBill) 
+              										case 4 return date:addToDate($FirstDayCurQ ,"MM",3)
+                                                    default return $FirstDayNextMo
+              							 , "MM", (12 div $FreqBill)*($i - 1)) }&lt;/BillingPlanBillingDate&gt; ) else ()}				
+    
+&lt;!-- Rule set #7: Fixed Min Deposits--&gt;  
+              {if($RuleSet=7) then (
+              &lt;BillingPlanBillingDate&gt;{$FirstDayCurMo}&lt;/BillingPlanBillingDate&gt;) else ()}
+              
+            &lt;/BillingPlan&gt;)}
+    &lt;/OpportunityProductDetails&gt;
+    }
+
+&lt;/VForceData&gt;</expression>
+                              </operation>
+                              <link id="lmg5x0v3" targetId="lluu4va6"/>
+                           </assignment>
+                           <container id="lmm7rp9r" type="exclusive">
+                              <title>Opportunity Type</title>
+                              <flow id="lmm7rp9u">
+                                 <container id="loe8m2h2" type="exclusive">
+                                    <title>tmp_SingleProduct</title>
+                                    <flow id="loe8m2h5">
+                                       <link id="loe8m2h6" targetId="loe8m2h2" type="containerLink"/>
+                                    </flow>
+                                    <flow id="loe8m2h8">
+                                       <assignment id="loe8m2i3">
+                                          <title>Add Default Products</title>
+                                          <operation source="formula" to="temp.tmp_DefaultProduct_Country">
+                                             <expression language="XQuery">let $VF  := $output.VF_SemiStructured_ALL[1] ,
+	$VFa := $VF/Account[1],
+    $VFo := $VF/OpportunityHeader[1],    
+    $VFp := $VF/OpportunityProductDetails 
+return
+&lt;VForceData xmlns:ns2="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd" xmlns:ns4="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:type="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt;
+	{$VFa}
+    {$VFo}
+    {$VFp}    
+    
+    &lt;!-- UniversalDefault1: DRE (DV0001) --&gt;
+    {if ($VFo/OpportunityType = "6- Change Note" ) then () else (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;Default1&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;DV0001&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Direct Reimbursable Expense (DRE)&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Direct Reimbursable Expense (DRE)&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;Default Product&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;Monthly&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;Monthly&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[2]/SBQQ__QuoteLine_Billing_Currency  }&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;      
+    &lt;/OpportunityProductDetails&gt;)}        
+    
+    &lt;!-- UniversalDefault2: GAM (GR-RC-OV-012) --&gt;
+    {if ($VFo/OpportunityType = "6- Change Note" ) then () else (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;Default2&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;GR-RC-OV-012&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Management and Coordination&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Management and Coordination&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;Monthly&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;Monthly&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[2]/SBQQ__QuoteLine_Billing_Currency  }&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt; 
+    &lt;/OpportunityProductDetails&gt;)}
+    
+    &lt;!-- FirstTimeCustomerDefault1: Legal Advisory (AD-LG-CR-080) --&gt;
+    {if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='AD-LG-CR-080'])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;FirstTimeCustomerDefault1&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;AD-LG-CR-080&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Global Corporate Legal advisory services&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Global Corporate Legal advisory services&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt; 
+    &lt;/OpportunityProductDetails&gt;) else ()}    
+    &lt;!-- FirstTimeCustomerDefault2: Custom Service (AD-PE-PP-109) --&gt;
+    {if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='AD-PE-PP-109'])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;FirstTimeCustomerDefault2&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;AD-PE-PP-109&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Advisory Custom Services - People - One Time&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Advisory Custom Services - People - One Time&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt; 
+    &lt;/OpportunityProductDetails&gt;) else()}   
+    &lt;!-- FirstTimeCustomerDefault3: Global Mobility (AD-PE-PP-096) --&gt;
+    {if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='AD-PE-PP-096'])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;FirstTimeCustomerDefault3&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;AD-PE-PP-096&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Global Mobility&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Global Mobility&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt; 
+    &lt;/OpportunityProductDetails&gt;)else()}    
+    &lt;!-- FirstTimeCustomerDefault4: Tax (AD-TX-IA-040) --&gt;
+    {if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='AD-TX-IA-040'])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+      &lt;Opportunity_ID&gt;{$temp.tmp_VF_OpportunityProduct.Opportunity.Id}&lt;/Opportunity_ID&gt;
+      &lt;OpportunityProduct_ID&gt;FirstTimeCustomerDefault4&lt;/OpportunityProduct_ID&gt;
+      &lt;OpportunityProduct_ProductCode&gt;AD-TX-IA-040&lt;/OpportunityProduct_ProductCode&gt;
+      &lt;OpportunityProduct_CountryIsoCode&gt;&lt;/OpportunityProduct_CountryIsoCode&gt;
+      &lt;Country__c&gt;&lt;/Country__c&gt;
+      &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+      &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+      &lt;OpportunityProduct_Name&gt;Advisory Customer Services – Tax – One Time&lt;/OpportunityProduct_Name&gt;
+      &lt;Product2_Description&gt;Advisory Customer Services – Tax – One Time&lt;/Product2_Description&gt;
+      &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+      &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+      &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+      &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+      &lt;SBQQ__QuoteLine_Billing_Currency&gt;&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+      &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+      &lt;SBQQ__QuoteLine_Output_Amount&gt;0&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+      &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;0&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+      &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt; 
+    &lt;/OpportunityProductDetails&gt;)else()}
+    
+    &lt;!-- CountryDefault1: Custom\Ongoing (FA-FR-EA-012) --&gt;
+    {for  $Country in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails/OpportunityProduct_CountryIsoCode)
+   ,$Currency in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/SBQQ__QuoteLine_Billing_Currency)
+    return 
+    if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='FA-FR-EA-012' and OpportunityProduct_CountryIsoCode=$Country])=0)
+    then (
+  &lt;OpportunityProductDetails&gt;
+     &lt;Opportunity_ID&gt;{$VFo/ID/text()}&lt;/Opportunity_ID&gt;
+     &lt;OpportunityProduct_ID&gt;CountryDefault1&lt;/OpportunityProduct_ID&gt;
+     &lt;OpportunityProduct_ProductCode&gt;FA-FR-EA-012--&lt;/OpportunityProduct_ProductCode&gt;
+     &lt;OpportunityProduct_CountryIsoCode&gt;{$Country}&lt;/OpportunityProduct_CountryIsoCode&gt;
+     &lt;Country__c&gt;{distinct-values($VF/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/Country__c)}&lt;/Country__c&gt;
+     &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+     &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+     &lt;OpportunityProduct_Name&gt;Ongoing Custom Service - One Time&lt;/OpportunityProduct_Name&gt;
+     &lt;Product2_Description&gt;Ongoing Custom Service - One Time&lt;/Product2_Description&gt;
+     &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+     &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+     &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+     &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+     &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+     &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$Currency}&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+     &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+     &lt;SBQQ__QuoteLine_Output_Amount&gt;1&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+     &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;1&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+     &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+  &lt;/OpportunityProductDetails&gt;)else()}
+	&lt;!-- CountryDefault2: Custom\Implementation (GR-ES-SU-218) --&gt;
+    {for $Country in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails/OpportunityProduct_CountryIsoCode)
+   ,$Currency in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/SBQQ__QuoteLine_Billing_Currency)
+     return
+     if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='GR-ES-SU-218' and OpportunityProduct_CountryIsoCode=$Country])=0)
+    then (
+  &lt;OpportunityProductDetails&gt;
+     &lt;Opportunity_ID&gt;{$VFo/ID/text()}&lt;/Opportunity_ID&gt;
+     &lt;OpportunityProduct_ID&gt;CountryDefault2&lt;/OpportunityProduct_ID&gt;
+     &lt;OpportunityProduct_ProductCode&gt;GR-ES-SU-218--&lt;/OpportunityProduct_ProductCode&gt;
+     &lt;OpportunityProduct_CountryIsoCode&gt;{$Country}&lt;/OpportunityProduct_CountryIsoCode&gt;
+     &lt;Country__c&gt;{distinct-values($VF/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/Country__c)}&lt;/Country__c&gt;
+     &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+     &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+     &lt;OpportunityProduct_Name&gt;Implementation Custom Services - One Time&lt;/OpportunityProduct_Name&gt;
+     &lt;Product2_Description&gt;Implementation Custom Services - One Time&lt;/Product2_Description&gt;
+     &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+     &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+     &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+     &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+     &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+     &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$Currency}&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+     &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+     &lt;SBQQ__QuoteLine_Output_Amount&gt;1&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+     &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;1&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+     &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+  &lt;/OpportunityProductDetails&gt;)else()} 
+    &lt;!-- CountryDefault3: Custom\Regulatory Compliance (GR-RC-SP-048) --&gt;
+    {for  $Country in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails/OpportunityProduct_CountryIsoCode)
+     ,$Currency in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/SBQQ__QuoteLine_Billing_Currency)
+      return
+      if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='GR-RC-SP-048' and OpportunityProduct_CountryIsoCode=$Country])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+       &lt;Opportunity_ID&gt;{$VFo/ID/text()}&lt;/Opportunity_ID&gt;
+       &lt;OpportunityProduct_ID&gt;CountryDefault3&lt;/OpportunityProduct_ID&gt;
+       &lt;OpportunityProduct_ProductCode&gt;GR-RC-SP-048--&lt;/OpportunityProduct_ProductCode&gt;
+       &lt;OpportunityProduct_CountryIsoCode&gt;{$Country}&lt;/OpportunityProduct_CountryIsoCode&gt;
+       &lt;Country__c&gt;{distinct-values($VF/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/Country__c)}&lt;/Country__c&gt;
+       &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+       &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+       &lt;OpportunityProduct_Name&gt;Regulatory Compliance Custom Service - One Time&lt;/OpportunityProduct_Name&gt;
+       &lt;Product2_Description&gt;Regulatory Compliance Custom Service - One Time&lt;/Product2_Description&gt;
+       &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+       &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+       &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+       &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+       &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+       &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$Currency}&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+       &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+       &lt;SBQQ__QuoteLine_Output_Amount&gt;1&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+       &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;1&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+       &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+    &lt;/OpportunityProductDetails&gt;)else()}
+    &lt;!-- CountryDefault4: Custom\Statutory Compliance (GR-SC-AC-029) --&gt;
+    {for $Country in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails/OpportunityProduct_CountryIsoCode)
+     ,$Currency in distinct-values($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/SBQQ__QuoteLine_Billing_Currency)
+      return
+      if ($VFo/OpportunityType != "6- Change Note" 
+    	 and count($output.VF_SemiStructured_ALL[1]/OpportunityProductDetails[OpportunityProduct_ProductCode='GR-SC-AC-029' and OpportunityProduct_CountryIsoCode=$Country])=0)
+    then (
+    &lt;OpportunityProductDetails&gt;
+       &lt;Opportunity_ID&gt;{$VFo/ID/text()}&lt;/Opportunity_ID&gt;
+       &lt;OpportunityProduct_ID&gt;CountryDefault4&lt;/OpportunityProduct_ID&gt;
+       &lt;OpportunityProduct_ProductCode&gt;GR-SC-AC-029--&lt;/OpportunityProduct_ProductCode&gt;
+       &lt;OpportunityProduct_CountryIsoCode&gt;{$Country}&lt;/OpportunityProduct_CountryIsoCode&gt;
+       &lt;Country__c&gt;{distinct-values($VF/OpportunityProductDetails[OpportunityProduct_CountryIsoCode=$Country]/Country__c)}&lt;/Country__c&gt;
+       &lt;OpportunityProduct_Quantity&gt;1&lt;/OpportunityProduct_Quantity&gt;
+       &lt;OpportunityProduct_VForceSalesPrice&gt;1&lt;/OpportunityProduct_VForceSalesPrice&gt;
+       &lt;OpportunityProduct_Name&gt;Statutory Compliance Custom Service - One Time&lt;/OpportunityProduct_Name&gt;
+       &lt;Product2_Description&gt;Statutory Compliance Custom Service - One Time&lt;/Product2_Description&gt;
+       &lt;OpportunityProduct_Operational_Start_Date&gt;{fn:current-dateTime()}&lt;/OpportunityProduct_Operational_Start_Date&gt;
+       &lt;OpportunityProduct_Service_End_Date&gt;{date:addToDate(fn:current-dateTime(),"YYYY",1)}&lt;/OpportunityProduct_Service_End_Date&gt;
+       &lt;Product2_Custom_Pricing_Method&gt;List&lt;/Product2_Custom_Pricing_Method&gt;
+       &lt;Product2_Frequency&gt;One Time&lt;/Product2_Frequency&gt;
+       &lt;SBQQ__QuoteLine_Billing_Frequency&gt;One Time&lt;/SBQQ__QuoteLine_Billing_Frequency&gt;
+       &lt;SBQQ__QuoteLine_Billing_Currency&gt;{$Currency}&lt;/SBQQ__QuoteLine_Billing_Currency&gt;
+       &lt;SBQQ__QuoteLine_EffectiveQuantity&gt;1&lt;/SBQQ__QuoteLine_EffectiveQuantity&gt;
+       &lt;SBQQ__QuoteLine_Output_Amount&gt;1&lt;/SBQQ__QuoteLine_Output_Amount&gt;
+       &lt;SBQQ__QuoteLine_Custom_DiscountAmount&gt;1&lt;/SBQQ__QuoteLine_Custom_DiscountAmount&gt;
+       &lt;SBQQ_QuoteLine_Net_Unit_Price&gt;1&lt;/SBQQ_QuoteLine_Net_Unit_Price&gt;  
+    &lt;/OpportunityProductDetails&gt;)else()}    
+    
+&lt;/VForceData&gt;    </expression>
+                                          </operation>
+                                       </assignment>
+                                       <link id="loe8m2h9" targetId="loe8m2h2" type="containerLink"/>
+                                    </flow>
+                                    <link id="loe8m2h4" targetId="loe8m2h5" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="equals">
+                                             <arg name="left">{$temp.tmp_SingleProduct}</arg>
+                                             <arg name="right">{1}</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="loe8m2h7" targetId="loe8m2h8" type="containerLink"/>
+                                 </container>
+                                 <link id="lmm7rp9v" targetId="lmm7rp9r" type="containerLink"/>
+                              </flow>
+                              <flow id="lmm7rp9x">
+                                 <link id="lmm7rp9y" targetId="lmm7rp9r" type="containerLink"/>
+                              </flow>
+                              <link id="lmm7rp9t" targetId="lmm7rp9u" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="starts-with-any-of">
+                                       <arg name="left">{$temp.tmp_VF_Opportunity.RecordType.Name}</arg>
+                                       <arg name="right">1,2,3</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lmm7rp9w" targetId="lmm7rp9x" type="containerLink"/>
+                              <link id="loe8m2dc" targetId="llwfgr2c"/>
+                           </container>
+                           <end id="lluu4va6">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="lkqpnq3r" targetId="lkqpnq3t" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_VF_OpportunityProduct_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lkqpnq3s" targetId="lkqpnq3v" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_VF_OpportunityProduct_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lkqnsix2">
+                     <throw id="llb3j10z">
+                        <title>Not Found</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">HTTP_404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">Opportunity ID [{$input.in_OpportunityID}] was not found in VForce</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Not Found</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lkqnsiwy" targetId="lkqnsiwz" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_VF_Opportunity}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lkqnsix1" targetId="lkqnsix2" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_VF_Opportunity}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>5ed92a1b-a641-48c3-b182-24e581188ac5</ns1:Id>
+               <ns1:Name>DEV</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-31T11:55:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T11:55:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "RBTEST_20231031/1"
+	 },
+	 "in_OpportunityID": "0063N00000P9wb0QAB"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>962ba0b2-bec4-448e-8940-07f63d3356ab</ns1:Id>
+               <ns1:Name>DEV OSC</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-31T11:55:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T11:55:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"in_ProcessVariables": {
+		"X_TRANSACTION_ID": "RBTEST0010",
+		"IICS_Run_ID": "1",
+		"IICS_Process_Name": "Process_GetAll_VForce",
+		"Code": "",
+		"Error": "",
+		"Description": "",
+		"Event_Name": "DEV",
+		"API_Name": "US-01",
+		"Data_Key": "OpportunityID=0063O00000OcF7tQAF^",
+		"RestURL": "",
+		"HelpFileLInk": "",
+		"ProcessStartTime": "2023-09-05T14:00:00.000Z",
+		"RequestPayload": "",
+		"FailedAtStep": "",
+		"RevEntity": "US11"
+	},
+	"in_OpportunityID": "",
+	"in_OSC_Details": {
+		"Account": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"AccountName": "Customer F",
+			"AccountType": "Client",
+			"Agresso_ID__c": "Test Agr",
+			"Billing_Contact_Email__c": "peter.son@ecbs.com",
+			"Billing_Contact_Phone__c": "",
+			"BillingCity": "Test City.",
+			"BillingContactFirstName__c": "peter",
+			"BillingContactLastName__c": "son",
+			"BillingCountry": "US",
+			"BillingPostalCode": 10019,
+			"BillingState": "CA",
+			"BillingStreet": "456 Test Street (API07)",
+			"BPAccountID__c": 1047631,
+			"Currency__c": "INR",
+			"Entity_Code__c": 21,
+			"Fax": "",
+			"Payment_Term__c": 30,
+			"Phone": "102271795989",
+			"SBQQ__TaxExempt__c": "No",
+			"Sector__c": "Corporate",
+			"ShippingCity": "Test City",
+			"ShippingCountry": "United States",
+			"ShippingPostalCode": 10019,
+			"ShippingState": "Massachusetts",
+			"ShippingStreet": "123 Test STreet (API07)",
+			"Website": "www.website.com",
+			"X18_Digit_ID__c": "0013O00000rBAcfQAG"
+		},
+		"OpportunityHeader": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"BPServiceContractId__c": "",
+			"Contract_Length_months__c": 12,
+			"CreatedDate": "2022-01-27T21:14:01Z",
+			"Currency_Type__c": "USD",
+			"Description": "this is for New Customer F (Prospect). Long description exceeding 40 character to test spillover from project name into project description field",
+			"ID": "0063O00000GqtnuQAB",
+			"Legal_Billing_Entity__c": "US11-Vistra International Expansion (USA), Inc",
+			"Owner_Id": "0053O000004YHzNQAW",
+			"Primary_Contact_c": {
+				"ContactID": "0033O000015NbirQAC",
+				"Email": "contact1@customerf.com",
+				"FirstName": "Contact 1",
+				"LastName": "for Customer F",
+				"MailingCountry": "US",
+				"Phone": 102271795989,
+				"State": "CA",
+				"X18_Digit_ID__c": "0033O000015NbirQAC"
+			},
+			"Revenue_Generation_Date__c": "2022-01-27"
+		},
+		"OpportunityProductDetails": [
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"OpportunityProduct_ID": "12345678901234567A",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "GR-SC-AC-007",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 3120,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "A - PF=A - BF=M",
+				"Product2_Frequency": "Annual",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 3120,
+				"SBQQ_QuoteLine_Net_Unit_Price": 3120
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"OpportunityProduct_ID": "12345678901234567B",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "FA-PP-PM-001",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 5600,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "B - PF=Q - BF=M",
+				"Product2_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 1400,
+				"SBQQ_QuoteLine_Net_Unit_Price": 1350
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"OpportunityProduct_ID": "12345678901234567C",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "FA-FR-EA-005",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 4800,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "C - PF=M - BF=M",
+				"Product2_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 400,
+				"SBQQ_QuoteLine_Net_Unit_Price": 400
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"OpportunityProduct_ID": "12345678901234567D",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "FA-PP-PY-034",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 500,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "D - PF=A - BF=A",
+				"Product2_Frequency": "Annual",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Annual",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 500,
+				"SBQQ_QuoteLine_Net_Unit_Price": 500
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"OpportunityProduct_ID": "12345678901234567E",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "FA-PP-PM-001",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 1000,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "E - PF=OT - BF=OT",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "One Time",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 1000,
+				"SBQQ_QuoteLine_Net_Unit_Price": 1000
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"OpportunityProduct_ID": "12345678901234567F",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "GR-SC-AC-007",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 7000,
+				"Product2_Custom_Pricing_Method": "",
+				"Product2_Description": "F - PF=A - BF=Q",
+				"Product2_Frequency": "Annual",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 1750,
+				"SBQQ_QuoteLine_Net_Unit_Price": 1750
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"OpportunityProduct_ID": "12345678901234567G",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "FA-FR-EA-005",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 4800,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "G - PF=M - BF=Q",
+				"Product2_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 400,
+				"SBQQ_QuoteLine_Net_Unit_Price": 400
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"OpportunityProduct_ID": "12345678901234567H",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "GR-ES-SP-007",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 19200,
+				"Product2_Custom_Pricing_Method": "",
+				"Product2_Description": "H - PF=Q - BF=Q",
+				"Product2_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 4800,
+				"SBQQ_QuoteLine_Net_Unit_Price": 4800
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "JP",
+				"OpportunityProduct_ID": "12345678901234567I",
+				"OpportunityProduct_Operational_Start_Date": "2023-08-01",
+				"OpportunityProduct_ProductCode": "GR-ES-SP-056",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-07-31",
+				"OpportunityProduct_VForceSalesPrice": 4500,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "I - PF=OT - BF=5050",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "50% Upfront - 50% on Completion",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 2250,
+				"SBQQ_QuoteLine_Net_Unit_Price": 2250
+			}
+		]
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9ad2f2ee-6941-4d27-b3cc-c41bda35d294</ns1:Id>
+               <ns1:Name>DEV OSC (no products)</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-31T11:55:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T11:55:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"in_ProcessVariables": {
+		"X_TRANSACTION_ID": "RBTEST0010",
+		"IICS_Run_ID": "1",
+		"IICS_Process_Name": "Process_GetAll_VForce",
+		"Code": "",
+		"Error": "",
+		"Description": "",
+		"Event_Name": "DEV",
+		"API_Name": "US-01",
+		"Data_Key": "OpportunityID=0063O00000OcF7tQAF^",
+		"RestURL": "",
+		"HelpFileLInk": "",
+		"ProcessStartTime": "2023-09-05T14:00:00.000Z",
+		"RequestPayload": "",
+		"FailedAtStep": "",
+		"RevEntity": "US11"
+	},
+	"in_OpportunityID": "",
+	"in_OSC_Details": {
+		"Account": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"AccountName": "Customer F",
+			"AccountType": "Client",
+			"Agresso_ID__c": "Test Agr",
+			"Billing_Contact_Email__c": "peter.son@ecbs.com",
+			"Billing_Contact_Phone__c": "",
+			"BillingCity": "Test City.",
+			"BillingContactFirstName__c": "peter",
+			"BillingContactLastName__c": "son",
+			"BillingCountry": "US",
+			"BillingPostalCode": 10019,
+			"BillingState": "CA",
+			"BillingStreet": "456 Test Street (API07)",
+			"BPAccountID__c": 1047631,
+			"Currency__c": "INR",
+			"Entity_Code__c": 21,
+			"Fax": "",
+			"Payment_Term__c": 30,
+			"Phone": "102271795989",
+			"SBQQ__TaxExempt__c": "No",
+			"Sector__c": "Corporate",
+			"ShippingCity": "Test City",
+			"ShippingCountry": "United States",
+			"ShippingPostalCode": 10019,
+			"ShippingState": "Massachusetts",
+			"ShippingStreet": "123 Test STreet (API07)",
+			"Website": "www.website.com",
+			"X18_Digit_ID__c": "0013O00000rBAcfQAG"
+		},
+		"OpportunityHeader": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"BPServiceContractId__c": "",
+			"Contract_Length_months__c": 12,
+			"CreatedDate": "2022-01-27T21:14:01Z",
+			"Currency_Type__c": "USD",
+			"Description": "this is for New Customer F (Prospect). Long description exceeding 40 character to test spillover from project name into project description field",
+			"ID": "0063O00000GqtnuQAB",
+			"Legal_Billing_Entity__c": "US11-Vistra International Expansion (USA), Inc",
+			"Owner_Id": "0053O000004YHzNQAW",
+			"Primary_Contact_c": {
+				"ContactID": "0033O000015NbirQAC",
+				"Email": "contact1@customerf.com",
+				"FirstName": "Contact 1",
+				"LastName": "for Customer F",
+				"MailingCountry": "US",
+				"Phone": 102271795989,
+				"State": "CA",
+				"X18_Digit_ID__c": "0033O000015NbirQAC"
+			},
+			"Revenue_Generation_Date__c": "2022-01-27"
+		}
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f97215b8-b853-4837-8b0f-a387bf4f92e5</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-31T13:27:17Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T13:36:17Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0063N00000P7nuxQAB",
+	 "in_OpptyType": "",
+	 "in_OpportunityLineItem": "",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "abc",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "abcd",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "abc",
+	 	 "API_Name": "abc",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-10-21T00:00:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3DQAmNnvsjhceo1qpvybqa</types1:GUID>
+      <types1:DisplayName>Process_GetAll_VForce</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-31T13:51:45.174Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

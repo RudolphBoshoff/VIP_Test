@@ -1,0 +1,127 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>i78OHDvGFaaaaaa-gt-53396450-2023-10-15T09:41:01.39Z::pd.xml</types1:EntryId>
+      <types1:Name>Fetch_api25-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:41:01Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabhadra.dhikonda</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-20T04:05:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabhadra.dhikonda</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-20T04:07:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Fetch_api25-1/Fetch_api25-1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Fetch_api25"
+                  name="Fetch_api25-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_Invoice_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">5LvnrQZq8PDbL2SeRYtGkm</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmoqrjag" targetId="lmoqrjaf"/>
+               </start>
+               <assignment id="lmoqrjaf">
+                  <title>Assignment to tmp_Invoice_List</title>
+                  <operation source="list" to="temp.tmp_Invoice_List">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE">
+                        <where>ProcessingStatus = 'QUEUED' LIMIT 2</where>
+                     </query>
+                  </operation>
+                  <link id="lmoqrjas" targetId="lmoqrjb1"/>
+               </assignment>
+               <eventContainer id="lmoqrjb1">
+                  <subflow id="lmoqrjar">
+                     <title>Process_api25</title>
+                     <subflowGUID>3ShyNyDGfKllnSFXYwVDYi</subflowGUID>
+                     <subflowPath>Process_api25-1</subflowPath>
+                     <appliesTo>US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</appliesTo>
+                     <appliesToDataName source="field">temp.tmp_Invoice_List</appliesToDataName>
+                     <runForEach>true</runForEach>
+                     <input/>
+                     <outputDef>
+                        <field name="out_ProcessVariables_F" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PoErrorDetails</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="lmoqrjb3">
+                     <link id="lmoqrjb4" targetId="lmoqrjb1" type="containerLink"/>
+                  </flow>
+                  <flow id="lmoqrjb6">
+                     <subflow id="lmoqrjbc">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>b73c2yxfPe7kLVUICRbIA6</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_F</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="lmoqrjb7" targetId="lmoqrjb1" type="containerLink"/>
+                  </flow>
+                  <link id="lmoqrjb2" targetId="lmoqrjb3" type="containerLink"/>
+                  <link id="lmoqrjat" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lmoqrjau" interrupting="true">
+                        <link id="lmoqrjb5" targetId="lmoqrjb6" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>6d52b9b8-9f63-4894-8c43-9699fcf8e779</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:41:01Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:41:01Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>c0XJPkr9fOwkL6Qo898GwI</types1:GUID>
+      <types1:DisplayName>Fetch_api25</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-26T08:54:28.742Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,239 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>rmumf6S3wOLIFvu-gt-24260975-2022-01-18T09:58:22.286Z::pd.xml</types1:EntryId>
+      <types1:Name>process_US_ErrorLog</types1:Name>
+      <types1:ParentFlowIds>BomsvE3C7snSDg8-gt-1583603-2022-01-27T09:54:14.38Z::pd.xml,E7ppppppppppppp-gt-17828646-2022-01-18T09:58:24.99Z::pd.xml,gdpIO3M4WwOC2XZ-gt-17409465-2022-02-14T14:05:54.102Z::pd.xml,hxEKSabbeJOSM8N-gt-24261065-2022-01-18T09:58:26.117Z::pd.xml,IXycotFgpKi9zhF-gt-30093716-2022-01-25T10:50:06.655Z::pd.xml,iYBeMHck5qbbfUr-gt-23835261-2022-01-18T09:58:27.134Z::pd.xml,ozBvlEQT53nQciS-gt-1581138-2022-01-27T09:54:13.232Z::pd.xml,RFiUf2hwq9bdsre-gt-24174477-2022-01-18T09:58:26.696Z::pd.xml,ZX81Owhz5chspiR-gt-1457660-2022-01-27T09:54:14.835Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:22Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T13:54:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T13:54:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_US_ErrorLog/process_US_ErrorLog.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_US_ErrorLog"
+                  name="process_US_ErrorLog"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_TransactionID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_RunID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ErrorCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ErrorDetail"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ErrorReason"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Full_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_main_runid" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_process_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description=""
+                      name="tmp_EventError_Writer_To_Database"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:error_logging</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Writer_Json" type="reference">
+                  <options>
+                     <option name="referenceTo">US-AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6qWzesXeEs2ee967mLUyWy</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_json_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kx5slwwu" targetId="kx5slww4"/>
+               </start>
+               <container id="kx5slww4" type="parallel">
+                  <title>Writing to Database and Json file</title>
+                  <flow id="kx5slww8">
+                     <assignment id="kx8kpwi3">
+                        <title>Payload_data</title>
+                        <operation source="formula" to="temp.tmp_json_text">
+                           <expression language="XQuery">util:toJSON($input.in_Full_Payload)</expression>
+                        </operation>
+                        <link id="kx8kpwi4" targetId="kx8f7l66"/>
+                     </assignment>
+                     <eventContainer id="kx8f7l66">
+                        <create id="kx7p8078">
+                           <title>error_logging</title>
+                           <entityName>US-MSSQL-DB-VForce:error_logging</entityName>
+                           <createInput>
+                              <parameter name="transaction_id" source="constant" updatable="true">{$input.in_TransactionID}</parameter>
+                              <parameter name="iics_run_id" source="constant" updatable="true">{$input.in_IICS_RunID}</parameter>
+                              <parameter name="error_code" source="constant" updatable="true">{$input.in_ErrorCode}</parameter>
+                              <parameter name="error_details" source="constant" updatable="true">{$input.in_ErrorDetail}</parameter>
+                              <parameter name="error_reason" source="constant" updatable="true">{$input.in_ErrorReason}</parameter>
+                              <parameter name="payload" source="constant" updatable="true">{$temp.tmp_json_text}</parameter>
+                              <parameter name="created_date" source="formula" updatable="true">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </parameter>
+                           </createInput>
+                        </create>
+                        <flow id="kx8f7l68">
+                           <link id="kx8f7l69" targetId="kx8f7l66" type="containerLink"/>
+                        </flow>
+                        <flow id="kx8f7l6b">
+                           <throw id="kx8f7l6j">
+                              <title>Throw_Database</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kx8f7l67" targetId="kx8f7l68" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kx8f7l3t" interrupting="true">
+                              <link id="kx8f7l6a" targetId="kx8f7l6b" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="kx5slww9" targetId="kx5slww4" type="containerLink"/>
+                  </flow>
+                  <flow id="kx5slwwb">
+                     <assignment id="kx5slwx3">
+                        <title>Creating_Json_File_To_Reprocess</title>
+                        <operation source="formula" to="temp.tmp_Writer_Json[1]/content">
+                           <expression language="XQuery">util:toJSON($input.in_Full_Payload )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Writer_Json[1]/fileName">
+                           <expression language="XQuery">$input.in_TransactionID ||'['|| $input.in_IICS_RunID ||'].json'</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_Writer_Json[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_Writer_Json[1]/filePath">
+                           <expression language="XQuery">'\'||$input.in_process_name||'['||$input.in_main_runid ||']'
+</expression>
+                        </operation>
+                        <link id="kx75x886" targetId="kx75x885"/>
+                     </assignment>
+                     <service id="kx75x885">
+                        <title>JsonWriter-opportunity_close</title>
+                        <serviceName>US-AppCon-JsonWtiter:JsonWriter-Opportunity</serviceName>
+                        <serviceGUID>6qWzesXeEs2ee967mLUyWy</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_Writer_Json</parameter>
+                        </serviceInput>
+                     </service>
+                     <link id="kx5slwwc" targetId="kx5slww4" type="containerLink"/>
+                  </flow>
+                  <link id="kx5slww7" targetId="kx5slww8" type="containerLink"/>
+                  <link id="kx5slwwa" targetId="kx5slwwb" type="containerLink"/>
+                  <link id="kx5slwwn" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ce0ad13b-8fa2-41e7-ba0e-36f0da080985</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:22Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-02-22T08:13:04Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_TransactionID": "2dd",
+	 "in_IICS_RunID": "2",
+	 "in_ErrorCode": "3",
+	 "in_ErrorDetail": "4",
+	 "in_ErrorReason": "5",
+	 "in_Full_Payload": {
+	 	 "eventTypeName": "ProspectOpportunity",
+	 	 "identifiers": {
+	 	 	 "identifierName": "raj",
+	 	 	 "objectIdentifier": "new"
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5O07Lg9dQKSgURychi74Wo</types1:GUID>
+      <types1:DisplayName>process_US_ErrorLog</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T14:04:22.996Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

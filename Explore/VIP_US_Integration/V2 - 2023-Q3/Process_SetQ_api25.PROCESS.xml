@@ -1,0 +1,116 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>5YqTNkSmbduaa-gt-29541064-2023-10-06T08:56:25.915Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SetQ_api25</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-10-06T08:56:26Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-06T10:39:56Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_SetQ_api25/Process_SetQ_api25.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SetQ_api25"
+                  name="Process_SetQ_api25"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_BillingDoc_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillingDoc" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option name="required">false</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lnbjey77" targetId="lnbjey76"/>
+               </start>
+               <assignment id="lnbjey76">
+                  <title>Assignment to tmp_BillingDoc_List</title>
+                  <operation source="list" to="temp.tmp_BillingDoc_List">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE">
+                        <where>Id in (29)</where>
+                     </query>
+                  </operation>
+                  <link id="lnbjey7k" targetId="lnbjey7j"/>
+               </assignment>
+               <container id="lnbjey7j" type="exclusive">
+                  <title>tmp_BillingDoc_List</title>
+                  <flow id="lnbjey7n">
+                     <assignment id="lnbjey7x">
+                        <title>Assignment to tmp_BillingDoc, tmp_BillingDoc_List</title>
+                        <operation source="formula" to="temp.tmp_BillingDoc">
+                           <expression language="XQuery">list:head($temp.tmp_BillingDoc_List)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BillingDoc_List">
+                           <expression language="XQuery">list:tail($temp.tmp_BillingDoc_List)</expression>
+                        </operation>
+                        <link id="lnbjey8x" targetId="lnbjey8w"/>
+                     </assignment>
+                     <assignment id="lnbjey8w">
+                        <title>Assignment to ProcessingStatus</title>
+                        <operation source="constant" to="temp.tmp_BillingDoc.ProcessingStatus">QUEUED</operation>
+                        <link id="lnbjey99" targetId="lnbjey98"/>
+                     </assignment>
+                     <jumpTo id="lnbjey98">
+                        <link id="lnbjey9e" targetId="lnbjey7j"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lnbjey7q">
+                     <end id="lnbjey9m"/>
+                  </flow>
+                  <link id="lnbjey7m" targetId="lnbjey7n" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_BillingDoc_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnbjey7p" targetId="lnbjey7q" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_BillingDoc_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>1zf9vrTV73DeU7RUxfmBWE</types1:GUID>
+      <types1:DisplayName>Process_SetQ_api25</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:19:04.558Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

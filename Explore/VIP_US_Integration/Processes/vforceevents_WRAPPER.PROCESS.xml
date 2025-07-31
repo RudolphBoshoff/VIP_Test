@@ -1,0 +1,216 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>yyYPFJ7XhFtybdu-gt-18541594-2022-01-18T09:43:15.392Z::pd.xml</types1:EntryId>
+      <types1:Name>vforceevents_WRAPPER</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:43:15Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-01-27T11:02:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-27T11:03:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.vforceevents_WRAPPER/vforceevents_WRAPPER.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="vforceevents_WRAPPER"
+                  name="vforceevents_WRAPPER"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="eventLabel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="objectIdentifier" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kyjxg68i" targetId="kyjxg68h"/>
+               </start>
+               <container id="kyjxg68h" type="exclusive">
+                  <title>eventLabel</title>
+                  <flow id="kyjxg68l">
+                     <subflow id="kyjxg6e5">
+                        <title>API 01, 02</title>
+                        <subflowGUID>6lK98Bz829Aea4v8mTu142</subflowGUID>
+                        <subflowPath>vforceevents_MAIN</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="objectIdentifier" source="field" updatable="true">input.objectIdentifier</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="kyjxg68m" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <flow id="kyjxg6a7">
+                     <subflow id="kyjxg6es">
+                        <title>API 04, 02</title>
+                        <subflowGUID>6lK98Bz829Aea4v8mTu142</subflowGUID>
+                        <subflowPath>vforceevents_MAIN</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="objectIdentifier" source="field" updatable="true">input.objectIdentifier</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="kyjxg6a8" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <flow id="kyjxg6a9">
+                     <subflow id="kyo7d126">
+                        <title>API07</title>
+                        <subflowGUID>9k3g9SeZYm8bHq0BuNsyiV</subflowGUID>
+                        <subflowPath>vforceevents_MAIN_api07</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="eventLabel" source="field" updatable="true">input.eventLabel</parameter>
+                           <parameter name="objectIdentifier" source="field" updatable="true">input.objectIdentifier</parameter>
+                           <parameter name="jurisdiction" source="field" updatable="true">input.jurisdiction</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="kyjxg6aa" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <flow id="kyjxg68o">
+                     <link id="kyjxg68p" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <link id="kyjxg68k" targetId="kyjxg68l" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">ProcessProspectOpportunity</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg6a5" targetId="kyjxg6a7" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">ProcessCustomerOpportunity</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg6a6" targetId="kyjxg6a9" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">SalesforceAccountModified</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg68n" targetId="kyjxg68o" type="containerLink"/>
+                  <link id="kyjxg68j" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>40d73068-5dfc-4cc3-9544-77bcbcfb5571</ns1:Id>
+               <ns1:Name>Customer A, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T15:33:33Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-27T11:04:15Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "SalesforceAccountModified",
+	 "objectIdentifier": "0013O00000qzoVaQAI"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>cdaf2abb-8ff9-452c-b5dc-d7da36bf39a2</ns1:Id>
+               <ns1:Name>Customer B, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T15:37:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-18T15:37:54Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "objectIdentifier": "0063O00000Gq0JeQAJ",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>fb0db1c0-0b5a-4d2b-9319-9e8ac88d5db8</ns1:Id>
+               <ns1:Name>Customer C, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T15:37:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-18T15:37:24Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "objectIdentifier": "0063O00000Gq2G0QAJ",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>bc3c1ef5-34a3-4831-8695-8abc71f2184f</ns1:Id>
+               <ns1:Name>CustomerOppty</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-25T15:17:38Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-25T15:18:17Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000GqlXLQAZ",
+	 "jurisdiction": "United States"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>fe3abeae-04b8-49d3-a7ae-a12c5c247e4e</ns1:Id>
+               <ns1:Name>RB_TEST Subsidiary 1, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:50:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-18T09:50:27Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "ObjectIdentifier": "0063O00000GprJaQAJ"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7ca0f653-857e-4d9d-8458-d4f8a6954416</ns1:Id>
+               <ns1:Name>Watermelon Limited,Oppty1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-21T09:28:37Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-21T09:28:43Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{"eventLabel":"ProcessProspectOpportunity","objectIdentifier":"0063O00000GpugjQAB","jurisdiction":"United Kingdom"}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9YCr5AncZGVdkdH5Zg9hQW</types1:GUID>
+      <types1:DisplayName>vforceevents_WRAPPER</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-27T13:01:13.463Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

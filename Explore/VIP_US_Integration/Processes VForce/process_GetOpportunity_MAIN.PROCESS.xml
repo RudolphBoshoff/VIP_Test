@@ -1,0 +1,142 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Hbci0seGbciZBpD-gt-14094398-2021-12-09T17:09:30.547Z::pd.xml</types1:EntryId>
+      <types1:Name>process_GetOpportunity_MAIN</types1:Name>
+      <types1:ParentFlowIds>6WdyH72yIYmWR7h-gt-18017365-2022-01-17T14:16:03.693Z::pd.xml,EIDhMBu8zbgdwUi-gt-1155862-2021-12-13T04:57:04.495Z::pd.xml,FwYDeMVX3cjk91p-gt-7587105-2022-01-03T05:41:39.513Z::pd.xml,Wk08jIw8jIw8jIw-gt-1156132-2021-12-13T04:57:58.788Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>harshavardhan.makeneni@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2021-12-09T17:09:31Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-16T06:22:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-16T06:23:13Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_GetOpportunity_MAIN/process_GetOpportunity_MAIN.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_GetOpportunity_MAIN"
+                  name="process_GetOpportunity_MAIN"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_OpportunityID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Out_Opportunity_SF" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunity-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7bzhlNon2CWl5JJ64znsEa</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Opportunity_SF" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OpportunityContactRole" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:OpportunityContactRole</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kwz0ifzx" targetId="kwz0ifzw"/>
+               </start>
+               <assignment id="kwz0ifzw">
+                  <title>Query Opportunity</title>
+                  <operation source="query" to="temp.tmp_Opportunity_SF">
+                     <query advanceQuery="false" from="AppConnSalesForce:Opportunity">
+                        <where>Id = '{$input.in_OpportunityID }'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_OpportunityContactRole">
+                     <query advanceQuery="false" from="AppConnSalesForce:OpportunityContactRole">
+                        <where>OpportunityId = '{$input.in_OpportunityID }' and IsPrimary = true</where>
+                     </query>
+                  </operation>
+                  <link id="kx0irbat" targetId="kx0irbas"/>
+               </assignment>
+               <assignment id="kx0irbas">
+                  <title>GetOpportunityID</title>
+                  <operation source="field" to="output.Out_Opportunity_SF[1]/AccountID">temp.tmp_Opportunity_SF.Account.Id</operation>
+                  <operation source="field" to="output.Out_Opportunity_SF[1]/ID">temp.tmp_Opportunity_SF.Id</operation>
+                  <operation source="field" to="output.Out_Opportunity_SF[1]/Currency_Type__c">temp.tmp_Opportunity_SF.Currency_Type__c</operation>
+                  <operation source="field" to="output.Out_Opportunity_SF[1]/Description">temp.tmp_Opportunity_SF.Description</operation>
+                  <operation source="field" to="output.Out_Opportunity_SF[1]/CreatedDate">temp.tmp_Opportunity_SF.CreatedDate</operation>
+                  <operation source="formula" to="output.Out_Opportunity_SF">
+                     <expression language="XQuery">&lt;PO-VFOpportunity-1&gt;
+   &lt;ID&gt;{$temp.tmp_Opportunity_SF.Id }&lt;/ID&gt;
+   &lt;AccountID&gt;{$temp.tmp_Opportunity_SF.Account.Id }&lt;/AccountID&gt;
+   &lt;CreatedDate&gt;{$temp.tmp_Opportunity_SF.CreatedDate }&lt;/CreatedDate&gt;
+   &lt;Description&gt;{$temp.tmp_Opportunity_SF.Description }&lt;/Description&gt;
+   &lt;Currency_Type__c&gt;{$temp.tmp_Opportunity_SF.Currency_Type__c }&lt;/Currency_Type__c&gt;
+   &lt;Revenue_Generation_Date__c&gt;{$temp.tmp_Opportunity_SF.Revenue_Generation_Date__c }&lt;/Revenue_Generation_Date__c&gt;
+   &lt;Contract_Length_months__c&gt;{$temp.tmp_Opportunity_SF.Contract_Length_months__c }&lt;/Contract_Length_months__c&gt;
+   &lt;Legal_Billing_Entity__c&gt;{fn:substring-before($temp.tmp_Opportunity_SF.Legal_Billing_Entity__c ,'-')}&lt;/Legal_Billing_Entity__c&gt;
+   &lt;BPServiceContractId__c&gt;{$temp.tmp_Opportunity_SF.BPServiceContractId__c }
+   &lt;/BPServiceContractId__c&gt;
+&lt;/PO-VFOpportunity-1&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="output.Out_Opportunity_SF[1]/Owner_Id">
+                     <expression language="XQuery">$temp.tmp_Opportunity_SF.OwnerId </expression>
+                  </operation>
+                  <link id="kx0irbau" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>64139dd7-d3fb-4fc4-8b12-0b571cf6db7b</ns1:Id>
+               <ns1:Name>Test Oppty</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2021-12-10T11:21:13Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-02-16T06:18:58Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0063O00000GqdujQAB"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2KhAYZLEDlygPcoKa7RAaW</types1:GUID>
+      <types1:DisplayName>process_GetOpportunity_MAIN</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-16T06:26:06.412Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

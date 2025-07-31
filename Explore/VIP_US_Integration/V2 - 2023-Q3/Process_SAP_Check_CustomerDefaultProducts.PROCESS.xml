@@ -1,0 +1,676 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wUIsNAYvtpeFRqX-gt-45940482-2023-10-12T12:16:48.357Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SAP_Check_CustomerDefaultProducts</types1:Name>
+      <types1:ParentFlowIds>hJ6gaabclvAhrsw-gt-67968478-2023-09-16T18:51:01.12Z::pd.xml,O5Zqzm5Y6tMFygl-gt-67799046-2023-09-16T18:51:01.665Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2023-10-12T12:16:48Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-15T12:18:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_SAP_Check_CustomerDefaultProducts/Process_SAP_Check_CustomerDefaultProducts.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SAP_Check_CustomerDefaultProducts"
+                  name="Process_SAP_Check_CustomerDefaultProducts"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CustomerID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Cust_All_WPs_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustDefaultProduct1_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustDefaultProduct2_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustDefaultProduct3_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustDefaultProduct4_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_CustDefaultPrds"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8kAPgiRg8pdcYM9AY5VEAM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Project" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_All_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lnbbg77w" targetId="lnbbg77v"/>
+               </start>
+               <assignment id="lnbbg77v">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_CustDefaultPrds">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_CustDefaultPrds[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/IICS_Run_ID||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_CustDefaultPrds[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <link id="lnkcbhrz" targetId="lnkcbhry"/>
+               </assignment>
+               <assignment id="lnkcbhsu">
+                  <title>Assignment to tmp_ProjectList</title>
+                  <operation source="formula" to="temp.tmp_ProjectList">
+                     <expression language="XQuery">for $x in $output.gET_ProjectSetResponse[1]/d[1]/results return &lt;POProjects&gt; &lt;ProjectID&gt;{$x/ProjectID/text()}&lt;/ProjectID&gt; &lt;/POProjects&gt;</expression>
+                  </operation>
+                  <link id="lnkd0t8h" targetId="lnkd0t8g"/>
+               </assignment>
+               <assignment id="ln3ahlri">
+                  <title>Evaluate DefaultProduct4 Exists Flag</title>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_CustDefaultPrds[1]/Code">200</operation>
+                  <operation source="formula" to="output.out_CustDefaultProduct1_Exists">
+                     <expression language="XQuery">util:iif($output.out_CustDefaultProduct1_Exists &gt;= 1, 1, 0)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_CustDefaultProduct2_Exists">
+                     <expression language="XQuery">util:iif($output.out_CustDefaultProduct2_Exists &gt;= 1, 1, 0)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_CustDefaultProduct3_Exists">
+                     <expression language="XQuery">util:iif($output.out_CustDefaultProduct3_Exists &gt;= 1, 1, 0)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_CustDefaultProduct4_Exists">
+                     <expression language="XQuery">util:iif($output.out_CustDefaultProduct4_Exists &gt;= 1, 1, 0)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Cust_All_WPs_Exists">
+                     <expression language="XQuery">util:iif($output.out_CustDefaultProduct1_Exists &gt;= 1 and $output.out_CustDefaultProduct2_Exists &gt;= 1 and $output.out_CustDefaultProduct3_Exists &gt;= 1 and $output.out_CustDefaultProduct4_Exists &gt;= 1, 1, 0)</expression>
+                  </operation>
+                  <link id="ln3ahlrk" targetId="ln3ahles"/>
+               </assignment>
+               <service id="lnkcbhry">
+                  <title>Get ProjectSet</title>
+                  <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_ProjectSet</serviceName>
+                  <serviceGUID>4HsCxHg0Wyui1hTb1XpieM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                     <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                     <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                     <parameter name="__filter" source="formula">
+                        <expression language="XQuery">'Customer eq ''' || $input.in_CustomerID || ''''</expression>
+                     </parameter>
+                     <parameter name="__select" source="formula">
+                        <expression language="XQuery">'ProjectID'</expression>
+                     </parameter>
+                  </serviceInput>
+                  <link id="lnkcbhsv" targetId="lnkcbhsu"/>
+               </service>
+               <container id="lnkd0t8g" type="exclusive">
+                  <title>tmp_ProjectList</title>
+                  <flow id="lnkd0t8k">
+                     <link id="lnkd0t8l" targetId="lnkd0t8g" type="containerLink"/>
+                  </flow>
+                  <flow id="lnkd0t8n">
+                     <assignment id="lnkd0t8w">
+                        <title>Assignment to out_Cust_All_WPs_Exists, out_CustDefaultProduct1_Exists etc.</title>
+                        <operation source="constant" to="output.out_Cust_All_WPs_Exists">0</operation>
+                        <operation source="constant" to="output.out_CustDefaultProduct1_Exists">0</operation>
+                        <operation source="constant" to="output.out_CustDefaultProduct2_Exists">0</operation>
+                        <operation source="constant" to="output.out_CustDefaultProduct3_Exists">0</operation>
+                        <operation source="constant" to="output.out_CustDefaultProduct4_Exists">0</operation>
+                        <link id="lnn2hygf" targetId="lnn2hyge"/>
+                     </assignment>
+                     <end id="lnn2hyge">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lnkd0t8j" targetId="lnkd0t8k" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_ProjectList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnkd0t8m" targetId="lnkd0t8n" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_ProjectList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnkd0ta3" targetId="lnkd0ta2"/>
+               </container>
+               <container id="lnkd0ta2" type="exclusive">
+                  <title>ProjectList</title>
+                  <flow id="lnkd0ta6">
+                     <assignment id="lnkd0tam">
+                        <title>Assignment to tmp_Project</title>
+                        <operation source="formula" to="temp.tmp_Project">
+                           <expression language="XQuery">list:head($temp.tmp_ProjectList )</expression>
+                        </operation>
+                        <link id="lnkd0tdd" targetId="lnkd0tdc"/>
+                     </assignment>
+                     <assignment id="lnlflxs9">
+                        <title>Assignment to out_DefaultProduct1_Exists</title>
+                        <operation source="formula" to="output.out_CustDefaultProduct1_Exists">
+                           <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/count &gt; 0 or ($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName != '' and fn:not(util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName))), $output.out_CustDefaultProduct1_Exists + 1, $output.out_CustDefaultProduct1_Exists)</expression>
+                        </operation>
+                        <link id="lnlflxt6" targetId="lnkds6ut"/>
+                     </assignment>
+                     <assignment id="lnlflxtx">
+                        <title>Assignment to out_DefaultProduct2_Exists</title>
+                        <operation source="formula" to="output.out_CustDefaultProduct2_Exists">
+                           <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/count &gt; 0 or ($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName != '' and fn:not(util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName))), $output.out_CustDefaultProduct2_Exists + 1, $output.out_CustDefaultProduct2_Exists)</expression>
+                        </operation>
+                        <link id="lnlflxuj" targetId="lnkds6z3"/>
+                     </assignment>
+                     <assignment id="lnlflxv6">
+                        <title>Assignment to out_DefaultProduct3_Exists</title>
+                        <operation source="formula" to="output.out_CustDefaultProduct3_Exists">
+                           <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/count &gt; 0 or ($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName != '' and fn:not(util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName))), $output.out_CustDefaultProduct3_Exists + 1, $output.out_CustDefaultProduct3_Exists)</expression>
+                        </operation>
+                        <link id="lnlflxvo" targetId="lnkds72u"/>
+                     </assignment>
+                     <assignment id="lnlflxw7">
+                        <title>Assignment to out_CustDefaultProduct4_Exists, tmp_ProjectList etc.</title>
+                        <operation source="formula" to="output.out_CustDefaultProduct4_Exists">
+                           <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/count &gt; 0 or ($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName != '' and fn:not(util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName))), $output.out_CustDefaultProduct4_Exists + 1, $output.out_CustDefaultProduct4_Exists)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ProjectList">
+                           <expression language="XQuery">list:tail($temp.tmp_ProjectList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_All_Exists">
+                           <expression language="XQuery">util:iif($output.out_CustDefaultProduct1_Exists &gt;= 1 and $output.out_CustDefaultProduct2_Exists &gt;= 1 and $output.out_CustDefaultProduct3_Exists &gt;= 1 and $output.out_CustDefaultProduct4_Exists &gt;= 1, 1, 0)</expression>
+                        </operation>
+                        <link id="lnn3lt4u" targetId="lnn3lt4t"/>
+                     </assignment>
+                     <service id="lnkd0tdc">
+                        <title>Get WorkPackage DefaultProduct1</title>
+                        <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                        <serviceGUID>4HsCxHg0Wyui1hTb1XpieM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                           <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                           <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                           <parameter name="__filter" source="formula">
+                              <expression language="XQuery">'ProjectID eq ''' || $temp.tmp_Project/ProjectID/text() || ''' and startswith(WorkPackageName, ''Global Corporate Legal advisory services_S'')'</expression>
+                           </parameter>
+                           <parameter name="__inlinecount" source="constant">allpages</parameter>
+                           <parameter name="__select" source="formula">
+                              <expression language="XQuery">'WorkPackageName'</expression>
+                           </parameter>
+                           <parameter name="__top" source="constant">1</parameter>
+                        </serviceInput>
+                        <link id="lnlflxsa" targetId="lnlflxs9"/>
+                     </service>
+                     <service id="lnkds6ut">
+                        <title>Get WorkPackage DefaultProduct2</title>
+                        <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                        <serviceGUID>4HsCxHg0Wyui1hTb1XpieM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                           <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                           <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                           <parameter name="__filter" source="formula">
+                              <expression language="XQuery">'ProjectID eq ''' || $temp.tmp_Project/ProjectID/text() || ''' and startswith(WorkPackageName, ''Advisory Custom Services - People - One Time_S'')'</expression>
+                           </parameter>
+                           <parameter name="__inlinecount" source="constant">allpages</parameter>
+                           <parameter name="__select" source="formula">
+                              <expression language="XQuery">'WorkPackageName'</expression>
+                           </parameter>
+                           <parameter name="__top" source="constant">1</parameter>
+                        </serviceInput>
+                        <link id="lnlflxty" targetId="lnlflxtx"/>
+                     </service>
+                     <service id="lnkds6z3">
+                        <title>Get WorkPackage DefaultProduct3</title>
+                        <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                        <serviceGUID>4HsCxHg0Wyui1hTb1XpieM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                           <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                           <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                           <parameter name="__filter" source="formula">
+                              <expression language="XQuery">'ProjectID eq ''' || $temp.tmp_Project/ProjectID/text() || ''' and startswith(WorkPackageName, ''Global Mobility_S'')'</expression>
+                           </parameter>
+                           <parameter name="__inlinecount" source="constant">allpages</parameter>
+                           <parameter name="__select" source="formula">
+                              <expression language="XQuery">'WorkPackageName'</expression>
+                           </parameter>
+                           <parameter name="__top" source="constant">1</parameter>
+                        </serviceInput>
+                        <link id="lnlflxv7" targetId="lnlflxv6"/>
+                     </service>
+                     <service id="lnkds72u">
+                        <title>Get WorkPackage DefaultProduct4</title>
+                        <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                        <serviceGUID>4HsCxHg0Wyui1hTb1XpieM</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                           <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                           <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                           <parameter name="__filter" source="formula">
+                              <expression language="XQuery">'ProjectID eq ''' || $temp.tmp_Project/ProjectID/text() || ''' and startswith(WorkPackageName, ''Advisory Customer Services – Tax – One Time_S'')'</expression>
+                           </parameter>
+                           <parameter name="__inlinecount" source="constant">allpages</parameter>
+                           <parameter name="__select" source="formula">
+                              <expression language="XQuery">'WorkPackageName'</expression>
+                           </parameter>
+                           <parameter name="__top" source="constant">1</parameter>
+                        </serviceInput>
+                        <link id="lnlflxw8" targetId="lnlflxw7"/>
+                     </service>
+                     <container id="lnn3lt4t" type="exclusive">
+                        <title>tmp_All_Exists</title>
+                        <flow id="lnn3lt4x">
+                           <jumpTo id="lnn3lt5i">
+                              <link id="lnn3lt5j" targetId="ln3ahlri"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lnn3lt50">
+                           <link id="lnn3lt51" targetId="lnn3lt4t" type="containerLink"/>
+                        </flow>
+                        <link id="lnn3lt4w" targetId="lnn3lt4x" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_All_Exists}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lnn3lt4z" targetId="lnn3lt50" type="containerLink"/>
+                        <link id="lnn3lt4v" targetId="lnkds7dd"/>
+                     </container>
+                     <jumpTo id="lnkds7dd">
+                        <link id="lnkds7de" targetId="lnkd0ta2"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lnkd0ta9">
+                     <link id="lnkd0taa" targetId="lnkd0ta2" type="containerLink"/>
+                  </flow>
+                  <link id="lnkd0ta5" targetId="lnkd0ta6" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_ProjectList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnkd0ta8" targetId="lnkd0ta9" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_ProjectList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnkds72t" targetId="ln3ahlri"/>
+               </container>
+               <end id="ln3ahles">
+                  <title>End 2</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a5d139cb-55c4-4a28-bfc8-3729e697459b</ns1:Id>
+               <ns1:Name>inp5</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "abc",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "abc",
+	 	 "API_Name": "abc",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-01-01T00:00:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_CustomerID": "1059272"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f77c52ec-1977-4b36-905f-41def86309e1</ns1:Id>
+               <ns1:Name>inp6</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ExecutionCountryISO": "US",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "XYZ",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "A",
+	 	 "API_Name": "A",
+	 	 "Data_Key": "X",
+	 	 "RestURL": "A",
+	 	 "HelpFileLInk": "A",
+	 	 "ProcessStartTime": "2023-01-06T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e5381fb0-a9ba-4a27-82f9-cd5b38c96a62</ns1:Id>
+               <ns1:Name>inpu</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ExecutionCountryISO": "US",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "Abc",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "23u",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-01-01T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_ProjectID": "VF000017"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>292c3045-cfdc-4bde-9c36-816de48cc655</ns1:Id>
+               <ns1:Name>input</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "abc",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "23u",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-01-01T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_CustomerID": "1059302",
+	 "in_ExecutionCountryISO": "US"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b10ed0cd-e3a3-4f15-9deb-69d75b3d75b4</ns1:Id>
+               <ns1:Name>input1</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "abc",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-01-01T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_CustomerID": "1059310",
+	 "in_ExecutionCountryISO": "ES"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d4fbd06e-09ee-4a0a-ba06-bfe8f7e6edbe</ns1:Id>
+               <ns1:Name>ip</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-12T12:16:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-12T12:16:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "",
+	 "in_BusinessPartner": "",
+	 "in_VF_SemiStructured_ALL": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "OpportunityProduct_Country": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>hLwccnS6u2JgTbxNFswaAD</types1:GUID>
+      <types1:DisplayName>Process_SAP_Check_CustomerDefaultProducts</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:19:04.613Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

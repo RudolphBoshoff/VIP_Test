@@ -1,0 +1,543 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>G9JFi8RVf4VQT53-gt-53364568-2023-10-15T09:40:57.519Z::pd.xml</types1:EntryId>
+      <types1:Name>Queue_api25-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:58Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabhadra.dhikonda</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-19T08:57:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabhadra.dhikonda</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-19T08:59:39Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Queue_api25-1/Queue_api25-1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Queue_api25"
+                  name="Queue_api25-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_MiscDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ProcessVariables_Q" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_api25_queue" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option name="required">false</option>
+                     <option name="guid">5LvnrQZq8PDbL2SeRYtGkm</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_api25_queuelist" type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">5LvnrQZq8PDbL2SeRYtGkm</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_last_invoice_sent_date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_current_invoice" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBillingDocument-ReadCancelGetPDF:PO_DocumentList</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">35nOt6KTbkglExDPtmgtKM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_invoice_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppSvcBillingDocument-ReadCancelGetPDF:PO_DocumentList</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">35nOt6KTbkglExDPtmgtKM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_extenral_customer" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_document_date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillingDocDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AttachmentName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_cnt" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmncyzzz" targetId="lmncyzzy"/>
+               </start>
+               <assignment id="lmncyzzy">
+                  <title>Assignment to tmp_api25_queue, tmp_SapCredentials etc.</title>
+                  <operation source="query" to="temp.tmp_api25_queue">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE">
+                        <where>Order By CreatedDate desc LIMIT 1</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_ProcessVariables_Q">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$temp.tmp_last_invoice_sent_date}&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;&lt;/Event_Name&gt;
+   &lt;API_Name&gt;API25&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{$temp.tmp_last_invoice_sent_date}&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;https://api.sap.com/api/API_BUSINESS_PARTNER/overview&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+   &lt;RevEntity&gt;&lt;/RevEntity&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <link id="lmosgp09" targetId="lmosgp08"/>
+               </assignment>
+               <assignment id="lmreurbk">
+                  <title>Assignment to tmp_last_invoice_sent_date</title>
+                  <operation source="formula" to="temp.tmp_last_invoice_sent_date">
+                     <expression language="XQuery">util:iif(util:isNull($input.in_MiscDate),$temp.tmp_last_invoice_sent_date,$input.in_MiscDate)</expression>
+                  </operation>
+                  <link id="lmreurbm" targetId="lmoijv1i"/>
+               </assignment>
+               <container id="lmosgp08" type="exclusive">
+                  <title>tmp_api25_queue</title>
+                  <flow id="lmosgp13">
+                     <assignment id="lmosgp2i">
+                        <title>Assignment to tmp_last_invoice_sent_date</title>
+                        <operation source="formula" to="temp.tmp_last_invoice_sent_date">
+                           <expression language="XQuery">$temp.tmp_api25_queue.BillingDocumentDate</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lmosgp14" targetId="lmosgp08" type="containerLink"/>
+                  </flow>
+                  <flow id="lmosgp15">
+                     <assignment id="lmosgp39">
+                        <title>Assignment to tmp_last_invoice_sent_date</title>
+                        <operation source="formula" to="temp.tmp_last_invoice_sent_date">
+                           <expression language="XQuery">'2023-01-01T00:00:00'</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lmosgp16" targetId="lmosgp08" type="containerLink"/>
+                  </flow>
+                  <link id="lmosgp0w" targetId="lmosgp13" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_api25_queue}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmosgp0z" targetId="lmosgp15" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_api25_queue}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmreurbl" targetId="lmreurbk"/>
+               </container>
+               <eventContainer id="lmoijv1i">
+                  <service id="lmncz00m">
+                     <title>Get List of Invoices to be processed</title>
+                     <serviceName>AppSvcBillingDocument-ReadCancelGetPDF:GET_A_BillingDocument</serviceName>
+                     <serviceGUID>35nOt6KTbkglExDPtmgtKM</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                        <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                        <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                        <parameter name="invoice_send_date" source="constant">{$temp.tmp_last_invoice_sent_date}</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lmoijv1k">
+                     <assignment id="lmokfawq">
+                        <title>Assignment to tmp_invoice_list</title>
+                        <operation source="field" to="temp.tmp_invoice_list">output.InvoiceList</operation>
+                        <link id="lmokfay9" targetId="lmokfaxj"/>
+                     </assignment>
+                     <container id="lmokfaxj" type="exclusive">
+                        <title>tmp_invoice_list</title>
+                        <flow id="lmokfaxk">
+                           <assignment id="lmokfaxl">
+                              <title>Assignment to tmp_current_invoice, tmp_invoice_list</title>
+                              <operation source="formula" to="temp.tmp_current_invoice">
+                                 <expression language="XQuery">list:head($temp.tmp_invoice_list)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_invoice_list">
+                                 <expression language="XQuery">list:tail($temp.tmp_invoice_list )</expression>
+                              </operation>
+                              <link id="lmokfay0" targetId="lmtdcqut"/>
+                           </assignment>
+                           <eventContainer id="lmtdcqut">
+                              <subflow id="lmokfaxm">
+                                 <title>Process_GET_BusinessPartner</title>
+                                 <subflowGUID>7sWrXchyvVXkp1ykFBVcm6</subflowGUID>
+                                 <subflowPath>Process_GET_BusinessPartner</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_BusinessPartner" source="constant" updatable="true">{$temp.tmp_current_invoice[1]/Customer}</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_BusinessPartner" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_RestURL" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_BusinessPartnerExpanded" type="reference">
+                                       <options>
+                                          <option name="referenceTo">AppSvcBusinessPartnerA2X:SvcGET_BusinessPartner_EntireResponse</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_PO_Get_BusinessPartner" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:PoSapStdOutput</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="lmtdcquv">
+                                 <assignment id="lmtdcr1z">
+                                    <title>Assignment to tmp_extenral_customer, tmp_document_date etc.</title>
+                                    <operation source="formula" to="temp.tmp_extenral_customer">
+                                       <expression language="XQuery">let $input:= $output.out_BusinessPartnerExpanded 
+for $i in $input/d
+return 
+$i/BusinessPartnerIDByExtSystem/text()</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_document_date">
+                                       <expression language="XQuery">let $inputDateTime := xs:dateTime("1970-01-01T00:00:00-00:00") + xs:dayTimeDuration(concat("PT",(fn:substring($temp.tmp_current_invoice[1]/BillingDocumentDate , 1, 10)), "S"))
+return  fn:format-dateTime($inputDateTime, "[Y01][M01][D01]")</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_BillingDocDate">
+                                       <expression language="XQuery">let $inputDateTime := xs:dateTime("1970-01-01T00:00:00-00:00") + xs:dayTimeDuration(concat("PT",(fn:substring($temp.tmp_current_invoice[1]/BillingDocumentDate , 1, 10)), "S"))
+return  fn:format-dateTime($inputDateTime, "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]")</expression>
+                                    </operation>
+                                    <link id="lnbmkl4o" targetId="lnbmkl4n"/>
+                                 </assignment>
+                                 <assignment id="lnbmkl4n">
+                                    <title>Assignment to tmp_cnt</title>
+                                    <operation source="formula" to="temp.tmp_cnt">
+                                       <expression language="XQuery">fn:string-length($temp.tmp_extenral_customer)</expression>
+                                    </operation>
+                                    <link id="lnbmkl4p" targetId="lnbmkl0p"/>
+                                 </assignment>
+                                 <container id="lnbmkl0p" type="exclusive">
+                                    <title>tmp_extenral_customer</title>
+                                    <flow id="lnbmkl1o">
+                                       <assignment id="lnbmklj6">
+                                          <title>Assignment to tmp_AttachmentName</title>
+                                          <operation source="formula" to="temp.tmp_AttachmentName">
+                                             <expression language="XQuery">fn:concat($temp.tmp_extenral_customer,'-inv' , $temp.tmp_current_invoice[1]/BillingDocument,'-',$temp.tmp_document_date,'.pdf')</expression>
+                                          </operation>
+                                          <link id="lnwtbahe" targetId="lnwtbahd"/>
+                                       </assignment>
+                                       <assignment id="lnwtbahd">
+                                          <title>Assignment to tmp_api25_queue</title>
+                                          <operation source="query" to="temp.tmp_api25_queue">
+                                             <query advanceQuery="false" from="US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE">
+                                                <where>PDF_Name = '{$temp.tmp_AttachmentName}'</where>
+                                             </query>
+                                          </operation>
+                                          <link id="lnwtbanm" targetId="lnwtbanl"/>
+                                       </assignment>
+                                       <container id="lnwtbanl" type="exclusive">
+                                          <title>PDF_Name</title>
+                                          <flow id="lnwtbaok">
+                                             <assignment id="lnwtbavf">
+                                                <title>Assignment to Code, Error etc.</title>
+                                                <operation source="constant" to="output.out_ProcessVariables_Q[1]/Code">Violation of UNIQUE KEY constraint</operation>
+                                                <operation source="constant" to="output.out_ProcessVariables_Q[1]/Error">Violation of UNIQUE KEY constraint</operation>
+                                                <operation source="constant" to="output.out_ProcessVariables_Q[1]/Description">BillingDoc Available in the VIP_USI_API25_QUEUE table</operation>
+                                                <operation source="formula" to="output.out_ProcessVariables_Q[1]/X_TRANSACTION_ID">
+                                                   <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument||'-'||$temp.tmp_BillingDocDate||'-'||$temp.tmp_current_invoice[1]/Customer </expression>
+                                                </operation>
+                                                <operation source="formula" to="output.out_ProcessVariables_Q[1]/Data_Key">
+                                                   <expression language="XQuery">'Billing Document: '||$temp.tmp_current_invoice[1]/BillingDocument||'^ Billing Document Date: '||$temp.tmp_BillingDocDate||'^ Customer: '||$temp.tmp_current_invoice[1]/Customer </expression>
+                                                </operation>
+                                                <link id="lnwtbawd" targetId="lnwtbawc"/>
+                                             </assignment>
+                                             <jumpTo id="lnwtbawc">
+                                                <link id="lnwtbax6" targetId="lmoijv1z"/>
+                                             </jumpTo>
+                                          </flow>
+                                          <flow id="lnwtbaom">
+                                             <eventContainer id="lnwtbb1h">
+                                                <create id="lnwtbb1n">
+                                                   <title>VIP_USI_API25_QUEUE</title>
+                                                   <entityName>US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</entityName>
+                                                   <createInput>
+                                                      <parameter name="BillingDocument" source="constant" updatable="true">{$temp.tmp_current_invoice[1]/BillingDocument}</parameter>
+                                                      <parameter name="BillingDocumentDate" source="constant" updatable="true">{$temp.tmp_BillingDocDate}</parameter>
+                                                      <parameter name="Customer" source="constant" updatable="true">{$temp.tmp_current_invoice[1]/Customer}</parameter>
+                                                      <parameter name="CustomerIDByExtSystem" source="constant" updatable="true">{$temp.tmp_extenral_customer}</parameter>
+                                                      <parameter name="BillingDocumentEpochSeconds"
+                                                                 source="constant"
+                                                                 updatable="true">{$temp.tmp_current_invoice[1]/BillingDocumentDate}</parameter>
+                                                      <parameter name="PDF_Name" source="constant" updatable="true">{$temp.tmp_AttachmentName}</parameter>
+                                                      <parameter name="ProcessedDate" source="formula" updatable="true">
+                                                         <expression language="XQuery">fn:current-dateTime()</expression>
+                                                      </parameter>
+                                                      <parameter name="IicsRunId" source="formula" updatable="true">
+                                                         <expression language="XQuery">util:getProcessId()</expression>
+                                                      </parameter>
+                                                   </createInput>
+                                                </create>
+                                                <flow id="lnwtbb1i">
+                                                   <jumpTo id="lnwtbb1j">
+                                                      <link id="lnwtbb1q" targetId="lmokfaxj"/>
+                                                   </jumpTo>
+                                                </flow>
+                                                <flow id="lnwtbb1k">
+                                                   <assignment id="lnwtbb1l">
+                                                      <title>Assignment to X_TRANSACTION_ID, Code etc. 1</title>
+                                                      <operation source="formula" to="output.out_ProcessVariables_Q[1]/X_TRANSACTION_ID">
+                                                         <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument||'-'||$temp.tmp_BillingDocDate||'-'||$temp.tmp_current_invoice[1]/Customer </expression>
+                                                      </operation>
+                                                      <operation source="constant" to="output.out_ProcessVariables_Q[1]/Code">{$output.faultInfo[1]/code}</operation>
+                                                      <operation source="constant" to="output.out_ProcessVariables_Q[1]/Error">{$output.faultInfo[1]/reason}</operation>
+                                                      <operation source="constant" to="output.out_ProcessVariables_Q[1]/Description">{$output.faultInfo[1]/detail}</operation>
+                                                      <operation source="formula" to="output.out_ProcessVariables_Q[1]/Data_Key">
+                                                         <expression language="XQuery">'Billing Document: '||$temp.tmp_current_invoice[1]/BillingDocument||'^ Billing Document Date: '||$temp.tmp_BillingDocDate||'^ Customer: '||$temp.tmp_current_invoice[1]/Customer </expression>
+                                                      </operation>
+                                                      <link id="lnwtbb1r" targetId="lnwtbb1m"/>
+                                                   </assignment>
+                                                   <jumpTo id="lnwtbb1m">
+                                                      <link id="lnwtbb1s" targetId="lmoijv1z"/>
+                                                   </jumpTo>
+                                                </flow>
+                                                <link id="lnwtbb1o" targetId="lnwtbb1i" type="containerLink"/>
+                                                <events>
+                                                   <catch faultField="faultInfo" id="lmoyimyr" interrupting="true">
+                                                      <link id="lnwtbb1p" targetId="lnwtbb1k" type="containerLink"/>
+                                                   </catch>
+                                                </events>
+                                             </eventContainer>
+                                          </flow>
+                                          <link id="lnwtbaod" targetId="lnwtbaok" type="containerLink">
+                                             <condition source="formula">
+                                                <function name="set">
+                                                   <arg name="field">{$temp.tmp_api25_queue}</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                          <link id="lnwtbaog" targetId="lnwtbaom" type="containerLink">
+                                             <condition source="formula">
+                                                <function name="unset">
+                                                   <arg name="field">{$temp.tmp_api25_queue}</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                       </container>
+                                    </flow>
+                                    <flow id="lnbmkl1q">
+                                       <assignment id="lnd2w80b">
+                                          <title>Assignment to Code, Error etc.</title>
+                                          <operation source="constant" to="output.out_ProcessVariables_Q[1]/Code">BusinessPartnerIDByExtSystem not equal to vforce id</operation>
+                                          <operation source="constant" to="output.out_ProcessVariables_Q[1]/Error">BusinessPartnerIDByExtSystem not equal to vforce id</operation>
+                                          <operation source="constant" to="output.out_ProcessVariables_Q[1]/Description">BusinessPartnerIDByExtSystem not equal to vforce id{$output.faultInfo[1]/reason}</operation>
+                                          <operation source="formula" to="output.out_ProcessVariables_Q[1]/X_TRANSACTION_ID">
+                                             <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument||'-'||$temp.tmp_BillingDocDate||'-'||$temp.tmp_current_invoice[1]/Customer</expression>
+                                          </operation>
+                                          <operation source="formula" to="output.out_ProcessVariables_Q[1]/Data_Key">
+                                             <expression language="XQuery">'Billing Document: '||$temp.tmp_current_invoice[1]/BillingDocument||'^ Billing Document Date: '||$temp.tmp_BillingDocDate||'^ Customer: '||$temp.tmp_current_invoice[1]/Customer </expression>
+                                          </operation>
+                                          <link id="lnd2w80c" targetId="lnbmklga"/>
+                                       </assignment>
+                                       <jumpTo id="lnbmklga">
+                                          <link id="lnbmklh4" targetId="lmoijv1z"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="lnbmkl1h" targetId="lnbmkl1o" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="equals">
+                                             <arg name="left">{$temp.tmp_cnt}</arg>
+                                             <arg name="right">{18}</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="lnbmkl1k" targetId="lnbmkl1q" type="containerLink"/>
+                                 </container>
+                              </flow>
+                              <flow id="lmtdcquy">
+                                 <assignment id="lmtdcqxt">
+                                    <title>Assignment to X_TRANSACTION_ID, Code etc. 1 1</title>
+                                    <operation source="formula" to="output.out_ProcessVariables_Q[1]/X_TRANSACTION_ID">
+                                       <expression language="XQuery">$temp.tmp_current_invoice[1]/BillingDocument||'-'||$temp.tmp_BillingDocDate||'-'||$temp.tmp_current_invoice[1]/Customer </expression>
+                                    </operation>
+                                    <operation source="constant" to="output.out_ProcessVariables_Q[1]/Code">{$output.faultInfo[1]/code}</operation>
+                                    <operation source="constant" to="output.out_ProcessVariables_Q[1]/Error">{$output.faultInfo[1]/reason}</operation>
+                                    <operation source="constant" to="output.out_ProcessVariables_Q[1]/Description">{$output.faultInfo[1]/detail}</operation>
+                                    <operation source="formula" to="output.out_ProcessVariables_Q[1]/Data_Key">
+                                       <expression language="XQuery">'Billing Document: '||$temp.tmp_current_invoice[1]/BillingDocument||'^ Billing Document Date: '||$temp.tmp_BillingDocDate||'^ Customer: '||$temp.tmp_current_invoice[1]/Customer </expression>
+                                    </operation>
+                                    <link id="lmtdcqz3" targetId="lmtdcqz2"/>
+                                 </assignment>
+                                 <jumpTo id="lmtdcqz2">
+                                    <link id="lmtdcqzx" targetId="lmoijv1z"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="lmtdcquu" targetId="lmtdcquv" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lmtdcquj" interrupting="true">
+                                    <link id="lmtdcqux" targetId="lmtdcquy" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                        </flow>
+                        <flow id="lmokfaxw">
+                           <end id="lmokfaxx">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="lmokfaxy" targetId="lmokfaxk" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_invoice_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lmokfaxz" targetId="lmokfaxw" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_invoice_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lmoijv1n">
+                     <assignment id="lmoijvbx">
+                        <title>Assignment to Code, Error etc.</title>
+                        <operation source="constant" to="output.out_ProcessVariables_Q[1]/Code">{$output.faultInfo[1]/code}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_Q[1]/Error">{$output.faultInfo[1]/detail}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_Q[1]/Description">{$output.faultInfo[1]/reason}</operation>
+                        <link id="lmoijvby" targetId="lmoijv1z"/>
+                     </assignment>
+                     <subflow id="lmoijv1z">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>b73c2yxfPe7kLVUICRbIA6</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_Q</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lmokfau4" targetId="lmokfau3"/>
+                     </subflow>
+                     <jumpTo id="lmokfau3">
+                        <link id="lmokfaut" targetId="lmokfaxj"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lmoijv1j" targetId="lmoijv1k" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lmoijv1h" interrupting="true">
+                        <link id="lmoijv1m" targetId="lmoijv1n" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>106af54c-8e51-4522-a317-c458d12ffa08</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:58Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabhadra.dhikonda</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-20T03:51:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_MiscDate": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>eZ7M6mexmiubZ1Untmoi0P</types1:GUID>
+      <types1:DisplayName>Queue_api25</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-26T08:54:28.43Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

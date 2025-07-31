@@ -1,0 +1,671 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZigdpIO3M4WwOC2-gt-24261029-2022-01-18T09:58:25.825Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Mapping_AccToBp</types1:Name>
+      <types1:ParentFlowIds>iYBeMHck5qbbfUr-gt-23835261-2022-01-18T09:58:27.134Z::pd.xml,ZX81Owhz5chspiR-gt-1457660-2022-01-27T09:54:14.835Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Customer
+Fetches Account details from VForce
+Maps to Business Partner of type Organization in SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:26Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T13:38:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T13:39:03Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Mapping_AccToBp/Process_Mapping_AccToBp.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Mapping_AccToBp"
+                  name="Process_Mapping_AccToBp"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Customer
+Fetches Account details from VForce
+Maps to Business Partner of type Organization in SAP</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="VF_AccountDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8f3H4sp3c1He13JDZ84XSu</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_opportunity_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_event_label" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Jurisdication" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_main_transaction_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="SAP_BpID_array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoSapBpId</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">chgXBI7i2yoleuziZOFtIL</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="VF_Opportunity" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunity-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9bPEBY0uh2ucOA2MHKoqge</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_process_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="SAP_BpCustomer" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2SfErhZ0v5Fjpq6cXxK32J</option>
+                  </options>
+               </field>
+               <field description="" name="CustomerEmail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="o_SalesOrganization" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_CustomerPaymentTerms" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_CustomerTaxClassification" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="o_CustomerAccountAssignmentGroup"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_YY1_Customer_Segment_cco" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_CashPlanningGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_BusinessPartnerContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerContactType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bU20DM6NBolfwVzhLbys2a</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CashPlanningGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_YY1_Customer_Segment_cco" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CustomerAccountAssignmentGroup"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IncotermsLocation1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JsonWriter" type="reference">
+                  <options>
+                     <option name="referenceTo">US-AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6qWzesXeEs2ee967mLUyWy</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JsonBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_SAP_BusinessPartnerTax</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">kphlbCI7MKPcPJNlvA9WqL</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerAddressType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0iNOK0rBG64lzy2SLlSCKB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Customer" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERACustomerType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8FxLj1JL4ipg5MUVnzzNYO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerRole" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerRoleType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">eGDdvDC4agjhe70R0LtRsR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Phone_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Fax_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_URL_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerCompany" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_YY1_Customer_Segment_cco2"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:LOV_Corresp</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SalesAreaTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERACustomerSalesAreaTaxType</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6csfUdbaq1QeB4L1G7alaF</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CustomerSalesAreaTax_Corresp"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:LOV_Corresp</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxa44ii6" targetId="kxa1tlkm"/>
+               </start>
+               <assignment id="kxa1tlkm">
+                  <title>Parameters with Logic</title>
+                  <operation source="formula" to="temp.tmp_CashPlanningGroup">
+                     <expression language="XQuery">util:iif($input.VF_AccountDetails[1]/AccountType='Affiliate','E4', util:iif($input.VF_AccountDetails[1]/ShippingCountry!=fn:substring($input.VF_AccountDetails[1]/Entity_Code__c , 1, 2),'E3','E2' ) )</expression>
+                  </operation>
+                  <operation source="query" to="temp.tmp_YY1_Customer_Segment_cco2">
+                     <query advanceQuery="true" from="US-MSSQL-DB-VForce:LOV_Corresp">
+                        <where>FieldNameVForce = '{'Account.Sector__c'}' and ValueCodeVforce = '{$input.VF_AccountDetails[1]/Sector__c }'</where>
+                     </query>
+                  </operation>
+                  <operation source="field" to="temp.tmp_YY1_Customer_Segment_cco">temp.tmp_YY1_Customer_Segment_cco2[1]/ValueCodeSAP</operation>
+                  <operation source="formula" to="temp.tmp_CustomerAccountAssignmentGroup">
+                     <expression language="XQuery">util:iif($input.VF_AccountDetails[1]/AccountType='Affiliate','03', util:iif($input.VF_AccountDetails[1]/ShippingCountry!=fn:substring($input.VF_AccountDetails[1]/Entity_Code__c , 1, 2),'02','01' ) )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_IncotermsLocation1">
+                     <expression language="XQuery">util:iif(util:isNull($input.VF_AccountDetails[1]/ShippingCity ),'EX-WORKS',$input.VF_AccountDetails[1]/ShippingCity )</expression>
+                  </operation>
+                  <operation source="list" to="temp.tmp_CustomerSalesAreaTax_Corresp">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:LOV_Corresp">
+                        <where>FieldNameSAP = '{'A_CustomerSalesAreaTax.CustomerTaxCategory'}' and FieldNameVForce = '{'Opportunity.Legal_Billing_Entity__c'}' and ValueCodeVforce = '{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}'</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SalesAreaTax">
+                     <expression language="XQuery">for $ctg in $temp.tmp_CustomerSalesAreaTax_Corresp
+return &lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt; &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;DepartureCountry&gt;{fn:substring($input.VF_Opportunity[1]/Legal_Billing_Entity__c, 1, 2) }&lt;/DepartureCountry&gt;
+                    &lt;CustomerTaxCategory&gt;{$ctg/ValueCodeSAP/text()}&lt;/CustomerTaxCategory&gt;
+                    &lt;CustomerTaxClassification&gt;{util:iif($input.VF_AccountDetails[1]/SBQQ__TaxExempt__c='Yes',0,1)}&lt;/CustomerTaxClassification&gt;
+                &lt;/results&gt; &lt;/root&gt;
+</expression>
+                  </operation>
+                  <link id="kxa1tll0" targetId="kxa1tlkz"/>
+               </assignment>
+               <assignment id="kxa1tlkz">
+                  <title>Child Process Objects</title>
+                  <operation source="formula" to="temp.tmp_Phone_BP_PO">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($input.VF_AccountDetails[1]/Phone))) then (
+       &lt;to_PhoneNumber&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;PhoneNumber&gt;{$input.VF_AccountDetails[1]/Phone}&lt;/PhoneNumber&gt;
+            &lt;/results&gt;
+       &lt;/to_PhoneNumber&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_EmailAddress_BP_PO">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($input.VF_AccountDetails[1]/Billing_Contact_Email__c ))) then (
+       &lt;to_EmailAddress&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;EmailAddress&gt;{$input.VF_AccountDetails[1]/Billing_Contact_Email__c }&lt;/EmailAddress&gt;
+            &lt;/results&gt;
+       &lt;/to_EmailAddress&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Fax_BP_PO">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($input.VF_AccountDetails[1]/Fax))) then (
+       &lt;to_FaxNumber&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;FaxNumber&gt;{$input.VF_AccountDetails[1]/Fax}&lt;/FaxNumber&gt;
+            &lt;/results&gt;
+       &lt;/to_FaxNumber&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_URL_BP_PO">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($input.VF_AccountDetails[1]/Website))) then (
+       &lt;to_URLAddress&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;SearchURLAddress&gt;{$input.VF_AccountDetails[1]/Website}&lt;/SearchURLAddress&gt;
+                &lt;WebsiteURL&gt;{$input.VF_AccountDetails[1]/Website}&lt;/WebsiteURL&gt;
+            &lt;/results&gt;
+       &lt;/to_URLAddress&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BusinessPartnerAddress">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+   { if(not(util:isNull($input.VF_AccountDetails[1]/ShippingCountry))) then (
+      &lt;results m:isArray="true"&gt;
+         &lt;CityName&gt;{$input.VF_AccountDetails[1]/ShippingCity }&lt;/CityName&gt;
+         &lt;PostalCode&gt;{$input.VF_AccountDetails[1]/ShippingPostalCode }&lt;/PostalCode&gt;
+         &lt;Language&gt;EN&lt;/Language&gt;           
+         &lt;StreetName&gt;{$input.VF_AccountDetails[1]/ShippingStreet}&lt;/StreetName&gt;
+         &lt;Region&gt;{$input.VF_AccountDetails[1]/ShippingState} &lt;/Region&gt;
+         &lt;Country&gt;{$input.VF_AccountDetails[1]/ShippingCountry }&lt;/Country&gt;
+         { $temp.tmp_EmailAddress_BP_PO/element()}
+         { $temp.tmp_Phone_BP_PO/element()}
+         { $temp.tmp_Fax_BP_PO/element()}
+         { $temp.tmp_URL_BP_PO/element()}
+         &lt;to_AddressUsage&gt;
+         	&lt;results m:isArray="true"&gt;
+  				&lt;AddressUsage&gt;XXDEFAULT&lt;/AddressUsage&gt;
+				&lt;ValidityEndDate&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidityEndDate&gt;
+        	&lt;/results&gt;
+	 	 &lt;/to_AddressUsage&gt;	
+      &lt;/results&gt;   
+   ) else()}
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BusinessPartnerContact">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+{for $x in $input.SAP_BpID_array return 
+	&lt;results m:isArray = "true"&gt;
+		&lt;BusinessPartnerPerson&gt;{$x/BusinessPartner/text()}&lt;/BusinessPartnerPerson&gt;
+    &lt;/results&gt;}
+&lt;/root&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BusinessPartnerRole">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;	&lt;results m:isArray="true"&gt;
+        &lt;BusinessPartnerRole&gt;FLCU00&lt;/BusinessPartnerRole&gt;
+    &lt;/results&gt;   
+    &lt;results m:isArray="true"&gt;        
+   		&lt;BusinessPartnerRole&gt;FLCU01&lt;/BusinessPartnerRole&gt;
+    &lt;/results&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BusinessPartnerTax">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;results m:isArray="true"&gt;
+       	&lt;BPTaxType&gt;$input.VF_AccountDetails[1]/ShippingCountry&lt;/BPTaxType&gt;
+   		&lt;BPTaxNumber&gt;&lt;/BPTaxNumber&gt;
+    &lt;/results&gt;    
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_CustomerCompany">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;	
+   &lt;results m:isArray="true"&gt;
+   		&lt;CompanyCode&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/CompanyCode&gt;
+		&lt;PaymentBlockingReason&gt;&lt;/PaymentBlockingReason&gt;
+		&lt;PaymentTerms&gt;{$input.VF_AccountDetails[1]/Payment_Term__c}&lt;/PaymentTerms&gt;
+		&lt;ReconciliationAccount&gt;12100000&lt;/ReconciliationAccount&gt;
+		&lt;CashPlanningGroup&gt;{$temp.tmp_CashPlanningGroup}&lt;/CashPlanningGroup&gt;
+		&lt;YY1_Customer_Segment_cco&gt;{$temp.tmp_YY1_Customer_Segment_cco}&lt;/YY1_Customer_Segment_cco&gt;		
+        &lt;to_CustomerDunning&gt;
+        	&lt;results m:isArray="true"&gt;
+        		&lt;CompanyCode&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/CompanyCode&gt;
+                &lt;DunningProcedure&gt;Z002&lt;/DunningProcedure&gt;
+            &lt;/results&gt;
+        &lt;/to_CustomerDunning&gt;
+   &lt;/results&gt;   
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Customer">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  	&lt;to_CustomerCompany&gt;
+   		&lt;results m:isArray="true"&gt;       	
+      		&lt;CompanyCode&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c }&lt;/CompanyCode&gt;
+      		&lt;ReconciliationAccount&gt;12100000&lt;/ReconciliationAccount&gt;
+      		&lt;YY1_Customer_Segment_cco&gt;{$temp.tmp_YY1_Customer_Segment_cco}&lt;/YY1_Customer_Segment_cco&gt;
+      		&lt;ValueAdjustmentKey&gt;Z1&lt;/ValueAdjustmentKey&gt;
+      		&lt;PaymentTerms&gt;{$input.VF_AccountDetails[1]/Payment_Term__c}&lt;/PaymentTerms&gt;
+        	&lt;CashPlanningGroup&gt;{$temp.tmp_CashPlanningGroup}&lt;/CashPlanningGroup&gt;
+            &lt;to_CustomerDunning&gt;
+            	&lt;results m:isArray="true"&gt;
+                	&lt;CompanyCode&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/CompanyCode&gt;
+                    &lt;DunningProcedure&gt;Z002&lt;/DunningProcedure&gt;
+                &lt;/results&gt;
+            &lt;/to_CustomerDunning&gt;
+    	&lt;/results&gt;
+	&lt;/to_CustomerCompany&gt;
+	&lt;to_CustomerSalesArea&gt;
+		&lt;results m:isArray="true"&gt;
+			&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+      		&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+      		&lt;Division&gt;10&lt;/Division&gt;
+      		&lt;Currency&gt;{$input.VF_AccountDetails[1]/Currency__c}&lt;/Currency&gt;
+            &lt;CustomerAccountAssignmentGroup&gt;{$temp.tmp_CustomerAccountAssignmentGroup}&lt;/CustomerAccountAssignmentGroup&gt;
+            &lt;CustomerGroup&gt;01&lt;/CustomerGroup&gt;
+            &lt;CustomerPaymentTerms&gt;{$input.VF_AccountDetails[1]/Payment_Term__c}&lt;/CustomerPaymentTerms&gt;
+            &lt;CustomerPriceGroup&gt;&lt;/CustomerPriceGroup&gt;
+            &lt;CustomerPricingProcedure&gt;&lt;/CustomerPricingProcedure&gt;
+            &lt;IncotermsClassification&gt;EXW&lt;/IncotermsClassification&gt;
+            &lt;IncotermsLocation1&gt;EX-WORKS&lt;/IncotermsLocation1&gt;
+            &lt;IncotermsLocation2&gt;&lt;/IncotermsLocation2&gt;
+            &lt;IncotermsVersion&gt;2020&lt;/IncotermsVersion&gt;            
+            &lt;PriceListType&gt;&lt;/PriceListType&gt;
+            &lt;SupplyingPlant&gt;&lt;/SupplyingPlant&gt;
+            &lt;CustomerAccountGroup&gt;&lt;/CustomerAccountGroup&gt;
+            &lt;to_SalesAreaTax&gt;
+            	{$temp.tmp_SalesAreaTax/element()}
+            &lt;/to_SalesAreaTax&gt;
+            &lt;to_PartnerFunction&gt;
+            	&lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;SH&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;SP&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;BP&lt;/PartnerFunction&gt; 
+                    &lt;BPCustomerNumber&gt;{$input.SAP_BpID_array[1]/BusinessPartner}&lt;/BPCustomerNumber&gt;
+                    &lt;ContactPerson&gt;&lt;/ContactPerson&gt;
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_Opportunity[1]/Legal_Billing_Entity__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;PY&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+            &lt;/to_PartnerFunction&gt;
+      	&lt;/results&gt;
+	&lt;/to_CustomerSalesArea&gt;   
+&lt;/root&gt;
+
+
+
+
+</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_Currency">
+                     <expression language="XQuery">$input.VF_AccountDetails[1]/Currency__c</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_CustomerPaymentTerms">
+                     <expression language="XQuery">$input.VF_AccountDetails[1]/Payment_Term__c</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_CustomerTaxClassification">
+                     <expression language="XQuery">util:iif($input.VF_AccountDetails[1]/SBQQ__TaxExempt__c='Yes',0,1)</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_CustomerAccountAssignmentGroup">
+                     <expression language="XQuery">$temp.tmp_CustomerAccountAssignmentGroup</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_SalesOrganization">
+                     <expression language="XQuery">$input.VF_Opportunity[1]/Legal_Billing_Entity__c </expression>
+                  </operation>
+                  <operation source="formula" to="output.o_CashPlanningGroup">
+                     <expression language="XQuery">$temp.tmp_CashPlanningGroup</expression>
+                  </operation>
+                  <operation source="formula" to="output.o_YY1_Customer_Segment_cco">
+                     <expression language="XQuery">$temp.tmp_YY1_Customer_Segment_cco</expression>
+                  </operation>
+                  <operation source="formula" to="output.CustomerEmail">
+                     <expression language="XQuery">$input.VF_AccountDetails[1]/Billing_Contact_Email__c</expression>
+                  </operation>
+                  <link id="kxa1tllm" targetId="kxa1tlll"/>
+               </assignment>
+               <assignment id="kxa1tlll">
+                  <title>Parent Process Object</title>
+                  <operation source="formula" to="output.SAP_BpCustomer">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;BusinessPartnerCategory&gt;2&lt;/BusinessPartnerCategory&gt;
+	&lt;BusinessPartnerGrouping&gt;BP02&lt;/BusinessPartnerGrouping&gt;
+	&lt;Language&gt;EN&lt;/Language&gt;
+	&lt;OrganizationBPName1&gt;{fn:substring($input.VF_AccountDetails[1]/AccountName , 1, 40)}&lt;/OrganizationBPName1&gt;
+	&lt;OrganizationBPName2&gt;{fn:substring($input.VF_AccountDetails[1]/AccountName , 41, 80)}&lt;/OrganizationBPName2&gt;
+	&lt;SearchTerm1&gt;{fn:substring($input.VF_AccountDetails[1]/AccountName , 1, 20)}&lt;/SearchTerm1&gt;
+	&lt;BusinessPartnerIDByExtSystem&gt;{$input.VF_AccountDetails[1]/AccountID}&lt;/BusinessPartnerIDByExtSystem&gt;
+	&lt;TradingPartner&gt;&lt;/TradingPartner&gt;
+   	&lt;to_BusinessPartnerAddress&gt;{$temp.tmp_BusinessPartnerAddress/element()}&lt;/to_BusinessPartnerAddress&gt;    
+   	&lt;to_BusinessPartnerRole&gt;{$temp.tmp_BusinessPartnerRole/element()}&lt;/to_BusinessPartnerRole&gt;   
+   	&lt;to_BusinessPartnerContact&gt;{$temp.tmp_BusinessPartnerContact/element()}&lt;/to_BusinessPartnerContact&gt;
+   	&lt;to_Customer&gt;{$temp.tmp_Customer/element()}&lt;/to_Customer&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="kxa1tlm1" targetId="kxa1tlm0"/>
+               </assignment>
+               <assignment id="kxa1tlm0">
+                  <title>Prepare  JSON</title>
+                  <operation source="constant" to="temp.tmp_JsonWriter[1]/format">PlainText</operation>
+                  <operation source="formula" to="temp.tmp_JsonWriter[1]/fileName">
+                     <expression language="XQuery">'Process_Mapping_AccToBp['||util:getProcessId()||'].json'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_JsonWriter[1]/content">
+                     <expression language="XQuery">util:toJSON($output.SAP_BpCustomer )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_JsonWriter[1]/filePath">
+                     <expression language="XQuery">'\'||$input.in_process_name||'['||$input.in_main_transaction_id||']'</expression>
+                  </operation>
+                  <link id="kxa1tlm2" targetId="kxa1tlls"/>
+               </assignment>
+               <service id="kxa1tlls">
+                  <title>Write JSON</title>
+                  <serviceName>US-AppCon-JsonWtiter:JsonWriter-Opportunity</serviceName>
+                  <serviceGUID>6qWzesXeEs2ee967mLUyWy</serviceGUID>
+                  <serviceInput>
+                     <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_JsonWriter</parameter>
+                  </serviceInput>
+                  <link id="kxhln2qt" targetId="kxhln2qs"/>
+               </service>
+               <subflow id="kxhln2qs">
+                  <title>Log Mapping</title>
+                  <subflowGUID>dafBeKeiskgjnHiGqkoyIF</subflowGUID>
+                  <subflowPath>uslogging1_mapping</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                     <parameter name="in_event_label" source="constant" updatable="true">{$input.in_event_label}</parameter>
+                     <parameter name="in_Jurisdication" source="constant" updatable="true">{$input.in_Jurisdication}</parameter>
+                     <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                        <expression language="XQuery">'Process_Mapping_AccToBp['||util:getProcessId()||']'</expression>
+                     </parameter>
+                     <parameter name="in_main_transaction_id" source="field" updatable="true">input.in_main_transaction_id</parameter>
+                     <parameter name="in_saleforce_payload" source="field" updatable="true">input.VF_AccountDetails</parameter>
+                     <parameter name="in_sap_payload" source="field" updatable="true">output.SAP_BpCustomer</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kxhln2qu" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>f193bc7f-08dd-4100-bfa3-91106fdb0359</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:26Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-02-22T13:22:57Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_opportunity_id": "123",
+	 "in_event_label": "123",
+	 "in_Jurisdication": "123",
+	 "in_main_transaction_id": "123",
+	 "in_subtransaction_name": "123",
+	 "VF_AccountDetails": {
+	 	 "AccountName": "123",
+	 	 "AccountType": "123",
+	 	 "Billing_Contact_Email__c": "xya@test.com",
+	 	 "Fax": "123",
+	 	 "Website": "",
+	 	 "Phone": "123",
+	 	 "X18_Digit_ID__c": "123",
+	 	 "ShippingCity": "123",
+	 	 "ShippingCountry": "123",
+	 	 "ShippingPostalCode": "123",
+	 	 "ShippingState": "123",
+	 	 "ShippingStreet": "123",
+	 	 "Payment_Term__c": "123",
+	 	 "Sector__c": "123",
+	 	 "Entity_Code__c": "123",
+	 	 "Currency__c": "123",
+	 	 "AccountID": "123",
+	 	 "BillingContactFirstName__c": "123",
+	 	 "BillingContactLastName__c": "123",
+	 	 "Billing_Contact_Phone__c": "123",
+	 	 "BillingStreet": "123",
+	 	 "BillingCity": "123",
+	 	 "BillingState": "123",
+	 	 "BillingPostalCode": "123",
+	 	 "BillingCountry": "123"
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1uawVrbywaTi1gjSTnmXo1</types1:GUID>
+      <types1:DisplayName>Process_Mapping_AccToBp</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T14:04:23.209Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

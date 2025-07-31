@@ -1,0 +1,1560 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ln6lRuImXycotFg-gt-7953265-2022-01-04T06:58:05.179Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcServiceContractRequest_IN</types1:Name>
+      <types1:ParentFlowIds>3Zf5kck8jKBmeK3-gt-13209310-2022-01-04T06:58:05.876Z::conn.xml,jr1FyuRZXDyvs7x-gt-14215785-2022-01-05T14:00:03.151Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-01-04T06:58:05Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-04T06:59:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcServiceContractRequest_IN/SvcServiceContractRequest_IN_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcServiceContractRequest_IN"
+                            label=""
+                            name="SvcServiceContractRequest_IN"
+                            uuid="d6bd5af6-3153-4589-b2b1-bf36436d5e0b">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction"
+                       maxRedirects="100"
+                       name="BaseAction"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VFORCE_Q"
+                                type="string"/>
+                     <parameter name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="kDNsd[bFhAvKjXLkYgU8ndnPPPJbsJZjLRpkPbCP"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/bc/srt/scs_ext/sap/servicecontractrequest_in"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">text/xml; charset=utf-8</header>
+                        </httpHeaders>
+                        <body/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction"
+                       label="ServiceContractRequest_In"
+                       maxRedirects="100"
+                       name="ServiceContractRequest_In"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <section type="body">
+                           <attribute inherit="overwrite" name="content" type="content"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="ServiceContractRequest"
+                                required="false"
+                                testWith="&lt;s4c:ServiceContractRequest xmlns:s4c=&#34;http://sap.com/xi/S4CRM/&#34; xmlns:sf=&#34;http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd&#34; xmlns:aetgt=&#34;http://schemas.informatica.com/spi/types/2013/12/spi-interface/&#34;&gt;&lt;MessageHeader&gt;&lt;ID&gt;0063O00000GImTvQAL&lt;/ID&gt;&lt;CreationDateTime&gt;2021-12-27T10:25:45.0000000Z&lt;/CreationDateTime&gt;&lt;SenderBusinessSystemID&gt;VFORCE_Q&lt;/SenderBusinessSystemID&gt;&lt;/MessageHeader&gt;&lt;ServiceContract actionCode=&#34;01&#34;&gt;&lt;ServiceContractType&gt;SC1&lt;/ServiceContractType&gt;&lt;ServiceContractDescription languageCode=&#34;EN&#34;&gt;Testing DEMO Client&lt;/ServiceContractDescription&gt;&lt;OrgUnit&gt;&lt;SalesOrganization&gt;US11&lt;/SalesOrganization&gt;&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;&lt;Division&gt;10&lt;/Division&gt;&lt;/OrgUnit&gt;&lt;Partners&gt;&lt;SoldToParty&gt;1043510&lt;/SoldToParty&gt;&lt;ShipToParty&gt;1043510&lt;/ShipToParty&gt;&lt;PersonResponsible&gt;9980000080&lt;/PersonResponsible&gt;&lt;BillToParty&gt;1043510&lt;/BillToParty&gt;&lt;PayerParty&gt;1043510&lt;/PayerParty&gt;&lt;ContactPerson&gt;1043510&lt;/ContactPerson&gt;&lt;/Partners&gt;&lt;ServiceContractStartDateTime&gt;2021-12-01T00:00:00&lt;/ServiceContractStartDateTime&gt;&lt;ServiceContractEndDateTime&gt;2022-12-01T00:00:00&lt;/ServiceContractEndDateTime&gt;&lt;ReferenceServiceContract&gt;0063O00000GImTvQAL&lt;/ReferenceServiceContract&gt;&lt;TransactionCurrency&gt;USD&lt;/TransactionCurrency&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0003&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;/&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;100&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRSCAC008USSC&lt;/Product&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType/&gt;&lt;ConditionRateValue/&gt;&lt;ConditionCurrency/&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;/&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;&gt;Audit  &amp;amp; Audit Support&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;100&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product&gt;GRSCAC008USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;200&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product/&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType/&gt;&lt;ConditionRateValue&gt;0&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;/&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;200&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product/&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;300&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA034USSC&lt;/Product&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType&gt;Monthly&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;&gt;Group Reporting&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;Monthly&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;300&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product&gt;FAFREA034USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;400&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA035USSC&lt;/Product&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType&gt;One Time&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;&gt;Financial Statement Preparation&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;50% UpFront - 50% on Completion&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;400&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product&gt;FAFREA035USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;500&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRESSP056USSC&lt;/Product&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType&gt;Monthly&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;1000&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;&gt;Registered Office Address Services&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;50% UpFront - 50% on Completion&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;500&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product&gt;GRESSP056USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode=&#34;01&#34;&gt;&lt;ServiceContractItem&gt;600&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRSCAC008USSC&lt;/Product&gt;&lt;Quantity unitCode=&#34;C62&#34;&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode=&#34;01&#34;&gt;&lt;ConditionType&gt;Annual&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode=&#34;C62&#34;&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode=&#34;01&#34;&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode=&#34;EN&#34;&gt;Audit  &amp;amp; Audit Support&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;Quarterly&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;600&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode=&#34;01&#34;&gt;&lt;Product&gt;GRSCAC008USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;/ServiceContract&gt;&lt;/s4c:ServiceContractRequest&gt;"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractRequestMessage</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/bc/srt/scs_ext/sap/servicecontractrequest_in"
+                                        verb="POST">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="SOAPAction">"http://sap.com/xi/S4CRM/ServiceContractRequest_In/ServiceContractRequest_InRequest"</header>
+                        </httpHeaders>
+                        <body>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;soapenv:Header xmlns:wsa="http://www.w3.org/2005/08/addressing"&gt;&lt;wsa:Action&gt;http://sap.com/xi/S4CRM/ServiceContractRequest_In/ServiceContractRequest_InRequest&lt;/wsa:Action&gt;&lt;wsa:MessageID&gt;{util:generateUUID()}&lt;/wsa:MessageID&gt;&lt;/soapenv:Header&gt;
+   &lt;soapenv:Body&gt;
+{$ServiceContractRequest}
+&lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="Response"
+                            type="string"/>
+                     <field description=""
+                            name="ResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BillgReqItemDescription_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillgReqItemDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BillingRequestItem_In">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillgReqItemBillingDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="BillgReqItemBillingValue"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="SettlmtPeriodStartDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="SettlmtPeriodEndDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="BillingBlockReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServicesRenderedDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="BillgReqItemDescription"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BillgReqItemDescription_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeader">
+                  <description/>
+                  <detail>
+                     <field name="CreationDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="TestDataIndicator"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ReconciliationIndicator"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="SenderBusinessSystemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RecipientBusinessSystemID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">ID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="UUID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">UUID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceUUID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceUUID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="SenderParty"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderParty</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="RecipientParty"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderParty</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="BusinessScope"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">BusinessScope</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeaderParty">
+                  <description/>
+                  <detail>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InternalID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="StandardID"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">StandardID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ContactPerson"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeaderPartyContactPerson</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessDocumentMessageHeaderPartyContactPerson">
+                  <description/>
+                  <detail>
+                     <field name="OrganisationFormattedName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonFormattedName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InternalID6_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PhoneNumber"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PhoneNumber</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="FaxNumber"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PhoneNumber</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="EmailURI"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">EmailURI_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="BusinessScope">
+                  <description/>
+                  <detail>
+                     <field name="TypeCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TypeCode_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="InstanceID"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">InstanceID_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ID" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">ID7_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CharacteristicValuationSC">
+                  <description/>
+                  <detail>
+                     <field name="Characteristic"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CharcValue"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ConditionQuantity_AT">
+                  <description/>
+                  <detail>
+                     <field name="unitCode" nullable="true" required="false" type="string"/>
+                     <field name="ConditionQuantity"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ContentText_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ContentText"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="CountryName_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryName"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="EmailURI_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="EmailURI" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ID7_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="schemeAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InstanceID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InstanceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InternalID6_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="InternalID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PhoneNumber">
+                  <description/>
+                  <detail>
+                     <field name="AreaID" nullable="true" required="false" type="string"/>
+                     <field name="SubscriberID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ExtensionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryDiallingCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CountryName"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">CountryName_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PriceAdaptationEntry_In">
+                  <description/>
+                  <detail>
+                     <field name="SettlementStartDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="SettlementEndDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ConditionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ConditionRateValue"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ConditionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PriceComponentReqItm">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ConditionType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ConditionRateValue"
+                            nullable="true"
+                            required="false"
+                            type="double"/>
+                     <field name="ConditionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VariantCondition"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ConditionQuantity"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ConditionQuantity_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ProfitCenter_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Quantity_AT">
+                  <description/>
+                  <detail>
+                     <field name="unitCode" nullable="true" required="false" type="string"/>
+                     <field name="Quantity" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="schemeAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceServiceContract_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="schemeAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceServiceContract"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceServiceQtan_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="schemeAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceServiceQtan"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ReferenceUUID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceUUID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContrCancellationReason_AT">
+                  <description/>
+                  <detail>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContrCancellationReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContract3_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="schemeAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContract"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractDescription_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractItemDescription_AT">
+                  <description/>
+                  <detail>
+                     <field name="languageCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractItemDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractItmCanclnReason_AT">
+                  <description/>
+                  <detail>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractItmCanclnReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractObjectListReq">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Equipment" nullable="true" required="false" type="string"/>
+                     <field name="Product" nullable="true" required="false" type="string"/>
+                     <field name="ServiceRefFunctionalLocation"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractOrgUnitInService">
+                  <description/>
+                  <detail>
+                     <field name="SalesOrganizationOrgUnitID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DistributionChannel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Division" nullable="true" required="false" type="string"/>
+                     <field name="SalesOfficeOrgUnitID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesGroupOrgUnitID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceOrganization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractOrgUnitReq">
+                  <description/>
+                  <detail>
+                     <field name="SalesOrganization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="DistributionChannel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Division" nullable="true" required="false" type="string"/>
+                     <field name="SalesOffice"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SalesGroup"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractPartnerReqHdr">
+                  <description/>
+                  <detail>
+                     <field name="SoldToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ShipToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonResponsible"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PayerParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ContactPerson"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractPartnerReqItm">
+                  <description/>
+                  <detail>
+                     <field name="ShipToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonResponsible"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillToParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PayerParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ContactPerson"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractProductListReq">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Product" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractRequest">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractCanclnParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SrvcContrCancellationDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="PurchaseOrderByCustomer"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerPurchaseOrderDate"
+                            nullable="true"
+                            required="false"
+                            type="date"/>
+                     <field name="ServiceContractStartDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ServiceContractEndDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="TransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CustomerPaymentTerms"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="VATRegistrationCountry"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContract"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContract3_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractDescription"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractDescription_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractStatus"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractStatusReq</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContrCancellationReason"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContrCancellationReason_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="OrgUnit"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractOrgUnitReq</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="OrgUnitInService"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractOrgUnitInService</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Partners"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractPartnerReqHdr</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceServiceContract"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceServiceContract_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ReferenceServiceQtan"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ReferenceServiceQtan_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TextCollection"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TextCollectionIn</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Item" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">ServiceContractRequestItem</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractRequestItem">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractItemCategory"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Product" nullable="true" required="false" type="string"/>
+                     <field name="ServiceContractItemIsReleased"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ServiceContractItemIsCompleted"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ServiceContractItemIsCanceled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ServiceContractItemCanclnParty"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ServiceContractItemCanclnDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ServiceContrItemStartDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ServiceContrItemEndDateTime"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="SettlementPeriodRule"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingPlanBillingDateRule"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingPlanPriceDateRule"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingPlanIsFinalized"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="SrvcContrItemBillgBlockReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceServiceContractItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReferenceServiceQtanItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Quantity"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">Quantity_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractItemDescription"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractItemDescription_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractItmCanclnReason"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractItmCanclnReason_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PriceComponent"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PriceComponentReqItm</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TextCollection"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TextCollectionIn</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="BillingRequestItem"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">BillingRequestItem_In</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="PriceAdaptationEntry"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">PriceAdaptationEntry_In</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractObjectList"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">ServiceContractObjectListReq</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContractProductList"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">ServiceContractProductListReq</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Partners"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractPartnerReqItm</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="SrvcContrItemRnwlDuration"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">SrvcContrItemRnwlDuration_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="SrvcContrItemExtensionDuration"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">SrvcContrItemExtensionDuration_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ProfitCenter"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ProfitCenter_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="VariantConfiguration"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">VariantConfigurationSC</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractRequestMessage">
+                  <description/>
+                  <detail>
+                     <field name="MessageHeader"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">BusinessDocumentMessageHeader</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ServiceContract"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ServiceContractRequest</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="ServiceContractStatusReq">
+                  <description/>
+                  <detail>
+                     <field name="ServiceContractIsReleased"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ServiceContractIsCompleted"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="ServiceContractIsCanceled"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="SrvcContrItemExtensionDuration_AT">
+                  <description/>
+                  <detail>
+                     <field name="SrvcContrItemExtnDurationUnit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SrvcContrItemExtensionDuration"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="SrvcContrItemRnwlDuration_AT">
+                  <description/>
+                  <detail>
+                     <field name="SrvcContrItemRnwlDurationUnit"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SrvcContrItemRnwlDuration"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="StandardID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="StandardID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TextCollectionIn">
+                  <description/>
+                  <detail>
+                     <field name="Text" nullable="true" required="false" type="objectlist">
+                        <options>
+                           <option name="referenceTo">TextCollectionTextIn</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TextCollectionTextIn">
+                  <description/>
+                  <detail>
+                     <field name="actionCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TypeCode"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TypeCode9_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ContentText"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">ContentText_AT</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TypeCode9_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TypeCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TypeCode_AT">
+                  <description/>
+                  <detail>
+                     <field name="listID" nullable="true" required="false" type="string"/>
+                     <field name="listVersionID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="listAgencySchemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TypeCode" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="UUID_AT">
+                  <description/>
+                  <detail>
+                     <field name="schemeID" nullable="true" required="false" type="string"/>
+                     <field name="schemeAgencyID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="UUID" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="VariantConfigurationSC">
+                  <description/>
+                  <detail>
+                     <field name="CharacteristicValuationSC"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">CharacteristicValuationSC</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>36bCJ3uZWnlih2ypQsVesB</types1:GUID>
+      <types1:DisplayName>SvcServiceContractRequest_IN</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:19:03.468Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,281 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>YYsGuDoWn2sqeEr-gt-53395921-2023-10-15T09:40:52.817Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_USI_SalesAreaTax_India-1</types1:Name>
+      <types1:ParentFlowIds>kP31abck0Kn7wpo-gt-53364382-2023-10-15T09:40:53.163Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:53Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_USI_SalesAreaTax_India"
+                  name="Process_USI_SalesAreaTax_India-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Customer" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_SalesOrganization"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_DepartureCountry"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CustomerTaxClassification"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CustomerTaxCategory_List"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_CountSuccess" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_CountFailures" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="tmp_CustomerTaxCategory_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerTaxCategory" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerSalesAreaTaxType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountList" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="untitled1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountList_Working" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lm9fak0g" targetId="lm9fak0f"/>
+               </start>
+               <assignment id="lm9fak0f">
+                  <title>Set Working List</title>
+                  <operation source="formula" to="temp.tmp_CustomerTaxCategory_List">
+                     <expression language="XQuery">list:sequence($input.in_CustomerTaxCategory_List )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_CountList">
+                     <expression language="XQuery">list:count($input.in_CustomerTaxCategory_List  )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_CountList_Working">
+                     <expression language="XQuery">list:count($temp.tmp_CustomerTaxCategory_List )</expression>
+                  </operation>
+                  <link id="lm9h3jd7" targetId="lm9h3jd6"/>
+               </assignment>
+               <container id="lm9h3jd6" type="exclusive">
+                  <title>tmp_CountList_Working</title>
+                  <flow id="lm9h3jda">
+                     <end id="lm9h3jfj">
+                        <title>No Data</title>
+                     </end>
+                  </flow>
+                  <flow id="lm9h3jdd">
+                     <assignment id="lm9h3jdw">
+                        <title>Next Record</title>
+                        <operation source="formula" to="temp.tmp_CustomerTaxCategory">
+                           <expression language="XQuery">list:head($temp.tmp_CustomerTaxCategory_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CustomerTaxCategory_List">
+                           <expression language="XQuery">list:tail($temp.tmp_CustomerTaxCategory_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Body">
+                           <expression language="XQuery">&lt;to_SalesAreaTax&gt;  
+    &lt;Customer&gt;{$input.in_Customer }&lt;/Customer&gt;
+    &lt;SalesOrganization&gt;{$input.in_SalesOrganization }&lt;/SalesOrganization&gt;
+    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+    &lt;Division&gt;10&lt;/Division&gt;
+    &lt;DepartureCountry&gt;{$input.in_DepartureCountry }&lt;/DepartureCountry&gt;
+    &lt;CustomerTaxCategory&gt;{$temp.tmp_CustomerTaxCategory }&lt;/CustomerTaxCategory&gt;
+    &lt;CustomerTaxClassification&gt;{$input.in_CustomerTaxClassification }&lt;/CustomerTaxClassification&gt;  
+&lt;/to_SalesAreaTax&gt;	
+</expression>
+                        </operation>
+                        <link id="lm9h3je8" targetId="lm9h3je7"/>
+                     </assignment>
+                     <assignment id="lm9h3jeh">
+                        <title>Count Success of Failure</title>
+                        <operation source="formula" to="output.out_CountSuccess">
+                           <expression language="XQuery">if (util:toInteger(fn:replace($output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Code,'HTTP_','')) &gt; 299)
+then ($output.out_CountSuccess)
+else ($output.out_CountSuccess+1)</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_CountFailures">
+                           <expression language="XQuery">if (util:toInteger(fn:replace($output.out_ProcessVariables_POST_A_CustomerSalesAreaTax[1]/Code,'HTTP_','')) &gt; 299)
+then ($output.out_CountFailures+1)
+else ($output.out_CountFailures)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_CountList_Working">
+                           <expression language="XQuery">list:count($temp.tmp_CustomerTaxCategory_List )</expression>
+                        </operation>
+                        <link id="lm9h3jfa" targetId="lm9h3jf8"/>
+                     </assignment>
+                     <subflow id="lm9h3je7">
+                        <title>Process_POST_A_CustomerSalesAreaTax</title>
+                        <subflowGUID>lO5JnPwRwMpdcE02TCjfKi</subflowGUID>
+                        <subflowPath>Process_POST_A_CustomerSalesAreaTax</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">temp.tmp_Body</parameter>
+                           <parameter name="in_ProcessVariables" source="field">input.in_ProcessVariables</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_ProcessVariables_POST_A_CustomerSalesAreaTax"
+                                  type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lm9h3jei" targetId="lm9h3jeh"/>
+                     </subflow>
+                     <jumpTo id="lm9h3jf8">
+                        <link id="lm9h3jf9" targetId="lm9h3jd6"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lm9h3jd9" targetId="lm9h3jda" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_CountList_Working}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lm9h3jdc" targetId="lm9h3jdd" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>7f27d200-cddd-4468-af1a-7b8399e2678e</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:53Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Customer": "1059256",
+	 "in_SalesOrganization": "IN03",
+	 "in_DepartureCountry": "IN",
+	 "in_CustomerTaxClassification": "1",
+	 "in_CustomerTaxCategory_List": "JOIG;JOSG;JOCG;JOUG;JCOS;JTC1",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-09-07T18:37:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>ctA6en3G1IXgOTmd0Q88GO</types1:GUID>
+      <types1:DisplayName>Process_USI_SalesAreaTax_India</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.554Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

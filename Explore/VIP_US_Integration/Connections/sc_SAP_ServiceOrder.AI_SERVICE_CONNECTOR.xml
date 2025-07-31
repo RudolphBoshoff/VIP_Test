@@ -1,0 +1,166 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>YabdvhxiQLnzYLn-gt-1340563-2022-01-27T08:55:41.812Z::svc.xml</types1:EntryId>
+      <types1:Name>sc_SAP_ServiceOrder</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T08:55:42Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-04T09:35:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-04T09:36:15Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/sc_SAP_ServiceOrder/sc_SAP_ServiceOrder_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="sc_SAP_ServiceOrder"
+                            label=""
+                            name="sc_SAP_ServiceOrder"
+                            uuid="e24b80ee-4a2c-450f-9ba4-fee0cd0ae5fe">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="Username"
+                                    required="true"
+                                    testWith="VISTRA_INFORMATICA_POC"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="Password"
+                                    required="true"
+                                    testWith="vJvcdyxRTLbmB8EWlDzYRTvHiecxDiw&lt;SljqcUlX"
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="false"
+                                    name="BaseUri"
+                                    required="false"
+                                    testWith="https://my305076.s4hana.ondemand.com:443/"
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET Service Order Token"
+                       maxRedirects="100"
+                       name="GET Service Order Token"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="Body"
+                                required="false"
+                                testWith="&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt; &lt;root&gt;    &lt;BillToParty&gt;11100001&lt;/BillToParty&gt;    &lt;ContactPerson&gt;11910005&lt;/ContactPerson&gt;    &lt;CustomerPurchaseOrderDate null=&#34;true&#34; /&gt;    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;    &lt;Division&gt;00&lt;/Division&gt;    &lt;Language&gt;EN&lt;/Language&gt;    &lt;PayerParty&gt;11100001&lt;/PayerParty&gt;    &lt;PurchaseOrderByCustomer /&gt;    &lt;RefServiceOrderTemplate /&gt;    &lt;ReferenceServiceContract /&gt;    &lt;ReferenceServiceOrder /&gt;    &lt;ReferenceServiceRequest /&gt;    &lt;RequestedServiceEndDateTime&gt;/Date(1612815610000+0000)/&lt;/RequestedServiceEndDateTime&gt;    &lt;RequestedServiceStartDateTime&gt;/Date(1612556410000+0000)/&lt;/RequestedServiceStartDateTime&gt;    &lt;RespyMgmtGlobalTeamID /&gt;    &lt;RespyMgmtServiceTeam&gt;0&lt;/RespyMgmtServiceTeam&gt;    &lt;SalesGroup /&gt;    &lt;SalesGroupOrgUnitID /&gt;    &lt;SalesOffice /&gt;    &lt;SalesOfficeOrgUnitID /&gt;    &lt;SalesOrganization&gt;1110&lt;/SalesOrganization&gt;    &lt;SalesOrganizationOrgUnitID /&gt;    &lt;ServiceDocGrossAmount&gt;42.00&lt;/ServiceDocGrossAmount&gt;    &lt;ServiceDocNetAmount&gt;35.00&lt;/ServiceDocNetAmount&gt;    &lt;ServiceDocTaxAmount&gt;7.00&lt;/ServiceDocTaxAmount&gt;    &lt;ServiceDocumentPriority&gt;5&lt;/ServiceDocumentPriority&gt;    &lt;ServiceDocumentTemplateType /&gt;    &lt;ServiceObjectType&gt;BUS2000116&lt;/ServiceObjectType&gt;    &lt;ServiceOrder /&gt;    &lt;ServiceOrderDescription&gt;Test API order&lt;/ServiceOrderDescription&gt;    &lt;ServiceOrderIsCompleted /&gt;    &lt;ServiceOrderIsRejected /&gt;    &lt;ServiceOrderIsReleased&gt;X&lt;/ServiceOrderIsReleased&gt;    &lt;ServiceOrderType&gt;SVO1&lt;/ServiceOrderType&gt;    &lt;ServiceOrderUUID null=&#34;true&#34; /&gt;    &lt;ServiceOrganization /&gt;    &lt;ShipToParty&gt;11100001&lt;/ShipToParty&gt;    &lt;SoldToParty&gt;11100001&lt;/SoldToParty&gt;    &lt;TransactionCurrency&gt;GBP&lt;/TransactionCurrency&gt;    &lt;to_Confirmation&gt;       &lt;results&gt;          &lt;element&gt;             &lt;ServiceConfirmation /&gt;             &lt;ServiceOrder /&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_Confirmation&gt;    &lt;to_Defect&gt;       &lt;results&gt;          &lt;element&gt;             &lt;ServiceDefectCategory /&gt;             &lt;ServiceDefectCode /&gt;             &lt;ServiceDefectCodeCatalog /&gt;             &lt;ServiceDefectCodeGroup /&gt;             &lt;ServiceDefectSchema /&gt;             &lt;ServiceDefectSequence&gt;0&lt;/ServiceDefectSequence&gt;             &lt;ServiceOrder /&gt;             &lt;SrvcDocTypeDefectCodeProfType /&gt;             &lt;SrvcDocTypeDefectCodeProfile /&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_Defect&gt;    &lt;to_Item&gt;       &lt;results&gt;          &lt;element&gt;             &lt;BillToParty&gt;11100001&lt;/BillToParty&gt;             &lt;BillableControl /&gt;             &lt;ExecutingServiceEmployee /&gt;             &lt;Language&gt;EN&lt;/Language&gt;             &lt;ParentServiceOrderItem&gt;0&lt;/ParentServiceOrderItem&gt;             &lt;PayerParty&gt;11100001&lt;/PayerParty&gt;             &lt;PersonResponsible&gt;9980000054&lt;/PersonResponsible&gt;             &lt;PlannedServiceEndDateTime null=&#34;true&#34; /&gt;             &lt;PlannedServiceStartDateTime null=&#34;true&#34; /&gt;             &lt;Product&gt;SRV_01&lt;/Product&gt;             &lt;ProfitCenter&gt;YB600&lt;/ProfitCenter&gt;             &lt;Quantity&gt;1.000&lt;/Quantity&gt;             &lt;QuantityUnit&gt;HR&lt;/QuantityUnit&gt;             &lt;RefServiceOrderTemplate /&gt;             &lt;RefServiceOrderTemplateItem&gt;0&lt;/RefServiceOrderTemplateItem&gt;             &lt;ReferenceServiceContract /&gt;             &lt;ReferenceServiceContractItem&gt;0&lt;/ReferenceServiceContractItem&gt;             &lt;ReferenceServiceOrderItem /&gt;             &lt;ReferenceServiceRequest /&gt;             &lt;ReferenceServiceRequestItem&gt;0&lt;/ReferenceServiceRequestItem&gt;             &lt;RespyMgmtGlobalTeamID /&gt;             &lt;RespyMgmtServiceTeam&gt;0&lt;/RespyMgmtServiceTeam&gt;             &lt;ServiceDocumentItemObjectType&gt;BUS2000140&lt;/ServiceDocumentItemObjectType&gt;             &lt;ServiceDuration&gt;0.000&lt;/ServiceDuration&gt;             &lt;ServiceDurationUnit /&gt;             &lt;ServiceObjectType&gt;BUS2000116&lt;/ServiceObjectType&gt;             &lt;ServiceOrdItemRejectionReason /&gt;             &lt;ServiceOrder /&gt;             &lt;ServiceOrderItem&gt;10&lt;/ServiceOrderItem&gt;             &lt;ServiceOrderItemCategory&gt;SVP1&lt;/ServiceOrderItemCategory&gt;             &lt;ServiceOrderItemDescription&gt;Service&lt;/ServiceOrderItemDescription&gt;             &lt;ServiceOrderItemIsCompleted /&gt;             &lt;ServiceOrderItemIsRejected /&gt;             &lt;ServiceOrderItemIsReleased&gt;X&lt;/ServiceOrderItemIsReleased&gt;             &lt;ServiceOrderItemUUID null=&#34;true&#34; /&gt;             &lt;ServicePerformer /&gt;             &lt;ShipToParty&gt;11100001&lt;/ShipToParty&gt;             &lt;SoldToParty&gt;11100001&lt;/SoldToParty&gt;             &lt;SrvcContrDetnIsSpprsd&gt;false&lt;/SrvcContrDetnIsSpprsd&gt;             &lt;TimeSheetOvertimeCategory /&gt;             &lt;to_Confirmation&gt;                &lt;results&gt;                   &lt;element&gt;                      &lt;ServiceConfirmation /&gt;                      &lt;ServiceConfirmationItem /&gt;                      &lt;ServiceOrder /&gt;                      &lt;ServiceOrderItem /&gt;                   &lt;/element&gt;                &lt;/results&gt;             &lt;/to_Confirmation&gt;             &lt;to_PricingElement&gt;                &lt;results&gt;                   &lt;element&gt;                      &lt;ConditionCurrency /&gt;                      &lt;ConditionQuantity&gt;0&lt;/ConditionQuantity&gt;                      &lt;ConditionQuantityUnit /&gt;                      &lt;ConditionRateValue&gt;0&lt;/ConditionRateValue&gt;                      &lt;ConditionType /&gt;                      &lt;PricingProcedureCounter /&gt;                      &lt;PricingProcedureStep /&gt;                      &lt;ServiceOrderItem /&gt;                   &lt;/element&gt;                &lt;/results&gt;             &lt;/to_PricingElement&gt;             &lt;to_ReferenceObject&gt;                &lt;results&gt;                   &lt;element&gt;                      &lt;ServiceOrder /&gt;                      &lt;ServiceOrderItem /&gt;                      &lt;ServiceRefFunctionalLocation /&gt;                      &lt;ServiceReferenceEquipment /&gt;                      &lt;SrvcRefObjIsMainObject&gt;false&lt;/SrvcRefObjIsMainObject&gt;                   &lt;/element&gt;                &lt;/results&gt;             &lt;/to_ReferenceObject&gt;             &lt;to_Text&gt;                &lt;results&gt;                   &lt;element&gt;                      &lt;Language&gt;EN&lt;/Language&gt;                      &lt;LongText /&gt;                      &lt;LongTextID /&gt;                      &lt;ServiceOrder /&gt;                      &lt;ServiceOrderItem /&gt;                   &lt;/element&gt;                &lt;/results&gt;             &lt;/to_Text&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_Item&gt;    &lt;to_PersonResponsible&gt;       &lt;results&gt;          &lt;element&gt;             &lt;PersonResponsible&gt;9980000054&lt;/PersonResponsible&gt;             &lt;ServiceOrder /&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_PersonResponsible&gt;    &lt;to_PricingElement&gt;       &lt;results&gt;          &lt;element&gt;             &lt;ConditionCurrency /&gt;             &lt;ConditionQuantity&gt;0&lt;/ConditionQuantity&gt;             &lt;ConditionQuantityUnit /&gt;             &lt;ConditionRateValue&gt;0&lt;/ConditionRateValue&gt;             &lt;ConditionType /&gt;             &lt;PricingProcedureCounter /&gt;             &lt;PricingProcedureStep /&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_PricingElement&gt;    &lt;to_ReferenceObject&gt;       &lt;results&gt;          &lt;element&gt;             &lt;ServiceOrder /&gt;             &lt;ServiceRefFunctionalLocation /&gt;             &lt;ServiceReferenceEquipment /&gt;             &lt;SrvcRefObjIsMainObject&gt;false&lt;/SrvcRefObjIsMainObject&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_ReferenceObject&gt;    &lt;to_Text&gt;       &lt;results&gt;          &lt;element&gt;             &lt;Language /&gt;             &lt;LongText /&gt;             &lt;LongTextID /&gt;             &lt;ServiceOrder /&gt;          &lt;/element&gt;       &lt;/results&gt;    &lt;/to_Text&gt; &lt;/root&gt;"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($BaseUri, &#34;sap/opu/odata/sap/API_SERVICE_ORDER_SRV/A_ServiceOrder&#34;)}"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$Username}</username>
+                           <password>{$Password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">fetch</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="Token"
+                            responseHeader="x-csrf-token"
+                            type="string"/>
+                     <field description="" name="SAP_SESSIONID_T2S_100" type="string">
+                        <xquery>{let $y := $ResponseHeaders[@name='set-cookie']
+for $data in $y
+where fn:contains($data,'SAP_SESSIONID_T2S_100')
+return
+fn:substring-before($data, ';')}</xquery>
+                     </field>
+                     <field description="" name="sap_usercontext" type="string">
+                        <xquery>{let $y := $ResponseHeaders[@name='set-cookie']
+for $data in $y
+where fn:contains($data, 'sap-usercontext=sap-client=')
+return
+fn:substring-before($data, ';')}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST Service Order"
+                       maxRedirects="100"
+                       name="POST Service Order"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="payload"
+                                required="true"
+                                testWith="{  &#34;ServiceOrder&#34;: &#34;&#34;,  &#34;ServiceOrderType&#34;: &#34;SVO1&#34;,  &#34;ServiceOrderDescription&#34;: &#34;Test API order&#34;,  &#34;ServiceObjectType&#34;: &#34;BUS2000116&#34;,  &#34;Language&#34;: &#34;EN&#34;,  &#34;ServiceDocumentPriority&#34;: &#34;5&#34;,  &#34;RequestedServiceStartDateTime&#34;: &#34;/Date(1612556410000+0000)/&#34;,  &#34;RequestedServiceEndDateTime&#34;: &#34;/Date(1612815610000+0000)/&#34;,  &#34;ServiceDocumentTemplateType&#34;: &#34;&#34;,  &#34;PurchaseOrderByCustomer&#34;: &#34;&#34;,  &#34;CustomerPurchaseOrderDate&#34;: null,  &#34;ServiceOrderIsReleased&#34;: &#34;X&#34;,  &#34;ServiceOrderIsCompleted&#34;: &#34;&#34;,  &#34;ServiceOrderIsRejected&#34;: &#34;&#34;,  &#34;SalesOrganization&#34;: &#34;1110&#34;,  &#34;DistributionChannel&#34;: &#34;10&#34;,  &#34;Division&#34;: &#34;00&#34;,  &#34;SalesOffice&#34;: &#34;&#34;,  &#34;SalesGroup&#34;: &#34;&#34;,  &#34;SoldToParty&#34;: &#34;11100001&#34;,  &#34;ShipToParty&#34;: &#34;11100001&#34;,  &#34;BillToParty&#34;: &#34;11100001&#34;,  &#34;PayerParty&#34;: &#34;11100001&#34;,  &#34;ContactPerson&#34;: &#34;11910005&#34;,  &#34;ServiceDocGrossAmount&#34;: &#34;42.00&#34;,  &#34;ServiceDocNetAmount&#34;: &#34;35.00&#34;,  &#34;ServiceDocTaxAmount&#34;: &#34;7.00&#34;,  &#34;TransactionCurrency&#34;: &#34;GBP&#34;,  &#34;ReferenceServiceRequest&#34;: &#34;&#34;,  &#34;ReferenceServiceContract&#34;: &#34;&#34;,  &#34;RefServiceOrderTemplate&#34;: &#34;&#34;,  &#34;ReferenceServiceOrder&#34;: &#34;&#34;,  &#34;RespyMgmtServiceTeam&#34;: &#34;0&#34;,  &#34;RespyMgmtGlobalTeamID&#34;: &#34;&#34;,  &#34;SalesOrganizationOrgUnitID&#34;: &#34;&#34;,  &#34;ServiceOrganization&#34;: &#34;&#34;,  &#34;SalesOfficeOrgUnitID&#34;: &#34;&#34;,  &#34;SalesGroupOrgUnitID&#34;: &#34;&#34;,  &#34;to_Confirmation&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;ServiceConfirmation&#34;: &#34;&#34;      }    ]  },  &#34;to_Defect&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;SrvcDocTypeDefectCodeProfType&#34;: &#34;&#34;,        &#34;ServiceDefectSequence&#34;: 0,        &#34;SrvcDocTypeDefectCodeProfile&#34;: &#34;&#34;,        &#34;ServiceDefectCodeCatalog&#34;: &#34;&#34;,        &#34;ServiceDefectCodeGroup&#34;: &#34;&#34;,        &#34;ServiceDefectCode&#34;: &#34;&#34;,        &#34;ServiceDefectSchema&#34;: &#34;&#34;,        &#34;ServiceDefectCategory&#34;: &#34;&#34;      }    ]  },  &#34;to_Item&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;ServiceOrderItem&#34;: &#34;10&#34;,        &#34;ServiceOrderItemUUID&#34;: null,        &#34;ServiceOrderItemDescription&#34;: &#34;Service&#34;,        &#34;ServiceObjectType&#34;: &#34;BUS2000116&#34;,        &#34;ServiceDocumentItemObjectType&#34;: &#34;BUS2000140&#34;,        &#34;Language&#34;: &#34;EN&#34;,        &#34;Product&#34;: &#34;SRV_01&#34;,        &#34;Quantity&#34;: &#34;1.000&#34;,        &#34;QuantityUnit&#34;: &#34;HR&#34;,        &#34;ServiceDuration&#34;: &#34;0.000&#34;,        &#34;ServiceDurationUnit&#34;: &#34;&#34;,        &#34;ServiceOrderItemCategory&#34;: &#34;SVP1&#34;,        &#34;ServiceOrdItemRejectionReason&#34;: &#34;&#34;,        &#34;BillableControl&#34;: &#34;&#34;,        &#34;SoldToParty&#34;: &#34;11100001&#34;,        &#34;ShipToParty&#34;: &#34;11100001&#34;,        &#34;BillToParty&#34;: &#34;11100001&#34;,        &#34;PayerParty&#34;: &#34;11100001&#34;,        &#34;PersonResponsible&#34;: &#34;9980000054&#34;,        &#34;ExecutingServiceEmployee&#34;: &#34;&#34;,        &#34;ServicePerformer&#34;: &#34;&#34;,        &#34;ServiceOrderItemIsReleased&#34;: &#34;X&#34;,        &#34;ServiceOrderItemIsCompleted&#34;: &#34;&#34;,        &#34;ServiceOrderItemIsRejected&#34;: &#34;&#34;,        &#34;ReferenceServiceContract&#34;: &#34;&#34;,        &#34;ReferenceServiceContractItem&#34;: &#34;0&#34;,        &#34;RefServiceOrderTemplate&#34;: &#34;&#34;,        &#34;RefServiceOrderTemplateItem&#34;: &#34;0&#34;,        &#34;ReferenceServiceRequest&#34;: &#34;&#34;,        &#34;ReferenceServiceRequestItem&#34;: &#34;0&#34;,        &#34;ParentServiceOrderItem&#34;: &#34;0&#34;,        &#34;PlannedServiceStartDateTime&#34;: null,        &#34;PlannedServiceEndDateTime&#34;: null,        &#34;SrvcContrDetnIsSpprsd&#34;: false,        &#34;ReferenceServiceOrderItem&#34;: &#34;&#34;,        &#34;TimeSheetOvertimeCategory&#34;: &#34;&#34;,        &#34;RespyMgmtServiceTeam&#34;: &#34;0&#34;,        &#34;RespyMgmtGlobalTeamID&#34;: &#34;&#34;,        &#34;ProfitCenter&#34;: &#34;YB600&#34;,        &#34;to_Confirmation&#34;: {          &#34;results&#34;: [            {              &#34;ServiceOrder&#34;: &#34;&#34;,              &#34;ServiceOrderItem&#34;: &#34;&#34;,              &#34;ServiceConfirmation&#34;: &#34;&#34;,              &#34;ServiceConfirmationItem&#34;: &#34;&#34;            }          ]        },        &#34;to_PricingElement&#34;: {          &#34;results&#34;: [            {              &#34;ServiceOrderItem&#34;: &#34;&#34;,              &#34;PricingProcedureStep&#34;: &#34;&#34;,              &#34;PricingProcedureCounter&#34;: &#34;&#34;,              &#34;ConditionType&#34;: &#34;&#34;,              &#34;ConditionRateValue&#34;: &#34;0&#34;,              &#34;ConditionCurrency&#34;: &#34;&#34;,              &#34;ConditionQuantity&#34;: &#34;0&#34;,              &#34;ConditionQuantityUnit&#34;: &#34;&#34;            }          ]        },        &#34;to_ReferenceObject&#34;: {          &#34;results&#34;: [            {              &#34;ServiceOrder&#34;: &#34;&#34;,              &#34;ServiceOrderItem&#34;: &#34;&#34;,              &#34;ServiceReferenceEquipment&#34;: &#34;&#34;,              &#34;ServiceRefFunctionalLocation&#34;: &#34;&#34;,              &#34;SrvcRefObjIsMainObject&#34;: false            }          ]        },        &#34;to_Text&#34;: {          &#34;results&#34;: [            {              &#34;ServiceOrder&#34;: &#34;&#34;,              &#34;ServiceOrderItem&#34;: &#34;&#34;,              &#34;Language&#34;: &#34;EN&#34;,              &#34;LongTextID&#34;: &#34;&#34;,              &#34;LongText&#34;: &#34;&#34;            }          ]        }      }    ]  },  &#34;to_PersonResponsible&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;PersonResponsible&#34;: &#34;9980000054&#34;      }    ]  },  &#34;to_PricingElement&#34;: {    &#34;results&#34;: [      {        &#34;PricingProcedureStep&#34;: &#34;&#34;,        &#34;PricingProcedureCounter&#34;: &#34;&#34;,        &#34;ConditionType&#34;: &#34;&#34;,        &#34;ConditionRateValue&#34;: &#34;0&#34;,        &#34;ConditionCurrency&#34;: &#34;&#34;,        &#34;ConditionQuantity&#34;: &#34;0&#34;,        &#34;ConditionQuantityUnit&#34;: &#34;&#34;      }    ]  },  &#34;to_ReferenceObject&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;ServiceReferenceEquipment&#34;: &#34;&#34;,        &#34;ServiceRefFunctionalLocation&#34;: &#34;&#34;,        &#34;SrvcRefObjIsMainObject&#34;: false      }    ]  },  &#34;to_Text&#34;: {    &#34;results&#34;: [      {        &#34;ServiceOrder&#34;: &#34;&#34;,        &#34;Language&#34;: &#34;&#34;,        &#34;LongTextID&#34;: &#34;&#34;,        &#34;LongText&#34;: &#34;&#34;      }    ]  }}"
+                                type="string"/>
+                     <parameter name="Token"
+                                required="false"
+                                testWith="ri3svgJHxOXOxn5oo0gFDQ=="
+                                type="string"/>
+                     <parameter name="SAP_SESSIONID_T2S_100"
+                                required="false"
+                                testWith="SAP_SESSIONID_T2S_100=qX-3ssgK6of6Bv3iGfM-PFWFu7dq3RHrrYj6Fj7miWA%3d"
+                                type="string"/>
+                     <parameter name="sap_usercontext"
+                                required="false"
+                                testWith="sap-usercontext=sap-client=100"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($BaseUri, &#34;sap/opu/odata/sap/API_SERVICE_ORDER_SRV/A_ServiceOrder&#34;)}"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$Username}</username>
+                           <password>{$Password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">{$Token}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Cookie">{$SAP_SESSIONID_T2S_100||'; '||$sap_usercontext}</header>
+                        </httpHeaders>
+                        <body>{$payload}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="response"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>18PdhDFMevhdfqUXAWpTCc</types1:GUID>
+      <types1:DisplayName>sc_SAP_ServiceOrder</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:22:42.939Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

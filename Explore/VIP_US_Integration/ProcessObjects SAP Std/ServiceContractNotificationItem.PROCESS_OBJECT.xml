@@ -1,0 +1,226 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>NNciZBpDUQbgdwU-gt-1528221-2022-01-27T08:55:48.637Z::po.xml</types1:EntryId>
+      <types1:Name>ServiceContractNotificationItem</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T08:55:49Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-04T09:36:01Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        xmlns:aetgt="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        xmlns:internal2="http://schemas.informatica.com/socrates/processobject/factory/2019/07/internal/infaProcessObjectFactory.xsd"
+                        isByCopy="true"
+                        name="ServiceContractNotificationItem">
+            <description xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd">This object was generated from [ServiceContractNotificationItem complex type] located in the [CO_CRMS4_SC_NOTIFY_OUT.xml_inlineSchema1.xsd] source XML schema.</description>
+            <detail>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItem"
+                      name="ServiceContractItem"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemCategory"
+                      name="ServiceContractItemCategory"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="Product"
+                      name="Product"
+                      type="string"/>
+               <field label="Quantity" name="Quantity" type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:Quantity</option>
+                     <option name="guid">jWSS5x5kasGg2A0UElgay4</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="ServiceContractItemDescription"
+                      name="ServiceContractItemDescription"
+                      type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:SHORTDescription</option>
+                     <option name="guid">8OWR66BO35vcPlBU0oUSgS</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemIsReleased"
+                      name="ServiceContractItemIsReleased"
+                      type="boolean"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemIsCompleted"
+                      name="ServiceContractItemIsCompleted"
+                      type="boolean"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemIsCanceled"
+                      name="ServiceContractItemIsCanceled"
+                      type="boolean"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemCanclnParty"
+                      name="ServiceContractItemCanclnParty"
+                      type="string"/>
+               <field label="ServiceContractItmCanclnReason"
+                      name="ServiceContractItmCanclnReason"
+                      type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:CancellationReasonCodeOut</option>
+                     <option name="guid">8k7feYz7v9MhCep8YpSFAe</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContractItemCanclnDate"
+                      name="ServiceContractItemCanclnDate"
+                      type="datetime"/>
+               <field label="PriceComponent" name="PriceComponent" type="objectlist">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:PriceComponentConfItm</option>
+                     <option name="guid">87lmIG33ol2h7Oj1gQcwUv</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="TextCollection" name="TextCollection" type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:TextCollectionOut</option>
+                     <option name="guid">emLHC4FbI0Tf0HVesK1B6s</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContrItemStartDateTime"
+                      name="ServiceContrItemStartDateTime"
+                      type="datetime"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ServiceContrItemEndDateTime"
+                      name="ServiceContrItemEndDateTime"
+                      type="datetime"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="SettlementPeriodRule"
+                      name="SettlementPeriodRule"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="BillingPlanBillingDateRule"
+                      name="BillingPlanBillingDateRule"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="BillingPlanPriceDateRule"
+                      name="BillingPlanPriceDateRule"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="BillingPlanIsFinalized"
+                      name="BillingPlanIsFinalized"
+                      type="boolean"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="SrvcContrItemBillgBlockReason"
+                      name="SrvcContrItemBillgBlockReason"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="PricingDate"
+                      name="PricingDate"
+                      type="date"/>
+               <field label="ServiceContractObjectList"
+                      name="ServiceContractObjectList"
+                      type="objectlist">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:ServiceContractObjectList</option>
+                     <option name="guid">2qpjxjcRNq4e4W6GQg3v0w</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="ServiceContractProductList"
+                      name="ServiceContractProductList"
+                      type="objectlist">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:ServiceContractProductList</option>
+                     <option name="guid">7K3PvfkG8iUi8QLLM53Qcy</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ReferenceServiceContractItem"
+                      name="ReferenceServiceContractItem"
+                      type="string"/>
+               <field xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                      label="ReferenceServiceQtanItem"
+                      name="ReferenceServiceQtanItem"
+                      type="string"/>
+               <field label="Partners" name="Partners" type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:ServiceContractPartnerNotifyItm</option>
+                     <option name="guid">8ogTzeyVKkVbbgwlPjf9Qw</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="SrvcContrItemRnwlDuration"
+                      name="SrvcContrItemRnwlDuration"
+                      type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:RenewPeriodDuration</option>
+                     <option name="guid">e98BNIw2Vqpl31c6EEMqcl</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="SrvcContrItemExtensionDuration"
+                      name="SrvcContrItemExtensionDuration"
+                      type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:RenewExtensionDuration</option>
+                     <option name="guid">eTuHuvoAQ6De40xap1p3aA</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="ProfitCenter" name="ProfitCenter" type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:ProfitCentreID</option>
+                     <option name="guid">6ScUay5NEG8hFbGiYDEfCj</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="VariantConfiguration"
+                      name="VariantConfiguration"
+                      type="reference">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:VariantConfigurationSC</option>
+                     <option name="guid">aKbXPmfLQCLdd2W4bhiVAv</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+               <field label="BillingRequestLine"
+                      name="BillingRequestLine"
+                      type="objectlist">
+                  <options>
+                     <option xmlns:ns2="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd"
+                             name="referenceTo">$po:BillingRequestLineOut</option>
+                     <option name="guid">7KYG8RnqpNulBhFdZ2vS0q</option>
+                     <option name="relationshipName">Child</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>5tKzny1ypGFfG68NNPOcM2</types1:GUID>
+      <types1:DisplayName>ServiceContractNotificationItem</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:22:29.981Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

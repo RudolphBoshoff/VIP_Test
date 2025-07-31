@@ -1,0 +1,375 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>AlMickgpbdoPVm5-gt-23835152-2022-01-18T09:58:23.426Z::pd.xml</types1:EntryId>
+      <types1:Name>process_GetOpportunityProduct</types1:Name>
+      <types1:ParentFlowIds>E7ppppppppppppp-gt-17828646-2022-01-18T09:58:24.99Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:23Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-08-31T06:31:10Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-08-31T07:43:08Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_GetOpportunityProduct/process_GetOpportunityProduct.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_GetOpportunityProduct"
+                  name="process_GetOpportunityProduct"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_OpportunityLineItem_List_PO"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="tmp_OpportunityLineItem_List_SF"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:OpportunityLineItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OpportunityLineItem_SF" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:OpportunityLineItem</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_out_OpportunityLineItem_PO"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2t71O81OScNdt1euOHc58U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_product2" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Product2</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_QuoteLine" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:SBQQ__QuoteLine__c</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Billing_Frequency__c" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Corresptable" type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce2:LOV_Corresp</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8L7dVlyaL1pgn3mffvwCsR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Frequency__c" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Freq_Corresptable" type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce2:LOV_Corresp</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8L7dVlyaL1pgn3mffvwCsR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OpptyDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_BillingFreq_Corresptable"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce2:LOV_Corresp</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8L7dVlyaL1pgn3mffvwCsR</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillingDateRule" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NetUnitPrice_NEW" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillFreq" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Freq" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NetUnitPrice_NEW_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:double</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Prod_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EndDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kwz1tnh9" targetId="kwkw5kts"/>
+               </start>
+               <assignment id="kwkw5kts">
+                  <title>Assign Opportunity Product</title>
+                  <operation source="list" to="temp.tmp_OpportunityLineItem_List_SF">
+                     <query advanceQuery="false" from="AppConnSalesForce:OpportunityLineItem">
+                        <where>OpportunityId = '{$input.in_OpportunityID }'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_OpptyDetails">
+                     <query advanceQuery="false" from="AppConnSalesForce:Opportunity">
+                        <where>Id = '{$input.in_OpportunityID }'</where>
+                     </query>
+                  </operation>
+                  <link id="kx0l3hha" targetId="kx0l3hh9"/>
+               </assignment>
+               <container id="kx0l3hh9" type="exclusive">
+                  <title>Next Record</title>
+                  <flow id="kx0l3hhd">
+                     <assignment id="kx0l3hho">
+                        <title>Assignment to tmp_OpportunityLineItem_SF</title>
+                        <operation source="formula" to="temp.tmp_OpportunityLineItem_SF">
+                           <expression language="XQuery">list:head($temp.tmp_OpportunityLineItem_List_SF )</expression>
+                        </operation>
+                        <link id="kxhj5o9r" targetId="kxhj5o9q"/>
+                     </assignment>
+                     <assignment id="kxhj5o9q">
+                        <title>Assignment to tmp_product2, tmp_QuoteLine</title>
+                        <operation source="query" to="temp.tmp_product2">
+                           <query advanceQuery="false" from="AppConnSalesForce:Product2">
+                              <where>ProductCode = '{$temp.tmp_OpportunityLineItem_SF.ProductCode }'</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_QuoteLine">
+                           <query advanceQuery="false" from="AppConnSalesForce:SBQQ__QuoteLine__c">
+                              <where>SBQQ__ProductCode__c = '{$temp.tmp_OpportunityLineItem_SF.ProductCode }' and Id = '{$temp.tmp_OpportunityLineItem_SF.SBQQ__QuoteLine__c}'</where>
+                           </query>
+                        </operation>
+                        <link id="ky1msarb" targetId="ky1msara"/>
+                     </assignment>
+                     <assignment id="ky1msara">
+                        <title>GetFrom Correspondence Table</title>
+                        <operation source="list" to="temp.tmp_Corresptable">
+                           <query advanceQuery="true" from="US-MSSQL-DB-VForce2:LOV_Corresp">
+                              <where>FieldNameSAP = '{'ServiceContract/Item.SettlementPeriodRule'}' and FieldNameVForce = '{'SBQQ__QuoteLine__c .Billing_Frequency__c'}' and ValueCodeVforce = '{$temp.tmp_QuoteLine.Billing_Frequency__c }'  </where>
+                           </query>
+                        </operation>
+                        <operation source="field" to="temp.tmp_Billing_Frequency__c">temp.tmp_Corresptable[1]/ValueCodeSAP</operation>
+                        <operation source="list" to="temp.tmp_Freq_Corresptable">
+                           <query advanceQuery="true" from="US-MSSQL-DB-VForce2:LOV_Corresp">
+                              <where>FieldNameVForce = '{'SBQQ__QuoteLine__c.Frequency'}' and ValueCodeVForce = '{$temp.tmp_QuoteLine.Billing_Frequency__c }'  </where>
+                           </query>
+                        </operation>
+                        <operation source="field" to="temp.tmp_Frequency__c">temp.tmp_Freq_Corresptable[1]/ValueCodeSAP</operation>
+                        <operation source="list" to="temp.tmp_BillingFreq_Corresptable">
+                           <query advanceQuery="false" from="US-MSSQL-DB-VForce2:LOV_Corresp">
+                              <where>FieldNameSAP = '{'ServiceContract/Item.BillingPlanBillingDateRule'}' and FieldNameVForce = '{'SBQQ__QuoteLine__c .Billing_Frequency__c'}' and ValueCodeVforce = '{$temp.tmp_QuoteLine.Billing_Frequency__c }' </where>
+                           </query>
+                        </operation>
+                        <operation source="field" to="temp.tmp_BillingDateRule">temp.tmp_BillingFreq_Corresptable[1]/ValueCodeSAP</operation>
+                        <link id="ky1msarc" targetId="kx5xfthb"/>
+                     </assignment>
+                     <assignment id="kx5xfthb">
+                        <title>Assignment to tmp_out_OpportunityLineItem_PO, Net_Unit_Price__c etc.</title>
+                        <operation source="formula" to="temp.tmp_out_OpportunityLineItem_PO">
+                           <expression language="XQuery"> &lt;PO-VFOpportunityLineItem&gt;
+   &lt;OpportunityID&gt;{$temp.tmp_OpportunityLineItem_SF.Opportunity.Id }&lt;/OpportunityID&gt;
+   &lt;LineItemID&gt;{$temp.tmp_OpportunityLineItem_SF.Id }&lt;/LineItemID&gt;
+   &lt;ProductCode&gt;{$temp.tmp_OpportunityLineItem_SF.ProductCode }&lt;/ProductCode&gt;
+   &lt;CountryIsoCode__c&gt;{$temp.tmp_OpportunityLineItem_SF.CountryIsoCode__c }&lt;/CountryIsoCode__c&gt;
+   &lt;Quantity&gt;{$temp.tmp_OpportunityLineItem_SF.Quantity }&lt;/Quantity&gt;
+   &lt;VForceSalesPrice__c&gt;{$temp.tmp_OpportunityLineItem_SF.VForceSalesPrice__c }&lt;/VForceSalesPrice__c&gt;
+   &lt;Description&gt;{$temp.tmp_OpportunityLineItem_SF.Product2.Description }&lt;/Description&gt;
+   &lt;Operational_Start_Date__c&gt;{$temp.tmp_OpportunityLineItem_SF.Operational_Start_Date__c }&lt;/Operational_Start_Date__c&gt;
+   &lt;Service_End_Date__c&gt;{$temp.tmp_OpportunityLineItem_SF.Service_End_Date__c }&lt;/Service_End_Date__c&gt;
+ &lt;custom_pricing_method__c&gt;{$temp.tmp_product2.Custom_Pricing_Method__c }&lt;/custom_pricing_method__c&gt;
+  &lt;Frequency__c&gt;{$temp.tmp_Frequency__c }&lt;/Frequency__c&gt;
+  &lt;Output_Amount__c&gt;{$temp.tmp_QuoteLine.Output_Amount__c }&lt;/Output_Amount__c&gt;
+  &lt;Billing_Currency__c&gt;{$temp.tmp_QuoteLine.Product_Currency__c  }&lt;/Billing_Currency__c&gt;
+  &lt;SBQQ__EffectiveQuantity__c&gt;{$temp.tmp_QuoteLine.SBQQ__EffectiveQuantity__c }&lt;/SBQQ__EffectiveQuantity__c&gt;
+  &lt;Billing_Frequency__c&gt;{$temp.tmp_Billing_Frequency__c }&lt;/Billing_Frequency__c&gt;
+  &lt;Billing_Plan_Billing_Date_Rule&gt;{$temp.tmp_BillingDateRule }&lt;/Billing_Plan_Billing_Date_Rule&gt;
+  &lt;Prod_Service__c&gt;{$temp.tmp_product2.Prod_Service__c }&lt;/Prod_Service__c&gt; 
+  &lt;Custom_Discount__c&gt;{$temp.tmp_QuoteLine.Custom_Discount__c }  &lt;/Custom_Discount__c&gt;
+  &lt;Custom_DiscountAmount__c&gt;{$temp.tmp_QuoteLine.Custom_DiscountAmount__c} &lt;/Custom_DiscountAmount__c&gt;
+  &lt;Net_Unit_Price__c&gt;{$temp.tmp_QuoteLine.Net_Unit_Price__c }&lt;/Net_Unit_Price__c&gt; 
+&lt;/PO-VFOpportunityLineItem&gt;</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_out_OpportunityLineItem_PO[1]/Net_Unit_Price__c">
+                           <expression language="XQuery">util:iif($temp.tmp_QuoteLine.Frequency__c='Annual' and $temp.tmp_QuoteLine.Billing_Frequency__c='Quarterly',$temp.tmp_QuoteLine.Net_Unit_Price__c div 4,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Annual' and $temp.tmp_QuoteLine.Billing_Frequency__c='Monthly', $temp.tmp_QuoteLine.Net_Unit_Price__c div 12,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Quarterly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Annual',$temp.tmp_QuoteLine.Net_Unit_Price__c * 4,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Quarterly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Monthly',$temp.tmp_QuoteLine.Net_Unit_Price__c div 3,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Monthly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Annual',$temp.tmp_QuoteLine.Net_Unit_Price__c * 12,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Monthly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Quarterly',$temp.tmp_QuoteLine.Net_Unit_Price__c * 3,
+$temp.tmp_QuoteLine.Net_Unit_Price__c))))))</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_out_OpportunityLineItem_PO[1]/Service_End_Date__c">
+                           <expression language="XQuery">util:iif($temp.tmp_QuoteLine.Billing_Frequency__c = 'Monthly'
+  ,fn:format-dateTime(
+    date:addToDate(date:toDate($temp.tmp_OpportunityLineItem_SF.Service_End_Date__c, 'YYYY-MM-DD'),'DD',1)
+    ,"[Y0001]-[M01]-[D01]")
+  ,$temp.tmp_OpportunityLineItem_SF.Service_End_Date__c )</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_OpportunityLineItem_List_PO">
+                           <expression language="XQuery">list:append($output.out_OpportunityLineItem_List_PO , $temp.tmp_out_OpportunityLineItem_PO )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_NetUnitPrice_NEW">
+                           <expression language="XQuery">util:iif($temp.tmp_QuoteLine.Frequency__c='Annual' and $temp.tmp_QuoteLine.Billing_Frequency__c='Quarterly',$temp.tmp_QuoteLine.Net_Unit_Price__c div 4,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Annual' and $temp.tmp_QuoteLine.Billing_Frequency__c='Monthly', $temp.tmp_QuoteLine.Net_Unit_Price__c div 12,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Quarterly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Annual',$temp.tmp_QuoteLine.Net_Unit_Price__c * 4,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Quarterly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Monthly',$temp.tmp_QuoteLine.Net_Unit_Price__c div 3,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Monthly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Annual',$temp.tmp_QuoteLine.Net_Unit_Price__c * 12,
+util:iif($temp.tmp_QuoteLine.Frequency__c='Monthly' and $temp.tmp_QuoteLine.Billing_Frequency__c='Quarterly',$temp.tmp_QuoteLine.Net_Unit_Price__c * 3,
+$temp.tmp_QuoteLine.Net_Unit_Price__c))))))</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_BillFreq">{$temp.tmp_QuoteLine.Billing_Frequency__c} </operation>
+                        <operation source="constant" to="temp.tmp_Freq">{$temp.tmp_QuoteLine.Frequency__c}</operation>
+                        <operation source="formula" to="temp.tmp_NetUnitPrice_NEW_Array">
+                           <expression language="XQuery">list:append($temp.tmp_NetUnitPrice_NEW_Array , $temp.tmp_NetUnitPrice_NEW )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Prod_Array">
+                           <expression language="XQuery">list:append($temp.tmp_Prod_Array , $temp.tmp_product2.ProductCode )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_EndDate">
+                           <expression language="XQuery">fn:format-dateTime(
+date:addToDate(date:toDate($temp.tmp_OpportunityLineItem_SF.Service_End_Date__c, 'YYYY-MM-DD'),'MM',-1)
+,"[Y0001]-[M01]-[D01]")</expression>
+                        </operation>
+                        <link id="kx5xftii" targetId="kx5xftih"/>
+                     </assignment>
+                     <assignment id="kx5xftih">
+                        <title>Assignment to tmp_OpportunityLineItem_List_SF</title>
+                        <operation source="formula" to="temp.tmp_OpportunityLineItem_List_SF">
+                           <expression language="XQuery">list:tail($temp.tmp_OpportunityLineItem_List_SF )</expression>
+                        </operation>
+                        <link id="kx5xftiz" targetId="kx5xftiy"/>
+                     </assignment>
+                     <jumpTo id="kx5xftiy">
+                        <link id="kx5xftj2" targetId="kx0l3hh9"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kx0l3hhg">
+                     <end id="kx0l3hhx">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <link id="kx0l3hhc" targetId="kx0l3hhd" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_OpportunityLineItem_List_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx0l3hhf" targetId="kx0l3hhg" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_OpportunityLineItem_List_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e92633ae-69b8-4424-8da8-247377c8969c</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-08-26T13:59:43Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0063O00000KkUYNQA3"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>8Ii4Dy24gyikUNQpPcCKEC</types1:GUID>
+      <types1:DisplayName>process_GetOpportunityProduct</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-06T11:17:04.132Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

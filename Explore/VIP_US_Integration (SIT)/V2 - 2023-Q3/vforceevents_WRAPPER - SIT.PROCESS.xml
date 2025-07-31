@@ -1,0 +1,963 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oE4bcggaaaaa-gt-53190983-2023-10-15T11:45:03.623Z::pd.xml</types1:EntryId>
+      <types1:Name>vforceevents_WRAPPER_-_SIT</types1:Name>
+      <types1:ParentFlowIds>yyYPFJ7XhFtybdu-gt-18541594-2022-01-18T09:43:15.392Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T11:45:04Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-31T12:50:06Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-31T12:54:59Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.vforceevents_WRAPPER_-_SIT/vforceevents_WRAPPER_-_SIT.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="vforceevents_WRAPPER - SIT"
+                  name="vforceevents_WRAPPER_-_SIT"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="eventLabel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="objectIdentifier" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-EventDetails-VF-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0RZ5I8MYA2ykQGaCS2QF2i</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_OSC_Details" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">076RCzoTKgZlTc8fymweKD</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_VFWrapper"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoVforceeventsPayload</option>
+                     <option name="required">false</option>
+                     <option name="guid">cyBw9alKtEeft5ZThj8EOz</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lm7hd4hk" targetId="kyjxg68h"/>
+               </start>
+               <container id="kyjxg68h" type="exclusive">
+                  <title>eventLabel</title>
+                  <flow id="kyjxg68l">
+                     <assignment id="lm7hd4hl">
+                        <title>Set Process Variables</title>
+                        <operation source="formula" to="output.out_ProcessVariables_VFWrapper">
+                           <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.objectIdentifier }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+	&lt;Code&gt;199&lt;/Code&gt;
+	&lt;Error&gt;Miscellaneous Warning&lt;/Error&gt;
+	&lt;Description&gt;No action taken&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.eventLabel }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;EL-23, EL-24&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'OpportunityID='||$input.objectIdentifier }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+   &lt;RevEntity&gt;{fn:substring($input.jurisdiction , 1, 4)}&lt;/RevEntity&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="input.in_EventDetails[1]/eventLabel">input.eventLabel</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/jurisdiction">input.jurisdiction</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/objectIdentifier">input.objectIdentifier</operation>
+                        <link id="lm7hd4jo" targetId="lm7hd4jh"/>
+                     </assignment>
+                     <container id="lm7hd4jh" type="exclusive">
+                        <title>jurisdiction 1</title>
+                        <flow id="lm7hd4ji">
+                           <jumpTo id="ln8nonv2">
+                              <link id="ln8nonv3" targetId="lo7a1iia"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lm7hd4jj">
+                           <throw id="lm7hd4jk">
+                              <title>Throw 2 1</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">HTTP_417</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Expectation Failed</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">Legal Billing Entity is out of scope of the US Integration between VForce and VEnterprise</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lm7hd4jl" targetId="lm7hd4ji" type="containerLink">
+                           <condition source="formula">
+                              <function name="included">
+                                 <arg name="left">{$input.in_EventDetails[1]/jurisdiction}</arg>
+                                 <arg name="right">GB26-Vistra IE Bidco,GB29-Vistra IE (UK),GB29-VISTRA IE (UK) Ltd,GB30-VISTRA IE (BRISTOL),IN03-Vistra International Expansion,IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Indore,IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Mumbai,SG08-Vistra IE Pte.,SG08-Vistra IE PTE Ltd,SG09-Vistra IE (SG) Pte.,SG09-VISTRA INTERNATIONAL EXPANSION(SINGAPORE)PTE.LTD,US11-Vistra International Expansion (USA) Inc,"US11-Vistra International Expansion (USA), Inc"</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm7hd4jm" targetId="lm7hd4jj" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="kyjxg6a7">
+                     <assignment id="lm7hd4iv">
+                        <title>Set Process Variables 1</title>
+                        <operation source="formula" to="output.out_ProcessVariables_VFWrapper">
+                           <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.objectIdentifier }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+	&lt;Code&gt;199&lt;/Code&gt;
+	&lt;Error&gt;Miscellaneous Warning&lt;/Error&gt;
+	&lt;Description&gt;No action taken&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.eventLabel }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;EL-23, EL-24&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'OpportunityID='||$input.objectIdentifier }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+   &lt;RevEntity&gt;{fn:substring($input.jurisdiction , 1, 4)}&lt;/RevEntity&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="input.in_EventDetails[1]/eventLabel">input.eventLabel</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/jurisdiction">input.jurisdiction</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/objectIdentifier">input.objectIdentifier</operation>
+                        <link id="lm7hd4kb" targetId="lm7hd4k4"/>
+                     </assignment>
+                     <container id="lm7hd4k4" type="exclusive">
+                        <title>jurisdiction</title>
+                        <flow id="lm7hd4k5">
+                           <milestone id="lo7a1iia">
+                              <title>Input Accepted</title>
+                              <httpStatus>202</httpStatus>
+                           </milestone>
+                           <link id="lm7hd4ka" targetId="lm7hd4k4" type="containerLink"/>
+                        </flow>
+                        <flow id="lm7hd4k6">
+                           <throw id="lm7hd4k7">
+                              <title>Throw 2</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">HTTP_417</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Expectation Failed</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">Legal Billing Entity is out of scope of the US Integration between VForce and VEnterprise</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="lm7hd4k8" targetId="lm7hd4k5" type="containerLink">
+                           <condition source="formula">
+                              <function name="included">
+                                 <arg name="left">{$input.in_EventDetails[1]/jurisdiction}</arg>
+                                 <arg name="right">GB26-Vistra IE Bidco,GB29-Vistra IE (UK),GB29-VISTRA IE (UK) Ltd,GB30-VISTRA IE (BRISTOL),IN03-Vistra International Expansion,IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Indore,IN03-VISTRA INTERNATIONAL EXPANSION (INDIA) PVT LTD_Mumbai,SG08-Vistra IE Pte.,SG08-Vistra IE PTE Ltd,SG09-Vistra IE (SG) Pte.,SG09-VISTRA INTERNATIONAL EXPANSION(SINGAPORE)PTE.LTD,US11-Vistra International Expansion (USA) Inc</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm7hd4k9" targetId="lm7hd4k6" type="containerLink"/>
+                        <link id="lmk91qkv" targetId="llc33quk"/>
+                     </container>
+                     <eventContainer id="llc33quk">
+                        <subflow id="llc33quo">
+                           <title>Opportunity Closed Won</title>
+                           <subflowGUID>5rTyyakEGoxiphQItSYdwL</subflowGUID>
+                           <subflowPath>Process_OpportunityClosedWon-1</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_VFWrapper</parameter>
+                              <parameter name="in_OpportunityID" source="field" updatable="true">input.objectIdentifier</parameter>
+                              <parameter name="in_OSC_Details" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.in_OSC_Details </expression>
+                              </parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_OpptyClosedWon" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                 </options>
+                              </field>
+                              <field name="out_BusinessPartner_Used" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_ProcessVariables_OpptyClosedWon_Stack" type="objectlist">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option hide="true" name="multiSelect">true</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                 </options>
+                              </field>
+                              <field name="VF_SemiStructured_ALL3" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="llc33qul">
+                           <link id="llc33qur" targetId="llc33quk" type="containerLink"/>
+                        </flow>
+                        <flow id="llc33qum">
+                           <assignment id="lmz6qm49">
+                              <title>Add Error Details</title>
+                              <operation source="field" to="output.out_ProcessVariables_VFWrapper[1]/Code">output.faultinfo[1]/code</operation>
+                              <operation source="field" to="output.out_ProcessVariables_VFWrapper[1]/Error">output.faultinfo[1]/reason</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_VFWrapper[1]/Description">output.faultinfo[1]/detail</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_VFWrapper[1]/FailedAtStep">Process_OpportunityClosedWon</operation>
+                              <link id="lmz6qm4a" targetId="llc33qun"/>
+                           </assignment>
+                           <subflow id="llc33qun">
+                              <title>Process_P2B_Event_ErrorLog 2</title>
+                              <subflowGUID>b73c2yxfPe7kLVUICRbIA6</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_VFWrapper</parameter>
+                              </input>
+                              <outputDef/>
+                           </subflow>
+                           <link id="llc33qus" targetId="llc33quk" type="containerLink"/>
+                        </flow>
+                        <link id="llc33qup" targetId="llc33qul" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultinfo" id="l082cieq" interrupting="true">
+                              <link id="llc33quq" targetId="llc33qum" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="kyjxg6a8" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <flow id="kyjxg6a9">
+                     <assignment id="lm7hd4ls">
+                        <title>Set Process Variables 1 1</title>
+                        <operation source="formula" to="output.out_ProcessVariables_VFWrapper">
+                           <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.objectIdentifier }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+	&lt;Code&gt;199&lt;/Code&gt;
+	&lt;Error&gt;Miscellaneous Warning&lt;/Error&gt;
+	&lt;Description&gt;No action taken&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.eventLabel }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;EL-08u&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'AccountID='||$input.objectIdentifier }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+   &lt;RevEntity&gt;{fn:substring($input.jurisdiction , 1, 4)}&lt;/RevEntity&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="input.in_EventDetails[1]/eventLabel">input.eventLabel</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/jurisdiction">input.jurisdiction</operation>
+                        <operation source="field" to="input.in_EventDetails[1]/objectIdentifier">input.objectIdentifier</operation>
+                        <link id="lnvoxehd" targetId="lmz6qmut"/>
+                     </assignment>
+                     <eventContainer id="lmz6qmut">
+                        <subflow id="llotzesg">
+                           <title>Process_AccountUpdate</title>
+                           <subflowGUID>erupLyrUoybk8j6IzzDhov</subflowGUID>
+                           <subflowPath>Process_AccountUpdate-2</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_VFWrapper</parameter>
+                              <parameter name="in_AccountID" source="field" updatable="true">input.objectIdentifier</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_ProcessVariables_AccountUpdate" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                 </options>
+                              </field>
+                              <field name="out_BusinessPartner_Used" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_ProcessVariables_AccountUpdate_ErrorStack" type="objectlist">
+                                 <options>
+                                    <option name="referenceTo">$po:PoErrorDetails</option>
+                                    <option hide="true" name="multiSelect">true</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lmz6qmuv">
+                           <link id="lmz6qmuw" targetId="lmz6qmut" type="containerLink"/>
+                        </flow>
+                        <flow id="lmz6qmuy">
+                           <assignment id="lmz6qn2g">
+                              <title>Add Error Details 1</title>
+                              <operation source="field" to="output.out_ProcessVariables_VFWrapper[1]/Code">output.faultInfo[1]/code</operation>
+                              <operation source="field" to="output.out_ProcessVariables_VFWrapper[1]/Error">output.faultInfo[1]/reason</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_VFWrapper[1]/Description">output.faultInfo[1]/detail</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_VFWrapper[1]/FailedAtStep">Process_AccountUpdate_WithTax</operation>
+                              <link id="lmz6qn2h" targetId="lmz6qmw0"/>
+                           </assignment>
+                           <jumpTo id="lmz6qmw0">
+                              <link id="lmz6qmw1" targetId="llc33qun"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lmz6qmuu" targetId="lmz6qmuv" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lmz6qmth" interrupting="true">
+                              <link id="lmz6qmux" targetId="lmz6qmuy" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="kyjxg6aa" targetId="kyjxg68h" type="containerLink"/>
+                  </flow>
+                  <flow id="lnd3n7k0">
+                     <assignment id="lnd8bkyj">
+                        <title>Set Process Variables 1 1 1</title>
+                        <operation source="formula" to="output.out_ProcessVariables_VFWrapper">
+                           <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.in_OSC_Details[1]/OpportunityHeader[1]/ID }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+	&lt;Code&gt;199&lt;/Code&gt;
+	&lt;Error&gt;Miscellaneous Warning&lt;/Error&gt;
+	&lt;Description&gt;No action taken&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.eventLabel}&lt;/Event_Name&gt;
+   &lt;API_Name&gt;OSCAdvisoryOpportunity&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'OpportunityID='||$input.in_OSC_Details[1]/OpportunityHeader[1]/ID }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+   &lt;RevEntity&gt;&lt;/RevEntity&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="input.in_EventDetails[1]/eventLabel">input.eventLabel</operation>
+                        <operation source="field" to="input.in_OSC_Details">input.in_OSC_Details</operation>
+                        <link id="lnivw7p6" targetId="lnivw7p5"/>
+                     </assignment>
+                     <jumpTo id="lnivw7p5">
+                        <link id="lnivw7qb" targetId="lo7a1iia"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kyjxg68o">
+                     <throw id="l08202iz">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">400</parameter>
+                           <parameter name="detail" source="formula" updatable="true">
+                              <expression language="XQuery">'This process only accepts one of the following event labels: ProcessProspectOpportunity; ProcessCustomerOpportunity; SalesforceAccountModified.'</expression>
+                           </parameter>
+                           <parameter name="reason" source="formula" updatable="true">
+                              <expression language="XQuery">'Invalid eventLabel'</expression>
+                           </parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="kyjxg68k" targetId="kyjxg68l" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">ProcessProspectOpportunity</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg6a5" targetId="kyjxg6a7" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">ProcessCustomerOpportunity</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg6a6" targetId="kyjxg6a9" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">SalesforceAccountModified</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lnd3n7jz" targetId="lnd3n7k0" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.eventLabel}</arg>
+                           <arg name="right">OSCAdvisoryOpportunity</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyjxg68n" targetId="kyjxg68o" type="containerLink"/>
+                  <link id="llc33rn5" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>51e8996c-1572-4304-97f9-069d1d65ab5f</ns1:Id>
+               <ns1:Name>24c_T1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T12:43:43Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063N00000P8WpoQAF",
+"jurisdiction": "US11-Vistra International Expansion (USA) Inc"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0322301e-8098-482b-88e0-83d81bfa34ac</ns1:Id>
+               <ns1:Name>24c_T2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000OCiLxQAL",
+"jurisdiction": "US11-Vistra International Expansion (USA) Inc"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>db2234ea-1f99-4088-98df-a7f2d7fcc3d4</ns1:Id>
+               <ns1:Name>Customer A, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessProspectOpportunity",
+	 "objectIdentifier": "0063O00000OChFrQAL",
+"jurisdiction": "US11-Vistra International Expansion (USA) Inc"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>40e1b944-3906-4ae5-bf45-5205b77f58ed</ns1:Id>
+               <ns1:Name>Customer A, Oppty 2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000Gqh05QAB",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>078eb3ef-b2df-4aa1-8c2e-4edef2d9329a</ns1:Id>
+               <ns1:Name>Customer B, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "objectIdentifier": "0063O00000Gq0JeQAJ",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>52373664-8b3b-434a-8072-a521757c4c20</ns1:Id>
+               <ns1:Name>Customer C, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "objectIdentifier": "0063O00000Gq2G0QAJ",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>45ab3b83-5ede-4d33-a29a-557e498dd8b4</ns1:Id>
+               <ns1:Name>Customer E, Run 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessProspectOpportunity",
+	 "objectIdentifier": "0063O00000GqrkjQAB",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>2e2ace0e-e5f4-4187-97b0-84f5a4152039</ns1:Id>
+               <ns1:Name>Customer F, Addr Update</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "SalesforceAccountModified",
+	 "objectIdentifier": "0013O00000rBAcfQAG",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>c62169a0-ef4a-4154-9d3a-5fae1901829a</ns1:Id>
+               <ns1:Name>Customer F, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000GqtnuQAB",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>84f424f8-e119-4cea-b3db-64bfb5cf163c</ns1:Id>
+               <ns1:Name>Customer F, Oppty 2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000GqtpvQAB",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d57c494f-fca0-4648-88a1-b83ee161e994</ns1:Id>
+               <ns1:Name>Customer F, Oppty 3</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000GqtH1QAJ",
+	 "jurisdiction": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>cce728bf-7c26-42df-afa0-2f307304ec29</ns1:Id>
+               <ns1:Name>CustomerOppty</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessProspectOpportunity",
+	 "objectIdentifier": "0063O00000GsgQ5QAJ",
+	 "jurisdiction": "United States"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0300df69-9899-4be2-8e82-baf4327f9b21</ns1:Id>
+               <ns1:Name>Negative Test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "SalesforceAccountModified",
+	 "objectIdentifier": "NotARealAccountID17"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>54c633f2-e7bd-48b2-8960-3a95df04a55f</ns1:Id>
+               <ns1:Name>RB_TEST Subsidiary 1, Oppty 1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProspectOpportunity",
+	 "ObjectIdentifier": "0063O00000GprJaQAJ"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>15e97c26-e26e-439b-b1eb-c9cea82fb439</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "",
+	 "objectIdentifier": "",
+	 "jurisdiction": "",
+	 "in_EventDetails": {
+	 	 "eventLabel": "",
+	 	 "objectIdentifier": "",
+	 	 "jurisdiction": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0ea36105-fd65-4620-842a-1a7331b51a2d</ns1:Id>
+               <ns1:Name>T1_OSC</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "",
+	 "objectIdentifier": "",
+	 "jurisdiction": "",
+	 "in_EventDetails": {
+	 	 "eventLabel": "",
+	 	 "objectIdentifier": "",
+	 	 "jurisdiction": ""
+	 },
+	 "in_OSC_Details": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": "",
+	 	 	 "OpportunityType": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "Country__c": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "OpportunityProduct_Name": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "TBD_BillingType": "",
+	 	 	 "TBD_ContractLanguage": "",
+	 	 	 "TBD_BillingTiming": "",
+	 	 	 "ItemCategory": "",
+	 	 	 "CalcTotal": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3feaec33-468b-4054-bc80-7bda35775297</ns1:Id>
+               <ns1:Name>Test Input</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000Gs3y9QAB"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>39478ead-4dd7-49c2-8db1-44fd28732068</ns1:Id>
+               <ns1:Name>TestCloud</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessProspectOpportunity",
+	 "objectIdentifier": "0063O00000GsNpxQAF"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>648d4258-b223-453f-b210-a7b2b5bcc7bc</ns1:Id>
+               <ns1:Name>testosc</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabhadra.dhikonda</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-30T12:20:47Z</ns1:ModificationDate>
+               <ns1:Data format="json">{   
+    "eventLabel": "OSCAdvisoryOpportunity",
+    "in_OSC_Details": {
+        "Account": {
+            "AccountID": "0013N00001J5IbrQAF",
+            "X18_Digit_ID__c": "0013N00001J5IbrQAF"
+        },
+        "OpportunityHeader": {
+            "AccountID": "0013N00001J5IbrQAF",
+            "Contract_Length_months__c": "12",
+            "CreatedDate": "2022-01-27T21:14:01Z",
+            "Currency_Type__c": "INR",
+            "Description": "this is for New Customer F (Advisory). Long description exceeding 40 character to test spillover from project name into project description field",
+            "ID": "11115",
+            "Legal_Billing_Entity__c": 40,
+            "Primary_Contact_c": {
+                "Email": "contact1@customerf.com",
+                "FirstName": "Contact 1",
+                "LastName": "for Customer F"
+            },
+            "Revenue_Generation_Date__c": "2022-01-27",
+			"Contract_Length_months__c" : 12
+        },      
+        "OpportunityProductDetails": [
+            {
+                "Opportunity_ID": "11116",
+                "OpportunityProduct_CountryIsoCode": "CN",
+                "OpportunityProduct_ID": "1",
+                "OpportunityProduct_Operational_Start_Date": "2023-08-01",
+                "OpportunityProduct_ProductCode": "AD-N-32",
+                "OpportunityProduct_Quantity": 1,
+                "OpportunityProduct_Service_End_Date": "2024-07-31",
+                "OpportunityProduct_VForceSalesPrice": 300,
+                "Product2_Custom_Pricing_Method": "List",
+                "Product2_Frequency": "Quarterly",
+                "SBQQ__QuoteLine_Billing_Currency": "INR",
+                "SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+                "SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+                "SBQQ__QuoteLine_EffectiveQuantity": 1,
+                "SBQQ__QuoteLine_Output_Amount": 300,
+                "SBQQ_QuoteLine_Net_Unit_Price": 300
+            }
+        ]
+    }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7954af95-371e-4be8-b988-97ceb4dd084c</ns1:Id>
+               <ns1:Name>ttttt</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "OSCAdvisoryOpportunity",
+	 "objectIdentifier": "",
+	 "jurisdiction": "",
+	 "in_OSC_Details": {
+	 	 "Account": {
+	 	 	 "X18_Digit_ID__c": ""
+	 	 		 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "2023-08-01",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": "",
+	 	 	 "OpportunityType": "",
+	 	 	 "Out_Of_Scope__c": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": 0.0
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b386c0aa-2518-4fe3-86a0-83df991c9a6e</ns1:Id>
+               <ns1:Name>Upsell Test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessCustomerOpportunity",
+	 "objectIdentifier": "0063O00000Gsy81QAB",
+	 "jurisdiction": "United States"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d9ac5738-aa84-40f2-b7f1-49543d7454e4</ns1:Id>
+               <ns1:Name>Watermelon Limited,Oppty1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{"eventLabel":"ProcessProspectOpportunity","objectIdentifier":"0063O00000GpugjQAB","jurisdiction":"United Kingdom"}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>6e122fae-b387-4d3e-9035-78e063a68b66</ns1:Id>
+               <ns1:Name>Watermelon Testing 3</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-18T15:10:00Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "SalesforceAccountModified",
+	 "objectIdentifier": "0013N00001Jmj2YQAR",
+	 "jurisdiction": "IN03"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>6ad3282c-3657-491e-8643-00d39b0a370b</ns1:Id>
+               <ns1:Name>WrapperInput</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T11:45:04Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T11:45:04Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "eventLabel": "ProcessProspectOpportunity",
+	 "objectIdentifier": "0063O00000OCJcUQAX",
+	 "jurisdiction": "US11-Vistra International Expansion (USA) Inc",
+	 "in_EventDetails": {
+	 	 "eventLabel": "ProcessProspectOpportunity",
+	 	 "objectIdentifier": "0063O00000OCJcUQAX",
+	 	 "jurisdiction": "US11-Vistra International Expansion (USA) Inc"
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>cAVOODegA85dNxJGVZYboE</types1:GUID>
+      <types1:DisplayName>vforceevents_WRAPPER - SIT</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-31T13:51:46.507Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

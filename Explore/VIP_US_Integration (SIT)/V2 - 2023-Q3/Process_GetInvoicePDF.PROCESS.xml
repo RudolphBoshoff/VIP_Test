@@ -1,0 +1,146 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>XKkfUryzfYtjCtb-gt-53395751-2023-10-15T09:40:49.797Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GetInvoicePDF-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:50Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GetInvoicePDF"
+                  name="Process_GetInvoicePDF-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_BillingDocument" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_CustomerId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_DocumentDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_Atachment" type="attachment">
+                  <options>
+                     <option hide="true" name="count">1</option>
+                     <option name="maxsize">5242880</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_AttachmentName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_invoice_attachment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_document_date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lm038yt6" targetId="lm038ysn"/>
+               </start>
+               <service id="lm038ysn">
+                  <title>GET_A_BillingDocument</title>
+                  <serviceName>AppConnBillingDocument:GET_A_BillingDocument</serviceName>
+                  <serviceGUID>35nOt6KTbkglExDPtmgtKM</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="formula">
+                        <expression language="XQuery">$input.in_hostname </expression>
+                     </parameter>
+                     <parameter name="username" source="formula">
+                        <expression language="XQuery">$input.in_username </expression>
+                     </parameter>
+                     <parameter name="password" source="formula">
+                        <expression language="XQuery">$input.in_password </expression>
+                     </parameter>
+                     <parameter name="billingdocnr" source="constant">{$input.in_BillingDocument}</parameter>
+                  </serviceInput>
+                  <link id="lm03w3be" targetId="lm038ysi"/>
+               </service>
+               <assignment id="lm038ysi">
+                  <title>Assignment to tmp_document_date, tmp_invoice_attachment</title>
+                  <operation source="formula" to="temp.tmp_document_date">
+                     <expression language="XQuery">let $inputDateTime := xs:dateTime("1970-01-01T00:00:00-00:00") + xs:dayTimeDuration(concat("PT",(fn:substring($input.In_DocumentDate, 1, 10)), "S"))
+return  fn:format-dateTime($inputDateTime, "[Y01][M01][D01]")</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_invoice_attachment">
+                     <expression language="XQuery"> sff:createAttachmentFromBase64(fn:concat( $input.in_CustomerId ,'-inv' , $input.in_BillingDocument,'-',$temp.tmp_document_date,'.pdf'),  $output.o_attachment , 'application/pdf')</expression>
+                  </operation>
+                  <link id="lm03w3bu" targetId="lm03w3bt"/>
+               </assignment>
+               <assignment id="lm03w3bt">
+                  <title>Assignment to o_Atachment, o_AttachmentName</title>
+                  <operation source="formula" to="output.o_Atachment">
+                     <expression language="XQuery">$temp.tmp_invoice_attachment </expression>
+                  </operation>
+                  <operation source="formula" to="output.o_AttachmentName">
+                     <expression language="XQuery">fn:concat( $input.in_CustomerId ,'-inv' , $input.in_BillingDocument,'-',$temp.tmp_document_date,'.pdf')</expression>
+                  </operation>
+                  <link id="lm03w3bv" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3Dq0Vv0pAMGdvNpuzOyy6B</types1:GUID>
+      <types1:DisplayName>Process_GetInvoicePDF</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.337Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

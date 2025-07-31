@@ -1,0 +1,208 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>YPFJ7XhFtybduaa-gt-67968264-2023-09-16T18:50:56.816Z::po.xml</types1:EntryId>
+      <types1:Name>PO_GetAll_VForce_Product</types1:Name>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Combines specific fields from OpportunityProduct, Product2, and SBQQ_QuoteLine as it relates to the US integration (VForce --&gt; VEnterprise).  For comprehensive process objects, refer to [AppConnSalesForce] </types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-09-16T18:50:57Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="PO_GetAll_VForce_Product"
+                        isByCopy="true"
+                        name="PO_GetAll_VForce_Product">
+            <description>Combines specific fields from OpportunityProduct, Product2, and SBQQ_QuoteLine as it relates to the US integration (VForce --&gt; VEnterprise).  For comprehensive process objects, refer to [AppConnSalesForce] </description>
+            <tags/>
+            <detail>
+               <field label="Opportunity ID"
+                      name="Opportunity_ID"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Line ID (Oppty Prod)"
+                      name="OpportunityProduct_ID"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Product Code (Oppty Prod)"
+                      name="OpportunityProduct_ProductCode"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Country of Execution (Oppty Prod)"
+                      name="OpportunityProduct_CountryIsoCode"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Country__c"
+                      name="Country__c"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Qty (Oppty Prod)"
+                      name="OpportunityProduct_Quantity"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="VForce Sales Price (Oppty Prod)"
+                      name="OpportunityProduct_VForceSalesPrice"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="OpportunityProduct_Name"
+                      name="OpportunityProduct_Name"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Product Description (Product)"
+                      name="Product2_Description"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Start Date (Oppty Prod)"
+                      name="OpportunityProduct_Operational_Start_Date"
+                      nullable="true"
+                      required="false"
+                      type="datetime">
+                  <options/>
+               </field>
+               <field label="End Date (Oppty Prod)"
+                      name="OpportunityProduct_Service_End_Date"
+                      nullable="true"
+                      required="false"
+                      type="datetime">
+                  <options/>
+               </field>
+               <field label="Custom Pricing Method (Product)"
+                      name="Product2_Custom_Pricing_Method"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Frequency - Operational (Product)"
+                      name="Product2_Frequency"
+                      nullable="true"
+                      required="false"
+                      type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Annual","value":"Annual"},{"label":"Monthly","value":"Monthly"},{"label":"Quarterly","value":"Quarterly"},{"label":"One Time","value":"One Time"},{"label":"50% UpFront - 50% on Completion","value":"50% UpFront - 50% on Completion"}]</option>
+                  </options>
+               </field>
+               <field label="Frequency - Billing (Quote)"
+                      name="SBQQ__QuoteLine_Billing_Frequency"
+                      nullable="true"
+                      required="false"
+                      type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Annual","value":"Annual"},{"label":"Monthly","value":"Monthly"},{"label":"Monthly/Quarterly/Annual","value":"Monthly/Quarterly/Annual"},{"label":"One Time","value":"One Time"},{"label":"Quarterly","value":"Quarterly"},{"label":"50% Upfront - 50% on Completion","value":"50% Upfront - 50% on Completion"},{"label":"Quarterly NonStd","value":"Quarterly NonStd"}]</option>
+                  </options>
+               </field>
+               <field label="Currency (Quote)"
+                      name="SBQQ__QuoteLine_Billing_Currency"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Qty - Effective (Quote)"
+                      name="SBQQ__QuoteLine_EffectiveQuantity"
+                      nullable="true"
+                      required="false"
+                      type="string">
+                  <options/>
+               </field>
+               <field label="Output Amount (Quote)"
+                      name="SBQQ__QuoteLine_Output_Amount"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="Discount - Custom Amount (Quote)"
+                      name="SBQQ__QuoteLine_Custom_DiscountAmount"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="Net Unit Price (Quote)"
+                      name="SBQQ_QuoteLine_Net_Unit_Price"
+                      nullable="true"
+                      required="false"
+                      type="double">
+                  <options/>
+               </field>
+               <field label="BillingPlan"
+                      name="BillingPlan"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_BillingPlan</option>
+                     <option name="guid">3qpdFD9zCRVeRlYDNt2OSo</option>
+                  </options>
+               </field>
+               <field label="TBD_BillingType"
+                      name="TBD_BillingType"
+                      nullable="true"
+                      required="false"
+                      type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Fixed Price","value":"Fixed Price"},{"label":"Periodic Service","value":"Periodic Service"},{"label":"Time &amp; Expense","value":"Time &amp; Expense"},{"label":"Usage Based","value":"Usage Based"}]</option>
+                  </options>
+               </field>
+               <field label="TBD_ContractLanguage"
+                      name="TBD_ContractLanguage"
+                      nullable="true"
+                      required="false"
+                      type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Annual Compl. Serv. Bundle","value":"Annual Compl. Serv. Bundle"},{"label":"OSC &amp; related","value":"OSC &amp; related"}]</option>
+                  </options>
+               </field>
+               <field label="TBD_BillingTiming"
+                      name="TBD_BillingTiming"
+                      nullable="true"
+                      required="false"
+                      type="picklist">
+                  <options>
+                     <option name="values">[{"label":"Advance","value":"Advance"},{"label":"Arrears","value":"Arrears"}]</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>2YnGPwdYiJRfDbnQPbdMiO</types1:GUID>
+      <types1:DisplayName>PO_GetAll_VForce_Product</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:19:04.679Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

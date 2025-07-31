@@ -1,0 +1,258 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>U66bfZk9EW4ARW8-gt-29641585-2023-10-06T08:56:24.754Z::svc.xml</types1:EntryId>
+      <types1:Name>svcBillingDocument-ReadCancelGetPDF</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>https://api.sap.com/api/API_BILLING_DOCUMENT_SRV/resource/Billing_Document_Header</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-10-06T08:56:25Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-09T11:08:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-09T11:08:53Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svcBillingDocument_ReadCancelGetPDF/svcBillingDocument_ReadCancelGetPDF_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="svcBillingDocument-ReadCancelGetPDF"
+                            label=""
+                            name="svcBillingDocument-ReadCancelGetPDF"
+                            uuid="65453a02-808b-4b20-bc00-9775b993410a">
+            <description>https://api.sap.com/api/API_BILLING_DOCUMENT_SRV/resource/Billing_Document_Header</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_GET"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_GET"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="username"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter name="password"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_BILLING_DOCUMENT_SRV"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Invoice"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GetPDF"
+                       maxRedirects="100"
+                       name="GetPDF"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieves a specific billing document from the system in PDF format, which shows how the billing document looks after it has been output to PDF. Consumer must specify the billing document number</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="billingdocnr"
+                                name="billingdocnr"
+                                nogen="true"
+                                required="false"
+                                testWith="90000240"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/GetPDF?BillingDocument='{$billingdocnr}'" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="BillingDocument">90000240</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_attachment"
+                            property="BillingDocumentBinary"
+                            type="attachment"/>
+                     <field description=""
+                            name="HTTP Response Status Code"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_BillingDocument"
+                       maxRedirects="100"
+                       name="GET_A_BillingDocument"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Reads the billing document header fields for a specific header-level partner function. Includes fields such as the document number, billing date, total amount, billing type, and more. Consumers must pass the following key fields: billing document number and partner function.</description>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields"/>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="invoice_send_date"
+                                name="invoice_send_date"
+                                nogen="true"
+                                required="false"
+                                testWith="2020-01-01T00:00:00"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_BillingDocument" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$top">1000</otherParam>
+                           <otherParam name="$filter">{fn:concat('BillingDocumentDate ge datetime', '''',$invoice_send_date,'''') || ' and (CompanyCode eq ''GB26'' or CompanyCode eq ''GB29'' or CompanyCode eq ''GB30''  or CompanyCode eq ''IN03'' or CompanyCode eq ''IN05'' or CompanyCode eq ''SG08''  or CompanyCode eq ''SG09''  or CompanyCode eq ''US11'')'}</otherParam>
+                           <otherParam name="$expand">to_Partner</otherParam>
+                           <otherParam name="$select">BillingDocumentDate,BillingDocument,CompanyCode,to_Partner</otherParam>
+                           <otherParam name="$orderby">BillingDocumentDate</otherParam>
+                           <otherParam name="$skip">0</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="InvoiceList" type="objectlist">
+                        <options>
+                           <option name="referenceTo">PO_DocumentList</option>
+                        </options>
+                        <xquery>{let $input:= /root/d
+return(
+for $invoice in $input/results
+return(
+&lt;Invoice&gt;
+    &lt;BillingDocumentDate&gt;{
+    fn:substring-before(fn:substring-after($invoice/BillingDocumentDate/text(), '/Date('), ')/')
+    				
+                    
+                   }&lt;/BillingDocumentDate&gt;
+    &lt;BillingDocument&gt;{$invoice/BillingDocument/text()}&lt;/BillingDocument&gt;
+    &lt;CompanyCode&gt;{$invoice/CompanyCode/text()}&lt;/CompanyCode&gt;
+    &lt;Customer&gt;{for $x in $invoice/to_Partner/results 
+    		  where $x/PartnerFunction = 'BP'
+              return $x/Customer/text()}&lt;/Customer&gt;
+   
+&lt;/Invoice&gt;
+))}</xquery>
+                     </field>
+                     <field description=""
+                            name="HTTP Response Status Code"
+                            responseStatusCode="true"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PO_DocumentList">
+                  <description/>
+                  <detail>
+                     <field name="BillingDocument"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingDocumentDate"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Customer" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>7mYIQyIKZB7jaIa6i2rDQs</types1:GUID>
+      <types1:DisplayName>svcBillingDocument-ReadCancelGetPDF</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:22:42.784Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

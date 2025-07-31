@@ -1,0 +1,1514 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>upnMUvIw8jIw8jI-gt-53395984-2023-10-15T09:40:54.335Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SAP_WorkPackageCreate-2</types1:Name>
+      <types1:ParentFlowIds>jB4EFpr1Iw8jIw8-gt-53318986-2023-10-15T09:41:02.156Z::pd.xml,UzeA8rJ4pbgchwA-gt-53396478-2023-10-15T09:41:01.744Z::pd.xml,WnMnS24FsWTzIf6-gt-53396022-2023-10-15T09:40:54.782Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:54Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-31T14:16:17Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-31T14:18:19Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_SAP_WorkPackageCreate-2/Process_SAP_WorkPackageCreate-2.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SAP_WorkPackageCreate"
+                  name="Process_SAP_WorkPackageCreate-2"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_OpportunityID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_BusinessPartner"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProjectID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_VFOpportunity" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProjectCurrency"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_OpportunityLineItemID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_WorkPackage"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_WorkPackage_ErrorStack"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_UOM" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_ResType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WorkPackage_Create_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_WorkPackage_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartner" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entities_In_Scope_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_Effort" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_UnitID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_any" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductDetail_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductDetail" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SalesOrderItem_Create_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:CPD_SC_PROJ_ENGMT_CREATE_UPD_SRV_A_CustProjSlsOrdItemType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WPName_Initial" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WPName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WPDescription" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountryList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountryProducts_Check" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CountryProducts_CheckList"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Country" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_Product_Check" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustDefault_Product_Check" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CntryDefault_Product_Check" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lf241aqg" targetId="lf241aqf"/>
+               </start>
+               <assignment id="lf241aqf">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_WorkPackage">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_WorkPackage[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/IICS_Run_ID||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_WorkPackage[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_WorkPackage[1]/API_Name">EL-23u</operation>
+                  <operation source="constant" to="temp.tmp_BusinessPartner">{$input.in_BusinessPartner}</operation>
+                  <operation source="formula" to="temp.tmp_Flag_OpportunityID">
+                     <expression language="XQuery">util:iif(fn:string-length($input.in_OpportunityID )=18 and fn:string-length($input.in_OpportunityLineItemID )=18, 'Y', 'N')</expression>
+                  </operation>
+                  <link id="loe8r3i4" targetId="loe8r3i3"/>
+               </assignment>
+               <assignment id="loe8r3i3">
+                  <title>Set Default Attribute Values</title>
+                  <operation source="constant" to="temp.tmp_Default_ResType">0ACT</operation>
+                  <operation source="formula" to="temp.tmp_Entities_In_Scope_List">
+                     <expression language="XQuery">for $ent in ('US11','GB30','IN03','IN05','SG09')
+return $ent</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Default_UnitID">
+                     <expression language="XQuery">util:resolveURN('URN_USI_Project_UnitId')</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_Default_Effort">1</operation>
+                  <operation source="constant" to="temp.tmp_Default_UOM">H</operation>
+                  <link id="loe8r3i5" targetId="loe8r3gx"/>
+               </assignment>
+               <container id="loe8r3gx" type="exclusive">
+                  <title>VForce Data</title>
+                  <flow id="loe8r3h1">
+                     <assignment id="loe8r3jh">
+                        <title>Set Product List</title>
+                        <operation source="formula" to="temp.tmp_ProductDetail_List">
+                           <expression language="XQuery">for $Line in $input.in_VFOpportunity/OpportunityProductDetails[fn:not(fn:starts-with(OpportunityProduct_ID, 'Default'))]
+return $Line</expression>
+                        </operation>
+                     </assignment>
+                     <link id="loe8r3h2" targetId="loe8r3gx" type="containerLink"/>
+                  </flow>
+                  <flow id="loe8r3h4">
+                     <container id="loe8r3w8" type="exclusive">
+                        <title>OpportunityID Length Valid</title>
+                        <flow id="loe8r3wb">
+                           <subflow id="loe8r49u">
+                              <title>Get All VForce</title>
+                              <subflowGUID>3DQAmNnvsjhceo1qpvybqa</subflowGUID>
+                              <subflowPath>Process_GetAll_VForce-4</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_WorkPackage</parameter>
+                                 <parameter name="in_OpportunityID" source="constant" updatable="true">{$input.in_OpportunityID}</parameter>
+                                 <parameter name="in_OpportunityLineItem" source="constant" updatable="true">{$input.in_OpportunityLineItemID}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="VF_SemiStructured_ALL" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                                    </options>
+                                 </field>
+                                 <field name="VF_SemiStructured_ALL2" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PO_GetAll_VForce</option>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="loe8r3wc" targetId="loe8r3w8" type="containerLink"/>
+                        </flow>
+                        <flow id="loe8r3we">
+                           <throw id="loe8r452">
+                              <title>Throw 1</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">400</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Invalid Input</parameter>
+                                 <parameter name="reason" source="formula" updatable="true">
+                                    <expression language="XQuery">'Input must be either 18-digit Opportunity ID (provided as [' || $input.in_OpportunityID ||']) or pre-extracted VForce Data (not set)'</expression>
+                                 </parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="loe8r3wa" targetId="loe8r3wb" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_Flag_OpportunityID}</arg>
+                                 <arg name="right">Y</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="loe8r3wd" targetId="loe8r3we" type="containerLink"/>
+                        <link id="loe8r3w9" targetId="loe8r3kf"/>
+                     </container>
+                     <assignment id="loe8r3kf">
+                        <title>Set Product</title>
+                        <operation source="formula" to="temp.tmp_ProductDetail_List">
+                           <expression language="XQuery">$output.VF_SemiStructured_ALL2[1]/OpportunityProductDetails[1] </expression>
+                        </operation>
+                     </assignment>
+                     <link id="loe8r3h5" targetId="loe8r3gx" type="containerLink"/>
+                  </flow>
+                  <link id="loe8r3h0" targetId="loe8r3h1" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$input.in_VFOpportunity}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="loe8r3h3" targetId="loe8r3h4" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$input.in_VFOpportunity}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="loe8r3i2" targetId="lmtas3li"/>
+               </container>
+               <container id="lmtas3li" type="exclusive">
+                  <title>Product List</title>
+                  <flow id="lmtas3lm">
+                     <assignment id="lnbfuq9c">
+                        <title>Next Product</title>
+                        <operation source="formula" to="temp.tmp_ProductDetail">
+                           <expression language="XQuery">list:head($temp.tmp_ProductDetail_List )</expression>
+                        </operation>
+                        <link id="lnopwesf" targetId="lnopwese"/>
+                     </assignment>
+                     <assignment id="lnna6kaz">
+                        <title>Assignment to tmp_WPName_Initial, tmp_Default_Product_Check</title>
+                        <operation source="formula" to="temp.tmp_WPName_Initial">
+                           <expression language="XQuery">util:iif($temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode = '' or fn:string-length($temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode)=0, fn:substring($temp.tmp_ProductDetail[1]/Product2_Description, 1, 60), $temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode || '_' || fn:substring($temp.tmp_ProductDetail[1]/Product2_Description, 1, 57))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Default_Product_Check">
+                           <expression language="XQuery">if(fn:starts-with($temp.tmp_ProductDetail[1]/OpportunityProduct_ID, 'CountryDefault') and $output.out_All_WPs_Exists=1 ) then 0 
+else ( if(fn:starts-with($temp.tmp_ProductDetail[1]/OpportunityProduct_ID, 'CountryDefault') and (switch ($temp.tmp_ProductDetail[1]/OpportunityProduct_ProductCode) case "FA-FR-EA-012--" return $output.out_DefaultProduct1_Exists  case "GR-ES-SU-218--" return $output.out_DefaultProduct2_Exists  case "GR-RC-SP-048--" return $output.out_DefaultProduct3_Exists  case "GR-SC-AC-029--" return $output.out_DefaultProduct4_Exists  default return 9)=1) then 0 else 1)</expression>
+                        </operation>
+                        <link id="lnna6kb1" targetId="lnaent65"/>
+                     </assignment>
+                     <container id="lnopwese" type="exclusive">
+                        <title>Line ID (Oppty Prod)</title>
+                        <flow id="lnopwesi">
+                           <subflow id="lnopwexs">
+                              <title>Check CountryDefaultProducts in SAP</title>
+                              <subflowGUID>5RJu9TxSK0TdSERSNTo7wl</subflowGUID>
+                              <subflowPath>Process_SAP_Check_CountryDefaultProducts-1</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ExecutionCountryISO" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode</expression>
+                                 </parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">input.in_ProcessVariables</parameter>
+                                 <parameter name="in_ProjectID" source="constant" updatable="true">{$input.in_ProjectID}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_All_WPs_Exists" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_DefaultProduct1_Exists" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_DefaultProduct2_Exists" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_DefaultProduct3_Exists" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_DefaultProduct4_Exists" type="int">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_DefaultPrds" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="lnopwesj" targetId="lnopwese" type="containerLink"/>
+                        </flow>
+                        <flow id="lnopwesl">
+                           <link id="lnopwesm" targetId="lnopwese" type="containerLink"/>
+                        </flow>
+                        <link id="lnopwesh" targetId="lnopwesi" type="containerLink">
+                           <condition source="formula">
+                              <function name="starts-with">
+                                 <arg name="left">{$temp.tmp_ProductDetail[1]/OpportunityProduct_ID}</arg>
+                                 <arg name="right">CountryDefault</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lnopwesk" targetId="lnopwesl" type="containerLink"/>
+                        <link id="lnopwexr" targetId="lnna6kaz"/>
+                     </container>
+                     <container id="lnaent65" type="exclusive">
+                        <title>tmp_Default_Product_Check</title>
+                        <flow id="lnaent69">
+                           <service id="lnaenu8j">
+                              <title>Get Project WorkPackage</title>
+                              <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_ProjectSet_____WorkPackageSet</serviceName>
+                              <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="hostname" source="field" updatable="true">temp.tmp_SapCredentials[1]/hostname</parameter>
+                                 <parameter name="username" source="field" updatable="true">temp.tmp_SapCredentials[1]/username</parameter>
+                                 <parameter name="password" source="field" updatable="true">temp.tmp_SapCredentials[1]/password</parameter>
+                                 <parameter name="ProjectID" source="field" updatable="true">input.in_ProjectID</parameter>
+                                 <parameter name="__inlinecount" source="constant">allpages</parameter>
+                                 <parameter name="__filter" source="formula">
+                                    <expression language="XQuery">'startswith(WorkPackageName, ''' || fn:substring($temp.tmp_WPName_Initial, 1, 56) || ''') and YY1_ExecutionCtryWP2_cpd eq ''' || $temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode || ''''</expression>
+                                 </parameter>
+                                 <parameter name="__orderby" source="formula">
+                                    <expression language="XQuery">'CreatedOn desc'</expression>
+                                 </parameter>
+                                 <parameter name="__select" source="formula">
+                                    <expression language="XQuery">'WorkPackageID,YY1_ExecutionCtryWP2_cpd'</expression>
+                                 </parameter>
+                              </serviceInput>
+                              <link id="lnaenu9o" targetId="lnaenu9n"/>
+                           </service>
+                           <assignment id="lnaenu9n">
+                              <title>Construct Body Payload</title>
+                              <operation source="formula" to="temp.tmp_WPName">
+                                 <expression language="XQuery">fn:substring($temp.tmp_WPName_Initial, 1, 60-fn:string-length('_S'||($output.out_WP_Count+1)))||'_S'||($output.out_WP_Count+1)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_WPDescription">
+                                 <expression language="XQuery">util:iif($temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode = '' or fn:string-length($temp.tmp_ProductDetail[1]/OpportunityProduct_CountryIsoCode)=0, fn:substring($temp.tmp_ProductDetail[1]/Product2_Description , 61-fn:string-length('_S'||($output.out_WP_Count+1))), fn:concat(fn:concat(fn:substring($temp.tmp_ProductDetail[1]/Product2_Description, 58-fn:string-length('_S'||($output.out_WP_Count+1))), ' - '), $temp.tmp_ProductDetail[1]/Country__c ))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_WorkPackage_Create_PO">
+                                 <expression language="XQuery">let $Line := $temp.tmp_ProductDetail,
+$itemCat := switch ($Line/Product2_Custom_Pricing_Method  ) (:PS01=Fixed Price; PS02=Time &amp; Expenses; PS06=Periodic Service; PS07=Usage Based:)
+                case "Block" return "PS07"
+                case "Block-Quantity" return "PS07"
+				case "Default Product" return "PS02"
+                case "List" return switch ($Line/ItemCategory )
+                                    case "PFP" return "PS01"
+									case "PTE" return "PS02"
+									case "PPS" return "PS06"
+                					default return "PS06" 
+				default return "PS06" 
+    ,$BillingCatS := switch ($itemCat) 
+                  case "PS01" return ""
+                  case "PS02" return ""
+                  case "PS06" return ""
+				  case "PS07" return "NON_BILL"
+                  default return ""
+return &lt;WorkPackageSet xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;ProjectID&gt;{$input.in_ProjectID }&lt;/ProjectID&gt;
+     &lt;WorkPackageName&gt;{$temp.tmp_WPName } &lt;/WorkPackageName&gt;
+     &lt;Description&gt;{$temp.tmp_WPDescription }&lt;/Description&gt;
+     &lt;WPStartDate&gt;{fn:concat(fn:format-dateTime($Line/OpportunityProduct_Operational_Start_Date, "[Y0001]-[M01]-[D01]"), 'T00:00:00')}&lt;/WPStartDate&gt;
+     &lt;WPEndDate&gt;{fn:concat(fn:format-dateTime($Line/OpportunityProduct_Service_End_Date, "[Y0001]-[M01]-[D01]"), 'T00:00:00')}&lt;/WPEndDate&gt;
+     &lt;WorkPackageType&gt;{util:iif($Line/Product2_Custom_Pricing_Method='Block', 'U') }&lt;/WorkPackageType&gt;
+     &lt;UnitQuantity&gt;{util:iif($Line/Product2_Custom_Pricing_Method='Block', 1 )}&lt;/UnitQuantity&gt;
+     &lt;UnitId&gt;{util:iif($Line/Product2_Custom_Pricing_Method='Block', $temp.tmp_Default_UnitID) }&lt;/UnitId&gt;
+	 &lt;YY1_ExecutionCtryWP2_cpd&gt;{$Line/OpportunityProduct_CountryIsoCode/text()}&lt;/YY1_ExecutionCtryWP2_cpd&gt;
+     &lt;YY1_OpportunityID_cpd&gt;{$input.in_OpportunityID }&lt;/YY1_OpportunityID_cpd&gt;
+   {  if ($Line/Product2_Description != 'Direct Reimbursable Expense (DRE)') then (
+     &lt;DemandSet&gt;
+     {
+	 for $t in (1 to 8) 
+     for $cc in ('US11','IN05','IN03','SG09','GB30')
+     return
+       &lt;results m:isArray="true"&gt;
+         &lt;BillingControlCategory&gt;{$BillingCatS}&lt;/BillingControlCategory&gt;   
+         &lt;WorkPackageName&gt;{$temp.tmp_WPName }&lt;/WorkPackageName&gt;
+         &lt;Uom&gt;{$temp.tmp_Default_UOM }&lt;/Uom&gt;
+         &lt;ResType&gt;{$temp.tmp_Default_ResType }&lt;/ResType&gt;
+         &lt;ResourceId&gt;{'T00'||$t}&lt;/ResourceId&gt;    
+         &lt;Effort&gt;{$temp.tmp_Default_Effort }&lt;/Effort&gt;
+         &lt;DelvryServOrg&gt;{$cc}&lt;/DelvryServOrg&gt;
+       &lt;/results&gt; 
+     }
+     &lt;/DemandSet&gt; ) else () }
+&lt;/WorkPackageSet&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_any">
+                                 <expression language="XQuery">util:toJSON($temp.tmp_WorkPackage_Create_PO )</expression>
+                              </operation>
+                              <link id="lnaenuar" targetId="lnaenuaq"/>
+                           </assignment>
+                           <assignment id="lnaenubo">
+                              <title>Add to output Stack</title>
+                              <operation source="formula" to="temp.tmp_ProductDetail_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_ProductDetail_List )</expression>
+                              </operation>
+                              <operation source="constant" to="output.out_ProcessVariables_WorkPackage[1]/Code">{$output.out_ProcessVariables_POST_A_WorkPackage[1]/Code}</operation>
+                              <operation source="constant" to="output.out_ProcessVariables_WorkPackage[1]/Error">{$output.out_ProcessVariables_POST_A_WorkPackage[1]/Error}</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_WorkPackage[1]/Description">{$output.out_ProcessVariables_POST_A_WorkPackage[1]/Description}</operation>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_WorkPackage_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_WorkPackage_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_WorkPackage}</arg>
+                                 </function>
+                              </operation>
+                              <link id="lnaenude" targetId="lnaenud4"/>
+                           </assignment>
+                           <subflow id="lnaenuaq">
+                              <title>Create A WorkPackage</title>
+                              <subflowGUID>atvAIaJAcoljqv7fEqaock</subflowGUID>
+                              <subflowPath>Process_POST_A_WorkPackage</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="field" updatable="true">temp.tmp_WorkPackage_Create_PO</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_WorkPackage</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Po" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_POST_A_WorkPackage" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PostBpStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_pOST_WorkPackageSetResponse" type="reference">
+                                    <options>
+                                       <option name="referenceTo">AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:POST_WorkPackageSetResponse</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">dGYM8RSy4CelIR2LUM6Pur</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lnaenubp" targetId="lnaenubo"/>
+                           </subflow>
+                           <container id="lnaenud4" type="exclusive">
+                              <title>Code</title>
+                              <flow id="lnaenud5">
+                                 <assignment id="lnaenud6">
+                                    <title>Assignment to tmp_SalesOrderItem_Create_PO</title>
+                                    <operation source="formula" to="temp.tmp_SalesOrderItem_Create_PO">
+                                       <expression language="XQuery">let $Pdt := $temp.tmp_ProductDetail
+   ,$itemCat := switch ($Pdt/Product2_Custom_Pricing_Method ) (:PS01=Fixed Price; PS02=Time &amp; Expenses; PS06=Periodic Service; PS07=Usage Based:)
+				case "Block" return "PS07"
+                case "Block-Quantity" return "PS07"
+                case "Default Product" return "PS02"
+                case "List" return 	switch ($Pdt/ItemCategory)
+                						case "PFP" return "PS01"
+                                        case "PTE" return "PS02"
+                                        case "PPS" return "PS06"
+                                        default return "PS06"
+                default return "PS06" 
+	,$itemCatS := util:iif($itemCat!="PS07", $Pdt/ItemCategory, '')
+    ,$ProdBase := util:iif($itemCat!="PS07", fn:replace($Pdt/OpportunityProduct_ProductCode/text(),'-',''), 'U003')
+    ,$ProfitC  := switch(fn:substring($ProdBase ,1,4))
+    			  case "GRES" return "8110"
+				  case "GRSC" return "8120"
+                  case "GRRC" return "8130"
+                  case "ADTX" return "8210"
+                  case "ADLG" return "8220"
+                  case "ADPE" return "8230"
+                  case "ADWE" return "8240"
+                  case "FAFR" return "8310"
+                  case "FAPP" return "8320"
+                  case "FAAM" return "8330"
+                  default return ""	
+	,$Wp := $output.out_pOST_WorkPackageSetResponse[1]/d[1]/WorkPackageID 
+    ,$i :=  util:toInteger(fn:substring-after(fn:substring-after($Wp, '.'),'.'))
+
+return
+&lt;to_CustProjSlsOrdItem xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  &lt;CustomerProject&gt;{$input.in_ProjectID }&lt;/CustomerProject&gt;
+  &lt;SalesOrderItem&gt;{fn:format-number($i*10,"00000")}&lt;/SalesOrderItem&gt;
+  &lt;SalesOrderItemCategory&gt;{$itemCat}&lt;/SalesOrderItemCategory&gt;
+  &lt;Material&gt;{$ProdBase||$itemCatS}&lt;/Material&gt;
+  &lt;SalesOrderItemText&gt;{fn:substring($Pdt/Product2_Description/text(),1,40)}&lt;/SalesOrderItemText&gt;
+  &lt;ProfitCenter&gt;{$ProfitC}&lt;/ProfitCenter&gt;
+  &lt;TransactionCurrency&gt;{$input.in_ProjectCurrency  }&lt;/TransactionCurrency&gt;
+  &lt;!--MaterialByCustomer&gt;&lt;/MaterialByCustomer--&gt;
+  &lt;ExpectedNetAmount&gt;{fn:format-number($Pdt/CalcTotal, '#0.##')}&lt;/ExpectedNetAmount&gt;
+  
+  &lt;to_CustProjSOIBillgPlnItm&gt;
+      {for $BPI at $ii in  $Pdt/BillingPlan return
+      &lt;results m:isArray="true"&gt;  	
+      	&lt;BillingPlanItem&gt;{$ii}&lt;/BillingPlanItem&gt;
+      
+        {if ($itemCat = "PS01" or $itemCat = "PS02" or $itemCat = "PS06" or $itemCat = "PS07") then (
+        &lt;BillingPlanBillingDate&gt;{"/Date("||date:dateToMillis($BPI/BillingPlanBillingDate)||")/"}&lt;/BillingPlanBillingDate&gt;) else ()}
+        
+        {if ($itemCat = "PS01" or $itemCat = "PS06") then (
+        &lt;BillingPlanAmount&gt;{fn:format-number($BPI/BillingPlanAmount,'#0.##') }&lt;/BillingPlanAmount&gt;) else ()}
+        
+        {if ($itemCat = "PS01" or $itemCat = "PS02" or $itemCat = "PS06" or $itemCat = "PS07") then (
+        &lt;TransactionCurrency&gt;{$input.in_ProjectCurrency  }&lt;/TransactionCurrency&gt;) else ()}
+        
+        {if ($itemCat = "PS07") then (
+        $BPI/BillingPlanItemUsage) else ()}
+        
+        {if ($itemCat = "PS01" or $itemCat = "PS06") then (
+        &lt;BillingPlanItemDescription&gt;{$BPI/BillingPlanItemDescription/text()||" - "||$Pdt/OpportunityProduct_CountryIsoCode/text()}&lt;/BillingPlanItemDescription&gt;) else ()}    
+        
+        {if ($itemCat = "PS06") then (
+        &lt;BillingPlanServiceStartDate&gt;{"/Date("||date:dateToMillis($BPI/BillingPlanServiceStartDate)||")/"}&lt;/BillingPlanServiceStartDate&gt;) else ()}    
+        {if ($itemCat = "PS06") then (
+        &lt;BillingPlanServiceEndDate&gt;{"/Date("||date:dateToMillis($BPI/BillingPlanServiceEndDate)||")/"}&lt;/BillingPlanServiceEndDate&gt;) else ()}    
+      &lt;/results&gt;
+      }
+  &lt;/to_CustProjSOIBillgPlnItm&gt;
+  &lt;to_CustProjSlsOrdItemWorkPckg&gt;
+  	&lt;results m:isArray="true"&gt;
+      &lt;WorkPackage&gt;{$input.in_ProjectID||".1."||$i }&lt;/WorkPackage&gt;      
+    &lt;/results&gt;
+  &lt;/to_CustProjSlsOrdItemWorkPckg&gt;
+&lt;/to_CustProjSlsOrdItem&gt;</expression>
+                                    </operation>
+                                    <link id="lnaenudc" targetId="lnaenud7"/>
+                                 </assignment>
+                                 <subflow id="lnaenud7">
+                                    <title>Process_POST_A_SalesOrderItem</title>
+                                    <subflowGUID>1odXE1EC214j1dlOwhN4I7</subflowGUID>
+                                    <subflowPath>Process_POST_A_SalesOrderItem</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="field" updatable="true">temp.tmp_SalesOrderItem_Create_PO</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_WorkPackage</parameter>
+                                       <parameter name="in_ProjectID" source="field" updatable="true">input.in_ProjectID</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_Po" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoSapStdOutput</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_RestURL" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_POST_A_SalesOrderItem" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PostBpStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="lnaenudb" targetId="lnaenud4" type="containerLink"/>
+                              </flow>
+                              <flow id="lnaenud8">
+                                 <link id="lnaenudd" targetId="lnaenud4" type="containerLink"/>
+                              </flow>
+                              <link id="lnaenud9" targetId="lnaenud5" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="starts-with-any-of">
+                                       <arg name="left">{$output.out_ProcessVariables_WorkPackage[1]/Code}</arg>
+                                       <arg name="right">1,2,HTTP_1,HTTP_2</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lnaenuda" targetId="lnaenud8" type="containerLink"/>
+                           </container>
+                           <link id="lnaent6a" targetId="lnaent65" type="containerLink"/>
+                        </flow>
+                        <flow id="lnaent6c">
+                           <assignment id="lnaenug3">
+                              <title>Add to output Stack 1</title>
+                              <operation source="formula" to="temp.tmp_ProductDetail_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_ProductDetail_List )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="lnaent6d" targetId="lnaent65" type="containerLink"/>
+                        </flow>
+                        <link id="lnaent68" targetId="lnaent69" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_Default_Product_Check}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lnaent6b" targetId="lnaent6c" type="containerLink"/>
+                        <link id="lnaenud3" targetId="lmtas3o6"/>
+                     </container>
+                     <jumpTo id="lmtas3o6">
+                        <link id="lmtas3o7" targetId="lmtas3li"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lmtas3lp">
+                     <assignment id="lmymr8t6">
+                        <title>Assign Output</title>
+                        <operation source="formula" to="output.out_ProcessVariables_WorkPackage[1]/Code">
+                           <expression language="XQuery">let $p := $output.out_ProcessVariables_POST_A_WorkPackage[1]/Code 
+return
+if (
+(fn:number(replace($p,'HTTP_','')) &gt; 299)
+)
+then 'HTTP_400'
+else 'HTTP_200'</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_ProcessVariables_WorkPackage[1]/Error">
+                           <expression language="XQuery">let $p := $output.out_ProcessVariables_POST_A_WorkPackage[1]/Code  
+return
+if (
+(fn:number(replace($p,'HTTP_','')) &gt; 299))
+then 'Bad Request'
+else 'OK'</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_WorkPackage[1]/Description">
+                           <expression language="XQuery">let $p := $output.out_ProcessVariables_POST_A_WorkPackage[1]/Code  
+return
+if (
+(fn:number(replace($p,'HTTP_','')) &gt; 299)
+)
+then 'Error occurred in child process, see error stack'
+else ''</expression>
+                        </operation>
+                        <link id="lmymr8u1" targetId="lmymr8u0"/>
+                     </assignment>
+                     <end id="lmymr8u0">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lmtas3ll" targetId="lmtas3lm" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_ProductDetail_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmtas3lo" targetId="lmtas3lp" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_ProductDetail_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>c7f4111c-b87e-45af-8fa0-d9065b450a1b</ns1:Id>
+               <ns1:Name>iii</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "",
+	 "in_BusinessPartner": "",
+	 "in_ProjectID": "",
+	 "in_VF_SemiStructured_ALL": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "Country__c": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "OpportunityProduct_Name": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "TBD_BillingType": "",
+	 	 	 "TBD_ContractLanguage": "",
+	 	 	 "TBD_BillingTiming": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>528d3bb0-c208-40d4-9b30-d18d8cfa454c</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "xyz",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "Opp",
+	 	 "API_Name": "API23C",
+	 	 "Data_Key": "VIP_PILOT_T00",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-08-30T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "VIP_PILOT_T00",
+	 "in_BusinessPartner": "1047631",
+ "in_ProjectID": "C100013",
+	 "in_VFOpportunity": {
+	 	 		"Account": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"AccountName": "Customer F",
+			"AccountType": "Client",
+			"Agresso_ID__c": "Test Agr",
+			"Billing_Contact_Email__c": "peter.son@ecbs.com",
+			"Billing_Contact_Phone__c": "",
+			"BillingCity": "Test City.",
+			"BillingContactFirstName__c": "peter",
+			"BillingContactLastName__c": "son",
+			"BillingCountry": "US",
+			"BillingPostalCode": 10019,
+			"BillingState": "CA",
+			"BillingStreet": "456 Test Street (API07)",
+			"BPAccountID__c": 1047631,
+			"Currency__c": "INR",
+			"Entity_Code__c": 21,
+			"Fax": "",
+			"Payment_Term__c": 30,
+			"Phone": "102271795989",
+			"SBQQ__TaxExempt__c": "No",
+			"Sector__c": "Corporate",
+			"ShippingCity": "Test City",
+			"ShippingCountry": "United States",
+			"ShippingPostalCode": 10019,
+			"ShippingState": "Massachusetts",
+			"ShippingStreet": "123 Test STreet (API07)",
+			"Website": "www.website.com",
+			"X18_Digit_ID__c": "0013O00000rBAcfQAG"
+		},
+		"OpportunityHeader": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"BPServiceContractId__c": "",
+			"Contract_Length_months__c": 12,
+			"CreatedDate": "2022-01-27T21:14:01Z",
+			"Currency_Type__c": "USD",
+			"Description": "this is for New Customer F (Prospect). Long description exceeding 40 character to test spillover from project name into project description field",
+			"ID": "0063O00000GqtnuQAB",
+			"Legal_Billing_Entity__c": "US11-Vistra International Expansion (USA), Inc",
+			"Owner_Id": "0053O000004YHzNQAW",
+			"OwnerEmail": "rudolph.boshoff@vistra.com",
+			"Primary_Contact_c": {
+				"ContactID": "0033O000015NbirQAC",
+				"Email": "contact1@customerf.com",
+				"FirstName": "Contact 1",
+				"LastName": "for Customer F",
+				"MailingCountry": "US",
+				"Phone": 102271795989,
+				"State": "CA",
+				"X18_Digit_ID__c": "0033O000015NbirQAC"
+			},
+			"Revenue_Generation_Date__c": "2022-01-27"
+		},
+		"OpportunityProductDetails": [
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"Country__c": "United States",   
+				"OpportunityProduct_ID": "12345678901234567A",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "GR-SC-AC-007",
+"OpportunityProduct_Name": "Customer 1F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 3125,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Annual Subsidiary Compliance Bundle",
+				"Product2_Frequency": "Annual",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 12500,
+				"SBQQ_QuoteLine_Net_Unit_Price": 3125,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-07-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-10-01",
+						"BillingPlanItem": 3,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2024-01-01",
+						"BillingPlanItem": 4,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567C",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "FA-FR-EA-005",
+"OpportunityProduct_Name": "Customer 2F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 400,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Maintain Mandatory Local Bookkeeping",
+				"Product2_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 4800,
+				"SBQQ_QuoteLine_Net_Unit_Price": 400,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-03-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-05-01",
+						"BillingPlanItem": 3,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-06-01",
+						"BillingPlanItem": 4,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-07-01",
+						"BillingPlanItem": 5,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-08-01",
+						"BillingPlanItem": 6,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-09-01",
+						"BillingPlanItem": 7,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-10-01",
+						"BillingPlanItem": 8,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-11-01",
+						"BillingPlanItem": 9,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-12-01",
+						"BillingPlanItem": 10,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2024-01-01",
+						"BillingPlanItem": 11,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2024-02-01",
+						"BillingPlanItem": 12,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567E",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "FA-PP-PM-001",
+"OpportunityProduct_Name": "Customer 3F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 1000,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Bank Account Opening",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "One Time",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 1000,
+				"SBQQ_QuoteLine_Net_Unit_Price": 1000,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 1000,
+						"BillingPlanBillingDate": "2023-03-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Bank Account Opening",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "JP",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567I",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "GR-ES-SP-056",
+"OpportunityProduct_Name": "Customer 4F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 500,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Registered Office Services",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "50% Upfront - 50% on Completion",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 4500,
+				"SBQQ_QuoteLine_Net_Unit_Price": 2250,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 2250,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Registered Office Services",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 2250,
+						"BillingPlanBillingDate": "2024-03-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Registered Office Services",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			}
+		]
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e6f2a5af-f723-415e-b65a-bcf9ba20fe31</ns1:Id>
+               <ns1:Name>inp5</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-31T13:41:16Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-31T15:43:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "0063N00000P7ti6QAB",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "abcd",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "abc",
+	 	 "API_Name": "EL23u",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-10-23T00:00:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "0063N00000P7ti6QAB",
+	 "in_BusinessPartner": "1059319",
+	 "in_ProjectID": "VF000069",
+	 "in_ProjectCurrency": "USD",
+	 "in_OpportunityLineItemID": "00k3N000009WdURQA0"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>70d88960-8de7-48c5-8e27-5399e5f09caf</ns1:Id>
+               <ns1:Name>ip</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "",
+	 "in_BusinessPartner": "",
+	 "in_VF_SemiStructured_ALL": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "OpportunityProduct_Country": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2IpCLFH726PjxkIVA4rRoX</types1:GUID>
+      <types1:DisplayName>Process_SAP_WorkPackageCreate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-31T15:45:48.636Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,89 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fQfYeJHQjATO9pH-gt-53318795-2023-10-15T09:40:58.082Z::po.xml</types1:EntryId>
+      <types1:Name>PO_USI-1</types1:Name>
+      <types1:ParentFlowIds>40bdpsaaaa-gt-53396404-2023-10-15T09:41:00.894Z::pd.xml,u9Gjw4ARW8UBM7z-gt-53364848-2023-10-15T09:41:07.331Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Joins Objects from VForce: Opportunity, Account, OpportunityContactRole, OpportunityProduct (List), Quote Line (List), Product (List) </types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:58Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="PO_USI"
+                        isByCopy="true"
+                        name="PO_USI-1">
+            <description>Joins Objects from VForce: Opportunity, Account, OpportunityContactRole, OpportunityProduct (List), Quote Line (List), Product (List) </description>
+            <tags/>
+            <detail>
+               <field label="Opportunity"
+                      name="Opportunity"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:POVFOpportunity</option>
+                     <option name="guid">7bzhlNon2CWl5JJ64znsEa</option>
+                  </options>
+               </field>
+               <field label="OpportunityContactRole"
+                      name="OpportunityContactRole"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO-AccountContact</option>
+                     <option name="guid">dEnuu2Y0sAecEESYmbHFmm</option>
+                  </options>
+               </field>
+               <field label="Account"
+                      name="Account"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="guid">bOFOoUr3KomhFLN7Nah4uD</option>
+                  </options>
+               </field>
+               <field label="OpportunityProduct"
+                      name="OpportunityProduct"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO-VFOpportunityLineItem</option>
+                     <option name="guid">4pTPBYUyQkRjSsJ8zYJvuN</option>
+                  </options>
+               </field>
+               <field label="QuoteLine"
+                      name="QuoteLine"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO-VFQuoteLine</option>
+                     <option name="guid">6xpGwWhwfZUbpnphFf49yM</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>iM0of4n9zmUdmYCWMt9EeB</types1:GUID>
+      <types1:DisplayName>PO_USI</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.533Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

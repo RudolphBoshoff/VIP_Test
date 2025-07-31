@@ -1,0 +1,67 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>5LHk5hJdypKwKBq-gt-53395721-2023-10-15T09:40:48.914Z::po.xml</types1:EntryId>
+      <types1:Name>PO_GetAll_VForce-1</types1:Name>
+      <types1:ParentFlowIds>05WlD2pHALVYxWP-gt-53396236-2023-10-15T09:40:58.984Z::pd.xml,6xtjqbdpIO3M4Ww-gt-53364174-2023-10-15T09:40:49.29Z::pd.xml,7i1ltVOSSHCwkNm-gt-53395887-2023-10-15T09:40:51.949Z::pd.xml,8fVQU8lpDqotxGo-gt-53319155-2023-10-15T09:41:04.954Z::pd.xml,99WvbeGoQwg74Rp-gt-53364423-2023-10-15T09:40:53.969Z::pd.xml,dyjznKKvvNtLSVM-gt-53319116-2023-10-15T09:41:04.062Z::pd.xml,eBAGE7ppppppppp-gt-53318468-2023-10-15T09:40:50.66Z::pd.xml,fRxZsEi4tciSrZM-gt-53396090-2023-10-15T09:40:56.083Z::pd.xml,giUhuCMLkZlkZ2s-gt-53319225-2023-10-15T09:41:06.106Z::pd.xml,GoQwg74Rpf6JfOM-gt-53364341-2023-10-15T09:40:52.531Z::pd.xml,IFDlyjllCYAOTMn-gt-53318735-2023-10-15T09:40:56.552Z::pd.xml,J3nCKwKBqRi92qB-gt-53318821-2023-10-15T09:40:58.573Z::pd.xml,jB4EFpr1Iw8jIw8-gt-53318986-2023-10-15T09:41:02.156Z::pd.xml,kP31abck0Kn7wpo-gt-53364382-2023-10-15T09:40:53.163Z::pd.xml,KTNkSmbduaa-gt-53318928-2023-10-15T09:41:00.589Z::pd.xml,lFmVSciY3AxtPk7-gt-53396422-2023-10-15T09:41:01.187Z::pd.xml,SCT53nQciSrZMSP-gt-53319266-2023-10-15T09:41:06.717Z::pd.xml,sTSicjumf6S3wOL-gt-53318419-2023-10-15T09:40:50.295Z::pd.xml,SUBYZcjKsJlv58p-gt-53396719-2023-10-15T09:41:04.712Z::pd.xml,taaabbgdoGsF4Xk-gt-53319058-2023-10-15T09:41:03.16Z::pd.xml,upnMUvIw8jIw8jI-gt-53395984-2023-10-15T09:40:54.335Z::pd.xml,UzeA8rJ4pbgchwA-gt-53396478-2023-10-15T09:41:01.744Z::pd.xml,WnMnS24FsWTzIf6-gt-53396022-2023-10-15T09:40:54.782Z::pd.xml,zvGFaaaaaaaaaaa-gt-53396799-2023-10-15T09:41:06.404Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+processobject</types1:MimeType>
+      <types1:Description>Only contains the opportunity details as it relates to the US integration (VForce --&gt; VEnterprise). For comprehensive process objects, refer to [AppConnSalesForce] </types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:49Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                        displayName="PO_GetAll_VForce"
+                        isByCopy="true"
+                        name="PO_GetAll_VForce-1">
+            <description>Only contains the opportunity details as it relates to the US integration (VForce --&gt; VEnterprise). For comprehensive process objects, refer to [AppConnSalesForce] </description>
+            <tags/>
+            <detail>
+               <field label="Account"
+                      name="Account"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO-VFAccount</option>
+                     <option name="guid">bOFOoUr3KomhFLN7Nah4uD</option>
+                  </options>
+               </field>
+               <field label="OpportunityHeader"
+                      name="OpportunityHeader"
+                      nullable="true"
+                      required="false"
+                      type="reference">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:POVFOpportunity</option>
+                     <option name="guid">7bzhlNon2CWl5JJ64znsEa</option>
+                  </options>
+               </field>
+               <field label="OpportunityProductDetails"
+                      name="OpportunityProductDetails"
+                      nullable="true"
+                      required="false"
+                      type="objectlist">
+                  <options>
+                     <option name="relationshipName">Child</option>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+            </detail>
+         </processObject>
+      </types1:Entry>
+      <types1:GUID>5B5uN7aiIhygsxXkkMovMC</types1:GUID>
+      <types1:DisplayName>PO_GetAll_VForce</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:12.029Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

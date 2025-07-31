@@ -1,0 +1,121 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>tvlp6oIuQaaabcm-gt-21605931-2022-01-14T15:17:52.32Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_User_details-2</types1:Name>
+      <types1:ParentFlowIds>6WdyH72yIYmWR7h-gt-18017365-2022-01-17T14:16:03.693Z::pd.xml,EIDhMBu8zbgdwUi-gt-1155862-2021-12-13T04:57:04.495Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>vishwanath.gupta@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-01-14T15:17:52Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-01-15T13:43:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-18T13:51:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_User_details-2/Process_User_details-2.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_User_details"
+                  name="Process_User_details-2"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_opp_ownere_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_user_details" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-User-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1rDGSIlM8Jwk4l5tKGdGa7</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_user_details" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:User</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kycidjf5" targetId="kycidjf4"/>
+               </start>
+               <assignment id="kycidjf4">
+                  <title>GEt User Details</title>
+                  <operation source="query" to="temp.tmp_user_details">
+                     <query advanceQuery="false" from="AppConnSalesForce:User">
+                        <where>Id = '{$input.in_opp_ownere_id }'</where>
+                     </query>
+                  </operation>
+                  <link id="kycidjfr" targetId="kycidjfq"/>
+               </assignment>
+               <assignment id="kycidjfq">
+                  <title>Assign User Details</title>
+                  <operation source="formula" to="output.out_user_details">
+                     <expression language="XQuery">&lt;PO-User&gt;
+   &lt;Id&gt;{$temp.tmp_user_details.Id } &lt;/Id&gt;
+   &lt;Firstname&gt;{$temp.tmp_user_details.FirstName} &lt;/Firstname&gt;
+   &lt;Lastname&gt;{$temp.tmp_user_details.LastName}&lt;/Lastname&gt;
+   &lt;Email&gt;{$temp.tmp_user_details.Email}&lt;/Email&gt;
+   &lt;BPServiceContractContactID__c&gt;{$temp.tmp_user_details.BPServiceContractContactID__c}&lt;/BPServiceContractContactID__c&gt;
+   &lt;Phone&gt;{$temp.tmp_user_details.Phone }&lt;/Phone&gt;   
+   &lt;Street&gt;{$temp.tmp_user_details.Street }&lt;/Street&gt;
+   &lt;Country&gt;{$temp.tmp_user_details.CountryCode }&lt;/Country&gt;
+   &lt;City&gt;{$temp.tmp_user_details.City }&lt;/City&gt;
+   &lt;PostalCode&gt;{$temp.tmp_user_details.PostalCode }&lt;/PostalCode&gt;
+&lt;/PO-User&gt;
+
+</expression>
+                  </operation>
+                  <link id="kycidjfs" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>aa6ff88a-2135-453a-8d87-93472608f69e</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>vishwanath.gupta@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-14T15:17:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>vishwanath.gupta@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-01-14T15:17:52Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_opp_ownere_id": "00509000000r5xtAAA"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>hDVO92UUDWugMz8gKVVdQA</types1:GUID>
+      <types1:DisplayName>Process_User_details</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:12:23.976Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

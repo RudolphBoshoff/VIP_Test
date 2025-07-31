@@ -1,0 +1,375 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>JVxYi0Nmumf6S3w-gt-4760956-2021-12-27T09:44:33.572Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Mapping_ContactToBpOtherC</types1:Name>
+      <types1:ParentFlowIds>68YybdsMkdypKwK-gt-21504828-2022-01-14T13:17:27.92Z::pd.xml,8cmbeMVX3cjk91p-gt-19663189-2022-01-12T09:49:49.959Z::pd.xml,CY4vSyIRJi4tciS-gt-9105276-2021-12-29T08:24:24.56Z::pd.xml,E1ZT1cnFKi9zhFt-gt-20619352-2022-01-13T12:44:49.488Z::pd.xml,fZ3r0x7bcoq3xgj-gt-24057176-2022-01-18T07:18:09.1Z::pd.xml,jz8Uuopz4KhPVEQ-gt-3061025-2021-12-23T07:36:40.155Z::pd.xml,Kx6I1dq2ME9paab-gt-12327086-2022-01-10T10:41:27.586Z::pd.xml,RjxcghuImXycotF-gt-17986104-2022-01-10T14:14:13.701Z::pd.xml,tRBjISUXL86zqzm-gt-9851013-2021-12-30T09:54:05.311Z::pd.xml,uBs5Uz3gnKLLsci-gt-13015389-2022-01-11T07:14:01.323Z::pd.xml,v58pIO3M4WwOC2X-gt-23210386-2022-01-17T13:52:01.234Z::pd.xml,XqfOZ3NjDg8SOlA-gt-18060052-2022-01-10T15:48:57.795Z::pd.xml,XxWCQaaaaaa-gt-12465677-2022-01-03T05:41:36.802Z::pd.xml,YabdvhxiQLnzYLn-gt-21136564-2022-01-13T20:59:20.812Z::pd.xml,yVgglxbdypKwKBq-gt-21549527-2022-01-14T14:11:45.397Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Other Contacts (array)
+Fetches Contact details from VForce
+Maps to Business Partner of type Person in SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2021-12-27T09:44:34Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2021-12-28T09:22:10Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-01-18T13:51:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Mapping_ContactToBpOtherC/Process_Mapping_ContactToBpOtherC.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Mapping_ContactToBpOtherC"
+                  name="Process_Mapping_ContactToBpOtherC"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Other Contacts (array)
+Fetches Contact details from VForce
+Maps to Business Partner of type Person in SAP</description>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_opportunity_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_event_label" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Jurisdication" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_main_transaction_id"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_subtransaction_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="VF_ContactDetails"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3AFOA0PsJ6dcReNZta4f8q</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="SAP_BpOtherContact" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </field>
+               <field description="" name="SAP_BpOtherContact_array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-2</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9TcfxQEnjgIea1O3PwjjqJ</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_JsonWriter" type="reference">
+                  <options>
+                     <option name="referenceTo">US-AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2moblHIRDQ1fL6r9ESHuGV</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JsonBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerAddressType-2</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4MUKGOTFr69kdLsSswDVel</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Phone_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ContacttDetails_array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3AFOA0PsJ6dcReNZta4f8q</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ContactDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3AFOA0PsJ6dcReNZta4f8q</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxohytto" targetId="kxohyttn"/>
+               </start>
+               <assignment id="kxohyttn">
+                  <title>Initiate Array</title>
+                  <operation source="field" to="temp.tmp_ContacttDetails_array">input.VF_ContactDetails</operation>
+                  <link id="kxohytvd" targetId="kxohytvc"/>
+               </assignment>
+               <container id="kxohytvc" type="exclusive">
+                  <title>Oppty Products</title>
+                  <flow id="kxohytvg">
+                     <assignment id="kxohytws">
+                        <title>Head Array</title>
+                        <operation source="formula" to="temp.tmp_ContactDetails">
+                           <expression language="XQuery">list:head($temp.tmp_ContacttDetails_array)</expression>
+                        </operation>
+                        <link id="kxohyu06" targetId="kxohyu05"/>
+                     </assignment>
+                     <assignment id="kxohyu05">
+                        <title>Child Process Objects</title>
+                        <operation source="formula" to="temp.tmp_EmailAddress_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($temp.tmp_ContactDetails[1]/Email ))) then (
+       &lt;to_EmailAddress&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;EmailAddress&gt;{$temp.tmp_ContactDetails[1]/Email }&lt;/EmailAddress&gt;
+            &lt;/results&gt;
+       &lt;/to_EmailAddress&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Phone_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if(not(util:isNull($temp.tmp_ContactDetails[1]/Phone ))) then (
+       &lt;to_PhoneNumber&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;PhoneNumber&gt;{$temp.tmp_ContactDetails[1]/Phone }&lt;/PhoneNumber&gt;
+            &lt;/results&gt;
+       &lt;/to_PhoneNumber&gt;
+   )
+   else ()
+}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BusinessPartnerAddress">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+   { if(not(util:isNull($temp.tmp_ContactDetails[1]/MailingCountry ))) then (
+      &lt;results m:isArray="true"&gt;
+         &lt;CityName&gt;&lt;/CityName&gt;
+         &lt;PostalCode&gt;&lt;/PostalCode&gt;
+         &lt;Language&gt;EN&lt;/Language&gt;           
+         &lt;StreetName&gt;&lt;/StreetName&gt;
+         &lt;Country&gt;{$temp.tmp_ContactDetails[1]/MailingCountry }&lt;/Country&gt;
+         { $temp.tmp_EmailAddress_BP_PO/element()  }
+         { $temp.tmp_Phone_BP_PO/element()  }
+            &lt;to_AddressUsage&gt;
+             &lt;results m:isArray="true"&gt;
+  			 &lt;AddressUsage&gt;XXDEFAULT&lt;/AddressUsage&gt;
+		&lt;ValidityEndDate&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidityEndDate&gt;
+        &lt;/results&gt;
+	 &lt;/to_AddressUsage&gt;	
+      
+      &lt;/results&gt;   
+   ) else()}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="kxohyu0r" targetId="kxohyu0q"/>
+                     </assignment>
+                     <assignment id="kxohyu0q">
+                        <title>Parent Process Object</title>
+                        <operation source="formula" to="output.SAP_BpOtherContact">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+	&lt;BusinessPartnerCategory&gt;1&lt;/BusinessPartnerCategory&gt;
+	&lt;BusinessPartnerGrouping&gt;BP02&lt;/BusinessPartnerGrouping&gt;
+	&lt;Language&gt;EN&lt;/Language&gt;
+	&lt;FirstName&gt;{$temp.tmp_ContactDetails[1]/FirstName } &lt;/FirstName&gt;
+    &lt;LastName&gt;{$temp.tmp_ContactDetails[1]/LastName  } &lt;/LastName&gt;	
+	&lt;BusinessPartnerIDByExtSystem&gt;{fn:upper-case($temp.tmp_ContactDetails[1]/ContactID )}&lt;/BusinessPartnerIDByExtSystem&gt;
+   &lt;to_BusinessPartnerAddress&gt;{$temp.tmp_BusinessPartnerAddress/element()}&lt;/to_BusinessPartnerAddress&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="output.SAP_BpOtherContact_array">
+                           <function name="list:append">
+                              <arg name="dest_field">{$output.SAP_BpOtherContact_array}</arg>
+                              <arg name="new_field">{$output.SAP_BpOtherContact}</arg>
+                           </function>
+                        </operation>
+                        <link id="kxohyu1a" targetId="kxohyu19"/>
+                     </assignment>
+                     <assignment id="kxohyu19">
+                        <title>Prepare  JSON</title>
+                        <operation source="constant" to="temp.tmp_JsonWriter[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_JsonWriter[1]/fileName">
+                           <expression language="XQuery">'Process_Mapping_ContactToBpOtherC['||util:getProcessId()||'].json'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_JsonWriter[1]/content">
+                           <expression language="XQuery">util:toJSON($output.SAP_BpOtherContact )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_JsonWriter[1]/filePath">
+                           <expression language="XQuery">'historylog\vforceevents['||$input.in_main_transaction_id||']'</expression>
+                        </operation>
+                        <link id="kxohyu1w" targetId="kxohyu1v"/>
+                     </assignment>
+                     <assignment id="kxohyu3z">
+                        <title>Tail Array</title>
+                        <operation source="formula" to="temp.tmp_ContacttDetails_array">
+                           <expression language="XQuery">list:tail($temp.tmp_ContacttDetails_array)</expression>
+                        </operation>
+                        <link id="kxohyu7g" targetId="kxohyu7e"/>
+                     </assignment>
+                     <service id="kxohyu1v">
+                        <title>Write JSON</title>
+                        <serviceName>US-AppCon-JsonWtiter:JsonWriter-Opportunity</serviceName>
+                        <serviceGUID>2moblHIRDQ1fL6r9ESHuGV</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_JsonWriter</parameter>
+                        </serviceInput>
+                        <link id="kxohyu2h" targetId="kxohyu2g"/>
+                     </service>
+                     <subflow id="kxohyu2g">
+                        <title>Log Mapping</title>
+                        <subflowGUID>0cFe6u3xGYgjqYFdhhOCmm</subflowGUID>
+                        <subflowPath>uslogging1_mapping</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_opportunity_id" source="field" updatable="true">input.in_opportunity_id</parameter>
+                           <parameter name="in_event_label" source="field" updatable="true">input.in_event_label</parameter>
+                           <parameter name="in_Jurisdication" source="field" updatable="true">input.in_Jurisdication</parameter>
+                           <parameter name="in_subtransaction_name" source="formula" updatable="true">
+                              <expression language="XQuery">'Process_Mapping_ContactToBpOtherC['||util:getProcessId()||']'</expression>
+                           </parameter>
+                           <parameter name="in_main_transaction_id" source="constant" updatable="true">{$input.in_main_transaction_id}</parameter>
+                           <parameter name="in_saleforce_payload" source="field" updatable="true">input.VF_ContactDetails</parameter>
+                           <parameter name="in_sap_payload" source="field" updatable="true">output.SAP_BpOtherContact</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="kxohyu40" targetId="kxohyu3z"/>
+                     </subflow>
+                     <jumpTo id="kxohyu7e">
+                        <link id="kxohyu7f" targetId="kxohytvc"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kxohytvj">
+                     <end id="kxohyu88">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kxohytvf" targetId="kxohytvg" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_ContacttDetails_array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kxohytvi" targetId="kxohytvj" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_ContacttDetails_array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>68269b87-a708-46b8-9f91-fbe3b5867fa3</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com</ns1:CreatedBy>
+               <ns1:CreationDate>2021-12-27T09:44:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2021-12-27T09:44:34Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_opportunity_id": "123",
+	 "in_event_label": "123",
+	 "in_Jurisdication": "123",
+	 "in_main_transaction_id": "123",
+	 "in_subtransaction_name": "123",
+	 "VF_AccountDetails": {
+	 	 "AccountName": "123",
+	 	 "AccountType": "123",
+	 	 "Billing_Contact_Email__c": "xya@test.com",
+	 	 "Fax": "123",
+	 	 "Website": "https://www.website.com",
+	 	 "Phone": "123",
+	 	 "X18_Digit_ID__c": "123",
+	 	 "ShippingCity": "123",
+	 	 "ShippingCountry": "123",
+	 	 "ShippingPostalCode": "123",
+	 	 "ShippingState": "123",
+	 	 "ShippingStreet": "123",
+	 	 "Payment_Term__c": "123",
+	 	 "Sector__c": "123",
+	 	 "Entity_Code__c": "123",
+	 	 "Currency__c": "123",
+	 	 "AccountID": "123",
+	 	 "BillingContactFirstName__c": "123",
+	 	 "BillingContactLastName__c": "123",
+	 	 "Billing_Contact_Phone__c": "123",
+	 	 "BillingStreet": "123",
+	 	 "BillingCity": "123",
+	 	 "BillingState": "123",
+	 	 "BillingPostalCode": "123",
+	 	 "BillingCountry": "123"
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3pwQ7O6mkI1cHRgmB4cUKu</types1:GUID>
+      <types1:DisplayName>Process_Mapping_ContactToBpOtherC</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-01-18T19:15:03.714Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

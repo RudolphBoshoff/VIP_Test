@@ -1,0 +1,240 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>23ybdsMkdypKwKB-gt-1414139-2022-01-27T08:55:38.859Z::pd.xml</types1:EntryId>
+      <types1:Name>SoapIICS</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-27T08:55:39Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-04T09:35:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-04T09:36:22Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.SoapIICS/SoapIICS.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="SoapIICS"
+                  name="SoapIICS"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_xml" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="returnvalue" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_refID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_process_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">process_SAP_Contract_Acknowledgement</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_iics_run_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_payload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_error_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_error_message" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_created_date" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedUsers>
+                     <user>usintegration.dev</user>
+                  </allowedUsers>
+                  <wholePayload inputWholePayload="true"/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kyjnjiqa" targetId="kyjnjiq9"/>
+               </start>
+               <assignment id="kyjnjiq9">
+                  <title>Assignment to log table</title>
+                  <operation source="formula" to="temp.tmp_refID">
+                     <expression language="XQuery">$input.in_xml/Body/ServiceContractConfirmation/MessageHeader/ReferenceID/text()</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_process_name">process_SAP_Contract_Acknowledgement</operation>
+                  <operation source="formula" to="temp.tmp_iics_run_id">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_payload">
+                     <expression language="XQuery">util:toXML($input.in_xml)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_error_code">
+                     <expression language="XQuery">$input.in_xml/Body/ServiceContractConfirmation/Log/MaximumLogItemSeverityCode/text()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_error_message">
+                     <expression language="XQuery">for $itm in $input.in_xml/Body/ServiceContractConfirmation/Log/*:Item
+return fn:concat(fn:string-join($itm/Note/text(), "+"), "; ")
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_created_date">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <link id="kyjnjiqb" targetId="kyinhxsi"/>
+               </assignment>
+               <create id="kyinhxsi">
+                  <title>soap_response</title>
+                  <entityName>US-MSSQL-DB-VForce:soap_response</entityName>
+                  <createInput>
+                     <parameter name="confirmation_id" source="field" updatable="true">temp.tmp_refID</parameter>
+                     <parameter name="process_name" source="field" updatable="true">temp.tmp_process_name</parameter>
+                     <parameter name="iics_run_id" source="field" updatable="true">temp.tmp_iics_run_id</parameter>
+                     <parameter name="payload" source="field" updatable="true">temp.tmp_payload</parameter>
+                     <parameter name="error_code" source="field" updatable="true">temp.tmp_error_code</parameter>
+                     <parameter name="error_message" source="field" updatable="true">temp.tmp_error_message</parameter>
+                     <parameter name="created_date" source="field" updatable="true">temp.tmp_created_date</parameter>
+                  </createInput>
+                  <link id="kyinhxsu" targetId="kyinhxst"/>
+               </create>
+               <end id="kyinhxst">
+                  <title>End 1</title>
+                  <httpStatus>202</httpStatus>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>78dd8c41-c4c7-4e49-b4ce-d1f04d134276</ns1:Id>
+               <ns1:Name>123</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T08:55:39Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-04T09:35:47Z</ns1:ModificationDate>
+               <ns1:Data format="xml">&lt;root&gt;
+&lt;in_xml&gt;&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  	&lt;to_CustomerCompany&gt;
+   		&lt;results m:isArray="true"&gt;       	
+      		&lt;CompanyCode&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/CompanyCode&gt;
+      		&lt;ReconciliationAccount&gt;12100000&lt;/ReconciliationAccount&gt;
+      		&lt;YY1_Customer_Segment_cco&gt;{$temp.tmp_YY1_Customer_Segment_cco}&lt;/YY1_Customer_Segment_cco&gt;
+      		&lt;ValueAdjustmentKey&gt;Z1&lt;/ValueAdjustmentKey&gt;
+      		&lt;PaymentTerms&gt;{$input.VF_AccountDetails[1]/Payment_Term__c}&lt;/PaymentTerms&gt;
+        	&lt;CashPlanningGroup&gt;{$temp.tmp_CashPlanningGroup}&lt;/CashPlanningGroup&gt;
+            &lt;to_CustomerDunning&gt;
+            	&lt;results m:isArray="true"&gt;
+                	&lt;CompanyCode&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/CompanyCode&gt;
+                    &lt;DunningProcedure&gt;Z002&lt;/DunningProcedure&gt;
+                &lt;/results&gt;
+            &lt;/to_CustomerDunning&gt;
+    	&lt;/results&gt;
+	&lt;/to_CustomerCompany&gt;
+	&lt;to_CustomerSalesArea&gt;
+		&lt;results m:isArray="true"&gt;
+			&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+      		&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+      		&lt;Division&gt;10&lt;/Division&gt;
+      		&lt;Currency&gt;{$input.VF_AccountDetails[1]/Currency__c}&lt;/Currency&gt;
+            &lt;CustomerAccountAssignmentGroup&gt;{$temp.tmp_CustomerAccountAssignmentGroup}&lt;/CustomerAccountAssignmentGroup&gt;
+            &lt;CustomerGroup&gt;01&lt;/CustomerGroup&gt;
+            &lt;CustomerPaymentTerms&gt;{$input.VF_AccountDetails[1]/Payment_Term__c}&lt;/CustomerPaymentTerms&gt;
+            &lt;CustomerPriceGroup&gt;&lt;/CustomerPriceGroup&gt;
+            &lt;CustomerPricingProcedure&gt;&lt;/CustomerPricingProcedure&gt;
+            &lt;IncotermsClassification&gt;&lt;/IncotermsClassification&gt;
+            &lt;IncotermsLocation1&gt;&lt;/IncotermsLocation1&gt;
+            &lt;IncotermsLocation2&gt;&lt;/IncotermsLocation2&gt;
+            &lt;IncotermsVersion&gt;&lt;/IncotermsVersion&gt;            
+            &lt;PriceListType&gt;&lt;/PriceListType&gt;
+            &lt;SupplyingPlant&gt;&lt;/SupplyingPlant&gt;
+            &lt;CustomerAccountGroup&gt;&lt;/CustomerAccountGroup&gt;
+            &lt;to_SalesAreaTax&gt;
+            	&lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;DepartureCountry&gt;{$input.VF_AccountDetails[1]/ShippingCountry }&lt;/DepartureCountry&gt;
+                    &lt;CustomerTaxCategory&gt;TTX1&lt;/CustomerTaxCategory&gt;
+                    &lt;CustomerTaxClassification&gt;{util:iif($input.VF_AccountDetails[1]/SBQQ__TaxExempt__c='Yes',1,0)}&lt;/CustomerTaxClassification&gt;
+                &lt;/results&gt;
+            &lt;/to_SalesAreaTax&gt;
+            &lt;to_PartnerFunction&gt;
+            	&lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;SH&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;SP&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;BP&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+                &lt;results m:isArray="true"&gt;
+                	&lt;SalesOrganization&gt;{$input.VF_AccountDetails[1]/Entity_Code__c}&lt;/SalesOrganization&gt;
+                    &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+                    &lt;Division&gt;10&lt;/Division&gt;
+                    &lt;PartnerFunction&gt;PY&lt;/PartnerFunction&gt;                    
+                &lt;/results&gt;
+            &lt;/to_PartnerFunction&gt;
+      	&lt;/results&gt;
+	&lt;/to_CustomerSalesArea&gt;   
+&lt;/root&gt;&lt;/in_xml&gt;
+&lt;in_username&gt;allen&lt;/in_username&gt;
+&lt;/root&gt;</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7yzozGYhJFEio6xqrv4IAa</types1:GUID>
+      <types1:DisplayName>SoapIICS</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:23:18.03Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

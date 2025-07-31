@@ -1,0 +1,186 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>gm8lnCmp6oIuQaa-gt-18569506-2022-01-18T09:58:21.09Z::pd.xml</types1:EntryId>
+      <types1:Name>process_GetContact</types1:Name>
+      <types1:ParentFlowIds>E7ppppppppppppp-gt-17828646-2022-01-18T09:58:24.99Z::pd.xml,IXycotFgpKi9zhF-gt-30093716-2022-01-25T10:50:06.655Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:21Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T13:10:18Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T13:11:17Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_GetContact/process_GetContact.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_GetContact"
+                  name="process_GetContact"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_AccoutID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ContactDetails_List_PO" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cpMJrQ1ePaAbMbDU55a4Y2</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Contact_list_SF" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Contact</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Contact_SF" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Contact</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_out_ContactDetails_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO-VFContact</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cpMJrQ1ePaAbMbDU55a4Y2</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kx4ce66v" targetId="kx4ce66u"/>
+               </start>
+               <assignment id="kx4ce66u">
+                  <title>Get Contacts (Related to Account)</title>
+                  <operation source="list" to="temp.tmp_Contact_list_SF">
+                     <query advanceQuery="false" from="AppConnSalesForce:Contact">
+                        <where>AccountId = '{$input.in_AccoutID }'</where>
+                     </query>
+                  </operation>
+                  <link id="kx516khr" targetId="kx4d1wxn"/>
+               </assignment>
+               <container id="kx4d1wxn" type="exclusive">
+                  <title>Next Record</title>
+                  <flow id="kx4d1wxr">
+                     <assignment id="kx516kie">
+                        <title>Assignment to tmp_ContactSF</title>
+                        <operation source="formula" to="temp.tmp_Contact_SF">
+                           <expression language="XQuery">list:head($temp.tmp_Contact_list_SF )</expression>
+                        </operation>
+                        <link id="kx516kif" targetId="kx4d1wy0"/>
+                     </assignment>
+                     <assignment id="kx4d1wy0">
+                        <title>Assignment to out_ContactDetails_List_PO</title>
+                        <operation source="formula" to="temp.tmp_out_ContactDetails_PO">
+                           <expression language="XQuery">&lt;PO-VFContact&gt;
+   &lt;ContactID&gt;{$temp.tmp_Contact_SF.Id }&lt;/ContactID&gt;
+   &lt;FirstName&gt;{$temp.tmp_Contact_SF.FirstName }&lt;/FirstName&gt;
+   &lt;LastName&gt;{$temp.tmp_Contact_SF.LastName }&lt;/LastName&gt;
+   &lt;Email&gt;{$temp.tmp_Contact_SF.Email }&lt;/Email&gt;
+   &lt;Phone&gt;{$temp.tmp_Contact_SF.Phone }&lt;/Phone&gt;
+   &lt;X18_Digit_ID__c&gt;{$temp.tmp_Contact_SF.Id  }&lt;/X18_Digit_ID__c&gt;
+   &lt;MailingState&gt;{$temp.tmp_Contact_SF.MailingStateCode  }&lt;/MailingState&gt;
+   &lt;MailingCountry&gt;{$temp.tmp_Contact_SF.MailingCountryCode }&lt;/MailingCountry&gt;
+&lt;/PO-VFContact&gt;
+
+
+
+
+
+
+</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_ContactDetails_List_PO">
+                           <expression language="XQuery">list:append($output.out_ContactDetails_List_PO   , $temp.tmp_out_ContactDetails_PO   )
+
+</expression>
+                        </operation>
+                        <link id="kx516kix" targetId="kx516kiw"/>
+                     </assignment>
+                     <assignment id="kx516kiw">
+                        <title>Assignment to tmp_Contact_list_SF</title>
+                        <operation source="formula" to="temp.tmp_Contact_list_SF">
+                           <expression language="XQuery">list:tail($temp.tmp_Contact_list_SF )</expression>
+                        </operation>
+                        <link id="kx516kiy" targetId="kx4d1wyf"/>
+                     </assignment>
+                     <jumpTo id="kx4d1wyf">
+                        <link id="kx4d1wyg" targetId="kx4d1wxn"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kx4d1wxu">
+                     <link id="kx4d1wxv" targetId="kx4d1wxn" type="containerLink"/>
+                  </flow>
+                  <link id="kx4d1wxq" targetId="kx4d1wxr" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_Contact_list_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx4d1wxt" targetId="kx4d1wxu" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_Contact_list_SF}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx4d1wxz" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>37b1e858-09e9-4b09-aeb6-4120ed7b837b</ns1:Id>
+               <ns1:Name>TestC</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:21Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModifiedDate>2022-02-22T08:13:06Z</ns1:ModifiedDate>
+               <ns1:Data format="json">{
+	 "in_AccoutID": "0013O00000nGQOcQAO"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3Mj0Gd2aQB8iJOqGbELr08</types1:GUID>
+      <types1:DisplayName>process_GetContact</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T13:12:49.157Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

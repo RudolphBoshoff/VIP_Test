@@ -1,0 +1,110 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>bdutaaabbgdoGsF-gt-20848638-2022-02-18T14:11:43.024Z::pd.xml</types1:EntryId>
+      <types1:Name>process_File_Event_Account_Update</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>harshal.bhamre@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-02-18T14:11:43Z</types1:CreationDate>
+      <types1:ModifiedBy>harshal.bhamre@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-02-22T05:46:10Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>harshal.bhamre@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-02-22T05:48:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_File_Event_Account_Update/process_File_Event_Account_Update.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_File_Event_Account_Update"
+                  name="process_File_Event_Account_Update"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-02main:ParsedFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6nZqJiP65eXdjGi0QxlU2S</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="eventLabel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="objectIdentifier" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="normal">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-02main:FileParser-AccountUpdateApi07"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kzsh8cqh" targetId="kzsh8cqg"/>
+               </start>
+               <assignment id="kzsh8cqg">
+                  <title>Assignment to eventLabel,objectIdentifier etc.</title>
+                  <operation source="formula" to="temp.eventLabel">
+                     <expression language="XQuery">$input.fileEvent[1]/content/eventLabel</expression>
+                  </operation>
+                  <operation source="formula" to="temp.objectIdentifier">
+                     <expression language="XQuery">$input.fileEvent[1]/content/objectIdentifier</expression>
+                  </operation>
+                  <operation source="formula" to="temp.jurisdiction">
+                     <expression language="XQuery">$input.fileEvent[1]/content/jurisdiction</expression>
+                  </operation>
+                  <link id="kzsh8cqm" targetId="kzsh8cql"/>
+               </assignment>
+               <subflow id="kzsh8cql">
+                  <title>vforceevents_MAIN_api07</title>
+                  <subflowGUID>9k3g9SeZYm8bHq0BuNsyiV</subflowGUID>
+                  <subflowPath>vforceevents_MAIN_api07</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="eventLabel" source="formula" updatable="true">
+                        <expression language="XQuery">$temp.eventLabel </expression>
+                     </parameter>
+                     <parameter name="objectIdentifier" source="formula" updatable="true">
+                        <expression language="XQuery">$temp.objectIdentifier </expression>
+                     </parameter>
+                     <parameter name="jurisdiction" source="formula" updatable="true">
+                        <expression language="XQuery">$temp.jurisdiction </expression>
+                     </parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="kzsh8cqn" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>fElwmYYusK6fi8NTwvAGYC</types1:GUID>
+      <types1:DisplayName>process_File_Event_Account_Update</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-02-22T05:55:04.78Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

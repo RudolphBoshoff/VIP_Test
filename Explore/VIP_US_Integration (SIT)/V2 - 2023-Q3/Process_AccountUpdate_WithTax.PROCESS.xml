@@ -1,0 +1,1579 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RnXdzWztZK0CYyb-gt-53364509-2023-10-15T09:40:55.694Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_AccountUpdate_WithTax-1</types1:Name>
+      <types1:ParentFlowIds>fRxZsEi4tciSrZM-gt-53396090-2023-10-15T09:40:56.083Z::pd.xml,nVqSLlBWlD2pHAL-gt-53396739-2023-10-15T09:41:05.218Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:56Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_AccountUpdate_WithTax"
+                  name="Process_AccountUpdate_WithTax-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_AccountID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_AccountUpdate"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+               <field description="" name="out_BusinessPartner_Used" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_AccountUpdate_ErrorStack"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Patch_BusinessPartner_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_BusinessPartnerType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressEmailAddressType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Address_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_BusinessPartnerAddressType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerSalesArea_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerSalesAreaType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_ExistsInSAP" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_ExtendedToCompany" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_AddressExists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_TBD" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ResponseCodes" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Phone_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressPhoneNumberType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Website_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressHomePageURLType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VForce_Account" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Account</option>
+                     <option name="required">false</option>
+                     <option name="guid">0WtuYEi7l6dg314Jrgw3GM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_Address_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_BusinessPartnerAddressType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_EmailAddress_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressEmailAddressType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_PhoneNumber" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressPhoneNumberType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_HomePageURL" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressHomePageURLType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_Company" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerCompanyType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Patch_BP_SalesArea" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerSalesAreaType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput_Parameters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">11mWIB9gtmpbPPaJoQymcp</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode_Current" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput_Parameters</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">11mWIB9gtmpbPPaJoQymcp</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_EmailAddressExists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_PhoneNumberExists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_BP_HomePageURLExists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_DistributionChannel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_Division" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_Sync_BPID_in_VForce" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WebPage_ValidityStartDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Post_BP_EmailAddress_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressEmailAddressType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Post_BP_PhoneNumber_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressPhoneNumberType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Post_BP_HomePageURL_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_AddressHomePageURLType_create</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Default_IncotermsClassification"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_IncotermsLocation1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Default_IncotermsVersion" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BP_Patch_BP_SalesAreaTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BP_Post_BP_SalesAreaTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Patch_BP_SalesArea_without_Tax"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcBusinessPartnerA2X:API_BUSINESS_PARTNER_A_CustomerSalesAreaType_update</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_List_of_TaxCategory" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Current_TaxCategory" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lf241aqg" targetId="lf241aqf"/>
+               </start>
+               <assignment id="lf241aqf">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_AccountUpdate">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AccountUpdate[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/IICS_Run_ID||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AccountUpdate[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_Default_DistributionChannel">10</operation>
+                  <operation source="constant" to="temp.tmp_Default_Division">10</operation>
+                  <operation source="constant" to="temp.tmp_Default_IncotermsClassification">EXW</operation>
+                  <operation source="constant" to="temp.tmp_Default_IncotermsLocation1">EX-WORKS</operation>
+                  <operation source="constant" to="temp.tmp_Default_IncotermsVersion">2020</operation>
+                  <link id="llf6f5uc" targetId="llf6f5ub"/>
+               </assignment>
+               <assignment id="llf6f5ub">
+                  <title>Get VForce Account</title>
+                  <operation source="query" to="temp.tmp_VForce_Account">
+                     <query advanceQuery="false" from="AppConnSalesForce:Account">
+                        <where>X18_Digit_ID__c = '{$input.in_AccountID}'</where>
+                     </query>
+                  </operation>
+                  <link id="llf9s4gg" targetId="llf9s4gf"/>
+               </assignment>
+               <assignment id="lf241f5y">
+                  <title>Evaluate BP exists in SAP</title>
+                  <operation source="formula" to="temp.tmp_Flag_BP_ExistsInSAP">
+                     <expression language="XQuery">if (fn:string-length($output.out_BusinessPartner)&gt;0)
+then 1
+else 0</expression>
+                  </operation>
+                  <link id="lhg8elpo" targetId="lf6tm57q"/>
+               </assignment>
+               <assignment id="ljmktsg3">
+                  <title>Assign Output</title>
+                  <operation source="formula" to="output.out_ProcessVariables_AccountUpdate[1]/Code">
+                     <expression language="XQuery">let $bp := $output.out_ProcessVariables_PATCH_A_BusinessPartner[1]/Code ,
+$adr_cr := $output.out_ProcessVariables_POST_BusinessPartnerAddress[1]/Code ,
+$adr_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerAddress[1]/Code  ,
+$eml := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code ,
+$phn_cr := $output.out_ProcessVariables_POST_BusinessPartnerPhoneNumber[1]/Code ,
+$phn_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerPhoneNumber[1]/Code ,
+$web_cr := $output.out_ProcessVariables_POST_BusinessPartnerHomePageURL[1]/Code  ,
+$web_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerHomePageURL[1]/Code  ,
+$cc_upd := $output.out_ProcessVariables_PATCH_CustomerCompanyType[1]/Code ,
+$sa_upd := $output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Code 
+return
+if ( ($temp.tmp_Flag_BP_ExistsInSAP = 0) ) then 'HTTP_404' else ( 
+if (
+(fn:number(replace($bp,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_AddressExists=1, $adr_upd, $adr_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace($eml,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_PhoneNumberExists=1, $phn_upd, $phn_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_HomePageURLExists=1, $web_upd, $web_cr),'HTTP_','')) &gt; 299) or 
+(fn:number(replace($cc_upd,'HTTP_','')) &gt; 299) or 
+(fn:number(replace($sa_upd,'HTTP_','')) &gt; 299)
+)
+then 'HTTP_400'
+else 'HTTP_200'
+)</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AccountUpdate[1]/Error">
+                     <expression language="XQuery">let $bp := $output.out_ProcessVariables_PATCH_A_BusinessPartner[1]/Code ,
+$adr_cr := $output.out_ProcessVariables_POST_BusinessPartnerAddress[1]/Code ,
+$adr_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerAddress[1]/Code  ,
+$eml := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code ,
+$phn_cr := $output.out_ProcessVariables_POST_BusinessPartnerPhoneNumber[1]/Code ,
+$phn_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerPhoneNumber[1]/Code ,
+$web_cr := $output.out_ProcessVariables_POST_BusinessPartnerHomePageURL[1]/Code  ,
+$web_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerHomePageURL[1]/Code  ,
+$cc_upd := $output.out_ProcessVariables_PATCH_CustomerCompanyType[1]/Code ,
+$sa_upd := $output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Code 
+return
+if ( ($temp.tmp_Flag_BP_ExistsInSAP = 0) ) then 'BP not found in SAP' else ( 
+if (
+(fn:number(replace($bp,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_AddressExists=1, $adr_upd, $adr_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace($eml,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_PhoneNumberExists=1, $phn_upd, $phn_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_HomePageURLExists=1, $web_upd, $web_cr),'HTTP_','')) &gt; 299) or 
+(fn:number(replace($cc_upd,'HTTP_','')) &gt; 299) or 
+(fn:number(replace($sa_upd,'HTTP_','')) &gt; 299)
+)
+then 'Bad Request'
+else 'OK'
+)</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AccountUpdate[1]/Description">
+                     <expression language="XQuery">let $bp := $output.out_ProcessVariables_PATCH_A_BusinessPartner[1]/Code ,
+$adr_cr := $output.out_ProcessVariables_POST_BusinessPartnerAddress[1]/Code ,
+$adr_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerAddress[1]/Code  ,
+$eml := $output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress[1]/Code ,
+$phn_cr := $output.out_ProcessVariables_POST_BusinessPartnerPhoneNumber[1]/Code ,
+$phn_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerPhoneNumber[1]/Code ,
+$web_cr := $output.out_ProcessVariables_POST_BusinessPartnerHomePageURL[1]/Code  ,
+$web_upd := $output.out_ProcessVariables_PATCH_BusinessPartnerHomePageURL[1]/Code  ,
+$cc_upd := $output.out_ProcessVariables_PATCH_CustomerCompanyType[1]/Code ,
+$sa_upd := $output.out_ProcessVariables_PATCH_A_CustomerSalesArea[1]/Code 
+return
+if ( ($temp.tmp_Flag_BP_ExistsInSAP = 0) ) then 'BusinessPartner for Account ' || $input.in_AccountID || ' does not exist in SAP' else ( 
+if (
+(fn:number(replace($bp,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_AddressExists=1, $adr_upd, $adr_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace($eml,'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_PhoneNumberExists=1, $phn_upd, $phn_cr),'HTTP_','')) &gt; 299) or
+(fn:number(replace(util:iif($temp.tmp_Flag_BP_HomePageURLExists=1, $web_upd, $web_cr),'HTTP_','')) &gt; 299) or 
+(fn:number(replace($cc_upd,'HTTP_','')) &gt; 299) or 
+(fn:number(replace($sa_upd,'HTTP_','')) &gt; 299)
+)
+then 'Error occurred in child process, see error stack'
+else ''
+)</expression>
+                  </operation>
+                  <link id="llkl6p11" targetId="llkl6p10"/>
+               </assignment>
+               <subflow id="llf9s4gf">
+                  <title>Get SAP BP</title>
+                  <subflowGUID>7Q2zDhbHvYheLSUstbgyMh</subflowGUID>
+                  <subflowPath>Process_GET_BusinessPartner_-_filter</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_Filter" source="formula" updatable="true">
+                        <expression language="XQuery">(if (fn:string-length($temp.tmp_VForce_Account.BPAccountID__c)&gt;0) then "BusinessPartner eq '"||$temp.tmp_VForce_Account.BPAccountID__c  ||"' or " else '')
+||
+(if (fn:string-length($temp.tmp_VForce_Account.Agresso_ID__c)&gt;0) then "BusinessPartnerIDByExtSystem eq '"||$temp.tmp_VForce_Account.Agresso_ID__c  ||"' or " else '')
+||"BusinessPartnerIDByExtSystem eq '"||fn:upper-case($temp.tmp_VForce_Account.Id)  ||"'"</expression>
+                     </parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_BusinessPartner" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_RestURL" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_BusinessPartnerExpanded" type="reference">
+                        <options>
+                           <option name="referenceTo">AppSvcBusinessPartnerA2X:SvcGET_BusinessPartner_EntireResponse</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">hUQMEqpCyaBbALRxQ37LcQ</option>
+                        </options>
+                     </field>
+                     <field name="out_PO_Get_BusinessPartner" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoSapStdOutput</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                        </options>
+                     </field>
+                     <field name="out_WebPage_ValidityStartDate" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="llf9s4oz" targetId="lf241f5y"/>
+               </subflow>
+               <container id="lf6tm57q" type="exclusive">
+                  <title>Business Partner Exists</title>
+                  <flow id="lf6tm57u">
+                     <assignment id="llkj7zge">
+                        <title>Determine Flags</title>
+                        <operation source="formula" to="temp.tmp_CompanyCode_List">
+                           <expression language="XQuery">$output.out_PO_Get_BusinessPartner[1]/Parameters[Identifier="CompanyCode"]</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AddressID">
+                           <expression language="XQuery">(:$output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/AddressID/text():)
+$output.out_PO_Get_BusinessPartner[1]/Parameters[Identifier="AddressID"]/Value</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_BP_AddressExists">
+                           <expression language="XQuery">if ( fn:string-length($temp.tmp_AddressID)=0) then 0 else 1
+</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_BP_EmailAddressExists">
+                           <expression language="XQuery">(:let $Email := $output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/to_EmailAddress[1]/results[1]/EmailAddress/text() return if ( fn:string-length($Email)=0) then 0 else 1
+:)
+util:iif(fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_EmailAddress[1]/results[1]/EmailAddress/text())&gt;0 or fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_EmailAddress[1]/results[1]/AddressID/text())&gt;0, 1, 0)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_BP_HomePageURLExists">
+                           <expression language="XQuery">(:let $WebsiteURL := $output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/to_URLAddress[1]/results[1]/WebsiteURL/text() return if ( fn:string-length($WebsiteURL)=0) then 0 else 1
+:)
+util:iif(fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_URLAddress[1]/results[1]/WebsiteURL/text())&gt;0 or fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_URLAddress[1]/results[1]/AddressID/text())&gt;0, 1, 0)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_BP_PhoneNumberExists">
+                           <expression language="XQuery">(:let $PhoneNumber := $output.out_BusinessPartnerExpanded[1]/d[1]/to_BusinessPartnerAddress[1]/results[1]/to_PhoneNumber[1]/results[1]/PhoneNumber/text() return if ( fn:string-length($PhoneNumber)=0) then 0 else 1
+:)
+util:iif(fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_PhoneNumber[1]/results[1]/PhoneNumber/text())&gt;0 or fn:string-length($output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_PhoneNumber[1]/results[1]/AddressID/text())&gt;0, 1, 0)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_Sync_BPID_in_VForce">
+                           <expression language="XQuery">util:iif($temp.tmp_Flag_BP_ExistsInSAP = 1 and fn:string-length($temp.tmp_VForce_Account.BPAccountID__c)=0, 1, 0)</expression>
+                        </operation>
+                        <link id="llkvsrp5" targetId="lf6tm59z"/>
+                     </assignment>
+                     <assignment id="lf6tm59z">
+                        <title>Prepare Payload Business Partner</title>
+                        <operation source="formula" to="temp.tmp_EmailAddress_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if( fn:string-length($temp.tmp_VForce_Account.Billing_Contact_Email__c) = 0 )
+ then ()
+ else (
+       &lt;to_EmailAddress&gt;
+                &lt;results m:isArray="true"&gt;
+                &lt;EmailAddress&gt;{$temp.tmp_VForce_Account.Billing_Contact_Email__c}&lt;/EmailAddress&gt;
+            &lt;/results&gt;
+       &lt;/to_EmailAddress&gt;
+   )
+}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Phone_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if( fn:string-length($temp.tmp_VForce_Account.Phone) = 0 )
+ then ()
+ else (
+       &lt;to_PhoneNumber&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;PhoneNumber&gt;{$temp.tmp_VForce_Account.Phone }&lt;/PhoneNumber&gt;
+            &lt;/results&gt;
+       &lt;/to_PhoneNumber&gt;
+   )
+}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Website_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ {    if( fn:string-length($temp.tmp_VForce_Account.Website) = 0 )
+ then ()
+ else (
+       &lt;to_URLAddress&gt;
+            &lt;results m:isArray="true"&gt;
+                &lt;WebsiteURL&gt;{$temp.tmp_VForce_Account.Website}&lt;/WebsiteURL&gt;
+                &lt;SearchURLAddress&gt;{$temp.tmp_VForce_Account.Website}&lt;/SearchURLAddress&gt;
+            &lt;/results&gt;
+       &lt;/to_URLAddress&gt;
+   )
+}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Address_BP_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;BusinessPartner&gt;{$output.out_BusinessPartner }&lt;/BusinessPartner&gt;
+      &lt;CityName&gt;{$temp.tmp_VForce_Account.BillingCity }&lt;/CityName&gt;
+      &lt;PostalCode&gt;{$temp.tmp_VForce_Account.BillingPostalCode}&lt;/PostalCode&gt;
+      &lt;Language&gt;EN&lt;/Language&gt;
+      &lt;StreetPrefixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,1,40)}&lt;/StreetPrefixName&gt;
+      &lt;AdditionalStreetPrefixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,41,40)}&lt;/AdditionalStreetPrefixName&gt;
+      &lt;StreetName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,81,60)}&lt;/StreetName&gt;
+      &lt;StreetSuffixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,141,40)}&lt;/StreetSuffixName&gt;
+      &lt;AdditionalStreetSuffixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,181,40)}&lt;/AdditionalStreetSuffixName&gt;
+      &lt;Country&gt;{$temp.tmp_VForce_Account.BillingCountryCode}&lt;/Country&gt; 
+      &lt;to_AddressUsage&gt;
+        &lt;results m:isArray="true"&gt;
+          &lt;AddressUsage&gt;XXDEFAULT&lt;/AddressUsage&gt;
+          &lt;ValidityEndDate&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidityEndDate&gt;
+        &lt;/results&gt;
+      &lt;/to_AddressUsage&gt;
+      { $temp.tmp_EmailAddress_BP_PO/element()  }
+      { $temp.tmp_Phone_BP_PO/element()  }
+      { $temp.tmp_Website_BP_PO/element()  }	    
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Patch_BusinessPartner_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+  
+  &lt;OrganizationBPName1&gt;{fn:substring($temp.tmp_VForce_Account.Name,1,40) }&lt;/OrganizationBPName1&gt;
+  &lt;OrganizationBPName2&gt;{fn:substring($temp.tmp_VForce_Account.Name,41,40) }&lt;/OrganizationBPName2&gt;
+  &lt;OrganizationBPName3&gt;&lt;/OrganizationBPName3&gt;
+  &lt;OrganizationBPName4&gt;&lt;/OrganizationBPName4&gt;
+  &lt;SearchTerm1&gt;{$temp.tmp_VForce_Account.X18_Digit_ID__c }&lt;/SearchTerm1&gt;  
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Patch_BP_Address_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt; 
+      &lt;CityName&gt;{$temp.tmp_VForce_Account.BillingCity }&lt;/CityName&gt;
+      &lt;PostalCode&gt;{$temp.tmp_VForce_Account.BillingPostalCode}&lt;/PostalCode&gt;
+ 
+      &lt;StreetPrefixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,1,40)}&lt;/StreetPrefixName&gt;
+      &lt;AdditionalStreetPrefixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,41,40)}&lt;/AdditionalStreetPrefixName&gt;
+      &lt;StreetName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,81,60)}&lt;/StreetName&gt;
+      &lt;StreetSuffixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,141,40)}&lt;/StreetSuffixName&gt;
+      &lt;AdditionalStreetSuffixName&gt;{fn:substring($temp.tmp_VForce_Account.BillingStreet,181,40)}&lt;/AdditionalStreetSuffixName&gt;
+      &lt;Country&gt;{$temp.tmp_VForce_Account.BillingCountryCode}&lt;/Country&gt;      
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Patch_BP_EmailAddress_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;EmailAddress&gt;{$temp.tmp_VForce_Account.Billing_Contact_Email__c}&lt;/EmailAddress&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Patch_BP_PhoneNumber">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;PhoneNumber&gt;{$temp.tmp_VForce_Account.Phone }&lt;/PhoneNumber&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Patch_BP_HomePageURL">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;WebsiteURL&gt;{$temp.tmp_VForce_Account.Website}&lt;/WebsiteURL&gt;
+                &lt;SearchURLAddress&gt;{$temp.tmp_VForce_Account.Website}&lt;/SearchURLAddress&gt;
+  
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Post_BP_EmailAddress_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;AddressID&gt;{$temp.tmp_AddressID} &lt;/AddressID&gt;
+&lt;Person&gt;&lt;/Person&gt;
+&lt;OrdinalNumber&gt;1&lt;/OrdinalNumber&gt;
+&lt;IsDefaultEmailAddress&gt;true&lt;/IsDefaultEmailAddress&gt;
+&lt;EmailAddress&gt;{$temp.tmp_VForce_Account.Billing_Contact_Email__c}&lt;/EmailAddress&gt; 
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Post_BP_PhoneNumber_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;AddressID&gt;{$temp.tmp_AddressID} &lt;/AddressID&gt;
+&lt;Person&gt;&lt;/Person&gt;
+&lt;OrdinalNumber&gt;1&lt;/OrdinalNumber&gt;
+&lt;PhoneNumber&gt;{$temp.tmp_VForce_Account.Phone }&lt;/PhoneNumber&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Post_BP_HomePageURL_PO">
+                           <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+ &lt;AddressID&gt;{$temp.tmp_AddressID} &lt;/AddressID&gt;
+&lt;Person&gt;&lt;/Person&gt;
+&lt;OrdinalNumber&gt;1&lt;/OrdinalNumber&gt;
+                &lt;WebsiteURL&gt;{$temp.tmp_VForce_Account.Website}&lt;/WebsiteURL&gt;
+                &lt;SearchURLAddress&gt;{$temp.tmp_VForce_Account.Website}&lt;/SearchURLAddress&gt;
+&lt;ValidityStartDate&gt;{fn:format-dateTime(fn:current-dateTime(), "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01]")}&lt;/ValidityStartDate&gt;
+&lt;IsDefaultURLAddress&gt;true&lt;/IsDefaultURLAddress&gt;
+&lt;/root&gt;
+
+</expression>
+                        </operation>
+                        <link id="lf9joqof" targetId="lf9joqoe"/>
+                     </assignment>
+                     <assignment id="llmasee2">
+                        <title>Add to output Stack</title>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                           <function name="list:append">
+                              <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                              <arg name="new_field">{$output.out_ProcessVariables_PATCH_A_BusinessPartner}</arg>
+                           </function>
+                        </operation>
+                        <link id="llmasee4" targetId="llj9cbeh"/>
+                     </assignment>
+                     <subflow id="lf9joqoe">
+                        <title>Update Business Partner</title>
+                        <subflowGUID>9fJ4lUUylODbjgIPHPh5UW</subflowGUID>
+                        <subflowPath>Process_PATCH_A_BusinessPartner</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                           <parameter name="in_Body" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_Patch_BusinessPartner_PO </expression>
+                           </parameter>
+                           <parameter name="in_BusinessPartner" source="constant" updatable="true">{$output.out_BusinessPartner}</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_ProcessVariables_PATCH_A_BusinessPartner" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="llmasee3" targetId="llmasee2"/>
+                     </subflow>
+                     <container id="llj9cbeh" type="exclusive">
+                        <title>BP Address Exists</title>
+                        <flow id="llj9cbei">
+                           <subflow id="llj9cbej">
+                              <title>Update BP Address</title>
+                              <subflowGUID>25OYjKcrhWUjcPrUQ68rq0</subflowGUID>
+                              <subflowPath>Process_PATCH_A_BusinessPartnerAddress</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_Patch_BP_Address_PO </expression>
+                                 </parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/X_TRANSACTION_ID}</parameter>
+                                 <parameter name="in_EventName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/Event_Name}</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/IICS_Run_ID}</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_ApiName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/API_Name}</parameter>
+                                 <parameter name="in_BusinessPartner" source="constant" updatable="true">{$output.out_BusinessPartner}</parameter>
+                                 <parameter name="in_AddressID" source="constant" updatable="true">{$temp.tmp_AddressID}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Patch_A_BusinessPartnerAddress" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_PATCH_BusinessPartnerAddress"
+                                        type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="llmasf0a" targetId="llmasf09"/>
+                           </subflow>
+                           <assignment id="llmasf09">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_PATCH_BusinessPartnerAddress}</arg>
+                                 </function>
+                              </operation>
+                              <link id="llmasf0b" targetId="llj9cbel"/>
+                           </assignment>
+                           <assignment id="llmash7f">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_PATCH_BusinessPartnerEmailAddress}</arg>
+                                 </function>
+                              </operation>
+                              <link id="llmash7h" targetId="llj9cber"/>
+                           </assignment>
+                           <assignment id="llmasgqm">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <expression language="XQuery">list:append($output.out_ProcessVariables_AccountUpdate_ErrorStack, util:iif($temp.tmp_Flag_BP_PhoneNumberExists = 1, $output.out_ProcessVariables_PATCH_BusinessPartnerPhoneNumber , $output.out_ProcessVariables_POST_BusinessPartnerPhoneNumber   ))</expression>
+                              </operation>
+                              <link id="llmasgqo" targetId="llj9cbex"/>
+                           </assignment>
+                           <assignment id="llmasgd8">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <expression language="XQuery">list:append($output.out_ProcessVariables_AccountUpdate_ErrorStack, util:iif($temp.tmp_Flag_BP_HomePageURLExists = 1, $output.out_ProcessVariables_PATCH_BusinessPartnerHomePageURL, $output.out_ProcessVariables_POST_BusinessPartnerHomePageURL  ))</expression>
+                              </operation>
+                           </assignment>
+                           <container id="llj9cbel" type="exclusive">
+                              <title>EmailAddress Exists</title>
+                              <flow id="llj9cbem">
+                                 <subflow id="llj9cben">
+                                    <title>Update BP EmailAddress</title>
+                                    <subflowGUID>50i4AJAvR2Ye7iZTkvptey</subflowGUID>
+                                    <subflowPath>Process_PATCH_BusinessPartnerEmailAddress</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="field" updatable="true">temp.tmp_Patch_BP_EmailAddress_PO</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                       <parameter name="in_AddressID" source="constant" updatable="true">{$temp.tmp_AddressID}</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_PATCH_BusinessPartnerEmailAddress"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PatchEmailStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfc" targetId="llj9cbel" type="containerLink"/>
+                              </flow>
+                              <flow id="llj9cbeo">
+                                 <subflow id="llj9cbep">
+                                    <title>Create BP EmailAddress</title>
+                                    <subflowGUID>1WQ0GOfsiXdc0LegAIILk6</subflowGUID>
+                                    <subflowPath>Process_POST_BusinessPartnerEmailAddress-1</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Post_BP_EmailAddress_PO </expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_PATCH_BusinessPartnerEmailAddress"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PatchEmailStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfd" targetId="llj9cbel" type="containerLink"/>
+                              </flow>
+                              <link id="llj9cbf9" targetId="llj9cbem" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_Flag_BP_EmailAddressExists}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="llj9cbfa" targetId="llj9cbeo" type="containerLink"/>
+                              <link id="llmash7g" targetId="llmash7f"/>
+                           </container>
+                           <container id="llj9cber" type="exclusive">
+                              <title>PhoneNumber Exists</title>
+                              <flow id="llj9cbes">
+                                 <subflow id="llj9cbet">
+                                    <title>Update BP PhoneNumber</title>
+                                    <subflowGUID>a211r8TwFfylnIyCRWhYsu</subflowGUID>
+                                    <subflowPath>Process_PATCH_BusinessPartnerPhoneNumber</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="field" updatable="true">temp.tmp_Patch_BP_PhoneNumber</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                       <parameter name="in_AddressID" source="constant" updatable="true">{$temp.tmp_AddressID}</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_PATCH_BusinessPartnerPhoneNumber"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PatchPhoneNumberStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfi" targetId="llj9cber" type="containerLink"/>
+                              </flow>
+                              <flow id="llj9cbeu">
+                                 <subflow id="llj9cbev">
+                                    <title>Create BP PhoneNumber</title>
+                                    <subflowGUID>6NM8XkzK7mMbbZEAG7ghCh</subflowGUID>
+                                    <subflowPath>Process_POST_BusinessPartnerPhoneNumber</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Post_BP_PhoneNumber_PO </expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_POST_BusinessPartnerPhoneNumber"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PostPhoneNumberStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfj" targetId="llj9cber" type="containerLink"/>
+                              </flow>
+                              <link id="llj9cbff" targetId="llj9cbes" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_Flag_BP_PhoneNumberExists}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="llj9cbfg" targetId="llj9cbeu" type="containerLink"/>
+                              <link id="llmasgqn" targetId="llmasgqm"/>
+                           </container>
+                           <container id="llj9cbex" type="exclusive">
+                              <title>HomePageURL Exists</title>
+                              <flow id="llj9cbey">
+                                 <subflow id="llj9cbez">
+                                    <title>Update BP HomePageURL</title>
+                                    <subflowGUID>7InMznZ2F5SbWLdX8v3awE</subflowGUID>
+                                    <subflowPath>Process_PATCH_BusinessPartnerHomePageURL</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="field" updatable="true">temp.tmp_Patch_BP_HomePageURL</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                       <parameter name="in_AddressID" source="constant" updatable="true">{$temp.tmp_AddressID}</parameter>
+                                       <parameter name="in_ValidityStartDate" source="formula" updatable="true">
+                                          <expression language="XQuery">$output.out_WebPage_ValidityStartDate </expression>
+                                       </parameter>
+                                       <parameter name="in_IsDefaultURLAddress" source="formula" updatable="true">
+                                          <expression language="XQuery">$output.out_BusinessPartnerExpanded[1]/d[1]/results[1]/to_BusinessPartnerAddress[1]/results[1]/to_URLAddress[1]/results[1]/IsDefaultURLAddress/text()</expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_PATCH_BusinessPartnerHomePageURL"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PatchHomePageURLStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfn" targetId="llj9cbex" type="containerLink"/>
+                              </flow>
+                              <flow id="llj9cbf0">
+                                 <subflow id="llj9cbf1">
+                                    <title>Create BP HomePageURL</title>
+                                    <subflowGUID>i67f284TxaLk8oTvRaILSn</subflowGUID>
+                                    <subflowPath>Process_POST_BusinessPartnerHomePageURL</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Post_BP_HomePageURL_PO </expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_POST_BusinessPartnerHomePageURL"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PostHomePageURLStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="llj9cbfo" targetId="llj9cbex" type="containerLink"/>
+                              </flow>
+                              <link id="llj9cbfl" targetId="llj9cbey" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_Flag_BP_HomePageURLExists}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="llj9cbfm" targetId="llj9cbf0" type="containerLink"/>
+                              <link id="llmasgd9" targetId="llmasgd8"/>
+                           </container>
+                           <link id="llj9cbf6" targetId="llj9cbeh" type="containerLink"/>
+                        </flow>
+                        <flow id="llj9cbf2">
+                           <subflow id="llj9cbf3">
+                              <title>Create BP Address</title>
+                              <subflowGUID>kfc2K6vcY8pene9bQ3tZst</subflowGUID>
+                              <subflowPath>Process_POST_A_BusinessPartnerAddress</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_Address_BP_PO </expression>
+                                 </parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/X_TRANSACTION_ID}</parameter>
+                                 <parameter name="in_EventName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/Event_Name}</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/IICS_Run_ID}</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_ApiName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/API_Name}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_PostBPAddressStatus" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_POST_BusinessPartnerAddress"
+                                        type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="llmasfgm" targetId="llmasfgl"/>
+                           </subflow>
+                           <assignment id="llmasfgl">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_POST_BusinessPartnerAddress}</arg>
+                                 </function>
+                              </operation>
+                           </assignment>
+                           <link id="llj9cbfp" targetId="llj9cbeh" type="containerLink"/>
+                        </flow>
+                        <link id="llj9cbf4" targetId="llj9cbei" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_Flag_BP_AddressExists}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="llj9cbf5" targetId="llj9cbf2" type="containerLink"/>
+                        <link id="llmasgcr" targetId="llj9cbjn"/>
+                     </container>
+                     <container id="llj9cbjn" type="exclusive">
+                        <title>CompanyCode List</title>
+                        <flow id="llj9cbjo">
+                           <assignment id="llj9cbjp">
+                              <title>Prepare Payload for BP Customer Company UpdatePayloads</title>
+                              <operation source="formula" to="temp.tmp_CompanyCode_Current">
+                                 <expression language="XQuery">list:head($temp.tmp_CompanyCode_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CompanyCode_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_CompanyCode_List )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Patch_BP_Company">
+                                 <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+    &lt;Customer&gt;{$output.out_BusinessPartner }&lt;/Customer&gt;
+	&lt;YY1_Customer_Segment_cco&gt;{switch (fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2))
+		case "GB" return "CCUKIE0100"
+		case "SG" return "CCSGIE0200"
+		case "US" return "CCUSIE0100"
+        case "IN" return "ASINIE0200"
+	default return ""}&lt;/YY1_Customer_Segment_cco&gt;
+	&lt;!--ValueAdjustmentKey&gt;Z1&lt;/ValueAdjustmentKey--&gt;
+    &lt;PaymentTerms&gt;{'NT'||$temp.tmp_VForce_Account.Payment_Term__c }&lt;/PaymentTerms&gt;
+    &lt;AccountingClerkInternetAddress&gt;{$temp.tmp_VForce_Account.Billing_Contact_Email__c}&lt;/AccountingClerkInternetAddress&gt;
+    &lt;CashPlanningGroup&gt;{if($temp.tmp_VForce_Account.BillingCountryCode!= fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2))  
+    then ('E3') (:Foreign:)
+    else('E2') (:Domestic:) }&lt;/CashPlanningGroup&gt;
+  &lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Patch_BP_SalesArea_without_Tax">
+                                 <expression language="XQuery">&lt;root  xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+    &lt;Customer&gt;{$output.out_BusinessPartner }&lt;/Customer&gt;
+    &lt;IncotermsClassification&gt;{$temp.tmp_Default_IncotermsClassification }&lt;/IncotermsClassification&gt;
+    &lt;IncotermsLocation1&gt;{$temp.tmp_Default_IncotermsLocation1 }&lt;/IncotermsLocation1&gt;
+    &lt;IncotermsVersion&gt;{$temp.tmp_Default_IncotermsVersion }&lt;/IncotermsVersion&gt;
+    &lt;CustomerPaymentTerms&gt;{'NT'||$temp.tmp_VForce_Account.Payment_Term__c }&lt;/CustomerPaymentTerms&gt;
+    &lt;Currency&gt;{$temp.tmp_VForce_Account.Currency__c }&lt;/Currency&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Patch_BP_SalesArea">
+                                 <expression language="XQuery">&lt;root  xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+    &lt;Customer&gt;{$output.out_BusinessPartner }&lt;/Customer&gt;
+    &lt;IncotermsClassification&gt;{$temp.tmp_Default_IncotermsClassification }&lt;/IncotermsClassification&gt;
+    &lt;IncotermsLocation1&gt;{$temp.tmp_Default_IncotermsLocation1 }&lt;/IncotermsLocation1&gt;
+    &lt;IncotermsVersion&gt;{$temp.tmp_Default_IncotermsVersion }&lt;/IncotermsVersion&gt;
+    {if (fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2) = "IN") 
+        then ( 
+			for $TaxCat in ("JOIG", "JOSG", "JOCG", "JOUG", "JCOS", "JTC1") return
+				&lt;to_SalesAreaTax&gt;
+					&lt;results m:isArray="true"&gt;
+						&lt;SalesOrganization&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,4)}&lt;/SalesOrganization&gt;
+						&lt;DistributionChannel&gt;{$temp.tmp_Default_DistributionChannel }&lt;/DistributionChannel&gt;
+						&lt;Division&gt;{$temp.tmp_Default_Division }&lt;/Division&gt;
+						&lt;DepartureCountry&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2)}&lt;/DepartureCountry&gt;
+						&lt;CustomerTaxCategory&gt;{$TaxCat}&lt;/CustomerTaxCategory&gt;
+						&lt;CustomerTaxClassification&gt;{switch($temp.tmp_VForce_Account.SBQQ__TaxExempt__c )
+							case "Yes" return 0
+							case "No" return 1
+							default return ""}&lt;/CustomerTaxClassification&gt;
+					&lt;/results&gt;
+				&lt;/to_SalesAreaTax&gt;				
+            )
+            else (
+					&lt;to_SalesAreaTax&gt;
+						&lt;results m:isArray="true"&gt;
+						&lt;SalesOrganization&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,4)}&lt;/SalesOrganization&gt;
+						&lt;DistributionChannel&gt;{$temp.tmp_Default_DistributionChannel }&lt;/DistributionChannel&gt;
+						&lt;Division&gt;{$temp.tmp_Default_Division }&lt;/Division&gt;
+						&lt;DepartureCountry&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2)}&lt;/DepartureCountry&gt;
+						&lt;CustomerTaxCategory&gt;{switch (fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2))
+							case "GB" return "TTX1"
+							case "SG" return "TTX1"
+							case "US" return "UTXJ"
+						default return ""}&lt;/CustomerTaxCategory&gt;
+						&lt;CustomerTaxClassification&gt;{switch($temp.tmp_VForce_Account.SBQQ__TaxExempt__c )
+							case "Yes" return 0
+							case "No" return 1
+						default return ""}&lt;/CustomerTaxClassification&gt;
+						&lt;/results&gt;
+					&lt;/to_SalesAreaTax&gt;
+				)
+	}
+    &lt;CustomerPaymentTerms&gt;{'NT'||$temp.tmp_VForce_Account.Payment_Term__c }&lt;/CustomerPaymentTerms&gt;
+    &lt;Currency&gt;{$temp.tmp_VForce_Account.Currency__c }&lt;/Currency&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_List_of_TaxCategory">
+                                 <expression language="XQuery">&lt;root  xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+   
+    {if (fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2) = "IN") 
+        then ( 
+			for $TaxCat in ("JOIG", "JOSG", "JOCG", "JOUG", "JCOS", "JTC1") return
+				&lt;to_SalesAreaTax&gt;
+					&lt;results m:isArray="true"&gt;
+						&lt;SalesOrganization&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,4)}&lt;/SalesOrganization&gt;
+						&lt;DistributionChannel&gt;{$temp.tmp_Default_DistributionChannel }&lt;/DistributionChannel&gt;
+						&lt;Division&gt;{$temp.tmp_Default_Division }&lt;/Division&gt;
+						&lt;DepartureCountry&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2)}&lt;/DepartureCountry&gt;
+						&lt;CustomerTaxCategory&gt;{$TaxCat}&lt;/CustomerTaxCategory&gt;
+						&lt;CustomerTaxClassification&gt;{switch($temp.tmp_VForce_Account.SBQQ__TaxExempt__c )
+							case "Yes" return 0
+							case "No" return 1
+							default return ""}&lt;/CustomerTaxClassification&gt;
+					&lt;/results&gt;
+				&lt;/to_SalesAreaTax&gt;				
+            )
+            else (
+					&lt;to_SalesAreaTax&gt;
+						&lt;results m:isArray="true"&gt;
+						&lt;SalesOrganization&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,4)}&lt;/SalesOrganization&gt;
+						&lt;DistributionChannel&gt;{$temp.tmp_Default_DistributionChannel }&lt;/DistributionChannel&gt;
+						&lt;Division&gt;{$temp.tmp_Default_Division }&lt;/Division&gt;
+						&lt;DepartureCountry&gt;{fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2)}&lt;/DepartureCountry&gt;
+						&lt;CustomerTaxCategory&gt;{switch (fn:substring($temp.tmp_CompanyCode_Current[1]/Value ,1,2))
+							case "GB" return "TTX1"
+							case "SG" return "TTX1"
+							case "US" return "UTXJ"
+						default return ""}&lt;/CustomerTaxCategory&gt;
+						&lt;CustomerTaxClassification&gt;{switch($temp.tmp_VForce_Account.SBQQ__TaxExempt__c )
+							case "Yes" return 0
+							case "No" return 1
+						default return ""}&lt;/CustomerTaxClassification&gt;
+						&lt;/results&gt;
+					&lt;/to_SalesAreaTax&gt;
+				)
+	}
+
+&lt;/root&gt;</expression>
+                              </operation>
+                              <link id="llj9cbjx" targetId="llj9cbjq"/>
+                           </assignment>
+                           <assignment id="llmashqr">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_PATCH_CustomerCompanyType}</arg>
+                                 </function>
+                              </operation>
+                              <link id="llmashqt" targetId="llj9cbjr"/>
+                           </assignment>
+                           <assignment id="lm7fp5wh">
+                              <title>Add to output Stack</title>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                 <function name="list:append">
+                                    <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                    <arg name="new_field">{$output.out_ProcessVariables_PATCH_A_CustomerSalesArea}</arg>
+                                 </function>
+                              </operation>
+                              <link id="lm7fp5wj" targetId="lm7euoao"/>
+                           </assignment>
+                           <subflow id="llj9cbjq">
+                              <title>Update CustomerCompany Details</title>
+                              <subflowGUID>5mLxZmkGNo8kNYFlOkY4KX</subflowGUID>
+                              <subflowPath>Process_PATCH_CustomerCompanyType</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="field" updatable="true">temp.tmp_Patch_BP_Company</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                 <parameter name="in_Customer" source="constant" updatable="true">{$output.out_BusinessPartner}</parameter>
+                                 <parameter name="in_CompanyCode" source="constant" updatable="true">{$temp.tmp_CompanyCode_Current[1]/Value}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_ProcessVariables_PATCH_CustomerCompanyType" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PatchCustomerCompanyStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="llmashqs" targetId="llmashqr"/>
+                           </subflow>
+                           <subflow id="llj9cbjr">
+                              <title>Update CustomerSalesArea Details</title>
+                              <subflowGUID>0gDqzyIV0ipjybxg70ibml</subflowGUID>
+                              <subflowPath>Process_PATCH_CustomerSalesArea</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_Patch_BP_SalesArea </expression>
+                                 </parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/X_TRANSACTION_ID}</parameter>
+                                 <parameter name="in_EventName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/Event_Name}</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/IICS_Run_ID}</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_ApiName" source="constant" updatable="true">{$output.out_ProcessVariables_AccountUpdate[1]/API_Name}</parameter>
+                                 <parameter name="in_SalesOrganization" source="constant" updatable="true">{$temp.tmp_CompanyCode_Current[1]/Value}</parameter>
+                                 <parameter name="in_Customer" source="constant" updatable="true">{$output.out_BusinessPartner}</parameter>
+                                 <parameter name="in_DistributionChannel" source="constant" updatable="true">{$temp.tmp_Default_DistributionChannel}</parameter>
+                                 <parameter name="in_Division" source="constant" updatable="true">{$temp.tmp_Default_Division}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Po" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8HRyCshdZouhkygjNHM5W2</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_PATCH_A_CustomerSalesArea" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lm7fp5wi" targetId="lm7fp5wh"/>
+                           </subflow>
+                           <container id="lm7euoao" type="exclusive">
+                              <title>results</title>
+                              <flow id="lm7euoas">
+                                 <assignment id="lm7fp66e">
+                                    <title>Prepare Payload for BP SalesArea Tax Update</title>
+                                    <operation source="formula" to="temp.tmp_Current_TaxCategory">
+                                       <expression language="XQuery">list:head($temp.tmp_List_of_TaxCategory )</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_List_of_TaxCategory">
+                                       <expression language="XQuery">list:tail($temp.tmp_List_of_TaxCategory )</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_BP_Patch_BP_SalesAreaTax">
+                                       <expression language="XQuery">&lt;root&gt;{$temp.tmp_Current_TaxCategory }
+&lt;/root&gt;</expression>
+                                    </operation>
+                                    <link id="lm7fp86l" targetId="lm7fp86k"/>
+                                 </assignment>
+                                 <assignment id="lm7gx82o">
+                                    <title>Add to output Stack 1</title>
+                                    <operation source="formula"
+                                               to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                                       <function name="list:append">
+                                          <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                                          <arg name="new_field">{$output.out_ProcessVariables_PATCH_BusinessPartnerSalesAreaTax}</arg>
+                                       </function>
+                                    </operation>
+                                    <link id="lm7gx8am" targetId="lm7gx8ak"/>
+                                 </assignment>
+                                 <subflow id="lm7fp86k">
+                                    <title>Process_PATCH_A_CustomerSalesAreaTax</title>
+                                    <subflowGUID>aDINpJMB4xRlLRLXax2yuN</subflowGUID>
+                                    <subflowPath>Process_PATCH_A_CustomerSalesAreaTax</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">&lt;root&gt;&lt;CustomerTaxClassification&gt;{$temp.tmp_Current_TaxCategory/CustomerTaxClassification}&lt;/CustomerTaxClassification&gt; 
+&lt;/root&gt;</expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                                       <parameter name="in_Customer" source="formula" updatable="true">
+                                          <expression language="XQuery">$output.out_BusinessPartner </expression>
+                                       </parameter>
+                                       <parameter name="in_SalesOrganization" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Current_TaxCategory/SalesOrganization</expression>
+                                       </parameter>
+                                       <parameter name="in_DistributionChannel" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Current_TaxCategory/DistributionChannel</expression>
+                                       </parameter>
+                                       <parameter name="in_Division" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Current_TaxCategory/Division</expression>
+                                       </parameter>
+                                       <parameter name="in_DepartureCountry" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Current_TaxCategory/DepartureCountry</expression>
+                                       </parameter>
+                                       <parameter name="in_CustomerTaxCategory" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_Current_TaxCategory/CustomerTaxCategory</expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_PATCH_BusinessPartnerSalesAreaTax"
+                                              type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_PatchSalesAreaTaxStatus" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="lm7gx82p" targetId="lm7gx82o"/>
+                                 </subflow>
+                                 <jumpTo id="lm7gx8ak">
+                                    <link id="lm7gx8al" targetId="lm7euoao"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="lm7euoav">
+                                 <link id="lm7euoaw" targetId="lm7euoao" type="containerLink"/>
+                              </flow>
+                              <link id="lm7euoar" targetId="lm7euoas" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="not-empty">
+                                       <arg name="field">{$temp.tmp_List_of_TaxCategory}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lm7euoau" targetId="lm7euoav" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="empty">
+                                       <arg name="field">{$temp.tmp_List_of_TaxCategory}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lm7fp5wg" targetId="llj9cbjs"/>
+                           </container>
+                           <jumpTo id="llj9cbjs">
+                              <link id="llj9cbk0" targetId="llj9cbjn"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="llj9cbjt">
+                           <link id="llj9cbk1" targetId="llj9cbjn" type="containerLink"/>
+                        </flow>
+                        <link id="llj9cbjv" targetId="llj9cbjo" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_CompanyCode_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="llj9cbjw" targetId="llj9cbjt" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_CompanyCode_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="lf6tm57v" targetId="lf6tm57q" type="containerLink"/>
+                  </flow>
+                  <flow id="lf6tm57x">
+                     <assignment id="llgkok3v">
+                        <title>Assignment to Code, Error etc.</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/Code">HTTP_404</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/Error">BusinessPartner not found in SAP</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/Description">BusinessPartner for AccountID {$input.in_AccountID} does not exist in SAP</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/FailedAtStep">BusinessPartner does not exist in SAP</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/RestURL">{$output.out_RestURL}</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_AccountUpdate[1]/RequestPayload">NA</operation>
+                        <link id="llgkok3w" targetId="llgkojr5"/>
+                     </assignment>
+                     <assignment id="llnte50h">
+                        <title>Add to output Stack</title>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_AccountUpdate_ErrorStack">
+                           <function name="list:append">
+                              <arg name="dest_field">{$output.out_ProcessVariables_AccountUpdate_ErrorStack}</arg>
+                              <arg name="new_field">{$output.out_ProcessVariables_AccountUpdate}</arg>
+                           </function>
+                        </operation>
+                        <link id="llnte50j" targetId="llg7cu8r"/>
+                     </assignment>
+                     <subflow id="llgkojr5">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>b73c2yxfPe7kLVUICRbIA6</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AccountUpdate</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="llnte50i" targetId="llnte50h"/>
+                     </subflow>
+                     <jumpTo id="llg7cu8r">
+                        <link id="llg7cu8s" targetId="ljmktsg3"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lf6tm57t" targetId="lf6tm57u" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_Flag_BP_ExistsInSAP}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lf6tm57w" targetId="lf6tm57x" type="containerLink"/>
+                  <link id="llg7cuc7" targetId="ljmktsg3"/>
+               </container>
+               <container id="llkl6p10" type="exclusive">
+                  <title>VForce BPID Update required</title>
+                  <flow id="llkl6p14">
+                     <assignment id="llkl6qeo">
+                        <title>Update BP ID in VForce Account</title>
+                        <operation source="field" to="temp.tmp_VForce_Account.BPAccountID__c">output.out_BusinessPartner</operation>
+                     </assignment>
+                     <link id="llkl6p15" targetId="llkl6p10" type="containerLink"/>
+                  </flow>
+                  <flow id="llkl6pa7">
+                     <link id="llkl6pa8" targetId="llkl6p10" type="containerLink"/>
+                  </flow>
+                  <link id="llkl6p13" targetId="llkl6p14" type="containerLink">
+                     <condition source="formula">
+                        <function name="equals">
+                           <arg name="left">{$temp.tmp_Flag_Sync_BPID_in_VForce}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="llkl6pa6" targetId="llkl6pa7" type="containerLink"/>
+                  <link id="llkl6p12" targetId="ljmktrvp"/>
+               </container>
+               <end id="ljmktrvp">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ab535386-162e-4116-8e98-ffb9ca6b6c57</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:56Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_AccountID": "0013O00000rBAcfQAG",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1300",
+	 	 "IICS_Run_ID": "1300",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "AccountUpdate",
+	 	 "API_Name": "API08U",
+	 	 "Data_Key": "0013O00000rBAcfQAG",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-09-06T00:00:00.00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3oyg0p6aVYZgV8JeoDf5wK</types1:GUID>
+      <types1:DisplayName>Process_AccountUpdate_WithTax</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.421Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

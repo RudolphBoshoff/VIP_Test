@@ -1,0 +1,867 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>WnMnS24FsWTzIf6-gt-53396022-2023-10-15T09:40:54.782Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_OpportunityClosedWon-1</types1:Name>
+      <types1:ParentFlowIds>fRxZsEi4tciSrZM-gt-53396090-2023-10-15T09:40:56.083Z::pd.xml,IWk6yQC8WrY1Syp-gt-5727805-2023-10-24T09:04:15.637Z::pd.xml,nVqSLlBWlD2pHAL-gt-53396739-2023-10-15T09:41:05.218Z::pd.xml,oE4bcggaaaaa-gt-53190983-2023-10-15T11:45:03.623Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce
+23c+24c = [1 - New] + [2 - RFP/Bid]
+23u+24u = [3 - Upsell] + [6A - Change Note (Out of Scope)]</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:55Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-31T12:28:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-31T12:54:58Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_OpportunityClosedWon-1/Process_OpportunityClosedWon-1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_OpportunityClosedWon"
+                  name="Process_OpportunityClosedWon-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce
+23c+24c = [1 - New] + [2 - RFP/Bid]
+23u+24u = [3 - Upsell] + [6A - Change Note (Out of Scope)]</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_OpportunityID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_OSC_Details" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_OpptyClosedWon"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+               <field description="" name="out_BusinessPartner_Used" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_OpptyClosedWon_Stack"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+               <field description="" name="VF_SemiStructured_ALL3" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_CreateProj" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_TBD" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ResponseCodes" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CommercialProject_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-VIPP2B:EntityLight_CommercialProjectIDs</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">gJpzdG9MEeqh0tvYWNhhOC</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CommercialProject_List" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-VIPP2B:EntityLight_CommercialProjectIDs</option>
+                     <option name="required">false</option>
+                     <option name="guid">gJpzdG9MEeqh0tvYWNhhOC</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NewProjectID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_NewProjectID_Seq" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SOW" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="untitled6" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="untitled7" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Product" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PO_GetAll_VForce_Product-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4JNm24VRUOKdvQ7FBE3vmA</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectSplit_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectSplit" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lf241aqg" targetId="lf241aqf"/>
+               </start>
+               <assignment id="lf241aqf">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_OpptyClosedWon">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_OpptyClosedWon[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/IICS_Run_ID||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_OpptyClosedWon[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <link id="llev0azx" targetId="llc2q8aw"/>
+               </assignment>
+               <assignment id="lmjji414">
+                  <title>Opportunity Type</title>
+                  <operation source="formula" to="temp.tmp_SOW">
+                     <expression language="XQuery">switch ($output.VF_SemiStructured_ALL2[1]/OpportunityHeader[1]/OpportunityType )
+case "1- New" 			return "New"
+case "2- RFP / Bid" 	return "New"
+case "3- Upsell" 		return "Existing"
+case "4- Outbound External Referral" 			return "Out of scope for integration"
+case "5- Addendum" 	return "Out of scope for integration"
+case "6- Change Note" 	return 	switch ($output.VF_SemiStructured_ALL2[1]/OpportunityHeader[1]/Out_Of_Scope__c)
+							 	case true() return "Existing"
+                                default return "Out of scope for integration"
+case "OSCAdvisoryOpportunity" 	return "Existing only"                     
+default return "Out of scope for integration"</expression>
+                  </operation>
+                  <link id="lmjji416" targetId="lmjji1gr"/>
+               </assignment>
+               <assignment id="ln1e4shr">
+                  <title>Categorize Project Attributes</title>
+                  <operation source="formula" to="temp.tmp_ProjectSplit_List">
+                     <expression language="XQuery">let $VF := $output.VF_SemiStructured_ALL[1] ,
+$VFp := $VF/OpportunityProductDetails[OpportunityProduct_ProductCode != '']
+for $x in distinct-values($VFp/SBQQ__QuoteLine_Billing_Currency)
+where $x != '' and fn:string-length($x) &gt; 0
+return 
+&lt;POProjectAttributes&gt; 
+&lt;Customer&gt;{$output.out_BusinessPartner_Used}&lt;/Customer&gt;
+&lt;Currency&gt;{$x}&lt;/Currency&gt;
+&lt;SalesOrg&gt;{fn:substring($VF/OpportunityHeader[1]/Legal_Billing_Entity__c/text(),1,4)}&lt;/SalesOrg&gt;
+&lt;/POProjectAttributes&gt;</expression>
+                  </operation>
+                  <link id="ln1tlajh" targetId="lmjji0jf"/>
+               </assignment>
+               <subflow id="llc2q8aw">
+                  <title>Get All VForce</title>
+                  <subflowGUID>3DQAmNnvsjhceo1qpvybqa</subflowGUID>
+                  <subflowPath>Process_GetAll_VForce-4</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                     <parameter name="in_OpportunityID" source="field" updatable="true">input.in_OpportunityID</parameter>
+                     <parameter name="in_OSC_Details" source="field" updatable="true">input.in_OSC_Details</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="VF_SemiStructured_ALL" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                        </options>
+                     </field>
+                     <field name="VF_SemiStructured_ALL2" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PO_GetAll_VForce</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lmjji415" targetId="lmjji414"/>
+               </subflow>
+               <container id="lmjji1gr" type="exclusive">
+                  <title>SOW</title>
+                  <flow id="lmjji1gs">
+                     <end id="lmjji527">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <flow id="lmjji1gu">
+                     <subflow id="lmjji4zr">
+                        <title>New Business Partner OR New Company</title>
+                        <subflowGUID>3UAzbAfSAQVeJLkMI57n4x</subflowGUID>
+                        <subflowPath>Process_NewBusinessPartner_NewCompany_US08c_-1</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                           <parameter name="in_OpportunityID" source="field" updatable="true">input.in_OpportunityID</parameter>
+                           <parameter name="in_VForceData" source="field" updatable="true">output.VF_SemiStructured_ALL2</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_ProcessVariables_US08c" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                              </options>
+                           </field>
+                           <field name="out_BusinessPartner_Used" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessVariables_US08c_Stack" type="objectlist">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option hide="true" name="multiSelect">true</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                              </options>
+                           </field>
+                           <field name="VF_SemiStructured_ALL" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                              </options>
+                           </field>
+                           <field name="VF_SemiStructured_ALL2" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PO_GetAll_VForce</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                     </subflow>
+                     <link id="lmjji526" targetId="lmjji1gr" type="containerLink"/>
+                  </flow>
+                  <link id="lmjji1gw" targetId="lmjji1gs" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_SOW}</arg>
+                           <arg name="right">Out of scope for integration</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmjji1gx" targetId="lmjji1gu" type="containerLink"/>
+                  <link id="lnoin2lg" targetId="ln1e4shr"/>
+               </container>
+               <container id="lmjji0jf" type="exclusive">
+                  <title>Project Currency List</title>
+                  <flow id="lmjji0jj">
+                     <assignment id="ln1vezwz">
+                        <title>Pick a ProjectCurrency for Processing</title>
+                        <operation source="formula" to="temp.tmp_ProjectSplit">
+                           <expression language="XQuery">list:head($temp.tmp_ProjectSplit_List )</expression>
+                        </operation>
+                        <link id="ln1vezx0" targetId="ln1tlanj"/>
+                     </assignment>
+                     <assignment id="lnoiwtio">
+                        <title>Evaluate Project Create or Extend</title>
+                        <operation source="formula" to="temp.tmp_ProjectSplit_List">
+                           <expression language="XQuery">list:tail($temp.tmp_ProjectSplit_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Flag_CreateProj">
+                           <expression language="XQuery">util:iif($temp.tmp_SOW = 'New' or ($temp.tmp_SOW = 'Existing' and (util:isNull($output.gET_ProjectSetResponse[1]/d[1]/results[1]/ProjectID ) or $output.gET_ProjectSetResponse[1]/d[1]/results[1]/ProjectID='')), 1, 
+util:iif($temp.tmp_SOW = 'Existing' or $temp.tmp_SOW = 'Existing only', 0, 99))</expression>
+                        </operation>
+                        <link id="lnoiwtiq" targetId="lnoin2lh"/>
+                     </assignment>
+                     <assignment id="lnoiwt4h">
+                        <title>Remove Unnecessary Products</title>
+                        <operation source="formula" to="output.VF_SemiStructured_ALL3">
+                           <expression language="XQuery">let $VF := $output.VF_SemiStructured_ALL2  , 
+$VFa := $VF/Account[1], 
+$VFo := $VF/OpportunityHeader[1] 
+return 
+&lt;VForceData xmlns:ns2="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" xmlns:ns3="http://schemas.active-endpoints.com/appmodules/screenflow/2011/07/avosCommon.xsd" xmlns:ns4="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:type="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt; 
+{$VFa} 
+{$VFo} 
+{for $VFp in $VF/OpportunityProductDetails[OpportunityProduct_ProductCode != '' and (SBQQ__QuoteLine_Billing_Currency = $temp.tmp_ProjectSplit/Currency or fn:starts-with(OpportunityProduct_ID, 'Default') or fn:starts-with(OpportunityProduct_ID, 'FirstTimeCustomerDefault'))]
+return if ( (switch ($VFp/OpportunityProduct_ID) 
+case "FirstTimeCustomerDefault1" return $output.out_CustDefaultProduct1_Exists 
+case "FirstTimeCustomerDefault2" return $output.out_CustDefaultProduct2_Exists 
+case "FirstTimeCustomerDefault3" return $output.out_CustDefaultProduct3_Exists 
+case "FirstTimeCustomerDefault4" return $output.out_CustDefaultProduct4_Exists 
+default return 0 ) !=1) then ($VFp) else () } 
+&lt;/VForceData&gt;</expression>
+                        </operation>
+                        <link id="lnoiwt4j" targetId="ln1w0wmv"/>
+                     </assignment>
+                     <service id="ln1tlanj">
+                        <title>GET_ProjectSet</title>
+                        <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_ProjectSet</serviceName>
+                        <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                        <serviceInput>
+                           <parameter name="hostname" source="field" updatable="true">temp.tmp_SapCredentials[1]/hostname</parameter>
+                           <parameter name="username" source="field" updatable="true">temp.tmp_SapCredentials[1]/username</parameter>
+                           <parameter name="password" source="field" updatable="true">temp.tmp_SapCredentials[1]/password</parameter>
+                           <parameter name="__filter" source="formula">
+                              <expression language="XQuery">let $Customer := util:iif($output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c != '' and fn:not(util:isNull($output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c)), $output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c, $output.out_BusinessPartner_Used),
+	$Currency := $temp.tmp_ProjectSplit/Currency ,
+    $SalesOrg := $temp.tmp_ProjectSplit/SalesOrg
+return
+"Customer eq '"||$Customer||"' and Currency eq '"||$Currency||"' and OrgID eq '"||$SalesOrg||"'"</expression>
+                           </parameter>
+                           <parameter name="__orderby" source="formula">
+                              <expression language="XQuery">'CreatedOn desc'</expression>
+                           </parameter>
+                           <parameter name="__expand" source="formula">
+                              <expression language="XQuery">'WorkPackageSet/WorkPackageFunctionSet,ProjectRoleSet'</expression>
+                           </parameter>
+                           <parameter name="__top" source="constant">1</parameter>
+                        </serviceInput>
+                        <link id="lnoiwtip" targetId="lnoiwtio"/>
+                     </service>
+                     <subflow id="lnoin2lh">
+                        <title>Check CustomerDefaultProducts in SAP</title>
+                        <subflowGUID>9t2e8VhyXx6iXWPdmFuOIQ</subflowGUID>
+                        <subflowPath>Process_SAP_Check_CustomerDefaultProducts-1</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                           <parameter name="in_CustomerID" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif(util:isNull($output.out_BusinessPartner_Used ) or $output.out_BusinessPartner_Used = '', $output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c, $output.out_BusinessPartner_Used  )</expression>
+                           </parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_Cust_All_WPs_Exists" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_CustDefaultProduct1_Exists" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_CustDefaultProduct2_Exists" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_CustDefaultProduct3_Exists" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_CustDefaultProduct4_Exists" type="int">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessVariables_CustDefaultPrds" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoErrorDetails</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lnoiwtib" targetId="lnoiwt4h"/>
+                     </subflow>
+                     <container id="ln1w0wmv" type="exclusive">
+                        <title>Create Project Flag</title>
+                        <flow id="ln1w0wmz">
+                           <assignment id="ln1w0wsf">
+                              <title>Fetch Max Project ID used</title>
+                              <operation source="query" to="temp.tmp_CommercialProject_List">
+                                 <query advanceQuery="true"
+                                        from="AppConn-VIPP2B:EntityLight_CommercialProjectIDs">
+                                    <where>1=1 Order By Id desc</where>
+                                 </query>
+                              </operation>
+                              <link id="ln1w0wui" targetId="ln1w0wuh"/>
+                           </assignment>
+                           <assignment id="ln1w0wuh">
+                              <title>Set New Project ID</title>
+                              <operation source="formula" to="temp.tmp_NewProjectID_Seq">
+                                 <expression language="XQuery">1 + $temp.tmp_CommercialProject_List.ProjectID_seq</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_NewProjectID">
+                                 <expression language="XQuery">'VF'||fn:format-number($temp.tmp_NewProjectID_Seq , "000000")</expression>
+                              </operation>
+                              <link id="ln1w0wwl" targetId="ln1w0wwk"/>
+                           </assignment>
+                           <subflow id="ln1w0wwk">
+                              <title>US23c NEWProject</title>
+                              <subflowGUID>af58fMEICWfbMH1S8hyeUu</subflowGUID>
+                              <subflowPath>Process_SAP_ProjectCreate-1</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                                 <parameter name="in_OpportunityID" source="constant" updatable="true">{$input.in_OpportunityID}</parameter>
+                                 <parameter name="in_VF_SemiStructured_ALL" source="field" updatable="true">output.VF_SemiStructured_ALL3</parameter>
+                                 <parameter name="in_BusinessPartner" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif(util:isNull($output.out_BusinessPartner_Used ) or $output.out_BusinessPartner_Used = '', $output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c, $output.out_BusinessPartner_Used  )</expression>
+                                 </parameter>
+                                 <parameter name="in_ProjectID" source="field" updatable="true">temp.tmp_NewProjectID</parameter>
+                                 <parameter name="in_ProjectCurrency" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_ProjectSplit/Currency </expression>
+                                 </parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_ProcessVariables_Project" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_Project_ErrorStack" type="objectlist">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option hide="true" name="multiSelect">true</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="ln1w0x05" targetId="ln1w0wzv"/>
+                           </subflow>
+                           <container id="ln1w0wzv" type="exclusive">
+                              <title>Code</title>
+                              <flow id="ln1w0wzw">
+                                 <create id="ln1w0wzx">
+                                    <title>Log Project ID as used</title>
+                                    <entityName>AppConn-VIPP2B:EntityLight_CommercialProjectIDs</entityName>
+                                    <createInput>
+                                       <parameter name="OpportunityID" source="field" updatable="true">input.in_OpportunityID</parameter>
+                                       <parameter name="ProjectID_seq" source="field" updatable="true">temp.tmp_NewProjectID_Seq</parameter>
+                                       <parameter name="Project_ID" source="field" updatable="true">temp.tmp_NewProjectID</parameter>
+                                    </createInput>
+                                    <link id="ln1w0x03" targetId="ln1w0wzy"/>
+                                 </create>
+                                 <subflow id="ln1w0wzy">
+                                    <title>US24c NEWSalesOrder</title>
+                                    <subflowGUID>fYhE9qnnFoGcHLwMl1MKmi</subflowGUID>
+                                    <subflowPath>Process_SalesOrderCreate-3</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_VForceData" source="field">output.VF_SemiStructured_ALL3</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                                       <parameter name="in_ProjectID" source="field" updatable="true">temp.tmp_NewProjectID</parameter>
+                                       <parameter name="in_BusinessPartner" source="formula" updatable="true">
+                                          <expression language="XQuery">util:iif(util:isNull($output.out_BusinessPartner_Used ) or $output.out_BusinessPartner_Used = '', $output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c, $output.out_BusinessPartner_Used  )</expression>
+                                       </parameter>
+                                       <parameter name="in_ProjectCurrency" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_ProjectSplit/Currency </expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_Project" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_SalesOrder" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_ProjectSO_Stack" type="objectlist">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option hide="true" name="multiSelect">true</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="VF_SemiStructured_ALL3" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="ln1w0x02" targetId="ln1w0wzv" type="containerLink"/>
+                              </flow>
+                              <flow id="ln1w0wzz">
+                                 <link id="ln1w0x04" targetId="ln1w0wzv" type="containerLink"/>
+                              </flow>
+                              <link id="ln1w0x00" targetId="ln1w0wzw" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$output.out_ProcessVariables_Project[1]/Code}</arg>
+                                       <arg name="right">HTTP_200</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ln1w0x01" targetId="ln1w0wzz" type="containerLink"/>
+                           </container>
+                           <link id="ln1w0wn0" targetId="ln1w0wmv" type="containerLink"/>
+                        </flow>
+                        <flow id="lncx1y54">
+                           <container id="lncx1y77" type="exclusive">
+                              <title>Project ID</title>
+                              <flow id="lncx1y78">
+                                 <subflow id="lncx1y79">
+                                    <title>US23u Extend Project</title>
+                                    <subflowGUID>2IpCLFH726PjxkIVA4rRoX</subflowGUID>
+                                    <subflowPath>Process_SAP_WorkPackageCreate-2</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                                       <parameter name="in_OpportunityID" source="constant" updatable="true">{$input.in_OpportunityID}</parameter>
+                                       <parameter name="in_BusinessPartner" source="constant" updatable="true">{$output.out_BusinessPartner_Used}</parameter>
+                                       <parameter name="in_ProjectID" source="constant" updatable="true">{$output.ProjectID}</parameter>
+                                       <parameter name="in_VFOpportunity" source="field" updatable="true">output.VF_SemiStructured_ALL3</parameter>
+                                       <parameter name="in_ProjectCurrency" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_ProjectSplit/Currency </expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_WorkPackage" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_WorkPackage_ErrorStack" type="objectlist">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option hide="true" name="multiSelect">true</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="lncx1y7j" targetId="lncx1y7a"/>
+                                 </subflow>
+                                 <container id="lncx1y7a" type="exclusive">
+                                    <title>Code</title>
+                                    <flow id="lncx1y7b">
+                                       <subflow id="lncx1y7c">
+                                          <title>NOT STARTED 24u</title>
+                                          <subflowGUID>fYhE9qnnFoGcHLwMl1MKmi</subflowGUID>
+                                          <subflowPath>Process_SalesOrderCreate-3</subflowPath>
+                                          <runForEach>false</runForEach>
+                                          <input>
+                                             <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_OpptyClosedWon</parameter>
+                                             <parameter name="in_ProjectID" source="constant" updatable="true">123</parameter>
+                                             <parameter name="in_BusinessPartner" source="formula" updatable="true">
+                                                <expression language="XQuery">util:iif(util:isNull($output.out_BusinessPartner_Used ) or $output.out_BusinessPartner_Used = '', $output.VF_SemiStructured_ALL[1]/Account[1]/BPAccountID__c, $output.out_BusinessPartner_Used  )</expression>
+                                             </parameter>
+                                             <parameter name="in_ProjectCurrency" source="formula" updatable="true">
+                                                <expression language="XQuery">$temp.tmp_ProjectSplit/Currency </expression>
+                                             </parameter>
+                                          </input>
+                                          <outputDef>
+                                             <field name="out_ProcessVariables_Project" type="reference">
+                                                <options>
+                                                   <option name="referenceTo">$po:PoErrorDetails</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_ProcessVariables_SalesOrder" type="reference">
+                                                <options>
+                                                   <option name="referenceTo">$po:PoErrorDetails</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                   <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                                </options>
+                                             </field>
+                                             <field name="out_ProcessVariables_ProjectSO_Stack" type="objectlist">
+                                                <options>
+                                                   <option name="referenceTo">$po:PoErrorDetails</option>
+                                                   <option hide="true" name="multiSelect">true</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                   <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                                                </options>
+                                             </field>
+                                             <field name="VF_SemiStructured_ALL3" type="reference">
+                                                <options>
+                                                   <option name="referenceTo">$po:PO_GetAll_VForce-1</option>
+                                                   <option name="required">false</option>
+                                                   <option name="isCopy">true</option>
+                                                   <option name="guid">5B5uN7aiIhygsxXkkMovMC</option>
+                                                </options>
+                                             </field>
+                                          </outputDef>
+                                       </subflow>
+                                       <link id="lncx1y7m" targetId="lncx1y7a" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lncx1y7d">
+                                       <link id="lncx1y7n" targetId="lncx1y7a" type="containerLink"/>
+                                    </flow>
+                                    <link id="lncx1y7k" targetId="lncx1y7b" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="string-equals">
+                                             <arg name="left">{$output.out_ProcessVariables_WorkPackage[1]/Code}</arg>
+                                             <arg name="right">201</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="lncx1y7l" targetId="lncx1y7d" type="containerLink"/>
+                                 </container>
+                                 <link id="lncx1y7i" targetId="lncx1y77" type="containerLink"/>
+                              </flow>
+                              <flow id="lncx1y7e">
+                                 <link id="lncx1y7o" targetId="lncx1y77" type="containerLink"/>
+                              </flow>
+                              <link id="lncx1y7g" targetId="lncx1y78" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="starts-with">
+                                       <arg name="left">{$output.ProjectID}</arg>
+                                       <arg name="right">VF</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lncx1y7h" targetId="lncx1y7e" type="containerLink"/>
+                           </container>
+                           <link id="lncx1y55" targetId="ln1w0wmv" type="containerLink"/>
+                        </flow>
+                        <flow id="ln1w0wn2">
+                           <link id="ln1w0wn3" targetId="ln1w0wmv" type="containerLink"/>
+                        </flow>
+                        <link id="ln1w0wmy" targetId="ln1w0wmz" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_Flag_CreateProj}</arg>
+                                 <arg name="right">{1}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lncx1y53" targetId="lncx1y54" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_Flag_CreateProj}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ln1w0wn1" targetId="ln1w0wn2" type="containerLink"/>
+                        <link id="ln1w0xcu" targetId="ln1w0xcs"/>
+                     </container>
+                     <jumpTo id="ln1w0xcs">
+                        <link id="ln1w0xct" targetId="lmjji0jf"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lmjji0jm">
+                     <link id="lmjji0jn" targetId="lmjji0jf" type="containerLink"/>
+                  </flow>
+                  <link id="lmjji0ji" targetId="lmjji0jj" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_ProjectSplit_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lmjji0jl" targetId="lmjji0jm" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_ProjectSplit_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ln1w0xaq" targetId="ln1w0xap"/>
+               </container>
+               <end id="ln1w0xap">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>85d2ecc5-146f-457f-8fba-d14cad8241e4</ns1:Id>
+               <ns1:Name>DEV</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:55Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:55Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "RBTEST0008",
+	 	 "IICS_Run_ID": "1",
+	 	 "IICS_Process_Name": "Process_GetAll_VForce",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "DEV",
+	 	 "API_Name": "US-01",
+	 	 "Data_Key": "OpportunityID=0063O00000GqtnuQAB^",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-08-21T09:23:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+                 "RevEntity": "US11"
+	 },
+	 "in_OpportunityID": "0063O00000GqtnuQAB"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7d984e70-9ea7-44fe-b2a4-27566ae235be</ns1:Id>
+               <ns1:Name>sample</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:55Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:55Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "RBTEST0008",
+	 	 "IICS_Run_ID": "1",
+	 	 "IICS_Process_Name": "Process_GetAll_VForce",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "DEV",
+	 	 "API_Name": "US-01",
+	 	 "Data_Key": "OpportunityID=0063O00000OCJGpQAP^",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-09-05T09:23:00.000Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+                 "RevEntity": "US11"
+	 },
+	 "in_OpportunityID": "0063O00000OCJGpQAP"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5rTyyakEGoxiphQItSYdwL</types1:GUID>
+      <types1:DisplayName>Process_OpportunityClosedWon</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-31T13:51:46.222Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

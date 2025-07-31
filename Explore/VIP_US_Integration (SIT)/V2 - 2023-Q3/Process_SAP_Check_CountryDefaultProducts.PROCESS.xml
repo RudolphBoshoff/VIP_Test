@@ -1,0 +1,922 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CabbfOC2XZPnE29-gt-53364287-2023-10-15T09:40:51.458Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SAP_Check_CountryDefaultProducts-1</types1:Name>
+      <types1:ParentFlowIds>05WlD2pHALVYxWP-gt-53396236-2023-10-15T09:40:58.984Z::pd.xml,IFDlyjllCYAOTMn-gt-53318735-2023-10-15T09:40:56.552Z::pd.xml,upnMUvIw8jIw8jI-gt-53395984-2023-10-15T09:40:54.335Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff</types1:CreatedBy>
+      <types1:CreationDate>2023-10-15T09:40:51Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SAP_Check_CountryDefaultProducts"
+                  name="Process_SAP_Check_CountryDefaultProducts-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates or updates a Business Partner and Commercial Project in SAP when an Opportunity is Closed (Won) in VForce</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ExecutionCountryISO"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProjectID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_All_WPs_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DefaultProduct1_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DefaultProduct2_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DefaultProduct3_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DefaultProduct4_Exists" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_DefaultPrds"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8EviVkTiEjpe8RhwagVIyY</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SapCredentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1vMsozp2REEeMl7ICdFCil</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lnbbg77w" targetId="lnbbg77v"/>
+               </start>
+               <assignment id="lnbbg77v">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_SapCredentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;
+</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_DefaultPrds">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_DefaultPrds[1]/IICS_Run_ID">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/IICS_Run_ID||'^'||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_DefaultPrds[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <link id="lnbbg78f" targetId="ln3ahlfr"/>
+               </assignment>
+               <assignment id="lnbbg7d3">
+                  <title>Assignment to out_DefaultProduct1_Exists</title>
+                  <operation source="formula" to="output.out_DefaultProduct1_Exists">
+                     <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName = '' or util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName ), 0, 1)</expression>
+                  </operation>
+                  <link id="lnbbg7d5" targetId="ln3ahlgz"/>
+               </assignment>
+               <assignment id="lnbbg7d8">
+                  <title>Assignment to out_DefaultProduct2_Exists</title>
+                  <operation source="formula" to="output.out_DefaultProduct2_Exists">
+                     <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName = '' or util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName ), 0, 1)</expression>
+                  </operation>
+                  <link id="lnbbg7da" targetId="ln3ahlij"/>
+               </assignment>
+               <assignment id="lnbbg7dd">
+                  <title>Assignment to out_DefaultProduct3_Exists</title>
+                  <operation source="formula" to="output.out_DefaultProduct3_Exists">
+                     <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName = '' or util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName ), 0, 1)</expression>
+                  </operation>
+                  <link id="lnbbg7df" targetId="ln3ahlkj"/>
+               </assignment>
+               <assignment id="ln3ahlri">
+                  <title>Evaluate DefaultProduct4 Exists Flag</title>
+                  <operation source="formula" to="output.out_DefaultProduct4_Exists">
+                     <expression language="XQuery">util:iif($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName = '' or util:isNull($output.gET_WorkPackageSetResponse[1]/d[1]/results[1]/WorkPackageName ), 0, 1)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_All_WPs_Exists">
+                     <expression language="XQuery">util:iif($output.out_DefaultProduct1_Exists = 1 and $output.out_DefaultProduct2_Exists = 1 and $output.out_DefaultProduct3_Exists = 1 and $output.out_DefaultProduct4_Exists = 1, 1, 0)</expression>
+                  </operation>
+                  <operation source="constant" to="output.out_ProcessVariables_DefaultPrds[1]/Code">200</operation>
+                  <link id="ln3ahlrk" targetId="ln3ahles"/>
+               </assignment>
+               <service id="ln3ahlfr">
+                  <title>Get WorkPackage DefaultProduct1</title>
+                  <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                  <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                     <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                     <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                     <parameter name="__filter" source="formula">
+                        <expression language="XQuery">'ProjectID eq ''' || $input.in_ProjectID || ''' and startswith(WorkPackageName, '''|| $input.in_ExecutionCountryISO  || '_Ongoing Custom Service - One Time_S'')'</expression>
+                     </parameter>
+                     <parameter name="__select" source="formula">
+                        <expression language="XQuery">'WorkPackageName'</expression>
+                     </parameter>
+                     <parameter name="__top" source="constant">1</parameter>
+                  </serviceInput>
+                  <link id="lnbbg7d4" targetId="lnbbg7d3"/>
+               </service>
+               <service id="ln3ahlgz">
+                  <title>Get WorkPackage DefaultProduct2</title>
+                  <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                  <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                     <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                     <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                     <parameter name="__filter" source="formula">
+                        <expression language="XQuery">'ProjectID eq ''' || $input.in_ProjectID || ''' and startswith(WorkPackageName, '''|| $input.in_ExecutionCountryISO  || '_Implementation Custom Services - One Time_S'')'</expression>
+                     </parameter>
+                     <parameter name="__select" source="formula">
+                        <expression language="XQuery">'WorkPackageName'</expression>
+                     </parameter>
+                     <parameter name="__top" source="constant">1</parameter>
+                  </serviceInput>
+                  <link id="lnbbg7d9" targetId="lnbbg7d8"/>
+               </service>
+               <service id="ln3ahlij">
+                  <title>Get WorkPackage DefaultProduct3</title>
+                  <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                  <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                     <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                     <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                     <parameter name="__filter" source="formula">
+                        <expression language="XQuery">'ProjectID eq ''' || $input.in_ProjectID || ''' and startswith(WorkPackageName, '''|| $input.in_ExecutionCountryISO  || '_Regulatory Compliance Custom Service - One Time_S'')'</expression>
+                     </parameter>
+                     <parameter name="__select" source="formula">
+                        <expression language="XQuery">'WorkPackageName'</expression>
+                     </parameter>
+                     <parameter name="__top" source="constant">1</parameter>
+                  </serviceInput>
+                  <link id="lnbbg7de" targetId="lnbbg7dd"/>
+               </service>
+               <service id="ln3ahlkj">
+                  <title>Get WorkPackage DefaultProduct3 1</title>
+                  <serviceName>AppSvcSapS4-CPD-SC-PROJ-ENGMT-CREATE-UPD-SRV:GET_WorkPackageSet</serviceName>
+                  <serviceGUID>dGYM8RSy4CelIR2LUM6Pur</serviceGUID>
+                  <serviceInput>
+                     <parameter name="hostname" source="constant">{$temp.tmp_SapCredentials[1]/hostname}</parameter>
+                     <parameter name="username" source="constant">{$temp.tmp_SapCredentials[1]/username}</parameter>
+                     <parameter name="password" source="constant">{$temp.tmp_SapCredentials[1]/password}</parameter>
+                     <parameter name="__filter" source="formula">
+                        <expression language="XQuery">'ProjectID eq ''' || $input.in_ProjectID || ''' and startswith(WorkPackageName, '''|| $input.in_ExecutionCountryISO  || '_Statutory Compliance Custom Service - One Time_S'')'</expression>
+                     </parameter>
+                     <parameter name="__select" source="formula">
+                        <expression language="XQuery">'WorkPackageName'</expression>
+                     </parameter>
+                     <parameter name="__top" source="constant">1</parameter>
+                  </serviceInput>
+                  <link id="lnbbg7dr" targetId="ln3ahlri"/>
+               </service>
+               <end id="ln3ahles">
+                  <title>End 2</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>40af5f63-da0c-4d05-b8f5-0a1349adb594</ns1:Id>
+               <ns1:Name>iii</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "",
+	 "in_BusinessPartner": "",
+	 "in_ProjectID": "",
+	 "in_VF_SemiStructured_ALL": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "Country__c": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "OpportunityProduct_Name": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "TBD_BillingType": "",
+	 	 	 "TBD_ContractLanguage": "",
+	 	 	 "TBD_BillingTiming": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>fa5a61e9-43d6-4d45-9fc6-b8e3bdf585bf</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "xyz",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "Opp",
+	 	 "API_Name": "API23C",
+	 	 "Data_Key": "VIP_PILOT_T00",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-08-30T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "VIP_PILOT_T00",
+	 "in_BusinessPartner": "1047631",
+ "in_ProjectID": "C100013",
+	 "in_VF_SemiStructured_ALL": {
+	 	 		"Account": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"AccountName": "Customer F",
+			"AccountType": "Client",
+			"Agresso_ID__c": "Test Agr",
+			"Billing_Contact_Email__c": "peter.son@ecbs.com",
+			"Billing_Contact_Phone__c": "",
+			"BillingCity": "Test City.",
+			"BillingContactFirstName__c": "peter",
+			"BillingContactLastName__c": "son",
+			"BillingCountry": "US",
+			"BillingPostalCode": 10019,
+			"BillingState": "CA",
+			"BillingStreet": "456 Test Street (API07)",
+			"BPAccountID__c": 1047631,
+			"Currency__c": "INR",
+			"Entity_Code__c": 21,
+			"Fax": "",
+			"Payment_Term__c": 30,
+			"Phone": "102271795989",
+			"SBQQ__TaxExempt__c": "No",
+			"Sector__c": "Corporate",
+			"ShippingCity": "Test City",
+			"ShippingCountry": "United States",
+			"ShippingPostalCode": 10019,
+			"ShippingState": "Massachusetts",
+			"ShippingStreet": "123 Test STreet (API07)",
+			"Website": "www.website.com",
+			"X18_Digit_ID__c": "0013O00000rBAcfQAG"
+		},
+		"OpportunityHeader": {
+			"AccountID": "0013O00000rBAcfQAG",
+			"BPServiceContractId__c": "",
+			"Contract_Length_months__c": 12,
+			"CreatedDate": "2022-01-27T21:14:01Z",
+			"Currency_Type__c": "USD",
+			"Description": "this is for New Customer F (Prospect). Long description exceeding 40 character to test spillover from project name into project description field",
+			"ID": "0063O00000GqtnuQAB",
+			"Legal_Billing_Entity__c": "US11-Vistra International Expansion (USA), Inc",
+			"Owner_Id": "0053O000004YHzNQAW",
+			"OwnerEmail": "rudolph.boshoff@vistra.com",
+			"Primary_Contact_c": {
+				"ContactID": "0033O000015NbirQAC",
+				"Email": "contact1@customerf.com",
+				"FirstName": "Contact 1",
+				"LastName": "for Customer F",
+				"MailingCountry": "US",
+				"Phone": 102271795989,
+				"State": "CA",
+				"X18_Digit_ID__c": "0033O000015NbirQAC"
+			},
+			"Revenue_Generation_Date__c": "2022-01-27"
+		},
+		"OpportunityProductDetails": [
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"Country__c": "United States",   
+				"OpportunityProduct_ID": "12345678901234567A",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "GR-SC-AC-007",
+"OpportunityProduct_Name": "Customer 1F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 3125,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Annual Subsidiary Compliance Bundle",
+				"Product2_Frequency": "Annual",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Quarterly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 12500,
+				"SBQQ_QuoteLine_Net_Unit_Price": 3125,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-07-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2023-10-01",
+						"BillingPlanItem": 3,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 3125,
+						"BillingPlanBillingDate": "2024-01-01",
+						"BillingPlanItem": 4,
+						"BillingPlanItemDescription": "Annual Subsidiary Compliance Bundle",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "CN",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567C",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "FA-FR-EA-005",
+"OpportunityProduct_Name": "Customer 2F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 400,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Maintain Mandatory Local Bookkeeping",
+				"Product2_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "Monthly",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 4800,
+				"SBQQ_QuoteLine_Net_Unit_Price": 400,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-03-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-05-01",
+						"BillingPlanItem": 3,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-06-01",
+						"BillingPlanItem": 4,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-07-01",
+						"BillingPlanItem": 5,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-08-01",
+						"BillingPlanItem": 6,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-09-01",
+						"BillingPlanItem": 7,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-10-01",
+						"BillingPlanItem": 8,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-11-01",
+						"BillingPlanItem": 9,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2023-12-01",
+						"BillingPlanItem": 10,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2024-01-01",
+						"BillingPlanItem": 11,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 400,
+						"BillingPlanBillingDate": "2024-02-01",
+						"BillingPlanItem": 12,
+						"BillingPlanItemDescription": "Maintain Mandatory Local Bookkeeping",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "BR",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567E",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "FA-PP-PM-001",
+"OpportunityProduct_Name": "Customer 3F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 1000,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Bank Account Opening",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "One Time",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 1000,
+				"SBQQ_QuoteLine_Net_Unit_Price": 1000,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 1000,
+						"BillingPlanBillingDate": "2023-03-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Bank Account Opening",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			},
+			{
+				"Opportunity_ID": "0063O00000GqtnuQAB",
+				"OpportunityProduct_CountryIsoCode": "JP",
+				"Country__c": "United States",
+				"OpportunityProduct_ID": "12345678901234567I",
+				"OpportunityProduct_Operational_Start_Date": "2023-03-01",
+				"OpportunityProduct_ProductCode": "GR-ES-SP-056",
+"OpportunityProduct_Name": "Customer 4F-CRP-US-(2022-01-27)-New-Customer F 27012022 USA - Accounting Only Bundle Subsidiary",
+				"OpportunityProduct_Quantity": 1,
+				"OpportunityProduct_Service_End_Date": "2024-02-29",
+				"OpportunityProduct_VForceSalesPrice": 500,
+				"Product2_Custom_Pricing_Method": "List",
+				"Product2_Description": "Registered Office Services",
+				"Product2_Frequency": "One Time",
+				"SBQQ__QuoteLine_Billing_Currency": "USD",
+				"SBQQ__QuoteLine_Billing_Frequency": "50% Upfront - 50% on Completion",
+				"SBQQ__QuoteLine_Custom_DiscountAmount": 0,
+				"SBQQ__QuoteLine_EffectiveQuantity": 1,
+				"SBQQ__QuoteLine_Output_Amount": 4500,
+				"SBQQ_QuoteLine_Net_Unit_Price": 2250,
+				"BillingPlan": [
+					{
+						"BillingPlanAmount": 2250,
+						"BillingPlanBillingDate": "2023-04-01",
+						"BillingPlanItem": 1,
+						"BillingPlanItemDescription": "Registered Office Services",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					},
+					{
+						"BillingPlanAmount": 2250,
+						"BillingPlanBillingDate": "2024-03-01",
+						"BillingPlanItem": 2,
+						"BillingPlanItemDescription": "Registered Office Services",
+						"BillingPlanItemUsage": "",
+						"BillingPlanServiceEndDate": "2022-03-01",
+						"BillingPlanServiceStartDate": "2024-02-29",
+						"TransactionCurrency": "USD"
+					}
+				]
+			}
+		]
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>991c4340-6d65-4b0b-b35a-2f34942b7619</ns1:Id>
+               <ns1:Name>inp6</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ExecutionCountryISO": "US",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "XYZ",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "A",
+	 	 "API_Name": "A",
+	 	 "Data_Key": "X",
+	 	 "RestURL": "A",
+	 	 "HelpFileLInk": "A",
+	 	 "ProcessStartTime": "2023-01-06T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>45f4eb21-b6fe-43e3-8dcc-9b0a8ab4d1fb</ns1:Id>
+               <ns1:Name>inpu</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ExecutionCountryISO": "US",
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "1234",
+	 	 "IICS_Run_ID": "1234",
+	 	 "IICS_Process_Name": "Abc",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "23u",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "2023-01-01T00:00:00Z",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_ProjectID": "VF000017"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>64ec3091-4c35-4cd0-bee2-0a71cd523c9c</ns1:Id>
+               <ns1:Name>ip</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-15T09:40:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-15T09:40:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProcessVariables": {
+	 	 "X_TRANSACTION_ID": "",
+	 	 "IICS_Run_ID": "",
+	 	 "IICS_Process_Name": "",
+	 	 "Code": "",
+	 	 "Error": "",
+	 	 "Description": "",
+	 	 "Event_Name": "",
+	 	 "API_Name": "",
+	 	 "Data_Key": "",
+	 	 "RestURL": "",
+	 	 "HelpFileLInk": "",
+	 	 "ProcessStartTime": "",
+	 	 "RequestPayload": "",
+	 	 "FailedAtStep": "",
+	 	 "RevEntity": ""
+	 },
+	 "in_OpportunityID": "",
+	 "in_BusinessPartner": "",
+	 "in_VF_SemiStructured_ALL": {
+	 	 "Account": {
+	 	 	 "AccountName": "",
+	 	 	 "AccountType": "",
+	 	 	 "Billing_Contact_Email__c": "",
+	 	 	 "Fax": "",
+	 	 	 "Website": "",
+	 	 	 "Phone": "",
+	 	 	 "X18_Digit_ID__c": "",
+	 	 	 "ShippingCity": "",
+	 	 	 "ShippingCountry": "",
+	 	 	 "ShippingPostalCode": "",
+	 	 	 "ShippingState": "",
+	 	 	 "ShippingStreet": "",
+	 	 	 "Payment_Term__c": "",
+	 	 	 "Sector__c": "",
+	 	 	 "Entity_Code__c": "",
+	 	 	 "Currency__c": "",
+	 	 	 "AccountID": "",
+	 	 	 "BillingContactFirstName__c": "",
+	 	 	 "BillingContactLastName__c": "",
+	 	 	 "Billing_Contact_Phone__c": "",
+	 	 	 "BillingStreet": "",
+	 	 	 "BillingCity": "",
+	 	 	 "BillingState": "",
+	 	 	 "BillingPostalCode": "",
+	 	 	 "BillingCountry": "",
+	 	 	 "SBQQ__TaxExempt__c": "",
+	 	 	 "BPAccountID__c": "",
+	 	 	 "Agresso_ID__c": ""
+	 	 },
+	 	 "OpportunityHeader": {
+	 	 	 "ID": "",
+	 	 	 "AccountID": "",
+	 	 	 "CreatedDate": "",
+	 	 	 "Description": "",
+	 	 	 "Currency_Type__c": "",
+	 	 	 "Primary_Contact_c": {
+	 	 	 	 "ContactID": "",
+	 	 	 	 "FirstName": "",
+	 	 	 	 "LastName": "",
+	 	 	 	 "Email": "",
+	 	 	 	 "Phone": "",
+	 	 	 	 "X18_Digit_ID__c": "",
+	 	 	 	 "MailingCountry": "",
+	 	 	 	 "State": ""
+	 	 	 },
+	 	 	 "Revenue_Generation_Date__c": "",
+	 	 	 "Contract_Length_months__c": "",
+	 	 	 "Owner_Id": "",
+	 	 	 "Legal_Billing_Entity__c": "",
+	 	 	 "BPServiceContractId__c": "",
+	 	 	 "OwnerEmail": ""
+	 	 },
+	 	 "OpportunityProductDetails": {
+	 	 	 "Opportunity_ID": "",
+	 	 	 "OpportunityProduct_ID": "",
+	 	 	 "OpportunityProduct_ProductCode": "",
+	 	 	 "OpportunityProduct_CountryIsoCode": "",
+	 	 	 "OpportunityProduct_Quantity": "",
+	 	 	 "OpportunityProduct_VForceSalesPrice": "",
+	 	 	 "Product2_Description": "",
+	 	 	 "OpportunityProduct_Operational_Start_Date": "",
+	 	 	 "OpportunityProduct_Service_End_Date": "",
+	 	 	 "Product2_Custom_Pricing_Method": "",
+	 	 	 "Product2_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Frequency": "",
+	 	 	 "SBQQ__QuoteLine_Billing_Currency": "",
+	 	 	 "SBQQ__QuoteLine_EffectiveQuantity": "",
+	 	 	 "SBQQ__QuoteLine_Output_Amount": "",
+	 	 	 "SBQQ__QuoteLine_Custom_DiscountAmount": "",
+	 	 	 "SBQQ_QuoteLine_Net_Unit_Price": "",
+	 	 	 "BillingPlan": {
+	 	 	 	 "CustomerProject": "",
+	 	 	 	 "SalesOrder": "",
+	 	 	 	 "SalesOrderItem": "",
+	 	 	 	 "BillingPlanItem": "",
+	 	 	 	 "BillingPlanBillingDate": "",
+	 	 	 	 "BillingPlanRelatedBillgStatus": "",
+	 	 	 	 "BillingPlanAmount": "",
+	 	 	 	 "TransactionCurrency": "",
+	 	 	 	 "BillingPlanItemUsage": "",
+	 	 	 	 "BillingPlanItemDescription": "",
+	 	 	 	 "BillingPlanServiceStartDate": "",
+	 	 	 	 "BillingPlanServiceEndDate": ""
+	 	 	 },
+	 	 	 "OpportunityProduct_Country": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5RJu9TxSK0TdSERSNTo7wl</types1:GUID>
+      <types1:DisplayName>Process_SAP_Check_CountryDefaultProducts</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T09:43:10.493Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

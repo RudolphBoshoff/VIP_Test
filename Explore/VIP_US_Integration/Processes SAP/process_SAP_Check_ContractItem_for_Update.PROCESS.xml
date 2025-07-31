@@ -1,0 +1,399 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>7yV4AdypKwKBqRi-gt-18569715-2022-01-18T09:58:23.945Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_Check_ContractItem_for_Update</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:24Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-04T09:35:58Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-03-04T09:38:24Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_Check_ContractItem_for_Update/process_SAP_Check_ContractItem_for_Update.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_Check_ContractItem_for_Update"
+                  name="process_SAP_Check_ContractItem_for_Update"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_ItemCategory" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Product_Code_Item" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_SC_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Max_SCItem_ID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Product_Code_ItemList" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ConditionType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_ItemTypeCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="In_Language" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Max_SCItem_ID" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Item_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_SCItem_Ref_To_Use" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Item_Text_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Item_PriceElement_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Item_ObjectList_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hA0375FEVqeeZPZ04hnRM2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_Action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_Text_ErrorType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_present_in_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxg7u40b" targetId="kxg7u40a"/>
+               </start>
+               <assignment id="kxg7u40a">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;</expression>
+                  </operation>
+                  <link id="kxzrxrs2" targetId="kxhustrr"/>
+               </assignment>
+               <assignment id="ky8jpn1v">
+                  <title>Check if Item exists with SC in SAP</title>
+                  <operation source="formula" to="temp.tmp_Item_present_in_SAP">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', 'N', 'Y')</expression>
+                  </operation>
+                  <link id="ky8jpn1x" targetId="ky8j8cwf"/>
+               </assignment>
+               <assignment id="kxslue35">
+                  <title>Decide Item Action and ID</title>
+                  <operation source="formula" to="output.out_Max_SCItem_ID">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', $input.in_Max_SCItem_ID + 100, $input.in_Max_SCItem_ID)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Item_Action">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', '01', '02')</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_SCItem_Ref_To_Use">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', $input.in_Max_SCItem_ID + 100, $output.out_ReferenceServiceContractItem)</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Item_Text_Action">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', '01', util:iif(util:isNull($output.out_ItemTextID),'01','02'))</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Item_PriceElement_Action">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem ) or $output.out_ServiceContractItem='', '01', util:iif(util:isNull($output.out_ConditionType) or $output.out_ConditionType='','01','02'))</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Item_ObjectList_Action">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_ServiceContractItem) or $output.out_ServiceContractItem='', '01', util:iif(util:isNull($output.out_ObjectList_Product) or $output.out_ObjectList_Product='','01','02'))</expression>
+                  </operation>
+                  <link id="ky3015pd" targetId="c"/>
+               </assignment>
+               <eventContainer id="kxhustrr">
+                  <service id="kxhustqq">
+                     <title>Get SCItem By Product and Item Category</title>
+                     <serviceName>AppSvcCheckServiceContract:GET_A_ServiceContract_Item</serviceName>
+                     <serviceGUID>hXntEmkuW0PiEorW9h6IeA</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                        <parameter name="ItemCategory" source="field" updatable="true">input.in_ItemCategory</parameter>
+                        <parameter name="ProductID" source="field" updatable="true">input.in_Product_Code_Item</parameter>
+                        <parameter name="ServiceContractID" source="field" updatable="true">input.in_SC_ID</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="kxhustrt">
+                     <link id="kxhustru" targetId="kxhustrr" type="containerLink"/>
+                  </flow>
+                  <flow id="kxhustrw">
+                     <throw id="kxhusts7">
+                        <title>Throw Oppty Item Error</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="kxhustrs" targetId="kxhustrt" type="containerLink"/>
+                  <link id="ky8jpn1w" targetId="ky8jpn1v"/>
+                  <events>
+                     <catch faultField="faultInfo" id="kxhustrp" interrupting="true">
+                        <link id="kxhustrv" targetId="kxhustrw" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="ky8j8cwf" type="exclusive">
+                  <title>Item exists with SC in SAP ?</title>
+                  <flow id="ky8j8cwj">
+                     <assignment id="ky8j8d1v">
+                        <title>Decide Item Action</title>
+                        <operation source="formula" to="output.out_Max_SCItem_ID">
+                           <expression language="XQuery">$input.in_Max_SCItem_ID + 100</expression>
+                        </operation>
+                        <operation source="constant" to="output.out_Item_Action">01</operation>
+                        <operation source="formula" to="output.out_SCItem_Ref_To_Use">
+                           <expression language="XQuery">$input.in_Max_SCItem_ID + 100</expression>
+                        </operation>
+                        <operation source="constant" to="output.out_Item_Text_Action">01</operation>
+                        <operation source="constant" to="output.out_Item_PriceElement_Action">01</operation>
+                        <operation source="constant" to="output.out_Item_ObjectList_Action">01</operation>
+                        <link id="ky8j8d2l" targetId="ky8j8d2k"/>
+                     </assignment>
+                     <end id="ky8j8d2k">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="ky8j8cwm">
+                     <eventContainer id="ky8j8cy1">
+                        <service id="ky8j8cy9">
+                           <title>Get Item Text Collection</title>
+                           <serviceName>AppSvcCheckServiceContract:GET_A_ServiceContract_Item_TextTypeCode</serviceName>
+                           <serviceGUID>hXntEmkuW0PiEorW9h6IeA</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                              <parameter name="in_TypeCode" source="field" updatable="true">input.In_ItemTypeCode</parameter>
+                              <parameter name="in_ServiceContract_ID" source="field" updatable="true">input.in_SC_ID</parameter>
+                              <parameter name="in_Language" source="field" updatable="true">input.In_Language</parameter>
+                              <parameter name="in_ServiceContract_Item_ID" source="field" updatable="true">output.out_ServiceContractItem</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky8j8cy2">
+                           <link id="ky8j8cyc" targetId="ky8j8cy1" type="containerLink"/>
+                        </flow>
+                        <flow id="ky8j8cy3">
+                           <container id="ky8j8cy5" type="exclusive">
+                              <title>Error Reason</title>
+                              <flow id="ky8j8cy6">
+                                 <link id="ky8j8cyh" targetId="ky8j8cy5" type="containerLink"/>
+                              </flow>
+                              <flow id="ky8j8cy7">
+                                 <throw id="ky8j8cy8">
+                                    <title>Throw Item TextCollection Fault</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.ItemText_faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.ItemText_faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.ItemText_faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="ky8j8cyf" targetId="ky8j8cy6" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.ItemText_faultInfo[1]/reason}</arg>
+                                       <arg name="right">Resource not found</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ky8j8cyg" targetId="ky8j8cy7" type="containerLink"/>
+                           </container>
+                           <link id="ky8j8cyd" targetId="ky8j8cy1" type="containerLink"/>
+                        </flow>
+                        <link id="ky8j8cya" targetId="ky8j8cy2" type="containerLink"/>
+                        <link id="ky8j8cze" targetId="ky8j8cz6"/>
+                        <events>
+                           <catch faultField="ItemText_faultInfo" id="ky4lbc51" interrupting="true">
+                              <link id="ky8j8cyb" targetId="ky8j8cy3" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="ky8j8cz6">
+                        <service id="ky8j8cza">
+                           <title>Get Item PriceComponent Element</title>
+                           <serviceName>AppSvcCheckServiceContract:GET_A_ServiceContract_Item_PriceComponent</serviceName>
+                           <serviceGUID>hXntEmkuW0PiEorW9h6IeA</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                              <parameter name="in_ConditionTypeCode" source="field" updatable="true">input.in_ConditionType</parameter>
+                              <parameter name="in_ServiceContract_ID" source="field" updatable="true">input.in_SC_ID</parameter>
+                              <parameter name="in_ServiceContractItem_ID" source="field" updatable="true">output.out_ServiceContractItem</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky8j8cz7">
+                           <link id="ky8j8czd" targetId="ky8j8cz6" type="containerLink"/>
+                        </flow>
+                        <flow id="ky8j8cz8">
+                           <throw id="ky8j8cz9">
+                              <title>Throw Item PriceComponent Fault</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.GetPC_faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.GetPC_faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.GetPC_faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="ky8j8czb" targetId="ky8j8cz7" type="containerLink"/>
+                        <link id="ky8j8d0a" targetId="ky8j8d02"/>
+                        <events>
+                           <catch faultField="GetPC_faultInfo" id="ky4lbc8a" interrupting="true">
+                              <link id="ky8j8czc" targetId="ky8j8cz8" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="ky8j8d02">
+                        <service id="ky8j8d06">
+                           <title>Get Item SC ObjectList</title>
+                           <serviceName>AppSvcCheckServiceContract:GET_A_ServiceContractObjectList_Product</serviceName>
+                           <serviceGUID>hXntEmkuW0PiEorW9h6IeA</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                              <parameter name="in_SCOL_Product" source="field" updatable="true">input.in_Product_Code_ItemList</parameter>
+                              <parameter name="in_ServiceContract_ID" source="field" updatable="true">input.in_SC_ID</parameter>
+                              <parameter name="in_ServiceContractItem_ID" source="field" updatable="true">output.out_ServiceContractItem</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky8j8d03">
+                           <link id="ky8j8d09" targetId="ky8j8d02" type="containerLink"/>
+                        </flow>
+                        <flow id="ky8j8d04">
+                           <throw id="ky8j8d05">
+                              <title>Throw Item SC ObjectList Fault</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.GetSCObjList-faultInfo[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.GetSCObjList-faultInfo[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.GetSCObjList-faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="ky8j8d07" targetId="ky8j8d03" type="containerLink"/>
+                        <events>
+                           <catch faultField="GetSCObjList-faultInfo"
+                                  id="ky8ch3f6"
+                                  interrupting="true">
+                              <link id="ky8j8d08" targetId="ky8j8d04" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ky8j8cwn" targetId="ky8j8cwf" type="containerLink"/>
+                  </flow>
+                  <link id="ky8j8cwi" targetId="ky8j8cwj" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Item_present_in_SAP}</arg>
+                           <arg name="right">N</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ky8j8cwl" targetId="ky8j8cwm" type="containerLink"/>
+                  <link id="ky8j8d01" targetId="kxslue35"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>bbc1a4a1-8e6b-47d8-986b-20eed5ce795b</ns1:Id>
+               <ns1:Name>gc</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-04T09:35:58Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_OpportunityID": "0051M000008DXEA208_1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>65CA3NznegsjgrDg5bSkKp</types1:GUID>
+      <types1:DisplayName>process_SAP_Check_ContractItem_for_Update</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:23:17.979Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

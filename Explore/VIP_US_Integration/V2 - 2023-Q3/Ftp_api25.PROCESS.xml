@@ -1,0 +1,212 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>NH7lJjx9AWbg0Zk-gt-29541002-2023-10-06T08:56:25.644Z::pd.xml</types1:EntryId>
+      <types1:Name>Ftp_api25</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-10-06T08:56:26Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-06T10:54:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Ftp_api25/Ftp_api25.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Ftp_api25"
+                  name="Ftp_api25"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppConn-FileParser-Read:AttachmentFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5hCKfuUd0mNcLAT0yP1BKr</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ProcessVariables_FTP" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_pdfwriter" type="reference">
+                  <options>
+                     <option name="referenceTo">AppUSFTPFileWriter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Xqr1XyRO5jcHqAHNnP7GO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_api25_q" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE</option>
+                     <option name="required">false</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillingDoc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppConn-FileParser-Read:FTPFileParserSrc"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lmub9dm2" targetId="lmub9d28"/>
+               </start>
+               <assignment id="lmub9d28">
+                  <title>Assignment to tmp_api25_q</title>
+                  <operation source="query" to="temp.tmp_api25_q">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:VIP_USI_API25_QUEUE">
+                        <where>PDF_Name = '{$input.fileEvent[1]/fileInfo[1]/fullName}'</where>
+                     </query>
+                  </operation>
+                  <link id="lmub9dob" targetId="lmub9doa"/>
+               </assignment>
+               <assignment id="lmub9doa">
+                  <title>Assignment to out_ProcessVariables_FTP</title>
+                  <operation source="formula" to="output.out_ProcessVariables_FTP">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$temp.tmp_api25_q.BillingDocument ||'-'||$temp.tmp_api25_q.BillingDocumentDate ||'-'||$temp.tmp_api25_q.Customer }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;Invoice FTP&lt;/Event_Name&gt;
+   &lt;API_Name&gt;API25&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'Billing Document Number: '||$temp.tmp_api25_q.BillingDocument }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+&lt;/PoErrorDetails&gt;</expression>
+                  </operation>
+                  <link id="lmub9doc" targetId="lmitis46"/>
+               </assignment>
+               <assignment id="lmitis46">
+                  <title>Assignment to Content Format, File name</title>
+                  <operation source="constant" to="temp.tmp_pdfwriter[1]/format">Attachment</operation>
+                  <operation source="formula" to="temp.tmp_pdfwriter[1]/fileName">
+                     <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/fullName</expression>
+                  </operation>
+                  <link id="lmitis48" targetId="lmub9d1j"/>
+               </assignment>
+               <eventContainer id="lmub9d1j">
+                  <service id="lmgod1j6">
+                     <title>BillingDocument</title>
+                     <serviceName>AppUSFTPFileWriter:BillingDocument</serviceName>
+                     <serviceGUID>6Xqr1XyRO5jcHqAHNnP7GO</serviceGUID>
+                     <serviceInput>
+                        <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_pdfwriter</parameter>
+                        <parameter name="attachment" source="formula">
+                           <expression language="XQuery">$input.fileEvent[1]/attachment </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lmub9d1l">
+                     <assignment id="lmub9d9m">
+                        <title>Assignment to RetryCount, ProcessedDate etc.</title>
+                        <operation source="formula" to="temp.tmp_api25_q.RetryCount">
+                           <expression language="XQuery">$temp.tmp_api25_q.RetryCount  + 1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_api25_q.ProcessedDate">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_api25_q.ProcessingStatus">SUCCESS</operation>
+                        <operation source="formula" to="temp.tmp_api25_q.IicsRunId">
+                           <expression language="XQuery">util:getProcessId()</expression>
+                        </operation>
+                        <link id="lmub9dae" targetId="lmub9dad"/>
+                     </assignment>
+                     <end id="lmub9dad"/>
+                  </flow>
+                  <flow id="lmub9d1o">
+                     <assignment id="lmub9e6p">
+                        <title>Assignment to RetryCount, ProcessedDate etc. 2</title>
+                        <operation source="formula" to="temp.tmp_api25_q.RetryCount">
+                           <expression language="XQuery">$temp.tmp_api25_q.RetryCount  + 1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_api25_q.ProcessedDate">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_api25_q.ProcessingStatus">FTP_FAILED</operation>
+                        <operation source="formula" to="temp.tmp_api25_q.IicsRunId">
+                           <expression language="XQuery">util:getProcessId()</expression>
+                        </operation>
+                        <link id="lmub9e6r" targetId="lmub9d4m"/>
+                     </assignment>
+                     <assignment id="lmub9d4m">
+                        <title>Assignment to Code, Error etc.</title>
+                        <operation source="constant" to="output.out_ProcessVariables_FTP[1]/Code">{$output.faultInfo[1]/code}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_FTP[1]/Error">{$output.faultInfo[1]/reason}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_FTP[1]/Description">{$output.faultInfo[1]/detail}</operation>
+                        <link id="lmub9d5j" targetId="lmub9d5i"/>
+                     </assignment>
+                     <subflow id="lmub9d5i">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_FTP</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lmub9d7m" targetId="lmub9d7l"/>
+                     </subflow>
+                     <end id="lmub9d7l">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lmub9d1k" targetId="lmub9d1l" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lmub9d1i" interrupting="true">
+                        <link id="lmub9d1n" targetId="lmub9d1o" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e18d4a7b-378c-4a32-b767-df8ca0413854</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-06T08:56:26Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-06T08:56:26Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>bqepNfZTVkxfvNmTHiAfAC</types1:GUID>
+      <types1:DisplayName>Ftp_api25</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:19:04.455Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

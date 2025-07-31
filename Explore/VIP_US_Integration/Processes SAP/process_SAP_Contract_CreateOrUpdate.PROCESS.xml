@@ -1,0 +1,683 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>fTBbcgp5OjG4abc-gt-18569763-2022-01-18T09:58:24.085Z::pd.xml</types1:EntryId>
+      <types1:Name>process_SAP_Contract_CreateOrUpdate</types1:Name>
+      <types1:ParentFlowIds>iYBeMHck5qbbfUr-gt-23835261-2022-01-18T09:58:27.134Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-01-18T09:58:24Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-21T15:55:35Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-08-31T06:34:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_SAP_Contract_CreateOrUpdate/process_SAP_Contract_CreateOrUpdate.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_SAP_Contract_CreateOrUpdate"
+                  name="process_SAP_Contract_CreateOrUpdate"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="ServiceContractRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequestMessage</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="BPCustomer" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="NumberofItems" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Error_Reason" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_SC_SAP_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Oppty_Suffix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_SAP_Credentials" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapCredentials</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hA0375FEVqeeZPZ04hnRM2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Soap_Ack_Record_Before" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:soap_response</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Soap_Ack_Record_After" type="reference">
+                  <options>
+                     <option name="referenceTo">US-MSSQL-DB-VForce:soap_response</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">jOdK9uWvUqafn6yMklUhEv</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_processname_ack" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Ack_Received" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Ack_Check_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Max_Ack_Check_Attempts" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">20</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Max_CreatedDate_Before" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Max_CreatedDate_After" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Opportunity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnSalesForce:Opportunity</option>
+                     <option name="required">false</option>
+                     <option name="guid">21XRjJBuX8TlNZS0shoFoB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SC_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SC_Recreate_Failure" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ServiceContractRequest_Payload"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnServiceContractRequest-IN:ServiceContractRequestMessage</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f3WudpcmOWodvD2zm52f6I</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Current_OpportunityID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SC_Request_ActionCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SC_Response_StatusCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Item_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kxg7u40b" targetId="kxg7u40a"/>
+               </start>
+               <assignment id="kxg7u40a">
+                  <title>Get SAP Credentials</title>
+                  <operation source="formula" to="temp.tmp_SAP_Credentials">
+                     <expression language="XQuery">&lt;PoSapCredentials&gt;
+   &lt;hostname&gt;{util:resolveURN('URN_C_VIP_SAP_Hostname')}&lt;/hostname&gt;
+   &lt;username&gt;{util:resolveURN('URN_C_VIP_SAP_Username')}&lt;/username&gt;
+   &lt;password&gt;{util:resolveURN('URN_C_VIP_SAP_Pwd')}&lt;/password&gt;
+&lt;/PoSapCredentials&gt;</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_processname_ack">process_SAP_Contract_Acknowledgement</operation>
+                  <operation source="field" to="temp.tmp_ServiceContractRequest_Payload">input.ServiceContractRequest</operation>
+                  <operation source="field" to="temp.tmp_Current_OpportunityID">input.OpportunityID</operation>
+                  <operation source="formula" to="temp.tmp_SC_Request_ActionCode">
+                     <expression language="XQuery">data($input.ServiceContractRequest[1]/ServiceContract/@actionCode)</expression>
+                  </operation>
+                  <link id="l4obsdgs" targetId="l4obsdgr"/>
+               </assignment>
+               <assignment id="kya8cmb4">
+                  <title>Get Max Acknowledgement Date</title>
+                  <operation source="query" to="temp.tmp_Soap_Ack_Record_Before">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:soap_response">
+                        <where>process_name = '{$temp.tmp_processname_ack}'  and confirmation_id='{$temp.tmp_Current_OpportunityID/text()}' Order By created_date desc limit 1</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Max_CreatedDate_Before">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_Soap_Ack_Record_Before[1]/created_date ), '1900-01-01 00:00:00.000', date:toChar($temp.tmp_Soap_Ack_Record_Before[1]/created_date, 'YYYY-MM-DD HH24:MI:SS.MS') )</expression>
+                  </operation>
+                  <operation source="formula" to="output.out_Oppty_Suffix">
+                     <expression language="XQuery">fn:concat(fn:concat($output.out_Oppty_Suffix , ' + '), $temp.tmp_Current_OpportunityID )</expression>
+                  </operation>
+                  <link id="kya8cmb6" targetId="ky9wqr50"/>
+               </assignment>
+               <assignment id="kyae6ped">
+                  <title>Get Recent Acknowledgement</title>
+                  <operation source="formula" to="temp.tmp_Ack_Check_Counter">
+                     <expression language="XQuery">$temp.tmp_Ack_Check_Counter + 1</expression>
+                  </operation>
+                  <operation source="query" to="temp.tmp_Soap_Ack_Record_After">
+                     <query advanceQuery="false" from="US-MSSQL-DB-VForce:soap_response">
+                        <where>process_name = '{$temp.tmp_processname_ack}' and confirmation_id = '{$temp.tmp_Current_OpportunityID/text()}' Order By created_date desc limit 1</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Max_CreatedDate_After">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_Soap_Ack_Record_After[1]/created_date ), '1900-01-01 00:00:00.000', date:toChar($temp.tmp_Soap_Ack_Record_After[1]/created_date, 'YYYY-MM-DD HH24:MI:SS.MS') )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Ack_Received">
+                     <expression language="XQuery">util:iif($temp.tmp_Max_CreatedDate_Before != $temp.tmp_Max_CreatedDate_After, 'Yes', 'No')</expression>
+                  </operation>
+                  <link id="kyb68wff" targetId="kyb68wfe"/>
+               </assignment>
+               <container id="l4obsdgr" type="exclusive">
+                  <title>NumberofItems</title>
+                  <flow id="l4obsdgv">
+                     <link id="l4obsdgw" targetId="l4obsdgr" type="containerLink"/>
+                  </flow>
+                  <flow id="l4obsdgy">
+                     <end id="l4obsdho">
+                        <title>End - No Items exists in SC</title>
+                     </end>
+                  </flow>
+                  <link id="l4obsdgu" targetId="l4obsdgv" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-than">
+                           <arg name="left">{$input.NumberofItems}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4obsdgx" targetId="l4obsdgy" type="containerLink"/>
+                  <link id="l4obsdgt" targetId="kya8cmb4"/>
+               </container>
+               <container id="kyb68wfe" type="exclusive">
+                  <title>Acknowledgement Received ?</title>
+                  <flow id="kyb68wfi">
+                     <assignment id="kyb68whp">
+                        <title>Derive Output Fields</title>
+                        <operation source="formula" to="temp.tmp_SC_Response_StatusCode">
+                           <expression language="XQuery">fn:substring-after(fn:substring-before($temp.tmp_Soap_Ack_Record_After[1]/error_message , '; '), 'BusinessDocumentProcessingResultCode:')</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_Status">
+                           <expression language="XQuery">util:iif(util:isNull($temp.tmp_Soap_Ack_Record_After[1]/error_code) and util:isNull($temp.tmp_Soap_Ack_Record_After[1]/error_message), 'Success', util:iif(fn:substring-before(fn:substring-after($temp.tmp_Soap_Ack_Record_After[1]/error_message, 'BusinessDocumentProcessingResultCode:'), '; ') = '4', 'Partial Success', 'Failure'))</expression>
+                        </operation>
+                        <operation source="field" to="output.out_Error_Reason">temp.tmp_Soap_Ack_Record_After[1]/error_message</operation>
+                        <operation source="formula" to="output.out_SC_SAP_ID">
+                           <expression language="XQuery">fn:substring-before(fn:substring-after(fn:substring-after($temp.tmp_Soap_Ack_Record_After[1]/payload, '&lt;ServiceContract&gt;'), '&lt;ServiceContract&gt;'), '&lt;/ServiceContract&gt;')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_SC_Recreate_Failure">
+                           <expression language="XQuery">util:iif(fn:contains($output.out_Error_Reason, fn:concat(fn:concat('Reference service contract ', $temp.tmp_Current_OpportunityID/text()), ' already exists')), 'Y', 'N') </expression>
+                        </operation>
+                        <link id="kyb68wqq" targetId="kyb68wqp"/>
+                     </assignment>
+                     <container id="kyb68wqp" type="exclusive">
+                        <title>out_Status</title>
+                        <flow id="kyb68wqs">
+                           <assignment id="l0b2upop">
+                              <title>Get Opportunity Record from VForce</title>
+                              <operation source="query" to="temp.tmp_Opportunity">
+                                 <query advanceQuery="false" from="AppConnSalesForce:Opportunity">
+                                    <where>Id = '{$input.OpportunityID}'</where>
+                                 </query>
+                              </operation>
+                              <link id="l0b2upoq" targetId="l0b2upnz"/>
+                           </assignment>
+                           <container id="l0b2upnz" type="exclusive">
+                              <title>SC Operation Create / Update ?</title>
+                              <flow id="l0b2upo2">
+                                 <assignment id="l0b2upp0">
+                                    <title>Update SAP IDs back to VForce Oppty</title>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPBillToID__c">input.ServiceContractRequest[1]/ServiceContract[1]/Partners[1]/BillToParty</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPShipToID__c">input.ServiceContractRequest[1]/ServiceContract[1]/Partners[1]/ShipToParty</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPSoldToID__c">input.ServiceContractRequest[1]/ServiceContract[1]/Partners[1]/SoldToParty</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPServiceContractId__c">output.out_SC_SAP_ID</operation>
+                                 </assignment>
+                                 <link id="l0b2upo3" targetId="l0b2upnz" type="containerLink"/>
+                              </flow>
+                              <flow id="l0b2upo5">
+                                 <assignment id="l0b2uppo">
+                                    <title>Update SAP IDs back to VForce Oppty in Upsell Scenario</title>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPBillToID__c">input.ServiceContractRequest[1]/ServiceContract[1]/Partners[1]/BillToParty</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPShipToID__c">input.BPCustomer</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPSoldToID__c">input.BPCustomer</operation>
+                                    <operation source="field" to="temp.tmp_Opportunity.BPServiceContractId__c">output.out_SC_SAP_ID</operation>
+                                 </assignment>
+                                 <link id="l0b2upo6" targetId="l0b2upnz" type="containerLink"/>
+                              </flow>
+                              <link id="l0b2upo1" targetId="l0b2upo2" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_SC_Request_ActionCode}</arg>
+                                       <arg name="right">01</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l0b2upo4" targetId="l0b2upo5" type="containerLink"/>
+                              <link id="l0b2upoz" targetId="kzi340eg"/>
+                           </container>
+                           <end id="kzi340eg">
+                              <title>End</title>
+                           </end>
+                        </flow>
+                        <flow id="l4mn2qf0">
+                           <jumpTo id="l4mn2qfb">
+                              <link id="l4mn2qfc" targetId="l0b2upop"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="kyb68wqv">
+                           <container id="l09lizsb" type="exclusive">
+                              <title>Error says RefSC already exists?</title>
+                              <flow id="l09lizse">
+                                 <assignment id="l09lj008">
+                                    <title>Assignment to tmp_SC_Counter, tmp_Current_OpportunityID etc.</title>
+                                    <operation source="formula" to="temp.tmp_SC_Counter">
+                                       <expression language="XQuery">$temp.tmp_SC_Counter + 1</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_Current_OpportunityID">
+                                       <expression language="XQuery">fn:concat(fn:concat($input.OpportunityID, '-'), $temp.tmp_SC_Counter)</expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="temp.tmp_ServiceContractRequest_Payload[1]/MessageHeader[1]/ID">
+                                       <expression language="XQuery">$temp.tmp_Current_OpportunityID </expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="temp.tmp_ServiceContractRequest_Payload[1]/ServiceContract[1]/ReferenceServiceContract">
+                                       <expression language="XQuery">$temp.tmp_Current_OpportunityID </expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_ServiceContractRequest_Payload">
+                                       <expression language="XQuery">&lt;s4c:ServiceContractRequest xmlns:s4c="http://sap.com/xi/S4CRM/"&gt;
+{let $xml := $temp.tmp_ServiceContractRequest_Payload
+return 
+  for $ele in $xml/*
+  return if($ele/name() = 'ServiceContract')
+        then
+        (
+       &lt;ServiceContract actionCode="{$temp.tmp_SC_Request_ActionCode/text()}"&gt;{$ele/element()} &lt;/ServiceContract&gt;          
+        )
+        else (
+        $ele
+        )}
+        &lt;/s4c:ServiceContractRequest&gt;</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_Ack_Check_Counter">
+                                       <expression language="XQuery">0</expression>
+                                    </operation>
+                                    <link id="l0b6kt39" targetId="l0b6kt37"/>
+                                 </assignment>
+                                 <jumpTo id="l0b6kt37">
+                                    <link id="l0b6kt38" targetId="kya8cmb4"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="l09lizsh">
+                                 <throw id="l09lizub">
+                                    <title>Throw Error</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">400</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">SC Create/Update step failed for Opportunity {$input.OpportunityID/text()}</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.out_Error_Reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="l09lizsd" targetId="l09lizse" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_SC_Recreate_Failure}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l09lizsg" targetId="l09lizsh" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="kyb68wqr" targetId="kyb68wqs" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_Status}</arg>
+                                 <arg name="right">Success</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l4mn2qez" targetId="l4mn2qf0" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_Status}</arg>
+                                 <arg name="right">Partial Success</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kyb68wqu" targetId="kyb68wqv" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="kyb68wfl">
+                     <container id="kyb68wiv" type="exclusive">
+                        <title>Ack check attempts</title>
+                        <flow id="kyb68wiy">
+                           <jumpTo id="kyb68wlb">
+                              <link id="kyb68wlc" targetId="kya7zadi"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="kyb68wj1">
+                           <assignment id="kyb68wkr">
+                              <title>Derive Warning Fields</title>
+                              <operation source="constant" to="output.out_Status">Warning</operation>
+                              <operation source="constant" to="output.out_Error_Reason">Status Unknown : Did not receive Acknowledgement from SAP for Opportunity {$temp.tmp_Current_OpportunityID/text()}</operation>
+                              <link id="kyb68wol" targetId="kyb68wok"/>
+                           </assignment>
+                           <throw id="kyb68wok">
+                              <title>Throw Warning</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">401</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Acknowledgement not received for Opportunity {$temp.tmp_Current_OpportunityID/text()}</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.out_Error_Reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kyb68wix" targetId="kyb68wiy" type="containerLink">
+                           <condition source="formula">
+                              <function name="less-or-equals">
+                                 <arg name="left">{$temp.tmp_Ack_Check_Counter}</arg>
+                                 <arg name="right">{$temp.tmp_Max_Ack_Check_Attempts }</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kyb68wj0" targetId="kyb68wj1" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="kyb68wfh" targetId="kyb68wfi" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Ack_Received}</arg>
+                           <arg name="right">Yes</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kyb68wfk" targetId="kyb68wfl" type="containerLink"/>
+               </container>
+               <eventContainer id="ky9wqr50">
+                  <service id="ky9wqr54">
+                     <title>Create or Update SC</title>
+                     <serviceName>AppConnServiceContractRequest-IN:ServiceContractRequest_In</serviceName>
+                     <serviceGUID>f3WudpcmOWodvD2zm52f6I</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_SAP_Credentials[1]/password</parameter>
+                        <parameter name="ServiceContractRequest" source="field">temp.tmp_ServiceContractRequest_Payload</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="ky9wqr51">
+                     <wait id="kya7zadi">
+                        <title>Wait 3 seconds</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">3</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                     </wait>
+                     <link id="ky9wqr57" targetId="ky9wqr50" type="containerLink"/>
+                  </flow>
+                  <flow id="ky9wqr52">
+                     <throw id="ky9wqr53">
+                        <title>Throw Fault</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="ky9wqr55" targetId="ky9wqr51" type="containerLink"/>
+                  <link id="kyae6pee" targetId="kyae6ped"/>
+                  <events>
+                     <catch faultField="faultInfo" id="kxhustrp" interrupting="true">
+                        <link id="ky9wqr56" targetId="ky9wqr52" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>99dbeacb-e7d8-48ff-912b-cbddb766e530</ns1:Id>
+               <ns1:Name>Billing Contact</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-01-27T08:55:47Z</ns1:ModificationDate>
+               <ns1:Data format="json">{"in_SAP_BpContact_Billing":{
+ "CreationDate": "",
+ "CreatedByUser": "",
+ "FormOfAddress": "",
+ "Customer": "",
+ "OrganizationBPName4": "",
+ "BusinessPartner": "",
+ "OrganizationBPName2": "",
+ "OrganizationBPName3": "",
+ "PersonFullName": "",
+ "OrganizationBPName1": "",
+ "Industry": "",
+ "IsSexUnknown": "",
+ "BusinessPartnerType": "",
+ "OrganizationLiquidationDate": "",
+ "to_Customer": "",
+ "LegalForm": "",
+ "BusinessPartnerGrouping": "",
+ "to_Supplier": "",
+ "NameCountry": "",
+ "AcademicTitle": "",
+ "LastChangedByUser": "",
+ "BusinessPartnerIDByExtSystem": "",
+ "IsMarkedForArchiving": "",
+ "BusinessPartnerUUID": "",
+ "to_BusinessPartnerRole": "",
+ "BusinessPartnerBirthplaceName": "",
+ "ETag": "",
+ "AuthorizationGroup": "",
+ "CreationTime": "",
+ "IndependentAddressID": "",
+ "LastName": "",
+ "BirthDate": "",
+ "to_BusinessPartnerAddress": "",
+ "to_BusinessPartnerBank": "",
+ "BusinessPartnerCategory": "",
+ "NameFormat": "",
+ "BusinessPartnerIsBlocked": "",
+ "CorrespondenceLanguage": "",
+ "BusinessPartnerFullName": "",
+ "to_BusinessPartnerContact": "",
+ "Language": "",
+ "GroupBusinessPartnerName1": "",
+ "LastChangeTime": "",
+ "GroupBusinessPartnerName2": "",
+ "Supplier": "",
+ "AdditionalLastName": "",
+ "TradingPartner": "",
+ "BusinessPartnerName": "",
+ "to_BuPaIndustry": "",
+ "PersonNumber": "",
+ "IsFemale": "",
+ "IsNaturalPerson": "",
+ "FirstName": "",
+ "to_BuPaIdentification": "",
+ "BusinessPartnerBirthDateStatus": "",
+ "MiddleName": "",
+ "OrganizationFoundationDate": "",
+ "to_BusinessPartnerTax": "",
+ "GenderCodeName": "",
+ "LastChangeDate": "",
+ "InternationalLocationNumber2": "",
+ "InternationalLocationNumber3": "",
+ "InternationalLocationNumber1": "",
+ "IsMale": "",
+ "SearchTerm2": "",
+ "SearchTerm1": ""
+}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>58cf4f16-2fe3-4ab5-bf46-5606fc8b9ac0</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-27T09:42:26Z</ns1:CreationDate>
+               <ns1:ModifiedBy>harshavardhan.makeneni@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-04T11:18:17Z</ns1:ModificationDate>
+               <ns1:Data format="xml">&lt;root&gt;
+&lt;s4c:ServiceContractRequest xmlns:s4c="http://sap.com/xi/S4CRM/"&gt;&lt;MessageHeader xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt;&lt;ID&gt;0063O00000GImTvQAL&lt;/ID&gt;&lt;CreationDateTime&gt;2022-01-11T11:25:38.0000000Z&lt;/CreationDateTime&gt;&lt;SenderBusinessSystemID&gt;VFORCE_Q&lt;/SenderBusinessSystemID&gt;&lt;/MessageHeader&gt;&lt;ServiceContract xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/" actionCode="02"&gt;&lt;ServiceContract&gt;7000016052&lt;/ServiceContract&gt;&lt;ServiceContractType&gt;SC1&lt;/ServiceContractType&gt;&lt;ServiceContractDescription languageCode="EN"&gt;Testing DEMO Client&lt;/ServiceContractDescription&gt;&lt;OrgUnit&gt;&lt;SalesOrganization&gt;US11&lt;/SalesOrganization&gt;&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;&lt;Division&gt;10&lt;/Division&gt;&lt;/OrgUnit&gt;&lt;Partners&gt;&lt;PersonResponsible&gt;1047215&lt;/PersonResponsible&gt;&lt;/Partners&gt;&lt;ServiceContractStartDateTime&gt;2022-01-06T00:00:00&lt;/ServiceContractStartDateTime&gt;&lt;ServiceContractEndDateTime&gt;2023-01-06T00:00:00&lt;/ServiceContractEndDateTime&gt;&lt;ReferenceServiceContract&gt;0063O00000GImTvQAL&lt;/ReferenceServiceContract&gt;&lt;TransactionCurrency&gt;USD&lt;/TransactionCurrency&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0003&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"/&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;800&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRSCAC008USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;PPR0&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Audit  &amp;amp; Audit Support&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;BILL0004&lt;/SettlementPeriodRule&gt;&lt;ReferenceServiceContractItem&gt;800&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;GRSCAC008USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;900&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA035USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;PPR0&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Financial Statement Preparation&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;ReferenceServiceContractItem&gt;900&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;FAFREA035USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;1000&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA034USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;PPR0&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Group Reporting&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;BILL0001&lt;/SettlementPeriodRule&gt;&lt;ReferenceServiceContractItem&gt;1000&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;FAFREA034USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;1100&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRESSP056USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;PPR0&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;1000&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Registered Office Address Services&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;ReferenceServiceContractItem&gt;1100&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;GRESSP056USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;/ServiceContract&gt;&lt;/s4c:ServiceContractRequest&gt;
+&lt;OpportunityID&gt;0051M000008DXEA20720&lt;/OpportunityID&gt;
+&lt;/root&gt;</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5797324a-c295-458e-8a5d-ce7a1e4e790b</ns1:Id>
+               <ns1:Name>Other Contacts</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-01-27T08:55:47Z</ns1:ModificationDate>
+               <ns1:Data format="json">{"in_SAP_BpContact_Billing":
+  {
+    "BusinessPartnerCategory": "1",
+    "BusinessPartnerGrouping": "BP02",
+    "Language": "EN",
+    "FirstName": "VFORCE First Name 1",
+    "LastName": "VFORCE Last Name 1",
+    "BusinessPartnerIDByExtSystem": "0013O00000nGQOcQAO-2",
+    "to_BusinessPartnerAddress": {
+        "results": [
+            {
+                "Country": "US",
+                "to_EmailAddress": {
+                    "results": [
+                        {
+                            "EmailAddress": "vforce_contact1@vistra.com"
+                        }
+                    ]
+                },
+                "to_PhoneNumber": {
+                    "results": [
+                        {
+                            "PhoneNumber": "11111111"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+  }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>aea7e310-90bb-44d9-b98f-08726b17dcc3</ns1:Id>
+               <ns1:Name>RB_Test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-04T09:35:58Z</ns1:CreationDate>
+               <ns1:ModifiedBy>harshavardhan.makeneni@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-04T11:18:17Z</ns1:ModificationDate>
+               <ns1:Data format="xml">&lt;root&gt;
+&lt;OpportunityID&gt;0063O00000GImTvQAL&lt;/OpportunityID&gt;
+&lt;s4c:ServiceContractRequest xmlns:s4c="http://sap.com/xi/S4CRM/" xmlns:sf="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd" xmlns:aetgt="http://schemas.informatica.com/spi/types/2013/12/spi-interface/"&gt;&lt;MessageHeader&gt;&lt;ID&gt;0063O00000GImTvQAL&lt;/ID&gt;&lt;CreationDateTime&gt;2021-12-27T10:25:45.0000000Z&lt;/CreationDateTime&gt;&lt;SenderBusinessSystemID&gt;VFORCE_Q&lt;/SenderBusinessSystemID&gt;&lt;/MessageHeader&gt;&lt;ServiceContract actionCode="01"&gt;&lt;ServiceContractType&gt;SC1&lt;/ServiceContractType&gt;&lt;ServiceContractDescription languageCode="EN"&gt;Testing DEMO Client&lt;/ServiceContractDescription&gt;&lt;OrgUnit&gt;&lt;SalesOrganization&gt;US11&lt;/SalesOrganization&gt;&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;&lt;Division&gt;10&lt;/Division&gt;&lt;/OrgUnit&gt;&lt;Partners&gt;&lt;SoldToParty&gt;1043510&lt;/SoldToParty&gt;&lt;ShipToParty&gt;1043510&lt;/ShipToParty&gt;&lt;PersonResponsible&gt;9980000080&lt;/PersonResponsible&gt;&lt;BillToParty&gt;1043510&lt;/BillToParty&gt;&lt;PayerParty&gt;1043510&lt;/PayerParty&gt;&lt;ContactPerson&gt;1043510&lt;/ContactPerson&gt;&lt;/Partners&gt;&lt;ServiceContractStartDateTime&gt;2021-12-01T00:00:00&lt;/ServiceContractStartDateTime&gt;&lt;ServiceContractEndDateTime&gt;2022-12-01T00:00:00&lt;/ServiceContractEndDateTime&gt;&lt;ReferenceServiceContract&gt;0063O00000GImTvQAL&lt;/ReferenceServiceContract&gt;&lt;TransactionCurrency&gt;USD&lt;/TransactionCurrency&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0003&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"/&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;100&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRSCAC008USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType/&gt;&lt;ConditionRateValue/&gt;&lt;ConditionCurrency/&gt;&lt;ConditionQuantity unitCode="C62"/&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Audit &amp;amp; Audit Support&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;100&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;GRSCAC008USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;200&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product/&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType/&gt;&lt;ConditionRateValue&gt;0&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"/&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule/&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;200&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product/&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;300&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA034USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;Monthly&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Group Reporting&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;Monthly&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;300&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;FAFREA034USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;400&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;FAFREA035USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;One Time&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Financial Statement Preparation&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;50% UpFront - 50% on Completion&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;400&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;FAFREA035USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;500&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRESSP056USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;Monthly&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;1000&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Registered Office Address Services&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;50% UpFront - 50% on Completion&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;500&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;GRESSP056USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;Item actionCode="01"&gt;&lt;ServiceContractItem&gt;600&lt;/ServiceContractItem&gt;&lt;ServiceContractItemCategory&gt;SCN1&lt;/ServiceContractItemCategory&gt;&lt;Product&gt;GRSCAC008USSC&lt;/Product&gt;&lt;Quantity unitCode="C62"&gt;1&lt;/Quantity&gt;&lt;PriceComponent actionCode="01"&gt;&lt;ConditionType&gt;Annual&lt;/ConditionType&gt;&lt;ConditionRateValue&gt;100&lt;/ConditionRateValue&gt;&lt;ConditionCurrency&gt;USD&lt;/ConditionCurrency&gt;&lt;ConditionQuantity unitCode="C62"&gt;1&lt;/ConditionQuantity&gt;&lt;/PriceComponent&gt;&lt;TextCollection&gt;&lt;Text actionCode="01"&gt;&lt;TypeCode&gt;0001&lt;/TypeCode&gt;&lt;ContentText languageCode="EN"&gt;Audit &amp;amp; Audit Support&lt;/ContentText&gt;&lt;/Text&gt;&lt;/TextCollection&gt;&lt;ServiceContrItemStartDateTime&gt;2018-11-27T00:00:00&lt;/ServiceContrItemStartDateTime&gt;&lt;ServiceContrItemEndDateTime&gt;2019-11-27T00:00:00&lt;/ServiceContrItemEndDateTime&gt;&lt;SettlementPeriodRule&gt;Quarterly&lt;/SettlementPeriodRule&gt;&lt;BillingPlanBillingDateRule/&gt;&lt;BillingPlanPriceDateRule/&gt;&lt;BillingPlanIsFinalized/&gt;&lt;ReferenceServiceContractItem&gt;600&lt;/ReferenceServiceContractItem&gt;&lt;ServiceContractObjectList actionCode="01"&gt;&lt;Product&gt;GRSCAC008USSMB&lt;/Product&gt;&lt;/ServiceContractObjectList&gt;&lt;/Item&gt;&lt;/ServiceContract&gt;&lt;/s4c:ServiceContractRequest&gt;
+&lt;/root&gt;</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>2b053638-0f3d-4211-b8ce-748bac02b96a</ns1:Id>
+               <ns1:Name>Test1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-01-18T09:58:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-01-27T08:55:47Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"in_SAP_BpContact_Billing": {
+		"BusinessPartnerCategory": "1",
+		"BusinessPartnerGrouping": "BP02",
+		"Language": "EN",
+		"FirstName": "VFORCE First Name 1",
+		"LastName": "VFORCE Last Name 1",
+		"BusinessPartnerIDByExtSystem": "0013O00000nGQOcQAO-2"
+		
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>a6ExlOZVoi2h2EStyonhYX</types1:GUID>
+      <types1:DisplayName>process_SAP_Contract_CreateOrUpdate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-15T13:23:17.95Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
