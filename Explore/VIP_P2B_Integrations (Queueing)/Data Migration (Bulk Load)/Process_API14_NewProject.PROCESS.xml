@@ -1,0 +1,406 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>yfWoAXUCZ4nzYLn-gt-12829838-2022-08-18T16:11:32.401Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_API14_NewProject</types1:Name>
+      <types1:ParentFlowIds>RtaaabbgdoGsF4X-gt-24674928-2022-08-18T16:11:32.695Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates a new Enterprise Project and updates the processing status</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-08-18T16:11:32Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-27T16:14:29Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-27T18:17:37Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_API14_NewProject/Process_API14_NewProject.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_API14_NewProject"
+                  name="Process_API14_NewProject"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates a new Enterprise Project and updates the processing status</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_FileContent"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi14</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f844QFtFDYqcekDc2RtocW</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Event_Name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ParentProcessStartTime"
+                          required="true"
+                          type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ErrorDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:BusinessPartner_Expand</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">73TzrNfMb3we8PZAvKue2p</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_fileContent" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi14</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">f844QFtFDYqcekDc2RtocW</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IdentityRegister" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:IdentityRegister</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BpUuid_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Not Found</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectStartDateMills" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectEndDateMills" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MessageToChild" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l6gj5o17" targetId="l6gj5o16"/>
+               </start>
+               <assignment id="l6gj5o16">
+                  <title>Fetch File Content</title>
+                  <operation source="field" to="temp.tmp_fileContent">input.in_FileContent</operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <link id="l6updrjt" targetId="l6updrjs"/>
+               </assignment>
+               <assignment id="l6updrjs">
+                  <title>Date Conversion</title>
+                  <operation source="formula" to="temp.tmp_ProjectStartDateMills">
+                     <expression language="XQuery">fn:concat	('/Date('
+			,fn:concat
+(
+date:dateToMillis(date:toDate($temp.tmp_fileContent[1]/ProjectStartDate , 'DD/MM/YYYY hh:mm:ss'))
+,')/'
+)
+			)
+           </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProjectEndDateMills">
+                     <expression language="XQuery">fn:concat	('/Date('
+			,fn:concat
+(
+date:dateToMillis(date:toDate($temp.tmp_fileContent[1]/ProjectEndDate , 'DD/MM/YYYY hh:mm:ss'))
+,')/'
+)
+			)
+           </expression>
+                  </operation>
+                  <operation source="formula" to="input.in_FileContent[1]/ProjectDescription">
+                     <expression language="XQuery">fn:substring($input.in_FileContent[1]/ProjectDescription, 1, 40 )</expression>
+                  </operation>
+                  <link id="l6xklnod" targetId="l6xklnny"/>
+               </assignment>
+               <assignment id="l6xklnpe">
+                  <title>Prepare Payload</title>
+                  <operation source="field" to="temp.tmp_BpUuid_SAP">output.O_BusinessPartnerUUID</operation>
+                  <operation source="formula" to="temp.tmp_Body">
+                     <expression language="XQuery">for $x in  $temp.tmp_fileContent return 
+&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+   {$x/Project}
+   {$x/ProjectDescription}
+   {$x/PriorityCode}
+   &lt;ProjectStartDate&gt;{$temp.tmp_ProjectStartDateMills }&lt;/ProjectStartDate&gt;
+   &lt;ProjectEndDate&gt;{$temp.tmp_ProjectEndDateMills }&lt;/ProjectEndDate&gt;   
+   {$x/ResponsibleCostCenter}
+   {$x/ProfitCenter}
+   {$x/ProjectProfileCode}
+   {$x/ProjectCurrency}
+   {$x/YY1_Customer_PPH}
+   {if( $temp.tmp_BpUuid_SAP = 'Not Found' or util:isNull($temp.tmp_BpUuid_SAP) or $temp.tmp_BpUuid_SAP = '')
+   then () 
+   else (
+   &lt;to_EntProjTeamMember m:isArray="true"&gt;         
+		&lt;BusinessPartnerUUID&gt;{$temp.tmp_BpUuid_SAP }&lt;/BusinessPartnerUUID&gt;
+		&lt;to_EntProjEntitlement m:isArray="true"&gt;
+			&lt;ProjectRoleType&gt;YP_RL_0001&lt;/ProjectRoleType&gt;
+		&lt;/to_EntProjEntitlement&gt;      
+	&lt;/to_EntProjTeamMember&gt;
+   )}
+&lt;/root&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_MessageToChild">
+                     <expression language="XQuery">util:iif(($temp.tmp_BpUuid_SAP = 'Not Found' or util:isNull($temp.tmp_BpUuid_SAP) or $temp.tmp_BpUuid_SAP = ''),
+'Warning: The specified Project Manager does not exist as a Business Partner in SAP - the Project has been created without a Project Manager;','')</expression>
+                  </operation>
+                  <link id="l6xklnqk" targetId="l6xklnqj"/>
+               </assignment>
+               <container id="l6xklnny" type="exclusive">
+                  <title>BusinessPartnerUUID</title>
+                  <flow id="l6xklnnz">
+                     <eventContainer id="l6xklno0">
+                        <service id="l6xklno3">
+                           <title>GET BusinessPartner FromEmail</title>
+                           <serviceName>AppSvcYY1:GET_BusinessPartnerUUID</serviceName>
+                           <serviceGUID>0L8yRuv9VrIjvcbVfHmB68</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="formula">
+                                 <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                              </parameter>
+                              <parameter name="username" source="formula">
+                                 <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                              </parameter>
+                              <parameter name="password" source="formula">
+                                 <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                              </parameter>
+                              <parameter name="Email" source="field" updatable="true">input.in_FileContent[1]/BusinessPartnerUUID</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l6xklno1">
+                           <link id="l6xklnoa" targetId="l6xklno0" type="containerLink"/>
+                        </flow>
+                        <flow id="l6xklno2">
+                           <link id="l6xklnob" targetId="l6xklno0" type="containerLink"/>
+                        </flow>
+                        <link id="l6xklno8" targetId="l6xklno1" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l6updrrk" interrupting="true">
+                              <link id="l6xklno9" targetId="l6xklno2" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="l6xklno7" targetId="l6xklnny" type="containerLink"/>
+                  </flow>
+                  <flow id="l6xklno4">
+                     <link id="l6xklnoc" targetId="l6xklnny" type="containerLink"/>
+                  </flow>
+                  <link id="l6xklno5" targetId="l6xklnnz" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$input.in_FileContent[1]/BusinessPartnerUUID}</arg>
+                           <arg name="right">{$temp.tmp_fileContent[1]/BusinessPartnerUUID}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l6xklno6" targetId="l6xklno4" type="containerLink"/>
+                  <link id="l6xklnpf" targetId="l6xklnpe"/>
+               </container>
+               <container id="l6xklnt1" type="exclusive">
+                  <title>out_HttpStatusCode</title>
+                  <flow id="l6xklnt2">
+                     <subflow id="l6xklnt3">
+                        <title>POST Change Ent Proj Procg Status</title>
+                        <subflowGUID>8fv9z7dlhf1hKyfdvUJVYx</subflowGUID>
+                        <subflowPath>Process_POST_ChangeEntProjProcgStatus_BULK</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="formula" updatable="true">
+                              <expression language="XQuery">$output.out_UUID </expression>
+                           </parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="in_EventName" source="field" updatable="true">input.in_Event_Name</parameter>
+                           <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                           <parameter name="in_ApiName" source="field" updatable="true">input.in_API_Name</parameter>
+                           <parameter name="in_ProcessingStatus" source="constant" updatable="true">10</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_HttpStatusCode" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_Detail" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_Reason" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_UUID" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProjectID" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_RestURL" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="l6xklnt9" targetId="l6xklnt4"/>
+                     </subflow>
+                     <end id="l6xklnt4">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="l6xklnt5">
+                     <end id="l6xklnt6">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="l6xklnt7" targetId="l6xklnt2" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$output.out_HttpStatusCode}</arg>
+                           <arg name="right">2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l6xklnt8" targetId="l6xklnt5" type="containerLink"/>
+               </container>
+               <subflow id="l6xklnqj">
+                  <title>POST Enterprise Project</title>
+                  <subflowGUID>8PGaITzevYJhSGyfSG1AMK</subflowGUID>
+                  <subflowPath>Process_POST_A_EnterpriseProject_BULK</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_Body" source="field" updatable="true">temp.tmp_Body</parameter>
+                     <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                     <parameter name="in_EventName" source="field" updatable="true">input.in_Event_Name</parameter>
+                     <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                     <parameter name="in_ParentProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                     <parameter name="in_ApiName" source="field" updatable="true">input.in_API_Name</parameter>
+                     <parameter name="in_ParentMessage" source="field" updatable="true">temp.tmp_MessageToChild</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_HttpStatusCode" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Detail" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_Reason" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_UUID" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_ProjectID" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_RestURL" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="l6xklnta" targetId="l6xklnt1"/>
+               </subflow>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>3cS3XUoUcCedVILqxHnP0e</types1:GUID>
+      <types1:DisplayName>Process_API14_NewProject</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.026Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

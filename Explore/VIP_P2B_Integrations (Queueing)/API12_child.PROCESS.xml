@@ -1,0 +1,394 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HPRPjAXhNUdyOoM-gt-38352860-2022-10-13T13:59:11.535Z::pd.xml</types1:EntryId>
+      <types1:Name>API12_child</types1:Name>
+      <types1:ParentFlowIds>dr7M75QKtBOAPbd-gt-7558238-2021-10-21T11:31:45.05Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-13T13:59:12Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-14T17:54:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-14T17:58:02Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.API12_child/API12_child.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="API12_child"
+                  name="API12_child"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_TimePost"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:TimePost</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Event_Name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Run_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Transaction_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessStartDateTime"
+                          required="true"
+                          type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_TimePost" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:TimePost</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TimePost_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:TimePost</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Vpusers" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:VpUser</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailInput" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefPO" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcPOSTTimeSheetEntry:root</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4rlCvdGslKohT1ji19M3kH</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAdd" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l92mjvor" targetId="l92mjvoq"/>
+               </start>
+               <assignment id="l92mjvoq">
+                  <title>Assignment to tmp_Matters, tmp_Vpusers</title>
+                  <operation source="list" to="temp.tmp_Matters">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_TimePost.RefCode}' AND MatterCode = '{$input.in_TimePost.MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_Vpusers">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:VpUser">
+                        <where>Ucode = '{$input.in_TimePost.Ucode}'</where>
+                     </query>
+                  </operation>
+                  <link id="l93weq7s" targetId="l93weq7r"/>
+               </assignment>
+               <assignment id="l93weq7r">
+                  <title>Assignment to tmp_CompCode</title>
+                  <operation source="formula" to="temp.tmp_CompCode">
+                     <expression language="XQuery">util:iif(fn:string-length($temp.tmp_Matters.RevEntity )=5, fn:substring($temp.tmp_Matters.RevEntity, 1, 2) || fn:substring($temp.tmp_Matters.RevEntity, 4, 2) ,$temp.tmp_Matters.RevEntity)</expression>
+                  </operation>
+                  <link id="l93weq7t" targetId="l98ebj0a"/>
+               </assignment>
+               <eventContainer id="l98ebj0a">
+                  <subflow id="l92ja4ut">
+                     <title>Process_GET_UUID_EMAILID_ECD</title>
+                     <subflowGUID>0TffHPorxMnf0VqlCu83Cl</subflowGUID>
+                     <subflowPath>Process_GET_UUID_EMAILID_ECD</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="input_DefaultEmailAddress" source="field" updatable="true">temp.tmp_Vpusers.MailID</parameter>
+                        <parameter name="input_CompanyCode" source="field" updatable="true">temp.tmp_CompCode</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_BusinessPartnerUUID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_RestURL" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_SAP_Response" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_UUID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_CompanyCode" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_PersonWorkAgreement" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_ServiceCostLevel" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="O_PersonExternalID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l98ebj0c">
+                     <container id="l98ebj4r" type="exclusive">
+                        <title>O_ServiceCostLevel</title>
+                        <flow id="l98ebj4s">
+                           <assignment id="l98ebj4t">
+                              <title>Assign Success Email values 1</title>
+                              <operation source="formula" to="temp.tmp_EmailInput[1]/subject">
+                                 <expression language="XQuery">fn:concat('API12-Timesheet Posting Failed - Invalid User' ,$temp.tmp_TimePost.Ucode,'-',$temp.tmp_TimePost.ProformaNr)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EmailInput[1]/body">
+                                 <expression language="XQuery">'Please Verify User'</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EmailInput[1]/to">
+                                 <expression language="XQuery">util:resolveURN('URN_Exception_EmailList')</expression>
+                              </operation>
+                              <link id="l98ebj52" targetId="l98ebj4u"/>
+                           </assignment>
+                           <service id="l98ebj4u">
+                              <title>sendEmailService 1</title>
+                              <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                              <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_EmailInput</parameter>
+                              </serviceInput>
+                              <link id="l98ebj53" targetId="l98ebj4v"/>
+                           </service>
+                           <end id="l98ebj4v">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <flow id="l98ebj4w">
+                           <assignment id="l98ebj4x">
+                              <title>set Payload2</title>
+                              <operation source="formula" to="temp.tmp_RefPO">
+                                 <expression language="XQuery">&lt;root&gt;
+   &lt;d&gt;
+      &lt;YY1_ServiceCode_TIM&gt;{$input.in_TimePost.ServCode}&lt;/YY1_ServiceCode_TIM&gt;
+      &lt;PersonWorkAgreementExternalID&gt;{$output.O_PersonExternalID}&lt;/PersonWorkAgreementExternalID&gt;
+      &lt;TimeSheetStatus&gt;30&lt;/TimeSheetStatus&gt;
+      &lt;TimeSheetOperation&gt;C&lt;/TimeSheetOperation&gt;
+      &lt;YY1_VTimeStatus_TIM&gt;30&lt;/YY1_VTimeStatus_TIM&gt;      
+      &lt;TimeSheetDate&gt;{fn:concat('/Date(',date:dateToMillis($input.in_TimePost.ActivDate), ')/')}&lt;/TimeSheetDate&gt;
+      &lt;TimeSheetIsReleasedOnSave&gt;true&lt;/TimeSheetIsReleasedOnSave&gt;
+      &lt;TimeSheetDataFields&gt;
+         &lt;WBSElement&gt;{fn:concat('VPC-', $input.in_TimePost.RefCode, '-', fn:substring($input.in_TimePost.MatterCode,1,11))}&lt;/WBSElement&gt;
+         &lt;HoursUnitOfMeasure&gt;H&lt;/HoursUnitOfMeasure&gt;         
+         &lt;ActivityType&gt;{util:iif($output.out_ServiceCostLevel &gt;=1 and $output.out_ServiceCostLevel &lt;=8,'T00'||$output.out_ServiceCostLevel,'')}&lt;/ActivityType&gt;        
+         &lt;RecordedHours&gt;{$input.in_TimePost.NrUnits * 0.1}&lt;/RecordedHours&gt;       
+       &lt;/TimeSheetDataFields&gt;       
+      &lt;CompanyCode&gt;{$temp.tmp_CompCode }&lt;/CompanyCode&gt;
+      &lt;PersonWorkAgreement&gt;{$output.out_PersonWorkAgreement }&lt;/PersonWorkAgreement&gt;
+   &lt;/d&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <link id="l98ebj54" targetId="l98ebj4y"/>
+                           </assignment>
+                           <subflow id="l98ebj4y">
+                              <title>Process_POST_WorkForce_TimeSheet</title>
+                              <subflowGUID>iYefpRp3fWGdmSXja6Qdg3</subflowGUID>
+                              <subflowPath>Process_POST_WorkForce_TimeSheet</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_RefPO </expression>
+                                 </parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_Transaction_ID</parameter>
+                                 <parameter name="in_EventName" source="field" updatable="true">input.in_Event_Name</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Run_ID</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ProcessStartDateTime</parameter>
+                                 <parameter name="in_ApiName" source="field" updatable="true">input.in_API_Name</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_TimeSheetStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PO_TimeSheetRecord" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="l98ebj55" targetId="l98ebj4z"/>
+                           </subflow>
+                           <end id="l98ebj4z">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="l98ebj50" targetId="l98ebj4s" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_ServiceCostLevel}</arg>
+                                 <arg name="right">''</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l98ebj51" targetId="l98ebj4w" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="l98ebj0f">
+                     <subflow id="l98eblak">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_Transaction_ID}</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">'Parent='||$input.in_IICS_Run_ID||'^FailureAt='||util:getProcessId() ||'^'</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                           <parameter name="i_Error" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                           <parameter name="i_Description" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                           <parameter name="i_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="i_DataKey" source="formula" updatable="true">
+                              <expression language="XQuery">'VPointUser='||$temp.tmp_Vpusers.Ucode </expression>
+                           </parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP: could not find a Business Partner to match the VPoint User</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID?$filter=startswith(DefaultEmailAddress,'||$temp.tmp_Vpusers.MailID ||')'		
+</expression>
+                           </parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ProcessStartDateTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l98ebndx" targetId="l98ebj1x"/>
+                     </subflow>
+                     <end id="l98ebj1x">
+                        <title>End 3</title>
+                     </end>
+                  </flow>
+                  <link id="l98ebj0b" targetId="l98ebj0c" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l98ebizu" interrupting="true">
+                        <link id="l98ebj0e" targetId="l98ebj0f" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>d25f35c2-e59d-49bc-94ca-c042e5648944</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-13T13:59:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-14T17:54:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_TimePost": "1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>aDAqaNfZ7ediIhbV9V0Z8q</types1:GUID>
+      <types1:DisplayName>API12_child</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.503Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,207 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>iXSTu0kMVX3cjk9-gt-4367225-2021-09-16T07:13:31.34Z::conn.xml</types1:EntryId>
+      <types1:Name>AppCon-JsonWtiter</types1:Name>
+      <types1:ParentFlowIds>6VkWlwUiQLnzYLn-gt-34298371-2022-06-17T08:57:48.931Z::pd.xml,9Em2kVNKSmvD4te-gt-41519609-2022-06-26T06:21:04.977Z::pd.xml,abclvAhrswVYx8R-gt-10088262-2022-09-20T15:48:25.014Z::pd.xml,beA1vyoY2G7QnG5-gt-9403731-2022-07-08T03:56:25.025Z::pd.xml,BxZmtK9hCHbf2XZ-gt-433211-2022-09-01T09:56:51.451Z::pd.xml,CHdqwx8R8WrY1Sy-gt-6883397-2023-08-25T10:02:43.453Z::pd.xml,dxbdypKwKBqRi92-gt-10408846-2023-05-10T07:28:43.061Z::pd.xml,IEpciZBpDUQbgdw-gt-1949241-2023-07-14T07:29:06.552Z::pd.xml,Jk7KsqeErhNzUze-gt-32077239-2022-06-15T07:22:30.567Z::pd.xml,keKpcnS24FsWTzI-gt-12225521-2022-07-11T16:41:48.175Z::pd.xml,OAPbdutaaabbgdo-gt-31625132-2022-08-23T12:42:30.651Z::pd.xml,oZBJRvDINciZBpD-gt-37242393-2022-10-12T10:48:28.241Z::pd.xml,RMloVVVVVVVVVVV-gt-23167176-2021-08-13T10:41:49.704Z::pd.xml,UZaaaa-gt-1863985-2022-08-26T11:24:28.747Z::pd.xml,yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml,YjENhsJlv58pIO3-gt-1709668-2023-08-23T09:54:37.819Z::pd.xml,YNmumf6S3wOLIFv-gt-41661045-2022-06-26T11:49:24.822Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-09-16T07:13:31Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2022-12-16T08:26:20Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2022-12-16T08:26:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppCon-JsonWtiter/AppCon-JsonWtiter.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppCon-JsonWtiter"
+                     label="AppCon-JsonWtiter"
+                     name="AppCon-JsonWtiter">
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <agent>VIP_IICS_SA_SG_ONPREM_GROUP</agent>
+            <attributes/>
+            <producers>
+               <producer enabled="true" name="JsonWriter-MatterUpdate" typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\matterupdated"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-projmanagerchanged"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\projmanagerchanged"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-addresschanged"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\addresschanged"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-emailaddresschanged"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\emailaddresschanged"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-mattercreated"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\mattercreated"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-invoicecreated"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\invoicecreated"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-paymentbatchclosed"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\paymentbatchclosed"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true"
+                         name="JsonWriter-entitynamechanged"
+                         typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="e:\data\vpcevents\entitynamechanged"/>
+                     <attribute encrypted="false" name="fileExist" value="Override"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="true"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+               <producer enabled="true" name="Generic" typeName="FileWriter">
+                  <description>Use this event target to write output to a file.</description>
+                  <attributes>
+                     <attribute encrypted="false" name="directoryName" value="E:\"/>
+                     <attribute encrypted="false" name="fileExist" value="TryRename"/>
+                     <attribute encrypted="false" name="moveExisting" value=""/>
+                     <attribute encrypted="false" name="eagerDeleteTargetFile" value="false"/>
+                     <attribute encrypted="false" name="tempPrefix" value=""/>
+                     <attribute encrypted="false" name="tempFileName" value=""/>
+                     <attribute encrypted="false" name="forceWrites" value="true"/>
+                     <attribute encrypted="false" name="bufferSize" value=""/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                  </attributes>
+               </producer>
+            </producers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>2pXtdn8cZ4hcSRDTk1q9IQ</types1:GUID>
+      <types1:DisplayName>AppCon-JsonWtiter</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:15.417Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

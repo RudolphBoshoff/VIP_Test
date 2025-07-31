@@ -1,0 +1,292 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>dr7M75QKtBOAPbd-gt-7558238-2021-10-21T11:31:45.05Z::pd.xml</types1:EntryId>
+      <types1:Name>Process-API12-ActualTime</types1:Name>
+      <types1:ParentFlowIds>pbeGoQwg74Rpf6J-gt-38368450-2022-10-13T13:59:12.245Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>VIP_P2B_Integrations</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-10-21T11:31:45Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-14T17:54:13Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-14T17:58:02Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process-API12-ActualTime/Process-API12-ActualTime.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process-API12-ActualTime"
+                  name="Process-API12-ActualTime"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>VIP_P2B_Integrations</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Event_Name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Run_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Transaction_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessStartDateTime"
+                          required="true"
+                          type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VpUsers" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:VpUser</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TimePost_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:TimePost</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TimePost" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:TimePost</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_API12Audit" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_API12_TimePost_Audit</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_StatTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EndTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CountList" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_StartTS_STR" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentNo" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l92gcho4" targetId="kv227d80"/>
+               </start>
+               <assignment id="kv227d80">
+                  <title>Get MAX BatchID</title>
+                  <operation source="query" to="temp.tmp_API12Audit">
+                     <query advanceQuery="true"
+                            from="ConnectionDQMetadata-1:VIP_P2B_API12_TimePost_Audit">
+                        <where>BatchId = (select MAX(BatchId) from DqMetaData.VIP_P2B_API12_TimePost_Audit )</where>
+                     </query>
+                  </operation>
+                  <link id="kv27crke" targetId="kv27crkd"/>
+               </assignment>
+               <assignment id="kv27crkd">
+                  <title>Set Start End TS</title>
+                  <operation source="formula" to="temp.tmp_StartTS_STR">
+                     <expression language="XQuery">$temp.tmp_API12Audit.End_TS</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_EndTime">
+                     <expression language="XQuery">$temp.tmp_API12Audit.End_TS</expression>
+                  </operation>
+                  <link id="l6yowtvx" targetId="ky1721ie"/>
+               </assignment>
+               <assignment id="ky1721ie">
+                  <title>Query - TimePost</title>
+                  <operation source="field" to="temp.tmp_StatTime">input.in_ProcessStartDateTime</operation>
+                  <operation source="list" to="temp.tmp_TimePost_list">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:TimePost">
+                        <where>ProformaNr in ( select cast(trim(substring(recordid,CHARINDEX ('ProformaNr=',recordid)+28,15)) as INT) from eventlog where DateEvent &gt;= '{$temp.tmp_StartTS_STR}' and EventCode='PCOI')</where>
+                     </query>
+                  </operation>
+                  <link id="ky1721j9" targetId="kv6b7euw"/>
+               </assignment>
+               <assignment id="kv6b7euw">
+                  <title>Assignment to tmp_CountList</title>
+                  <operation source="formula" to="temp.tmp_CountList">
+                     <expression language="XQuery">list:count($temp.tmp_TimePost_list)</expression>
+                  </operation>
+                  <link id="kv6b7euy" targetId="kv0wec0p"/>
+               </assignment>
+               <container id="kv0wec0p" type="exclusive">
+                  <title>tmp_TimePost_list</title>
+                  <flow id="kv0wec1k">
+                     <assignment id="l92gchor">
+                        <title>TimePost Head</title>
+                        <operation source="formula" to="temp.tmp_TimePost">
+                           <expression language="XQuery">list:head($temp.tmp_TimePost_list )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TimePost_list">
+                           <expression language="XQuery">list:tail($temp.tmp_TimePost_list )</expression>
+                        </operation>
+                        <link id="l93oucqt" targetId="l927o0jv"/>
+                     </assignment>
+                     <subflow id="l927o0jv">
+                        <title>API12_child</title>
+                        <subflowGUID>aDAqaNfZ7ediIhbV9V0Z8q</subflowGUID>
+                        <subflowPath>API12_child</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_TimePost" source="field">temp.tmp_TimePost</parameter>
+                           <parameter name="in_API_Name" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                           <parameter name="in_Event_Name" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="in_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_Transaction_ID" source="formula" updatable="true">
+                              <expression language="XQuery">$input.in_Transaction_ID||'_'||$temp.tmp_TimePost.SeqNr </expression>
+                           </parameter>
+                           <parameter name="in_ProcessStartDateTime" source="field" updatable="true">input.in_ProcessStartDateTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l927o12v" targetId="l927o12u"/>
+                     </subflow>
+                     <jumpTo id="l927o12u">
+                        <link id="l927o14f" targetId="kv0wec0p"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kv0wec1m">
+                     <create id="kv67fw11">
+                        <title>VIP_P2B_API12_TimePost_Audit</title>
+                        <entityName>ConnectionDQMetadata-1:VIP_P2B_API12_TimePost_Audit</entityName>
+                        <createInput>
+                           <parameter name="Start_TS" source="field" updatable="true">temp.tmp_EndTime</parameter>
+                           <parameter name="End_TS" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_StatTime </expression>
+                           </parameter>
+                           <parameter name="Trigger_TS" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_StatTime </expression>
+                           </parameter>
+                           <parameter name="Flag" source="constant" updatable="true">Y</parameter>
+                           <parameter name="Status" source="constant" updatable="true">I</parameter>
+                           <parameter name="Description" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat('Proforma Nr list Count for this Batch - ',$temp.tmp_CountList)</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="kv67fw12" targetId="kv0wec57"/>
+                     </create>
+                     <end id="kv0wec57">
+                        <title>End 3</title>
+                     </end>
+                  </flow>
+                  <link id="kv0wec1d" targetId="kv0wec1k" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_TimePost_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kv0wec1g" targetId="kv0wec1m" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_TimePost_list}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e5272a8c-a6e0-48b0-9fa2-d8cebcf35ce7</ns1:Id>
+               <ns1:Name>DummyRun</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-10-21T12:12:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:09Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5b19642b-a6d0-411f-88de-ccc1e7c5306a</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-13T13:59:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-14T17:54:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>47fEu7d4FlueqgYrZWmM2C</types1:GUID>
+      <types1:DisplayName>Process-API12-ActualTime</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.167Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

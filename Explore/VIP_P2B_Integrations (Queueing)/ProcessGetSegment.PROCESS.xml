@@ -1,0 +1,239 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>YjhBjop81V4Adyp-gt-21752403-2021-11-11T12:36:46.813Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetSegment</types1:Name>
+      <types1:ParentFlowIds>DELlRkPUEbfV3HR-gt-19944002-2021-11-11T12:36:48.474Z::pd.xml,YNmumf6S3wOLIFv-gt-41661045-2022-06-26T11:49:24.822Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-11-11T12:36:47Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2022-12-16T16:03:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-13T09:30:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetSegment/ProcessGetSegment.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetSegment"
+                  name="ProcessGetSegment"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Segment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_UserTables" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTablesList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SegmentChk" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Segment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_RepMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EntityAccount" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:EntityAccount</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l4zkxwgv" targetId="l4zkxwgu"/>
+               </start>
+               <assignment id="l4zkxwgu">
+                  <title>Assignment to tmp_Matters</title>
+                  <operation source="query" to="temp.tmp_Matters">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_RefCode}' and MatterCode = '{$input.in_MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4zkxwh1" targetId="l4zkxwh0"/>
+               </assignment>
+               <assignment id="l4zkxwh0">
+                  <title>Assignment to temp_RepMaster 1</title>
+                  <operation source="query" to="temp.temp_RepMaster">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:RefMaster">
+                        <where>RefCode = '{$temp.tmp_Matters.RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4zkxwid" targetId="l4zkxwh9"/>
+               </assignment>
+               <assignment id="l4zkxwh9">
+                  <title>Assignment to tmp_Segment</title>
+                  <operation source="formula" to="temp.tmp_Segment">
+                     <expression language="XQuery">fn:substring($temp.tmp_Matters.RevEntity , 1, 2)|| $temp.temp_RepMaster.OrgUnit1</expression>
+                  </operation>
+                  <link id="l4zobf57" targetId="l4zobf56"/>
+               </assignment>
+               <assignment id="l4zobf56">
+                  <title>Assignment to tmp_EntityAccount</title>
+                  <operation source="query" to="temp.tmp_EntityAccount">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:EntityAccount">
+                        <where>EntCode = '{$temp.tmp_Matters.RevEntity}'</where>
+                     </query>
+                  </operation>
+                  <link id="l4zobf58" targetId="l4zkxwhd"/>
+               </assignment>
+               <assignment id="l4zkxwhd">
+                  <title>Assignment to tmp_UserTables 1</title>
+                  <operation source="query" to="temp.tmp_UserTables">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:UserTables">
+                        <where>TabCode = 'APIT' and Name = 'API8' and ElNote = '{$temp.tmp_Segment}'</where>
+                     </query>
+                  </operation>
+                  <link id="lbqowtqp" targetId="lbqowtmp"/>
+               </assignment>
+               <container id="lbqowtmp" type="exclusive">
+                  <title>tmp_EntityAccount</title>
+                  <flow id="lbqowtmt">
+                     <assignment id="lbqowtn2">
+                        <title>Assignment to out_Currency</title>
+                        <operation source="field" to="output.out_Currency">temp.tmp_EntityAccount.BaseCur</operation>
+                     </assignment>
+                     <link id="lbqowtmu" targetId="lbqowtmp" type="containerLink"/>
+                  </flow>
+                  <flow id="lbqowtmw">
+                     <link id="lbqowtmx" targetId="lbqowtmp" type="containerLink"/>
+                  </flow>
+                  <link id="lbqowtms" targetId="lbqowtmt" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_EntityAccount}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lbqowtoi" targetId="lbqowtoh"/>
+                  <link id="lbqowtmv" targetId="lbqowtmw" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_EntityAccount}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+               <container id="lbqowtoh" type="exclusive">
+                  <title>tmp_UserTablesList</title>
+                  <flow id="lbqowtol">
+                     <assignment id="lbqowtp0">
+                        <title>Assignment to out_Segment</title>
+                        <operation source="field" to="output.out_Segment">temp.tmp_UserTables.TagValues</operation>
+                     </assignment>
+                     <link id="lbqowtom" targetId="lbqowtoh" type="containerLink"/>
+                  </flow>
+                  <flow id="lbqowtoo">
+                     <link id="lbqowtop" targetId="lbqowtoh" type="containerLink"/>
+                  </flow>
+                  <link id="lbqowtok" targetId="lbqowtol" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_UserTables}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lbqowtoz" targetId="l4zkxwhw"/>
+                  <link id="lbqowton" targetId="lbqowtoo" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_UserTables}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+               <end id="l4zkxwhw"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>3cd8851b-7442-4868-a1e8-ba998e06ab21</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-12-16T15:52:15Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "11909540",
+	 "in_MatterCode": "CFVG18"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3Tl6KpW41VjfikbfE3uHQy</types1:GUID>
+      <types1:DisplayName>ProcessGetSegment</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.616Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

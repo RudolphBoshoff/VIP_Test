@@ -1,0 +1,360 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CXASqPZx1Xmgaab-gt-17653961-2022-07-15T12:19:41.456Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcAPI10_-_Copy_1</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>This service enables  to get DISBUSREMENT details from SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-07-15T12:19:41Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcAPI10 - Copy 1"
+                            label=""
+                            name="SvcAPI10_-_Copy_1"
+                            uuid="b97cde94-f8cf-44fa-b719-6766350af6d9">
+            <description>This service enables  to get DISBUSREMENT details from SAP</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="Business Partner"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_ALL_DISBURSEMENT"
+                       maxRedirects="100"
+                       name="GET_ALL_DISBURSEMENT"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrives all open disbursements from SAP</description>
+                  <input>
+                     <parameter name="in_X_CSRF_TOKEN"
+                                required="true"
+                                testWith="0Bh94DLLmWfLgtACLuWESg=="
+                                type="string"/>
+                     <parameter name="in_Cookie"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=N5ftr5JrckuXZL6Hh4arDBa8TisUihHsmL76Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="hostname"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_DISBURSEMENTS_API_V1_CDS/YY1_Disbursements_API_v1"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-TOKEN">{$in_X_CSRF_TOKEN}</header>
+                           <header name="Cookie">{$in_Cookie}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="O_Action_Status_Code"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            entireResponse="true"
+                            name="o_CompleteResponse"
+                            type="string"/>
+                     <field description="" name="O_Disbursement_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery>{util:parseJSON($RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description="" name="O_Flag" property="IsTime" type="string"/>
+                     <field description="" name="O_DisTim_ArrayID" type="reference">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_SAP_YY1_LOGGINGTABLE"
+                       maxRedirects="100"
+                       name="POST_SAP_YY1_LOGGINGTABLE"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter description="token"
+                                label="X-CSRF-Token"
+                                name="in-X-CSRF-Token"
+                                required="true"
+                                testWith="52MP-dPmt050y5GU6CuzOA=="
+                                type="string"/>
+                     <parameter description="hostname"
+                                label="hostname"
+                                name="hostname"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter description="Cookie"
+                                label="Cookie"
+                                name="in_Cookie"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=JhJ6DtrejJ22qTxkNRb_eowVVHoRcRHsgUL6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_ID"
+                                name="in_ID"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_SubID"
+                                name="in_SubID"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_CompanyCode"
+                                name="in_CompanyCode"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_KeyValue1"
+                                name="in_KeyValue1"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_KeyValue2"
+                                name="in_KeyValue2"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_KeyValue3"
+                                name="in_KeyValue3"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_Value1"
+                                name="in_Value1"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Body mapping attribute"
+                                label="in_Value2"
+                                name="in_Value2"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">52MP-dPmt050y5GU6CuzOA==</header>
+                           <header name="Cookie">{$in_Cookie}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>"{ID}": "VPC",
+"{SubID}": "API10",
+"{CompanyCode}": "GB01",
+"{KeyValue1}": "5000000099",
+"{KeyValue2}": "2021",
+"{KeyValue3}": "000009",
+"{Value1}":"WBS Matter",
+"{Value2}":"VPC Service Code",
+"{Success}": "1"</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="o_response" property="UUID" type="string"/>
+                  </output>
+               </action>
+               <action category="timedisbursement"
+                       failOnError="true"
+                       forSearch="false"
+                       label="Get_SAP_TIMEDIS"
+                       maxRedirects="100"
+                       name="Get_SAP_TIMEDIS"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="in_X_CSRF_TOKEN"
+                                required="false"
+                                testWith="ji4GrJemYwOjTsfgao05UA=="
+                                type="string"/>
+                     <parameter name="in_Cookie"
+                                required="false"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=XyaM1YXi8uBAZIsF_Q67Dk97lEcRdBHsgmX6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="hostname"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_DISBURSEMENTS_API_V1_CDS/YY1_Disbursements_API_v1"
+                                        verb="GET">
+                        <httpHeaders>
+                           <header name="X-CSRF-TOKEN">{$in_X_CSRF_TOKEN}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$in_Cookie}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="O_SAP_Array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery>{util:toJSON($RESTResponse)}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PO_API10">
+                  <description/>
+                  <detail>
+                     <field name="D_ID" type="string"/>
+                     <field name="D_SourceLedger" type="string"/>
+                     <field name="D-CompanyCode" type="string"/>
+                     <field name="D_FiscalYear" type="string"/>
+                     <field name="D_AccountingDocument" type="string"/>
+                     <field name="D_LedgerGLLineItem" type="string"/>
+                     <field name="D_Ledger" type="string"/>
+                     <field name="D_AccountingDocumentType" type="string"/>
+                     <field name="D_PostingDate" type="string"/>
+                     <field name="D_TradingPartner" type="string"/>
+                     <field name="D_GLAccount" type="string"/>
+                     <field name="D_Product" type="string"/>
+                     <field name="D_AmountInTransactionCurrency" type="string"/>
+                     <field name="D_Quantity" type="string"/>
+                     <field name="D_BaseUnit" type="string"/>
+                     <field name="D_WBSElementExternalID" type="string"/>
+                     <field name="D_TransactionCurrency" type="string"/>
+                     <field name="D_ChartOfAccounts" type="string"/>
+                     <field name="D_ExchangeRateDate" type="string"/>
+                     <field name="D_ExchangeRateType" type="string"/>
+                     <field name="D_Code_01" type="string"/>
+                     <field name="D_Code" type="string"/>
+                     <field name="D_TargetGLAccount" type="string"/>
+                     <field name="D_GLAccountValid_From" type="string"/>
+                     <field name="D_TargetProduct" type="string"/>
+                     <field name="D_ProductValid_From" type="string"/>
+                     <field name="D_YY1_Customer_PPH" type="string"/>
+                     <field name="D_ServiceCode" type="string"/>
+                     <field name="D_ServiceCodeValidFrom" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="FiscalYear" type="int"/>
+                     <field name="ServiceCodeValidFrom" type="string"/>
+                     <field name="Product" type="string"/>
+                     <field name="TargetGLAccount" type="string"/>
+                     <field name="ExchangeRateType" type="string"/>
+                     <field name="WBSElementExternalID" type="string"/>
+                     <field name="TransactionCurrency" type="string"/>
+                     <field name="ProductValid_From" type="string"/>
+                     <field name="ServiceCode" type="string"/>
+                     <field name="AccountingDocumentType" type="string"/>
+                     <field name="ExchangeRateDate" type="datetime"/>
+                     <field name="ID" type="string"/>
+                     <field name="metadata" type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TradingPartner" type="string"/>
+                     <field name="SourceLedger" type="string"/>
+                     <field name="AmountInTransactionCurrency" type="double"/>
+                     <field name="Ledger" type="string"/>
+                     <field name="GLAccount" type="int"/>
+                     <field name="Code_01" type="string"/>
+                     <field name="Quantity" type="int"/>
+                     <field name="GLAccountValid_From" type="string"/>
+                     <field name="BaseUnit" type="string"/>
+                     <field name="Code" type="string"/>
+                     <field name="LedgerGLLineItem" type="int"/>
+                     <field name="ChartOfAccounts" type="string"/>
+                     <field name="PostingDate" type="datetime"/>
+                     <field name="AccountingDocument" type="double"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="TargetProduct" type="string"/>
+                     <field name="YY1_Customer_PPH" type="string"/>
+                     <field name="IsTime" type="string"/>
+                     <field name="ServiceCodeDescription" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" type="string"/>
+                     <field name="type" type="string"/>
+                     <field name="uri" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>a8EjdJwOvZwbQb3ESRHy2g</types1:GUID>
+      <types1:DisplayName>SvcAPI10 - Copy 1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:15.272Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

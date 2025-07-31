@@ -1,0 +1,534 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>0EKZhHwzZsMBw8j-gt-10100679-2021-08-13T10:41:44.987Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetEntityDetails</types1:Name>
+      <types1:ParentFlowIds>DELlRkPUEbfV3HR-gt-19944002-2021-11-11T12:36:48.474Z::pd.xml,goXFtclq1iUsRvs-gt-37228579-2022-10-12T10:48:15.111Z::pd.xml,oBbeAzu2JQhtGci-gt-23166653-2021-08-13T10:41:48.233Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:45Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-01-05T08:30:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-03T08:11:04Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetEntityDetails/ProcessGetEntityDetails.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetEntityDetails"
+                  name="ProcessGetEntityDetails"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MatterCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_EntityDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POEntityDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefAddress</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Addresses</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BillAdd2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddCode2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LookValues" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:LookValues</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DeriveLang" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="buffer" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LangCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ElCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ConvertValues" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LookValuesPayterm" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:LookValues</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_EI" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_EC" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_ER" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_eOther" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EI" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EC" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EO" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress_Active" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress_AddrType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress_AddrNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_City" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Country" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_PostalCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Address" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Address2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Address3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Address4" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Addresses_Address5" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kpzpiovw" targetId="kpzpiovv"/>
+               </start>
+               <assignment id="kpzpiovv">
+                  <title>Assignment to tmp_Matters, tmp_RefMaster etc.</title>
+                  <operation source="query" to="temp.tmp_Matters">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_RefCode}' AND MatterCode = '{$input.in_MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_RefMaster">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:RefMaster">
+                        <where>RefCode = '{$input.in_RefCode}' </where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_RmClients">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                        <where>AddrCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="ks5wbssg" targetId="ks5wbssf"/>
+               </assignment>
+               <assignment id="ks5wbssf">
+                  <title>Assignment to tmp_Flag, tmp_LangCode</title>
+                  <operation source="formula" to="temp.tmp_Flag">
+                     <expression language="XQuery">util:iif(
+
+($input.in_RefCode = $temp.tmp_RmClients.AddrCode )
+and
+($input.in_RefCode = $temp.tmp_RmClients.BillAddress  )
+
+, 1, util:iif(util:isNull($temp.tmp_RmClients.BillAddress) , 1 , util:iif(empty($temp.tmp_RmClients.BillAddress), 1 , 2 )))</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_LangCode">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_RefMaster.LangCode ), 'ENG', $temp.tmp_RefMaster.LangCode )</expression>
+                  </operation>
+                  <link id="kt177zs4" targetId="kt177zs3"/>
+               </assignment>
+               <assignment id="kt177zs3">
+                  <title>Assignment to tmp_LookValues</title>
+                  <operation source="query" to="temp.tmp_LookValues">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:LookValues">
+                        <where>TabCode = 'LANG' AND ElCode = '{$temp.tmp_LangCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kt177zs5" targetId="kt16q94z"/>
+               </assignment>
+               <assignment id="kt16q94z">
+                  <title>Assignment to tmp_ElCode</title>
+                  <operation source="formula" to="temp.tmp_ElCode">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_LookValues.ElCode ),'ENG',$temp.tmp_LookValues.ElCode )</expression>
+                  </operation>
+                  <link id="kt16q951" targetId="kt13ifff"/>
+               </assignment>
+               <assignment id="kt13ifff">
+                  <title>Assignment to tmp_DeriveLang</title>
+                  <operation source="formula" to="temp.tmp_DeriveLang">
+                     <expression language="XQuery">util:iif(($temp.tmp_LangCode='ENG') , 'EN', 
+
+util:iif(util:isNull($temp.tmp_LookValues.ConvertValues),fn:substring($temp.tmp_LookValues.ElCode , 1, 2),$temp.tmp_LookValues.ConvertValues)
+)
+
+
+
+</expression>
+                  </operation>
+                  <link id="kwn42wup" targetId="kwn42wuo"/>
+               </assignment>
+               <assignment id="kwn42wuo">
+                  <title>Assignment to tmp_LookValuesPayterm</title>
+                  <operation source="query" to="temp.tmp_LookValuesPayterm">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:LookValues">
+                        <where>TabCode = 'PAYT' and ElCode = '{$temp.tmp_RmClients.PayTerm}'</where>
+                     </query>
+                  </operation>
+                  <link id="kwn42wuq" targetId="ks5wbst7"/>
+               </assignment>
+               <assignment id="l4djaa2n">
+                  <title>Assignment to out_EntityDetails</title>
+                  <operation source="formula" to="output.out_EntityDetails">
+                     <expression language="XQuery"> &lt;POEntityDetails&gt;
+   &lt;RevEntity&gt;{$temp.tmp_Matters.RevEntity }&lt;/RevEntity&gt;
+   &lt;RefType&gt;{util:iif($temp.tmp_RefMaster.RefType = 'I',1,2)}&lt;/RefType&gt;
+   &lt;AddrCode&gt;{$temp.tmp_RmClients.AddrCode }&lt;/AddrCode&gt;
+   &lt;BillAddress&gt;{$temp.tmp_RmClients.BillAddress }&lt;/BillAddress&gt;
+   &lt;cText&gt;&lt;/cText&gt;
+   &lt;cType&gt;&lt;/cType&gt;
+   &lt;Active&gt;{$temp.tmp_RefAddress.Active}&lt;/Active&gt;
+   &lt;AddrType&gt;{$temp.tmp_RefAddress.AddrType}&lt;/AddrType&gt;
+   &lt;AddrNr&gt;{$temp.tmp_RefAddress.AddrNr}&lt;/AddrNr&gt;
+   &lt;City&gt;{$temp.tmp_Addresses.City  }&lt;/City&gt;
+   &lt;Country&gt;{$temp.tmp_Addresses.Country}&lt;/Country&gt;
+   &lt;PostalCode&gt;{$temp.tmp_Addresses.PostalCode }&lt;/PostalCode&gt;
+   &lt;Address&gt;{$temp.tmp_Addresses.Address }&lt;/Address&gt;
+   &lt;RefMasterAdminGroup&gt;{$temp.tmp_RefMaster.AdminGroup }&lt;/RefMasterAdminGroup&gt;
+   &lt;RefMasterName&gt;{$temp.tmp_RefMaster.Name }&lt;/RefMasterName&gt;
+   &lt;RefCode&gt;{$temp.tmp_RefMaster.RefCode }&lt;/RefCode&gt;
+   &lt;Language&gt;{$temp.tmp_DeriveLang }&lt;/Language&gt;
+   &lt;FileStatus&gt;{$temp.tmp_RmClients.FileStatus }&lt;/FileStatus&gt;
+   &lt;OrgCode&gt;{$temp.tmp_Matters.OrgCode }&lt;/OrgCode&gt;
+   &lt;MatterStatus&gt;{$temp.tmp_Matters.MatterStatus }&lt;/MatterStatus&gt;
+   &lt;BalanceCur&gt;{$temp.tmp_Matters.BalanceCur }&lt;/BalanceCur&gt;
+   &lt;OrgUnit1&gt;&lt;/OrgUnit1&gt;
+   &lt;CurCode&gt;{$temp.tmp_Matters.CurCode }&lt;/CurCode&gt;
+   &lt;Region&gt;&lt;/Region&gt;
+   &lt;Address2&gt;{$temp.tmp_Addresses.Address2 }&lt;/Address2&gt;
+   &lt;Address3&gt;{$temp.tmp_Addresses.Address3 }&lt;/Address3&gt;
+   &lt;Address4&gt;{$temp.tmp_Addresses.Address4 }&lt;/Address4&gt;
+   &lt;Address5&gt;{$temp.tmp_Addresses.Address5 }&lt;/Address5&gt;
+   &lt;Payterm&gt;{$temp.tmp_RmClients.PayTerm }&lt;/Payterm&gt;
+   &lt;PaytermTag&gt;{$temp.tmp_LookValuesPayterm.Tag }&lt;/PaytermTag&gt;
+   &lt;EmailInvoice&gt;{fn:normalize-space(fn:substring-before($temp.tmp_RefContacts_EI.cText||";",';'))}&lt;/EmailInvoice&gt;
+   &lt;EmailInvoiceCC&gt;{fn:normalize-space(fn:substring-before($temp.tmp_RefContacts_EC.cText||";",';'))}&lt;/EmailInvoiceCC&gt;
+   &lt;EmailInvoiceReminder&gt;{fn:normalize-space(fn:substring-before($temp.tmp_RefContacts_ER.cText||";",';'))}&lt;/EmailInvoiceReminder&gt;
+   &lt;EmailOther&gt;{util:iif(util:isNull($temp.tmp_RefContacts_eOther.cText),util:iif(fn:substring($temp.tmp_Matters.RevEntity,1,2) = 'SG', 'SG','hk') ||'creditcontrol@vistra.com', fn:substring-before($temp.tmp_RefContacts_eOther.cText||";",';'))}&lt;/EmailOther&gt;
+&lt;AltName&gt;{$temp.tmp_RefMaster.AltName}&lt;/AltName&gt;
+&lt;/POEntityDetails&gt;</expression>
+                  </operation>
+                  <link id="l4dwfb13" targetId="l43ws81k"/>
+               </assignment>
+               <container id="ks5wbst7" type="exclusive">
+                  <title>Flag_RefCode_BillAddress</title>
+                  <flow id="ks5wbstl">
+                     <assignment id="l43ws6lt">
+                        <title>Query VPoint Using AddrCode</title>
+                        <operation source="query" to="temp.tmp_RefAddress">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefAddress">
+                              <where>RefCode= '{$input.in_RefCode}' and AddrType='BI' and Active=1</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_Addresses">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:Addresses">
+                              <where>AddrNr in ( select AddrNr from dbo.RefAddress where RefCode= '{$input.in_RefCode}' and AddrType='BI' and Active=1)</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_EI">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode = '{$input.in_RefCode}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_RefCode}' and cType = 'EI' and cActive = 1)</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_EC">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$input.in_RefCode}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_RefCode}' and cType = 'EC' and cActive = 1 )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_ER">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$input.in_RefCode}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_RefCode}' and cType = 'ER' and cActive = 1 )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_eOther">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$input.in_RefCode}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$input.in_RefCode}' and cType like 'E%' and cType not in ('EI','EC', 'ER') and cActive = 1)</where>
+                           </query>
+                        </operation>
+                     </assignment>
+                     <link id="l43ws830" targetId="ks5wbst7" type="containerLink"/>
+                  </flow>
+                  <flow id="ks5wbstn">
+                     <assignment id="l5smcic1">
+                        <title>Query VPoint using BillAddress</title>
+                        <operation source="query" to="temp.tmp_RefAddress">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefAddress">
+                              <where>RefCode= '{$temp.tmp_RmClients.BillAddress}' and AddrType='BI' and Active=1</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_Addresses">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:Addresses">
+                              <where>AddrNr in ( select AddrNr from dbo.RefAddress where RefCode= '{$temp.tmp_RmClients.BillAddress}' and AddrType='BI' and Active=1)</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_EI">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode = '{$temp.tmp_RmClients.BillAddress}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$temp.tmp_RmClients.BillAddress}' and cType = 'EI' and cActive = 1)</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_EC">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$temp.tmp_RmClients.BillAddress}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$temp.tmp_RmClients.BillAddress}' and cType = 'EC' and cActive = 1 )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_ER">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$temp.tmp_RmClients.BillAddress}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$temp.tmp_RmClients.BillAddress}' and cType = 'ER' and cActive = 1 )</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RefContacts_eOther">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RefContacts">
+                              <where>RefCode ='{$temp.tmp_RmClients.BillAddress}' and SeqNr in (select  max(SeqNr) from dbo.RefContacts where RefCode='{$temp.tmp_RmClients.BillAddress}' and cType like 'E%' and cType not in ('EI','EC', 'ER') and cActive = 1)</where>
+                           </query>
+                        </operation>
+                     </assignment>
+                     <link id="l43ws81n" targetId="ks5wbst7" type="containerLink"/>
+                  </flow>
+                  <link id="ks5wbste" targetId="ks5wbstl" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_Flag}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ks5wbsth" targetId="ks5wbstn" type="containerLink"/>
+                  <link id="l4mc6ml1" targetId="l4djaa2n"/>
+               </container>
+               <end id="l43ws81k">
+                  <title>End 1</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1556b88f-3e85-4e73-8736-0dac1ddb34e7</ns1:Id>
+               <ns1:Name>BP with Email Address, without Billing Address</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-25T07:30:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-24T10:27:11Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "16608352",
+	 "in_MatterCode": "DBLUX"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>247c0795-7d0d-4da1-9d2c-dba94c15ccb8</ns1:Id>
+               <ns1:Name>DiffBiill</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-25T07:30:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-18T11:09:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000961",
+	 "in_MatterCode": "TSAC1"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7589a831-afe3-4f35-a219-f1c017cdc8ce</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:45Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-18T11:09:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12002308",
+	 "in_MatterCode": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>1dcc5e1e-3c57-47ea-9bf8-3fe6a11caf01</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:45Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-18T11:09:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000038",
+	 "in_MatterCode": "TSAC1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7tQRWXi2VlxloCWtEOyuyE</types1:GUID>
+      <types1:DisplayName>ProcessGetEntityDetails</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.156Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

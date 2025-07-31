@@ -1,0 +1,660 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wnHUPAZf5kck8jK-gt-20052621-2021-08-19T13:35:46.36Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessPostAccrualsTimeEntry</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Fetch data for fixed fee accurals at monthly basis and runs on schedule</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>roger.fbaatjes@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-08-19T13:35:46Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:53Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessPostAccrualsTimeEntry"
+                  name="ProcessPostAccrualsTimeEntry"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Fetch data for fixed fee accurals at monthly basis and runs on schedule</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="delimitedContent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppGetJEAccrualPostingTE:JEAccrualsPostingTEContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2H0CRbkVLqngxkY7F6RK64</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_RequestHeader_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualCreateRequestHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0SdxFA3iLE2kGn4CYoPXC0</option>
+                  </options>
+               </field>
+               <field description="" name="out_JournalHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dMn3Ev4m7ydjm5sVoRd4Eg</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_requestHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualCreateRequestHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0SdxFA3iLE2kGn4CYoPXC0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_requestHeader_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualCreateRequestHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0SdxFA3iLE2kGn4CYoPXC0</option>
+                  </options>
+               </field>
+               <field description="" name="work_requestHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualCreateRequestHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0SdxFA3iLE2kGn4CYoPXC0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dMn3Ev4m7ydjm5sVoRd4Eg</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryHeader_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dMn3Ev4m7ydjm5sVoRd4Eg</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryAccrualItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4ALt3qllOQLdUNyPe6LdG2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_entryAccrualItem_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryAccrualItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4ALt3qllOQLdUNyPe6LdG2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ItemXML" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ItemXML_Full" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_content_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppGetJEAccrualPostingTE:JEAccrualsPostingTERecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2H0CRbkVLqngxkY7F6RK64</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_content" type="reference">
+                  <options>
+                     <option name="referenceTo">AppGetJEAccrualPostingTE:JEAccrualsPostingTERecord</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2H0CRbkVLqngxkY7F6RK64</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_EnterpriseProj" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_Accruals" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_VPCEVENTS" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppGetJEAccrualPostingTE:JEAccrualsPostingTE"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="krjdjfzp" targetId="krjdjfzo"/>
+               </start>
+               <assignment id="krjdjfzo">
+                  <title>reset work_Variable; remove headers from data</title>
+                  <operation source="formula" to="temp.tmp_content_list">
+                     <expression language="XQuery">$input.delimitedContent[1]/record </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_content">
+                     <expression language="XQuery">list:head($temp.tmp_content_list )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.work_requestHeader[1]/ID">
+                     <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                  </operation>
+                  <link id="kwt3tkfn" targetId="kwt3tkfm"/>
+               </assignment>
+               <assignment id="kwt3tkfm">
+                  <title>Assignment to tmp_username, tmp_hostname etc.</title>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN("URN_SAP_Username")</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN("URN_SAP_Hostname")</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN("URN_SAP_Pwd")</expression>
+                  </operation>
+                  <link id="kwt3tkfo" targetId="ktbj1k08"/>
+               </assignment>
+               <container id="ktbj1k08" type="exclusive">
+                  <title>ID</title>
+                  <flow id="ktbj1k09">
+                     <assignment id="ktbj1k0a">
+                        <title>Assignment to CreationDate, ID etc.</title>
+                        <operation source="constant" to="temp.tmp_requestHeader[1]/CreationDate">{$temp.tmp_content[1]/Creationdate}</operation>
+                        <operation source="formula" to="temp.tmp_requestHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_requestHeader[1]/SenderBusinessSystemId">
+                           <expression language="XQuery">$temp.tmp_content[1]/SenderBusinessSystemId </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/AccountingDocumentType">
+                           <expression language="XQuery">$temp.tmp_content[1]/AccountingDocumentType </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/BusinessTransactionType">
+                           <expression language="XQuery">$temp.tmp_content[1]/BusinessTransactionType </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/CompanyCode">
+                           <expression language="XQuery">$temp.tmp_content[1]/CompanyCode </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/CreatedByUser">
+                           <expression language="XQuery">$temp.tmp_content[1]/CreatedByUser </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/CreationDateTime">{$temp.tmp_content[1]/Creationdate}</operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/DocumentDate">{$temp.tmp_content[1]/DocumentDate}</operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/DocumentHeaderText">
+                           <expression language="XQuery">$temp.tmp_content[1]/DocumentHeaderText </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/DocumentReferenceID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/OriginalReferenceDocumentType">
+                           <expression language="XQuery">$temp.tmp_content[1]/OriginalReferenceDocumentType </expression>
+                        </operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/PostingDate">{$temp.tmp_content[1]/PostingDate}</operation>
+                        <operation source="constant" to="temp.tmp_entryHeader[1]/ReversalDate">{$temp.tmp_content[1]/ReversalDate}</operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/ReversalReason">
+                           <expression language="XQuery">$temp.tmp_content[1]/ReversalReason </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/SenderBusinessSystemId">
+                           <expression language="XQuery">$temp.tmp_content[1]/SenderBusinessSystemId </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryAccrualItem[1]/AmountInTransactionCurrency">
+                           <expression language="XQuery">$temp.tmp_content[1]/AmountInTransactionCurrency </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/CurrencyCode">
+                           <expression language="XQuery">$temp.tmp_content[1]/CurrencyCode </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/GLAccount">
+                           <expression language="XQuery">$temp.tmp_content[1]/GLAccount </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryAccrualItem[1]/ReferenceDocumentItem">
+                           <expression language="XQuery">fn:string("ERF")</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/SAPProject">
+                           <expression language="XQuery">$temp.tmp_content[1]/SAPProject </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/SoldMaterial">
+                           <expression language="XQuery">$temp.tmp_content[1]/SoldMaterial </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/WBSElement">
+                           <expression language="XQuery">$temp.tmp_content[1]/WBSElement </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem[1]/YY1_SOPCustomer">
+                           <expression language="XQuery">$temp.tmp_content[1]/YY1_SOPCustomer </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/Reference1InDocumentHeader">
+                           <expression language="XQuery">$temp.tmp_content[1]/Reference1InDocumentHeader </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryHeader[1]/Reference2InDocumentHeader">
+                           <expression language="XQuery">$temp.tmp_content[1]/Reference2InDocumentHeader </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_entryAccrualItem[1]/AccountAssignmentType">
+                           <expression language="XQuery">$temp.tmp_content[1]/AccountAssignmentType </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryHeader[1]/DocumentItemText">
+                           <expression language="XQuery">$temp.tmp_content[1]/DocumentItemText </expression>
+                        </operation>
+                        <link id="ktbj1k0q" targetId="ktbj1k0b"/>
+                     </assignment>
+                     <assignment id="ktbj1k0b">
+                        <title>Assignment to tmp_entryAccrualItem_list, tmp_ItemXML etc.</title>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem_list">
+                           <expression language="XQuery">list:append($temp.tmp_entryAccrualItem_list , $temp.tmp_entryAccrualItem )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ItemXML">
+                           <expression language="XQuery">&lt;Item&gt;
+&lt;DocumentItemText&gt;{$temp.tmp_entryHeader[1]/DocumentItemText }&lt;/DocumentItemText&gt;	&lt;DocumentHeaderText&gt;{$temp.tmp_entryHeader[1]/DocumentHeaderText} &lt;/DocumentHeaderText&gt;
+	&lt;GLAccount&gt;{$temp.tmp_entryAccrualItem[1]/GLAccount}&lt;/GLAccount&gt;
+	&lt;AmountInTransactionCurrency currencyCode="{$temp.tmp_entryAccrualItem[1]/CurrencyCode}"&gt;{$temp.tmp_entryAccrualItem[1]/AmountInTransactionCurrency}&lt;/AmountInTransactionCurrency&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$temp.tmp_entryAccrualItem[1]/YY1_SOPCustomer}&lt;/ns3:YY1_SOPCustomer&gt;
+	&lt;ProfitabilitySupplement&gt;
+		&lt;Customer&gt;{$temp.tmp_entryAccrualItem[1]/YY1_SOPCustomer}&lt;/Customer&gt;
+		&lt;WBSElement&gt;{$temp.tmp_entryAccrualItem[1]/WBSElement}&lt;/WBSElement&gt;
+	&lt;/ProfitabilitySupplement&gt;
+	&lt;SoldMaterial&gt;{$temp.tmp_entryAccrualItem[1]/SoldMaterial}&lt;/SoldMaterial&gt;
+	&lt;SAPProject&gt;{$temp.tmp_entryAccrualItem[1]/SAPProject}&lt;/SAPProject&gt;
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ItemXML_Full">
+                           <expression language="XQuery">fn:string-join(($temp.tmp_ItemXML_Full , $temp.tmp_ItemXML), '' )</expression>
+                        </operation>
+                        <link id="ktbj1k0r" targetId="ktbj1k0c"/>
+                     </assignment>
+                     <assignment id="ktbj1k0c">
+                        <title>Assignment to tmp_content_list, tmp_content</title>
+                        <operation source="formula" to="temp.tmp_content_list">
+                           <expression language="XQuery">list:tail($temp.tmp_content_list )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_content">
+                           <expression language="XQuery">list:head($temp.tmp_content_list )</expression>
+                        </operation>
+                     </assignment>
+                     <link id="ktbj1k0p" targetId="ktbj1k08" type="containerLink"/>
+                  </flow>
+                  <flow id="ktbj1k0d">
+                     <assignment id="ktbj1k0e">
+                        <title>Assignment to tmp_ItemXML_Full, tmp_Payload_Accruals etc.</title>
+                        <operation source="formula" to="temp.tmp_ItemXML_Full">
+                           <expression language="XQuery">for $x in $temp.tmp_entryAccrualItem_list return
+&lt;Item&gt;
+&lt;DocumentItemText&gt;{$temp.tmp_entryHeader[1]/DocumentItemText  /text() }&lt;/DocumentItemText&gt;	
+&lt;GLAccount&gt;{$x/GLAccount/text()}&lt;/GLAccount&gt;
+&lt;Material&gt;{$x/SoldMaterial/text()}&lt;/Material&gt;
+	&lt;AmountInTransactionCurrency currencyCode="{$x/CurrencyCode/text()}"&gt;{$x/AmountInTransactionCurrency/text()}&lt;/AmountInTransactionCurrency&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$x/YY1_SOPCustomer/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+{ if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (	
+	&lt;AccountAssignment&gt;
+        &lt;AccountAssignmentType&gt;EO&lt;/AccountAssignmentType&gt;
+    &lt;/AccountAssignment&gt;
+) else ()
+}
+{ if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (	
+    
+    &lt;ProfitabilitySupplement&gt;
+		&lt;Customer&gt;{$x/YY1_SOPCustomer/text()}&lt;/Customer&gt;
+		&lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+        &lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+	&lt;/ProfitabilitySupplement&gt;
+) else (
+	&lt;AccountAssignment&gt;
+		&lt;Customer&gt;{$x/YY1_SOPCustomer/text()}&lt;/Customer&gt;
+		&lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+        &lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+    &lt;/AccountAssignment&gt;
+)}
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Payload_Accruals">
+                           <expression language="XQuery">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" &gt;
+	&lt;soap:Header/&gt;
+	&lt;soap:Body&gt;
+		&lt;ns:JournalEntryBulkCreateRequest xmlns:ns="http://sap.com/xi/SAPSCORE/SFIN"&gt;
+			&lt;MessageHeader&gt;
+				&lt;ID&gt;{$temp.tmp_requestHeader[1]/ID/text()} &lt;/ID&gt;
+				&lt;CreationDateTime&gt;{$temp.tmp_requestHeader[1]/CreationDate/text() }&lt;/CreationDateTime&gt;
+				&lt;SenderBusinessSystemId&gt;{$temp.tmp_requestHeader[1]/SenderBusinessSystemId/text()} &lt;/SenderBusinessSystemId&gt;
+			&lt;/MessageHeader&gt;
+            
+            &lt;JournalEntryCreateRequest&gt;
+	&lt;MessageHeader&gt;
+		&lt;ID&gt;{$temp.tmp_entryHeader[1]/ID/text() } &lt;/ID&gt;
+		&lt;CreationDateTime&gt;{$temp.tmp_requestHeader[1]/CreationDate/text()} &lt;/CreationDateTime&gt;
+	&lt;/MessageHeader&gt;
+	&lt;JournalEntry&gt;
+		&lt;OriginalReferenceDocumentType&gt;{$temp.tmp_entryHeader[1]/OriginalReferenceDocumentType/text()} &lt;/OriginalReferenceDocumentType&gt;
+		&lt;BusinessTransactionType&gt;{$temp.tmp_entryHeader[1]/BusinessTransactionType/text()} &lt;/BusinessTransactionType&gt;
+		&lt;AccountingDocumentType&gt;{$temp.tmp_entryHeader[1]/AccountingDocumentType/text()} &lt;/AccountingDocumentType&gt;
+		&lt;Reference1InDocumentHeader&gt;{$temp.tmp_entryHeader[1]/Reference1InDocumentHeader/text()} &lt;/Reference1InDocumentHeader&gt;
+		&lt;Reference2InDocumentHeader&gt;{$temp.tmp_entryHeader[1]/Reference2InDocumentHeader/text()} &lt;/Reference2InDocumentHeader&gt;
+		&lt;ReversalReason&gt;{$temp.tmp_entryHeader[1]/ReversalReason/text()} &lt;/ReversalReason&gt;
+		&lt;ReversalDate&gt;{$temp.tmp_entryHeader[1]/ReversalDate/text()} &lt;/ReversalDate&gt;
+		&lt;CreatedByUser&gt;{$temp.tmp_entryHeader[1]/CreatedByUser/text()} &lt;/CreatedByUser&gt;
+		&lt;CompanyCode&gt;{$temp.tmp_entryHeader[1]/CompanyCode/text()} &lt;/CompanyCode&gt;
+		&lt;DocumentDate&gt;{$temp.tmp_entryHeader[1]/DocumentDate/text()} &lt;/DocumentDate&gt;
+		&lt;PostingDate&gt;{$temp.tmp_entryHeader[1]/PostingDate/text()} &lt;/PostingDate&gt;
+		&lt;DocumentHeaderText&gt;{$temp.tmp_entryHeader[1]/DocumentHeaderText/text()} &lt;/DocumentHeaderText&gt;
+&lt;!--DocumentReferenceID&gt;{$temp.tmp_entryHeader[1]/DocumentItemText} &lt;/DocumentReferenceID--&gt;
+
+{$temp.tmp_ItemXML_Full  }
+
+	&lt;/JournalEntry&gt;
+&lt;/JournalEntryCreateRequest&gt;
+
+		&lt;/ns:JournalEntryBulkCreateRequest&gt;
+	&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Payload_EnterpriseProj">
+                           <expression language="XQuery">&lt;EventDetails&gt;
+   &lt;eventChangeType&gt;NEW&lt;/eventChangeType&gt;
+   &lt;eventTypeName&gt;MATTER_CREATED&lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;Matters.RefCode&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$temp.tmp_entryAccrualItem[1]/YY1_SOPCustomer}&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;Matters.MatterCode&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$temp.tmp_entryHeader[1]/Reference1InDocumentHeader}&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;
+&lt;/EventDetails&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Payload_VPCEVENTS">
+                           <expression language="XQuery">util:toJSON(&lt;EventDetails&gt;
+   &lt;eventChangeType&gt;NEW&lt;/eventChangeType&gt;
+   &lt;eventTypeName&gt;MATTER_CREATED&lt;/eventTypeName&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;Matters.RefCode&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$temp.tmp_entryAccrualItem[1]/YY1_SOPCustomer}&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;Matters.MatterCode&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$temp.tmp_entryHeader[1]/Reference1InDocumentHeader}&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;
+&lt;/EventDetails&gt;)</expression>
+                        </operation>
+                        <link id="ktbj1k0t" targetId="ktbj1k0f"/>
+                     </assignment>
+                     <assignment id="ktbj1k0l">
+                        <title>Assignment to ID</title>
+                        <operation source="formula" to="temp.work_requestHeader[1]/ID">
+                           <expression language="XQuery">$temp.tmp_content[1]/ID </expression>
+                        </operation>
+                        <link id="ktbj1k0z" targetId="ktbj1k0m"/>
+                     </assignment>
+                     <assignment id="ktbj1k0m">
+                        <title>reset tmp_requestHeader_list</title>
+                        <operation source="formula" to="temp.tmp_requestHeader_list">
+                           <expression language="XQuery">list:tail(list:head($temp.tmp_requestHeader_list ) )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_entryAccrualItem_list">
+                           <expression language="XQuery">list:tail(list:head($temp.tmp_entryAccrualItem_list ))</expression>
+                        </operation>
+                        <link id="ktbj1k1r" targetId="ktbj1k1k"/>
+                     </assignment>
+                     <eventContainer id="ktbj1k0f">
+                        <subflow id="ktbj1k0j">
+                           <title>process_mattercreated</title>
+                           <subflowGUID>5FxEG3udRoMljY1OlVhcay</subflowGUID>
+                           <subflowPath>Process_MatterCreated</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="X_TRANSACTION_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">fn:concat('API-15', fn:current-date())</expression>
+                              </parameter>
+                              <parameter name="Payload" source="field" updatable="true">temp.tmp_Payload_EnterpriseProj</parameter>
+                           </input>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="ktbj1k0g">
+                           <link id="ktbj1k0x" targetId="ktbj1k0f" type="containerLink"/>
+                        </flow>
+                        <flow id="ktbj1k0h">
+                           <end id="ktbj1k0i">
+                              <title>remove END Later</title>
+                           </end>
+                        </flow>
+                        <link id="ktbj1k0u" targetId="ktbj1k0g" type="containerLink"/>
+                        <link id="ktbj1k0w" targetId="ky8mc2ys"/>
+                        <events>
+                           <catch faultField="faultInfo" id="ks5xak7k" interrupting="true">
+                              <link id="ktbj1k0v" targetId="ktbj1k0h" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="ky8mc2ys">
+                        <service id="ktbj1k0k">
+                           <title>JournalEntryCreateRequestConfirmation_In</title>
+                           <serviceName>AppSvcPOSTJournalEntry:JournalEntryCreateRequestConfirmation_In</serviceName>
+                           <serviceGUID>04oWuw8QSlEewgelGNBi2F</serviceGUID>
+                           <serviceInput>
+                              <parameter name="JournalEntryBulkCreateRequest" source="formula">
+                                 <expression language="XQuery">$temp.tmp_Payload_Accruals </expression>
+                              </parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="ky8mc2yu">
+                           <link id="ky8mc2yv" targetId="ky8mc2ys" type="containerLink"/>
+                        </flow>
+                        <flow id="ky8mc2yx">
+                           <eventContainer id="ky8mc30z">
+                              <subflow id="ky8mc2zx">
+                                 <title>Process_P2B_Event_ErrorLog</title>
+                                 <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                 <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                       <expression language="XQuery">fn:concat('API15-',fn:current-date()  )</expression>
+                                    </parameter>
+                                    <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                       <expression language="XQuery">util:getProcessId()</expression>
+                                    </parameter>
+                                    <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                    <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                    <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    <parameter name="i_APIName" source="constant" updatable="true">'API15'</parameter>
+                                    <parameter name="i_EventName" source="constant" updatable="true">'Batch of  API15-TimeEntry'</parameter>
+                                    <parameter name="i_DataKey" source="formula" updatable="true">
+                                       <expression language="XQuery">fn:concat($temp.tmp_Payload_EnterpriseProj[1]/identifiers[1]/identifierName, $temp.tmp_Payload_EnterpriseProj[1]/identifiers[1]/identifierValue )</expression>
+                                    </parameter>
+                                    <parameter name="i_IICSProcessname" source="constant" updatable="true">'ProcessPostAccrualsTimeEntry'</parameter>
+                                 </input>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="ky8mc311">
+                                 <link id="ky8mc312" targetId="ky8mc30z" type="containerLink"/>
+                              </flow>
+                              <flow id="ky8mc314">
+                                 <link id="ky8mc315" targetId="ky8mc30z" type="containerLink"/>
+                              </flow>
+                              <link id="ky8mc310" targetId="ky8mc311" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="ky8mc2yr" interrupting="true">
+                                    <link id="ky8mc313" targetId="ky8mc314" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="ky8mc2yy" targetId="ky8mc2ys" type="containerLink"/>
+                        </flow>
+                        <link id="ky8mc2yt" targetId="ky8mc2yu" type="containerLink"/>
+                        <link id="ktbj1k0y" targetId="ktbj1k0l"/>
+                        <events>
+                           <catch faultField="faultInfo" id="ky8mc2yr" interrupting="true">
+                              <link id="ky8mc2yw" targetId="ky8mc2yx" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="ktbj1k1k" type="exclusive">
+                        <title>tmp_content</title>
+                        <flow id="ktbj1k1l">
+                           <link id="ktbj1k1q" targetId="ktbj1k1k" type="containerLink"/>
+                        </flow>
+                        <flow id="ktbj1k1m">
+                           <end id="ktbj1k1n">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="ktbj1k1o" targetId="ktbj1k1l" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_content_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ktbj1k1p" targetId="ktbj1k1m" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_content_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="ktbj1k0s" targetId="ktbj1k08" type="containerLink"/>
+                  </flow>
+                  <link id="ktbj1k0n" targetId="ktbj1k09" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.work_requestHeader[1]/ID}</arg>
+                           <arg name="right">{$temp.tmp_content[1]/ID}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ktbj1k0o" targetId="ktbj1k0d" type="containerLink"/>
+                  <link id="ktbj1k1j" targetId="krjdjfwv"/>
+               </container>
+               <jumpTo id="krjdjfwv">
+                  <link id="krjdjfx2" targetId="ktbj1k08"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>8b7d01af-74b4-4536-8ca6-91aa165b32cf</ns1:Id>
+               <ns1:Name>Test</ns1:Name>
+               <ns1:CreatedBy>roger.fbaatjes@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-19T13:35:46Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:53Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "delimitedContent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "totalRowsCount": "",
+	 	 "record": {
+	 	 	 "index": "",
+	 	 	 "CreationDate": "",
+	 	 	 "HeaderID": "",
+	 	 	 "SenderBusinessSystemId": "",
+	 	 	 "ItemCreationDate": "",
+	 	 	 "ID": "",
+	 	 	 "OriginalReferenceDocumentType": "",
+	 	 	 "BusinessTransactionType": "",
+	 	 	 "AccountingDocumentType": "",
+	 	 	 "DocumentHeaderText": "",
+	 	 	 "CreatedByUser": "",
+	 	 	 "ReversalReason": "",
+	 	 	 "ReversalDate": "",
+	 	 	 "CompanyCode": "",
+	 	 	 "DocumentDate": "",
+	 	 	 "PostingDate": "",
+	 	 	 "GLAccount": "",
+	 	 	 "AmountInTransactionCurrency": "",
+	 	 	 "CurrencyCode": "",
+	 	 	 "Customer": "",
+	 	 	 "SoldMaterial": ""
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9FfrRtTLpaeitj46llqay5</types1:GUID>
+      <types1:DisplayName>ProcessPostAccrualsTimeEntry</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:20.195Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

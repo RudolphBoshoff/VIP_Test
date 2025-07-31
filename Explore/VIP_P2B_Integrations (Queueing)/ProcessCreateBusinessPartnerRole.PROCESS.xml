@@ -1,0 +1,782 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oBbeAzu2JQhtGci-gt-23166653-2021-08-13T10:41:48.233Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessCreateBusinessPartnerRole</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:48Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:26Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-01-11T16:31:16Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessCreateBusinessPartnerRole/ProcessCreateBusinessPartnerRole.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessCreateBusinessPartnerRole"
+                  name="ProcessCreateBusinessPartnerRole"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_PORevEntity" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PORevEntity</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentDate" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FailedAtStep" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RestURL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RequestPayLoad" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DataKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BPRole_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kqserxz9" targetId="kuz2il0p"/>
+               </start>
+               <eventContainer id="kuz2il0p">
+                  <subflow id="kqserxz8">
+                     <title>ProcessGetRevEntity</title>
+                     <subflowGUID>fEtZTQEJrQKfhQxvOFh9Oh</subflowGUID>
+                     <subflowPath>ProcessGetRevEntity</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_MatterRevEntity" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PORevEntity</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                           </options>
+                        </field>
+                        <field name="out_MatterRevEntity_Array" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:PORevEntity</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="kuz2il0r">
+                     <assignment id="kv977t8x">
+                        <title>Assignment to tmp_CurrentDate</title>
+                        <operation source="formula" to="temp.tmp_CurrentDate">
+                           <expression language="XQuery">fn:current-date()</expression>
+                        </operation>
+                        <link id="l8nzkjto" targetId="l8nzkjtg"/>
+                     </assignment>
+                     <eventContainer id="l8nzkjtg">
+                        <subflow id="l8nzkjtj">
+                           <title>Process_POST_A_BusinessPartnerRoleUDM000</title>
+                           <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                           <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Body" source="formula" updatable="true">
+                                 <expression language="XQuery">&lt;results&gt;
+		&lt;BusinessPartner&gt;{$input.in_RefCode }&lt;/BusinessPartner&gt;
+		&lt;BusinessPartnerRole&gt;UDM000&lt;/BusinessPartnerRole&gt;
+		&lt;ValidFrom&gt;{date:toDate(fn:substring($temp.tmp_CurrentDate , 1, 10),'yyyy-MM-dd')}&lt;/ValidFrom&gt;
+		&lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+	&lt;/results&gt;</expression>
+                              </parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_RestURL_PostBPRole" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l8nzkjth">
+                           <link id="l8nzkjtm" targetId="l8nzkjtg" type="containerLink"/>
+                        </flow>
+                        <flow id="l8nzkjti">
+                           <link id="l8nzkjtn" targetId="l8nzkjtg" type="containerLink"/>
+                        </flow>
+                        <link id="l8nzkjtk" targetId="l8nzkjth" type="containerLink"/>
+                        <link id="l8nzkjww" targetId="l8nzkjwo"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8bjn80u" interrupting="true">
+                              <link id="l8nzkjtl" targetId="l8nzkjti" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="l8nzkjwo">
+                        <subflow id="l8nzkjwr">
+                           <title>Process_POST_A_BusinessPartnerRoleUKM000</title>
+                           <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                           <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Body" source="formula" updatable="true">
+                                 <expression language="XQuery">&lt;results&gt;
+		&lt;BusinessPartner&gt;{$input.in_RefCode }&lt;/BusinessPartner&gt;
+		&lt;BusinessPartnerRole&gt;UKM000&lt;/BusinessPartnerRole&gt;
+		&lt;ValidFrom&gt;{date:toDate(fn:substring($temp.tmp_CurrentDate , 1, 10),'yyyy-MM-dd')}&lt;/ValidFrom&gt;
+		&lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+	&lt;/results&gt;</expression>
+                              </parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_RestURL_PostBPRole" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l8nzkjwp">
+                           <link id="l8nzkjwu" targetId="l8nzkjwo" type="containerLink"/>
+                        </flow>
+                        <flow id="l8nzkjwq">
+                           <link id="l8nzkjwv" targetId="l8nzkjwo" type="containerLink"/>
+                        </flow>
+                        <link id="l8nzkjws" targetId="l8nzkjwp" type="containerLink"/>
+                        <link id="l8nzkk04" targetId="l8nzkjzw"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8bjn84b" interrupting="true">
+                              <link id="l8nzkjwt" targetId="l8nzkjwq" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="l8nzkjzw">
+                        <subflow id="l8nzkjzz">
+                           <title>Process_POST_A_BusinessPartnerRoleFLCU00</title>
+                           <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                           <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Body" source="formula" updatable="true">
+                                 <expression language="XQuery">&lt;results&gt;
+		&lt;BusinessPartner&gt;{$input.in_RefCode }&lt;/BusinessPartner&gt;
+		&lt;BusinessPartnerRole&gt;FLCU00&lt;/BusinessPartnerRole&gt;
+		&lt;ValidFrom&gt;{date:toDate(fn:substring($temp.tmp_CurrentDate , 1, 10),'yyyy-MM-dd')}&lt;/ValidFrom&gt;
+		&lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+	&lt;/results&gt;</expression>
+                              </parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_RestURL_PostBPRole" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l8nzkjzx">
+                           <link id="l8nzkk02" targetId="l8nzkjzw" type="containerLink"/>
+                        </flow>
+                        <flow id="l8nzkjzy">
+                           <link id="l8nzkk03" targetId="l8nzkjzw" type="containerLink"/>
+                        </flow>
+                        <link id="l8nzkk00" targetId="l8nzkjzx" type="containerLink"/>
+                        <link id="l8nzkk3c" targetId="l8nzkk34"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8bjn7bd" interrupting="true">
+                              <link id="l8nzkk01" targetId="l8nzkjzy" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="l8nzkk34">
+                        <subflow id="l8nzkk37">
+                           <title>Process_POST_A_BusinessPartnerRoleFLCU01</title>
+                           <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                           <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Body" source="formula" updatable="true">
+                                 <expression language="XQuery">&lt;results&gt;
+		&lt;BusinessPartner&gt;{$input.in_RefCode }&lt;/BusinessPartner&gt;
+		&lt;BusinessPartnerRole&gt;FLCU01&lt;/BusinessPartnerRole&gt;
+		&lt;ValidFrom&gt;{date:toDate(fn:substring($temp.tmp_CurrentDate , 1, 10),'yyyy-MM-dd')}&lt;/ValidFrom&gt;
+		&lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+	&lt;/results&gt;</expression>
+                              </parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">util:getProcessId()</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_RestURL_PostBPRole" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l8nzkk35">
+                           <link id="l8nzkk3a" targetId="l8nzkk34" type="containerLink"/>
+                        </flow>
+                        <flow id="l8nzkk36">
+                           <link id="l8nzkk3b" targetId="l8nzkk34" type="containerLink"/>
+                        </flow>
+                        <link id="l8nzkk38" targetId="l8nzkk35" type="containerLink"/>
+                        <link id="l8nzkk87" targetId="l8nzkk6t"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8bjn7uk" interrupting="true">
+                              <link id="l8nzkk39" targetId="l8nzkk36" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="l8nzkk6t" type="exclusive">
+                        <title>out_MatterRevEntity_Array</title>
+                        <flow id="l8nzkk6u">
+                           <assignment id="l8nzkk6v">
+                              <title>Assignment to tmp_PORevEntity</title>
+                              <operation source="formula" to="temp.tmp_PORevEntity">
+                                 <expression language="XQuery">list:head($output.out_MatterRevEntity_Array  )</expression>
+                              </operation>
+                              <link id="l8nzkk7n" targetId="l8nzkk6w"/>
+                           </assignment>
+                           <eventContainer id="l8nzkk6w">
+                              <subflow id="l8nzkk6z">
+                                 <title>ProcessCompanyCode</title>
+                                 <subflowGUID>8B0NVz3j53gfdPnVR1cjgd</subflowGUID>
+                                 <subflowPath>ProcessCompanyCode</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="RefCode" source="field" updatable="true">temp.tmp_PORevEntity[1]/RefCode</parameter>
+                                    <parameter name="MatterCode" source="field" updatable="true">temp.tmp_PORevEntity[1]/MatterCode</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_Flag" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_CustomerSegment_PO" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:$any</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_CustomerSalesArea_PO" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:$any</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l8nzkk6x">
+                                 <link id="l8nzkk7r" targetId="l8nzkk6w" type="containerLink"/>
+                              </flow>
+                              <flow id="l8nzkk6y">
+                                 <link id="l8nzkk7s" targetId="l8nzkk6w" type="containerLink"/>
+                              </flow>
+                              <link id="l8nzkk7o" targetId="l8nzkk6x" type="containerLink"/>
+                              <link id="l8nzkk7q" targetId="l8nzkk70"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l8bjn8a6" interrupting="true">
+                                    <link id="l8nzkk7p" targetId="l8nzkk6y" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <container id="l8nzkk70" type="exclusive">
+                              <title>out_Flag</title>
+                              <flow id="l8nzkk71">
+                                 <eventContainer id="l8strtaw">
+                                    <subflow id="l8strsl7">
+                                       <title>ProcessGetEntityDetails</title>
+                                       <subflowGUID>7tQRWXi2VlxloCWtEOyuyE</subflowGUID>
+                                       <subflowPath>ProcessGetEntityDetails</subflowPath>
+                                       <runForEach>false</runForEach>
+                                       <input>
+                                          <parameter name="in_RefCode" source="field" updatable="true">output.out_MatterRevEntity[1]/RefCode</parameter>
+                                          <parameter name="in_MatterCode" source="field" updatable="true">output.out_MatterRevEntity[1]/MatterCode</parameter>
+                                       </input>
+                                       <outputDef>
+                                          <field name="out_EntityDetails" type="reference">
+                                             <options>
+                                                <option name="referenceTo">$po:POEntityDetails</option>
+                                                <option name="required">false</option>
+                                                <option name="isCopy">true</option>
+                                                <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                                             </options>
+                                          </field>
+                                       </outputDef>
+                                    </subflow>
+                                    <flow id="l8strtay">
+                                       <link id="l8strtaz" targetId="l8strtaw" type="containerLink"/>
+                                    </flow>
+                                    <flow id="l8strtb1">
+                                       <assignment id="l8strtdg">
+                                          <title>Assignment to tmp_code, tmp_desc etc.</title>
+                                          <operation source="field" to="temp.tmp_code">output.faultInfo[1]/code</operation>
+                                          <operation source="formula" to="temp.tmp_desc">
+                                             <expression language="XQuery">'ProcessCreateBusinessPartnerRole Failed while extracting data from Vpoint. Please check ProcessGetEntityDetails'</expression>
+                                          </operation>
+                                          <operation source="field" to="temp.tmp_error">output.faultInfo[1]/reason</operation>
+                                          <operation source="constant" to="temp.tmp_FailedAtStep">ProcessGetEntityDetails</operation>
+                                          <link id="l8strtkv" targetId="l8strtku"/>
+                                       </assignment>
+                                       <jumpTo id="l8strtku">
+                                          <link id="l8strtnk" targetId="l8k7legv"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="l8strtax" targetId="l8strtay" type="containerLink"/>
+                                    <link id="l8strsl8" targetId="l8nzkk72"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="l8strsw1" interrupting="true">
+                                          <link id="l8strtb0" targetId="l8strtb1" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <eventContainer id="l8nzkk72">
+                                    <subflow id="l8nzkk7f">
+                                       <title>Process_POST_A_CustomerCompany</title>
+                                       <subflowGUID>apixvQ6w3oYdxViygLypQI</subflowGUID>
+                                       <subflowPath>Process_POST_A_CustomerCompany</subflowPath>
+                                       <runForEach>false</runForEach>
+                                       <input>
+                                          <parameter name="in_Body" source="field" updatable="true">output.out_CustomerSegment_PO</parameter>
+                                          <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                          <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                          <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                          <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                                          <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                                       </input>
+                                       <outputDef/>
+                                    </subflow>
+                                    <flow id="l8nzkk73">
+                                       <eventContainer id="l8nzkk74">
+                                          <subflow id="l8nzkk7b">
+                                             <title>Process_POST_A_CustomerSalesArea</title>
+                                             <subflowGUID>8rGRMHaDGdIcGOokx8Ht6Q</subflowGUID>
+                                             <subflowPath>Process_POST_A_CustomerSalesArea</subflowPath>
+                                             <runForEach>false</runForEach>
+                                             <input>
+                                                <parameter name="in_Body" source="field" updatable="true">output.out_CustomerSalesArea_PO</parameter>
+                                                <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                                <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                                <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                                <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                                                <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                                             </input>
+                                             <outputDef/>
+                                          </subflow>
+                                          <flow id="l8nzkk75">
+                                             <eventContainer id="l8tu205l">
+                                                <subflow id="l8tu1ymr">
+                                                   <title>Process_POST_YY1_CreditBlock</title>
+                                                   <subflowGUID>8hOsfhr8pklkFSzg3HivsR</subflowGUID>
+                                                   <subflowPath>Process_POST_YY1_CreditBlock</subflowPath>
+                                                   <runForEach>false</runForEach>
+                                                   <input>
+                                                      <parameter name="in_Body" source="formula" updatable="true">
+                                                         <expression language="XQuery">&lt;root&gt;
+&lt;ID&gt;VPC&lt;/ID&gt;
+&lt;SubID&gt;API09&lt;/SubID&gt;
+&lt;KeyValue1&gt;{substring(
+  concat('0000000000',$output.out_EntityDetails[1]/RefCode ),
+  string-length($output.out_EntityDetails[1]/RefCode) + 1,   10
+)}&lt;/KeyValue1&gt;
+&lt;CompanyCode&gt;{$output.out_EntityDetails[1]/RevEntity }&lt;/CompanyCode&gt;
+&lt;Value1&gt;{$output.out_EntityDetails[1]/FileStatus}&lt;/Value1&gt;
+&lt;/root&gt;</expression>
+                                                      </parameter>
+                                                      <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                                      <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                                      <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                                      <parameter name="in_ParentProcessStartTime" source="formula" updatable="true">
+                                                         <expression language="XQuery">$input.in_ParentProcessStartTime </expression>
+                                                      </parameter>
+                                                      <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                                                   </input>
+                                                   <outputDef/>
+                                                </subflow>
+                                                <flow id="l8tu205n">
+                                                   <link id="l8tu205o" targetId="l8tu205l" type="containerLink"/>
+                                                </flow>
+                                                <flow id="l8tu205q">
+                                                   <link id="l8tu205r" targetId="l8tu205l" type="containerLink"/>
+                                                </flow>
+                                                <link id="l8tu205m" targetId="l8tu205n" type="containerLink"/>
+                                                <link id="l8tu20bv" targetId="l8tu20bu"/>
+                                                <events>
+                                                   <catch faultField="faultInfo" id="l8tu1z5q" interrupting="true">
+                                                      <link id="l8tu205p" targetId="l8tu205q" type="containerLink"/>
+                                                   </catch>
+                                                </events>
+                                             </eventContainer>
+                                             <container id="l8tu20bu" type="exclusive">
+                                                <title>Code</title>
+                                                <flow id="l8tu20f2">
+                                                   <link id="l8tu20f3" targetId="l8tu20bu" type="containerLink"/>
+                                                </flow>
+                                                <flow id="l8tu20f4">
+                                                   <link id="l8tu20f5" targetId="l8tu20bu" type="containerLink"/>
+                                                </flow>
+                                                <link id="l8tu20ev" targetId="l8tu20f2" type="containerLink">
+                                                   <condition source="formula">
+                                                      <function name="contains">
+                                                         <arg name="left">{$output.faultInfo[1]/code}</arg>
+                                                         <arg name="right">400</arg>
+                                                      </function>
+                                                   </condition>
+                                                </link>
+                                                <link id="l8tu20ta" targetId="l8tu20t9"/>
+                                                <link id="l8tu20ey" targetId="l8tu20f4" type="containerLink"/>
+                                             </container>
+                                             <assignment id="l8tu20t9">
+                                                <title>Assignment to out_MatterRevEntity_Array</title>
+                                                <operation source="formula" to="output.out_MatterRevEntity_Array">
+                                                   <expression language="XQuery">list:tail($output.out_MatterRevEntity_Array  )</expression>
+                                                </operation>
+                                                <link id="l8tu20wm" targetId="l8tu20wk"/>
+                                             </assignment>
+                                             <jumpTo id="l8tu20wk">
+                                                <link id="l8tu20wl" targetId="l8nzkk6t"/>
+                                             </jumpTo>
+                                          </flow>
+                                          <flow id="l8nzkk78">
+                                             <assignment id="l8nzkk79">
+                                                <title>Assignment to tmp_code, tmp_desc etc. 1</title>
+                                                <operation source="field" to="temp.tmp_code">output.faultInfo[1]/code</operation>
+                                                <operation source="field" to="temp.tmp_desc">output.faultInfo[1]/detail</operation>
+                                                <operation source="field" to="temp.tmp_error">output.faultInfo[1]/reason</operation>
+                                                <operation source="formula" to="temp.tmp_RestURL">
+                                                   <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_CustomerSalesArea'</expression>
+                                                </operation>
+                                                <operation source="formula" to="temp.tmp_RequestPayLoad">
+                                                   <expression language="XQuery">util:toJSON($output.out_CustomerSalesArea_PO )</expression>
+                                                </operation>
+                                                <operation source="constant" to="temp.tmp_FailedAtStep">Process_POST_A_CustomerSalesArea in ProcessCreateBusinessPartnerRole</operation>
+                                                <operation source="formula" to="temp.tmp_DataKey">
+                                                   <expression language="XQuery">'Customer: '||$temp.tmp_PORevEntity[1]/RefCode || '^' || 'SalesOrganization :' || $temp.tmp_PORevEntity[1]/RevEntity </expression>
+                                                </operation>
+                                                <link id="l8nzkk81" targetId="l8nzkk7a"/>
+                                             </assignment>
+                                             <jumpTo id="l8nzkk7a">
+                                                <link id="l8nzkk82" targetId="l8k7legv"/>
+                                             </jumpTo>
+                                          </flow>
+                                          <link id="l8nzkk7x" targetId="l8nzkk75" type="containerLink"/>
+                                          <events>
+                                             <catch faultField="faultInfo" id="l8bjn8ep" interrupting="true">
+                                                <link id="l8nzkk7y" targetId="l8nzkk78" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                    </flow>
+                                    <flow id="l8nzkk7c">
+                                       <assignment id="l8nzkk7d">
+                                          <title>Assignment to tmp_code, tmp_desc etc.</title>
+                                          <operation source="field" to="temp.tmp_code">output.faultInfo[1]/code</operation>
+                                          <operation source="field" to="temp.tmp_desc">output.faultInfo[1]/detail</operation>
+                                          <operation source="field" to="temp.tmp_error">output.faultInfo[1]/reason</operation>
+                                          <operation source="formula" to="temp.tmp_RestURL">
+                                             <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_CustomerCompany'</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.tmp_RequestPayLoad">
+                                             <expression language="XQuery">util:toJSON($output.out_CustomerSegment_PO )</expression>
+                                          </operation>
+                                          <operation source="constant" to="temp.tmp_FailedAtStep">Process_POST_A_CustomerCompany in ProcessCreateBusinessPartnerRole</operation>
+                                          <operation source="formula" to="temp.tmp_DataKey">
+                                             <expression language="XQuery">'Customer: '||$temp.tmp_PORevEntity[1]/RefCode || '^' || 'Company Code :' || $temp.tmp_PORevEntity[1]/RevEntity </expression>
+                                          </operation>
+                                          <link id="l8nzkk83" targetId="l8nzkk7e"/>
+                                       </assignment>
+                                       <jumpTo id="l8nzkk7e">
+                                          <link id="l8nzkk84" targetId="l8k7legv"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="l8nzkk7v" targetId="l8nzkk73" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="l8bjn8cg" interrupting="true">
+                                          <link id="l8nzkk7w" targetId="l8nzkk7c" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                              </flow>
+                              <flow id="l8nzkk7g">
+                                 <assignment id="l8nzkk7h">
+                                    <title>Assignment to out_MatterRevEntity_Array 1</title>
+                                    <operation source="formula" to="output.out_MatterRevEntity_Array">
+                                       <expression language="XQuery">list:tail($output.out_MatterRevEntity_Array  )</expression>
+                                    </operation>
+                                    <link id="l8nzkk85" targetId="l8nzkk7i"/>
+                                 </assignment>
+                                 <jumpTo id="l8nzkk7i">
+                                    <link id="l8nzkk86" targetId="l8nzkk6t"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="l8nzkk7t" targetId="l8nzkk71" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.out_Flag}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l8nzkk7u" targetId="l8nzkk7g" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="l8nzkk7j">
+                           <end id="l8nzkk7k">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="l8nzkk7l" targetId="l8nzkk6u" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8nzkk7m" targetId="l8nzkk7j" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="kuz2il0u">
+                     <assignment id="l8k7leba">
+                        <title>Assignment to tmp_code, tmp_desc etc.</title>
+                        <operation source="field" to="temp.tmp_code">output.faultInfo[1]/code</operation>
+                        <operation source="field" to="temp.tmp_desc">output.faultInfo[1]/detail</operation>
+                        <operation source="field" to="temp.tmp_error">output.faultInfo[1]/reason</operation>
+                        <operation source="formula" to="temp.tmp_FailedAtStep">
+                           <expression language="XQuery">'ProcessGetRevEntity subprocess failed in ProcessCreateBusinessPartnerRole'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_DataKey">
+                           <expression language="XQuery">'BusinessPartner: '||$input.in_RefCode</expression>
+                        </operation>
+                        <link id="l8k7legw" targetId="l8k7legv"/>
+                     </assignment>
+                     <subflow id="l8k7legv">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">temp.tmp_code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">temp.tmp_error</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">temp.tmp_desc</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">API08</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_DataKey" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                           <parameter name="i_IICSProcessname" source="constant" updatable="true">ProcessCreateBusinessPartnerRole</parameter>
+                           <parameter name="i_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                           <parameter name="i_RestURL" source="field" updatable="true">temp.tmp_RestURL</parameter>
+                           <parameter name="i_RequestPayload" source="field" updatable="true">temp.tmp_RequestPayLoad</parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">https://api.sap.com/api/API_BUSINESS_PARTNER/overview</parameter>
+                           <parameter name="i_ProcessStartTime" source="formula" updatable="true">
+                              <expression language="XQuery">util:getInstanceStartTime()</expression>
+                           </parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l8k8zecv" targetId="l8k8zecu"/>
+                     </subflow>
+                     <end id="l8k8zecu">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="kuz2il0q" targetId="kuz2il0r" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="kuz2il0h" interrupting="true">
+                        <link id="kuz2il0t" targetId="kuz2il0u" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>79119c00-0b5a-4320-b527-de31283c8cfa</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:26Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "RefCode": "10000565",
+	 "token": "bZTg5HoBfExZe8uWHz-ukA==",
+	 "cookie": "sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=iXuWTSHRRVesM0GMkZZLIbrccdUM2xHtmEL6Fj6c4eI%3d; path=/; secure; HttpOnly",
+	 "hostname": "https://my305570-api.s4hana.ondemand.com"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>820531dd-2a6c-44d1-98f9-5dc909178c36</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-27T11:33:29Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:26Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "RefCode": "",
+	 "token": "",
+	 "cookie": "",
+	 "hostname": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>cc05678f-d381-4212-bf5e-a45d6f83bc6f</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:26Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:26Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12500143",
+	 "in_X_TRANSACTION_ID": "",
+	 "in_ParentProcessStartTime": "",
+	 "in_IICS_Process_ID": "",
+	 "in_EventName": ""
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>hEwIs2WlKo7cUVfi614Wc6</types1:GUID>
+      <types1:DisplayName>ProcessCreateBusinessPartnerRole</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.046Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

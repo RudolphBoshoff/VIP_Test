@@ -1,0 +1,536 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>goXFtclq1iUsRvs-gt-37228579-2022-10-12T10:48:15.111Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_PatchAccountingClerkMail</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:15Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-27T09:06:49Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-03T08:03:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_PatchAccountingClerkMail/Process_PatchAccountingClerkMail.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_PatchAccountingClerkMail"
+                  name="Process_PatchAccountingClerkMail"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Cookie" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MattersList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RevEntity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Email" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContactsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefContacts</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MailType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FailedAtStep" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RestURL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RequestPayload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l98g2k6h" targetId="l8e9ym87"/>
+               </start>
+               <eventContainer id="l8e9ym87">
+                  <subflow id="l8e1rtz8">
+                     <title>ProcessGetRevEntity</title>
+                     <subflowGUID>fEtZTQEJrQKfhQxvOFh9Oh</subflowGUID>
+                     <subflowPath>ProcessGetRevEntity</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_MatterRevEntity" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PORevEntity</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                           </options>
+                        </field>
+                        <field name="out_MatterRevEntity_Array" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:PORevEntity</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l8e9ym89">
+                     <eventContainer id="l98g2k6i">
+                        <subflow id="l98g2k6o">
+                           <title>ProcessGetEntityDetails</title>
+                           <subflowGUID>7tQRWXi2VlxloCWtEOyuyE</subflowGUID>
+                           <subflowPath>ProcessGetEntityDetails</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                              <parameter name="in_MatterCode" source="field" updatable="true">output.out_MatterRevEntity[1]/MatterCode</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_EntityDetails" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:POEntityDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l98g2k6j">
+                           <link id="l98g2k6r" targetId="l98g2k6i" type="containerLink"/>
+                        </flow>
+                        <flow id="l98g2k6k">
+                           <assignment id="l98g2k6l">
+                              <title>Assignment to tmp_Code, tmp_Description etc.</title>
+                              <operation source="field" to="temp.tmp_Code">output.faultInfo[1]/code</operation>
+                              <operation source="constant" to="temp.tmp_Description">'ProcessGetEntityDetails Failed while extracting data from Vpoint. Please check ProcessGetEntityDetails'</operation>
+                              <operation source="field" to="temp.tmp_Error">output.faultInfo[1]/reason</operation>
+                              <operation source="constant" to="temp.tmp_FailedAtStep">ProcessGetEntityDetails</operation>
+                              <link id="l98g2k6s" targetId="l98g2k6m"/>
+                           </assignment>
+                           <subflow id="l98g2k6m">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">temp.tmp_Code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">temp.tmp_Error</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">temp.tmp_Description</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">API08</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'Business Partner: '||$input.in_RefCode </expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="constant" updatable="true">Process_PatchAccountingClerkMail</parameter>
+                                 <parameter name="i_FailedAtStep" source="field" updatable="true">temp.tmp_FailedAtStep</parameter>
+                                 <parameter name="i_RestURL" source="field" updatable="true">temp.tmp_RestURL</parameter>
+                                 <parameter name="i_RequestPayload" source="field" updatable="true">temp.tmp_RequestPayload</parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">https://api.sap.com/api/API_BUSINESS_PARTNER/overview</parameter>
+                                 <parameter name="i_ProcessStartTime" source="formula" updatable="true">
+                                    <expression language="XQuery">$input.in_ParentProcessStartTime </expression>
+                                 </parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="l98g2k6t" targetId="l98g2k6n"/>
+                           </subflow>
+                           <end id="l98g2k6n">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="l98g2k6p" targetId="l98g2k6j" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8e9yjwb" interrupting="true">
+                              <link id="l98g2k6q" targetId="l98g2k6k" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="l8e9ym8a" targetId="l8e9ym87" type="containerLink"/>
+                  </flow>
+                  <flow id="l8e9ym8c">
+                     <assignment id="l8e9ymm1">
+                        <title>Assignment to tmp_Code, tmp_Description etc.</title>
+                        <operation source="field" to="temp.tmp_Code">output.faultInfo[1]/code</operation>
+                        <operation source="constant" to="temp.tmp_Description">'ProcessGetRevEntity Failed while extracting data from Vpoint. Please check ProcessGetRevEntity'</operation>
+                        <operation source="field" to="temp.tmp_Error">output.faultInfo[1]/reason</operation>
+                        <operation source="constant" to="temp.tmp_FailedAtStep">ProcessGetRevEntity</operation>
+                        <link id="l8e9ymm2" targetId="l8e9ym9m"/>
+                     </assignment>
+                     <jumpTo id="l8e9ym9m">
+                        <link id="l8e9ym9n" targetId="l98g2k6m"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="l8e9ym88" targetId="l8e9ym89" type="containerLink"/>
+                  <link id="l8e1ru7t" targetId="l8e1ru7s"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l8e9ym7z" interrupting="true">
+                        <link id="l8e9ym8b" targetId="l8e9ym8c" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="l8e1ru7s" type="exclusive">
+                  <title>out_MatterRevEntity_Array</title>
+                  <flow id="l8e1ru9e">
+                     <assignment id="l8e1rudb">
+                        <title>Assignment to out_MatterRevEntity</title>
+                        <operation source="formula" to="output.out_MatterRevEntity">
+                           <expression language="XQuery">list:head($output.out_MatterRevEntity_Array )</expression>
+                        </operation>
+                        <link id="l8e1rute" targetId="l8e9ymck"/>
+                     </assignment>
+                     <assignment id="l8e1rvo6">
+                        <title>Assignment to out_MatterRevEntity_Array</title>
+                        <operation source="formula" to="output.out_MatterRevEntity_Array">
+                           <expression language="XQuery">list:tail($output.out_MatterRevEntity_Array )</expression>
+                        </operation>
+                        <link id="l8e1rvrl" targetId="l8e1rvrj"/>
+                     </assignment>
+                     <eventContainer id="l8e9ymck">
+                        <subflow id="l8e1rutd">
+                           <title>Process_GET_CustomerCompany</title>
+                           <subflowGUID>5F0TV2QoAf1jR86TLi7HKs</subflowGUID>
+                           <subflowPath>Process_GET_CustomerCompany</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Customer" source="field" updatable="true">output.out_MatterRevEntity[1]/RefCode</parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_CustomerCode" source="field" updatable="true">output.out_MatterRevEntity[1]/RevEntity</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_CompanyCode" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Customer" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_YY1_Customer_Segment_cco" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_RestURL_GETCustCompany" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l8e9ymcm">
+                           <assignment id="l8idh3zy">
+                              <title>Assignment to tmp_Flag</title>
+                              <operation source="formula" to="temp.tmp_Flag">
+                                 <expression language="XQuery">util:iif($output.out_CompanyCode=$output.out_MatterRevEntity[1]/RevEntity ,'Y','N')</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l8e9ymcn" targetId="l8e9ymck" type="containerLink"/>
+                        </flow>
+                        <flow id="l8e9ymcp">
+                           <assignment id="l8e9yn9k">
+                              <title>Assignment to tmp_Error, tmp_Code etc.</title>
+                              <operation source="field" to="temp.tmp_Error">output.faultInfo[1]/reason</operation>
+                              <operation source="field" to="temp.tmp_Code">output.faultInfo[1]/code</operation>
+                              <operation source="constant" to="temp.tmp_FailedAtStep">Process_GET_CustomerCompany</operation>
+                              <operation source="field" to="temp.tmp_Description">output.faultInfo[1]/detail</operation>
+                              <operation source="field" to="temp.tmp_RestURL">output.out_RestURL_GETCustCompany</operation>
+                              <link id="l8e9yn9l" targetId="l8e9yme0"/>
+                           </assignment>
+                           <jumpTo id="l8e9yme0">
+                              <link id="l8e9yme1" targetId="l98g2k6m"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="l8e9ymcl" targetId="l8e9ymcm" type="containerLink"/>
+                        <link id="l8e1rv1s" targetId="l8e1rv1i"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8e9ymc5" interrupting="true">
+                              <link id="l8e9ymco" targetId="l8e9ymcp" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="l8e1rv1i" type="exclusive">
+                        <title>tmp_flag</title>
+                        <flow id="l8e1rv1j">
+                           <assignment id="l8e1rv1k">
+                              <title>Assignment to tmp_EmailAddPO</title>
+                              <operation source="formula" to="temp.tmp_EmailAddPO">
+                                 <expression language="XQuery">&lt;root&gt;
+&lt;AccountingClerkInternetAddress&gt;{(util:iif(util:isNull($output.out_EntityDetails[1]/EmailInvoiceReminder ) ,$output.out_EntityDetails[1]/EmailOther ,$output.out_EntityDetails[1]/EmailInvoiceReminder))}&lt;/AccountingClerkInternetAddress&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <link id="l8e1rv1q" targetId="l8e9ymgy"/>
+                           </assignment>
+                           <eventContainer id="l8e9ymgy">
+                              <subflow id="l8e1rv1l">
+                                 <title>Process_PATCH_CustomerCompanyType</title>
+                                 <subflowGUID>53tNCcacMInbZAYwzMg62k</subflowGUID>
+                                 <subflowPath>Process_PATCH_CustomerCompanyType</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_Body" source="field" updatable="true">temp.tmp_EmailAddPO</parameter>
+                                    <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                                    <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                    <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                    <parameter name="in_ParentProcessStartTime" source="formula" updatable="true">
+                                       <expression language="XQuery">$input.in_ParentProcessStartTime </expression>
+                                    </parameter>
+                                    <parameter name="in_ApiName" source="constant" updatable="true">API08</parameter>
+                                    <parameter name="in_CompanyCode" source="field" updatable="true">output.out_CompanyCode</parameter>
+                                    <parameter name="in_Customer" source="field" updatable="true">output.out_Customer</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_Po" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l8e9ymh0">
+                                 <link id="l8e9ymh1" targetId="l8e9ymgy" type="containerLink"/>
+                              </flow>
+                              <flow id="l8e9ymh3">
+                                 <assignment id="l8e9ynwy">
+                                    <title>Assignment to tmp_Error, tmp_FailedAtStep etc.</title>
+                                    <operation source="field" to="temp.tmp_Error">output.faultInfo[1]/reason</operation>
+                                    <operation source="constant" to="temp.tmp_FailedAtStep">Process_PATCH_CustomerCompanyType</operation>
+                                    <operation source="field" to="temp.tmp_Description">output.faultInfo[1]/detail</operation>
+                                    <operation source="field" to="temp.tmp_Code">output.faultInfo[1]/code</operation>
+                                    <operation source="formula" to="temp.tmp_RestURL">
+                                       <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_CustomerCompany(Customer={$Customer},CompanyCode={$CompanyCode})'</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_RequestPayload">
+                                       <expression language="XQuery">util:toJSON($temp.tmp_EmailAddPO )</expression>
+                                    </operation>
+                                    <link id="l8e9ynwz" targetId="l8e9ymif"/>
+                                 </assignment>
+                                 <jumpTo id="l8e9ymif">
+                                    <link id="l8e9ymig" targetId="l98g2k6m"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="l8e9ymgz" targetId="l8e9ymh0" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l8e9ymge" interrupting="true">
+                                    <link id="l8e9ymh2" targetId="l8e9ymh3" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="l8e1rv1p" targetId="l8e1rv1i" type="containerLink"/>
+                        </flow>
+                        <flow id="l8e1rv1m">
+                           <link id="l8e1rv1r" targetId="l8e1rv1i" type="containerLink"/>
+                        </flow>
+                        <link id="l8e1rv1n" targetId="l8e1rv1j" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_Flag}</arg>
+                                 <arg name="right">Y</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8e1rv1o" targetId="l8e1rv1m" type="containerLink"/>
+                        <link id="l8e1rvo7" targetId="l8e1rvo6"/>
+                     </container>
+                     <jumpTo id="l8e1rvrj">
+                        <link id="l8e1rvrk" targetId="l8e1ru7s"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="l8e1ru9g">
+                     <end id="l8e1rvp4">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l8e1ru97" targetId="l8e1ru9e" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l8e1ru9a" targetId="l8e1ru9g" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>eb70e0a9-68b9-479b-b664-ff734746d66c</ns1:Id>
+               <ns1:Name>Test_Run</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:15Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-27T09:06:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "91000025",
+	 "in_Cookie": "sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=HSZ5chEdXLmXYsKtIPxZ8qXHRHGv9hHsvmH6Fj4QG_U%3d; path=/; secure; HttpOnly",
+	 "in_Token": "lfTwjRTwkOna_z8f7kvMSA=="
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9d98efea-8976-4b4f-9fc6-50cff47b7411</ns1:Id>
+               <ns1:Name>Tst</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:15Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-27T09:06:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "10000001"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5FHDJ8ecsFvkR7lFx57Hsq</types1:GUID>
+      <types1:DisplayName>Process_PatchAccountingClerkMail</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.432Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

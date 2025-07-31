@@ -1,0 +1,355 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9i92qBbbeJOSM8N-gt-37242250-2022-10-12T10:48:22.975Z::pd.xml</types1:EntryId>
+      <types1:Name>api9_Wrapper</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Credit Block Status (Block/Open) is read from the SAP queue and for each Customer + RevEntity combination, api9 (process) is called</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:23Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T11:11:50Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.api9_Wrapper/api9_Wrapper.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="api9_Wrapper"
+                  name="api9_Wrapper"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Credit Block Status (Block/Open) is read from the SAP queue and for each Customer + RevEntity combination, api9 (process) is called</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="bus" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_UUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Value1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_RecordCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BloxkDetail_Array" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8u8aluf" targetId="l8u8alue"/>
+               </start>
+               <assignment id="l8u8alue">
+                  <title>Assignment to tmp_ProcessStartTime</title>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <link id="l8u8alug" targetId="l81g4427"/>
+               </assignment>
+               <eventContainer id="l81g4427">
+                  <subflow id="l81g43zr">
+                     <title>Process_GET_YY1_FetchBlockDetails</title>
+                     <subflowGUID>a1CjhQV3OjXeTVEyuoakox</subflowGUID>
+                     <subflowPath>Process_GET_YY1_FetchBlockDetails</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_X_TRANSACTION_ID" source="formula" updatable="true">
+                           <expression language="XQuery">'API9_CreditBlock_'||date:toChar($temp.tmp_ProcessStartTime, 'YYYY-MM-DD hh.mm.ss')</expression>
+                        </parameter>
+                        <parameter name="in_EventName" source="constant" updatable="true">Batch of api9</parameter>
+                        <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                           <expression language="XQuery">util:getProcessId()</expression>
+                        </parameter>
+                        <parameter name="in_ApiName" source="constant" updatable="true">API-9</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_blockDetails" type="reference">
+                           <options>
+                              <option name="referenceTo">AppSvcAPI9:results</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">18D0RMyUL8ykysuPInWya6</option>
+                           </options>
+                        </field>
+                        <field name="out_BlockDetails_Array" type="objectlist">
+                           <options>
+                              <option name="referenceTo">AppSvcAPI9:results</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">18D0RMyUL8ykysuPInWya6</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l81g4429">
+                     <container id="l8jzfmkj" type="exclusive">
+                        <title>is_BlockDetailsArrayEmpty</title>
+                        <flow id="l8jzfmkk">
+                           <assignment id="l8jzfmkl">
+                              <title>Next Record in Array</title>
+                              <operation source="formula" to="output.out_blockDetails">
+                                 <expression language="XQuery">list:head($output.out_BlockDetails_Array )</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_BlockDetails_Array">
+                                 <expression language="XQuery">list:tail($output.out_BlockDetails_Array )</expression>
+                              </operation>
+                              <link id="l8jzfmyf" targetId="l8jzfn6x"/>
+                           </assignment>
+                           <eventContainer id="l8jzfn6x">
+                              <subflow id="l8jzfmye">
+                                 <title>api9_Child</title>
+                                 <subflowGUID>kEVizE3ViGobK76V6UogOP</subflowGUID>
+                                 <subflowPath>api9</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_BlockDetails" source="field" updatable="true">output.out_blockDetails</parameter>
+                                    <parameter name="in_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                                    <parameter name="in_X_TRANSACTION_ID" source="formula" updatable="true">
+                                       <expression language="XQuery">'API9_CreditBlock_'||date:toChar($temp.tmp_ProcessStartTime, 'YYYY-MM-DD hh.mm.ss')</expression>
+                                    </parameter>
+                                    <parameter name="in_EventName" source="constant" updatable="true">Batch of api9</parameter>
+                                    <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                       <expression language="XQuery">util:getProcessId()</expression>
+                                    </parameter>
+                                    <parameter name="in_ApiName" source="constant" updatable="true">API-9</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="O_BlockDetailsArray" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:$any</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l8jzfn6z">
+                                 <link id="l8jzfn70" targetId="l8jzfn6x" type="containerLink"/>
+                              </flow>
+                              <flow id="l8jzfn72">
+                                 <subflow id="l8jzfnx5">
+                                    <title>Process_P2B_Event_ErrorLog 1</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">'API9_CreditBlock_'||date:toChar($temp.tmp_ProcessStartTime, 'YYYY-MM-DD hh.mm.ss')</expression>
+                                       </parameter>
+                                       <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                       <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="i_APIName" source="constant" updatable="true">API-9</parameter>
+                                       <parameter name="i_EventName" source="constant" updatable="true">Batch of api9</parameter>
+                                       <parameter name="i_DataKey" source="formula" updatable="true">
+                                          <expression language="XQuery">'BusinessPartner='||$output.out_blockDetails[1]/BusinessPartner||'^'</expression>
+                                       </parameter>
+                                       <parameter name="i_IICSProcessname" source="constant" updatable="true">api9_Wrapper</parameter>
+                                       <parameter name="i_FailedAtStep" source="constant" updatable="true">Uncaught error in process [api9_Customer]</parameter>
+                                       <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                       <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                          <expression language="XQuery">util:toJSON($output.out_blockDetails)</expression>
+                                       </parameter>
+                                       <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                       <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                                    </input>
+                                    <outputDef/>
+                                 </subflow>
+                                 <link id="l8jzfn73" targetId="l8jzfn6x" type="containerLink"/>
+                              </flow>
+                              <link id="l8jzfn6y" targetId="l8jzfn6z" type="containerLink"/>
+                              <link id="l8jzfol6" targetId="l8jzfmvb"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l8jzfn6e" interrupting="true">
+                                    <link id="l8jzfn71" targetId="l8jzfn72" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <jumpTo id="l8jzfmvb">
+                              <link id="l8jzfmw5" targetId="l8jzfmkj"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="l8jzfmlj">
+                           <end id="l8jzfmlk"/>
+                        </flow>
+                        <link id="l8jzfmll" targetId="l8jzfmkk" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$output.out_BlockDetails_Array[1]/BusinessPartner}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8jzfmlm" targetId="l8jzfmlj" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="l81g442c">
+                     <subflow id="l81g44nh">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                              <expression language="XQuery">'API9_CreditBlock_'||date:toChar($temp.tmp_ProcessStartTime, 'YYYY-MM-DD hh.mm.ss')</expression>
+                           </parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">api9</parameter>
+                           <parameter name="i_EventName" source="constant" updatable="true">Batch of api9</parameter>
+                           <parameter name="i_DataKey" source="formula" updatable="true">
+                              <expression language="XQuery">$output.out_blockDetails[1]/BusinessPartner </expression>
+                           </parameter>
+                           <parameter name="i_IICSProcessname" source="constant" updatable="true">api9_Wrapper</parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP: Failed to retrieve Block Details</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">$temp.tmp_hostname||'/sap/opu/odata/sap/YY1_CREDITBLOCK_API_V1_CDS/YY1_CreditBlock_API_v1'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom SAP API)</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l81g44q5" targetId="l81g44q4"/>
+                     </subflow>
+                     <end id="l81g44q4">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="l81g4428" targetId="l81g4429" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l81g43zu" interrupting="true">
+                        <link id="l81g442b" targetId="l81g442c" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>053c87f5-9796-477f-920d-26ad32bf916d</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:23Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>091a399d-b148-4217-b6eb-cfd64c185476</ns1:Id>
+               <ns1:Name>Test1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:23Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:23Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>54Wfp2JZACflsJLJL4VriT</types1:GUID>
+      <types1:DisplayName>api9_Wrapper</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.721Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

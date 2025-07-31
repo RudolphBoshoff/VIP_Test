@@ -1,0 +1,163 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ImXycotFgpKi9zh-gt-6296735-2023-05-02T14:50:23.549Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_EmailAddressChanged_Detail_FileEvent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Reads the files created by Process_AddressChanged and calls Process_AddressChanged_Detail</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-05-02T14:50:24Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-02T14:55:05Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_EmailAddressChanged_Detail_FileEvent/Process_EmailAddressChanged_Detail_FileEvent.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_EmailAddressChanged_Detail_FileEvent"
+                  name="Process_EmailAddressChanged_Detail_FileEvent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Reads the files created by Process_AddressChanged and calls Process_AddressChanged_Detail</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="delimitedContent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-P2BFileEvent:Api8EmailAddressChangedDetailContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_error" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessVariables" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-P2BFileEvent:Api8EmailAddressChangedDetail"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lezisavg" targetId="lezisavf"/>
+               </start>
+               <assignment id="lezisavf">
+                  <title>Process Variables</title>
+                  <operation source="formula" to="temp.tmp_ProcessVariables">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.delimitedContent[1]/fileInfo[1]/name }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;EMAIL_ADDRESS_CHANGED&lt;/Event_Name&gt;
+   &lt;API_Name&gt;API08&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{$input.delimitedContent[1]/record[1]/RefCode}&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{fn:current-dateTime()}&lt;/ProcessStartTime&gt;
+&lt;/PoErrorDetails&gt;</expression>
+                  </operation>
+                  <link id="lezisavh" targetId="l7is30h0"/>
+               </assignment>
+               <eventContainer id="l7is30h0">
+                  <subflow id="l7is30gw">
+                     <title>Process_EmailAddressChanged_Detail</title>
+                     <subflowGUID>bX2HwQ0v6CAlMtBzprfRUb</subflowGUID>
+                     <subflowPath>Process_EmailAddressChanged_Detail</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_AddressDetail" source="formula" updatable="true">
+                           <expression language="XQuery">$input.delimitedContent[1]/record </expression>
+                        </parameter>
+                        <parameter name="in_ProcessVariables" source="field" updatable="true">temp.tmp_ProcessVariables</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_ErrorDetails" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:BusinessPartner_Expand</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">73TzrNfMb3we8PZAvKue2p</option>
+                           </options>
+                        </field>
+                        <field name="out_ProcessVariables_EmailAddressChanged" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:PoErrorDetails</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l7is30h2">
+                     <link id="l7is30h3" targetId="l7is30h0" type="containerLink"/>
+                  </flow>
+                  <flow id="l7is30h5">
+                     <subflow id="l7is30hb">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_ProcessVariables[1]/X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_ProcessVariables[1]/IICS_Run_ID</parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ProcessVariables[1]/API_Name</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">temp.tmp_ProcessVariables[1]/Event_Name</parameter>
+                           <parameter name="i_DataKey" source="field" updatable="true">temp.tmp_ProcessVariables[1]/Data_Key</parameter>
+                           <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_ProcessVariables[1]/IICS_Process_Name</parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Uncaught Error in Process_AddressChanged_Detail</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessVariables[1]/ProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="l7is30h6" targetId="l7is30h0" type="containerLink"/>
+                  </flow>
+                  <link id="l7is30h1" targetId="l7is30h2" type="containerLink"/>
+                  <link id="l7is30gy" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l7is30gz" interrupting="true">
+                        <link id="l7is30h4" targetId="l7is30h5" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>ajx7j4JeZdQeMK7yG9uuGG</types1:GUID>
+      <types1:DisplayName>Process_EmailAddressChanged_Detail_FileEvent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.179Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

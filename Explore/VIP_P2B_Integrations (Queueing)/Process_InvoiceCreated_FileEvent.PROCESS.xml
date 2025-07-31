@@ -1,0 +1,584 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oZBJRvDINciZBpD-gt-37242393-2022-10-12T10:48:28.241Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_InvoiceCreated_FileEvent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Wrapper process which invokes API01 (Journal entry posting) processes</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:28Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-27T07:42:29Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_InvoiceCreated_FileEvent/Process_InvoiceCreated_FileEvent.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_InvoiceCreated_FileEvent"
+                  name="Process_InvoiceCreated_FileEvent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Wrapper process which invokes API01 (Journal entry posting) processes</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-P2BFileEvent:ParsedFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_EventType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceHeader_ProformaNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JournalEntryPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2pXtdn8cZ4hcSRDTk1q9IQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_ProcessName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_InvoiceItems_Record_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItems_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PayNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-P2BFileEvent:AppCon-InvoiceCreatedFileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8lbbfph" targetId="kpmvx8z9"/>
+               </start>
+               <assignment id="kpmvx8z9">
+                  <title>Parse Event Message Info</title>
+                  <operation source="formula" to="temp.tmp_EventName">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventTypeName</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_EventType">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventChangeType </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RefCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("Matters.RefCode") or fn:lower-case($ids/identifierName/text()) = fn:lower-case("RmClients.AddrCode")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_InvoiceHeader_ProformaNr">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("InvoiceHeader.ProformaNr")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_PayNr">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("PaymentOnService.PayNr")) 
+       then $ids/identifierValue/text()  
+       else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ServCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("PaymentOnService.ServCode") )
+       then $ids/identifierValue/text()  
+       else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_X_TRANSACTION_ID">
+                     <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name </expression>
+                  </operation>
+                  <link id="l8e9ruqz" targetId="l8e9ruqy"/>
+               </assignment>
+               <assignment id="l8e9ruqy">
+                  <title>Set Parent Process attributes</title>
+                  <operation source="formula" to="temp.tmp_IICS_Process_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_IICS_ProcessName">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="query" to="temp.tmp_InvoiceHeader">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceHeader">
+                        <where>ProformaNr = '{$temp.tmp_InvoiceHeader_ProformaNr}'</where>
+                     </query>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_ApiName">API-01</operation>
+                  <link id="l8lbbfpj" targetId="l8lbbfpi"/>
+               </assignment>
+               <milestone id="l8lbbfpi">
+                  <title>Milestone</title>
+                  <link id="l8lbbfpk" targetId="kpzdw0ag"/>
+               </milestone>
+               <container id="kpzdw0ag" type="exclusive">
+                  <title>Event Name</title>
+                  <flow id="kpzdw0e4">
+                     <container id="l8e9rutf" type="exclusive">
+                        <title>InvoiceTotal</title>
+                        <flow id="l8e9ruti">
+                           <subflow id="l8e9ruws">
+                              <title>Log Zero InvoiceTotal Warning</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                                 <parameter name="i_Code" source="constant" updatable="true">199</parameter>
+                                 <parameter name="i_Error" source="constant" updatable="true">InvoiceTotal=0</parameter>
+                                 <parameter name="i_Description" source="constant" updatable="true">Warning : Zero InvoiceTotal</parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'ProformaNr='||$temp.tmp_InvoiceHeader_ProformaNr</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">Zero InvoiceTotal in VPoint</parameter>
+                                 <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">'N/A'</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="l8e9ruwt" targetId="l8e9ruw0"/>
+                           </subflow>
+                           <end id="l8e9ruw0">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <flow id="l8e9rutl">
+                           <eventContainer id="l8e9rwbs">
+                              <subflow id="l8e9ruu3">
+                                 <title>Invoke InvoiceCreated</title>
+                                 <subflowGUID>4HNJE2i8L6sbgc3NHIfuye</subflowGUID>
+                                 <subflowPath>Process_InvoiceCreated</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                                    <parameter name="in_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                                    <parameter name="in_IICS_Process_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                                    <parameter name="in_ParentProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                                    <parameter name="in_ApiName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                                    <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                 </input>
+                                 <outputDef/>
+                              </subflow>
+                              <flow id="l8e9rwbu">
+                                 <link id="l8e9rwbv" targetId="l8e9rwbs" type="containerLink"/>
+                              </flow>
+                              <flow id="l8e9rwbx">
+                                 <subflow id="l8e9rx21">
+                                    <title>Log InvoiceCreated Error</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                                       <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                                       <parameter name="i_Code" source="field" updatable="true">output.IC-faultInfo[1]/code</parameter>
+                                       <parameter name="i_Error" source="field" updatable="true">output.IC-faultInfo[1]/reason</parameter>
+                                       <parameter name="i_Description" source="field" updatable="true">output.IC-faultInfo[1]/detail</parameter>
+                                       <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                                       <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                                       <parameter name="i_DataKey" source="formula" updatable="true">
+                                          <expression language="XQuery">'ProformaNr='||$temp.tmp_InvoiceHeader_ProformaNr</expression>
+                                       </parameter>
+                                       <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                       <parameter name="i_FailedAtStep" source="constant" updatable="true">Process InvoiceCreated</parameter>
+                                       <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                       <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                          <expression language="XQuery">'N/A'</expression>
+                                       </parameter>
+                                       <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                       <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                                    </input>
+                                    <outputDef/>
+                                 </subflow>
+                                 <link id="l8e9rwby" targetId="l8e9rwbs" type="containerLink"/>
+                              </flow>
+                              <link id="l8e9rwbt" targetId="l8e9rwbu" type="containerLink"/>
+                              <events>
+                                 <catch faultField="IC-faultInfo" id="l8e9rwb1" interrupting="true">
+                                    <link id="l8e9rwbw" targetId="l8e9rwbx" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="l8e9rutm" targetId="l8e9rutf" type="containerLink"/>
+                        </flow>
+                        <link id="l8e9ruth" targetId="l8e9ruti" type="containerLink">
+                           <condition source="formula">
+                              <function name="equals">
+                                 <arg name="left">{$temp.tmp_InvoiceHeader.InvoiceTotal}</arg>
+                                 <arg name="right">{0}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8e9rutk" targetId="l8e9rutl" type="containerLink"/>
+                        <link id="l8e9rutg" targetId="l8e9ruq7"/>
+                     </container>
+                     <end id="l8e9ruq7">
+                        <title>End 6</title>
+                     </end>
+                  </flow>
+                  <flow id="kpzdw0e6">
+                     <link id="kpzdw0e7" targetId="kpzdw0ag" type="containerLink"/>
+                  </flow>
+                  <link id="kpzdw0e0" targetId="kpzdw0e4" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_EventName}</arg>
+                           <arg name="right">INVOICE_CREATED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kpzdw0e1" targetId="kpzdw0e6" type="containerLink"/>
+                  <link id="kpzdw0ai" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>ee5d759f-bd09-4cee-a088-d152b3e8e494</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1040",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "106023"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5f34be70-4362-4ce8-b752-15ed4319e537</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d31f3071-d8e3-4e7d-bddc-99b329639389</ns1:Id>
+               <ns1:Name>inv</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "fileEvent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "content": "\n   "
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>964019fc-b47c-403b-9678-6bd43fa116ee</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3831fbad-5ed3-4de1-982b-86e3ff0ce01a</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "543",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>988928c0-4801-498d-b2ca-712059de9a09</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1043",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0558aa05-3875-4c86-840b-e94272f178b3</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4aad1de7-0c78-4861-962e-bfbac24de90e</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>10004f6d-0e9e-4795-aaef-43dbe9eb91f4</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:28Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:28Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2jjEgA4aBwldJdP8wnRmoR</types1:GUID>
+      <types1:DisplayName>Process_InvoiceCreated_FileEvent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.574Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

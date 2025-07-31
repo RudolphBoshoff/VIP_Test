@@ -1,0 +1,308 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>oGsF4XkgbdoPVm5-gt-45539130-2023-04-12T08:26:23.5Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SetERPToken_DedicatedUser</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-04-12T08:26:24Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-04-18T08:13:43Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-18T08:14:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_SetERPToken_DedicatedUser/Process_SetERPToken_DedicatedUser.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SetERPToken_DedicatedUser"
+                  name="Process_SetERPToken_DedicatedUser"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_cookie" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DateCreated" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tbl_VIP_p2b_erptoken" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_p2b_erptoken</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TokenAge" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TokenUsage" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_p2b_erptoken_Usage</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TokenLastUsed" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TokenCreated" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lgcdv46e" targetId="lgcdv46d"/>
+               </start>
+               <assignment id="lgcdv46d">
+                  <title>GET current stored token</title>
+                  <operation source="query" to="temp.tbl_VIP_p2b_erptoken">
+                     <query advanceQuery="false" from="ConnectionDQMetadata-1:VIP_p2b_erptoken">
+                        <where>Order By ID</where>
+                     </query>
+                  </operation>
+                  <link id="lgcdv46f" targetId="lgc8sxti"/>
+               </assignment>
+               <assignment id="lgc8sxti">
+                  <title>Determine Token Age</title>
+                  <operation source="field" to="temp.tmp_TokenCreated">temp.tbl_VIP_p2b_erptoken.DATECREATED</operation>
+                  <operation source="formula" to="temp.tmp_TokenAge">
+                     <expression language="XQuery">(:date:dateDiff(
+fn:current-dateTime()
+, $temp.tmp_TokenCreated 
+, "MI"):)
+(date:dateToMillis(fn:current-dateTime())-date:dateToMillis($temp.tbl_VIP_p2b_erptoken.DATECREATED )) div 60000</expression>
+                  </operation>
+                  <link id="lgcc1vyi" targetId="lgc8sxgk"/>
+               </assignment>
+               <container id="lgc8sxgk" type="exclusive">
+                  <title>Token Age in Minutes</title>
+                  <flow id="lgc8sxgo">
+                     <assignment id="lgddco73">
+                        <title>Get Last Usage</title>
+                        <operation source="query" to="temp.tmp_TokenUsage">
+                           <query advanceQuery="false"
+                                  from="ConnectionDQMetadata-1:VIP_p2b_erptoken_Usage">
+                              <where>Order By ID desc</where>
+                           </query>
+                        </operation>
+                        <link id="lgddco89" targetId="lgc8sxlt"/>
+                     </assignment>
+                     <assignment id="lgc8sxlt">
+                        <title>Determine Usage Age</title>
+                        <operation source="formula" to="temp.tmp_TokenLastUsed">
+                           <expression language="XQuery">(:date:dateDiff(
+fn:current-dateTime()
+, $temp.tmp_TokenUsage.DateAccessed 
+, "MI"):)
+
+(date:dateToMillis(fn:current-dateTime())-date:dateToMillis($temp.tmp_TokenUsage.DateAccessed )) div 60000</expression>
+                        </operation>
+                        <link id="lgc8sxqm" targetId="lgc8sxql"/>
+                     </assignment>
+                     <container id="lgc8sxql" type="exclusive">
+                        <title>Minutes since last usage</title>
+                        <flow id="lgc8sxqp">
+                           <assignment id="lgc8sxr0">
+                              <title>Set SAP Credentials</title>
+                              <operation source="formula" to="temp.tmp_hostname">
+                                 <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_password">
+                                 <expression language="XQuery">(:util:resolveURN('URN_SAP_Pwd'):)
+
+'cnMoxkEL$jhZzWR3ymzpKflWGkGmQlmuZQGckEUd'</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_username">
+                                 <expression language="XQuery">(:util:resolveURN('URN_SAP_Username'):)
+'VIEWPOINT_RETRIEVE_S4_TOKEN'</expression>
+                              </operation>
+                              <link id="lgddco9l" targetId="lgddco91"/>
+                           </assignment>
+                           <eventContainer id="lgddco91">
+                              <service id="lgddco9c">
+                                 <title>GETSAPToken</title>
+                                 <serviceName>AppERPGettoken:getAccessToken</serviceName>
+                                 <serviceGUID>6D5gF9AP8aLlArRqeUz0AL</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="hostName" source="field" updatable="true">temp.tmp_hostname</parameter>
+                                    <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                                    <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lgddco92">
+                                 <assignment id="lgddco93">
+                                    <title>Assignment to COOKIE, TOKEN etc.</title>
+                                    <operation source="field" to="temp.tbl_VIP_p2b_erptoken.COOKIE">output.o_SvcERPGetToken_Cookie</operation>
+                                    <operation source="field" to="temp.tbl_VIP_p2b_erptoken.TOKEN">output.o_SvcERPGetToken_X_CSRF_TOKEN</operation>
+                                    <operation source="formula" to="temp.tbl_VIP_p2b_erptoken.DATECREATED">
+                                       <expression language="XQuery">fn:current-dateTime()</expression>
+                                    </operation>
+                                    <operation source="field" to="output.out_cookie">output.o_SvcERPGetToken_Cookie</operation>
+                                    <operation source="field" to="output.out_token">output.o_SvcERPGetToken_X_CSRF_TOKEN</operation>
+                                    <operation source="formula" to="output.out_DateCreated">
+                                       <expression language="XQuery">fn:current-dateTime()</expression>
+                                    </operation>
+                                    <link id="lgddcoa5" targetId="lgddcoa4"/>
+                                 </assignment>
+                                 <end id="lgddcoa4"/>
+                              </flow>
+                              <flow id="lgddco94">
+                                 <subflow id="lgdfkp4u">
+                                    <title>Process_P2B_Event_ErrorLog</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_ProcessVariables" source="formula" updatable="true">
+                                          <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{'SetErpToken_'||fn:current-dateTime()}&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;{$output.faultInfo[1]/code }&lt;/Code&gt;
+   &lt;Error&gt;{$output.faultInfo[1]/reason }&lt;/Error&gt;
+   &lt;Description&gt;{$output.faultInfo[1]/detail }&lt;/Description&gt;
+   &lt;Event_Name&gt;Schedule [Set ERP Token]&lt;/Event_Name&gt;
+   &lt;API_Name&gt;N/A&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'username='||$temp.tmp_username }&lt;/Data_Key&gt;
+   &lt;RestURL&gt;{$temp.tmp_hostname||'/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartner?$top=0'}&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;SAP: Could not retrieve Cookie+Token&lt;/FailedAtStep&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                                       </parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="lgdfkp4v" targetId="lgddcoap"/>
+                                 </subflow>
+                                 <throw id="lgddcoap">
+                                    <title>Throw 1</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lgddco9d" targetId="lgddco92" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l6d79obs" interrupting="true">
+                                    <link id="lgddco9e" targetId="lgddco94" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                        </flow>
+                        <flow id="lgc8sxqs">
+                           <end id="lgc8sxrg">
+                              <title>End 3</title>
+                           </end>
+                        </flow>
+                        <link id="lgc8sxqo" targetId="lgc8sxqp" type="containerLink">
+                           <condition source="formula">
+                              <function name="greater-than">
+                                 <arg name="left">{$temp.tmp_TokenLastUsed}</arg>
+                                 <arg name="right">{28}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lgc8sxqr" targetId="lgc8sxqs" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="lgc8sxgr">
+                     <end id="lgc8sxn0">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="lgc8sxgn" targetId="lgc8sxgo" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-or-equals">
+                           <arg name="left">{$temp.tmp_TokenAge}</arg>
+                           <arg name="right">{28}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lgc8sxgq" targetId="lgc8sxgr" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>bdc7d7ab-f2ab-4e4b-a573-9b1f8ac67245</ns1:Id>
+               <ns1:Name>new</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-04-12T08:26:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-04-12T08:26:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d6ad8657-4b0d-4a3d-959c-ff5a5035c455</ns1:Id>
+               <ns1:Name>No Input</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-04-12T08:26:24Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-04-12T08:26:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0KaO7KIRbIQkQ2OWkP7sUe</types1:GUID>
+      <types1:DisplayName>Process_SetERPToken_DedicatedUser</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.4Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

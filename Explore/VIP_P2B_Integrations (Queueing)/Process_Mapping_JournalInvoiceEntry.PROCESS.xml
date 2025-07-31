@@ -1,0 +1,492 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wrV3HRvsGRvDINc-gt-20540840-2022-10-12T10:48:11.364Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Mapping_JournalInvoiceEntry</types1:Name>
+      <types1:ParentFlowIds>eKu8QhxOSM8NciZ-gt-1944127-2022-08-26T13:11:39.077Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Extracts Invoice data from VPoint tables and constructs the PO for posting Invoice to SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:11Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:36Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:33:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Mapping_JournalInvoiceEntry/Process_Mapping_JournalInvoiceEntry.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Mapping_JournalInvoiceEntry"
+                  name="Process_Mapping_JournalInvoiceEntry"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Extracts Invoice data from VPoint tables and constructs the PO for posting Invoice to SAP</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProformaNr"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_PO_JournallnvoiceEntry" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">iGuQAptlP4jjsSR0ohMncY</option>
+                  </options>
+               </field>
+               <field description="" name="out_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Intercompany_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_Intercompany_RevEntities"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_JournalInvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_JournalInvoiceItem_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTransItem" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_JournallnvoiceItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01-Lines</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">83AQE7ujI2tbqowKOnEK2Z</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_PO_JournallnvoiceItem_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:P2bApi01-Lines</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">83AQE7ujI2tbqowKOnEK2Z</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServiceMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:ServiceMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters_Header" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables_PC" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LookValues_PE" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:LookValues</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JournalInvoiceItem" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServCode_Prefix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecurringFee" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RecurringFees</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters_Lines" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentItem_RevEntity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PreviousItem_RevEntity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Intercompany_Flag" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Intercompany_RevEntity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Intercompany_RevEntities" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables_TC" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Country_TaxCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_output_TaxCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceData" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:api01</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItem" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:api01</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kq911ub7" targetId="kq911ub6"/>
+               </start>
+               <assignment id="kq911ub6">
+                  <title>Fetch Invoice data</title>
+                  <operation source="list" to="temp.tmp_InvoiceData">
+                     <query advanceQuery="false" from="AppConnectionVPCvip:api01">
+                        <where>ih_ProformaNr = '{$input.in_ProformaNr}' order by ii_LineNr</where>
+                     </query>
+                  </operation>
+                  <link id="l8kawgv3" targetId="l8kawgv2"/>
+               </assignment>
+               <assignment id="l8kawgv2">
+                  <title>Set Header RevEntity</title>
+                  <operation source="field" to="temp.tmp_PreviousItem_RevEntity">temp.tmp_InvoiceData[1]/ih_RevEntity</operation>
+                  <link id="l8kawgv4" targetId="kq911ubk"/>
+               </assignment>
+               <container id="kq911ubk" type="exclusive">
+                  <title>Next InvoiceItem</title>
+                  <flow id="kq911ubo">
+                     <assignment id="l8cuse4c">
+                        <title>Pick an Invoice Item for processing</title>
+                        <operation source="formula" to="temp.tmp_InvoiceItem">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceData )</expression>
+                        </operation>
+                        <operation source="field" to="temp.tmp_CurrentItem_RevEntity">temp.tmp_InvoiceItem[1]/ii_InterRevEntity</operation>
+                        <link id="li487ts6" targetId="lbx7rqth"/>
+                     </assignment>
+                     <assignment id="lbx7rqth">
+                        <title>Construct Invoice Items Payload</title>
+                        <operation source="formula" to="temp.tmp_PO_JournallnvoiceItem">
+                           <expression language="XQuery">&lt;Lines&gt;
+	&lt;ii_LineNr&gt; {$temp.tmp_InvoiceItem[1]/ii_LineNr } &lt;/ii_LineNr&gt;
+	&lt;atr_LineRef&gt;{$temp.tmp_InvoiceItem[1]/atr_LineRef } &lt;/atr_LineRef&gt;
+	&lt;atr_LineNr&gt;{$temp.tmp_InvoiceItem[1]/atr_LineNr } &lt;/atr_LineNr&gt;
+	&lt;atr_AcctCode&gt; {$temp.tmp_InvoiceItem[1]/atr_AcctCode }  &lt;/atr_AcctCode&gt;
+	&lt;ii_LineInvCur&gt; {$temp.tmp_InvoiceItem[1]/ii_LineInvCur } &lt;/ii_LineInvCur&gt;
+	&lt;ii_Description&gt; {$temp.tmp_InvoiceItem[1]/ii_Description } &lt;/ii_Description&gt;
+	&lt;sm_Description&gt;{$temp.tmp_InvoiceItem[1]/sm_Description }&lt;/sm_Description&gt;
+	&lt;ii_TaxCode&gt; {$temp.tmp_InvoiceItem[1]/ii_TaxCode }&lt;/ii_TaxCode&gt;
+	&lt;ii_ServCode&gt;{$temp.tmp_InvoiceItem[1]/ii_ServCode } &lt;/ii_ServCode&gt;
+	&lt;ii_ServiceType&gt; {$temp.tmp_InvoiceItem[1]/ii_ServiceType }&lt;/ii_ServiceType&gt;
+	&lt;ii_InterRevEntity&gt;{$temp.tmp_InvoiceItem[1]/ii_InterRevEntity }&lt;/ii_InterRevEntity&gt;
+	&lt;ii_MatterType&gt; {$temp.tmp_InvoiceItem[1]/ii_MatterType }&lt;/ii_MatterType&gt;
+	&lt;ii_MatterCode&gt; {$temp.tmp_InvoiceItem[1]/ii_MatterCode }&lt;/ii_MatterCode&gt;
+	&lt;rf_UserLookval&gt; {$temp.tmp_InvoiceItem[1]/rf_UserLookval }&lt;/rf_UserLookval&gt;
+	&lt;ProdExt&gt; {$temp.tmp_InvoiceItem[1]/ProdExt }&lt;/ProdExt&gt;
+	&lt;ii_VatLineCur&gt; {$temp.tmp_InvoiceItem[1]/ii_VatLineCur  } &lt;/ii_VatLineCur&gt;
+	&lt;ii_VatLine_Calc&gt;{$temp.tmp_InvoiceItem[1]/ii_VatLine_Calc }&lt;/ii_VatLine_Calc&gt;
+	&lt;ii_CurCode&gt; {$temp.tmp_InvoiceItem[1]/ii_CurCode } &lt;/ii_CurCode&gt;
+	&lt;ii_LinePrice&gt; {$temp.tmp_InvoiceItem[1]/ii_LinePrice } &lt;/ii_LinePrice&gt;
+	&lt;ii_VATPerc&gt; {$temp.tmp_InvoiceItem[1]/ii_VATPerc }&lt;/ii_VATPerc&gt;
+	&lt;ii_ProfitCenter&gt;{$temp.tmp_InvoiceItem[1]/ii_ProfitCenter } &lt;/ii_ProfitCenter&gt;
+	&lt;VatLineCalc&gt;{$temp.tmp_InvoiceItem[1]/VatLineCalc }&lt;/VatLineCalc&gt;
+	&lt;VATPerc&gt; {$temp.tmp_InvoiceItem[1]/VATPerc }&lt;/VATPerc&gt;
+    &lt;ii_Exchange&gt;{$temp.tmp_InvoiceItem[1]/ii_Exchange }&lt;/ii_Exchange&gt;
+&lt;/Lines&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_PO_JournallnvoiceItem_Array">
+                           <expression language="XQuery">list:append($temp.tmp_PO_JournallnvoiceItem_Array , $temp.tmp_PO_JournallnvoiceItem )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Intercompany_Flag">
+                           <expression language="XQuery">util:iif($temp.tmp_CurrentItem_RevEntity != $temp.tmp_PreviousItem_RevEntity and $temp.tmp_InvoiceItem[1]/ih_RevEntity != $temp.tmp_InvoiceItem[1]/ii_InterRevEntity, fn:true())</expression>
+                        </operation>
+                        <link id="lbx7rqtj" targetId="l8kawgr8"/>
+                     </assignment>
+                     <assignment id="l8cw0f8b">
+                        <title>Remove processed Item from list</title>
+                        <operation source="field" to="temp.tmp_PreviousItem_RevEntity">temp.tmp_CurrentItem_RevEntity</operation>
+                        <operation source="formula" to="temp.tmp_InvoiceData">
+                           <expression language="XQuery">list:tail($temp.tmp_InvoiceData )</expression>
+                        </operation>
+                        <link id="l8cw0f8k" targetId="l8cw0f8i"/>
+                     </assignment>
+                     <container id="l8kawgr8" type="exclusive">
+                        <title>Intercompany ?</title>
+                        <flow id="l8kawgrc">
+                           <assignment id="l8kawgtg">
+                              <title>Set Intercompany Flag</title>
+                              <operation source="constant" to="output.out_Intercompany_Flag">Y</operation>
+                              <operation source="formula" to="temp.tmp_Intercompany_RevEntities">
+                                 <expression language="XQuery">list:append($temp.tmp_Intercompany_RevEntities, $temp.tmp_CurrentItem_RevEntity)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l8kawgrd" targetId="l8kawgr8" type="containerLink"/>
+                        </flow>
+                        <flow id="l8kawgrf">
+                           <link id="l8kawgrg" targetId="l8kawgr8" type="containerLink"/>
+                        </flow>
+                        <link id="l8kawgrb" targetId="l8kawgrc" type="containerLink">
+                           <condition source="formula">
+                              <function name="true">
+                                 <arg name="field">{$temp.tmp_Intercompany_Flag}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8kawgre" targetId="l8kawgrf" type="containerLink">
+                           <condition source="formula">
+                              <function name="false">
+                                 <arg name="field">{$temp.tmp_Intercompany_Flag}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l8kawgra" targetId="l8cw0f8b"/>
+                     </container>
+                     <jumpTo id="l8cw0f8i">
+                        <link id="l8cw0f8j" targetId="kq911ubk"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kq911ubr">
+                     <assignment id="l8e38sfd">
+                        <title>Set Output JournalEntry Payload</title>
+                        <operation source="formula" to="output.out_PO_JournallnvoiceEntry">
+                           <expression language="XQuery">&lt;P2bApi01&gt; 
+&lt;ih_RevEntity&gt;{$temp.tmp_InvoiceItem[1]/ih_RevEntity }&lt;/ih_RevEntity&gt; 
+&lt;ih_InvoiceNr&gt;{$temp.tmp_InvoiceItem[1]/ih_InvoiceNr }&lt;/ih_InvoiceNr&gt; 
+&lt;ih_ProformaNr&gt;{$temp.tmp_InvoiceItem[1]/ih_ProformaNr }&lt;/ih_ProformaNr&gt; 
+&lt;ih_DateCreate&gt;{fn:format-dateTime(xs:dateTime(date:toDate($temp.tmp_InvoiceItem[1]/ih_DateCreate, 'YYYY-MM-DD HH24:MI:SS')), "[Y, 4-*]-[M, 2-*]-[D, 2-*]T[H, 2-*]:[m, 2-*]:[s, 2-*]Z")}&lt;/ih_DateCreate&gt; 
+&lt;ih_InvoiceType&gt;{$temp.tmp_InvoiceItem[1]/ih_InvoiceType }&lt;/ih_InvoiceType&gt; 
+&lt;ih_InvoiceRef&gt;&lt;/ih_InvoiceRef&gt; 
+&lt;ih_DateInvoice&gt;{fn:format-dateTime(xs:dateTime(date:toDate($temp.tmp_InvoiceItem[1]/ih_DateInvoice, 'YYYY-MM-DD HH24:MI:SS')), "[Y, 4-*]-[M, 2-*]-[D, 2-*]T[H, 2-*]:[m, 2-*]:[s, 2-*]Z")}&lt;/ih_DateInvoice&gt; 
+&lt;ih_DateVoucher&gt;{fn:format-dateTime(xs:dateTime(date:toDate($temp.tmp_InvoiceItem[1]/ih_DateVoucher, 'YYYY-MM-DD HH24:MI:SS')), "[Y, 4-*]-[M, 2-*]-[D, 2-*]T[H, 2-*]:[m, 2-*]:[s, 2-*]Z")}
+&lt;/ih_DateVoucher&gt; 
+&lt;ih_MatterCode&gt;{$temp.tmp_InvoiceItem[1]/ih_MatterCode }&lt;/ih_MatterCode&gt; 
+&lt;ih_MatterType&gt;{$temp.tmp_InvoiceItem[1]/ih_MatterType }&lt;/ih_MatterType&gt; 
+&lt;ih_CurCode&gt;{$temp.tmp_InvoiceItem[1]/ih_CurCode }&lt;/ih_CurCode&gt; 
+&lt;ih_RefCode&gt;{$temp.tmp_InvoiceItem[1]/ih_RefCode }&lt;/ih_RefCode&gt; 
+&lt;ih_InvoiceTotal&gt;{$temp.tmp_InvoiceItem[1]/ih_InvoiceTotal  }&lt;/ih_InvoiceTotal&gt; 
+&lt;ih_InvoiceBase&gt;{$temp.tmp_InvoiceItem[1]/ih_InvoiceBase }&lt;/ih_InvoiceBase&gt; 
+{$temp.tmp_PO_JournallnvoiceItem_Array} 
+&lt;/P2bApi01&gt;</expression>
+                        </operation>
+                        <operation source="constant" to="output.out_Status">200</operation>
+                        <operation source="formula" to="output.out_Intercompany_RevEntities">
+                           <expression language="XQuery">fn:distinct-values($temp.tmp_Intercompany_RevEntities )</expression>
+                        </operation>
+                        <link id="l8e38sfe" targetId="kq911uc6"/>
+                     </assignment>
+                     <end id="kq911uc6"/>
+                  </flow>
+                  <link id="kq911ubn" targetId="kq911ubo" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_InvoiceData}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kq911ubq" targetId="kq911ubr" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_InvoiceData}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a3484eb8-9756-4fd1-8667-8600a8ed116d</ns1:Id>
+               <ns1:Name>in</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "36",
+	 "in_X_TRANSACTION_ID": "36",
+	 "in_EventName": "INVOICE_CREATED",
+	 "in_IICS_Process_ID": "654334",
+	 "in_ApiName": "API-01"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d1343449-63f0-4a1f-bb2e-53f1da01d358</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "142301",
+	 "in_SecurityDeposit_TaxAmount": "0",
+	 "in_SecurityDeposit_TaxCode": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7b496fd4-d9be-4e98-a8b7-4259a9a040bb</ns1:Id>
+               <ns1:Name>inp4</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-12-21T06:14:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "146759",
+	 "in_X_TRANSACTION_ID": "123",
+	 "in_EventName": "IC",
+	 "in_IICS_Process_ID": "5732",
+	 "in_ApiName": "API01"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4686bf59-ea93-4cb8-8869-9ab648c46c43</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:11Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "53"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>d1WqXkL9jkSlDl7b6c1Das</types1:GUID>
+      <types1:DisplayName>Process_Mapping_JournalInvoiceEntry</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.946Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

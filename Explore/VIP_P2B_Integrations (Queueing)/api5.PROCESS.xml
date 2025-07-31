@@ -1,0 +1,853 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>nImp6oIuQaaabcm-gt-27109875-2021-08-20T07:34:36.213Z::pd.xml</types1:EntryId>
+      <types1:Name>api5</types1:Name>
+      <types1:ParentFlowIds>qclNE6Eaaaaaaaa-gt-20541332-2022-10-12T10:48:22.265Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Posts the Invoice clearance data to VPoint API and logs the same in SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-20T07:34:36Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-08-01T09:01:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-08-01T09:02:22Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.api5/api5.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="api5"
+                  name="api5"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Posts the Invoice clearance data to VPoint API and logs the same in SAP</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_VPC_Token"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ClearedPaymentEntry"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Process_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="HttpStatusCode_api5" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">HTTP_400</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_hostname_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">https://my305570-api.s4hana.ondemand.com</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">VIEW_POINT_CLOUD_Q</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_host" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_api_input" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAPLog_Update_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Receipt_Cancellation_Payload"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Dummy_Condition" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">False</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_VIP_SAPLogging_Failure_Record"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_SAPLoggingFailureLog</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_SAPLogging_Failure_Record_Found_Flag"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAPLog_KeyFields" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VIPDB_ReceiptNr_Value1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VIPDB_VPC_Response" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DataKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ErrorDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProformaNr_Found_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BANumber_Found_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lki36h9l" targetId="lki36h9k"/>
+               </start>
+               <container id="lki36h9k" type="exclusive">
+                  <title>in_EventName</title>
+                  <flow id="lki36h9o">
+                     <wait id="lki36hg5">
+                        <title>Wait 1s</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">1</arg>
+                              <arg name="scale">S</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="lki36him" targetId="lki36hil"/>
+                     </wait>
+                     <milestone id="lki36hil">
+                        <title>202 Accepted</title>
+                        <httpStatus>202</httpStatus>
+                     </milestone>
+                     <link id="lki36h9p" targetId="lki36h9k" type="containerLink"/>
+                  </flow>
+                  <flow id="lki36h9r">
+                     <link id="lki36h9s" targetId="lki36h9k" type="containerLink"/>
+                  </flow>
+                  <link id="lki36h9n" targetId="lki36h9o" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.in_EventName}</arg>
+                           <arg name="right">ONLY ENABLE FOR BULK</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lki36h9q" targetId="lki36h9r" type="containerLink"/>
+                  <link id="lki36hik" targetId="kw3flc8d"/>
+               </container>
+               <container id="lagtj0th" type="exclusive">
+                  <title>Receipt found in VIP DB</title>
+                  <flow id="lagtj0tl">
+                     <assignment id="lagxzhew">
+                        <title>Fetch ReceiptNr from VIP DB</title>
+                        <operation source="field" to="temp.tmp_VIPDB_ReceiptNr_Value1">temp.tmp_VIP_SAPLogging_Failure_Record.Value1</operation>
+                        <operation source="formula" to="temp.tmp_VIPDB_VPC_Response">
+                           <expression language="XQuery">$temp.tmp_VIP_SAPLogging_Failure_Record.VPCResponsePayload</expression>
+                        </operation>
+                        <link id="lagxzhex" targetId="lagv2pek"/>
+                     </assignment>
+                     <jumpTo id="lagv2pek">
+                        <link id="lagv2pel" targetId="l7pyefz9"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lagtj0to">
+                     <link id="lagtj0tp" targetId="lagtj0th" type="containerLink"/>
+                  </flow>
+                  <link id="lagtj0tk" targetId="lagtj0tl" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_SAPLogging_Failure_Record_Found_Flag}</arg>
+                           <arg name="right">Y</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lagtj0tn" targetId="lagtj0to" type="containerLink"/>
+                  <link id="lagtj0tj" targetId="l7pvh0bt"/>
+               </container>
+               <assignment id="kw3flc8d">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_vpc_host">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_vpc_password">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_vpc_username">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_hostname_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SAPLog_KeyFields">
+                     <expression language="XQuery">&lt;root&gt;
+  &lt;SubID&gt;{$input.in_ClearedPaymentEntry/Code_01 }&lt;/SubID&gt;
+  &lt;CompanyCode&gt;{$input.in_ClearedPaymentEntry/CompanyCode }&lt;/CompanyCode&gt;
+  &lt;KeyValue1&gt;{fn:format-number($input.in_ClearedPaymentEntry/AccountingDocument,'0000000000')}&lt;/KeyValue1&gt;
+  &lt;KeyValue2&gt;{$input.in_ClearedPaymentEntry/FiscalYear }&lt;/KeyValue2&gt;
+  &lt;!--Rudolph Boshoff 20230714 Jira Bug: VR-3554--&gt; 
+  &lt;!--KeyValue3&gt;{fn:format-number($input.in_ClearedPaymentEntry/ClearingAccountingDocument,'0000000000')}&lt;/KeyValue3--&gt;
+  &lt;KeyValue3&gt;{fn:format-number($input.in_ClearedPaymentEntry/ClearingJournalEntry,'0000000000')}&lt;/KeyValue3&gt;  
+  &lt;KeyValue4&gt;{$input.in_ClearedPaymentEntry/ClearingFiscalYear }&lt;/KeyValue4&gt;
+  &lt;Value2&gt;{$input.in_ClearedPaymentEntry/InvAccountingDocumentItem }&lt;/Value2&gt;
+  &lt;Value3&gt;{$input.in_ClearedPaymentEntry/AccountingDocumentItem }&lt;/Value3&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_DataKey">
+                     <expression language="XQuery">'CompanyCode='||$input.in_ClearedPaymentEntry/CompanyCode||
+'^AccountingDocument='||$input.in_ClearedPaymentEntry/AccountingDocument||
+'^FiscalYear='||$input.in_ClearedPaymentEntry/FiscalYear||
+'^ClearingAccountingDocument='||$input.in_ClearedPaymentEntry/ClearingJournalEntry||
+'^ClearingFiscalYear='||$input.in_ClearedPaymentEntry/ClearingFiscalYear||
+'^Customer='||$input.in_ClearedPaymentEntry/Customer||
+'^DocumentReferenceID='||$input.in_ClearedPaymentEntry/DocumentReferenceID</expression>
+                  </operation>
+                  <link id="lagtiypn" targetId="lagtiypm"/>
+               </assignment>
+               <assignment id="lagtiypm">
+                  <title>Query for Receipt in VIP DB</title>
+                  <operation source="query" to="temp.tmp_VIP_SAPLogging_Failure_Record">
+                     <query advanceQuery="true"
+                            from="ConnectionDQMetadata-1:VIP_P2B_SAPLoggingFailureLog">
+                        <where>APIName = '{$temp.tmp_SAPLog_KeyFields/SubID}' and CompanyCode = '{$temp.tmp_SAPLog_KeyFields/CompanyCode}' and KeyValue1 = '{$temp.tmp_SAPLog_KeyFields/KeyValue1}' and KeyValue2 = '{$temp.tmp_SAPLog_KeyFields/KeyValue2}' and KeyValue3 = '{$temp.tmp_SAPLog_KeyFields/KeyValue3}' and KeyValue4 = '{$temp.tmp_SAPLog_KeyFields/KeyValue4}'  and Value2 = '{$temp.tmp_SAPLog_KeyFields/Value2}' and Value3 = '{$temp.tmp_SAPLog_KeyFields/Value3}' Order By DateProcessed desc</where>
+                     </query>
+                  </operation>
+                  <link id="lagtj0rg" targetId="lagtj0rf"/>
+               </assignment>
+               <assignment id="lagtj0rf">
+                  <title>Check if receipt is found in VIP DB</title>
+                  <operation source="formula" to="temp.tmp_SAPLogging_Failure_Record_Found_Flag">
+                     <expression language="XQuery">util:iif(list:count($temp.tmp_VIP_SAPLogging_Failure_Record ) &gt; 0, 'Y', 'N')</expression>
+                  </operation>
+                  <link id="lagtj0ti" targetId="lagtj0th"/>
+               </assignment>
+               <eventContainer id="l7pvh0bt">
+                  <subflow id="l7pvh0by">
+                     <title>Get additional data from VPC</title>
+                     <subflowGUID>2fviXGZTx4Rdp7hXW62A4K</subflowGUID>
+                     <subflowPath>ProcessGetAPI5Data</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_DocumentReferenceID" source="formula" updatable="true">
+                           <expression language="XQuery">$input.in_ClearedPaymentEntry/DocumentReferenceID</expression>
+                        </parameter>
+                        <parameter name="in_Customer_RefCode" source="formula" updatable="true">
+                           <expression language="XQuery">$input.in_ClearedPaymentEntry/Customer</expression>
+                        </parameter>
+                        <parameter name="in_CompanyCode" source="formula" updatable="true">
+                           <expression language="XQuery">$input.in_ClearedPaymentEntry/CompanyCode</expression>
+                        </parameter>
+                        <parameter name="in_CurrencyCode" source="formula" updatable="true">
+                           <expression language="XQuery">$input.in_ClearedPaymentEntry/BalanceTransactionCurrency</expression>
+                        </parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_ProformaNr" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_BankAccount" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l7pvh0bu">
+                     <assignment id="l7pyeehe">
+                        <title>Construct Request Payload</title>
+                        <operation source="formula" to="temp.tmp_vpc_api_input">
+                           <expression language="XQuery">&lt;root&gt;
+	&lt;!--Rudolph Boshoff 2023-07-17 Jira Bug: VR-3554--&gt;
+    &lt;!--Reference&gt;{$input.in_ClearedPaymentEntry/ClearingAccountingDocument }&lt;/Reference--&gt;
+    &lt;Reference&gt;{$input.in_ClearedPaymentEntry/ClearingJournalEntry }&lt;/Reference&gt;
+	&lt;ProfLineNr&gt;0&lt;/ProfLineNr&gt;
+	&lt;SettleType&gt;1&lt;/SettleType&gt;
+	&lt;bAnumber&gt;{$output.out_BankAccount }&lt;/bAnumber&gt;
+	&lt;Recharge&gt;0&lt;/Recharge&gt;
+	&lt;DateVoucher&gt;{date:millisToDate(xs:integer(fn:replace(fn:replace($input.in_ClearedPaymentEntry/ClearingDate, '/Date\(', ''), '\)/', ''))) }&lt;/DateVoucher&gt;
+	&lt;MatterCode&gt;{$input.in_ClearedPaymentEntry/Reference1InDocumentHeader}&lt;/MatterCode&gt;
+	&lt;Exchange&gt;1&lt;/Exchange&gt;
+	&lt;SettleAmount&gt;{$input.in_ClearedPaymentEntry/PayAmountInTransactionCurrency * (-1)}&lt;/SettleAmount&gt;
+    &lt;!--SettleAmount&gt;{$input.in_ClearedPaymentEntry/InvoiceAmountInBalancTransCrcy }&lt;/SettleAmount--&gt;
+	&lt;recdFrom&gt;SAP&lt;/recdFrom&gt;
+	&lt;RefCode&gt;{$input.in_ClearedPaymentEntry/Customer }&lt;/RefCode&gt;
+	&lt;Note&gt;{$input.in_ClearedPaymentEntry/DocumentReferenceID || $input.in_ClearedPaymentEntry/Reference1InDocumentHeader} &lt;/Note&gt;
+	&lt;ProformaNr&gt;{$output.out_ProformaNr} &lt;/ProformaNr&gt;
+	&lt;Charges&gt;0&lt;/Charges&gt;
+	&lt;curCode&gt;{$input.in_ClearedPaymentEntry/BalanceTransactionCurrency }&lt;/curCode&gt;
+    &lt;!--curCode&gt;{$input.in_ClearedPaymentEntry/TransactionCurrency }&lt;/curCode--&gt;  
+	&lt;WriteOff&gt;0&lt;/WriteOff&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ProformaNr_Found_Flag">
+                           <expression language="XQuery">util:iif(util:isNull($output.out_ProformaNr ) or $output.out_ProformaNr='' or fn:string-length($output.out_ProformaNr)=0, 'N', 'Y')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_BANumber_Found_Flag">
+                           <expression language="XQuery">util:iif(util:isNull($output.out_BankAccount ) or $output.out_BankAccount='' or fn:string-length($output.out_BankAccount)=0, 'N', 'Y')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ErrorDetails[1]/Code">
+                           <expression language="XQuery">util:iif($temp.tmp_BANumber_Found_Flag='Y' and $temp.tmp_ProformaNr_Found_Flag='Y','','HTTP_400')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ErrorDetails[1]/Error">
+                           <expression language="XQuery">util:iif($temp.tmp_BANumber_Found_Flag='N' and $temp.tmp_ProformaNr_Found_Flag='N', 'InvoiceHeader and valid BankAccount data not found', util:iif($temp.tmp_BANumber_Found_Flag='N', 'Valid BankAccount data not found', util:iif($temp.tmp_ProformaNr_Found_Flag='N', 'InvoiceHeader data not found')))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ErrorDetails[1]/Description">
+                           <expression language="XQuery">util:iif($temp.tmp_BANumber_Found_Flag='N' and $temp.tmp_ProformaNr_Found_Flag='N', 'ProformaNr and BANumber not found: No matching data found in InvoiceHeader and BankAccounts/RevBankAccounts tables', util:iif($temp.tmp_BANumber_Found_Flag='N', 'BANumber not found: No matching data found in BankAccounts/RevBankAccounts table', util:iif($temp.tmp_ProformaNr_Found_Flag='N', 'ProformaNr not found: No matching data found in InvoiceHeader table')))</expression>
+                        </operation>
+                        <link id="lhq55rc2" targetId="lhq55rc1"/>
+                     </assignment>
+                     <assignment id="l7pyefz9">
+                        <title>Construct SAPLog Update Payload</title>
+                        <operation source="formula" to="temp.tmp_SAPLog_Update_Payload">
+                           <expression language="XQuery">&lt;root&gt;
+  &lt;ID&gt;{$input.in_ClearedPaymentEntry/Code}&lt;/ID&gt;
+  &lt;SubID&gt;{$temp.tmp_SAPLog_KeyFields/SubID}&lt;/SubID&gt;
+  &lt;CompanyCode&gt;{$temp.tmp_SAPLog_KeyFields/CompanyCode }&lt;/CompanyCode&gt;
+  &lt;KeyValue1&gt;{$temp.tmp_SAPLog_KeyFields/KeyValue1 }&lt;/KeyValue1&gt;
+  &lt;KeyValue2&gt;{$temp.tmp_SAPLog_KeyFields/KeyValue2 }&lt;/KeyValue2&gt;
+  &lt;KeyValue3&gt;{$temp.tmp_SAPLog_KeyFields/KeyValue3 }&lt;/KeyValue3&gt;
+  &lt;KeyValue4&gt;{$temp.tmp_SAPLog_KeyFields/KeyValue4 }&lt;/KeyValue4&gt; 
+  &lt;Value1&gt;{util:iif($temp.tmp_SAPLogging_Failure_Record_Found_Flag = 'Y', $temp.tmp_VIPDB_ReceiptNr_Value1 ,
+  fn:replace($output.vpc_ReceiptNumber, '/', '') )}&lt;/Value1&gt;
+  &lt;!-- https://vistra.atlassian.net/browse/VR-3819 start --&gt;
+  &lt;Value2&gt;{$temp.tmp_SAPLog_KeyFields/Value2 }&lt;/Value2&gt;
+  &lt;Value3&gt;{$temp.tmp_SAPLog_KeyFields/Value3 }&lt;/Value3&gt;
+  &lt;!-- https://vistra.atlassian.net/browse/VR-3819 end --&gt;
+  &lt;Success&gt;true&lt;/Success&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="lagsp90y" targetId="l7rtva3e"/>
+                     </assignment>
+                     <container id="lhq55rc1" type="exclusive">
+                        <title>Code</title>
+                        <flow id="lhq55rc5">
+                           <jumpTo id="lhq55rmy">
+                              <link id="lhq55rmz" targetId="l7pyef6f"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lhq55rc8">
+                           <link id="lhq55rc9" targetId="lhq55rc1" type="containerLink"/>
+                        </flow>
+                        <link id="lhq55rc4" targetId="lhq55rc5" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_ErrorDetails[1]/Code}</arg>
+                                 <arg name="right">HTTP_400</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lhq55rc7" targetId="lhq55rc8" type="containerLink"/>
+                        <link id="lhq55rc3" targetId="l7pyeekv"/>
+                     </container>
+                     <eventContainer id="l7pyeekv">
+                        <service id="l7pyeel0">
+                           <title>Insert Receipts</title>
+                           <serviceName>AppSvcAPI-5-VPC:InsertReceipts</serviceName>
+                           <serviceGUID>3FTHYFEl7ebeNravAPmXkT</serviceGUID>
+                           <serviceInput>
+                              <parameter name="token" source="field" updatable="true">input.in_VPC_Token</parameter>
+                              <parameter name="body" source="formula">
+                                 <expression language="XQuery">$temp.tmp_vpc_api_input</expression>
+                              </parameter>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_vpc_host</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l7pyeekw">
+                           <link id="l7pyeel3" targetId="l7pyeekv" type="containerLink"/>
+                        </flow>
+                        <flow id="l7pyeekx">
+                           <subflow id="l7pyef6f">
+                              <title>Log VPC Insertion error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">$input.in_IICS_Process_ID||'^'||util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif($temp.tmp_ErrorDetails[1]/Code='HTTP_400', $temp.tmp_ErrorDetails[1]/Code, $output.InsertReceipts-faultInfo[1]/code  )</expression>
+                                 </parameter>
+                                 <parameter name="i_Error" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif($temp.tmp_ErrorDetails[1]/Code='HTTP_400', $temp.tmp_ErrorDetails[1]/Error , $output.InsertReceipts-faultInfo[1]/reason )</expression>
+                                 </parameter>
+                                 <parameter name="i_Description" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif($temp.tmp_ErrorDetails[1]/Code='HTTP_400', $temp.tmp_ErrorDetails[1]/Description , $output.InsertReceipts-faultInfo[1]/detail  )</expression>
+                                 </parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="i_DataKey" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">VPC : Post Receipt data</parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')||'/api/V8.0/PracticeManagement/CashFlow/Receipts'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toXML($temp.tmp_vpc_api_input)</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')||'/apidoc/index#!/PracticeManagement/ReceiptsController_Post'</expression>
+                                 </parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="lkkx6bwp" targetId="lkkx6bwo"/>
+                           </subflow>
+                           <end id="lkkx6bwo">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="l7pyeel1" targetId="l7pyeekw" type="containerLink"/>
+                        <link id="l7pyefza" targetId="l7pyefz9"/>
+                        <events>
+                           <catch faultField="InsertReceipts-faultInfo"
+                                  id="kvunio69"
+                                  interrupting="true">
+                              <link id="l7pyeel2" targetId="l7pyeekx" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="l7rtva3e">
+                        <subflow id="l7rtva1t">
+                           <title>Update SAP Log</title>
+                           <subflowGUID>dz3hd9kqiUDgzx2JbzI8gU</subflowGUID>
+                           <subflowPath>Process_POST_YY1_LoggingTable</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_Body" source="formula" updatable="true">
+                                 <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload </expression>
+                              </parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                 <expression language="XQuery">$input.in_IICS_Process_ID||'^'||util:getProcessId()</expression>
+                              </parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                              <parameter name="in_ParentMessage" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_HttpStatusCode" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Detail" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Reason" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l7rtva3g">
+                           <container id="l82pyro7" type="exclusive">
+                              <title>StatusCode</title>
+                              <flow id="l82pyroa">
+                                 <create id="l82pyrw9">
+                                    <title>Log Success</title>
+                                    <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                                    <createInput>
+                                       <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                       <parameter name="IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">$input.in_IICS_Process_ID||'^'||util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="Code" source="formula" updatable="true">
+                                          <expression language="XQuery">util:iif($temp.tmp_SAPLogging_Failure_Record_Found_Flag = 'Y', '200', $output.vpc_HttpResponseStatusCode )</expression>
+                                       </parameter>
+                                       <parameter name="Error" source="formula" updatable="true">
+                                          <expression language="XQuery">util:iif($temp.tmp_SAPLogging_Failure_Record_Found_Flag = 'Y', $temp.tmp_VIPDB_VPC_Response , $output.vpc_Message )</expression>
+                                       </parameter>
+                                       <parameter name="Description" source="formula" updatable="true">
+                                          <expression language="XQuery">'ReceiptNumber='||util:iif($temp.tmp_SAPLogging_Failure_Record_Found_Flag = 'Y', $temp.tmp_VIPDB_ReceiptNr_Value1  , fn:replace($output.vpc_ReceiptNumber, '/', ''))</expression>
+                                       </parameter>
+                                       <parameter name="DateCreated" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:current-dateTime()</expression>
+                                       </parameter>
+                                       <parameter name="DateProcessStart" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                                       <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                                       <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                                       <parameter name="DATA_KEY" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                                       <parameter name="IICS_PROCESS_NAME" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getAssetName()</expression>
+                                       </parameter>
+                                       <parameter name="REST_URL" source="formula" updatable="true">
+                                          <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')||'/api/V8.0/PracticeManagement/CashFlow/Receipts'</expression>
+                                       </parameter>
+                                       <parameter name="REST_PAYLOAD" source="constant" updatable="true">N/A</parameter>
+                                    </createInput>
+                                    <link id="lki36hsv" targetId="lki36hsu"/>
+                                 </create>
+                                 <assignment id="lki36hsu">
+                                    <title>Assignment to HttpStatusCode_api5</title>
+                                    <operation source="constant" to="output.HttpStatusCode_api5">200</operation>
+                                 </assignment>
+                                 <link id="l82pyrob" targetId="l82pyro7" type="containerLink"/>
+                              </flow>
+                              <flow id="l82pyrod">
+                                 <jumpTo id="lagsp8uu">
+                                    <link id="lagsp8uv" targetId="lagsp8yx"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="l82pyro9" targetId="l82pyroa" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$output.out_HttpStatusCode}</arg>
+                                       <arg name="right">201</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l82pyroc" targetId="l82pyrod" type="containerLink"/>
+                           </container>
+                           <link id="l7rtva3h" targetId="l7rtva3e" type="containerLink"/>
+                        </flow>
+                        <flow id="l7rtva3j">
+                           <subflow id="l7rtvbug">
+                              <title>Log SAPLog Update Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">$input.in_IICS_Process_ID||'^'||util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.SAPLog-faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.SAPLog-faultInfo[1]/reason</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.SAPLog-faultInfo[1]/detail</parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="i_DataKey" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP : Post Update Logging Table</parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toXML($temp.tmp_SAPLog_Update_Payload )</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom API)</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="lagsp8yy" targetId="lagsp8yx"/>
+                           </subflow>
+                           <create id="lagsp8yx">
+                              <title>Create SAPLog Failure entry in VIP DB</title>
+                              <entityName>ConnectionDQMetadata-1:VIP_P2B_SAPLoggingFailureLog</entityName>
+                              <createInput>
+                                 <parameter name="APIName" source="constant" updatable="true">API05</parameter>
+                                 <parameter name="CompanyCode" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/CompanyCode</expression>
+                                 </parameter>
+                                 <parameter name="KeyValue1" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/KeyValue1</expression>
+                                 </parameter>
+                                 <parameter name="KeyValue2" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/KeyValue2</expression>
+                                 </parameter>
+                                 <parameter name="KeyValue3" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/KeyValue3</expression>
+                                 </parameter>
+                                 <parameter name="KeyValue4" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/KeyValue4</expression>
+                                 </parameter>
+                                 <parameter name="Value1" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_SAPLog_Update_Payload/Value1</expression>
+                                 </parameter>
+                                 <parameter name="SAPPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toXML($temp.tmp_SAPLog_Update_Payload )</expression>
+                                 </parameter>
+                                 <parameter name="VPCResponsePayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif($temp.tmp_SAPLogging_Failure_Record_Found_Flag = 'Y', $temp.tmp_VIPDB_VPC_Response, $output.vpc_Message )</expression>
+                                 </parameter>
+                                 <parameter name="DateProcessed" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </createInput>
+                              <link id="lagsp8yz" targetId="l800u6w2"/>
+                           </create>
+                           <container id="l800u6w2" type="exclusive">
+                              <title>Dummy Check</title>
+                              <flow id="l800u6w6">
+                                 <assignment id="l800u7ml">
+                                    <title>Set Receipt Cancellation Payload</title>
+                                    <operation source="formula" to="temp.tmp_Receipt_Cancellation_Payload">
+                                       <expression language="XQuery"> &lt;root&gt;
+        &lt;IsBatch&gt;false&lt;/IsBatch&gt;
+        &lt;CancelledDate&gt;{fn:current-date()}&lt;/CancelledDate&gt;
+        &lt;Reference&gt;{$input.in_ClearedPaymentEntry/ClearingAccountingDocument } &lt;/Reference&gt;
+        &lt;Note&gt;Cancelled by VIP - Incomplete processing&lt;/Note&gt;
+        &lt;CancelPayment&gt;false&lt;/CancelPayment&gt;
+ &lt;/root&gt;</expression>
+                                    </operation>
+                                    <link id="l800u7oy" targetId="l800u7oq"/>
+                                 </assignment>
+                                 <eventContainer id="l800u7oq">
+                                    <service id="l800u7ou">
+                                       <title>Cancel Receipt in VPoint</title>
+                                       <serviceName>AppSvcAPI-5-VPC:CancelReceipts</serviceName>
+                                       <serviceGUID>3FTHYFEl7ebeNravAPmXkT</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="hostname" source="field" updatable="true">temp.tmp_vpc_host</parameter>
+                                          <parameter name="token" source="field" updatable="true">input.in_VPC_Token</parameter>
+                                          <parameter name="body" source="formula">
+                                             <expression language="XQuery">$temp.tmp_Receipt_Cancellation_Payload </expression>
+                                          </parameter>
+                                          <parameter name="SalesPurchaseFlag" source="constant">1</parameter>
+                                          <parameter name="receiptNumber" source="field" updatable="true">output.vpc_ReceiptNumber</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="l800u7or">
+                                       <link id="l800u7ox" targetId="l800u7oq" type="containerLink"/>
+                                    </flow>
+                                    <flow id="l800u7os">
+                                       <throw id="l800u7ot">
+                                          <title>Throw Cancellation Error</title>
+                                          <throwInput>
+                                             <parameter name="code" source="field" updatable="true">output.Cancel-faultInfo[1]/code</parameter>
+                                             <parameter name="detail" source="formula" updatable="true">
+                                                <expression language="XQuery">fn:concat('Receipt cancellation failed - Payload : ', $temp.tmp_Receipt_Cancellation_Payload )</expression>
+                                             </parameter>
+                                             <parameter name="reason" source="field" updatable="true">output.Cancel-faultInfo[1]/reason</parameter>
+                                          </throwInput>
+                                       </throw>
+                                    </flow>
+                                    <link id="l800u7ov" targetId="l800u7or" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="Cancel-faultInfo" id="l7ssll1c" interrupting="true">
+                                          <link id="l800u7ow" targetId="l800u7os" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <link id="l800u6w7" targetId="l800u6w2" type="containerLink"/>
+                              </flow>
+                              <flow id="l800u6w9">
+                                 <link id="l800u6wa" targetId="l800u6w2" type="containerLink"/>
+                              </flow>
+                              <link id="l800u6w5" targetId="l800u6w6" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_Dummy_Condition}</arg>
+                                       <arg name="right">True</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l800u6w8" targetId="l800u6w9" type="containerLink"/>
+                           </container>
+                           <link id="l7rtva3k" targetId="l7rtva3e" type="containerLink"/>
+                        </flow>
+                        <link id="l7rtva3f" targetId="l7rtva3g" type="containerLink"/>
+                        <link id="l7rtvabn" targetId="l7rtvabm"/>
+                        <events>
+                           <catch faultField="SAPLog-faultInfo" id="l7rtva1w" interrupting="true">
+                              <link id="l7rtva3i" targetId="l7rtva3j" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <end id="l7rtvabm">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <flow id="l7pvh0bv">
+                     <subflow id="l7pvh0bw">
+                        <title>Log Get VPC Data Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">$input.in_IICS_Process_ID||'^'||util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.GetVPCData-faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.GetVPCData-faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.GetVPCData-faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_DataKey" source="field" updatable="true">temp.tmp_DataKey</parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">VPC : GET BankAccount and Invoice data</parameter>
+                           <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">'N/A'</expression>
+                           </parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l7pyeej8" targetId="l7pyeej7"/>
+                     </subflow>
+                     <end id="l7pyeej7">
+                        <title>End 3</title>
+                     </end>
+                  </flow>
+                  <link id="l7pvh0bz" targetId="l7pvh0bu" type="containerLink"/>
+                  <events>
+                     <catch faultField="GetVPCData-faultInfo" id="kzi42y0n" interrupting="true">
+                        <link id="l7pvh0c0" targetId="l7pvh0bv" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>bd45fd09-dfd7-43f4-b00a-cc50e92ade3c</ns1:Id>
+               <ns1:Name>t</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-20T07:34:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>92c3nzAvT5hguX4qVTErIz</types1:GUID>
+      <types1:DisplayName>api5</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.343Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,416 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>DELlRkPUEbfV3HR-gt-19944002-2021-11-11T12:36:48.474Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessCompanyCode</types1:Name>
+      <types1:ParentFlowIds>MFhBJQWSwxF1T4W-gt-6060593-2022-07-22T13:56:29.628Z::pd.xml,oBbeAzu2JQhtGci-gt-23166653-2021-08-13T10:41:48.233Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-11-11T12:36:48Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:19Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-13T09:30:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessCompanyCode/ProcessCompanyCode.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessCompanyCode"
+                  name="ProcessCompanyCode"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustomerSegment_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_CustomerSalesArea_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CustomerSegment" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POCustomerSegment</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">80NMZ30RqUagdlXneQvvkX</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PaytermsTag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CashPlanningGroup" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kuwj1vnr" targetId="kuwj1vnq"/>
+               </start>
+               <assignment id="kuwj1vnq">
+                  <title>Assignment to tmp_Matters</title>
+                  <operation source="query" to="temp.tmp_Matters">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.RefCode}' and MatterCode = '{$input.MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kvupiwkg" targetId="kvurq2z7"/>
+               </assignment>
+               <eventContainer id="kvurq2z7">
+                  <subflow id="kvupiwkf">
+                     <title>ProcessGetEntityDetails</title>
+                     <subflowGUID>7tQRWXi2VlxloCWtEOyuyE</subflowGUID>
+                     <subflowPath>ProcessGetEntityDetails</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_RefCode" source="field" updatable="true">input.RefCode</parameter>
+                        <parameter name="in_MatterCode" source="field" updatable="true">input.MatterCode</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_EntityDetails" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:POEntityDetails</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="kvurq2z9">
+                     <eventContainer id="kvurq3ce">
+                        <subflow id="kvurq3cp">
+                           <title>ProcessGetSegment</title>
+                           <subflowGUID>3Tl6KpW41VjfikbfE3uHQy</subflowGUID>
+                           <subflowPath>ProcessGetSegment</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_RefCode" source="field" updatable="true">input.RefCode</parameter>
+                              <parameter name="in_MatterCode" source="field" updatable="true">input.MatterCode</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_Segment" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Currency" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="kvurq3cf">
+                           <eventContainer id="l88tjlpg">
+                              <subflow id="l7smk0yo">
+                                 <title>Process_GET_CustomerCompany</title>
+                                 <subflowGUID>5F0TV2QoAf1jR86TLi7HKs</subflowGUID>
+                                 <subflowPath>Process_GET_CustomerCompany</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_Customer" source="field" updatable="true">input.RefCode</parameter>
+                                    <parameter name="in_X_TRANSACTION_ID" source="formula" updatable="true">
+                                       <expression language="XQuery">$input.RefCode||'~'||$input.MatterCode||'~ProcessCompanyCode'</expression>
+                                    </parameter>
+                                    <parameter name="in_EventName" source="constant" updatable="true">MATTER_CREATED</parameter>
+                                    <parameter name="in_CustomerCode" source="formula" updatable="true">
+                                       <expression language="XQuery">util:iif(fn:string-length($temp.tmp_Matters.RevEntity)=5, fn:substring($temp.tmp_Matters.RevEntity, 1, 2) || fn:substring($temp.tmp_Matters.RevEntity, 4, 2) ,$temp.tmp_Matters.RevEntity)</expression>
+                                    </parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_CompanyCode" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_Customer" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_YY1_Customer_Segment_cco" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l88tjlpi">
+                                 <link id="l88tjlpj" targetId="l88tjlpg" type="containerLink"/>
+                              </flow>
+                              <flow id="l88tjlpl">
+                                 <link id="l88tjlpm" targetId="l88tjlpg" type="containerLink"/>
+                              </flow>
+                              <link id="l88tjlph" targetId="l88tjlpi" type="containerLink"/>
+                              <link id="l7smk295" targetId="l7smk294"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l88tjlp1" interrupting="true">
+                                    <link id="l88tjlpk" targetId="l88tjlpl" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <assignment id="l7smk294">
+                              <title>Assignment to tmp_CustomerSegment, tmp_CompanyCode 1</title>
+                              <operation source="formula" to="temp.tmp_CustomerSegment">
+                                 <expression language="XQuery">$output.out_YY1_Customer_Segment_cco </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CompanyCode">
+                                 <expression language="XQuery">$output.out_CompanyCode </expression>
+                              </operation>
+                              <link id="l7smk2cv" targetId="l7smk2cu"/>
+                           </assignment>
+                           <assignment id="l7smk2cu">
+                              <title>Assignment to out_Flag</title>
+                              <operation source="formula" to="output.out_Flag">
+                                 <expression language="XQuery">util:iif($temp.tmp_CustomerSegment  = $output.out_Segment ,'N','Y')</expression>
+                              </operation>
+                              <link id="l7smk2e5" targetId="l7smk2e4"/>
+                           </assignment>
+                           <assignment id="l7smk2e4">
+                              <title>Assignment to out_Flag</title>
+                              <operation source="formula" to="output.out_Flag">
+                                 <expression language="XQuery">util:iif($temp.tmp_CompanyCode = util:iif(fn:string-length($temp.tmp_Matters.RevEntity)=5, fn:substring($temp.tmp_Matters.RevEntity, 1, 2) || fn:substring($temp.tmp_Matters.RevEntity, 4, 2) ,$temp.tmp_Matters.RevEntity), 'N', 'Y')</expression>
+                              </operation>
+                              <link id="l7smk2gk" targetId="l7smk2fq"/>
+                           </assignment>
+                           <container id="l7smk2fq" type="exclusive">
+                              <title>out_Flag</title>
+                              <flow id="l7smk2fr">
+                                 <assignment id="l7smk2fs">
+                                    <title>Assignment to out_Flag</title>
+                                    <operation source="formula" to="output.out_Flag">
+                                       <expression language="XQuery">util:iif(util:isNull($output.out_EntityDetails[1]/AddrNr ),'N','Y')</expression>
+                                    </operation>
+                                    <link id="l7smk2ga" targetId="l7smk2ft"/>
+                                 </assignment>
+                                 <container id="l7smk2ft" type="exclusive">
+                                    <title>out_Flag</title>
+                                    <flow id="l7smk2fu">
+                                       <assignment id="l80a95aa">
+                                          <title>Assignment to Customer, CompanyCode etc.</title>
+                                          <operation source="field" to="temp.tmp_CustomerSegment[1]/Customer">input.RefCode</operation>
+                                          <operation source="formula" to="temp.tmp_CustomerSegment[1]/CompanyCode">
+                                             <expression language="XQuery">util:iif(fn:string-length($temp.tmp_Matters.RevEntity)=5, fn:substring($temp.tmp_Matters.RevEntity, 1, 2) || fn:substring($temp.tmp_Matters.RevEntity, 4, 2) ,$temp.tmp_Matters.RevEntity)</expression>
+                                          </operation>
+                                          <operation source="constant"
+                                                     to="temp.tmp_CustomerSegment[1]/ReconciliationAccount">12100000</operation>
+                                          <operation source="field"
+                                                     to="temp.tmp_CustomerSegment[1]/YY1_Customer_Segment_cco">output.out_Segment</operation>
+                                          <operation source="constant" to="temp.tmp_CustomerSegment[1]/ValueAdjustmentKey">Z1</operation>
+                                          <operation source="field" to="temp.tmp_PaytermsTag">output.out_EntityDetails[1]/PaytermTag</operation>
+                                          <operation source="formula" to="temp.tmp_CashPlanningGroup">
+                                             <expression language="XQuery">util:iif($output.out_EntityDetails[1]/Country =fn:substring($output.out_EntityDetails[1]/RevEntity  , 1, 2), 'E2', util:iif(util:isNull($output.out_EntityDetails[1]/Country ), 'E2', util:iif($output.out_EntityDetails[1]/Country ='', 'E2', 'E3')))</expression>
+                                          </operation>
+                                          <link id="l80a95bi" targetId="l80a95bh"/>
+                                       </assignment>
+                                       <assignment id="l80a95bh">
+                                          <title>Assignment to out_CustomerSegment_PO, out_CustomerSalesArea_PO</title>
+                                          <operation source="formula" to="output.out_CustomerSegment_PO">
+                                             <expression language="XQuery">&lt;root&gt;
+&lt;Customer&gt;{$temp.tmp_CustomerSegment[1]/Customer }&lt;/Customer&gt;
+      &lt;CompanyCode&gt;{$temp.tmp_CustomerSegment[1]/CompanyCode }&lt;/CompanyCode&gt;
+      &lt;ReconciliationAccount&gt;{$temp.tmp_CustomerSegment[1]/ReconciliationAccount}&lt;/ReconciliationAccount&gt;
+      &lt;YY1_Customer_Segment_cco&gt;{$temp.tmp_CustomerSegment[1]/YY1_Customer_Segment_cco }&lt;/YY1_Customer_Segment_cco&gt;
+      &lt;ValueAdjustmentKey&gt;{$temp.tmp_CustomerSegment[1]/ValueAdjustmentKey }&lt;/ValueAdjustmentKey&gt;
+            &lt;PaymentTerms&gt;{$temp.tmp_PaytermsTag }&lt;/PaymentTerms&gt;
+            &lt;AccountingClerkInternetAddress&gt;{util:iif(util:isNull($output.out_EntityDetails[1]/EmailInvoiceReminder), $output.out_EntityDetails[1]/EmailOther , $output.out_EntityDetails[1]/EmailInvoiceReminder )}&lt;/AccountingClerkInternetAddress&gt;
+            &lt;CashPlanningGroup&gt;{$temp.tmp_CashPlanningGroup }&lt;/CashPlanningGroup&gt;
+&lt;/root&gt;</expression>
+                                          </operation>
+                                          <operation source="formula" to="output.out_CustomerSalesArea_PO">
+                                             <expression language="XQuery">&lt;root&gt;
+      &lt;Customer&gt;{$temp.tmp_CustomerSegment[1]/Customer}&lt;/Customer&gt;
+&lt;SalesOrganization&gt;{$temp.tmp_CustomerSegment[1]/CompanyCode}&lt;/SalesOrganization&gt;
+      &lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+      &lt;Division&gt;10&lt;/Division&gt;
+      &lt;Currency&gt;{$output.out_Currency}&lt;/Currency&gt;
+      &lt;CustomerPaymentTerms&gt;{$output.out_EntityDetails[1]/PaytermTag }&lt;/CustomerPaymentTerms&gt;
+&lt;/root&gt;</expression>
+                                          </operation>
+                                          <link id="l80a95cp" targetId="l80a95co"/>
+                                       </assignment>
+                                       <end id="l80a95co">
+                                          <title>End 2</title>
+                                       </end>
+                                    </flow>
+                                    <flow id="l7smk2g4">
+                                       <end id="l7smk2g5">
+                                          <title>End 3</title>
+                                       </end>
+                                    </flow>
+                                    <link id="l7smk2gb" targetId="l7smk2fu" type="containerLink">
+                                       <condition source="formula">
+                                          <function name="contains">
+                                             <arg name="left">{$output.out_Flag}</arg>
+                                             <arg name="right">Y</arg>
+                                          </function>
+                                       </condition>
+                                    </link>
+                                    <link id="l7smk2gc" targetId="l7smk2g4" type="containerLink"/>
+                                 </container>
+                              </flow>
+                              <flow id="l7smk2g6">
+                                 <end id="l7smk2g7"/>
+                              </flow>
+                              <link id="l7smk2g8" targetId="l7smk2fr" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.out_Flag}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l7smk2g9" targetId="l7smk2g6" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="kvurq3cl">
+                           <throw id="l88tjlnc">
+                              <title>Throw 2</title>
+                              <throwInput>
+                                 <parameter name="code" source="field" updatable="true">output.faultInfoGetEntity[1]/code</parameter>
+                                 <parameter name="detail" source="field" updatable="true">output.faultInfoGetEntity[1]/detail</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfoGetEntity[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kvurq3cq" targetId="kvurq3cf" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfoGetEntity" id="kuykxfue" interrupting="true">
+                              <link id="kvurq3cr" targetId="kvurq3cl" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                  </flow>
+                  <flow id="kvurq2zc">
+                     <throw id="l88tjlkt">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfoGetEntity[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfoGetEntity[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfoGetEntity[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="kvurq2z8" targetId="kvurq2z9" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfoGetEntity" id="kvurq2yl" interrupting="true">
+                        <link id="kvurq2zb" targetId="kvurq2zc" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>d9c28073-2d37-4fd7-b993-a248d100ad75</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:48Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:19Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "RefCode": "12500018",
+	 "MatterCode": "FF"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>8B0NVz3j53gfdPnVR1cjgd</types1:GUID>
+      <types1:DisplayName>ProcessCompanyCode</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.76Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

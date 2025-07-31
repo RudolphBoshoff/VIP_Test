@@ -1,0 +1,340 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>hD0wWcn6Hbf13Er-gt-19970596-2022-07-17T10:20:47.121Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetJournalInvoiceTaxInfo-NoCalc</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>desc</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-07-17T10:20:47Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-07-17T12:28:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>rudolph.boshoff@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-07-17T12:29:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetJournalInvoiceTaxInfo-NoCalc/ProcessGetJournalInvoiceTaxInfo-NoCalc.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetJournalInvoiceTaxInfo-NoCalc"
+                  name="ProcessGetJournalInvoiceTaxInfo-NoCalc"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>desc</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProformaNr"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_TaxCode_TaxAmount_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_SecurityDeposit_TaxCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_SecurityDeposit_TaxAmount" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItems" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItemsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTrans" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTransList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0.00</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Prev_TaxCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxCode_TaxAmount" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_InvoiceItems_SecurityDeposit_Record"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_SecurityDeposit_Tax_Record"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItems_SecDeposit_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTrans_SecDeposit_Tax_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Calc_N" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="guid"/>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Base_N" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="guid"/>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_N" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="guid"/>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_Sign" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_TS" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_N2" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="guid"/>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kq911ub7" targetId="kq911ub6"/>
+               </start>
+               <assignment id="kq911ub6">
+                  <title>Assignment to tmp_InvoiceHeader, tmp_InvoiceItemsList etc.</title>
+                  <operation source="query" to="temp.tmp_InvoiceHeader">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceHeader">
+                        <where>ProformaNr = '{$input.in_ProformaNr}'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_InvoiceItemsList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceItems">
+                        <where>ProformaNr = '{$input.in_ProformaNr}' and ServCode != 'DISB063' order by TaxCode</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_InvoiceItems_SecurityDeposit_Record">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceItems">
+                        <where>ProformaNr = '{$input.in_ProformaNr}' and ServCode = 'DISB063'</where>
+                     </query>
+                  </operation>
+                  <link id="l4hstwiu" targetId="l4hstwit"/>
+               </assignment>
+               <container id="l4hstwit" type="exclusive">
+                  <title>tmp_InvoiceItems_SecurityDeposit_Record</title>
+                  <flow id="l4hstwix">
+                     <assignment id="l4hstwjd">
+                        <title>Assignment to out_SecurityDeposit_TaxCode, out_SecurityDeposit_TaxAmount</title>
+                        <operation source="formula" to="output.out_SecurityDeposit_TaxCode">
+                           <expression language="XQuery">util:iif($temp.tmp_InvoiceItems_SecurityDeposit_Record.TaxCode='SE', 'SO',  $temp.tmp_InvoiceItems_SecurityDeposit_Record.TaxCode)</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_SecurityDeposit_TaxAmount">
+                           <expression language="XQuery">xs:decimal(util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"), $temp.tmp_InvoiceItems_SecurityDeposit_Record.LineInvCur * $temp.tmp_InvoiceItems_SecurityDeposit_Record.VATperc, -1 * $temp.tmp_InvoiceItems_SecurityDeposit_Record.LineInvCur * $temp.tmp_InvoiceItems_SecurityDeposit_Record.VATperc ))</expression>
+                        </operation>
+                     </assignment>
+                     <link id="l4hstwiy" targetId="l4hstwit" type="containerLink"/>
+                  </flow>
+                  <flow id="l4hstwj0">
+                     <assignment id="l4hstwll">
+                        <title>Assignment to out_SecurityDeposit_TaxAmount</title>
+                        <operation source="constant" to="output.out_SecurityDeposit_TaxAmount">0</operation>
+                     </assignment>
+                     <link id="l4hstwj1" targetId="l4hstwit" type="containerLink"/>
+                  </flow>
+                  <link id="l4hstwiw" targetId="l4hstwix" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_InvoiceItems_SecurityDeposit_Record}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4hstwiz" targetId="l4hstwj0" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_InvoiceItems_SecurityDeposit_Record}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l4hstwiv" targetId="kq911ubk"/>
+               </container>
+               <container id="kq911ubk" type="exclusive">
+                  <title>RecordCount</title>
+                  <flow id="kq911ubo">
+                     <assignment id="kskfichn">
+                        <title>Assignment to tmp_InvoiceItems</title>
+                        <operation source="formula" to="temp.tmp_InvoiceItems">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceItemsList )</expression>
+                        </operation>
+                        <link id="l5p63jkk" targetId="l5p63jkj"/>
+                     </assignment>
+                     <assignment id="l5p63jkj">
+                        <title>Assignment to tmp_TaxAmount_Calc_N, tmp_TaxAmount_Dec_Sign etc.</title>
+                        <operation source="formula" to="temp.tmp_TaxAmount_Calc_N">
+                           <expression language="XQuery">xs:decimal(util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"), $temp.tmp_InvoiceItems.LineInvCur * $temp.tmp_InvoiceItems.VATperc, -1 * $temp.tmp_InvoiceItems.LineInvCur * $temp.tmp_InvoiceItems.VATperc ))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TaxAmount_Dec_Sign">
+                           <expression language="XQuery">util:iif($temp.tmp_TaxAmount_Calc_N &gt; 0, 1, -1 )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TaxAmount_Base_N">
+                           <expression language="XQuery">fn:floor(abs($temp.tmp_TaxAmount_Calc_N ))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TaxAmount_Dec_N">
+                           <expression language="XQuery">(abs($temp.tmp_TaxAmount_Calc_N) - abs($temp.tmp_TaxAmount_Base_N)) *100 </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TaxAmount_Dec_N2">
+                           <expression language="XQuery">(fn:floor($temp.tmp_TaxAmount_Dec_N) )*0.01</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_TaxAmount">
+                           <expression language="XQuery">($temp.tmp_TaxAmount_Base_N + $temp.tmp_TaxAmount_Dec_N2) * $temp.tmp_TaxAmount_Dec_Sign </expression>
+                        </operation>
+                        <link id="l5p63jkl" targetId="l4imeodp"/>
+                     </assignment>
+                     <assignment id="l4imeodp">
+                        <title>Assignment to tmp_TaxCode_TaxAmount, out_TaxCode_TaxAmount_Array etc.</title>
+                        <operation source="formula" to="temp.tmp_TaxCode_TaxAmount">
+                           <expression language="XQuery">&lt;root&gt; 
+	&lt;TaxCode&gt;{util:iif(fn:starts-with($temp.tmp_InvoiceHeader.RevEntity, 'SG') , util:iif($temp.tmp_InvoiceItems.TaxCode = 'SE','SO', $temp.tmp_InvoiceItems.TaxCode),$temp.tmp_InvoiceItems.TaxCode)} &lt;/TaxCode&gt; 
+    &lt;TaxAmount&gt;{$temp.tmp_TaxAmount} &lt;/TaxAmount&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_TaxCode_TaxAmount_Array">
+                           <expression language="XQuery">list:append($output.out_TaxCode_TaxAmount_Array , util:iif($temp.tmp_TaxCode_TaxAmount='.',0,$temp.tmp_TaxCode_TaxAmount) )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_InvoiceItemsList">
+                           <expression language="XQuery">list:tail($temp.tmp_InvoiceItemsList )</expression>
+                        </operation>
+                        <link id="l4imeoe7" targetId="l4imeoe5"/>
+                     </assignment>
+                     <jumpTo id="l4imeoe5">
+                        <link id="l4imeoe6" targetId="kq911ubk"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kq911ubr">
+                     <end id="kq911uc6"/>
+                  </flow>
+                  <link id="kq911ubn" targetId="kq911ubo" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_InvoiceItemsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kq911ubq" targetId="kq911ubr" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_InvoiceItemsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>a3e3d1d9-b961-4410-b164-fe0d47d408b3</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-07-17T10:20:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-07-17T11:36:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "141137"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>39gxacU9r6ofQsyVGwZBg3</types1:GUID>
+      <types1:DisplayName>ProcessGetJournalInvoiceTaxInfo-NoCalc</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.906Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

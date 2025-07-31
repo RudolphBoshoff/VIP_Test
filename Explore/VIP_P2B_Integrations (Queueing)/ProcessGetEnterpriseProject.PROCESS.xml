@@ -1,0 +1,565 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>1Owhz5chspiRASm-gt-22746281-2021-08-13T10:41:45.852Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetEnterpriseProject</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>VIP_P2B_Integrations</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:46Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-01-13T02:58:16Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-03T08:09:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetEnterpriseProject/ProcessGetEnterpriseProject.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetEnterpriseProject"
+                  name="ProcessGetEnterpriseProject"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>VIP_P2B_Integrations</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MatterCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_EnterpriseProjectObjects" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POEnterpriseProject</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aD6Bg2tY9TOfIY1Z3jQDoq</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_EMAIL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_UUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Project" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VpUsers" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:VpUser</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MailID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MtAdmin2Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_ManagerUUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_RoleType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Decision" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPUSER_EMAIL_FLAG" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Project" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UserTables_CostCenter" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CostCenter" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProfitCenter" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Sector" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kum6300i" targetId="kt4cm7tj"/>
+               </start>
+               <assignment id="kt4cm7tj">
+                  <title>Assignment to tmp_RmClients, tmp_Matters etc.</title>
+                  <operation source="query" to="temp.tmp_RmClients">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:RmClients">
+                        <where>AddrCode='{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_Matters">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_RefCode}' AND MatterCode = '{$input.in_MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_RefMaster">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:RefMaster">
+                        <where>RefCode='{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kt4cm7tl" targetId="kt4cm7sq"/>
+               </assignment>
+               <assignment id="kt4cm7sq">
+                  <title>get MtAdmin2Code from Matter</title>
+                  <operation source="field" to="temp.tmp_MtAdmin2Code">temp.tmp_RmClients.Admin2Code</operation>
+                  <operation source="formula" to="temp.tmp_Decision">
+                     <expression language="XQuery">util:iif(util:isNull($temp.tmp_RmClients.Admin2Code  ), 'N', 'Y')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_CompanyCode">
+                     <expression language="XQuery">util:iif(fn:string-length($temp.tmp_Matters.RevEntity)=5, fn:substring($temp.tmp_Matters.RevEntity, 1, 2) || fn:substring($temp.tmp_Matters.RevEntity, 4, 2) ,$temp.tmp_Matters.RevEntity)</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProfitCenter">
+                     <expression language="XQuery">util:iif(fn:starts-with($temp.tmp_Matters.RevEntity , 'VG')
+, $temp.tmp_RefMaster.OrgUnit1 
+, '9900') </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Sector">
+                     <expression language="XQuery">fn:substring($temp.tmp_Matters.RevEntity,1,2)||
+$temp.tmp_RefMaster.OrgUnit1 </expression>
+                  </operation>
+                  <link id="lcoxqzib" targetId="lcoxqzia"/>
+               </assignment>
+               <assignment id="lcoxqzia">
+                  <title>Assignment to tmp_UserTables_CostCenter</title>
+                  <operation source="query" to="temp.tmp_UserTables_CostCenter">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:UserTables">
+                        <where>TabCode = 'APIT'  and Name like 'CostCent%' and ElNote = '{$temp.tmp_Sector}'</where>
+                     </query>
+                  </operation>
+                  <link id="lct1r6ro" targetId="lct1r6rn"/>
+               </assignment>
+               <container id="lct1r6rn" type="exclusive">
+                  <title>tmp_UserTables_CostCenter</title>
+                  <flow id="lct1r6rr">
+                     <assignment id="lct1r6s9">
+                        <title>Assignment to tmp_CostCenter</title>
+                        <operation source="formula" to="temp.tmp_CostCenter">
+                           <expression language="XQuery">switch (fn:substring($temp.tmp_Matters.RevEntity , 1, 2))
+case "VG" return util:iif(util:isNull($temp.tmp_UserTables_CostCenter.TagValues) , "Missing in APIT", $temp.tmp_UserTables_CostCenter.TagValues)
+default return fn:concat($temp.tmp_CompanyCode,$temp.tmp_ProfitCenter,'01')
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lct1r6rs" targetId="lct1r6rn" type="containerLink"/>
+                  </flow>
+                  <flow id="lct1r6ru">
+                     <assignment id="lct1r6td">
+                        <title>Assignment to tmp_CostCenter 1</title>
+                        <operation source="formula" to="temp.tmp_CostCenter">
+                           <expression language="XQuery">switch (fn:substring($temp.tmp_Matters.RevEntity , 1, 2))
+case "VG" return  "Missing in APIT"
+default return fn:concat($temp.tmp_CompanyCode,$temp.tmp_ProfitCenter,'01')
+</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lct1r6rv" targetId="lct1r6rn" type="containerLink"/>
+                  </flow>
+                  <link id="lct1r6rq" targetId="lct1r6rr" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_UserTables_CostCenter}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lct1r6rt" targetId="lct1r6ru" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_UserTables_CostCenter}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lct1r6s4" targetId="kt4cm7tw"/>
+               </container>
+               <container id="kt4cm7tw" type="exclusive">
+                  <title>tmp_MtAdmin2Code</title>
+                  <flow id="kt4cm7u6">
+                     <jumpTo id="ku4277qi">
+                        <link id="ku4277qw" targetId="kt8jfvfl"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kt4cm7u8">
+                     <assignment id="kt4cm7v3">
+                        <title>Query VpUsers</title>
+                        <operation source="query" to="temp.tmp_VpUsers">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:VpUser">
+                              <where>Ucode = '{$temp.tmp_MtAdmin2Code}'</where>
+                           </query>
+                        </operation>
+                        <link id="ktb3fpr3" targetId="ktb3fpr2"/>
+                     </assignment>
+                     <assignment id="ktb3fpr2">
+                        <title>Flag EmailId set</title>
+                        <operation source="formula" to="temp.tmp_VPUSER_EMAIL_FLAG">
+                           <expression language="XQuery">util:iif(util:isNull($temp.tmp_VpUsers.MailID ), 'N', 'Y')</expression>
+                        </operation>
+                        <link id="ktb3fpr4" targetId="kt4cm7wd"/>
+                     </assignment>
+                     <container id="kt4cm7wd" type="exclusive">
+                        <title>tmp_VpUsers</title>
+                        <flow id="kt4cm7ws">
+                           <assignment id="kt8jfvfl">
+                              <title>O_SUBP_Flag N 2</title>
+                              <operation source="constant" to="output.O_SUBP_Flag">N</operation>
+                              <operation source="formula" to="output.O_Project">
+                                 <expression language="XQuery">'VPC'||'-'||$temp.tmp_Matters.RefCode||'-'||$temp.tmp_Matters.MatterCode </expression>
+                              </operation>
+                              <operation source="field" to="output.O_SUBP_EMAIL">temp.tmp_VpUsers.MailID</operation>
+                              <link id="kt8jfvfm" targetId="kt8jfv9u"/>
+                           </assignment>
+                           <assignment id="kt8jfv9u">
+                              <title>Assignment to Project, ProjectDescription etc.</title>
+                              <operation source="formula" to="output.out_EnterpriseProjectObjects[1]/Project">
+                                 <expression language="XQuery">'VPC'||'-'||$temp.tmp_Matters.RefCode||'-'||fn:substring($temp.tmp_Matters.MatterCode ,1,11)</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_EnterpriseProjectObjects[1]/ProjectDescription">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_Matters.Description), 'Test',  fn:substring($temp.tmp_Matters.Description, 1, 40))
+</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_EnterpriseProjectObjects[1]/PriorityCode">3</operation>
+                              <operation source="formula"
+                                         to="output.out_EnterpriseProjectObjects[1]/ProjectStartDate">
+                                 <expression language="XQuery">fn:concat(fn:concat('/Date(', date:dateToMillis($temp.tmp_Matters.DateCreated)), ')/')
+</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_EnterpriseProjectObjects[1]/ProjectEndDate">
+                                 <expression language="XQuery">fn:concat(fn:concat('/Date(', date:dateToMillis(xs:date("2099-12-31"))), ')/')</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="output.out_EnterpriseProjectObjects[1]/ResponsibleCostCenter">temp.tmp_CostCenter</operation>
+                              <operation source="field" to="output.out_EnterpriseProjectObjects[1]/ProfitCenter">temp.tmp_ProfitCenter</operation>
+                              <operation source="constant"
+                                         to="output.out_EnterpriseProjectObjects[1]/ProjectProfileCode">YP03</operation>
+                              <operation source="field"
+                                         to="output.out_EnterpriseProjectObjects[1]/ProjectCurrency">temp.tmp_Matters.CurCode</operation>
+                              <operation source="field"
+                                         to="output.out_EnterpriseProjectObjects[1]/YY1_Customer_PPH">temp.tmp_Matters.RefCode</operation>
+                              <link id="kum6301d" targetId="kum6301c"/>
+                           </assignment>
+                           <end id="kum6301c">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <flow id="kt4cm7wu">
+                           <eventContainer id="l892wav9">
+                              <subflow id="l7q2fpr5">
+                                 <title>Process_GET_BusinessPartnerUUID</title>
+                                 <subflowGUID>0ej3pgHsNENkarCF9tNw49</subflowGUID>
+                                 <subflowPath>Process_GET_BusinessPartnerUUID</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_BusinessPartnerEmail" source="formula" updatable="true">
+                                       <expression language="XQuery">fn:lower-case($temp.tmp_VpUsers.MailID)</expression>
+                                    </parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_BusinessPartnerUUID" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_RestURL" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l892wavb">
+                                 <assignment id="l892wavz">
+                                    <title>Assignment to tmp_PO_ManagerUUID</title>
+                                    <operation source="field" to="temp.tmp_PO_ManagerUUID">output.out_BusinessPartnerUUID</operation>
+                                 </assignment>
+                                 <link id="l892wavc" targetId="l892wav9" type="containerLink"/>
+                              </flow>
+                              <flow id="l892wave">
+                                 <throw id="l892wavl">
+                                    <title>Throw 1</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="l892wava" targetId="l892wavb" type="containerLink"/>
+                              <link id="l892wavy" targetId="l7q2fqku"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l892wav2" interrupting="true">
+                                    <link id="l892wavd" targetId="l892wave" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <assignment id="l7q2fqku">
+                              <title>Assignment to tmp_Flag</title>
+                              <operation source="formula" to="temp.tmp_Flag">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_PO_ManagerUUID),'N','Y')</expression>
+                              </operation>
+                              <link id="l7q2fqlx" targetId="l7q2fqll"/>
+                           </assignment>
+                           <container id="l7q2fqll" type="exclusive">
+                              <title>tmp_Flag</title>
+                              <flow id="l7q2fqlm">
+                                 <assignment id="l7q2fqln">
+                                    <title>O_SUBP_Flag Y</title>
+                                    <operation source="constant" to="output.O_SUBP_Flag">Y</operation>
+                                    <operation source="field" to="output.O_SUBP_EMAIL">temp.tmp_VpUsers.MailID</operation>
+                                    <operation source="field" to="output.O_SUBP_UUID">output.out_BusinessPartnerUUID</operation>
+                                    <operation source="formula" to="output.O_Project">
+                                       <expression language="XQuery">'VPC'||'-'||$temp.tmp_Matters.RefCode||'-'||$temp.tmp_Matters.MatterCode </expression>
+                                    </operation>
+                                    <link id="l7q2fqlu" targetId="l7q2fqlo"/>
+                                 </assignment>
+                                 <assignment id="l7q2fqlo">
+                                    <title>Assignment to Project, ProjectDescription etc.</title>
+                                    <operation source="formula" to="output.out_EnterpriseProjectObjects[1]/Project">
+                                       <expression language="XQuery">'VPC'||'-'||$temp.tmp_Matters.RefCode||'-'||fn:substring($temp.tmp_Matters.MatterCode ,1,11) </expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="output.out_EnterpriseProjectObjects[1]/ProjectDescription">
+                                       <expression language="XQuery">util:iif(util:isNull($temp.tmp_Matters.Description), 'Test',  fn:substring($temp.tmp_Matters.Description, 1, 40))</expression>
+                                    </operation>
+                                    <operation source="constant"
+                                               to="output.out_EnterpriseProjectObjects[1]/PriorityCode">3</operation>
+                                    <operation source="formula"
+                                               to="output.out_EnterpriseProjectObjects[1]/ProjectStartDate">
+                                       <expression language="XQuery">fn:concat(fn:concat('/Date(', date:dateToMillis($temp.tmp_Matters.DateCreated)), ')/')
+</expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="output.out_EnterpriseProjectObjects[1]/ProjectEndDate">
+                                       <expression language="XQuery">fn:concat(fn:concat('/Date(', date:dateToMillis(xs:date("2099-12-31"))), ')/')</expression>
+                                    </operation>
+                                    <operation source="field"
+                                               to="output.out_EnterpriseProjectObjects[1]/ResponsibleCostCenter">temp.tmp_CostCenter</operation>
+                                    <operation source="field" to="output.out_EnterpriseProjectObjects[1]/ProfitCenter">temp.tmp_ProfitCenter</operation>
+                                    <operation source="constant"
+                                               to="output.out_EnterpriseProjectObjects[1]/ProjectProfileCode">YP03</operation>
+                                    <operation source="field"
+                                               to="output.out_EnterpriseProjectObjects[1]/ProjectCurrency">temp.tmp_Matters.CurCode</operation>
+                                    <operation source="field"
+                                               to="output.out_EnterpriseProjectObjects[1]/YY1_Customer_PPH">temp.tmp_Matters.RefCode</operation>
+                                    <operation source="field" to="temp.tmp_PO_ManagerUUID">output.out_BusinessPartnerUUID</operation>
+                                    <operation source="constant" to="temp.tmp_PO_RoleType">YP_RL_0001</operation>
+                                    <link id="l7q2fqlv" targetId="l7q2fqlp"/>
+                                 </assignment>
+                                 <end id="l7q2fqlp">
+                                    <title>End 2</title>
+                                 </end>
+                              </flow>
+                              <flow id="l7q2fqlq">
+                                 <jumpTo id="l7q2fqlr">
+                                    <link id="l7q2fqlw" targetId="kt8jfvfl"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="l7q2fqls" targetId="l7q2fqlm" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$temp.tmp_Flag}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l7q2fqlt" targetId="l7q2fqlq" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <link id="kt4cm7wl" targetId="kt4cm7ws" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$temp.tmp_VPUSER_EMAIL_FLAG}</arg>
+                                 <arg name="right">N</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kt4cm7wo" targetId="kt4cm7wu" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="kt4cm7tz" targetId="kt4cm7u6" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_Decision}</arg>
+                           <arg name="right">N</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kt4cm7u2" targetId="kt4cm7u8" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>35320513-f033-4ab5-a5b1-37bd1080d562</ns1:Id>
+               <ns1:Name>enterpriseProject</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-04-01T13:28:49Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "16608365",
+	 "in_MatterCode": "TSNL14"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>62cab737-a913-4cfd-8fae-7e6ce6f53005</ns1:Id>
+               <ns1:Name>test_project</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-08-13T10:41:46Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-12T12:15:10Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "10066699",
+	 "in_MatterCode": "IMAC1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7gHhFJSQ7fmlp0X1BZfYQr</types1:GUID>
+      <types1:DisplayName>ProcessGetEnterpriseProject</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.002Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

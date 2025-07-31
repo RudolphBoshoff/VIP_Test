@@ -1,0 +1,917 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>eBxZmtK9hCHbf2X-gt-26246300-2023-03-13T09:24:50.67Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_AddressChanged_Detail</types1:Name>
+      <types1:ParentFlowIds>lRkPUEbfV3HRvsG-gt-26246336-2023-03-13T09:24:51.192Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Updates BP Address and Creates BP Roles if missing</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-03-13T09:24:51Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-11T08:42:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:44:24Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_AddressChanged_Detail/Process_AddressChanged_Detail.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_AddressChanged_Detail"
+                  name="Process_AddressChanged_Detail"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Updates BP Address and Creates BP Roles if missing</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_AddressDetail"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POAddressDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0z8tcswLCClcvbG6YOn9oq</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ErrorDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:BusinessPartner_Expand</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">73TzrNfMb3we8PZAvKue2p</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_AddressChanged"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_IdentityRegister" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:IdentityRegister</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bP2yOQ95PQYjSTX3OprbOc</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerTax_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCurrent" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RevEntityPrevious" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">xxxxxxxxxx</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FirstName_Transformed" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LastName_Transformed" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Body_Address" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerAddressType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">1x6qHcDmvyrg40XGAz8vI9</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyRoleFLCU00" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerRoleType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hx1QQKYDbWbiEYsuE8odK8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyRoleUDM000" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerRoleType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hx1QQKYDbWbiEYsuE8odK8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyRoleUKM000" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerRoleType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hx1QQKYDbWbiEYsuE8odK8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BodyRoleFLCU01" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerRoleType-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">hx1QQKYDbWbiEYsuE8odK8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SearchTerm" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PatchAddress" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag_ExtendToCompany" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_CompanyCodes" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LatestMatter" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lezi7brx" targetId="lexbwfbh"/>
+               </start>
+               <assignment id="lexbwfbh">
+                  <title>Prepare Payloads</title>
+                  <operation source="formula" to="temp.tmp_Body_Address">
+                     <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+        	&lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode  }&lt;/BusinessPartner&gt;
+        	&lt;CityName&gt;{$input.in_AddressDetail[1]/CityName}&lt;/CityName&gt;
+            &lt;PostalCode&gt;{$input.in_AddressDetail[1]/PostalCode} &lt;/PostalCode&gt;
+            &lt;Language&gt;{$input.in_AddressDetail[1]/Language} &lt;/Language&gt;
+            &lt;Country&gt;{$input.in_AddressDetail[1]/Country}&lt;/Country&gt;
+            &lt;StreetPrefixName&gt;{$input.in_AddressDetail[1]/Address } &lt;/StreetPrefixName&gt;
+            &lt;AdditionalStreetPrefixName&gt;{$input.in_AddressDetail[1]/Address2 }&lt;/AdditionalStreetPrefixName&gt;
+            &lt;StreetName&gt;{$input.in_AddressDetail[1]/Address3 }&lt;/StreetName&gt;
+            &lt;StreetSuffixName&gt;{$input.in_AddressDetail[1]/Address4 }&lt;/StreetSuffixName&gt;
+            &lt;AdditionalStreetSuffixName&gt;{$input.in_AddressDetail[1]/Address5 }&lt;/AdditionalStreetSuffixName&gt;            
+            &lt;!--{ $temp.tmp_EmailAddress_BP_PO/element() }--&gt;
+            &lt;to_EmailAddress&gt;
+                &lt;results m:isArray="true"&gt;
+                    &lt;EmailAddress&gt; {$input.in_AddressDetail[1]/EmailAddress  }&lt;/EmailAddress&gt;
+                &lt;/results&gt;
+            &lt;/to_EmailAddress&gt;
+            &lt;to_AddressUsage&gt;
+				&lt;results m:isArray="true"&gt;
+					&lt;AddressUsage&gt;XXDEFAULT&lt;/AddressUsage&gt;
+					&lt;ValidityEndDate&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidityEndDate&gt;
+				&lt;/results&gt;
+			&lt;/to_AddressUsage&gt;
+&lt;/root&gt; </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BodyRoleFLCU00">
+                     <expression language="XQuery">&lt;results&gt;
+  &lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode}&lt;/BusinessPartner&gt;
+  &lt;BusinessPartnerRole&gt;FLCU00&lt;/BusinessPartnerRole&gt;
+  &lt;ValidFrom&gt;{fn:current-dateTime()}&lt;/ValidFrom&gt;
+  &lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+&lt;/results&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BodyRoleFLCU01">
+                     <expression language="XQuery">&lt;results&gt;
+  &lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode}&lt;/BusinessPartner&gt;
+  &lt;BusinessPartnerRole&gt;FLCU01&lt;/BusinessPartnerRole&gt;
+  &lt;ValidFrom&gt;{fn:current-dateTime()}&lt;/ValidFrom&gt;
+  &lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+&lt;/results&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BodyRoleUDM000">
+                     <expression language="XQuery">&lt;results&gt;
+  &lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode}&lt;/BusinessPartner&gt;
+  &lt;BusinessPartnerRole&gt;UDM000&lt;/BusinessPartnerRole&gt;
+  &lt;ValidFrom&gt;{fn:current-dateTime()}&lt;/ValidFrom&gt;
+  &lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+&lt;/results&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_BodyRoleUKM000">
+                     <expression language="XQuery">&lt;results&gt;
+  &lt;BusinessPartner&gt;{$input.in_AddressDetail[1]/RefCode}&lt;/BusinessPartner&gt;
+  &lt;BusinessPartnerRole&gt;UKM000&lt;/BusinessPartnerRole&gt;
+  &lt;ValidFrom&gt;{fn:current-dateTime()}&lt;/ValidFrom&gt;
+  &lt;ValidTo&gt;{date:toDate('9999-12-31', 'yyyy-MM-dd')}&lt;/ValidTo&gt;
+&lt;/results&gt;</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_PatchAddress">
+                     <expression language="XQuery">&lt;root&gt;
+	&lt;Country&gt;{$input.in_AddressDetail[1]/Country }&lt;/Country&gt;
+	&lt;CityName&gt;{ $input.in_AddressDetail[1]/CityName }&lt;/CityName&gt;
+	&lt;PostalCode&gt;{ $input.in_AddressDetail[1]/PostalCode  }&lt;/PostalCode&gt;
+	&lt;Language&gt;{$input.in_AddressDetail[1]/Language} &lt;/Language&gt;
+	&lt;StreetPrefixName&gt;{$input.in_AddressDetail[1]/Address } &lt;/StreetPrefixName&gt;
+	&lt;AdditionalStreetPrefixName&gt;{$input.in_AddressDetail[1]/Address2 }&lt;/AdditionalStreetPrefixName&gt;
+	&lt;StreetName&gt;{$input.in_AddressDetail[1]/Address3 }&lt;/StreetName&gt;
+	&lt;StreetSuffixName&gt;{$input.in_AddressDetail[1]/Address4 }&lt;/StreetSuffixName&gt;
+	&lt;AdditionalStreetSuffixName&gt;{$input.in_AddressDetail[1]/Address5 }&lt;/AdditionalStreetSuffixName&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <operation source="field" to="output.out_ProcessVariables_AddressChanged">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AddressChanged[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_AddressChanged[1]/IICS_Run_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <link id="lezsacek" targetId="lezsacej"/>
+               </assignment>
+               <milestone id="lezsacej">
+                  <title>202 Accepted</title>
+                  <httpStatus>202</httpStatus>
+                  <link id="lg4za7jm" targetId="lg4za7jl"/>
+               </milestone>
+               <subflow id="lg4za7jl">
+                  <title>Get BP</title>
+                  <subflowGUID>1doZwOn6OsIdr4fl7VUHE1</subflowGUID>
+                  <subflowPath>Process_GET_BusinessPartner</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_BusinessPartner" source="field" updatable="true">input.in_AddressDetail[1]/RefCode</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_BusinessPartner" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_RestURL" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_BusinessPartnerExpanded" type="reference">
+                        <options>
+                           <option name="referenceTo">AppSvcBusinessPartnerA2X:SvcGET_BusinessPartner_EntireResponse</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">afFo8bsepoBbEwruqpQxgJ</option>
+                        </options>
+                     </field>
+                     <field name="out_PO_Get_BusinessPartner" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lg4za80w" targetId="lg4za806"/>
+               </subflow>
+               <container id="lg4za806" type="exclusive">
+                  <title>HttpStatusCode</title>
+                  <flow id="lg4ztvu8">
+                     <subflow id="lg4ztw03">
+                        <title>Get BP Address</title>
+                        <subflowGUID>9TIIk4KzC0nkcM3uxxKgOE</subflowGUID>
+                        <subflowPath>Process_GET_A_BusinessPartnerAddress</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_BusinessPartner" source="field" updatable="true">input.in_AddressDetail[1]/RefCode</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_AddressID" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_AddressExist" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_RestUrl_GetBPAddress" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lg4ztw3l" targetId="lg4ztw3c"/>
+                     </subflow>
+                     <subflow id="lg4ztw6m">
+                        <title>BP Role UDM000</title>
+                        <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                        <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">temp.tmp_BodyRoleUDM000</parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                           <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                           <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_RestURL_PostBPRole" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lg4ztwa4" targetId="lg4ztwa3"/>
+                     </subflow>
+                     <subflow id="lg4ztwa3">
+                        <title>BP Role UKM000</title>
+                        <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                        <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">temp.tmp_BodyRoleUKM000</parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                           <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                           <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_RestURL_PostBPRole" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lg4ztwdl" targetId="lg4ztwdk"/>
+                     </subflow>
+                     <subflow id="lg4ztwdk">
+                        <title>BP Role FLCU00</title>
+                        <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                        <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">temp.tmp_BodyRoleFLCU00</parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                           <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                           <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_RestURL_PostBPRole" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lg4ztwh2" targetId="lg4ztwh1"/>
+                     </subflow>
+                     <subflow id="lg4ztwh1">
+                        <title>BP Role FLCU01</title>
+                        <subflowGUID>ebvR2IeR0o9l1cyvcYeXm0</subflowGUID>
+                        <subflowPath>Process_POST_A_BusinessPartnerRole</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Body" source="field" updatable="true">temp.tmp_BodyRoleFLCU01</parameter>
+                           <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                           <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                           <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_RestURL_PostBPRole" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lg4ztwk4" targetId="lg4ztwk3"/>
+                     </subflow>
+                     <container id="lg4ztw3c" type="exclusive">
+                        <title>out_AddressExist</title>
+                        <flow id="lg4ztw3d">
+                           <subflow id="lg4ztw3e">
+                              <title>Update BP Address</title>
+                              <subflowGUID>1mF4efWGYSVlgUuFm0JPEx</subflowGUID>
+                              <subflowPath>Process_PATCH_A_BusinessPartnerAddress</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="field" updatable="true">temp.tmp_PatchAddress</parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                                 <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                                 <parameter name="in_BusinessPartner" source="field" updatable="true">input.in_AddressDetail[1]/RefCode</parameter>
+                                 <parameter name="in_AddressID" source="field" updatable="true">output.out_AddressID</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Patch_A_BusinessPartnerAddress" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="lg4ztw3j" targetId="lg4ztw3c" type="containerLink"/>
+                        </flow>
+                        <flow id="lg4ztw3f">
+                           <subflow id="lg4ztw3g">
+                              <title>Create BP Address</title>
+                              <subflowGUID>3rJtcfeL7Oti7pPunYfweI</subflowGUID>
+                              <subflowPath>Process_POST_A_BusinessPartnerAddress</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="field" updatable="true">temp.tmp_Body_Address</parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                                 <parameter name="in_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_ApiName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_PostBPAddressStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="lg4ztw3k" targetId="lg4ztw3c" type="containerLink"/>
+                        </flow>
+                        <link id="lg4ztw3h" targetId="lg4ztw3d" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_AddressExist}</arg>
+                                 <arg name="right">YES</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lg4ztw3i" targetId="lg4ztw3f" type="containerLink"/>
+                        <link id="lg4ztw6n" targetId="lg4ztw6m"/>
+                     </container>
+                     <container id="lg4ztwnt" type="exclusive">
+                        <title>Matters List 2</title>
+                        <flow id="lg4ztwnu">
+                           <assignment id="lg4ztwnv">
+                              <title>Next Matter</title>
+                              <operation source="formula" to="temp.tmp_MatterCurrent">
+                                 <expression language="XQuery">list:head($temp.tmp_Matters_Array )</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Matters_Array">
+                                 <expression language="XQuery">list:tail($temp.tmp_Matters_Array )</expression>
+                              </operation>
+                              <link id="lg4ztwo8" targetId="lg4ztwnw"/>
+                           </assignment>
+                           <assignment id="lg4ztwnw">
+                              <title>Check Extend Company</title>
+                              <operation source="formula" to="temp.tmp_Flag_ExtendToCompany">
+                                 <expression language="XQuery">let $re := $temp.tmp_MatterCurrent.RevEntity , 
+$cc := $output.out_BusinessPartnerExpanded[1]/d[1]/to_Customer[1]/to_CustomerCompany[1]/results[CompanyCode=$re]
+return
+if (fn:string-length($cc/CompanyCode/text())=0)
+then (1)
+else(0)</expression>
+                              </operation>
+                              <link id="lg4ztwo9" targetId="lg4ztwnx"/>
+                           </assignment>
+                           <container id="lg4ztwnx" type="exclusive">
+                              <title>Extend Company</title>
+                              <flow id="lg4ztwny">
+                                 <subflow id="lg4ztwnz">
+                                    <title>GetEntityDetails COMPLETE</title>
+                                    <subflowGUID>7hBhvcOR2NalonB4HORiaB</subflowGUID>
+                                    <subflowPath>ProcessGetEntityDetails_COMPLETE</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_RefCode" source="field">temp.tmp_MatterCurrent.RefCode</parameter>
+                                       <parameter name="in_MatterCode" source="field">temp.tmp_MatterCurrent.MatterCode</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_EntityDetails" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:POEntityDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_BusinessPartnerTax_Array" type="objectlist">
+                                          <options>
+                                             <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                                             <option hide="true" name="multiSelect">true</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Segment" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_Currency" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_EnterpriseProjectObjects" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:POEnterpriseProject</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">aD6Bg2tY9TOfIY1Z3jQDoq</option>
+                                          </options>
+                                       </field>
+                                       <field name="O_SUBP_EMAIL" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="O_SUBP_UUID" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="O_SUBP_Flag" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="O_Project" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="lg4ztwoe" targetId="lg4ztwo0"/>
+                                 </subflow>
+                                 <subflow id="lg4ztwo0">
+                                    <title>Extend BP to new Customer Company</title>
+                                    <subflowGUID>apixvQ6w3oYdxViygLypQI</subflowGUID>
+                                    <subflowPath>Process_POST_A_CustomerCompany</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">let $E := $output.out_EntityDetails[1] return
+&lt;to_CustomerCompany&gt;
+	&lt;Customer&gt;{$E/RefCode/text()  }&lt;/Customer&gt;
+	&lt;CompanyCode&gt;{$temp.tmp_MatterCurrent.RevEntity  }&lt;/CompanyCode&gt;
+	&lt;ReconciliationAccount&gt;12100000&lt;/ReconciliationAccount&gt;
+	&lt;YY1_Customer_Segment_cco&gt;{$output.out_Segment/text()  }&lt;/YY1_Customer_Segment_cco&gt;
+	&lt;ValueAdjustmentKey&gt;Z1&lt;/ValueAdjustmentKey&gt;
+	&lt;PaymentTerms&gt;{$E/PaytermTag/text()  }&lt;/PaymentTerms&gt;
+	&lt;AccountingClerkInternetAddress&gt;{util:iif(util:isNull($E/EmailInvoiceReminder/text() ), $E/EmailOther/text() , $E/EmailInvoiceReminder/text() )}&lt;/AccountingClerkInternetAddress&gt;
+	&lt;CashPlanningGroup&gt;{util:iif($E/Country/text()=fn:substring($E/RevEntity/text() , 1, 2)	, 'E2'
+                        ,util:iif(fn:string-length($E/Country/text())=0  	               		, 'E2'
+                        , util:iif($E/Country/text() =''								, 'E2'
+                        , 'E3')))}&lt;/CashPlanningGroup&gt;
+&lt;/to_CustomerCompany&gt;</expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AddressChanged</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_Po" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_RestURL" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_POST_A_CustomerCompany" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                    <link id="lg4ztwof" targetId="lg4ztwo1"/>
+                                 </subflow>
+                                 <subflow id="lg4ztwo1">
+                                    <title>Extend BP to new Sales Area</title>
+                                    <subflowGUID>8rGRMHaDGdIcGOokx8Ht6Q</subflowGUID>
+                                    <subflowPath>Process_POST_A_CustomerSalesArea</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_Body" source="formula" updatable="true">
+                                          <expression language="XQuery">let $E := $output.out_EntityDetails[1] return
+&lt;to_CustomerSalesArea&gt;
+	&lt;Customer&gt;{$E/RefCode/text()}&lt;/Customer&gt;
+	&lt;SalesOrganization&gt;{$temp.tmp_MatterCurrent.RevEntity }&lt;/SalesOrganization&gt;
+	&lt;DistributionChannel&gt;10&lt;/DistributionChannel&gt;
+	&lt;Division&gt;10&lt;/Division&gt;
+	&lt;Currency&gt;{$output.out_Currency }&lt;/Currency&gt;
+	&lt;CustomerPaymentTerms&gt;{$E/PaytermTag/text() }&lt;/CustomerPaymentTerms&gt;
+&lt;/to_CustomerSalesArea&gt;</expression>
+                                       </parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AddressChanged</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_Po" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_RestURL" type="string">
+                                          <options>
+                                             <option name="required">false</option>
+                                          </options>
+                                       </field>
+                                       <field name="out_ProcessVariables_POST_A_CustomerSalesArea" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="lg4ztwod" targetId="lg4ztwnx" type="containerLink"/>
+                              </flow>
+                              <flow id="lg4ztwo2">
+                                 <link id="lg4ztwog" targetId="lg4ztwnx" type="containerLink"/>
+                              </flow>
+                              <link id="lg4ztwoa" targetId="lg4ztwny" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_Flag_ExtendToCompany}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lg4ztwob" targetId="lg4ztwo2" type="containerLink"/>
+                              <link id="lg4ztwoc" targetId="lg4ztwo3"/>
+                           </container>
+                           <jumpTo id="lg4ztwo3">
+                              <link id="lg4ztwoh" targetId="lg4ztwnt"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lg4ztwo4">
+                           <end id="lg4ztwo5">
+                              <title>End 3</title>
+                           </end>
+                        </flow>
+                        <link id="lg4ztwo6" targetId="lg4ztwnu" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Matters_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lg4ztwo7" targetId="lg4ztwo4" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Matters_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <assignment id="lg4ztwk3">
+                        <title>Get Latest Matter</title>
+                        <operation source="list" to="temp.tmp_Matters_Array">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                              <where>RefCode = '{$input.in_AddressDetail[1]/RefCode}' Order By RevEntity</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_SAP_CompanyCodes">
+                           <expression language="XQuery">for $cc in $output.out_BusinessPartnerExpanded[1]/d[1]/to_Customer[1]/to_CustomerCompany[1]/results
+return
+&lt;root&gt;
+	{$cc/CompanyCode}
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="lg4ztwoi" targetId="lg4ztwnt"/>
+                     </assignment>
+                  </flow>
+                  <flow id="lg4za807">
+                     <assignment id="lg4za808">
+                        <title>Get Matters List</title>
+                        <operation source="list" to="temp.tmp_Matters_Array">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                              <where>RefCode = '{$input.in_AddressDetail[1]/RefCode}' Order By RevEntity </where>
+                           </query>
+                        </operation>
+                        <link id="lg4za80o" targetId="lg4za809"/>
+                     </assignment>
+                     <container id="lg4za809" type="exclusive">
+                        <title>Matters List</title>
+                        <flow id="lg4za80a">
+                           <assignment id="lg4za80b">
+                              <title>Next Record</title>
+                              <operation source="formula" to="temp.tmp_MatterCurrent">
+                                 <expression language="XQuery">list:head($temp.tmp_Matters_Array)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Matters_Array">
+                                 <expression language="XQuery">list:tail($temp.tmp_Matters_Array)</expression>
+                              </operation>
+                              <link id="lg4za80r" targetId="lg4za80c"/>
+                           </assignment>
+                           <subflow id="lg4za80c">
+                              <title>Process_MatterCreated</title>
+                              <subflowGUID>5FxEG3udRoMljY1OlVhcay</subflowGUID>
+                              <subflowPath>Process_MatterCreated</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="X_TRANSACTION_ID" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/X_TRANSACTION_ID</parameter>
+                                 <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/API_Name</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_Event_Name" source="field" updatable="true">output.out_ProcessVariables_AddressChanged[1]/Event_Name</parameter>
+                                 <parameter name="in_RefCode" source="field">temp.tmp_MatterCurrent.RefCode</parameter>
+                                 <parameter name="in_MatterCode" source="field">temp.tmp_MatterCurrent.MatterCode</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_FailedAtStep" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_MatterCreated" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lg4za80s" targetId="lg4za80d"/>
+                           </subflow>
+                           <jumpTo id="lg4za80d">
+                              <link id="lg4za80t" targetId="lg4za809"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lg4za80e">
+                           <end id="lg4za80f">
+                              <title>End 4</title>
+                           </end>
+                        </flow>
+                        <link id="lg4za80p" targetId="lg4za80a" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Matters_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lg4za80q" targetId="lg4za80e" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Matters_Array}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lg4za80j">
+                     <subflow id="lg4ztx0e">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_AddressChanged</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lg4ztx76" targetId="lg4ztx75"/>
+                     </subflow>
+                     <end id="lg4ztx75">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lg4ztvu7" targetId="lg4ztvu8" type="containerLink">
+                     <condition source="formula">
+                        <function name="starts-with">
+                           <arg name="left">{$output.out_PO_Get_BusinessPartner[1]/HttpStatusCode}</arg>
+                           <arg name="right">HTTP_2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lg4za80l" targetId="lg4za807" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.out_PO_Get_BusinessPartner[1]/HttpStatusCode}</arg>
+                           <arg name="right">HTTP_404</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lg4za80n" targetId="lg4za80j" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>jol2XeDCvapgPK1hCDZ4Gs</types1:GUID>
+      <types1:DisplayName>Process_AddressChanged_Detail</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:20.168Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

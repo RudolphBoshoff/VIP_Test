@@ -1,0 +1,481 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>T7dwcnPCOkSSHCw-gt-23276945-2023-03-29T09:54:53.734Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetEntityDetails_COMPLETE</types1:Name>
+      <types1:ParentFlowIds>1UAjllCYAOTMneB-gt-14407389-2021-09-16T07:13:33.847Z::pd.xml,5NYLonEBNjDg8SO-gt-1623506-2023-08-23T09:54:35.914Z::pd.xml,8beC3Q6gaabclvA-gt-1676409-2023-08-23T09:54:31.964Z::pd.xml,8z0kZ2sBsoZduD2-gt-1685158-2023-08-23T09:54:32.966Z::pd.xml,bdvSzYLnzYLnzYL-gt-26582426-2023-07-10T13:21:40.024Z::pd.xml,eBxZmtK9hCHbf2X-gt-26246300-2023-03-13T09:24:50.67Z::pd.xml,kNmumf6S3wOLIFv-gt-22945939-2022-03-31T07:36:51.62Z::pd.xml,m6AUfSB7O2htghG-gt-7192234-2022-01-03T05:19:01.198Z::pd.xml,RNGOkSSHCwkNmum-gt-37242355-2022-10-12T10:48:26.697Z::pd.xml,tCUtoVVVVVVVVVV-gt-1685467-2023-08-23T09:54:36.307Z::pd.xml,xIS7T1cnFKi9zhF-gt-1676371-2023-08-23T09:54:31.381Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-03-29T09:54:54Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-17T13:14:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-13T11:22:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetEntityDetails_COMPLETE/ProcessGetEntityDetails_COMPLETE.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetEntityDetails_COMPLETE"
+                  name="ProcessGetEntityDetails_COMPLETE"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MatterCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_EntityDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POEntityDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_BusinessPartnerTax_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                  </options>
+               </field>
+               <field description="" name="out_Segment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_Currency" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_EnterpriseProjectObjects" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POEnterpriseProject</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aD6Bg2tY9TOfIY1Z3jQDoq</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_EMAIL" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_UUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_SUBP_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Project" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_API08" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:api08</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_API14" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:api14</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerTax" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EI" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EC" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EO" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ED" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lfk3yzlt" targetId="lfk3yzls"/>
+               </start>
+               <assignment id="lfk3yzls">
+                  <title>Assignment to tmp_API08, tmp_API14</title>
+                  <operation source="query" to="temp.tmp_API08">
+                     <query advanceQuery="false" from="AppConnectionVPCvip:api08">
+                        <where>BusinessPartner = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_API14">
+                     <query advanceQuery="false" from="AppConnectionVPCvip:api14">
+                        <where>Project = 'VPC-{$input.in_RefCode}-{$input.in_MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="lfk3yznx" targetId="lfk3yznw"/>
+               </assignment>
+               <container id="lfk3yznw" type="exclusive">
+                  <title>tmp_API08</title>
+                  <flow id="lfk3yzo0">
+                     <subflow id="lftotfbv">
+                        <title>Split Refmaster Name</title>
+                        <subflowGUID>86gc7kurfu0kqqKCTpI3SP</subflowGUID>
+                        <subflowPath>Process_Generic_SplitLongText</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Text" source="field" updatable="true">temp.tmp_API08[1]/Name</parameter>
+                           <parameter name="in_MaxStringLength" source="constant" updatable="true">40</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_TextList" type="objectlist">
+                              <options>
+                                 <option name="referenceTo">$type:string</option>
+                                 <option hide="true" name="multiSelect">true</option>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lftotfbw" targetId="lfk3yzoi"/>
+                     </subflow>
+                     <container id="lfk3yzoi" type="exclusive">
+                        <title>tmp_API14</title>
+                        <flow id="lfk3yzok">
+                           <subflow id="lfkx4w4g">
+                              <title>Get SAP User from Email</title>
+                              <subflowGUID>0ej3pgHsNENkarCF9tNw49</subflowGUID>
+                              <subflowPath>Process_GET_BusinessPartnerUUID</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_BusinessPartnerEmail" source="field" updatable="true">temp.tmp_API14[1]/BusinessPartnerUUID</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_BusinessPartnerUUID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lftotf8s" targetId="lfkx4w5t"/>
+                           </subflow>
+                           <assignment id="lfkx4w5t">
+                              <title>Set Output</title>
+                              <operation source="formula" to="temp.tmp_EI">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EC">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice___CC ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ER">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/AccountingClerkInternetAddress  ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EO">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email__not_EI_or_EC_ ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ED">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email___Default ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_EntityDetails">
+                                 <expression language="XQuery">&lt;POEntityDetails&gt;
+   &lt;RevEntity&gt;{$temp.tmp_API08[1]/CompanyCode/text() }&lt;/RevEntity&gt;
+   &lt;RefType&gt;{$temp.tmp_API08[1]/BusinessPartnerCategory/text() }&lt;/RefType&gt;
+   &lt;AddrCode&gt;{$temp.tmp_API08[1]/BusinessPartner/text() }&lt;/AddrCode&gt;
+   &lt;BillAddress&gt;{$temp.tmp_API08[1]/BusinessPartner_BP/text() }&lt;/BillAddress&gt;
+   &lt;cText&gt;&lt;/cText&gt;
+   &lt;cType&gt;&lt;/cType&gt;
+   &lt;Active&gt;1&lt;/Active&gt;
+   &lt;AddrType&gt;BI&lt;/AddrType&gt;
+   &lt;AddrNr&gt;{$temp.tmp_API08[1]/AddrNr/text() }&lt;/AddrNr&gt;
+   &lt;City&gt;{$temp.tmp_API08[1]/CityName/text() }&lt;/City&gt;
+   &lt;Country&gt;{$temp.tmp_API08[1]/Country/text() }&lt;/Country&gt;
+   &lt;PostalCode&gt;{$temp.tmp_API08[1]/PostalCode/text() }&lt;/PostalCode&gt;
+   &lt;Address&gt;{$temp.tmp_API08[1]/address/text() }&lt;/Address&gt;
+   &lt;Address2&gt;{$temp.tmp_API08[1]/address2/text() }&lt;/Address2&gt;
+   &lt;Address3&gt;{$temp.tmp_API08[1]/address3/text() }&lt;/Address3&gt;
+   &lt;Address4&gt;{$temp.tmp_API08[1]/address4/text() }&lt;/Address4&gt;
+   &lt;Address5&gt;{$temp.tmp_API08[1]/address5/text() }&lt;/Address5&gt;
+   &lt;RefMasterAdminGroup&gt;{$temp.tmp_API08[1]/AdminGroup/text() }&lt;/RefMasterAdminGroup&gt;
+   &lt;RefMasterName&gt;{$temp.tmp_API08[1]/Name/text() }&lt;/RefMasterName&gt;
+   &lt;RefCode&gt;{$temp.tmp_API08[1]/BusinessPartner/text() }&lt;/RefCode&gt;
+   &lt;Language&gt;{$temp.tmp_API08[1]/Language/text() }&lt;/Language&gt;
+   &lt;FileStatus&gt;{$temp.tmp_API08[1]/FileStatus/text() }&lt;/FileStatus&gt;
+   &lt;OrgCode&gt;{$temp.tmp_API14[1]/OrgCode/text() }&lt;/OrgCode&gt;
+   &lt;MatterStatus&gt;{$temp.tmp_API14[1]/MatterStatus/text()}&lt;/MatterStatus&gt;
+   &lt;BalanceCur&gt;{$temp.tmp_API14[1]/BalanceCur/text()}&lt;/BalanceCur&gt;
+   &lt;OrgUnit1&gt;{$temp.tmp_API08[1]/OrgUnit1/text()}&lt;/OrgUnit1&gt;
+   &lt;CurCode&gt;{$temp.tmp_API14[1]/BaseCur/text()}&lt;/CurCode&gt;
+   &lt;Region&gt;&lt;/Region&gt;   
+   &lt;Payterm&gt;{$temp.tmp_API08[1]/PayTerm/text() }&lt;/Payterm&gt;
+   &lt;PaytermTag&gt;{$temp.tmp_API08[1]/PaymentTerms/text() }&lt;/PaytermTag&gt;
+   &lt;EmailInvoice&gt;{$temp.tmp_EI }&lt;/EmailInvoice&gt;
+   &lt;EmailInvoiceCC&gt;{$temp.tmp_EC  }&lt;/EmailInvoiceCC&gt;
+   &lt;EmailInvoiceReminder&gt;{$temp.tmp_ER }&lt;/EmailInvoiceReminder&gt;
+   &lt;EmailOther&gt;{util:iif( fn:string-length($temp.tmp_EO ) = 0 
+   						, $temp.tmp_ED 
+                        , $temp.tmp_EO ) }&lt;/EmailOther&gt;
+   &lt;AltName&gt;{$temp.tmp_API08[1]/BusinessPartnerIDByExtSystem/text() }&lt;/AltName&gt;
+   &lt;FirstName&gt;{fn:substring($temp.tmp_API08[1]/Initials/text() ,1,40)}&lt;/FirstName&gt;
+   &lt;LastName&gt;{$output.out_TextList/list[1]/text()}&lt;/LastName&gt;
+   &lt;OrganizationBPName1&gt;{$output.out_TextList/list[1]/text()}&lt;/OrganizationBPName1&gt;
+   &lt;OrganizationBPName2&gt;{$output.out_TextList/list[2]/text()}&lt;/OrganizationBPName2&gt;
+   &lt;OrganizationBPName3&gt;{$output.out_TextList/list[3]/text()}&lt;/OrganizationBPName3&gt;
+   &lt;OrganizationBPName4&gt;{$output.out_TextList/list[4]/text()}&lt;/OrganizationBPName4&gt;
+&lt;/POEntityDetails&gt;
+</expression>
+                              </operation>
+                              <operation source="field" to="output.O_Project">temp.tmp_API14[1]/Project</operation>
+                              <operation source="field" to="output.O_SUBP_EMAIL">temp.tmp_API14[1]/BusinessPartnerUUID</operation>
+                              <operation source="field" to="output.O_SUBP_UUID">output.out_BusinessPartnerUUID</operation>
+                              <operation source="formula" to="output.out_EnterpriseProjectObjects">
+                                 <expression language="XQuery">let $Jurisdiction := fn:substring($temp.tmp_API14[1]/RevEntity,1,2) return
+&lt;POEnterpriseProject&gt;
+   &lt;Project&gt;{$temp.tmp_API14[1]/Project }&lt;/Project&gt;
+   &lt;ProjectDescription&gt;{fn:substring($temp.tmp_API14[1]/ProjectDescription , 1, 40)}&lt;/ProjectDescription&gt;
+   &lt;PriorityCode&gt;{$temp.tmp_API14[1]/PriorityCode }&lt;/PriorityCode&gt;
+   &lt;ProjectStartDate&gt;{'/Date('|| date:dateToMillis($temp.tmp_API14[1]/ProjectStartDate )||')/'}&lt;/ProjectStartDate&gt;
+   &lt;ProjectEndDate&gt;{'/Date('|| date:dateToMillis( xs:date("2099-12-31") )||')/'}&lt;/ProjectEndDate&gt;
+   &lt;ResponsibleCostCenter&gt;{switch ($Jurisdiction)
+							case 'VG' 	return $temp.tmp_API14[1]/ResponsibleCostCenter 
+							case 'SG' 	return $temp.tmp_API14[1]/RevEntity||'990001'
+							default 	return $temp.tmp_API14[1]/RevEntity||'990001' }&lt;/ResponsibleCostCenter&gt;
+   &lt;ProfitCenter&gt;{switch ($Jurisdiction)
+					case 'VG' 	return $temp.tmp_API14[1]/ProfitCenter 
+					case 'SG' 	return '9900'
+					default 	return '9900' }&lt;/ProfitCenter&gt;
+   &lt;ProjectProfileCode&gt;{$temp.tmp_API14[1]/ProjectProfileCode }&lt;/ProjectProfileCode&gt;
+   &lt;ProjectCurrency&gt;{$temp.tmp_API14[1]/ProjectCurrency }&lt;/ProjectCurrency&gt;
+   &lt;YY1_Customer_PPH&gt;{$temp.tmp_API14[1]/YY1_Customer_PPH  }&lt;/YY1_Customer_PPH&gt;
+&lt;/POEnterpriseProject&gt;
+</expression>
+                              </operation>
+                              <operation source="field" to="output.out_Currency">temp.tmp_API14[1]/BaseCur</operation>
+                              <operation source="field" to="output.out_Segment">temp.tmp_API08[1]/YY1_Customer_Segment_cco</operation>
+                              <link id="lfkx4w6h" targetId="lfkx4w6g"/>
+                           </assignment>
+                           <assignment id="lfkx4w6g">
+                              <title>Set Output BP Tax</title>
+                              <operation source="formula" to="output.out_BusinessPartnerTax_Array">
+                                 <expression language="XQuery">for $x in $temp.tmp_API14 return
+&lt;POBusinessPartnerTax&gt;
+   {$x/BPTaxType}
+   {$x/BPTaxNumber}   
+&lt;/POBusinessPartnerTax&gt;</expression>
+                              </operation>
+                              <link id="lfkx4w6v" targetId="lfk3yzs9"/>
+                           </assignment>
+                           <end id="lfk3yzs9"/>
+                        </flow>
+                        <flow id="lfk3yzon">
+                           <assignment id="lftotf95">
+                              <title>Set Output Entity ONLY</title>
+                              <operation source="formula" to="temp.tmp_EI">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EC">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice___CC ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ER">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/AccountingClerkInternetAddress  ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_EO">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email__not_EI_or_EC_ ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ED">
+                                 <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email___Default ||";",';'))</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_EntityDetails">
+                                 <expression language="XQuery">&lt;POEntityDetails&gt;
+   &lt;RevEntity&gt;{$temp.tmp_API08[1]/CompanyCode/text() }&lt;/RevEntity&gt;
+   &lt;RefType&gt;{$temp.tmp_API08[1]/BusinessPartnerCategory/text() }&lt;/RefType&gt;
+   &lt;AddrCode&gt;{$temp.tmp_API08[1]/BusinessPartner/text() }&lt;/AddrCode&gt;
+   &lt;BillAddress&gt;{$temp.tmp_API08[1]/BusinessPartner_BP/text() }&lt;/BillAddress&gt;
+   &lt;cText&gt;&lt;/cText&gt;
+   &lt;cType&gt;&lt;/cType&gt;
+   &lt;Active&gt;1&lt;/Active&gt;
+   &lt;AddrType&gt;BI&lt;/AddrType&gt;
+   &lt;AddrNr&gt;{$temp.tmp_API08[1]/AddrNr/text() }&lt;/AddrNr&gt;
+   &lt;City&gt;{$temp.tmp_API08[1]/CityName/text() }&lt;/City&gt;
+   &lt;Country&gt;{$temp.tmp_API08[1]/Country/text() }&lt;/Country&gt;
+   &lt;PostalCode&gt;{$temp.tmp_API08[1]/PostalCode/text() }&lt;/PostalCode&gt;
+   &lt;Address&gt;{$temp.tmp_API08[1]/address/text() }&lt;/Address&gt;
+   &lt;Address2&gt;{$temp.tmp_API08[1]/address2/text() }&lt;/Address2&gt;
+   &lt;Address3&gt;{$temp.tmp_API08[1]/address3/text() }&lt;/Address3&gt;
+   &lt;Address4&gt;{$temp.tmp_API08[1]/address4/text() }&lt;/Address4&gt;
+   &lt;Address5&gt;{$temp.tmp_API08[1]/address5/text() }&lt;/Address5&gt;
+   &lt;RefMasterAdminGroup&gt;{$temp.tmp_API08[1]/AdminGroup/text() }&lt;/RefMasterAdminGroup&gt;
+   &lt;RefMasterName&gt;{$temp.tmp_API08[1]/Name/text() }&lt;/RefMasterName&gt;
+   &lt;RefCode&gt;{$temp.tmp_API08[1]/BusinessPartner/text() }&lt;/RefCode&gt;
+   &lt;Language&gt;{$temp.tmp_API08[1]/Language/text() }&lt;/Language&gt;
+   &lt;FileStatus&gt;{$temp.tmp_API08[1]/FileStatus/text() }&lt;/FileStatus&gt;
+   &lt;OrgCode&gt;{$temp.tmp_API14[1]/OrgCode/text() }&lt;/OrgCode&gt;
+   &lt;MatterStatus&gt;{$temp.tmp_API14[1]/MatterStatus/text()}&lt;/MatterStatus&gt;
+   &lt;BalanceCur&gt;{$temp.tmp_API14[1]/BalanceCur/text()}&lt;/BalanceCur&gt;
+   &lt;OrgUnit1&gt;{$temp.tmp_API08[1]/OrgUnit1/text()}&lt;/OrgUnit1&gt;
+   &lt;CurCode&gt;{$temp.tmp_API14[1]/BaseCur/text()}&lt;/CurCode&gt;
+   &lt;Region&gt;&lt;/Region&gt;   
+   &lt;Payterm&gt;{$temp.tmp_API08[1]/PayTerm/text() }&lt;/Payterm&gt;
+   &lt;PaytermTag&gt;{$temp.tmp_API08[1]/PaymentTerms/text() }&lt;/PaytermTag&gt;
+   &lt;EmailInvoice&gt;{$temp.tmp_EI }&lt;/EmailInvoice&gt;
+   &lt;EmailInvoiceCC&gt;{$temp.tmp_EC  }&lt;/EmailInvoiceCC&gt;
+   &lt;EmailInvoiceReminder&gt;{$temp.tmp_ER }&lt;/EmailInvoiceReminder&gt;
+   &lt;EmailOther&gt;{util:iif( fn:string-length($temp.tmp_EO ) = 0 
+   						, $temp.tmp_ED 
+                        , $temp.tmp_EO ) }&lt;/EmailOther&gt;
+   &lt;AltName&gt;{$temp.tmp_API08[1]/BusinessPartnerIDByExtSystem/text() }&lt;/AltName&gt;
+   &lt;FirstName&gt;{fn:substring($temp.tmp_API08[1]/Initials/text() ,1,40)}&lt;/FirstName&gt;
+   &lt;LastName&gt;{$output.out_TextList/list[1]/text()}&lt;/LastName&gt;
+   &lt;OrganizationBPName1&gt;{$output.out_TextList/list[1]/text()}&lt;/OrganizationBPName1&gt;
+   &lt;OrganizationBPName2&gt;{$output.out_TextList/list[2]/text()}&lt;/OrganizationBPName2&gt;
+   &lt;OrganizationBPName3&gt;{$output.out_TextList/list[3]/text()}&lt;/OrganizationBPName3&gt;
+   &lt;OrganizationBPName4&gt;{$output.out_TextList/list[4]/text()}&lt;/OrganizationBPName4&gt;
+&lt;/POEntityDetails&gt;
+</expression>
+                              </operation>
+                              <operation source="field" to="output.out_Segment">temp.tmp_API08[1]/YY1_Customer_Segment_cco</operation>
+                              <link id="lftotfbg" targetId="lftotfbf"/>
+                           </assignment>
+                           <end id="lftotfbf">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="lfk3yzoj" targetId="lfk3yzok" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_API14}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lfk3yzom" targetId="lfk3yzon" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_API14}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lfk3yzo3">
+                     <throw id="lfk3yzqk">
+                        <title>Throw 2</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">VPC: Billing File not found. Ensure that billing file has not been closed and that at least one valid matter exists</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Not Found</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lfk3yznz" targetId="lfk3yzo0" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_API08}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lfk3yzo2" targetId="lfk3yzo3" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_API08}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>9ce08e94-fb61-417b-9aa6-a44f48d4c149</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-29T09:54:54Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T13:14:56Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000557",
+	 "in_MatterCode": "TS"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7hBhvcOR2NalonB4HORiaB</types1:GUID>
+      <types1:DisplayName>ProcessGetEntityDetails_COMPLETE</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.041Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,119 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9JiTk08jIw8jIw8-gt-4416471-2021-12-16T15:05:49.972Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetMatter</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-12-16T15:05:50Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:48:01Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-03T08:09:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetMatter/ProcessGetMatter.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetMatter"
+                  name="ProcessGetMatter"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_Matters_RefCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Matters_MatterCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_MatterFlag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kpwv1842" targetId="kpwv1841"/>
+               </start>
+               <assignment id="kpwv1841">
+                  <title>Assignment to tmp_Matters</title>
+                  <operation source="query" to="temp.tmp_Matters">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_Matters_RefCode}' AND MatterCode = '{$input.in_Matters_MatterCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="kx7li2zh" targetId="kx7li2zg"/>
+               </assignment>
+               <assignment id="kx7li2zg">
+                  <title>Assignment to out_MatterFlag</title>
+                  <operation source="formula" to="output.out_MatterFlag">
+                     <expression language="XQuery">util:iif($temp.tmp_Matters.MatterType = 'PP', 'N', util:iif($temp.tmp_Matters.MatterType = 'GE', 'N', 'Y'))</expression>
+                  </operation>
+                  <link id="kx7li2zl" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1897753c-4777-46e7-b060-db05ba5995a4</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>benarji-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-12-16T15:05:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:01Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_Matters_RefCode": "80000082",
+	 "in_Matters_MatterCode": "PP"
+}
+
+</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>d7Zju6gchezjuu5CeVYGSA</types1:GUID>
+      <types1:DisplayName>ProcessGetMatter</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.087Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

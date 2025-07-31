@@ -1,0 +1,434 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9R0aa-gt-21752433-2021-11-11T12:36:46.978Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetClosingEntity</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-11-11T12:36:47Z</types1:CreationDate>
+      <types1:ModifiedBy>nitish.kumar_tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-14T03:51:09Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetClosingEntity"
+                  name="ProcessGetClosingEntity"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_ClosingEntity" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POClosingEntity</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0GrrJhT2CMmjt3kncqTt08</option>
+                  </options>
+               </field>
+               <field description="" name="out_ClosingEntity_Array" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POClosingEntity</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0GrrJhT2CMmjt3kncqTt08</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClientsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailInput" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Comp1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Comp2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCodes" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VIP_P2B_JurisdictionMail" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_JurisdictionMail</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_VIP_P2B_JurisdictionMail_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_JurisdictionMail</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Jurisdiction" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kv26bw4b" targetId="kv26bw4a"/>
+               </start>
+               <assignment id="kv26bw4a">
+                  <title>Assignment to tmp_RmClientsList</title>
+                  <operation source="list" to="temp.tmp_RmClientsList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                        <where>FileStatus = '9' and BFileNote = ''</where>
+                     </query>
+                  </operation>
+                  <link id="kv26bw4w" targetId="kv26bw4v"/>
+               </assignment>
+               <container id="kv26bw4v" type="exclusive">
+                  <title>tmp_RmClientsList</title>
+                  <flow id="kv26bw4z">
+                     <assignment id="kv26bw5a">
+                        <title>Assignment to tmp_RmClients</title>
+                        <operation source="formula" to="temp.tmp_RmClients">
+                           <expression language="XQuery">list:head($temp.tmp_RmClientsList)</expression>
+                        </operation>
+                        <link id="kv26bw7z" targetId="kv26bw7y"/>
+                     </assignment>
+                     <assignment id="kv26bw7y">
+                        <title>Assignment to tmp_RefCode</title>
+                        <operation source="field" to="temp.tmp_RefCode">temp.tmp_RmClients.AddrCode</operation>
+                        <link id="kv7rtmxt" targetId="kv7ut4vn"/>
+                     </assignment>
+                     <eventContainer id="kv7ut4vn">
+                        <subflow id="kv7rtmxs">
+                           <title>ProcessGetRevEntity</title>
+                           <subflowGUID>fEtZTQEJrQKfhQxvOFh9Oh</subflowGUID>
+                           <subflowPath>ProcessGetRevEntity</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_RefCode" source="field" updatable="true">temp.tmp_RefCode</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_MatterRevEntity" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:PORevEntity</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                                 </options>
+                              </field>
+                              <field name="out_MatterRevEntity_Array" type="objectlist">
+                                 <options>
+                                    <option name="referenceTo">$po:PORevEntity</option>
+                                    <option hide="true" name="multiSelect">true</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">8nuR1FlvdJbh5kctBqJzyG</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="kv7ut4vp">
+                           <container id="kv7ut4yf" type="exclusive">
+                              <title>out_MatterRevEntity_Array</title>
+                              <flow id="kv7ut4yg">
+                                 <assignment id="kv7ut4yh">
+                                    <title>Assignment to out_MatterRevEntity</title>
+                                    <operation source="formula" to="output.out_MatterRevEntity">
+                                       <expression language="XQuery">list:head($output.out_MatterRevEntity_Array)</expression>
+                                    </operation>
+                                    <link id="kv8281pq" targetId="kv7yjz5z"/>
+                                 </assignment>
+                                 <assignment id="kv7yjz5z">
+                                    <title>Assignment to RefCode, MatterCode etc.</title>
+                                    <operation source="field" to="output.out_ClosingEntity[1]/RefCode">output.out_MatterRevEntity[1]/RefCode</operation>
+                                    <operation source="field" to="output.out_ClosingEntity[1]/MatterCode">output.out_MatterRevEntity[1]/MatterCode</operation>
+                                    <operation source="field" to="output.out_ClosingEntity[1]/RevEntity">output.out_MatterRevEntity[1]/RevEntity</operation>
+                                    <operation source="formula" to="output.out_ClosingEntity_Array">
+                                       <expression language="XQuery">list:append($output.out_ClosingEntity_Array ,$output.out_ClosingEntity )</expression>
+                                    </operation>
+                                    <link id="kv7yjzjf" targetId="kv7yjzje"/>
+                                 </assignment>
+                                 <assignment id="kv7yjzje">
+                                    <title>Assignment to tmp_Comp1</title>
+                                    <operation source="field" to="temp.tmp_Comp1">output.out_MatterRevEntity[1]/RevEntity</operation>
+                                    <link id="kv7yjzld" targetId="kv7yjzlc"/>
+                                 </assignment>
+                                 <assignment id="kv7yjzlc">
+                                    <title>Assignment to tmp_Comp2</title>
+                                    <operation source="formula" to="temp.tmp_Comp2">
+                                       <expression language="XQuery">fn:concat($temp.tmp_Comp2 ,', ', $temp.tmp_Comp1 )</expression>
+                                    </operation>
+                                    <link id="kv7yjzle" targetId="kv7yjzh9"/>
+                                 </assignment>
+                                 <assignment id="kv7yjzh9">
+                                    <title>Assignment to out_MatterRevEntity_Array</title>
+                                    <operation source="formula" to="output.out_MatterRevEntity_Array">
+                                       <expression language="XQuery">list:tail($output.out_MatterRevEntity_Array)</expression>
+                                    </operation>
+                                    <link id="kv8281qa" targetId="kv8281q8"/>
+                                 </assignment>
+                                 <jumpTo id="kv8281q8">
+                                    <link id="kv8281q9" targetId="kv7ut4yf"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="kv7ut4yj">
+                                 <assignment id="kv7yjzpd">
+                                    <title>Assignment to tmp_CompanyCodes</title>
+                                    <operation source="formula" to="temp.tmp_CompanyCodes">
+                                       <expression language="XQuery">fn:substring-after($temp.tmp_Comp2,', ')</expression>
+                                    </operation>
+                                    <link id="kv81ir92" targetId="kv81ir91"/>
+                                 </assignment>
+                                 <assignment id="kv81ir91">
+                                    <title>Assignment to tmp_Jurisdiction</title>
+                                    <operation source="formula" to="temp.tmp_Jurisdiction">
+                                       <expression language="XQuery">fn:substring($temp.tmp_CompanyCodes , 1, 2)</expression>
+                                    </operation>
+                                    <link id="kv81irek" targetId="kv81irej"/>
+                                 </assignment>
+                                 <assignment id="kv81irej">
+                                    <title>Assignment to tmp_VIP_P2B_JuridictionMail</title>
+                                    <operation source="query" to="temp.tmp_VIP_P2B_JurisdictionMail">
+                                       <query advanceQuery="false"
+                                              from="ConnectionDQMetadata-1:VIP_P2B_JurisdictionMail">
+                                          <where>Jurisdiction = '{$temp.tmp_Jurisdiction}'</where>
+                                       </query>
+                                    </operation>
+                                    <link id="kv81irel" targetId="kv7yjz3z"/>
+                                 </assignment>
+                                 <assignment id="kv7yjz3z">
+                                    <title>Assignment to Recipient Addresses, Subject etc.</title>
+                                    <operation source="field" to="temp.tmp_EmailInput[1]/to">temp.tmp_VIP_P2B_JurisdictionMail.MailId</operation>
+                                    <operation source="formula" to="temp.tmp_EmailInput[1]/subject">
+                                       <expression language="XQuery">fn:concat('Action Required - Weekly Reminder: OrderBlock sent earlier for Entity: ',$output.out_ClosingEntity[1]/RefCode)</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_EmailInput[1]/body">
+                                       <expression language="XQuery">fn:concat('Hi User,','&amp;#10;','&amp;#10;',
+
+
+'Customer : ',$output.out_ClosingEntity[1]/RefCode   ,' CompanyCodes: ',
+$temp.tmp_CompanyCodes ,
+'&amp;#10;','&amp;#10;',
+'This e-mail is to inform you that a closure has been processed on ENTITY: ',$output.out_ClosingEntity[1]/RefCode  ,' in VeiwPoint. You will need to go into SAP and apply a posting block to ensure this entity is also closed in SAP.',
+
+
+'&amp;#10;','&amp;#10;','&amp;#10;',
+'&amp;#10;','&amp;#10;',
+'Thanks','&amp;#10;',
+'--Vistra IICS Support Team','&amp;#10;','&amp;#10;',
+'--This is system generated email , please do not reply.',
+'-----------WEEKLY REMINDER--------------'
+
+)</expression>
+                                    </operation>
+                                    <link id="kv7yjz5e" targetId="kv8281y2"/>
+                                 </assignment>
+                                 <eventContainer id="kv8281y2">
+                                    <service id="kv7yjz5d">
+                                       <title>sendEmailService 1</title>
+                                       <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                                       <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                                       <serviceInput>
+                                          <parameter name="emailTaskInput" source="field" updatable="true">temp.tmp_EmailInput</parameter>
+                                       </serviceInput>
+                                    </service>
+                                    <flow id="kv8281y4">
+                                       <assignment id="kv82825o">
+                                          <title>Assignment to tmp_RmClientsList</title>
+                                          <operation source="formula" to="temp.tmp_RmClientsList">
+                                             <expression language="XQuery">list:tail($temp.tmp_RmClientsList)</expression>
+                                          </operation>
+                                          <link id="kv92lo2e" targetId="kv92lo2d"/>
+                                       </assignment>
+                                       <assignment id="kv92lo2d">
+                                          <title>Assignment to tmp_Comp1, tmp_Comp2</title>
+                                          <operation source="constant" to="temp.tmp_Comp1">''</operation>
+                                          <operation source="constant" to="temp.tmp_Comp2">''</operation>
+                                          <link id="kv92lo2f" targetId="kv828263"/>
+                                       </assignment>
+                                       <jumpTo id="kv828263">
+                                          <link id="kv828264" targetId="kv26bw4v"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <flow id="kv8281y7">
+                                       <assignment id="kv8281yu">
+                                          <title>Assignment to tmp_Code, tmp_Desc etc.</title>
+                                          <operation source="field" to="temp.tmp_Code">output.faultInfoSendMail[1]/code</operation>
+                                          <operation source="field" to="temp.tmp_Desc">output.faultInfoSendMail[1]/detail</operation>
+                                          <operation source="field" to="temp.tmp_Error">output.faultInfoSendMail[1]/reason</operation>
+                                          <link id="kv8281zt" targetId="kv8281zs"/>
+                                       </assignment>
+                                       <jumpTo id="kv8281zs">
+                                          <link id="kv828206" targetId="kv7ut4wu"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="kv8281y3" targetId="kv8281y4" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfoSendMail" id="kv8281y1" interrupting="true">
+                                          <link id="kv8281y6" targetId="kv8281y7" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                              </flow>
+                              <link id="kv7ut4ym" targetId="kv7ut4yg" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="not-empty">
+                                       <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kv7ut4yn" targetId="kv7ut4yj" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="empty">
+                                       <arg name="field">{$output.out_MatterRevEntity_Array}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                           </container>
+                        </flow>
+                        <flow id="kv7ut4vs">
+                           <assignment id="kv8281rt">
+                              <title>Assignment to tmp_Code, tmp_Desc etc.</title>
+                              <operation source="field" to="temp.tmp_Code">output.faultInfoGetRevEntity[1]/code</operation>
+                              <operation source="field" to="temp.tmp_Desc">output.faultInfoGetRevEntity[1]/detail</operation>
+                              <operation source="field" to="temp.tmp_Error">output.faultInfoGetRevEntity[1]/reason</operation>
+                              <link id="kv8281ru" targetId="kv7ut4wu"/>
+                           </assignment>
+                           <subflow id="kv7ut4wu">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">'ProcessGetClosingEntity~'||$temp.tmp_RefCode </expression>
+                                 </parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">temp.tmp_Code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">temp.tmp_Error</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">temp.tmp_Desc</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="kv7ut4xu" targetId="kv7ut4xt"/>
+                           </subflow>
+                           <end id="kv7ut4xt">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="kv7ut4vo" targetId="kv7ut4vp" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfoGetRevEntity"
+                                  id="kv7ut4vf"
+                                  interrupting="true">
+                              <link id="kv7ut4vr" targetId="kv7ut4vs" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                  </flow>
+                  <flow id="kv26bw52">
+                     <end id="kv26bw8k">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kv26bw4y" targetId="kv26bw4z" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_RmClientsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kv26bw51" targetId="kv26bw52" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_RmClientsList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>bc30c0c9-6063-4700-a462-7259a36dd5cd</ns1:Id>
+               <ns1:Name>Run</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:46Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>1aC3epH1SZig35xGOG0YIG</types1:GUID>
+      <types1:DisplayName>ProcessGetClosingEntity</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.669Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

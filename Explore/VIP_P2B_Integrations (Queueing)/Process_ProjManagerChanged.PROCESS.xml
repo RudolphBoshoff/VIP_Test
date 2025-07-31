@@ -1,0 +1,880 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kNmumf6S3wOLIFv-gt-22945939-2022-03-31T07:36:51.62Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_ProjManagerChanged</types1:Name>
+      <types1:ParentFlowIds>i31CHdqwx8R8WrY-gt-7140119-2023-07-10T13:21:41.137Z::pd.xml,jDXJqEhynzYLnzY-gt-20445862-2022-10-12T10:48:28.157Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>process to capture ProjManagerchanged</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-03-31T07:36:52Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-11T08:26:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:33:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_ProjManagerChanged/Process_ProjManagerChanged.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_ProjManagerChanged"
+                  name="Process_ProjManagerChanged"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>process to capture ProjManagerchanged</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Event_Name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_ProjManagerChanged"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectEntitlementUUID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectRoleType_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProjectManager_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_HasPMFlag" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_HasSapUser" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="ResponseCodes" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterListText" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MaxResponseCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lh8sxs6d" targetId="lh8sxs6c"/>
+               </start>
+               <assignment id="lh8sxs6c">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="output.out_ProcessVariables_ProjManagerChanged">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+	&lt;X_TRANSACTION_ID&gt;{$input.X_TRANSACTION_ID }&lt;/X_TRANSACTION_ID&gt;
+	&lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+	&lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+	&lt;Code/&gt;
+	&lt;Error/&gt;
+	&lt;Description/&gt;
+	&lt;Event_Name&gt;{$input.in_Event_Name }&lt;/Event_Name&gt;
+	&lt;API_Name&gt;{$input.in_API_Name }&lt;/API_Name&gt;
+	&lt;Data_Key&gt;{'BusinessPartner='||$input.in_RefCode }&lt;/Data_Key&gt;
+	&lt;RestURL/&gt;
+	&lt;HelpFileLInk&gt;https://api.sap.com/api/API_ENTERPRISE_PROJECT_SRV_0002/overview&lt;/HelpFileLInk&gt;
+	&lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+	&lt;RequestPayload/&gt;
+	&lt;FailedAtStep/&gt;
+&lt;/PoErrorDetails&gt;</expression>
+                  </operation>
+                  <link id="lh8y2oc4" targetId="lh8sxrrf"/>
+               </assignment>
+               <assignment id="lh8sxrrf">
+                  <title>QUERY Matter List</title>
+                  <operation source="list" to="temp.tmp_Matters_List">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                        <where>RefCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="lhems0st" targetId="lhems0ss"/>
+               </assignment>
+               <container id="lhems0ss" type="exclusive">
+                  <title>Initial Matter List</title>
+                  <flow id="lhems0sw">
+                     <assignment id="ljmsagj5">
+                        <title>Count Matters</title>
+                        <operation source="formula" to="temp.tmp_MatterCount">
+                           <expression language="XQuery">list:count($temp.tmp_Matters_List )</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lhems0sx" targetId="lhems0ss" type="containerLink"/>
+                  </flow>
+                  <flow id="lhems0sz">
+                     <assignment id="lhems0w1">
+                        <title>Update Process Variables 1</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Code">199</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Error">Miscellaneous Warning</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Description">
+                           <expression language="XQuery">'No projects found for customer ['||$input.in_RefCode||']'</expression>
+                        </operation>
+                        <link id="lhems18d" targetId="lhems18c"/>
+                     </assignment>
+                     <subflow id="lhems18c">
+                        <title>Log Error 1</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="lhems0t0" targetId="lhems0ss" type="containerLink"/>
+                  </flow>
+                  <link id="lhems0sv" targetId="lhems0sw" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_Matters_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhems0sy" targetId="lhems0sz" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_Matters_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lhems0su" targetId="lh8sxrtf"/>
+               </container>
+               <container id="lh8sxrtf" type="exclusive">
+                  <title>Matters List</title>
+                  <flow id="lh8sxrtg">
+                     <assignment id="lh8sxrth">
+                        <title>Next Matter</title>
+                        <operation source="formula" to="temp.tmp_Matters">
+                           <expression language="XQuery">list:head($temp.tmp_Matters_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Matters_List">
+                           <expression language="XQuery">list:tail($temp.tmp_Matters_List )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_MatterListText">
+                           <expression language="XQuery">if (util:isNull($temp.tmp_MatterListText )) 
+then $temp.tmp_Matters.MatterCode 
+else $temp.tmp_MatterListText||';'||$temp.tmp_Matters.MatterCode</expression>
+                        </operation>
+                        <link id="ljy0u5li" targetId="ljy0u5lh"/>
+                     </assignment>
+                     <assignment id="ljy0u5lh">
+                        <title>Matter List Text</title>
+                        <operation source="formula" to="temp.tmp_MatterListText">
+                           <expression language="XQuery">if (util:isNull($temp.tmp_MatterListText )) 
+then $temp.tmp_Matters.MatterCode 
+else $temp.tmp_MatterListText||';'||$temp.tmp_Matters.MatterCode</expression>
+                        </operation>
+                        <link id="ljy0u5lj" targetId="lh8y2sg0"/>
+                     </assignment>
+                     <assignment id="ljy0u5zs">
+                        <title>Assignment to tmp_MaxResponseCode, Code</title>
+                        <operation source="formula" to="temp.tmp_MaxResponseCode">
+                           <expression language="XQuery">let $pm_d := $output.out_ProcessVariables_DELETE_ProjectManager[1]/Code,
+	$pm_c := $output.out_ProcessVariables_POST_ProjectManager[1]/Code,
+	$mc := $output.out_ProcessVariables_MatterCreated[1]/Code
+return	
+
+'HTTP_'||fn:max(list:sequence( replace( $pm_d||';'||$pm_c||';'||$mc, 'HTTP_','' )))</expression>
+                        </operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Code">temp.tmp_MaxResponseCode</operation>
+                        <link id="ljy0u6dq" targetId="lh8sxv5h"/>
+                     </assignment>
+                     <eventContainer id="lh8y2sg0">
+                        <subflow id="lh8sxtjd">
+                           <title>GetEntityDetails COMPLETE</title>
+                           <subflowGUID>7hBhvcOR2NalonB4HORiaB</subflowGUID>
+                           <subflowPath>ProcessGetEntityDetails_COMPLETE</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_RefCode" source="field" updatable="true">temp.tmp_Matters.RefCode</parameter>
+                              <parameter name="in_MatterCode" source="field" updatable="true">temp.tmp_Matters.MatterCode</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_EntityDetails" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:POEntityDetails</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                                 </options>
+                              </field>
+                              <field name="out_BusinessPartnerTax_Array" type="objectlist">
+                                 <options>
+                                    <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                                    <option hide="true" name="multiSelect">true</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                                 </options>
+                              </field>
+                              <field name="out_Segment" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_Currency" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="out_EnterpriseProjectObjects" type="reference">
+                                 <options>
+                                    <option name="referenceTo">$po:POEnterpriseProject</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">aD6Bg2tY9TOfIY1Z3jQDoq</option>
+                                 </options>
+                              </field>
+                              <field name="O_SUBP_EMAIL" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="O_SUBP_UUID" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="O_SUBP_Flag" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                              <field name="O_Project" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lh8y2sg2">
+                           <link id="lh8y2sg3" targetId="lh8y2sg0" type="containerLink"/>
+                        </flow>
+                        <flow id="lh8y2sg5">
+                           <assignment id="lh8y2sid">
+                              <title>Update Process Variables</title>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_ProjManagerChanged[1]/Code">output.faultInfo[1]/code</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_ProjManagerChanged[1]/Error">output.faultInfo[1]/reason</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_ProjManagerChanged[1]/Description">output.faultInfo[1]/detail</operation>
+                              <link id="lhf0aw6q" targetId="lh8y2sis"/>
+                           </assignment>
+                           <subflow id="lh8y2sis">
+                              <title>Log Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="lh8y2sk1" targetId="lh8y2sjz"/>
+                           </subflow>
+                           <jumpTo id="lh8y2sjz">
+                              <link id="lh8y2sk0" targetId="lh8sxrtf"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lh8y2sg1" targetId="lh8y2sg2" type="containerLink"/>
+                        <link id="lh8y2skh" targetId="lh8sxu56"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lh8y2sfd" interrupting="true">
+                              <link id="lh8y2sg4" targetId="lh8y2sg5" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <subflow id="lh8sxu56">
+                        <title>GET SAP Project Status</title>
+                        <subflowGUID>30Ni9PkKCXEipevGEVSf8a</subflowGUID>
+                        <subflowPath>Process_GET_ProjectProcessingStatus</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_Project" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProjectUUID" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessingStatus" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_RestURL" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_PO_Get_ProjectProcessingStatus" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                              </options>
+                           </field>
+                           <field name="out_ProjectExpanded" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:$any</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lh8y2r6l" targetId="lh8y2ohu"/>
+                     </subflow>
+                     <container id="lh8y2ohu" type="exclusive">
+                        <title>SAP Project Exists</title>
+                        <flow id="lh8y2ohy">
+                           <subflow id="lh8y2oj4">
+                              <title>GET SAP Project Manager</title>
+                              <subflowGUID>leFQzqTTrArbqnk6ODQUyW</subflowGUID>
+                              <subflowPath>Process_GET_ProjectRoleType</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_ProjectEntitlementUUID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PO_Get_ProjectRoleType" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lh8y2rfu" targetId="lh8y2rft"/>
+                           </subflow>
+                           <assignment id="lh8y2rft">
+                              <title>Prepare Payloads</title>
+                              <operation source="field" to="temp.tmp_ProjectEntitlementUUID">output.out_ProjectEntitlementUUID</operation>
+                              <operation source="formula" to="temp.tmp_ProjectRoleType_PO">
+                                 <expression language="XQuery">&lt;root&gt;
+	&lt;ProjectRoleType&gt;YP_RL_0004&lt;/ProjectRoleType&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ProjectManager_PO">
+                                 <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;     
+  &lt;BusinessPartnerUUID&gt;{$output.O_SUBP_UUID}&lt;/BusinessPartnerUUID&gt;
+  &lt;to_EntProjEntitlement m:isArray="true"&gt;
+  	&lt;ProjectRoleType&gt;YP_RL_0001&lt;/ProjectRoleType&gt;
+  &lt;/to_EntProjEntitlement&gt;
+&lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_HasPMFlag">
+                                 <expression language="XQuery">let $x := $output.out_PO_Get_ProjectRoleType[1]/Parameters[Identifier='ProjectEntitlementUUID'] return 
+if ( util:isNull($x/Value) )
+then 0
+else 1</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_HasSapUser">
+                                 <expression language="XQuery">if (fn:string-length($output.O_SUBP_UUID) &gt; 1 )
+then 1
+else 0</expression>
+                              </operation>
+                              <link id="lh8y2rfv" targetId="lh8y2on1"/>
+                           </assignment>
+                           <container id="lh8y2on1" type="exclusive">
+                              <title>SAP Project already has a PM</title>
+                              <flow id="lh8y2on2">
+                                 <subflow id="lh8y2on3">
+                                    <title>DELETE Project Manager</title>
+                                    <subflowGUID>dxPIWUusGOGhE4X5Ve20gn</subflowGUID>
+                                    <subflowPath>Process_DELETE_ProjectManager</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_ProjectEntitlementUUID" source="field" updatable="true">temp.tmp_ProjectEntitlementUUID</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged</parameter>
+                                       <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_DELETE_ProjectManager" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="lh8y2u7l" targetId="lh8y2on1" type="containerLink"/>
+                              </flow>
+                              <flow id="lh8y2on4">
+                                 <link id="lh8y2on9" targetId="lh8y2on1" type="containerLink"/>
+                              </flow>
+                              <link id="lh8y2on6" targetId="lh8y2on2" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_HasPMFlag}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lh8y2on7" targetId="lh8y2on4" type="containerLink"/>
+                              <link id="lhf0avg8" targetId="lhf0avg7"/>
+                           </container>
+                           <container id="lhf0avg7" type="exclusive">
+                              <title>tmp_HasSapUser</title>
+                              <flow id="lhf0avgb">
+                                 <subflow id="lhf0avn6">
+                                    <title>CREATE Project Manager</title>
+                                    <subflowGUID>47NQfzMd1i9iMXLqKHgq8P</subflowGUID>
+                                    <subflowPath>Process_POST_ProjectManager</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_ProjectUUID" source="field" updatable="true">output.out_ProjectUUID</parameter>
+                                       <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged</parameter>
+                                       <parameter name="in_Body" source="field" updatable="true">temp.tmp_ProjectManager_PO</parameter>
+                                       <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                                    </input>
+                                    <outputDef>
+                                       <field name="out_ProcessVariables_POST_ProjectManager" type="reference">
+                                          <options>
+                                             <option name="referenceTo">$po:PoErrorDetails</option>
+                                             <option name="required">false</option>
+                                             <option name="isCopy">true</option>
+                                             <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                          </options>
+                                       </field>
+                                    </outputDef>
+                                 </subflow>
+                                 <link id="lhf0avgc" targetId="lhf0avg7" type="containerLink"/>
+                              </flow>
+                              <flow id="lhf0avge">
+                                 <assignment id="lhf0avv9">
+                                    <title>Update Process Variables</title>
+                                    <operation source="constant"
+                                               to="output.out_ProcessVariables_ProjManagerChanged[1]/Code">HTTP_404</operation>
+                                    <operation source="constant"
+                                               to="output.out_ProcessVariables_ProjManagerChanged[1]/Error">SAP User not Found</operation>
+                                    <operation source="formula"
+                                               to="output.out_ProcessVariables_ProjManagerChanged[1]/Description">
+                                       <expression language="XQuery">'Project Manager with email address ['||$output.O_SUBP_EMAIL||'] is not a valid SAP user.'</expression>
+                                    </operation>
+                                    <operation source="formula"
+                                               to="output.out_ProcessVariables_ProjManagerChanged[1]/RestURL">
+                                       <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||
+'/sap/opu/odata/sap/YY1_GETBUSINESSPARTNERUUID_CDS/YY1_GetBusinessPartnerUUID'</expression>
+                                    </operation>
+                                    <link id="lhf0aw72" targetId="lhf0aw71"/>
+                                 </assignment>
+                                 <subflow id="lhf0aw71">
+                                    <title>Log Error</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged</parameter>
+                                    </input>
+                                    <outputDef/>
+                                 </subflow>
+                                 <link id="lhf0avgf" targetId="lhf0avg7" type="containerLink"/>
+                              </flow>
+                              <link id="lhf0avga" targetId="lhf0avgb" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="equals">
+                                       <arg name="left">{$temp.tmp_HasSapUser}</arg>
+                                       <arg name="right">{1}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lhf0avgd" targetId="lhf0avge" type="containerLink"/>
+                           </container>
+                           <link id="lh8y2ohz" targetId="lh8y2ohu" type="containerLink"/>
+                        </flow>
+                        <flow id="lh8y2oi1">
+                           <subflow id="lh8y2ors">
+                              <title>Process_MatterCreated</title>
+                              <subflowGUID>5FxEG3udRoMljY1OlVhcay</subflowGUID>
+                              <subflowPath>Process_MatterCreated</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="X_TRANSACTION_ID" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged[1]/X_TRANSACTION_ID</parameter>
+                                 <parameter name="in_API_Name" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged[1]/API_Name</parameter>
+                                 <parameter name="in_ParentProcessStartTime" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged[1]/ProcessStartTime</parameter>
+                                 <parameter name="in_Event_Name" source="field" updatable="true">output.out_ProcessVariables_ProjManagerChanged[1]/Event_Name</parameter>
+                                 <parameter name="in_RefCode" source="field">temp.tmp_Matters.RefCode</parameter>
+                                 <parameter name="in_MatterCode" source="field">temp.tmp_Matters.MatterCode</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_FailedAtStep" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_MatterCreated" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="lh8y2oi2" targetId="lh8y2ohu" type="containerLink"/>
+                        </flow>
+                        <link id="lh8y2ohx" targetId="lh8y2ohy" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_PO_Get_ProjectProcessingStatus[1]/HttpStatusCode}</arg>
+                                 <arg name="right">HTTP_200</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="ljy0u5zt" targetId="ljy0u5zs"/>
+                        <link id="lh8y2oi0" targetId="lh8y2oi1" type="containerLink"/>
+                     </container>
+                     <jumpTo id="lh8sxv5h">
+                        <link id="lh8sxv5i" targetId="lh8sxrtf"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lh8sxruq">
+                     <assignment id="ljmsagax">
+                        <title>Assign Output</title>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Error">
+                           <expression language="XQuery">'Project Manager updated for ['||$temp.tmp_MatterCount||'] Projects'</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_ProjManagerChanged[1]/Description">
+                           <expression language="XQuery">'RefCode='||$temp.tmp_Matters.RefCode||
+'MatterCode='||$temp.tmp_MatterListText </expression>
+                        </operation>
+                        <link id="ljmsagay" targetId="lh8sxrur"/>
+                     </assignment>
+                     <end id="lh8sxrur">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="lh8sxrus" targetId="lh8sxrtg" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_Matters_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lh8sxrut" targetId="lh8sxruq" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_Matters_List}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>1a66d22f-fcb7-4826-b58f-7cbeb378dd4c</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b8ce257b-d29d-4131-8cb1-d61ed2400ea2</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d079586b-6576-468d-9a30-73e7bac6e014</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0f1e09b2-1e81-4f3b-9d02-6536aa46dc3d</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "FF01"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8ff68dbf-8a75-4b43-8899-950dc74bad2f</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4459ab95-989d-479f-9e08-9f911cca7351</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>1815e2c8-ad58-4c15-9687-edceb261a542</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a99d2b7d-c12f-4789-9afc-6d5e37ce8e37</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-03-31T07:36:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:39Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>95ipWN711x5fAtiI6V2McA</types1:GUID>
+      <types1:DisplayName>Process_ProjManagerChanged</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:20.22Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

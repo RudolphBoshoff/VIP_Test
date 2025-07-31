@@ -1,0 +1,275 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3m7iUQbgdwUiQLn-gt-21752417-2021-11-11T12:36:46.884Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_BillingFileCheck</types1:Name>
+      <types1:ParentFlowIds>MvrhFdw8jIw8jIw-gt-19944016-2021-11-11T12:36:48.627Z::pd.xml,ncjIw8jIw8jIw8j-gt-24152861-2022-06-08T05:54:42.224Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-11-11T12:36:47Z</types1:CreationDate>
+      <types1:ModifiedBy>nitish.kumar_tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-14T04:54:32Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_BillingFileCheck"
+                  name="Process_BillingFileCheck"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MattersList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterStatus" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BalanceCurr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClientsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kwg06sfq" targetId="kue0sn5m"/>
+               </start>
+               <assignment id="kue0sn5m">
+                  <title>Assignment to tmp_RmClients</title>
+                  <operation source="query" to="temp.tmp_RmClients">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:RmClients">
+                        <where>AddrCode = '{$input.in_RefCode}' and FileStatus = '{9}'</where>
+                     </query>
+                  </operation>
+                  <link id="kupc0sr1" targetId="kupc0sr0"/>
+               </assignment>
+               <container id="kupc0sr0" type="exclusive">
+                  <title>AddrCode</title>
+                  <flow id="kupc0srf">
+                     <assignment id="kupc0stf">
+                        <title>Assignment to tmp_MattersList</title>
+                        <operation source="list" to="temp.tmp_MattersList">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:Matters">
+                              <where>RefCode = '{$input.in_RefCode}'</where>
+                           </query>
+                        </operation>
+                        <link id="kupc0suh" targetId="kupc0str"/>
+                     </assignment>
+                     <container id="kupc0str" type="exclusive">
+                        <title>RecordsExist</title>
+                        <flow id="kupc0sts">
+                           <assignment id="kupc0stt">
+                              <title>Assignment to tmp_Matters</title>
+                              <operation source="formula" to="temp.tmp_Matters">
+                                 <expression language="XQuery">list:head($temp.tmp_MattersList)</expression>
+                              </operation>
+                              <link id="kupc0su8" targetId="kupc0stu"/>
+                           </assignment>
+                           <assignment id="kupc0stu">
+                              <title>Assignment to tmp_RefCode, tmp_MatterCode etc.</title>
+                              <operation source="field" to="temp.tmp_RefCode">temp.tmp_Matters.RefCode</operation>
+                              <operation source="field" to="temp.tmp_MatterCode">temp.tmp_Matters.MatterCode</operation>
+                              <operation source="field" to="temp.tmp_MatterStatus">temp.tmp_Matters.MatterStatus</operation>
+                              <operation source="field" to="temp.tmp_BalanceCurr">temp.tmp_Matters.BalanceCur</operation>
+                              <link id="kupc0su9" targetId="kupc0stv"/>
+                           </assignment>
+                           <assignment id="kupc0stv">
+                              <title>Assignment to o_Flag</title>
+                              <operation source="formula" to="output.o_Flag">
+                                 <expression language="XQuery">util:iif($temp.tmp_MatterStatus='9' and $temp.tmp_BalanceCurr=0,'Y','N')</expression>
+                              </operation>
+                              <link id="kupc0sua" targetId="kupc0stw"/>
+                           </assignment>
+                           <container id="kupc0stw" type="exclusive">
+                              <title>o_Flag</title>
+                              <flow id="kupc0stx">
+                                 <assignment id="kupc0sty">
+                                    <title>Assignment to tmp_MattersList</title>
+                                    <operation source="formula" to="temp.tmp_MattersList">
+                                       <expression language="XQuery">list:tail($temp.tmp_MattersList)</expression>
+                                    </operation>
+                                    <link id="kupc0sud" targetId="kupc0stz"/>
+                                 </assignment>
+                                 <jumpTo id="kupc0stz">
+                                    <link id="kupc0sue" targetId="kupc0str"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="kupc0su0">
+                                 <subflow id="kupc0su1">
+                                    <title>Process_P2B_Event_ErrorLog</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_RefCode||'~'||$temp.tmp_MatterCode||'~'||$temp.tmp_MatterStatus||'~'||$temp.tmp_BalanceCurr</expression>
+                                       </parameter>
+                                       <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="i_Code" source="constant" updatable="true">The Business Partner Matter status not closed or  Balance Cur Exist</parameter>
+                                       <parameter name="i_Error" source="constant" updatable="true">The Business Partner Matter status not closed or  Balance Cur Exist</parameter>
+                                       <parameter name="i_Description" source="constant" updatable="true">The Business Partner Matter status not closed or  Balance Cur Exist</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="kupc0suf" targetId="kupc0su2"/>
+                                 </subflow>
+                                 <end id="kupc0su2">
+                                    <title>End 2</title>
+                                 </end>
+                              </flow>
+                              <link id="kupc0sub" targetId="kupc0stx" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$output.o_Flag}</arg>
+                                       <arg name="right">Y</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kupc0suc" targetId="kupc0su0" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="kupc0su3">
+                           <end id="kupc0su5">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <link id="kupc0su6" targetId="kupc0sts" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_MattersList}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kupc0su7" targetId="kupc0su3" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_MattersList}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="kupc0srh">
+                     <end id="kupc0sss">
+                        <title>End 3</title>
+                     </end>
+                  </flow>
+                  <link id="kupc0sr8" targetId="kupc0srf" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_RmClients.AddrCode}</arg>
+                           <arg name="right">{$input.in_RefCode}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kupc0srb" targetId="kupc0srh" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>b8f52947-dc3e-4653-875e-a4233875119b</ns1:Id>
+               <ns1:Name>Billfilechk</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-11-11T12:36:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:48Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "80005415"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>8xIwcCFj0NPfBQSOiakgsy</types1:GUID>
+      <types1:DisplayName>Process_BillingFileCheck</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.48Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

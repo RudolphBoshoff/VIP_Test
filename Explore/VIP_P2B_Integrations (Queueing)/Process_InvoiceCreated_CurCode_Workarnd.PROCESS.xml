@@ -1,0 +1,2208 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>BxZmtK9hCHbf2XZ-gt-433211-2022-09-01T09:56:51.451Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_InvoiceCreated_CurCode_Workarnd</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Create Invoice</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-01T09:56:52Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-09-01T09:57:28Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_InvoiceCreated_CurCode_Workarnd"
+                  name="Process_InvoiceCreated_CurCode_Workarnd"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Create Invoice</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-P2BFileEvent:ParsedFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description=""
+                      name="tmp_VIP_P2B_InterfaceAuditLog"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_InterfaceAuditLog</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="TMP_DUMMY_DELETE_LATER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="xml">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddrNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SeqNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AddressPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerTypeCreate</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3m6KNqyGEOfgyYI9MmBX6U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerPO_Any" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefAddress_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefContacts_SeqNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddressPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients_AddrCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceHeader_ProformaNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JournalEntryPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ExtractDebtorItem" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreteDebtorItem_JE" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateItem_JE" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateProductTaxItem_JE" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EmailAddress_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Address_BP_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentDate" type="date">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_json_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_ProductTaxItems_Array_JE"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryProductTaxitems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5RE6CzgMziidOyl1TWpoEx</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PayNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Project" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2pXtdn8cZ4hcSRDTk1q9IQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_List_for_InterCompany_Check"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Number_of_CompanyCodes_in_AcctTrans"
+                      type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_InvoiceHdr_Company_Comparison"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Number_of_CompanyCodes_in_AcctTrans_Case2"
+                      type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Intercompany_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_RevEntity_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Target_RevEntity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Source_Revenue_Entity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Target_Revenue_Entity" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Prev_Target_Entity_Matter" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_API1_Execution_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Transaction_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_ProcessName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_InvoiceItems_Record_List"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItems_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Target_Matter_Code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_Current_Target_Entity_Matter"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CreateProductTaxItem_SecDep_JE"
+                      type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreteDebtorItem_SecDep_JE" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_File_Error_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-EventError-Writer:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aLfui3vj1uRgvN8fC7pzG2</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Sign" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Base_N" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_N" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_Dec_N2" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TaxAmount_RoundDown" type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_CreateProductTaxItem_JE2_PO"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreateProductTaxItem_JE2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreteDebtorItem_JE2_PO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:DebtorItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_tset" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalEntryProductTaxitems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5RE6CzgMziidOyl1TWpoEx</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ut" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:DebtorItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-P2BFileEvent:AppCon-InvoiceCreatedFileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l5l213jl" targetId="l5l213jk"/>
+               </start>
+               <milestone id="l5l213jk">
+                  <title>Milestone 1</title>
+                  <link id="l5l213jm" targetId="kw4hsknv"/>
+               </milestone>
+               <assignment id="kw4hsknv">
+                  <title>Fetch URN Mappings</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="kw4hsknx" targetId="kpmvx8z9"/>
+               </assignment>
+               <assignment id="kpmvx8z9">
+                  <title>Parse Event Message Info</title>
+                  <operation source="formula" to="temp.tmp_event_name">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventTypeName</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_event_type">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventChangeType </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RefCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("Matters.RefCode") or fn:lower-case($ids/identifierName/text()) = fn:lower-case("RmClients.AddrCode")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_InvoiceHeader_ProformaNr">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("InvoiceHeader.ProformaNr")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_PayNr">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("PaymentOnService.PayNr")) 
+       then $ids/identifierValue/text()  
+       else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ServCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("PaymentOnService.ServCode") )
+       then $ids/identifierValue/text()  
+       else()</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_IICS_ProcessName">Process_InvoiceCreated</operation>
+                  <operation source="formula" to="temp.tmp_IICS_Run_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_Transaction_ID">
+                     <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name </expression>
+                  </operation>
+                  <link id="ktmtkpra" targetId="kpzdw0ag"/>
+               </assignment>
+               <container id="kpzdw0ag" type="exclusive">
+                  <title>Event Name</title>
+                  <flow id="kpzdw0e4">
+                     <assignment id="l2sntyuh">
+                        <title>Check Intercompany scenario</title>
+                        <operation source="list" to="temp.tmp_AcctTrans_List_for_InterCompany_Check">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:AcctTrans">
+                              <where>SourceScreen != '140' and SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and SourceNr in (select T.SourceNr from AcctTrans T where t.SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and t.SourceScreen != '140' group by T.SourceNr having count(distinct(T.entcode)) &gt; 1)</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Number_of_CompanyCodes_in_AcctTrans">
+                           <expression language="XQuery">list:count($temp.tmp_AcctTrans_List_for_InterCompany_Check)</expression>
+                        </operation>
+                        <operation source="list" to="temp.tmp_AcctTrans_InvoiceHdr_Company_Comparison">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:AcctTrans">
+                              <where>SourceScreen != '140' and SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and SourceNr in (select T.SourceNr from AcctTrans T inner join InvoiceHeader IH on T.SourceNr = IH.ProformaNr where T.SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and T.SourceScreen != '140' and t.EntCode != IH.RevEntity)</where>
+                           </query>
+                        </operation>
+                        <operation source="formula"
+                                   to="temp.tmp_Number_of_CompanyCodes_in_AcctTrans_Case2">
+                           <expression language="XQuery">list:count($temp.tmp_AcctTrans_InvoiceHdr_Company_Comparison )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_Intercompany_Flag">
+                           <expression language="XQuery">util:iif($temp.tmp_Number_of_CompanyCodes_in_AcctTrans=0 and $temp.tmp_Number_of_CompanyCodes_in_AcctTrans_Case2=0, 'N', 'Y' )</expression>
+                        </operation>
+                        <operation source="list" to="temp.tmp_AcctTrans_RevEntity_List">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:AcctTrans">
+                              <where>SourceScreen != '140' and SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and acctkey not in ('12100000', '72010000') and exists (select 1 from AcctTrans atr inner join InvoiceHeader ih on atr.SourceNr = ih.ProformaNr WHERE atr.SourceNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' and atr.SourceScreen != '140' and atr.EntCode != ih.RevEntity and atr.acctkey not in ('12100000', '72010000') and AcctTrans.EntCode=atr.EntCode and AcctTrans.JournalNr=atr.JournalNr and AcctTrans.LineNr=atr.LineNr) Order By EntCode</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_InvoiceHeader">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:InvoiceHeader">
+                              <where>ProformaNr = '{$temp.tmp_InvoiceHeader_ProformaNr}'</where>
+                           </query>
+                        </operation>
+                        <link id="l3bitez0" targetId="l3biteyz"/>
+                     </assignment>
+                     <assignment id="l3biteyz">
+                        <title>Derive Source Revenue Entity</title>
+                        <operation source="field" to="temp.tmp_Source_Revenue_Entity">temp.tmp_InvoiceHeader.RevEntity</operation>
+                        <operation source="list" to="temp.tmp_InvoiceItems_Record_List">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceItems">
+                              <where>ProformaNr = '{$temp.tmp_InvoiceHeader_ProformaNr}' AND InterRevEntity != '{$temp.tmp_InvoiceHeader.RevEntity}' order by InterRevEntity , SourceMatterCode</where>
+                           </query>
+                        </operation>
+                        <link id="l3bitez1" targetId="l2rlajxk"/>
+                     </assignment>
+                     <container id="l2rlajxk" type="exclusive">
+                        <title>InterCompany ?</title>
+                        <flow id="l2rlajxn">
+                           <container id="l32p8h0j" type="exclusive">
+                              <title>Next Target RevEntity and Matter</title>
+                              <flow id="l32p8h0m">
+                                 <assignment id="l32p8hf9">
+                                    <title>Head Target RevEntity Matter Array</title>
+                                    <operation source="formula" to="temp.tmp_InvoiceItems_Record">
+                                       <expression language="XQuery">list:head($temp.tmp_InvoiceItems_Record_List)</expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="l32p8h0n" targetId="l32p8h0j" type="containerLink"/>
+                              </flow>
+                              <flow id="l32p8h0p">
+                                 <end id="l32p8hbq">
+                                    <title>End 1</title>
+                                 </end>
+                              </flow>
+                              <link id="l32p8h0l" targetId="l32p8h0m" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="not-empty">
+                                       <arg name="field">{$temp.tmp_InvoiceItems_Record_List}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l32p8h0o" targetId="l32p8h0p" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="empty">
+                                       <arg name="field">{$temp.tmp_InvoiceItems_Record_List}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l3bjfaw5" targetId="l3bjfaw4"/>
+                           </container>
+                           <container id="l32z045d" type="exclusive">
+                              <title>Target RevEntity Processed ?</title>
+                              <flow id="l32z045h">
+                                 <link id="l32z045i" targetId="l32z045d" type="containerLink"/>
+                              </flow>
+                              <flow id="l32z045k">
+                                 <container id="l32z04h5" type="parallel">
+                                    <title>Invoke APIs 1, 16 and 17</title>
+                                    <flow id="l32z04h6">
+                                       <assignment id="l32z06vr">
+                                          <title>API1 Execution Counter</title>
+                                          <operation source="formula" to="temp.tmp_API1_Execution_Counter">
+                                             <expression language="XQuery">$temp.tmp_API1_Execution_Counter + 1</expression>
+                                          </operation>
+                                          <link id="l32z07ru" targetId="l32z07rt"/>
+                                       </assignment>
+                                       <container id="l32z07rt" type="exclusive">
+                                          <title>tmp_API1_Execution_Counter</title>
+                                          <flow id="l32z07rx">
+                                             <eventContainer id="l32z086n">
+                                                <subflow id="l32z086s">
+                                                   <title>Get Journal Entry API1</title>
+                                                   <subflowGUID>2T55QIz3sSlfffc1n1wLM2</subflowGUID>
+                                                   <subflowPath>ProcessGetJournalInvoiceEntry_Intercompany</subflowPath>
+                                                   <runForEach>false</runForEach>
+                                                   <input>
+                                                      <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                                      <parameter name="in_ApiNo" source="constant" updatable="true">API01</parameter>
+                                                      <parameter name="in_RevEntityTarget" source="field" updatable="true">temp.tmp_Target_Revenue_Entity</parameter>
+                                                      <parameter name="in_RevEntitySource" source="field" updatable="true">temp.tmp_Source_Revenue_Entity</parameter>
+                                                      <parameter name="in_MatterCode" source="field" updatable="true">temp.tmp_Target_Matter_Code</parameter>
+                                                   </input>
+                                                   <outputDef>
+                                                      <field name="out_JournalInvoiceHeader" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceHeader_Array" type="objectlist">
+                                                         <options>
+                                                            <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                            <option hide="true" name="multiSelect">true</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceItem" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceItem_Array" type="objectlist">
+                                                         <options>
+                                                            <option hide="true" name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                            <option hide="true" name="multiSelect">true</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceDebtorItem" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:DebtorItem</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceDebtorItem_Array" type="objectlist">
+                                                         <options>
+                                                            <option name="referenceTo">$po:DebtorItem</option>
+                                                            <option hide="true" name="multiSelect">true</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceProductTaxItem" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceProductTaxItem_Array" type="objectlist">
+                                                         <options>
+                                                            <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                            <option hide="true" name="multiSelect">true</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalInvoiceCreditorItem" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:CreditorItem</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalnvoiceCreditorItem_array" type="objectlist">
+                                                         <options>
+                                                            <option name="referenceTo">$po:CreditorItem</option>
+                                                            <option hide="true" name="multiSelect">true</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                            <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                         </options>
+                                                      </field>
+                                                      <field name="out_JournalEntryPO" type="reference">
+                                                         <options>
+                                                            <option name="referenceTo">$po:$any</option>
+                                                            <option name="required">false</option>
+                                                            <option name="isCopy">true</option>
+                                                         </options>
+                                                      </field>
+                                                   </outputDef>
+                                                </subflow>
+                                                <flow id="l32z086o">
+                                                   <eventContainer id="l3txr2r6">
+                                                      <subflow id="l38orxz5">
+                                                         <title>Create Journal Entry API1</title>
+                                                         <subflowGUID>6xYw1XqoAEgjxJqirtpDAz</subflowGUID>
+                                                         <subflowPath>ProcessCreateJournalInvoiceEntry</subflowPath>
+                                                         <runForEach>false</runForEach>
+                                                         <input>
+                                                            <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">output.out_JournalEntryPO</parameter>
+                                                            <parameter name="in_Transaction_ID" source="field" updatable="true">temp.tmp_Transaction_ID</parameter>
+                                                            <parameter name="in_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Run_ID</parameter>
+                                                            <parameter name="in_Event_Name" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                            <parameter name="In_Process_Name" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                            <parameter name="in_API_Name" source="constant" updatable="true">API01</parameter>
+                                                            <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                                         </input>
+                                                         <outputDef>
+                                                            <field name="out_JournalConfirmation_Payload" type="reference">
+                                                               <options>
+                                                                  <option name="referenceTo">$po:$any</option>
+                                                                  <option name="required">false</option>
+                                                                  <option name="isCopy">true</option>
+                                                               </options>
+                                                            </field>
+                                                         </outputDef>
+                                                      </subflow>
+                                                      <flow id="l3txr2r8">
+                                                         <link id="l3txr2r9" targetId="l3txr2r6" type="containerLink"/>
+                                                      </flow>
+                                                      <flow id="l3txr2rb">
+                                                         <assignment id="l4p4g3ss">
+                                                            <title>File Writer API1</title>
+                                                            <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">JSON</operation>
+                                                            <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                               <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                            </operation>
+                                                            <operation source="field" to="temp.tmp_File_Error_Writer[1]/content">input.fileEvent</operation>
+                                                            <link id="l4p4g43a" targetId="l4p4g439"/>
+                                                         </assignment>
+                                                         <service id="l4p4g439">
+                                                            <title>FileWriter-BulkFailedAPI1</title>
+                                                            <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                            <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                            <serviceInput>
+                                                               <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                            </serviceInput>
+                                                         </service>
+                                                         <link id="l3txr2rc" targetId="l3txr2r6" type="containerLink"/>
+                                                      </flow>
+                                                      <link id="l3txr2r7" targetId="l3txr2r8" type="containerLink"/>
+                                                      <events>
+                                                         <catch faultField="faultInfo" id="l3txr2qo" interrupting="true">
+                                                            <link id="l3txr2ra" targetId="l3txr2rb" type="containerLink"/>
+                                                         </catch>
+                                                      </events>
+                                                   </eventContainer>
+                                                   <link id="l32z086v" targetId="l32z086n" type="containerLink"/>
+                                                </flow>
+                                                <flow id="l32z086p">
+                                                   <subflow id="l32z086q">
+                                                      <title>Log Error Fetch API 1 Payload</title>
+                                                      <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                                      <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                                      <runForEach>false</runForEach>
+                                                      <input>
+                                                         <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                                            <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name </expression>
+                                                         </parameter>
+                                                         <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                                            <expression language="XQuery">util:getProcessId()</expression>
+                                                         </parameter>
+                                                         <parameter name="i_Code" source="field" updatable="true">output.faultInfo_API1[1]/code</parameter>
+                                                         <parameter name="i_Error" source="field" updatable="true">output.faultInfo_API1[1]/detail</parameter>
+                                                         <parameter name="i_Description" source="field" updatable="true">output.faultInfo_API1[1]/reason</parameter>
+                                                         <parameter name="i_APIName" source="constant" updatable="true">API1</parameter>
+                                                         <parameter name="i_EventName" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                         <parameter name="i_DataKey" source="formula" updatable="true">
+                                                            <expression language="XQuery">$temp.tmp_InvoiceHeader_ProformaNr </expression>
+                                                         </parameter>
+                                                         <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                      </input>
+                                                      <outputDef/>
+                                                      <link id="l4p4g4ji" targetId="l4p4g4jh"/>
+                                                   </subflow>
+                                                   <assignment id="l4p4g4jh">
+                                                      <title>File Writer API1 1</title>
+                                                      <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">JSON</operation>
+                                                      <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                         <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                      </operation>
+                                                      <operation source="field" to="temp.tmp_File_Error_Writer[1]/content">input.fileEvent</operation>
+                                                      <link id="l4p4g4u0" targetId="l4p4g4tz"/>
+                                                   </assignment>
+                                                   <service id="l4p4g4tz">
+                                                      <title>FileWriter-BulkFailedAPI1 1</title>
+                                                      <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                      <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                      <serviceInput>
+                                                         <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                      </serviceInput>
+                                                   </service>
+                                                   <link id="l3txr0sd" targetId="l32z086n" type="containerLink"/>
+                                                </flow>
+                                                <link id="l32z086t" targetId="l32z086o" type="containerLink"/>
+                                                <events>
+                                                   <catch faultField="faultInfo_API1" id="l0s2lvxw" interrupting="true">
+                                                      <link id="l32z086u" targetId="l32z086p" type="containerLink"/>
+                                                   </catch>
+                                                </events>
+                                             </eventContainer>
+                                             <link id="l32z07ry" targetId="l32z07rt" type="containerLink"/>
+                                          </flow>
+                                          <flow id="l32z07s0">
+                                             <link id="l32z07s1" targetId="l32z07rt" type="containerLink"/>
+                                          </flow>
+                                          <link id="l32z07rw" targetId="l32z07rx" type="containerLink">
+                                             <condition source="formula">
+                                                <function name="equals">
+                                                   <arg name="left">{$temp.tmp_API1_Execution_Counter}</arg>
+                                                   <arg name="right">{1}</arg>
+                                                </function>
+                                             </condition>
+                                          </link>
+                                          <link id="l32z07rz" targetId="l32z07s0" type="containerLink"/>
+                                       </container>
+                                       <link id="l32z04ic" targetId="l32z04h5" type="containerLink"/>
+                                    </flow>
+                                    <flow id="l32z04hj">
+                                       <eventContainer id="l32z04hk">
+                                          <subflow id="l32z04hp">
+                                             <title>Get Journal Entry API16</title>
+                                             <subflowGUID>2T55QIz3sSlfffc1n1wLM2</subflowGUID>
+                                             <subflowPath>ProcessGetJournalInvoiceEntry_Intercompany</subflowPath>
+                                             <runForEach>false</runForEach>
+                                             <input>
+                                                <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                                <parameter name="in_ApiNo" source="constant" updatable="true">API16</parameter>
+                                                <parameter name="in_RevEntityTarget" source="field" updatable="true">temp.tmp_Target_Revenue_Entity</parameter>
+                                                <parameter name="in_RevEntitySource" source="field" updatable="true">temp.tmp_Source_Revenue_Entity</parameter>
+                                                <parameter name="in_MatterCode" source="field" updatable="true">temp.tmp_Target_Matter_Code</parameter>
+                                             </input>
+                                             <outputDef>
+                                                <field name="out_JournalInvoiceHeader" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceHeader_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option hide="true" name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceDebtorItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:DebtorItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceDebtorItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:DebtorItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceProductTaxItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceProductTaxItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceCreditorItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:CreditorItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalnvoiceCreditorItem_array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:CreditorItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalEntryPO" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:$any</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                   </options>
+                                                </field>
+                                             </outputDef>
+                                          </subflow>
+                                          <flow id="l32z04hl">
+                                             <link id="l32z04iq" targetId="l32z04hk" type="containerLink"/>
+                                          </flow>
+                                          <flow id="l32z04hm">
+                                             <subflow id="l32z04hn">
+                                                <title>Log Error Fetch API 16 Payload</title>
+                                                <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                                <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                                <runForEach>false</runForEach>
+                                                <input>
+                                                   <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_Transaction_ID  </expression>
+                                                   </parameter>
+                                                   <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_IICS_Run_ID </expression>
+                                                   </parameter>
+                                                   <parameter name="i_Code" source="field" updatable="true">output.faultInfo_API16[1]/code</parameter>
+                                                   <parameter name="i_Error" source="field" updatable="true">output.faultInfo_API16[1]/detail</parameter>
+                                                   <parameter name="i_Description" source="field" updatable="true">output.faultInfo_API16[1]/reason</parameter>
+                                                   <parameter name="i_APIName" source="constant" updatable="true">API16</parameter>
+                                                   <parameter name="i_EventName" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                   <parameter name="i_DataKey" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_InvoiceHeader_ProformaNr </expression>
+                                                   </parameter>
+                                                   <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                </input>
+                                                <outputDef/>
+                                                <link id="l4p4g5ni" targetId="l4p4g5nh"/>
+                                             </subflow>
+                                             <assignment id="l4p4g5nh">
+                                                <title>File Writer API16</title>
+                                                <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">PlainText</operation>
+                                                <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                   <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                </operation>
+                                                <operation source="formula" to="temp.tmp_File_Error_Writer[1]/content">
+                                                   <expression language="XQuery">util:toJSON($input.fileEvent[1]/content/EventDetails)</expression>
+                                                </operation>
+                                                <link id="l4p4g63y" targetId="l4p4g63x"/>
+                                             </assignment>
+                                             <service id="l4p4g63x">
+                                                <title>FileWriter-BulkFailedAPI16</title>
+                                                <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                <serviceInput>
+                                                   <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                </serviceInput>
+                                             </service>
+                                             <link id="l3txr183" targetId="l32z04hk" type="containerLink"/>
+                                          </flow>
+                                          <link id="l32z04in" targetId="l32z04hl" type="containerLink"/>
+                                          <link id="l38pyay1" targetId="l3txr2mj"/>
+                                          <events>
+                                             <catch faultField="faultInfo_API16" id="l0s2lvxw" interrupting="true">
+                                                <link id="l32z04io" targetId="l32z04hm" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <eventContainer id="l3txr2mj">
+                                          <subflow id="l38pyaxv">
+                                             <title>Create Journal Entry API16</title>
+                                             <subflowGUID>6xYw1XqoAEgjxJqirtpDAz</subflowGUID>
+                                             <subflowPath>ProcessCreateJournalInvoiceEntry</subflowPath>
+                                             <runForEach>false</runForEach>
+                                             <input>
+                                                <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">output.out_JournalEntryPO</parameter>
+                                                <parameter name="in_Transaction_ID" source="field" updatable="true">temp.tmp_Transaction_ID</parameter>
+                                                <parameter name="in_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Run_ID</parameter>
+                                                <parameter name="in_Event_Name" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                <parameter name="In_Process_Name" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                <parameter name="in_API_Name" source="constant" updatable="true">API16</parameter>
+                                                <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                             </input>
+                                             <outputDef>
+                                                <field name="out_JournalConfirmation_Payload" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:$any</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                   </options>
+                                                </field>
+                                             </outputDef>
+                                          </subflow>
+                                          <flow id="l3txr2ml">
+                                             <link id="l3txr2mm" targetId="l3txr2mj" type="containerLink"/>
+                                          </flow>
+                                          <flow id="l3txr2mo">
+                                             <assignment id="l4p4g5tg">
+                                                <title>File Writer API16 1</title>
+                                                <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">JSON</operation>
+                                                <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                   <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                </operation>
+                                                <operation source="field" to="temp.tmp_File_Error_Writer[1]/content">input.fileEvent</operation>
+                                                <link id="l4p4g69z" targetId="l4p4g69y"/>
+                                             </assignment>
+                                             <service id="l4p4g69y">
+                                                <title>FileWriter-BulkFailedAPI16 1</title>
+                                                <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                <serviceInput>
+                                                   <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                </serviceInput>
+                                             </service>
+                                             <link id="l3txr2mp" targetId="l3txr2mj" type="containerLink"/>
+                                          </flow>
+                                          <link id="l3txr2mk" targetId="l3txr2ml" type="containerLink"/>
+                                          <events>
+                                             <catch faultField="faultInfo" id="l3txr2m1" interrupting="true">
+                                                <link id="l3txr2mn" targetId="l3txr2mo" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <link id="l32z04im" targetId="l32z04h5" type="containerLink"/>
+                                    </flow>
+                                    <flow id="l32z04hw">
+                                       <eventContainer id="l32z04hx">
+                                          <subflow id="l32z04i2">
+                                             <title>Get Journal Entry API17</title>
+                                             <subflowGUID>2T55QIz3sSlfffc1n1wLM2</subflowGUID>
+                                             <subflowPath>ProcessGetJournalInvoiceEntry_Intercompany</subflowPath>
+                                             <runForEach>false</runForEach>
+                                             <input>
+                                                <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                                <parameter name="in_ApiNo" source="constant" updatable="true">API17</parameter>
+                                                <parameter name="in_RevEntityTarget" source="field" updatable="true">temp.tmp_Target_Revenue_Entity</parameter>
+                                                <parameter name="in_RevEntitySource" source="field" updatable="true">temp.tmp_Source_Revenue_Entity</parameter>
+                                                <parameter name="in_MatterCode" source="field" updatable="true">temp.tmp_Target_Matter_Code</parameter>
+                                             </input>
+                                             <outputDef>
+                                                <field name="out_JournalInvoiceHeader" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceHeader_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option hide="true" name="referenceTo">$po:POJournalInvoiceItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceDebtorItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:DebtorItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceDebtorItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:DebtorItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceProductTaxItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceProductTaxItem_Array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalInvoiceCreditorItem" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:CreditorItem</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalnvoiceCreditorItem_array" type="objectlist">
+                                                   <options>
+                                                      <option name="referenceTo">$po:CreditorItem</option>
+                                                      <option hide="true" name="multiSelect">true</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                      <option name="guid">jzVR5rUiGmIhoB5ZJPhvC8</option>
+                                                   </options>
+                                                </field>
+                                                <field name="out_JournalEntryPO" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:$any</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                   </options>
+                                                </field>
+                                             </outputDef>
+                                          </subflow>
+                                          <flow id="l32z04hy">
+                                             <link id="l32z04j0" targetId="l32z04hx" type="containerLink"/>
+                                          </flow>
+                                          <flow id="l32z04hz">
+                                             <subflow id="l32z04i0">
+                                                <title>Log Error Fetch API 17 Payload</title>
+                                                <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                                <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                                <runForEach>false</runForEach>
+                                                <input>
+                                                   <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_Transaction_ID </expression>
+                                                   </parameter>
+                                                   <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_IICS_Run_ID </expression>
+                                                   </parameter>
+                                                   <parameter name="i_Code" source="field" updatable="true">output.faultInfo_API17[1]/code</parameter>
+                                                   <parameter name="i_Error" source="field" updatable="true">output.faultInfo_API17[1]/detail</parameter>
+                                                   <parameter name="i_Description" source="field" updatable="true">output.faultInfo_API17[1]/reason</parameter>
+                                                   <parameter name="i_APIName" source="constant" updatable="true">API17</parameter>
+                                                   <parameter name="i_EventName" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                   <parameter name="i_DataKey" source="formula" updatable="true">
+                                                      <expression language="XQuery">$temp.tmp_InvoiceHeader_ProformaNr </expression>
+                                                   </parameter>
+                                                   <parameter name="i_IICSProcessname" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                </input>
+                                                <outputDef/>
+                                                <link id="l4p4g78s" targetId="l4p4g78r"/>
+                                             </subflow>
+                                             <assignment id="l4p4g78r">
+                                                <title>File Writer API17</title>
+                                                <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">JSON</operation>
+                                                <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                   <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                </operation>
+                                                <operation source="field" to="temp.tmp_File_Error_Writer[1]/content">input.fileEvent</operation>
+                                                <link id="l4p4g7ja" targetId="l4p4g7j9"/>
+                                             </assignment>
+                                             <service id="l4p4g7j9">
+                                                <title>FileWriter-BulkFailedAPI17</title>
+                                                <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                <serviceInput>
+                                                   <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                </serviceInput>
+                                             </service>
+                                             <link id="l3txr1dj" targetId="l32z04hx" type="containerLink"/>
+                                          </flow>
+                                          <link id="l32z04ix" targetId="l32z04hy" type="containerLink"/>
+                                          <link id="l38pycwp" targetId="l3txr2hy"/>
+                                          <events>
+                                             <catch faultField="faultInfo_API17" id="l0s2lvxw" interrupting="true">
+                                                <link id="l32z04iy" targetId="l32z04hz" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <eventContainer id="l3txr2hy">
+                                          <subflow id="l38pycwj">
+                                             <title>Create Journal Entry API17</title>
+                                             <subflowGUID>6xYw1XqoAEgjxJqirtpDAz</subflowGUID>
+                                             <subflowPath>ProcessCreateJournalInvoiceEntry</subflowPath>
+                                             <runForEach>false</runForEach>
+                                             <input>
+                                                <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">output.out_JournalEntryPO</parameter>
+                                                <parameter name="in_Transaction_ID" source="field" updatable="true">temp.tmp_Transaction_ID</parameter>
+                                                <parameter name="in_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Run_ID</parameter>
+                                                <parameter name="in_Event_Name" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                                <parameter name="In_Process_Name" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                                <parameter name="in_API_Name" source="constant" updatable="true">API17</parameter>
+                                                <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                             </input>
+                                             <outputDef>
+                                                <field name="out_JournalConfirmation_Payload" type="reference">
+                                                   <options>
+                                                      <option name="referenceTo">$po:$any</option>
+                                                      <option name="required">false</option>
+                                                      <option name="isCopy">true</option>
+                                                   </options>
+                                                </field>
+                                             </outputDef>
+                                          </subflow>
+                                          <flow id="l3txr2i0">
+                                             <link id="l3txr2i1" targetId="l3txr2hy" type="containerLink"/>
+                                          </flow>
+                                          <flow id="l3txr2i3">
+                                             <assignment id="l4p4g72s">
+                                                <title>File Writer API17 1</title>
+                                                <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">JSON</operation>
+                                                <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                                   <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'_Intercompany.json')</expression>
+                                                </operation>
+                                                <operation source="field" to="temp.tmp_File_Error_Writer[1]/content">input.fileEvent</operation>
+                                                <link id="l4p4g7pb" targetId="l4p4g7pa"/>
+                                             </assignment>
+                                             <service id="l4p4g7pa">
+                                                <title>FileWriter-BulkFailedAPI17 1</title>
+                                                <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                                <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                                <serviceInput>
+                                                   <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                                </serviceInput>
+                                             </service>
+                                             <link id="l3txr2i4" targetId="l3txr2hy" type="containerLink"/>
+                                          </flow>
+                                          <link id="l3txr2hz" targetId="l3txr2i0" type="containerLink"/>
+                                          <events>
+                                             <catch faultField="faultInfo" id="l3txr2hg" interrupting="true">
+                                                <link id="l3txr2i2" targetId="l3txr2i3" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                       <link id="l32z04iw" targetId="l32z04h5" type="containerLink"/>
+                                    </flow>
+                                    <link id="l32z04i9" targetId="l32z04h6" type="containerLink"/>
+                                    <link id="l32z04ia" targetId="l32z04hj" type="containerLink"/>
+                                    <link id="l32z04ib" targetId="l32z04hw" type="containerLink"/>
+                                 </container>
+                                 <link id="l32z045l" targetId="l32z045d" type="containerLink"/>
+                              </flow>
+                              <link id="l32z045g" targetId="l32z045h" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$temp.tmp_Current_Target_Entity_Matter}</arg>
+                                       <arg name="right">{$temp.tmp_Prev_Target_Revenue_Entity}{$temp.tmp_Prev_Target_Entity_Matter} </arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l32z045j" targetId="l32z045k" type="containerLink"/>
+                              <link id="l32z04h4" targetId="l32yr9ze"/>
+                           </container>
+                           <assignment id="l3bjfaw4">
+                              <title>Derive Target Revenue Entity Matter Code</title>
+                              <operation source="field" to="temp.tmp_Target_Revenue_Entity">temp.tmp_InvoiceItems_Record.InterRevEntity</operation>
+                              <operation source="field" to="temp.tmp_Target_Matter_Code">temp.tmp_InvoiceItems_Record.SourceMatterCode</operation>
+                              <operation source="formula" to="temp.tmp_Current_Target_Entity_Matter">
+                                 <expression language="XQuery">fn:concat($temp.tmp_InvoiceItems_Record.InterRevEntity , $temp.tmp_InvoiceItems_Record.SourceMatterCode )</expression>
+                              </operation>
+                              <link id="l3bjfaw6" targetId="l32z045d"/>
+                           </assignment>
+                           <assignment id="l32yr9ze">
+                              <title>Tail Target RevEntity Matter Array</title>
+                              <operation source="field" to="temp.tmp_Prev_Target_Entity_Matter">temp.tmp_Current_Target_Entity_Matter</operation>
+                              <operation source="formula" to="temp.tmp_InvoiceItems_Record_List">
+                                 <expression language="XQuery">list:tail($temp.tmp_InvoiceItems_Record_List )</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l2rlajxo" targetId="l2rlajxk" type="containerLink"/>
+                        </flow>
+                        <flow id="l2rlajxq">
+                           <eventContainer id="l4p4fy7d">
+                              <subflow id="l4h8icmd">
+                                 <title>ProcessGetJournalInvoiceTaxInfo</title>
+                                 <subflowGUID>87Cbc1BO8YOg5jZVbwAeok</subflowGUID>
+                                 <subflowPath>ProcessGetJournalInvoiceTaxInfo</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_TaxCode_TaxAmount_Array" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:$any</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_SecurityDeposit_TaxCode" type="string">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_SecurityDeposit_TaxAmount" type="double">
+                                       <options>
+                                          <option name="required">false</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l4p4fy7f">
+                                 <link id="l4p4fy7g" targetId="l4p4fy7d" type="containerLink"/>
+                              </flow>
+                              <flow id="l4p4fy7i">
+                                 <assignment id="l4u3fouz">
+                                    <title>Configure ErrorFile Writer - GetTaxInfo</title>
+                                    <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">PlainText</operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                       <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'.json')</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/content">
+                                       <expression language="XQuery">util:toJSON($input.fileEvent[1]/content/EventDetails)</expression>
+                                    </operation>
+                                    <link id="l4u3fp9t" targetId="l4u3fp9s"/>
+                                 </assignment>
+                                 <service id="l4u3fp9s">
+                                    <title>ErrorFileWriter-BulkFailedAPI1-GetTaxInfo</title>
+                                    <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                    <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                    <serviceInput>
+                                       <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                    </serviceInput>
+                                    <link id="l4u3fpp5" targetId="l4u3fpp4"/>
+                                 </service>
+                                 <subflow id="l4u3fpp4">
+                                    <title>Process_P2B_Event_ErrorLog - GetTaxInfo</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name </expression>
+                                       </parameter>
+                                       <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="i_Code" source="field" updatable="true">output.Taxfault[1]/code</parameter>
+                                       <parameter name="i_Error" source="field" updatable="true">output.Taxfault[1]/detail</parameter>
+                                       <parameter name="i_Description" source="field" updatable="true">output.Taxfault[1]/reason</parameter>
+                                       <parameter name="i_APIName" source="constant" updatable="true">'API01'</parameter>
+                                       <parameter name="i_EventName" source="constant" updatable="true">'INVOICE_CREATED'</parameter>
+                                       <parameter name="i_DataKey" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_InvoiceHeader_ProformaNr </expression>
+                                       </parameter>
+                                       <parameter name="i_IICSProcessname" source="constant" updatable="true">'Process_InvoiceCreated'</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="l5rzbdr6" targetId="l5rzbdr5"/>
+                                 </subflow>
+                                 <end id="l5rzbdr5">
+                                    <title>End 3</title>
+                                 </end>
+                              </flow>
+                              <link id="l4p4fy7e" targetId="l4p4fy7f" type="containerLink"/>
+                              <link id="l4h8icme" targetId="l2rlakye"/>
+                              <events>
+                                 <catch faultField="Taxfault" id="l4p4fy6v" interrupting="true">
+                                    <link id="l4p4fy7h" targetId="l4p4fy7i" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <eventContainer id="l2rlakye">
+                              <subflow id="l2rlakyj">
+                                 <title>ProcessGetJournalInvoiceEntry</title>
+                                 <subflowGUID>7OMFHIcMWHeehDMooenaqX</subflowGUID>
+                                 <subflowPath>ProcessGetJournalInvoiceEntry</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                    <parameter name="in_SecurityDeposit_TaxAmount" source="field" updatable="true">output.out_SecurityDeposit_TaxAmount</parameter>
+                                    <parameter name="in_SecurityDeposit_TaxCode" source="field" updatable="true">output.out_SecurityDeposit_TaxCode</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_JournalInvoiceHeader" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceHeader_Array" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceItem" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceItem_Array" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceDebtorItem" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:DebtorItem</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceDebtorItem_Array" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:DebtorItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceProductTaxItem" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceProductTaxItem_Array" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceProductTaxItem_SecurityDeposit"
+                                           type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                                       </options>
+                                    </field>
+                                    <field name="out_JournalInvoiceDebtorItem_SecurityDeposit" type="objectlist">
+                                       <options>
+                                          <option name="referenceTo">$po:DebtorItem</option>
+                                          <option hide="true" name="multiSelect">true</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                          <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l2rlakyf">
+                                 <link id="l2rlakym" targetId="l2rlakye" type="containerLink"/>
+                              </flow>
+                              <flow id="l2rlakyg">
+                                 <assignment id="l4p4fyyh">
+                                    <title>Configure ErrorFile Writer - GetJournalInvoiceEntry</title>
+                                    <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">PlainText</operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                       <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'.json')</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/content">
+                                       <expression language="XQuery">util:toJSON($input.fileEvent[1]/content/EventDetails)</expression>
+                                    </operation>
+                                    <link id="l4p4fyyi" targetId="l4p4fyu0"/>
+                                 </assignment>
+                                 <service id="l4p4fyu0">
+                                    <title>ErrorFileWriter-BulkFailedAPI1-GetJournalInvoiceEntry</title>
+                                    <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                    <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                    <serviceInput>
+                                       <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                    </serviceInput>
+                                    <link id="l4p4fyu1" targetId="l2rlakyh"/>
+                                 </service>
+                                 <subflow id="l2rlakyh">
+                                    <title>Process_P2B_Event_ErrorLog-GetJournalInvoiceEntry</title>
+                                    <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                                    <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name </expression>
+                                       </parameter>
+                                       <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                       <parameter name="i_APIName" source="constant" updatable="true">'API01'</parameter>
+                                       <parameter name="i_EventName" source="constant" updatable="true">'INVOICE_CREATED'</parameter>
+                                       <parameter name="i_DataKey" source="formula" updatable="true">
+                                          <expression language="XQuery">$temp.tmp_InvoiceHeader_ProformaNr </expression>
+                                       </parameter>
+                                       <parameter name="i_IICSProcessname" source="constant" updatable="true">'Process_InvoiceCreated'</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="l5rzbdvu" targetId="l5rzbdvt"/>
+                                 </subflow>
+                                 <end id="l5rzbdvt">
+                                    <title>End 4</title>
+                                 </end>
+                              </flow>
+                              <link id="l2rlakyk" targetId="l2rlakyf" type="containerLink"/>
+                              <link id="l7ae0g0p" targetId="l2rlal0f"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l0s2lvxw" interrupting="true">
+                                    <link id="l2rlakyl" targetId="l2rlakyg" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <eventContainer id="l3txr2wi">
+                              <subflow id="l38oruxg">
+                                 <title>ProcessCreateJournalInvoiceEntry</title>
+                                 <subflowGUID>6xYw1XqoAEgjxJqirtpDAz</subflowGUID>
+                                 <subflowPath>ProcessCreateJournalInvoiceEntry</subflowPath>
+                                 <runForEach>false</runForEach>
+                                 <input>
+                                    <parameter name="in_JournalEntryCreateRequest"
+                                               source="formula"
+                                               updatable="true">
+                                       <expression language="XQuery">$temp.tmp_JournalEntryPO </expression>
+                                    </parameter>
+                                    <parameter name="in_Transaction_ID" source="field" updatable="true">temp.tmp_Transaction_ID</parameter>
+                                    <parameter name="in_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Run_ID</parameter>
+                                    <parameter name="in_Event_Name" source="field" updatable="true">temp.tmp_event_name</parameter>
+                                    <parameter name="In_Process_Name" source="field" updatable="true">temp.tmp_IICS_ProcessName</parameter>
+                                    <parameter name="in_API_Name" source="constant" updatable="true">API01</parameter>
+                                    <parameter name="in_ProformaNr" source="field" updatable="true">temp.tmp_InvoiceHeader_ProformaNr</parameter>
+                                 </input>
+                                 <outputDef>
+                                    <field name="out_JournalConfirmation_Payload" type="reference">
+                                       <options>
+                                          <option name="referenceTo">$po:$any</option>
+                                          <option name="required">false</option>
+                                          <option name="isCopy">true</option>
+                                       </options>
+                                    </field>
+                                 </outputDef>
+                              </subflow>
+                              <flow id="l3txr2wk">
+                                 <link id="l3txr2wl" targetId="l3txr2wi" type="containerLink"/>
+                              </flow>
+                              <flow id="l3txr2wn">
+                                 <assignment id="l4u3ft9q">
+                                    <title>Configure ErrorFile Writer - PostJournalInvoiceEntry</title>
+                                    <operation source="constant" to="temp.tmp_File_Error_Writer[1]/format">PlainText</operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/fileName">
+                                       <expression language="XQuery">fn:concat(fn:concat(fn:concat($temp.tmp_Transaction_ID ,'_'), $temp.tmp_InvoiceHeader_ProformaNr ),'.json')</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_File_Error_Writer[1]/content">
+                                       <expression language="XQuery">util:toJSON($input.fileEvent[1]/content/EventDetails)</expression>
+                                    </operation>
+                                    <link id="l4u3ftld" targetId="l4u3ftlc"/>
+                                 </assignment>
+                                 <service id="l4u3ftlc">
+                                    <title>ErrorFileWriter-BulkFailedAPI1-PostJournalInvoiceEntry 1</title>
+                                    <serviceName>AppConn-EventError-Writer:FileWriter-BulkFailedAPI1</serviceName>
+                                    <serviceGUID>aLfui3vj1uRgvN8fC7pzG2</serviceGUID>
+                                    <serviceInput>
+                                       <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_File_Error_Writer</parameter>
+                                    </serviceInput>
+                                    <link id="l5rzbe0i" targetId="l5rzbe0h"/>
+                                 </service>
+                                 <end id="l5rzbe0h">
+                                    <title>End 5</title>
+                                 </end>
+                              </flow>
+                              <link id="l3txr2wj" targetId="l3txr2wk" type="containerLink"/>
+                              <link id="l3txr1yp" targetId="l3txr1yo"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l3txr2w0" interrupting="true">
+                                    <link id="l3txr2wm" targetId="l3txr2wn" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <assignment id="l2rlal0f">
+                              <title>CreateJournalEntryPO</title>
+                              <operation source="formula" to="temp.tmp_ExtractDebtorItem">
+                                 <expression language="XQuery">fn:concat(fn:concat('&lt;root&gt;' ,fn:replace($temp.tmp_json_text , '&lt;AmountInTransactionCurrency', '&lt;AmountInTransactionCurrency CurrencyCode="USD"')), '&lt;/root&gt;')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreteDebtorItem_JE">
+                                 <expression language="XQuery">for $x at $cnt in $output.out_JournalInvoiceDebtorItem_Array
+where $cnt = 1
+return 
+&lt;DebtorItem&gt; 
+  &lt;!--AmountInTransactionCurrency currencyCode="{$x/CurrencyCode}" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency--&gt;
+  	{if ($x/CurrencyCode/text() = 'SGD') then (&lt;AmountInTransactionCurrency currencyCode="SGD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	{if ($x/CurrencyCode/text() = 'USD') then (&lt;AmountInTransactionCurrency currencyCode="USD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	{if ($x/CurrencyCode/text() = 'GBP') then (&lt;AmountInTransactionCurrency currencyCode="GBP" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	{if ($x/CurrencyCode/text() = 'AUD') then (&lt;AmountInTransactionCurrency currencyCode="AUD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	{if ($x/CurrencyCode/text() = 'EUR') then (&lt;AmountInTransactionCurrency currencyCode="EUR" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	{if ($x/CurrencyCode/text() = 'JPY') then (&lt;AmountInTransactionCurrency currencyCode="JPY" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	&lt;Debtor&gt;{$x/Debtor/text()}&lt;/Debtor&gt;
+	&lt;ReferenceDocumentItem&gt;{$x/ReferenceDocumentItem/text()}&lt;/ReferenceDocumentItem&gt;
+    &lt;DocumentItemText&gt;&lt;/DocumentItemText&gt;
+	&lt;AssignmentReference&gt;&lt;/AssignmentReference&gt;
+	&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$x/Debtor/text() }&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/DebtorItem&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreteDebtorItem_SecDep_JE">
+                                 <expression language="XQuery">for $x in $output.out_JournalInvoiceDebtorItem_SecurityDeposit 
+return 
+&lt;DebtorItem&gt; 
+	&lt;!--AmountInTransactionCurrency currencyCode="{$x/CurrencyCode/text()}" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency--&gt;
+    {if ($x/CurrencyCode/text() = 'SGD') then (
+&lt;AmountInTransactionCurrency currencyCode="SGD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'USD') then (
+&lt;AmountInTransactionCurrency currencyCode="USD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'GBP') then (
+&lt;AmountInTransactionCurrency currencyCode="GBP" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'AUD') then (
+&lt;AmountInTransactionCurrency currencyCode="AUD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'EUR') then (
+&lt;AmountInTransactionCurrency currencyCode="EUR" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'JPY') then (
+&lt;AmountInTransactionCurrency currencyCode="JPY" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+	&lt;Debtor&gt;{$x/Debtor/text()}&lt;/Debtor&gt;
+	&lt;ReferenceDocumentItem&gt;{$x/ReferenceDocumentItem/text()}&lt;/ReferenceDocumentItem&gt;
+	&lt;DocumentItemText&gt;&lt;/DocumentItemText&gt;
+         &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt;
+         &lt;DownPaymentTerms&gt;
+         &lt;SpecialGLCode&gt;{$x/SpecialGLCode/text()}&lt;/SpecialGLCode&gt;  
+   &lt;TaxCode&gt;{$x/TaxCode/text()}&lt;/TaxCode&gt;
+   &lt;/DownPaymentTerms&gt;
+         &lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$x/Debtor/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;/DebtorItem&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreateItem_JE">
+                                 <expression language="XQuery">for $x in $output.out_JournalInvoiceItem_Array 
+return &lt;Item&gt;
+&lt;GLAccount&gt;{$x/GLAccount/text()} &lt;/GLAccount&gt;
+&lt;DocumentItemText&gt;{$x/DocumentItemText/text()}&lt;/DocumentItemText&gt;
+&lt;AssignmentReference&gt;{$x/AssignmentReference/text()}&lt;/AssignmentReference&gt;
+&lt;Material&gt;{$x/Material/text()}&lt;/Material&gt;
+&lt;ns3:YY1_SOPCustomer xmlns:ns3="http://SAPCustomFields.com/YY1_"&gt;{$x/YY1_SOPCustomer/text()}&lt;/ns3:YY1_SOPCustomer&gt;
+&lt;CompanyCode&gt;{$x/CompanyCode/text()}&lt;/CompanyCode&gt;
+
+{if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (
+&lt;AccountAssignment&gt;
+    &lt;AccountAssignmentType&gt;{$x/AccountAssignmentType/text() }&lt;/AccountAssignmentType&gt;
+	&lt;ProfitCenter&gt;{$x/ProfitCenter/text()}&lt;/ProfitCenter&gt;
+&lt;/AccountAssignment&gt;
+) else ()
+}
+{if (fn:starts-with($x/GLAccount/text(), "4") or fn:starts-with($x/GLAccount/text(), "5")) then (
+&lt;ProfitabilitySupplement&gt;
+    &lt;Customer&gt;{$x/Customer/text()}&lt;/Customer&gt;
+    &lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+    &lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+&lt;/ProfitabilitySupplement&gt;
+) else (
+&lt;AccountAssignment&gt;
+    &lt;Customer&gt;{$x/Customer/text()}&lt;/Customer&gt;
+    &lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+    &lt;ProfitCenter&gt;{$x/ProfitCenter/text()}&lt;/ProfitCenter&gt;
+&lt;/AccountAssignment&gt;
+)}
+
+{ if (fn:starts-with($x/GLAccount/text(), "1") or fn:starts-with($x/GLAccount/text(), "2") or fn:starts-with($x/GLAccount/text(), "3")) then (	
+	&lt;ProfitabilitySupplement&gt;
+		&lt;WBSElement&gt;{$x/WBSElement/text()}&lt;/WBSElement&gt;
+		&lt;Customer&gt;{$x/Customer/text()}&lt;/Customer&gt;
+		&lt;SoldMaterial&gt;{$x/SoldMaterial/text()}&lt;/SoldMaterial&gt;
+	&lt;/ProfitabilitySupplement&gt;
+) else()
+}
+
+&lt;!--AmountInTransactionCurrency currencyCode="{$x/CurrencyCode/text()}"&gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency --&gt;
+{if ($x/CurrencyCode/text() = 'SGD') then (
+&lt;AmountInTransactionCurrency currencyCode="SGD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'USD') then (
+&lt;AmountInTransactionCurrency currencyCode="USD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'GBP') then (
+&lt;AmountInTransactionCurrency currencyCode="GBP" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'AUD') then (
+&lt;AmountInTransactionCurrency currencyCode="AUD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'EUR') then (
+&lt;AmountInTransactionCurrency currencyCode="EUR" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'JPY') then (
+&lt;AmountInTransactionCurrency currencyCode="JPY" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+        
+&lt;Tax&gt;
+    &lt;TaxCode&gt;{$x/TaxCode/text()}&lt;/TaxCode&gt;
+&lt;/Tax&gt;
+&lt;/Item&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_ProductTaxItems_Array_JE">
+                                 <expression language="XQuery">  &lt;root&gt;
+  {$output.out_JournalInvoiceProductTaxItem_Array }
+   &lt;/root&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreateProductTaxItem_JE">
+                                 <expression language="XQuery">for $x in distinct-values($output.out_TaxCode_TaxAmount_Array/TaxCode) return
+if($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode) then (&lt;ProductTaxItem&gt; 
+&lt;!--AmountInTransactionCurrency currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{fn:format-number(fn:sum($output.out_TaxCode_TaxAmount_Array[TaxCode=$x]/TaxAmount), '#0.##')}&lt;/AmountInTransactionCurrency --&gt;
+
+&lt;!--AmountInTransactionCurrency currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR"),$output.out_JournalInvoiceHeader[1]/VatAmount , -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency--&gt;
+{if ($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text() = 'SGD') then (
+&lt;AmountInTransactionCurrency currencyCode="SGD" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text() = 'USD') then (
+&lt;AmountInTransactionCurrency currencyCode="USD" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'GBP') then (
+&lt;AmountInTransactionCurrency currencyCode="GBP" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'AUD') then (
+&lt;AmountInTransactionCurrency currencyCode="AUD" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'EUR') then (
+&lt;AmountInTransactionCurrency currencyCode="EUR" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'JPY') then (
+&lt;AmountInTransactionCurrency currencyCode="JPY" &gt;{ util:iif($x = 'S1'   ,util:iif(fn:starts-with($output.out_JournalInvoiceHeader[1]/InvoiceType  , "CR")
+,$output.out_JournalInvoiceHeader[1]/VatAmount 
+, -1 * $output.out_JournalInvoiceHeader[1]/VatAmount ),0) }&lt;/AmountInTransactionCurrency&gt;) else ()}
+
+&lt;TaxCode&gt;{$x}&lt;/TaxCode&gt; &lt;TaxItemClassification&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxItemClassification/text())}&lt;/TaxItemClassification&gt; 
+&lt;!--TaxBaseAmountInTransCrcy currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy--&gt; 
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'SGD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="SGD" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'USD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="USD" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'GBP') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="GBP" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'AUD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="AUD" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'EUR') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="EUR" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if (distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text()) = 'JPY') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="JPY" &gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+&lt;ConditionType&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/ConditionType/text())}&lt;/ConditionType&gt; &lt;/ProductTaxItem&gt;) else ()
+
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreateProductTaxItem_JE2_PO">
+                                 <expression language="XQuery">for $x in distinct-values($output.out_TaxCode_TaxAmount_Array/TaxCode) return
+if($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode) then (&lt;ProductTaxItem&gt; 
+&lt;AmountInTransactionCurrency currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{fn:format-number(fn:sum($output.out_TaxCode_TaxAmount_Array[TaxCode=$x]/TaxAmount), '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+&lt;TaxCode&gt;{$x}&lt;/TaxCode&gt; &lt;TaxItemClassification&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxItemClassification/text())}&lt;/TaxItemClassification&gt; 
+&lt;TaxBaseAmountInTransCrcy currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt; &lt;ConditionType&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/ConditionType/text())}&lt;/ConditionType&gt; &lt;/ProductTaxItem&gt;) else ()
+
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreateProductTaxItem_SecDep_JE">
+                                 <expression language="XQuery">for $x in $output.out_JournalInvoiceProductTaxItem_SecurityDeposit 
+
+return   &lt;ProductTaxItem&gt;
+   &lt;!--AmountInTransactionCurrency currencyCode="{$x/CurrencyCode/text()}"&gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency--&gt;  
+   {if ($x/CurrencyCode/text() = 'SGD') then (
+&lt;AmountInTransactionCurrency currencyCode="SGD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'USD') then (
+&lt;AmountInTransactionCurrency currencyCode="USD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'GBP') then (
+&lt;AmountInTransactionCurrency currencyCode="GBP" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'AUD') then (
+&lt;AmountInTransactionCurrency currencyCode="AUD" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'EUR') then (
+&lt;AmountInTransactionCurrency currencyCode="EUR" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'JPY') then (
+&lt;AmountInTransactionCurrency currencyCode="JPY" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;) else ()}  
+   &lt;TaxCode&gt;{$x/TaxCode/text()}&lt;/TaxCode&gt;  
+   &lt;TaxItemClassification&gt;{$x/TaxItemClassification/text()}&lt;/TaxItemClassification&gt;  
+   
+   &lt;!--TaxBaseAmountInTransCrcy currencyCode="{$x/CurrencyCode/text()}"&gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy--&gt; 
+   {if ($x/CurrencyCode/text() = 'SGD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="SGD" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'USD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="USD" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'GBP') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="GBP" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'AUD') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="AUD" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'EUR') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="EUR" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+{if ($x/CurrencyCode/text() = 'JPY') then (
+&lt;TaxBaseAmountInTransCrcy currencyCode="JPY" &gt;{fn:format-number($x/TaxBaseAmountInTransCrcy, '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;) else ()}
+   
+   &lt;ConditionType&gt;{$x/ConditionType/text()}&lt;/ConditionType&gt;  
+   &lt;/ProductTaxItem&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxAmount_Sign">
+                                 <expression language="XQuery">util:iif($temp.tmp_CreateProductTaxItem_JE[1]/AmountInTransactionCurrency  &gt; 0, 1, -1 )
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxAmount_Base_N">
+                                 <expression language="XQuery">fn:floor(abs($temp.tmp_CreateProductTaxItem_JE[1]/AmountInTransactionCurrency  ))</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxAmount_Dec_N">
+                                 <expression language="XQuery">(abs($temp.tmp_CreateProductTaxItem_JE[1]/AmountInTransactionCurrency) - abs($temp.tmp_TaxAmount_Base_N)) * 100 </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxAmount_Dec_N2">
+                                 <expression language="XQuery">(fn:floor($temp.tmp_TaxAmount_Dec_N) )*0.01</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxAmount_RoundDown">
+                                 <expression language="XQuery">($temp.tmp_TaxAmount_Base_N + $temp.tmp_TaxAmount_Dec_N2) * $temp.tmp_TaxAmount_Sign </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreteDebtorItem_JE2_PO">
+                                 <expression language="XQuery">for $x in $output.out_JournalInvoiceDebtorItem_Array
+return 
+&lt;DebtorItem&gt; 
+&lt;AmountInTransactionCurrency currencyCode="{$x/CurrencyCode}" &gt;{fn:format-number($x/AmountInTransactionCurrency, '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+&lt;Debtor&gt;{$x/Debtor/text()}&lt;/Debtor&gt;
+&lt;ReferenceDocumentItem&gt;{$x/ReferenceDocumentItem/text()}&lt;/ReferenceDocumentItem&gt;
+&lt;/DebtorItem&gt;</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_CreateProductTaxItem_JE2">
+                                 <expression language="XQuery">for $x in distinct-values($output.out_TaxCode_TaxAmount_Array/TaxCode) return
+if($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode) then (
+&lt;ProductTaxItem&gt;
+	&lt;AmountInTransactionCurrency currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt; {fn:format-number(($temp.tmp_CreateProductTaxItem_JE2_PO[1]/TaxBaseAmountInTransCrcy + $temp.tmp_CreteDebtorItem_JE2_PO[1]/AmountInTransactionCurrency  )* -1, '#0.##') } &lt;/AmountInTransactionCurrency&gt;
+	&lt;TaxCode&gt;{$x}&lt;/TaxCode&gt;
+	&lt;TaxItemClassification&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxItemClassification/text())}&lt;/TaxItemClassification&gt;
+	&lt;TaxBaseAmountInTransCrcy currencyCode="{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/CurrencyCode/text())}"&gt;{fn:format-number(fn:sum($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/TaxBaseAmountInTransCrcy), '#0.##')}&lt;/TaxBaseAmountInTransCrcy&gt;
+	&lt;ConditionType&gt;{distinct-values($temp.tmp_ProductTaxItems_Array_JE/POJournalInvoiceProductTaxItem[TaxCode=$x]/ConditionType/text())}&lt;/ConditionType&gt;
+&lt;/ProductTaxItem&gt;) else ()
+
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_JournalEntryPO">
+                                 <expression language="XQuery">&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+   &lt;soap:Header/&gt;
+   &lt;soap:Body&gt;
+      &lt;ns:JournalEntryBulkCreateRequest xmlns:ns="http://sap.com/xi/SAPSCORE/SFIN"&gt;
+  &lt;MessageHeader&gt;
+    &lt;ID&gt;{$output.out_JournalInvoiceHeader[1]/BulkRequestID }&lt;/ID&gt;   
+    &lt;CreationDateTime&gt;{$output.out_JournalInvoiceHeader[1]/CurrentDatetime}&lt;/CreationDateTime&gt;
+    &lt;SenderBusinessSystemID&gt;{$output.out_JournalInvoiceHeader[1]/SenderBusinessSystemId }&lt;/SenderBusinessSystemID&gt; 
+  &lt;/MessageHeader&gt;
+  &lt;JournalEntryCreateRequest&gt;
+    &lt;MessageHeader&gt;
+      &lt;ID&gt;{$output.out_JournalInvoiceHeader[1]/RequestID }&lt;/ID&gt;
+      &lt;CreationDateTime&gt;{$output.out_JournalInvoiceHeader[1]/CreationDate }&lt;/CreationDateTime&gt;
+    &lt;/MessageHeader&gt;
+    &lt;JournalEntry&gt;
+      &lt;OriginalReferenceDocumentType&gt;{$output.out_JournalInvoiceHeader[1]/OriginalReferenceDocumentType }&lt;/OriginalReferenceDocumentType&gt;
+      &lt;BusinessTransactionType&gt;{$output.out_JournalInvoiceHeader[1]/BusinessTransactionType }&lt;/BusinessTransactionType&gt;
+      &lt;AccountingDocumentType&gt;{$output.out_JournalInvoiceHeader[1]/AccountingDocumentType }&lt;/AccountingDocumentType&gt;
+      &lt;DocumentReferenceID&gt;{$output.out_JournalInvoiceHeader[1]/DocumentReferenceID }&lt;/DocumentReferenceID&gt;
+      &lt;CreatedByUser&gt;{$output.out_JournalInvoiceHeader[1]/CreatedByUser} &lt;/CreatedByUser&gt;
+      &lt;CompanyCode&gt;{$output.out_JournalInvoiceHeader[1]/CompanyCode }&lt;/CompanyCode&gt;
+      &lt;DocumentDate&gt;{$output.out_JournalInvoiceHeader[1]/DocumentDate }&lt;/DocumentDate&gt;
+      &lt;PostingDate&gt;{$output.out_JournalInvoiceHeader[1]/PostingDate}&lt;/PostingDate&gt;
+      &lt;TaxDeterminationDate&gt;{$output.out_JournalInvoiceHeader[1]/TaxDeterminationDate }&lt;/TaxDeterminationDate&gt;
+      &lt;DocumentHeaderText&gt;{$output.out_JournalInvoiceHeader[1]/DocumentHeaderText }&lt;/DocumentHeaderText&gt;
+      &lt;Reference1InDocumentHeader&gt;{$output.out_JournalInvoiceHeader[1]/Reference1InDocumentHeader }&lt;/Reference1InDocumentHeader&gt;
+      &lt;Reference2InDocumentHeader&gt;{$output.out_JournalInvoiceHeader	[1]/Reference2InDocumentHeader }&lt;/Reference2InDocumentHeader&gt;
+      {$temp.tmp_CreateItem_JE} 
+      
+     &lt;!-- {$temp.tmp_CreateDebtorItem_JE} --&gt;
+    
+         &lt;!--AmountInTransactionCurrency currencyCode="{$output.out_JournalInvoiceDebtorItem_Array[1]/CurrencyCode  }" &gt;{fn:format-number($output.out_JournalInvoiceDebtorItem_Array[1]/AmountInTransactionCurrency, '#0.##') }&lt;/AmountInTransactionCurrency--&gt;
+         {$temp.tmp_CreteDebtorItem_JE}
+
+     {$temp.tmp_CreteDebtorItem_SecDep_JE}
+     
+     &lt;!-- use JE2 if there is a rounding error  Accounting Interface: Balance in Transaction Currency 0,01 (USD); !!IMPORTANT!! this should ONLY be applied for journals with a variance of 0,01, not for larger numbers --&gt;
+     {$temp.tmp_CreateProductTaxItem_JE}
+      &lt;!--{$temp.tmp_CreateProductTaxItem_JE2}--&gt;
+  {$temp.tmp_CreateProductTaxItem_SecDep_JE}
+     
+    &lt;/JournalEntry&gt;
+  &lt;/JournalEntryCreateRequest&gt;
+&lt;/ns:JournalEntryBulkCreateRequest&gt;
+&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</expression>
+                              </operation>
+                              <link id="l38oruxh" targetId="l3txr2wi"/>
+                           </assignment>
+                           <end id="l3txr1yo">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="l2rlajxm" targetId="l2rlajxn" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_Intercompany_Flag}</arg>
+                                 <arg name="right">Y</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l2rlajxp" targetId="l2rlajxq" type="containerLink"/>
+                        <link id="l32yrazg" targetId="l32yraze"/>
+                     </container>
+                     <jumpTo id="l32yraze">
+                        <link id="l32yrazf" targetId="l32p8h0j"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="kpzdw0e6">
+                     <link id="kpzdw0e7" targetId="kpzdw0ag" type="containerLink"/>
+                  </flow>
+                  <link id="kpzdw0e0" targetId="kpzdw0e4" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$temp.tmp_event_name}</arg>
+                           <arg name="right">INVOICE_CREATED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kpzdw0e1" targetId="kpzdw0e6" type="containerLink"/>
+                  <link id="kpzdw0ai" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>7b950526-dc6d-4bd3-9c5e-fc00de13450c</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1040",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "106023"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>fc8391da-3db6-46e6-86cb-93e776688640</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>30610155-0dc3-443e-a814-963f14850c7b</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5d078542-28f3-406a-969e-1db0fef5177e</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "543",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7d13e651-8fde-4c6c-9b42-58c6b193734e</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "1043",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f7ba2060-d009-4011-9480-bc82ad15e656</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e1f5f879-2030-4afb-b281-be1eda498223</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>9a4a87c9-360a-4a48-905d-8da26c042511</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-01T09:56:52Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-09-01T09:56:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>d6I6FTrnzgabPwfBB5KxCT</types1:GUID>
+      <types1:DisplayName>Process_InvoiceCreated_CurCode_Workarnd</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:20.035Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

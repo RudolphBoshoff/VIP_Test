@@ -1,0 +1,279 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>dxbdypKwKBqRi92-gt-5605340-2023-03-13T09:24:50.061Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetAddressDetails</types1:Name>
+      <types1:ParentFlowIds>beN8jIw8jIw8jIw-gt-780432-2023-03-17T14:35:17.028Z::pd.xml,chCVf4VQT53nQci-gt-6833529-2021-09-17T11:48:56.03Z::pd.xml,f3A1vyoY2G7QnG5-gt-1676715-2023-08-23T09:54:35.093Z::pd.xml,KFxH2bfZk9EW4AR-gt-20323361-2021-09-17T11:48:55.587Z::pd.xml,MiRW8UBM7zsZvEI-gt-1685117-2023-08-23T09:54:32.617Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-03-13T09:24:50Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-06-15T11:40:41Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:33:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetAddressDetails/ProcessGetAddressDetails.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetAddressDetails"
+                  name="ProcessGetAddressDetails"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_AddressDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POAddressDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0z8tcswLCClcvbG6YOn9oq</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_API08" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCvip:api08</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0cTIoVSGjEnc8junjgI8KG</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EI" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EC" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ER" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EO" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ED" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lfk3yzlt" targetId="lfk3yzls"/>
+               </start>
+               <assignment id="lfk3yzls">
+                  <title>Assignment to tmp_API08</title>
+                  <operation source="query" to="temp.tmp_API08">
+                     <query advanceQuery="false" from="AppConnectionVPCvip:api08">
+                        <where>BusinessPartner_BP = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <link id="lfk3yznx" targetId="lfk3yznw"/>
+               </assignment>
+               <container id="lfk3yznw" type="exclusive">
+                  <title>tmp_API08</title>
+                  <flow id="lfk3yzo0">
+                     <subflow id="lftotfbv">
+                        <title>Split Refmaster Name</title>
+                        <subflowGUID>86gc7kurfu0kqqKCTpI3SP</subflowGUID>
+                        <subflowPath>Process_Generic_SplitLongText</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Text" source="field" updatable="true">temp.tmp_API08[1]/Name</parameter>
+                           <parameter name="in_MaxStringLength" source="constant" updatable="true">40</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_TextList" type="objectlist">
+                              <options>
+                                 <option name="referenceTo">$type:string</option>
+                                 <option hide="true" name="multiSelect">true</option>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lgv0iqq8" targetId="lgv0iqq7"/>
+                     </subflow>
+                     <assignment id="lgv0iqq7">
+                        <title>Set Output Entity ONLY</title>
+                        <operation source="formula" to="temp.tmp_EI">
+                           <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice ||";",';'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_EC">
+                           <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/E_mail___Invoice___CC ||";",';'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ER">
+                           <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/AccountingClerkInternetAddress  ||";",';'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_EO">
+                           <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email__not_EI_or_EC_ ||";",';'))</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ED">
+                           <expression language="XQuery">fn:normalize-space(fn:substring-before($temp.tmp_API08[1]/Email___Default ||";",';'))</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_AddressDetails">
+                           <expression language="XQuery">&lt;POAddressDetails&gt;
+   &lt;AddrNr&gt;{$temp.tmp_API08[1]/AddrNr/text() }&lt;/AddrNr&gt;
+   &lt;CityName&gt;{$temp.tmp_API08[1]/CityName/text() }&lt;/CityName&gt;
+   &lt;PostalCode&gt;{$temp.tmp_API08[1]/PostalCode/text()  }&lt;/PostalCode&gt;      
+   &lt;Address&gt;{ $temp.tmp_API08[1]/address/text()  }&lt;/Address&gt;      
+   &lt;Address2&gt;{$temp.tmp_API08[1]/address2/text()  }&lt;/Address2&gt;
+   &lt;Address3&gt;{$temp.tmp_API08[1]/address3/text()  }&lt;/Address3&gt;
+   &lt;Address4&gt;{$temp.tmp_API08[1]/address4/text()  }&lt;/Address4&gt;
+   &lt;Address5&gt;{$temp.tmp_API08[1]/address5/text()  }&lt;/Address5&gt;
+   &lt;Country&gt;{$temp.tmp_API08[1]/Country/text() }&lt;/Country&gt; 
+   &lt;EmailAddress&gt;{	util:iif( util:isNull($temp.tmp_EI), 
+   		  			util:iif( util:isNull($temp.tmp_EC),
+                  	util:iif( util:isNull($temp.tmp_EO)
+                    	,$temp.tmp_ED 
+                    	,$temp.tmp_EO )
+                        ,$temp.tmp_EC )
+                        ,$temp.tmp_EI )}&lt;/EmailAddress&gt;
+   &lt;EmailInvoice&gt;{$temp.tmp_EI }&lt;/EmailInvoice&gt;
+   &lt;EmailInvoiceCC&gt;{$temp.tmp_EC }&lt;/EmailInvoiceCC&gt;
+   &lt;EmailInvoiceReminder&gt;{$temp.tmp_ER }&lt;/EmailInvoiceReminder&gt;
+   &lt;EmailOther&gt;{util:iif( util:isNull($temp.tmp_EO )
+   						  ,$temp.tmp_ED 
+                          ,$temp.tmp_EO)}&lt;/EmailOther&gt; 
+   &lt;Language&gt;{switch ($temp.tmp_API08[1]/Language/text()) 
+   				case fn:string-length( $temp.tmp_API08[1]/Language/text())&gt;0 return  $temp.tmp_API08[1]/Language/text()
+                default return 'EN'}&lt;/Language&gt;   
+   &lt;Active&gt;1&lt;/Active&gt;
+   &lt;AddrType&gt;BI&lt;/AddrType&gt;
+   &lt;SeqNr&gt;1&lt;/SeqNr&gt;    
+&lt;/POAddressDetails&gt;
+
+</expression>
+                        </operation>
+                        <link id="lgv0iqrq" targetId="lgv0iqrp"/>
+                     </assignment>
+                     <end id="lgv0iqrp">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="lfk3yzo3">
+                     <throw id="lfk3yzqk">
+                        <title>Throw 2</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">VPC: Billing File not found. Ensure that billing file has not been closed and that at least one valid matter exists</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Not Found</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lfk3yznz" targetId="lfk3yzo0" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_API08}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lfk3yzo2" targetId="lfk3yzo3" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_API08}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>de3b2218-6225-4772-9940-7c5626324432</ns1:Id>
+               <ns1:Name>BP with Email Address, without Billing Address</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-13T09:24:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-13T09:24:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12021521"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>b33a0a1a-2438-4639-8baa-d5b1d686920f</ns1:Id>
+               <ns1:Name>DiffBiill</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-13T09:24:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-13T09:24:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000961",
+	 "in_MatterCode": "TSAC1"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8536cac7-4afc-467e-85d5-84b4adc2546d</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-05-02T14:50:22Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-02T14:50:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12500091"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>75ecee5e-f837-4ec4-8579-88fcc6fae5de</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-13T09:24:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-13T09:24:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12002308",
+	 "in_MatterCode": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0b846700-ad66-4337-b3fb-1311bf2e8bf6</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-13T09:24:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-13T09:24:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000038",
+	 "in_MatterCode": "TSAC1"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3btoyx4ThaIfiOpIudai8F</types1:GUID>
+      <types1:DisplayName>ProcessGetAddressDetails</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.557Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

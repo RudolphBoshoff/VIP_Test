@@ -1,0 +1,854 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>0n5hA7vNljLYqBG-gt-34442526-2022-06-17T11:17:59.996Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetJournalInvoiceEntry</types1:Name>
+      <types1:ParentFlowIds>BxZmtK9hCHbf2XZ-gt-433211-2022-09-01T09:56:51.451Z::pd.xml,keKpcnS24FsWTzI-gt-12225521-2022-07-11T16:41:48.175Z::pd.xml,OAPbdutaaabbgdo-gt-31625132-2022-08-23T12:42:30.651Z::pd.xml,UZaaaa-gt-1863985-2022-08-26T11:24:28.747Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>desc</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-06-17T11:18:00Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-08-25T07:13:50Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-09-01T10:08:09Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetJournalInvoiceEntry/ProcessGetJournalInvoiceEntry.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetJournalInvoiceEntry"
+                  name="ProcessGetJournalInvoiceEntry"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>desc</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProformaNr"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_SecurityDeposit_TaxAmount"
+                          required="true"
+                          type="double">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_SecurityDeposit_TaxCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_JournalInvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceHeader_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0du01xUjlVPcw11lV35wQy</option>
+                  </options>
+               </field>
+               <field description="" name="out_JournalInvoiceItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceItem_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">bUn9ECQAO88djWPkZILrCi</option>
+                  </options>
+               </field>
+               <field description="" name="out_JournalInvoiceDebtorItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:DebtorItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceDebtorItem_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:DebtorItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceProductTaxItem"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceProductTaxItem_Array"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceProductTaxItem_SecurityDeposit"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:POJournalInvoiceProductTaxItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8DvQvQeCghRls3WgGxnRsl</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_JournalInvoiceDebtorItem_SecurityDeposit"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:DebtorItem</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">8flsTXiJxcGeefML5awJKC</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceHeaderList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItems" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_InvoiceItemsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTrans" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AcctTransList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_TaxBaseAmountInTransCrcy_sum"
+                      type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0.00</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecurringFees" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RecurringFees</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RecurringFee_LookUpValue" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProductCode" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:LookValues</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_SecurityDeposit_RecordList"
+                      type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceItems</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_Service_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_LinePrice" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SecurityDeposit_VATPrice" type="double">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProfitCenter_APIT_Record" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:UserTables</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProfitCenter_APIT_Record_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServCode_Prefix" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_SecurityDepsoit_Record"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:AcctTrans</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="tmp_AcctTrans_SecurityDeposit_Count"
+                      type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ServiceMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:ServiceMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kq911ub7" targetId="kq911ub6"/>
+               </start>
+               <assignment id="kq911ub6">
+                  <title>Assignment to tmp_AcctTransList, tmp_InvoiceHeaderList etc.</title>
+                  <operation source="list" to="temp.tmp_AcctTransList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:AcctTrans">
+                        <where>SourceNr = '{$input.in_ProformaNr}' and SourceScreen != '140' and MoveCode in (     select        atr.MoveCode      from        AcctTrans atr        inner join InvoiceHeader ih on (atr.SourceNr = ih.ProformaNr)        inner join InvoiceItems ii on ih.ProformaNr = ii.ProformaNr        AND atr.Movecode IN ('NL')      WHERE        ih.ProformaNr = '{$input.in_ProformaNr}'   )     AND JournalNr in (     select        atr.JournalNr      from        AcctTrans atr        inner join InvoiceHeader ih on (         atr.EntCode = ih.RevEntity          and atr.JournalNr = ih.JournalRev       )        inner join InvoiceItems ii on ih.ProformaNr = ii.ProformaNr        AND cast(ii.LineNr as varchar(500)) = case when CHARINDEX('Service:', atr.LineRef)&gt;0 and CHARINDEX(';RFee', atr.LineRef)&gt;0 and CHARINDEX(';LineRef', atr.LineRef)&gt;0 then SUBSTRING(atr.LineRef, CHARINDEX('LineRef:',atr.LineRef)+8, LEN(atr.LineRef)-(CHARINDEX('LineRef:',atr.LineRef)+8))  else atr.LineRef end    WHERE        ih.ProformaNr = '{$input.in_ProformaNr}'   )     AND EntCode in (     select        atr.EntCode      from        AcctTrans atr        inner join InvoiceHeader ih on (atr.sourcenr = ih.proformanr)        inner join InvoiceItems ii on ih.ProformaNr = ii.ProformaNr        AND cast(ii.LineNr as varchar(500)) = case when CHARINDEX('Service:', atr.LineRef)&gt;0 and CHARINDEX(';RFee', atr.LineRef)&gt;0 and CHARINDEX(';LineRef', atr.LineRef)&gt;0 then SUBSTRING(atr.LineRef, CHARINDEX('LineRef:',atr.LineRef)+8, LEN(atr.LineRef)-(CHARINDEX('LineRef:',atr.LineRef)+8)) else atr.LineRef end WHERE        ih.ProformaNr = '{$input.in_ProformaNr}'   )    and acctkey not in ('12100000', '72010000') --AcctType &lt;&gt; '1'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_InvoiceHeaderList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceHeader">
+                        <where>ProformaNr = '{$input.in_ProformaNr}'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_InvoiceItemsList">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceItems">
+                        <where>ProformaNr = '{$input.in_ProformaNr}' and LineInvCur != 0</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_SecurityDeposit_Record">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceItems">
+                        <where>ProformaNr = '{$input.in_ProformaNr}' and ServCode = 'DISB063'</where>
+                     </query>
+                  </operation>
+                  <link id="kq911ubl" targetId="kq911ubk"/>
+               </assignment>
+               <container id="kq911ubk" type="exclusive">
+                  <title>RecordCount</title>
+                  <flow id="kq911ubo">
+                     <assignment id="kskfichn">
+                        <title>Assignment to tmp_InvoiceHeader, tmp_InvoiceItems etc.</title>
+                        <operation source="formula" to="temp.tmp_InvoiceHeader">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceHeaderList)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_InvoiceItems">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceItemsList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AcctTrans">
+                           <expression language="XQuery">list:head($temp.tmp_AcctTransList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_SecurityDeposit_Service_Count">
+                           <expression language="XQuery">list:count($temp.tmp_SecurityDeposit_Record )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AcctTrans_SecurityDeposit_Count">
+                           <expression language="XQuery">list:count($temp.tmp_AcctTrans_SecurityDepsoit_Record )</expression>
+                        </operation>
+                        <link id="l5tkj20y" targetId="kq911uby"/>
+                     </assignment>
+                     <assignment id="kq911uby">
+                        <title>Assignment to tmp_InvoiceHeader, tmp_InvoiceItems etc.</title>
+                        <operation source="formula" to="temp.tmp_InvoiceHeader">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceHeaderList)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_InvoiceItems">
+                           <expression language="XQuery">list:head($temp.tmp_InvoiceItemsList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AcctTrans">
+                           <expression language="XQuery">list:head($temp.tmp_AcctTransList )</expression>
+                        </operation>
+                        <operation source="query" to="temp.tmp_RecurringFees">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:RecurringFees">
+                              <where>EntCode = '{$temp.tmp_InvoiceHeader.RefCode}' and MatterCode = '{$temp.tmp_InvoiceHeader.MatterCode}' and seqnr = (select max(seqnr) from RecurringFees where entcode = '{$temp.tmp_InvoiceHeader.RefCode}' and  mattercode ='{$temp.tmp_InvoiceHeader.MatterCode}')</where>
+                           </query>
+                        </operation>
+                        <operation source="field" to="temp.tmp_RefCode">temp.tmp_InvoiceHeader.RefCode</operation>
+                        <operation source="query" to="temp.tmp_Matters">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                              <where>RefCode = '{$temp.tmp_InvoiceHeader.RefCode}' and MatterCode = '{$temp.tmp_InvoiceHeader.MatterCode}'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ServCode_Prefix">
+                           <expression language="XQuery">fn:substring($temp.tmp_InvoiceItems.ServCode , 1, 4)</expression>
+                        </operation>
+                        <link id="ktsr6rz2" targetId="ktsr6rz1"/>
+                     </assignment>
+                     <assignment id="ktsr6rz1">
+                        <title>Assignment to tmp_ProductCode, tmp_ProfitCenter_APIT_Record etc.</title>
+                        <operation source="query" to="temp.tmp_ProductCode">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:LookValues">
+                              <where>TabCode = 'MTTR' and ElCode = '{$temp.tmp_Matters.MatterType}'</where>
+                           </query>
+                        </operation>
+                        <operation source="query" to="temp.tmp_ProfitCenter_APIT_Record">
+                           <query advanceQuery="true" from="AppConnectionVPCdbo:UserTables">
+                              <where>TabCode = 'APIT' and Name = 'ProfitCenter' and ElNote = '{$temp.tmp_ServCode_Prefix}' and InUse = '1'</where>
+                           </query>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_ProfitCenter_APIT_Record_Count">
+                           <expression language="XQuery">list:count($temp.tmp_ProfitCenter_APIT_Record)</expression>
+                        </operation>
+                        <link id="l3y7g3a5" targetId="l3y7g3a4"/>
+                     </assignment>
+                     <assignment id="l3y7g3a4">
+                        <title>Assignment to AccountingDocumentType, BusinessTransactionType etc.</title>
+                        <operation source="formula"
+                                   to="output.out_JournalInvoiceHeader[1]/AccountingDocumentType">
+                           <expression language="XQuery">util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"), "DG",util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "DR"),"DR",util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "A"),"DR",$temp.tmp_InvoiceHeader.InvoiceType)))</expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_JournalInvoiceHeader[1]/BusinessTransactionType">RFBU</operation>
+                        <operation source="formula" to="output.out_JournalInvoiceHeader[1]/CompanyCode">
+                           <expression language="XQuery">util:iif(fn:string-length($temp.tmp_InvoiceHeader.RevEntity)=5, fn:substring($temp.tmp_InvoiceHeader.RevEntity, 1, 2) || fn:substring($temp.tmp_InvoiceHeader.RevEntity, 4, 2) ,$temp.tmp_InvoiceHeader.RevEntity)</expression>
+                        </operation>
+                        <operation source="constant" to="output.out_JournalInvoiceHeader[1]/CreatedByUser">CC0000000022</operation>
+                        <operation source="field" to="output.out_JournalInvoiceHeader[1]/CreationDate">temp.tmp_InvoiceHeader.DateCreate</operation>
+                        <operation source="formula" to="output.out_JournalInvoiceHeader[1]/DocumentDate">
+                           <expression language="XQuery">date:toChar($temp.tmp_InvoiceHeader.DateInvoice , 'yyyy-MM-dd') </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_JournalInvoiceHeader[1]/DocumentHeaderText">
+                           <expression language="XQuery">'VPC-Billing-' || $output.out_JournalInvoiceHeader[1]/AccountingDocumentType </expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_JournalInvoiceHeader[1]/DocumentReferenceID">
+                           <expression language="XQuery">util:iif( util:isNull($temp.tmp_InvoiceHeader.InvoiceRef) ,
+$temp.tmp_InvoiceHeader.InvoiceNr,fn:substring($temp.tmp_InvoiceHeader.InvoiceRef, 1, 16))</expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_JournalInvoiceHeader[1]/OriginalReferenceDocumentType">BKPFF</operation>
+                        <operation source="formula" to="output.out_JournalInvoiceHeader[1]/PostingDate">
+                           <expression language="XQuery">date:toChar($temp.tmp_InvoiceHeader.DateVoucher, 'yyyy-MM-dd')</expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_JournalInvoiceHeader[1]/SenderBusinessSystemId">VIP</operation>
+                        <operation source="formula"
+                                   to="output.out_JournalInvoiceHeader[1]/CurrentDatetime">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_JournalInvoiceHeader[1]/BulkRequestID">
+                           <expression language="XQuery">util:iif(fn:string-length($temp.tmp_InvoiceHeader.RevEntity)=5, fn:substring($temp.tmp_InvoiceHeader.RevEntity, 1, 2) || fn:substring($temp.tmp_InvoiceHeader.RevEntity, 4, 2) ,$temp.tmp_InvoiceHeader.RevEntity)||'-' || $temp.tmp_InvoiceHeader.InvoiceNr||'-'|| date:toChar(fn:current-dateTime() , 'yyyy-MM-dd')</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_JournalInvoiceHeader[1]/RequestID">
+                           <expression language="XQuery">util:iif(fn:string-length($temp.tmp_InvoiceHeader.RevEntity)=5, fn:substring($temp.tmp_InvoiceHeader.RevEntity, 1, 2) || fn:substring($temp.tmp_InvoiceHeader.RevEntity, 4, 2) ,$temp.tmp_InvoiceHeader.RevEntity)||'-'||$temp.tmp_InvoiceHeader.InvoiceNr</expression>
+                        </operation>
+                        <operation source="formula"
+                                   to="output.out_JournalInvoiceHeader[1]/TaxDeterminationDate">
+                           <expression language="XQuery">util:iif(util:isNull($temp.tmp_InvoiceHeader.DateVoucher), $output.out_JournalInvoiceHeader[1]/PostingDate , date:toChar($temp.tmp_InvoiceHeader.DateVoucher, 'yyyy-MM-dd') )</expression>
+                        </operation>
+                        <operation source="field"
+                                   to="output.out_JournalInvoiceHeader[1]/Reference1InDocumentHeader">temp.tmp_InvoiceHeader.MatterCode</operation>
+                        <operation source="constant"
+                                   to="output.out_JournalInvoiceHeader[1]/Reference2InDocumentHeader">VPC-API-01</operation>
+                        <operation source="field" to="output.out_JournalInvoiceHeader[1]/VatAmount">temp.tmp_InvoiceHeader.VATamount</operation>
+                        <operation source="field" to="output.out_JournalInvoiceHeader[1]/InvoiceType">temp.tmp_InvoiceHeader.InvoiceType</operation>
+                        <link id="l5c18wrw" targetId="l5c18wrv"/>
+                     </assignment>
+                     <assignment id="kq911ude">
+                        <title>Move to Next Invoice Item</title>
+                        <operation source="formula" to="temp.tmp_InvoiceItemsList">
+                           <expression language="XQuery">list:tail($temp.tmp_InvoiceItemsList )</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_AcctTransList">
+                           <expression language="XQuery">list:tail($temp.tmp_AcctTransList )</expression>
+                        </operation>
+                     </assignment>
+                     <container id="l5c18wrv" type="exclusive">
+                        <title>RecurringFees</title>
+                        <flow id="l5c18wrz">
+                           <assignment id="l5c18wsg">
+                              <title>Set RecurringFee LookUpValue</title>
+                              <operation source="formula" to="temp.tmp_RecurringFee_LookUpValue">
+                                 <expression language="XQuery">$temp.tmp_RecurringFees.UserLookval </expression>
+                              </operation>
+                           </assignment>
+                           <link id="l5c18ws0" targetId="l5c18wrv" type="containerLink"/>
+                        </flow>
+                        <flow id="l5c18ws2">
+                           <link id="l5c18ws3" targetId="l5c18wrv" type="containerLink"/>
+                        </flow>
+                        <link id="l5c18wry" targetId="l5c18wrz" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_RecurringFees}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l5c18ws1" targetId="l5c18ws2" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_RecurringFees}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l5c18wrx" targetId="l3y7g2yv"/>
+                     </container>
+                     <container id="l3y7g2yv" type="exclusive">
+                        <title>Service Code</title>
+                        <flow id="l3y7g2yz">
+                           <assignment id="l3y7g3rb">
+                              <title>SecurityDeposit-H Assignment to Items, DebtorItems, ProductTaxItems etc.</title>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceItems.LineInvCur = 0, $temp.tmp_InvoiceItems.LineInvCur, fn:abs($temp.tmp_InvoiceItems.LineInvCur) * -1)</expression>
+                              </operation>
+                              <operation source="field" to="output.out_JournalInvoiceDebtorItem[1]/Debtor">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/ReferenceDocumentItem">1</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/CurrencyCode">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceHeader.CurCode = 'USD', $temp.tmp_InvoiceHeader.CurCode , $temp.tmp_InvoiceHeader.CurCode) </expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/SpecialGLCode">H</operation>
+                              <operation source="field" to="output.out_JournalInvoiceDebtorItem[1]/TaxCode">input.in_SecurityDeposit_TaxCode</operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/YY1_SOPCustomer">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">(:util:iif($temp.tmp_InvoiceItems.VatLineCur = 0, $temp.tmp_InvoiceItems.VatLineCur, fn:abs($temp.tmp_InvoiceItems.VatLineCur) * -1):)
+
+util:iif(not(util:isNull($input.in_SecurityDeposit_TaxCode )), util:iif($input.in_SecurityDeposit_TaxAmount = 0, $input.in_SecurityDeposit_TaxAmount, fn:abs($input.in_SecurityDeposit_TaxAmount) * -1), 0) 
+</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/CurrencyCode">temp.tmp_InvoiceHeader.CurCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxCode">
+                                 <expression language="XQuery">$input.in_SecurityDeposit_TaxCode </expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxItemClassification">
+                                 <expression language="XQuery">util:iif($output.out_JournalInvoiceProductTaxItem[1]/TaxCode = '0A' or $output.out_JournalInvoiceProductTaxItem[1]/TaxCode = 'Y2' , 'MWAS', 'MWS') </expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxBaseAmountInTransCrcy">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceItems.LineInvCur=0, $temp.tmp_InvoiceItems.LineInvCur, fn:abs($temp.tmp_InvoiceItems.LineInvCur) * -1)
+</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/ConditionType">MWAS</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem_SecurityDeposit">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceDebtorItem_SecurityDeposit, $output.out_JournalInvoiceDebtorItem)</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem_SecurityDeposit">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceProductTaxItem_SecurityDeposit, $output.out_JournalInvoiceProductTaxItem)</expression>
+                              </operation>
+                              <link id="l3yaf7ff" targetId="l3yaf7fe"/>
+                           </assignment>
+                           <assignment id="l3yaf7fe">
+                              <title>SecurityDeposit-I Assignment to Items, DebtorItems, ProductTaxItems etc.</title>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">fn:abs($temp.tmp_InvoiceItems.LineInvCur)</expression>
+                              </operation>
+                              <operation source="field" to="output.out_JournalInvoiceDebtorItem[1]/Debtor">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/ReferenceDocumentItem">2</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/CurrencyCode">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceHeader.CurCode = 'USD', $temp.tmp_InvoiceHeader.CurCode , $temp.tmp_InvoiceHeader.CurCode) </expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/SpecialGLCode">I</operation>
+                              <operation source="field" to="output.out_JournalInvoiceDebtorItem[1]/TaxCode">input.in_SecurityDeposit_TaxCode</operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/YY1_SOPCustomer">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">(:fn:abs($temp.tmp_InvoiceItems.VatLineCur):)
+
+util:iif(not(util:isNull($input.in_SecurityDeposit_TaxCode )), fn:abs($input.in_SecurityDeposit_TaxAmount), 0) </expression>
+                              </operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/CurrencyCode">temp.tmp_InvoiceHeader.CurCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxCode">
+                                 <expression language="XQuery">$input.in_SecurityDeposit_TaxCode </expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxItemClassification">
+                                 <expression language="XQuery">util:iif($output.out_JournalInvoiceProductTaxItem[1]/TaxCode = '0A' or $output.out_JournalInvoiceProductTaxItem[1]/TaxCode = 'Y2' , 'MWAS', 'MWS') </expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxBaseAmountInTransCrcy">
+                                 <expression language="XQuery">fn:abs($temp.tmp_InvoiceItems.LineInvCur)</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/ConditionType">MWAS</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem_SecurityDeposit">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceDebtorItem_SecurityDeposit, $output.out_JournalInvoiceDebtorItem)</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem_SecurityDeposit">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceProductTaxItem_SecurityDeposit, $output.out_JournalInvoiceProductTaxItem)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l3y7g2z0" targetId="l3y7g2yv" type="containerLink"/>
+                        </flow>
+                        <flow id="l3y7g2z2">
+                           <container id="l440duns" type="exclusive">
+                              <title>SecurityDeposit_Service_Count</title>
+                              <flow id="l440dunv">
+                                 <assignment id="l440duuq">
+                                    <title>Fetch SD Amount</title>
+                                    <operation source="field" to="temp.tmp_SecurityDeposit_LinePrice">temp.tmp_SecurityDeposit_Record.LineInvCur</operation>
+                                    <operation source="field" to="temp.tmp_SecurityDeposit_VATPrice">temp.tmp_SecurityDeposit_Record.VatLineCur</operation>
+                                 </assignment>
+                                 <link id="l440dunw" targetId="l440duns" type="containerLink"/>
+                              </flow>
+                              <flow id="l440duny">
+                                 <link id="l440dunz" targetId="l440duns" type="containerLink"/>
+                              </flow>
+                              <link id="l440dunu" targetId="l440dunv" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="greater-than">
+                                       <arg name="left">{$temp.tmp_SecurityDeposit_Service_Count}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l440dunx" targetId="l440duny" type="containerLink"/>
+                              <link id="l45cb2cz" targetId="l45cb2cy"/>
+                           </container>
+                           <container id="l45cb2cy" type="exclusive">
+                              <title>tmp_ProfitCenter_APIT_Record_Count</title>
+                              <flow id="l45cb2d2">
+                                 <assignment id="l45cb2fg">
+                                    <title>Assignment to ProfitCenter</title>
+                                    <operation source="formula" to="output.out_JournalInvoiceItem[1]/ProfitCenter">
+                                       <expression language="XQuery">util:iif(util:isNull($temp.tmp_ProfitCenter_APIT_Record.TagValues), '9900', $temp.tmp_ProfitCenter_APIT_Record.TagValues) </expression>
+                                    </operation>
+                                 </assignment>
+                                 <link id="l45cb2d3" targetId="l45cb2cy" type="containerLink"/>
+                              </flow>
+                              <flow id="l45cb2d5">
+                                 <assignment id="l45cb2hl">
+                                    <title>Assignment to ProfitCenter</title>
+                                    <operation source="constant" to="output.out_JournalInvoiceItem[1]/ProfitCenter">9900</operation>
+                                 </assignment>
+                                 <link id="l45cb2d6" targetId="l45cb2cy" type="containerLink"/>
+                              </flow>
+                              <link id="l45cb2d1" targetId="l45cb2d2" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="greater-than">
+                                       <arg name="left">{$temp.tmp_ProfitCenter_APIT_Record_Count}</arg>
+                                       <arg name="right">{0}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l45cb2d4" targetId="l45cb2d5" type="containerLink"/>
+                              <link id="l5n47qer" targetId="l5n47qeq"/>
+                           </container>
+                           <assignment id="l5n47qeq">
+                              <title>Fetch Service Master</title>
+                              <operation source="query" to="temp.tmp_ServiceMaster">
+                                 <query advanceQuery="true" from="AppConnectionVPCdbo:ServiceMaster">
+                                    <where>ServCode = '{$temp.tmp_InvoiceItems.ServCode}'</where>
+                                 </query>
+                              </operation>
+                              <link id="l5n47qes" targetId="l440durl"/>
+                           </assignment>
+                           <assignment id="l440durl">
+                              <title>Assignment to AmountInTransactionCurrency, CurrencyCode etc.</title>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"),($temp.tmp_InvoiceItems.LineInvCur) , -1 * ($temp.tmp_InvoiceItems.LineInvCur))</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/CurrencyCode">
+                                 <expression language="XQuery">$temp.tmp_InvoiceHeader.CurCode </expression>
+                              </operation>
+                              <operation source="field" to="output.out_JournalInvoiceItem[1]/GLAccount">temp.tmp_AcctTrans.AcctCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceItem[1]/AccountAssignmentType">
+                                 <expression language="XQuery">util:iif(
+fn:starts-with($temp.tmp_AcctTrans.AcctCode , '1') or
+fn:starts-with($temp.tmp_AcctTrans.AcctCode , '2') or
+fn:starts-with($temp.tmp_AcctTrans.AcctCode , '3'), '', util:iif(fn:starts-with($temp.tmp_AcctTrans.AcctCode , '4'), 'EO', util:iif(fn:starts-with($temp.tmp_AcctTrans.AcctCode , '5'), 'PR', 'EO')))</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceHeader.CurCode = 'USD', $temp.tmp_InvoiceHeader.InvoiceBase , xs:decimal(util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"),-1 * $temp.tmp_InvoiceHeader.InvoiceTotal,$temp.tmp_InvoiceHeader.InvoiceTotal  ))) - $temp.tmp_SecurityDeposit_LinePrice </expression>
+                              </operation>
+                              <operation source="field" to="output.out_JournalInvoiceDebtorItem[1]/Debtor">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/ReferenceDocumentItem">temp.tmp_AcctTrans.LineNr</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceDebtorItem[1]/CurrencyCode">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceHeader.CurCode = 'USD', $temp.tmp_InvoiceHeader.CurCode , $temp.tmp_InvoiceHeader.CurCode) </expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/AmountInTransactionCurrency">
+                                 <expression language="XQuery">xs:decimal(util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"),($temp.tmp_InvoiceItems.VatLineCur) , -1 * ($temp.tmp_InvoiceItems.VatLineCur) )) - $temp.tmp_SecurityDeposit_VATPrice  </expression>
+                              </operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/CurrencyCode">temp.tmp_InvoiceHeader.CurCode</operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxCode">
+                                 <expression language="XQuery">util:iif(fn:starts-with($temp.tmp_InvoiceHeader.RevEntity, 'SG')
+		, util:iif($temp.tmp_InvoiceItems.TaxCode = 'SE'
+					, 'SO' 
+					, $temp.tmp_InvoiceItems.TaxCode)
+		, $temp.tmp_InvoiceItems.TaxCode)</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxItemClassification">
+                                 <expression language="XQuery">util:iif($output.out_JournalInvoiceProductTaxItem[1]/TaxCode = '0A' or $output.out_JournalInvoiceProductTaxItem[1]/TaxCode = 'Y2' , 'MWAS', 'MWS') </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_TaxBaseAmountInTransCrcy_sum">
+                                 <expression language="XQuery">$temp.tmp_TaxBaseAmountInTransCrcy_sum +(-1* $output.out_JournalInvoiceItem[1]/AmountInTransactionCurrency )</expression>
+                              </operation>
+                              <operation source="formula"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/TaxBaseAmountInTransCrcy">
+                                 <expression language="XQuery">xs:decimal( util:iif(fn:starts-with($temp.tmp_InvoiceHeader.InvoiceType , "CR"),  $temp.tmp_InvoiceItems.LineInvCur, -1 * $temp.tmp_InvoiceItems.LineInvCur))</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/TaxCode">
+                                 <expression language="XQuery">$output.out_JournalInvoiceProductTaxItem[1]/TaxCode</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_JournalInvoiceProductTaxItem[1]/ConditionType">MWAS</operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/DocumentItemText">
+                                 <expression language="XQuery">util:iif(util:isNull($temp.tmp_InvoiceItems.Description) or $temp.tmp_InvoiceItems.Description = ''
+,fn:substring($temp.tmp_ServiceMaster.Description, 1, 50)
+,fn:substring($temp.tmp_InvoiceItems.Description , 1, 50))
+
+</expression>
+                              </operation>
+                              <operation source="field"
+                                         to="output.out_JournalInvoiceItem[1]/AssignmentReference">temp.tmp_InvoiceHeader.MatterCode</operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/Material">
+                                 <expression language="XQuery">util:iif($temp.tmp_InvoiceItems.ServiceType = 'DB', $temp.tmp_InvoiceItems.ServCode,
+util:iif(fn:ends-with($temp.tmp_InvoiceItems.ServCode,'T'),fn:substring($temp.tmp_InvoiceItems.ServCode, 1, fn:string-length($temp.tmp_InvoiceItems.ServCode)-1), $temp.tmp_InvoiceItems.ServCode)|| fn:substring($temp.tmp_InvoiceHeader.RevEntity, 1, 2) || $temp.tmp_ProductCode.ConvertValues )</expression>
+                              </operation>
+                              <operation source="field" to="output.out_JournalInvoiceItem[1]/YY1_SOPCustomer">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="field" to="output.out_JournalInvoiceItem[1]/Customer">temp.tmp_InvoiceHeader.RefCode</operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/SoldMaterial">
+                                 <expression language="XQuery">$output.out_JournalInvoiceItem[1]/Material </expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/WBSElement">
+                                 <expression language="XQuery">'VPC'|| '-' || $temp.tmp_InvoiceHeader.RefCode   || '-' || fn:substring($temp.tmp_InvoiceItems.SourceMatterCode, 1, 11) </expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem[1]/CompanyCode">
+                                 <expression language="XQuery">$temp.tmp_InvoiceItems.InterRevEntity </expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceItem_Array">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceItem_Array,$output.out_JournalInvoiceItem)</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceDebtorItem_Array">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceDebtorItem_Array,$output.out_JournalInvoiceDebtorItem)</expression>
+                              </operation>
+                              <operation source="formula" to="output.out_JournalInvoiceProductTaxItem_Array">
+                                 <expression language="XQuery">list:append($output.out_JournalInvoiceProductTaxItem_Array,$output.out_JournalInvoiceProductTaxItem)</expression>
+                              </operation>
+                           </assignment>
+                           <link id="l3y7g2z3" targetId="l3y7g2yv" type="containerLink"/>
+                        </flow>
+                        <link id="l3y7g2yy" targetId="l3y7g2yz" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_InvoiceItems.ServCode}</arg>
+                                 <arg name="right">DISB063</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l3y7g2z1" targetId="l3y7g2z2" type="containerLink"/>
+                        <link id="l5tkj1ua" targetId="kq911ude"/>
+                     </container>
+                     <link id="kq911ubp" targetId="kq911ubk" type="containerLink"/>
+                  </flow>
+                  <flow id="kq911ubr">
+                     <end id="kq911uc6"/>
+                  </flow>
+                  <link id="kq911ubn" targetId="kq911ubo" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_AcctTransList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kq911ubq" targetId="kq911ubr" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_AcctTransList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kq911uc3" targetId="kq911uc2"/>
+               </container>
+               <jumpTo id="kq911uc2">
+                  <link id="kq911udy" targetId="kq911ubk"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>8ce15258-e724-4e92-aac9-271cdc4e38a0</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-07-08T06:34:15Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-08-25T06:40:31Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "5",
+	 "in_SecurityDeposit_TaxAmount": "0",
+	 "in_SecurityDeposit_TaxCode": ""
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a13cc003-eac7-4fc1-89ed-4cd6e6b3b378</ns1:Id>
+               <ns1:Name>test</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-17T11:18:00Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Swapnil.Shrungare</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-06-26T11:49:24Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_ProformaNr": "53"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7OMFHIcMWHeehDMooenaqX</types1:GUID>
+      <types1:DisplayName>ProcessGetJournalInvoiceEntry</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.713Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

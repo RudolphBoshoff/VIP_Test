@@ -1,0 +1,719 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CN5gjn9OQcjoYsj-gt-1788989-2022-06-30T15:01:12.465Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessAPI10PostDis</types1:Name>
+      <types1:ParentFlowIds>MMnGbciZBpDUQbg-gt-12498717-2021-10-08T06:53:46.21Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>anupama.rao@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-06-30T15:01:12Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-05T07:27:42Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-05T07:28:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessAPI10PostDis/ProcessAPI10PostDis.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessAPI10PostDis"
+                  name="ProcessAPI10PostDis"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_AccountDoc"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_VPCToken" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_LedgerGLLineItem"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_P_KeyValue1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_KeyValue2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_KeyValue3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_Value1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_Value2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_xml" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Any" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Cnt" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">http://10.104.10.15:8089/</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_usernameAPI" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">vipapi</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">Today123</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_TimeBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_ApproveBody" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WBSElementExternalID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_DisBody" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DB" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:API10_Processing_STG</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_DB_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:API10_Processing_STG</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Posted_Seq" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_P_CompanyCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_Hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_Username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_Password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_UnitCur" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_AITCur" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_URN_VPC_Codeapi10" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_APIName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_eventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Run_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l93z6qlk" targetId="kw0blx7x"/>
+               </start>
+               <assignment id="kw0blx7x">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_SAP_Hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SAP_Password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SAP_Username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_VPC_password">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_URN_VPC_Codeapi10">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_API10_UCODE')</expression>
+                  </operation>
+                  <link id="kw0blx7z" targetId="kuicdjuq"/>
+               </assignment>
+               <assignment id="kuicdjuq">
+                  <title>Assignment to tmp_DB, tmp_DB_List</title>
+                  <operation source="query" to="temp.tmp_DB">
+                     <query advanceQuery="true" from="ConnectionDQMetadata-1:API10_Processing_STG">
+                        <where>AccountingDocument = '{$input.in_AccountDoc}' and LedgerGLLineItem = '{$input.in_LedgerGLLineItem}' and IsTime='false'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_DB_List">
+                     <query advanceQuery="true" from="ConnectionDQMetadata-1:API10_Processing_STG">
+                        <where>AccountingDocument = '{$input.in_AccountDoc}' and LedgerGLLineItem = '{$input.in_LedgerGLLineItem}' and IsTime='false'</where>
+                     </query>
+                  </operation>
+                  <link id="kuicdjv7" targetId="kuicdjv6"/>
+               </assignment>
+               <assignment id="kuicdjv6">
+                  <title>set WBSElementExternalID Dis</title>
+                  <operation source="formula" to="temp.tmp_WBSElementExternalID">
+                     <expression language="XQuery">fn:substring-after(fn:substring-after($temp.tmp_DB_List[1]/WBSElementExternalID   , '-'),'-')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_AITCur">
+                     <expression language="XQuery">$temp.tmp_DB[1]/AmountInTransactionCurrency</expression>
+                  </operation>
+                  <link id="l7rb59e9" targetId="l1w1ijf7"/>
+               </assignment>
+               <assignment id="l1w1ijf7">
+                  <title>Unit Calculation</title>
+                  <operation source="formula" to="temp.tmp_UnitCur">
+                     <expression language="XQuery">fn:round(util:iif($temp.tmp_DB[1]/Quantity &gt;0,xs:decimal($temp.tmp_AITCur ) div $temp.tmp_DB[1]/Quantity, xs:decimal($temp.tmp_AITCur )), 2)</expression>
+                  </operation>
+                  <link id="l1w1ijf9" targetId="kuicdjsi"/>
+               </assignment>
+               <assignment id="kuicdjsi">
+                  <title>Body VPC Dis</title>
+                  <operation source="formula" to="temp.tmp_VPC_DisBody">
+                     <expression language="XQuery">&lt;root&gt;  &lt;ucode&gt;{$temp.tmp_URN_VPC_Codeapi10}&lt;/ucode&gt;
+  &lt;activDate&gt;{fn:current-date()} &lt;/activDate&gt;
+  &lt;refCode&gt;{$temp.tmp_DB_List[1]/YY1_Customer_PPH  } &lt;/refCode&gt;
+  &lt;matterCode&gt;{$temp.tmp_WBSElementExternalID}&lt;/matterCode&gt;
+  &lt;servCode&gt;{$temp.tmp_DB[1]/ServiceCode }&lt;/servCode&gt;
+  &lt;transCur&gt;{$temp.tmp_DB[1]/TransactionCurrency  } &lt;/transCur&gt;
+  &lt;nrUnits&gt;{fn:abs($temp.tmp_DB[1]/Quantity) }&lt;/nrUnits&gt;
+  &lt;xRate&gt;0.00&lt;/xRate&gt;
+  &lt;totalCur&gt;{fn:round($temp.tmp_AITCur,2)}&lt;/totalCur&gt;
+  &lt;unitCur&gt;{$temp.tmp_UnitCur }&lt;/unitCur&gt;
+  &lt;description&gt;{$temp.tmp_DB[1]/ServiceCodeDescription } &lt;/description&gt;
+  &lt;recFeeNumber&gt;0&lt;/recFeeNumber&gt;
+&lt;/root&gt;</expression>
+                  </operation>
+                  <link id="kuicdjxs" targetId="kuicdjkp"/>
+               </assignment>
+               <eventContainer id="kuicdjkp">
+                  <service id="kuicdjkt">
+                     <title>Post Disbursement to VPC</title>
+                     <serviceName>AppSvcAPI10-VPC:Disbursement</serviceName>
+                     <serviceGUID>44qsMmMseDkcLnq0QK4oye</serviceGUID>
+                     <serviceInput>
+                        <parameter name="token" source="field" updatable="true">input.in_VPCToken</parameter>
+                        <parameter name="body" source="formula">
+                           <expression language="XQuery">$temp.tmp_VPC_DisBody 
+</expression>
+                        </parameter>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_VPC_hostname</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="kuicdjkq">
+                     <create id="l93z6odv">
+                        <title>Log Success</title>
+                        <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                        <createInput>
+                           <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="Code" source="constant" updatable="true">200</parameter>
+                           <parameter name="Description" source="constant" updatable="true">Post Disbursement to VPC successful.</parameter>
+                           <parameter name="DateProcessStart" source="formula" updatable="true">
+                              <expression language="XQuery">fn:current-dateTime()</expression>
+                           </parameter>
+                           <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="DATA_KEY" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat($temp.tmp_WBSElementExternalID,'-'
+, $temp.tmp_DB_List[1]/YY1_Customer_PPH)</expression>
+                           </parameter>
+                           <parameter name="IICS_PROCESS_NAME" source="constant" updatable="true">ProcessAPI10PostDis</parameter>
+                        </createInput>
+                        <link id="l93z6odw" targetId="kuj6t39f"/>
+                     </create>
+                     <assignment id="kuj6t39f">
+                        <title>Assignment to tmp_Posted_Seq</title>
+                        <operation source="field" to="temp.tmp_Posted_Seq">output.vpc_Output</operation>
+                     </assignment>
+                     <link id="kuicdjkw" targetId="kuicdjkp" type="containerLink"/>
+                  </flow>
+                  <flow id="kuicdjkr">
+                     <subflow id="kuicdjks">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat('API10_',$input.in_AccountDoc  )
+</expression>
+                           </parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo_DIS[1]/code</parameter>
+                           <parameter name="i_Error" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat('Request payload - ', util:toJSON($temp.tmp_VPC_DisBody ))</expression>
+                           </parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo_DIS[1]/reason</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="i_DataKey" source="formula" updatable="true">
+                              <expression language="XQuery">fn:concat($temp.tmp_WBSElementExternalID,'-'
+, $temp.tmp_DB_List[1]/YY1_Customer_PPH)
+</expression>
+                           </parameter>
+                           <parameter name="i_IICSProcessname" source="constant" updatable="true">ProcessAPI10PostDis</parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Post Disbursement to VPC</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">
+$temp.tmp_VPC_hostname || '/api/V8.0/PracticeManagement/TimeDisbursement/Time'
+</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">util:toJSON($temp.tmp_VPC_DisBody )</expression>
+                           </parameter>
+                           <parameter name="i_ProcessStartTime" source="formula" updatable="true">
+                              <expression language="XQuery">fn:current-dateTime()</expression>
+                           </parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="kuj5gdzg" targetId="kuj5gdzf"/>
+                     </subflow>
+                     <end id="kuj5gdzf">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="kuicdjku" targetId="kuicdjkq" type="containerLink"/>
+                  <link id="kuj5gdxr" targetId="kuj5gdxq"/>
+                  <events>
+                     <catch faultField="faultInfo_DIS" id="ktii07a3" interrupting="true">
+                        <link id="kuicdjkv" targetId="kuicdjkr" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="kuj5gdxq" type="exclusive">
+                  <title>vpc_ResCode</title>
+                  <flow id="kuj5gdy9">
+                     <assignment id="kuj6t3ey">
+                        <title>Assignment to tmp_VPC_ApproveBody</title>
+                        <operation source="formula" to="temp.tmp_VPC_ApproveBody">
+                           <expression language="XQuery">&lt;root&gt;
+&lt;AppUcode&gt;{$temp.tmp_URN_VPC_Codeapi10}&lt;/AppUcode&gt;
+&lt;AppDate&gt;{fn:adjust-date-to-timezone(fn:current-date())}&lt;/AppDate&gt;
+&lt;/root&gt;
+</expression>
+                        </operation>
+                        <link id="kuj6t3ez" targetId="kuj6t5hn"/>
+                     </assignment>
+                     <eventContainer id="kuj6t5hn">
+                        <service id="kuj6t3e4">
+                           <title>Approve In VPC</title>
+                           <serviceName>AppSvcAPI10-VPC:DisbursementApprove</serviceName>
+                           <serviceGUID>44qsMmMseDkcLnq0QK4oye</serviceGUID>
+                           <serviceInput>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_VPC_hostname</parameter>
+                              <parameter name="token" source="field" updatable="true">input.in_VPCToken</parameter>
+                              <parameter name="body" source="formula">
+                                 <expression language="XQuery">$temp.tmp_VPC_ApproveBody</expression>
+                              </parameter>
+                              <parameter name="in_SeqNr" source="formula">
+                                 <expression language="XQuery">fn:replace(fn:substring-before(fn:substring-after($temp.tmp_Posted_Seq,'&lt;value&gt;'),'&lt;/value&gt;'),'/','')</expression>
+                              </parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kuj6t5hp">
+                           <create id="l93z6q34">
+                              <title>Log Success 1</title>
+                              <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                              <createInput>
+                                 <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                 <parameter name="IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="Code" source="constant" updatable="true">200</parameter>
+                                 <parameter name="Description" source="constant" updatable="true">Disbursement successfully approves in VPC</parameter>
+                                 <parameter name="DateProcessStart" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:current-dateTime()</expression>
+                                 </parameter>
+                                 <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                                 <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="DATA_KEY" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:concat($temp.tmp_WBSElementExternalID,'-'
+, $temp.tmp_DB_List[1]/YY1_Customer_PPH)</expression>
+                                 </parameter>
+                                 <parameter name="IICS_PROCESS_NAME" source="constant" updatable="true">ProcessAPI10PostDis</parameter>
+                              </createInput>
+                           </create>
+                           <link id="kuj6t5hq" targetId="kuj6t5hn" type="containerLink"/>
+                        </flow>
+                        <flow id="kuj6t5hs">
+                           <subflow id="kuj6t5k1">
+                              <title>Process_P2B_Event_ErrorLog 1</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.faultInfo_App_VPC[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.faultInfo_App_VPC[1]/detail</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.faultInfo_App_VPC[1]/reason</parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">input.in_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:concat($temp.tmp_WBSElementExternalID,'-'
+, $temp.tmp_DB_List[1]/YY1_Customer_PPH)
+</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="constant" updatable="true">ProcessAPI10PostDis</parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">Approve In VPC</parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">$temp.tmp_VPC_hostname || '/api/V8.0/PracticeManagement/TimeDisbursement/Disbursements/Approve/( $in_SeqNr )'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toJSON($temp.tmp_VPC_ApproveBody)</expression>
+                                 </parameter>
+                                 <parameter name="i_ProcessStartTime" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:current-dateTime()</expression>
+                                 </parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="kuj6t5l4" targetId="kuj6t5l3"/>
+                           </subflow>
+                           <end id="kuj6t5l3">
+                              <title>End Failed Approval</title>
+                           </end>
+                        </flow>
+                        <link id="kuj6t5ho" targetId="kuj6t5hp" type="containerLink"/>
+                        <link id="kuj6t3l6" targetId="kuj6t3l5"/>
+                        <events>
+                           <catch faultField="faultInfo_App_VPC" id="kuj6t5hm" interrupting="true">
+                              <link id="kuj6t5hr" targetId="kuj6t5hs" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <container id="kuj6t3l5" type="exclusive">
+                        <title>Code1</title>
+                        <flow id="kuj6t3lp">
+                           <assignment id="l98i5wa6">
+                              <title>Assignment to tmp_P_CompanyCode, tmp_P_KeyValue1 etc.</title>
+                              <operation source="field" to="temp.tmp_P_CompanyCode">temp.tmp_DB[1]/CompanyCode</operation>
+                              <operation source="field" to="temp.tmp_P_KeyValue1">temp.tmp_DB[1]/AccountingDocument</operation>
+                              <operation source="field" to="temp.tmp_P_KeyValue2">temp.tmp_DB[1]/FiscalYear</operation>
+                              <operation source="field" to="temp.tmp_P_KeyValue3">temp.tmp_DB[1]/LedgerGLLineItem</operation>
+                              <operation source="field" to="temp.tmp_P_Value1">temp.tmp_DB[1]/WBSElementExternalID</operation>
+                              <operation source="field" to="temp.tmp_P_Value2">temp.tmp_DB[1]/ServiceCode</operation>
+                              <link id="l98i5wa7" targetId="l8mk6k6x"/>
+                           </assignment>
+                           <subflow id="l8mk6k6x">
+                              <title>Process_POST_YY1_LoggingTable</title>
+                              <subflowGUID>dz3hd9kqiUDgzx2JbzI8gU</subflowGUID>
+                              <subflowPath>Process_POST_YY1_LoggingTable</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_Body" source="formula" updatable="true">
+                                    <expression language="XQuery">&lt;root&gt;
+  &lt;ID&gt;VPC&lt;/ID&gt;
+  &lt;SubID&gt;API10&lt;/SubID&gt;
+  &lt;CompanyCode&gt;{$temp.tmp_P_CompanyCode }&lt;/CompanyCode&gt;
+  &lt;KeyValue1&gt;{substring(
+  concat('0000000000', $temp.tmp_P_KeyValue1), 
+  string-length($temp.tmp_P_KeyValue1) + 1,   10
+)}&lt;/KeyValue1&gt;
+  &lt;KeyValue2&gt;{$temp.tmp_P_KeyValue2 }&lt;/KeyValue2&gt;
+  &lt;KeyValue3&gt;{$temp.tmp_P_KeyValue3 } &lt;/KeyValue3&gt;
+   &lt;Value1&gt;{$temp.tmp_P_Value1 } &lt;/Value1&gt;
+   &lt;Value2&gt;{$temp.tmp_P_Value2 } &lt;/Value2&gt;
+   &lt;Success&gt;true&lt;/Success&gt;
+&lt;/root&gt;</expression>
+                                 </parameter>
+                                 <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                 <parameter name="in_EventName" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="in_IICS_Process_ID" source="field" updatable="true">input.in_IICS_Process_ID</parameter>
+                                 <parameter name="in_ApiName" source="field" updatable="true">input.in_ApiName</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_HttpStatusCode" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_Detail" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_Reason" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="l95akn64" targetId="l95akn63"/>
+                           </subflow>
+                           <container id="l95akn63" type="exclusive">
+                              <title>out_HttpStatusCode</title>
+                              <flow id="l95akn66">
+                                 <create id="l95akn7o">
+                                    <title>Log Success 1 1</title>
+                                    <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                                    <createInput>
+                                       <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                                       <parameter name="IICS_Run_ID" source="formula" updatable="true">
+                                          <expression language="XQuery">util:getProcessId()</expression>
+                                       </parameter>
+                                       <parameter name="Code" source="constant" updatable="true">401</parameter>
+                                       <parameter name="Description" source="constant" updatable="true">Post to Logging Table Successful.</parameter>
+                                       <parameter name="DateProcessStart" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:current-dateTime()</expression>
+                                       </parameter>
+                                       <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                                       <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                                       <parameter name="DATA_KEY" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:concat($temp.tmp_WBSElementExternalID,'-'
+, $temp.tmp_DB_List[1]/YY1_Customer_PPH)</expression>
+                                       </parameter>
+                                       <parameter name="IICS_PROCESS_NAME" source="constant" updatable="true">ProcessAPI10PostDis</parameter>
+                                    </createInput>
+                                 </create>
+                                 <link id="l95akn67" targetId="l95akn63" type="containerLink"/>
+                              </flow>
+                              <flow id="l95akn69">
+                                 <link id="l95akn6a" targetId="l95akn63" type="containerLink"/>
+                              </flow>
+                              <link id="l95akn65" targetId="l95akn66" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="starts-with">
+                                       <arg name="left">{$output.out_HttpStatusCode}</arg>
+                                       <arg name="right">2</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="l95akn68" targetId="l95akn69" type="containerLink"/>
+                           </container>
+                           <link id="kuj6t3lq" targetId="kuj6t3l5" type="containerLink"/>
+                        </flow>
+                        <flow id="kuj6t3lr">
+                           <link id="kuj6t3ls" targetId="kuj6t3l5" type="containerLink"/>
+                        </flow>
+                        <link id="kuj6t3li" targetId="kuj6t3lp" type="containerLink">
+                           <condition source="formula">
+                              <function name="starts-with">
+                                 <arg name="left">{$output.Code1}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="kuj6t3ll" targetId="kuj6t3lr" type="containerLink"/>
+                     </container>
+                     <link id="kuj5gdya" targetId="kuj5gdxq" type="containerLink"/>
+                  </flow>
+                  <flow id="kuj5gdyb">
+                     <link id="kuj5gdyc" targetId="kuj5gdxq" type="containerLink"/>
+                  </flow>
+                  <link id="kuj5gdy2" targetId="kuj5gdy9" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$output.vpc_ResCode}</arg>
+                           <arg name="right">200</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kuj5gdy5" targetId="kuj5gdyb" type="containerLink"/>
+                  <link id="kz3rg145" targetId="kuj6t5fj"/>
+               </container>
+               <end id="kuj6t5fj">
+                  <title>End All Success</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>fe29d568-d43b-419c-a3e3-3ba21de34123</ns1:Id>
+               <ns1:Name>API_10_Test</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-30T15:01:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-05T07:27:42Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f43412f7-0a59-4532-9fd9-214363ba9ffb</ns1:Id>
+               <ns1:Name>DISPosting</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-30T15:01:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-05T07:27:42Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_AccountDoc": "1800000053",
+	 "in_VPCToken": "BTWIG4ymKQh13CvJ8d63Vw6ij7CGQKyaFBXDxX-9FWltVQ10f3_neXOu2f1Urezs3ISdDzC7uOaqPRSs5XLj-BSVvtsGat6QdtGA-uY2Q-2b076EnJ-s_t9n52EIeIc7DojqCUJFSxe6nO5o59po7OyiMdyF-AlTZer8rpDKAU_HMhG767OJ1wqYC6k4bbhc4OKuY4SlBwNjhCaoHY2KO94z2AdEmowa_R27aZ8seAeG3wcJ4CVRmJBE__AoXJq2gChf6FxyLu_sxIQZOBtKXKAzrYlVJyM0DrVXF65t1jAxqGEsmH6Os7Pp7dteM99qiMlgoarcA9NFGmkhWkzOozUyGbp-MLRAQr9pZnyuZXZuc1DqUSy8PVuTlJOxn-097aSwWLSc44QKokxCefGuYfEQwNl59cCreQ3DFJ6TqpXgn8SnaZ_sqoppUSaI6aHqBwdjsra4LZrdC7z0tI7VuKz2u3wxB0eLyPuORoC8ia__SEBDch_ohweCcn96Qfc-EuZ9CI7Bw9FY8oXnm8uG8UTtHc_OqyNOOTybisBvQVXHNMbsxAFogXFFLG2DaGKEMM2r53oLOfIcrNqcZZ8bwWhFMcrjWzs-dYqlbnqkvBz2Yjn7GaaHThEYWSHvRaQYBKmSJUKW46MOW1dn5fb-gMvvhl_e9P75T-bnsdY4HRwJzGbu_Jv-qJaymkVVV64y1iq1Bzx8BKIzKh7r4b33377r_xvz-CYvvaUIrSLcpJ0c_ZxzLTR0wEQpfi-dTU2Q-nR4RNOKaRt3yUQNecTcFZ5MJexbYpJX1YJZrt1-_YFz8r1tR9elW5wSII1w-_4vyXhIeZrFgZJP-8K1phZZ4EnPLMPBdqxVeC2l82PSa23rTEpRBhAJzW7UUyDZNZ6N0l6UgpqlOsRbpHUwDq2699FutgK-pRzulEDFXfFdfYiMXMlhvxV5qmxoduQStnNukbYv6kyEjLemGXp890DRaSOQQAJ7mDvUj4GJ79pD_Mo3WjOwwwoX6yhTiKdF2Ba08jDRrTMDSCVJq8IvOz2z4nPB5-iq6hnwQ5Rmy8oE9Sc"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a6667726-d8ee-42da-accf-1070baabc33a</ns1:Id>
+               <ns1:Name>inp</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-30T15:01:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-05T07:27:42Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_AccountDoc": "5100000050",
+	 "in_VPCToken": "1CaEj0crTmccoGNslRbyCalfRmZavCpJgVeEgVrl2ul5k-313qSZPiSS79wA4Zne5PXcnT5wJqjA0uQXq3eTRNusa1b8sOn7ypncQjW7m-TLAZcPgoTd-7Tp5g6MWoFQcwu6ezIK7HjXmM1fCNMB17-J14xM2-qkLkMdw5K1ywmZ05pMWABzn7GTayMq0tfH4dJHCdfHDoBSjyuljIxmvM4whx2R50AxAiwmVJBfHtl0Y8fJbJ-f2uhz6QMp6Et9zWU80xKcwUn9JMsF8EbGAkGRzf1VXQILkKKzRzyrO7niDRNSnPuFb1drR7GxoJkpzROW0z_XgRhZV-7Vn8z_RBqw4M4jir_1qxyA1iUUHMJPUZ7TF8rHgfhCCnFAWkbVqIqZt9dbtJ7GCspvbfXj-bAJLbL-TovrUyz7hpubUG7sVkxsEDU6JsFKQ42lbFHNEvLCEI3JPecop4RaZuXHLcyez_GYTq4Pqf6n1InqsFIgbMxRwuMwfVnnU-tqgYZrru_rr5wPwDYa39rGg3FI34wZSGSGVXI1vcvmzlotl_3RoX0OAunMajwyEfaJyvw8F4-NvLvi6T3_NQuiLyuDuCWv---L39dRZgomhddwLDrJx3YQvajHWbdEXaBVofMC7kkBDlG-4JDH_1UpmQBxcoDFYdgK_UrGghzGbBQn_eK3p-icJ5OT6oUX_IwnnBZWYdI1WwlDXEEdFr7Itce90qjT6d2mmV83Cgmb9LDA62g6sRzzdOLhLf1ROvy-Hs4K0ey8qxE30p0_NZuMJRfV8RFcOXSG77EMZmR_eGbY68cfS9eMOwtAdtwOPWsrE1sqokkw6Pqv2GQckeLu3Ptug4GIq4YtdEDxWrpeoZAXYcc6VDMY90HG7ev6R167cqv9DEJ2WPgHV_cyBLp36YFxNvM_eWxKIok2GESB7kYN9Bc-0-MWClPMDbFr80-b9fsXx2hOliKWY0DaelzS9bmcu-c4soOCpVLx-qWZydL7bIgj3qauel4Y3KFh6v3OCKOfeUQyl9oMeUtn5cQ_19vfL3PLyONu_gdspeGywURthauOTNrkWJy4aMVPOZAgBdvLOTabu64c4VxQmnz3F04-1-tTITa0S3_n4n9k28TKOrbXYCNa1idY12973s9FUnSV",
+	 "in_LedgerGLLineItem": "000002"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>0fc9dd27-573e-424b-b00d-f716133d8208</ns1:Id>
+               <ns1:Name>Time_Posting</ns1:Name>
+               <ns1:CreatedBy>anupama.rao@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-06-30T15:01:12Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-05T07:27:42Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_AccountDoc": "5100000165",
+	 "in_VPCToken": "",
+	 "in_LedgerGLLineItem": "000002"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>6xXjtYR5nQper43fCiWICb</types1:GUID>
+      <types1:DisplayName>ProcessAPI10PostDis</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.583Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

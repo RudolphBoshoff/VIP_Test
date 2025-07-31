@@ -1,0 +1,221 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>B1T4W6jKsJlv58p-gt-5544605-2023-03-01T09:56:56.445Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_api18Internal_FileEvent</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-03-01T09:56:56Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-01T10:07:23Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-01T10:39:46Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_api18Internal_FileEvent/Process_api18Internal_FileEvent.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_api18Internal_FileEvent"
+                  name="Process_api18Internal_FileEvent"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-P2BFileEvent:PlainFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_EventDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SalesCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WflowNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_StartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-P2BFileEvent:API18-INITIATEPROCUREMENTINTERNAL"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbq4zyd2" targetId="lbq4zyd1"/>
+               </start>
+               <assignment id="lbq4zyd1">
+                  <title>Decode File Content</title>
+                  <operation source="formula" to="temp.tmp_EventDetails">
+                     <expression language="XQuery">util:parseJSON($input.fileEvent[1]/content )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RefCode">
+                     <expression language="XQuery">let $E := $temp.tmp_EventDetails[1]/identifiers[identifierName='WFlowHeader.FileCode'] return $E/identifierValue/text()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_SalesCode">
+                     <expression language="XQuery">let $E := $temp.tmp_EventDetails[1]/identifiers[identifierName='WFlowFields.FldValue'] return $E/identifierValue/text()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_WflowNr">
+                     <expression language="XQuery">let $E := $temp.tmp_EventDetails[1]/identifiers[identifierName='WFlowHeader.WflowNr'] return $E/identifierValue/text()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_StartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <link id="lbq4zyox" targetId="lbq4zys9"/>
+               </assignment>
+               <eventContainer id="lbq4zys9">
+                  <subflow id="lbq4zyow">
+                     <title>Process_api18Internal</title>
+                     <subflowGUID>eilxZPxlxK5lzbqwKQX7OU</subflowGUID>
+                     <subflowPath>Process_api18Internal</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_RefCode" source="field" updatable="true">temp.tmp_RefCode</parameter>
+                        <parameter name="in_WflowNr" source="field" updatable="true">temp.tmp_WflowNr</parameter>
+                        <parameter name="in_API_Name" source="constant" updatable="true">API-18</parameter>
+                        <parameter name="in_EventName" source="field" updatable="true">temp.tmp_EventDetails[1]/eventTypeName</parameter>
+                        <parameter name="in_X_TransactionID" source="field" updatable="true">input.fileEvent[1]/fileInfo[1]/name</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_PR_List" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$type:string</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_PR_Count" type="int">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_PR_Payloads" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:$any</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                           </options>
+                        </field>
+                        <field name="out_FaultInfo" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:$any</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                           </options>
+                        </field>
+                        <field name="cout_Doc_S" type="int">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="count_Doc_F" type="int">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="lbq4zysb">
+                     <link id="lbq4zysc" targetId="lbq4zys9" type="containerLink"/>
+                  </flow>
+                  <flow id="lbq4zyse">
+                     <subflow id="lbq4zyss">
+                        <title>Process_P2B_Event_ErrorLog</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">input.fileEvent[1]/fileInfo[1]/name</parameter>
+                           <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">util:getProcessId()</expression>
+                           </parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">API-18</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventDetails[1]/eventTypeName</parameter>
+                           <parameter name="i_DataKey" source="formula" updatable="true">
+                              <expression language="XQuery">'RefCode='||$temp.tmp_RefCode||'^'|| 
+'SalesCode='||$temp.tmp_SalesCode||'^'||
+'WflowNr='||$temp.tmp_WflowNr||'^'</expression>
+                           </parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">Unforeseen error while processing API-18</parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">util:toJSON( $input.fileEvent   )</expression>
+                           </parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_StartTime</parameter>
+                        </input>
+                        <outputDef/>
+                     </subflow>
+                     <link id="lbq4zysf" targetId="lbq4zys9" type="containerLink"/>
+                  </flow>
+                  <link id="lbq4zysa" targetId="lbq4zysb" type="containerLink"/>
+                  <link id="lbq4zyoy" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lbq4zyrj" interrupting="true">
+                        <link id="lbq4zysd" targetId="lbq4zyse" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>e74eb840-1896-4c8c-adc0-a3ad7a91867c</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-01T09:56:56Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-01T09:56:56Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>aagT2ShSY5neB4qKJ9Vh0e</types1:GUID>
+      <types1:DisplayName>Process_api18Internal_FileEvent</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.775Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

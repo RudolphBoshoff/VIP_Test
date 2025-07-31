@@ -1,0 +1,90 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>9Ei4tciSrZMSPfX-gt-5217200-2021-09-16T20:23:45.98Z::conn.xml</types1:EntryId>
+      <types1:Name>AppGetJERevenueRecogReport01</types1:Name>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description>Revenue Recognition report</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>roger.fbaatjes@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-09-16T20:23:46Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:47:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:49:15Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/AppGetJERevenueRecogReport01/AppGetJERevenueRecogReport01.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="AppGetJERevenueRecogReport01"
+                     label="AppGetJERevenueRecogReport01"
+                     name="AppGetJERevenueRecogReport01">
+            <description>Revenue Recognition report</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <agent>VIP_IICS_SA_SG_ONPREM_GROUP</agent>
+            <attributes/>
+            <consumers>
+               <consumer enabled="true"
+                         name="JERevenueRecogReport01"
+                         typeName="DelimitedContentParser">
+                  <description>Event to pick up Revenue recognition Report file 01</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="\\srvsgpdevagt001\e$\data\JERevenueRecogPosting"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false"
+                                name="include"
+                                value="JERevenueRecogReport_01.csv"/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="DelimitedContent"/>
+                     <attribute encrypted="false" name="columnsDescriptor" value=""/>
+                     <attribute encrypted="false" name="ignoreFirstRecord" value="true"/>
+                     <attribute encrypted="false" name="ignoreColumnInconsistency" value="true"/>
+                     <attribute encrypted="false" name="delimiter" value=","/>
+                     <attribute encrypted="false" name="textQualifier" value="&#34;"/>
+                     <attribute encrypted="false" name="splitRows" value="false"/>
+                     <attribute encrypted="false" name="useBuiltInProcessObject" value="false"/>
+                     <attribute encrypted="false"
+                                name="customObjectFields"
+                                value="entcode,NAME,daterun,todate,rulenr,runnr,reconcilerun,sourceacct,ruletype,releaseacct,jnlref,jnllineref,srcjournnr,srclinenr,BaseAmount,ReleaseAmt,ReleasePerc,AmtLeft,SourceMatterCode"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>9jCMlodVRlrbymzPkNtmQ8</types1:GUID>
+      <types1:DisplayName>AppGetJERevenueRecogReport01</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:14.497Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

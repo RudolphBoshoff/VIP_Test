@@ -1,0 +1,845 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>RNGOkSSHCwkNmum-gt-37242355-2022-10-12T10:48:26.697Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_MatterChanged</types1:Name>
+      <types1:ParentFlowIds>i31CHdqwx8R8WrY-gt-7140119-2023-07-10T13:21:41.137Z::pd.xml,jznKKvvNtLSVMTo-gt-37242383-2022-10-12T10:48:28.155Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Process to Close the SAP Project when Matter close at Vpoint</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:27Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:33:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_MatterChanged/Process_MatterChanged.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_MatterChanged"
+                  name="Process_MatterChanged"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Process to Close the SAP Project when Matter close at Vpoint</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_MatterCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Event_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_MatterChanged"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_CurrentDate" type="date">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Flag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload_EnterpriseProj" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8jutkjv" targetId="kpmvx8z9"/>
+               </start>
+               <assignment id="kpmvx8z9">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="output.out_ProcessVariables_MatterChanged">
+                     <expression language="XQuery">&lt;PoErrorDetails&gt;
+   &lt;X_TRANSACTION_ID&gt;{$input.X_TRANSACTION_ID }&lt;/X_TRANSACTION_ID&gt;
+   &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt;
+   &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt;
+   &lt;Code&gt;&lt;/Code&gt;
+   &lt;Error&gt;&lt;/Error&gt;
+   &lt;Description&gt;&lt;/Description&gt;
+   &lt;Event_Name&gt;{$input.in_Event_Name }&lt;/Event_Name&gt;
+   &lt;API_Name&gt;{$input.in_API_Name }&lt;/API_Name&gt;
+   &lt;Data_Key&gt;{'RefCode='||$input.in_RefCode||'MatterCode='||$input.in_MatterCode}&lt;/Data_Key&gt;
+   &lt;RestURL&gt;&lt;/RestURL&gt;
+   &lt;HelpFileLInk&gt;https://api.sap.com/api/API_BUSINESS_PARTNER/overview&lt;/HelpFileLInk&gt;
+   &lt;ProcessStartTime&gt;{util:getInstanceStartTime()}&lt;/ProcessStartTime&gt;
+   &lt;RequestPayload&gt;&lt;/RequestPayload&gt;
+   &lt;FailedAtStep&gt;&lt;/FailedAtStep&gt;
+&lt;/PoErrorDetails&gt;
+</expression>
+                  </operation>
+                  <link id="lh7ffx0o" targetId="lh7ffy6q"/>
+               </assignment>
+               <eventContainer id="lh7ffy6q">
+                  <subflow id="lh7ffx0n">
+                     <title>GetEntityDetails</title>
+                     <subflowGUID>7hBhvcOR2NalonB4HORiaB</subflowGUID>
+                     <subflowPath>ProcessGetEntityDetails_COMPLETE</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                        <parameter name="in_MatterCode" source="field" updatable="true">input.in_MatterCode</parameter>
+                     </input>
+                     <outputDef>
+                        <field name="out_EntityDetails" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:POEntityDetails</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                           </options>
+                        </field>
+                        <field name="out_BusinessPartnerTax_Array" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:POBusinessPartnerTax</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">9knjRxHgfEzgxkE4WNxBUb</option>
+                           </options>
+                        </field>
+                        <field name="out_Segment" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_Currency" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="out_EnterpriseProjectObjects" type="reference">
+                           <options>
+                              <option name="referenceTo">$po:POEnterpriseProject</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                              <option name="guid">aD6Bg2tY9TOfIY1Z3jQDoq</option>
+                           </options>
+                        </field>
+                        <field name="O_SUBP_EMAIL" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="O_SUBP_UUID" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="O_SUBP_Flag" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                        <field name="O_Project" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="lh7ffy6s">
+                     <assignment id="lh7fg1m8">
+                        <title>Check whether project is ready to close</title>
+                        <operation source="formula" to="temp.tmp_Flag">
+                           <expression language="XQuery">if( $output.out_EntityDetails[1]/MatterStatus = "9" )
+then 	if ( $output.out_EntityDetails[1]/BalanceCur = 0 )
+	 	then 0 (:"Ready to Close":)
+		else 1 (:"Cannot Close - Outstanding Balance":)
+else 2         (:"Cannot Close - Matter Status not Closed":)</expression>
+                        </operation>
+                     </assignment>
+                     <link id="lh7ffy6t" targetId="lh7ffy6q" type="containerLink"/>
+                  </flow>
+                  <flow id="lh7ffy6v">
+                     <assignment id="lh7ffy9f">
+                        <title>Could not retrieve Entity Details</title>
+                        <operation source="field" to="output.out_ProcessVariables_MatterChanged[1]/Code">output.faultInfo[1]/code</operation>
+                        <operation source="field" to="output.out_ProcessVariables_MatterChanged[1]/Error">output.faultInfo[1]/reason</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Description">output.faultInfo[1]/detail</operation>
+                        <link id="lh7ffygv" targetId="lh7ffygu"/>
+                     </assignment>
+                     <subflow id="lh7ffygu">
+                        <title>Log Exception</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_MatterChanged</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lh7ffyje" targetId="lh7ffyjd"/>
+                     </subflow>
+                     <end id="lh7ffyjd">
+                        <title>End 2</title>
+                     </end>
+                  </flow>
+                  <link id="lh7ffy6r" targetId="lh7ffy6s" type="containerLink"/>
+                  <link id="lh7fg1m1" targetId="lh7ffze9"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lh7ffy63" interrupting="true">
+                        <link id="lh7ffy6u" targetId="lh7ffy6v" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="lh7ffze9" type="exclusive">
+                  <title>Flag</title>
+                  <flow id="lh7ffzea">
+                     <subflow id="lh7ffzeb">
+                        <title>Get SAP Project Status</title>
+                        <subflowGUID>30Ni9PkKCXEipevGEVSf8a</subflowGUID>
+                        <subflowPath>Process_GET_ProjectProcessingStatus</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                        </input>
+                        <outputDef>
+                           <field name="out_Project" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProjectUUID" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_ProcessingStatus" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_RestURL" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                           <field name="out_PO_Get_ProjectProcessingStatus" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                                 <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                              </options>
+                           </field>
+                           <field name="out_ProjectExpanded" type="reference">
+                              <options>
+                                 <option name="referenceTo">$po:$any</option>
+                                 <option name="required">false</option>
+                                 <option name="isCopy">true</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lh7nc1r2" targetId="lh7nbyt4"/>
+                     </subflow>
+                     <container id="lh7nbyt4" type="exclusive">
+                        <title>Project Status</title>
+                        <flow id="lh7nbyt8">
+                           <subflow id="lh7nbzw7">
+                              <title>Release Project</title>
+                              <subflowGUID>2A66IPBjc3lkzQ2pm6N4cV</subflowGUID>
+                              <subflowPath>Process_POST_ChangeEntProjProcgStatus</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ProjectUUID" source="field" updatable="true">output.out_ProjectUUID</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_MatterChanged</parameter>
+                                 <parameter name="in_ProcessingStatus" source="constant" updatable="true">10</parameter>
+                                 <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Po" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_POST_ChangeEntProjProcgStatus"
+                                        type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PostChangeProjStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProjectID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_UUID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lh7nc0fh" targetId="lh7nc0ff"/>
+                           </subflow>
+                           <jumpTo id="lh7nc0ff">
+                              <link id="lh7nc0fg" targetId="lh7nbzfs"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lh7nbytb">
+                           <subflow id="lh7nbzfs">
+                              <title>Complete Project</title>
+                              <subflowGUID>2A66IPBjc3lkzQ2pm6N4cV</subflowGUID>
+                              <subflowPath>Process_POST_ChangeEntProjProcgStatus</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ProjectUUID" source="field" updatable="true">output.out_ProjectUUID</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_MatterChanged</parameter>
+                                 <parameter name="in_ProcessingStatus" source="constant" updatable="true">40</parameter>
+                                 <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Po" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_POST_ChangeEntProjProcgStatus"
+                                        type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PostChangeProjStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProjectID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_UUID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="lh7nc0ld" targetId="lh7nc0lb"/>
+                           </subflow>
+                           <jumpTo id="lh7nc0lb">
+                              <link id="lh7nc0lc" targetId="lh7nc09l"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lh7nbzbz">
+                           <subflow id="lh7nc09l">
+                              <title>Close Project</title>
+                              <subflowGUID>2A66IPBjc3lkzQ2pm6N4cV</subflowGUID>
+                              <subflowPath>Process_POST_ChangeEntProjProcgStatus</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_ProjectUUID" source="field" updatable="true">output.out_ProjectUUID</parameter>
+                                 <parameter name="in_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_MatterChanged</parameter>
+                                 <parameter name="in_ProcessingStatus" source="constant" updatable="true">42</parameter>
+                                 <parameter name="in_Project" source="field" updatable="true">output.O_Project</parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_Po" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_RestURL" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProcessVariables_POST_ChangeEntProjProcgStatus"
+                                        type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:PoErrorDetails</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                       <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_PostChangeProjStatus" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ProjectID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_UUID" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                              <link id="ljmrau5h" targetId="ljmrau5g"/>
+                           </subflow>
+                           <assignment id="ljmrau5g">
+                              <title>Success output</title>
+                              <operation source="field" to="output.out_ProcessVariables_MatterChanged[1]/Code">output.out_ProcessVariables_POST_ChangeEntProjProcgStatus[1]/Code</operation>
+                              <operation source="field" to="output.out_ProcessVariables_MatterChanged[1]/Error">output.out_ProcessVariables_POST_ChangeEntProjProcgStatus[1]/Error</operation>
+                              <operation source="field"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Description">output.out_ProcessVariables_POST_ChangeEntProjProcgStatus[1]/Description</operation>
+                              <link id="ljmrau5i" targetId="lh7nc0uw"/>
+                           </assignment>
+                           <end id="lh7nc0uw">
+                              <title>End - Project Closed</title>
+                           </end>
+                        </flow>
+                        <flow id="lh7nbzc1">
+                           <assignment id="lh7nc2fz">
+                              <title>Project already Closed</title>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Code">HTTP_100</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Error">Information</operation>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Description">
+                                 <expression language="XQuery">'No action taken - Project ['||$output.out_Project||'] is already closed in VEnterprise'</expression>
+                              </operation>
+                              <link id="lh7nc2i4" targetId="lh7nc2i2"/>
+                           </assignment>
+                           <jumpTo id="lh7nc2i2">
+                              <link id="lh7nc2i3" targetId="lh7ffygu"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lh7nc1v1">
+                           <assignment id="lh7nc210">
+                              <title>Unable to identify project status</title>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Code">HTTP_500</operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Error">VIP/VEnterprise Error</operation>
+                              <operation source="formula"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/Description">
+                                 <expression language="XQuery">'VEnterprise: Could not determine Project Status'</expression>
+                              </operation>
+                              <operation source="constant"
+                                         to="output.out_ProcessVariables_MatterChanged[1]/FailedAtStep">SAP: Get Project Status</operation>
+                              <link id="lh7nc234" targetId="lh7nc232"/>
+                           </assignment>
+                           <jumpTo id="lh7nc232">
+                              <link id="lh7nc233" targetId="lh7ffygu"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lh7nbyt7" targetId="lh7nbyt8" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_ProcessingStatus}</arg>
+                                 <arg name="right">00</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lh7nbyta" targetId="lh7nbytb" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_ProcessingStatus}</arg>
+                                 <arg name="right">10</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lh7nbzbx" targetId="lh7nbzbz" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_ProcessingStatus}</arg>
+                                 <arg name="right">40</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lh7nbzby" targetId="lh7nbzc1" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$output.out_ProcessingStatus}</arg>
+                                 <arg name="right">42</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lh7nc1v0" targetId="lh7nc1v1" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <flow id="lh7ffzec">
+                     <assignment id="lh7ffzed">
+                        <title>Outstanding Balance on Matter</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Code">HTTP_199</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Error">Miscellaneous Warning</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Description">
+                           <expression language="XQuery">let $E := $output.out_EntityDetails[1] return
+'Project ['||$output.O_Project||'] cannot be closed in VEnterprise because there is an outstanding balance of ['||$E/BalanceCur||' '||$E/CurCode||'] in VPoint'</expression>
+                        </operation>
+                        <link id="lh7ffzk1" targetId="lh7ffzjz"/>
+                     </assignment>
+                     <jumpTo id="lh7ffzjz">
+                        <link id="lh7ffzk0" targetId="lh7ffygu"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lh7ffzee">
+                     <assignment id="lh7ffzef">
+                        <title>Matter not Closed</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Code">HTTP_100</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Error">Information</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Description">
+                           <expression language="XQuery">let $E := $output.out_EntityDetails[1] return
+'Project ['||$output.O_Project||'] cannot be closed in VEnterprise because the Matter has not been closed in VPoint'</expression>
+                        </operation>
+                        <link id="lh7ffzm8" targetId="lh7ffzm6"/>
+                     </assignment>
+                     <jumpTo id="lh7ffzm6">
+                        <link id="lh7ffzm7" targetId="lh7ffygu"/>
+                     </jumpTo>
+                  </flow>
+                  <flow id="lh7ffzeg">
+                     <assignment id="lh7fg1rl">
+                        <title>Unable to derive flag</title>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Code">HTTP_500</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Error">VIP/VPoint Error</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/Description">
+                           <expression language="XQuery">'VPoint: Could not determine Matter Status and/or Outstanding Balance on Matter'</expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_MatterChanged[1]/FailedAtStep">VIP: Check whether project is ready to close</operation>
+                        <link id="lh7fg1ti" targetId="lh7fg1tg"/>
+                     </assignment>
+                     <jumpTo id="lh7fg1tg">
+                        <link id="lh7fg1th" targetId="lh7ffygu"/>
+                     </jumpTo>
+                  </flow>
+                  <link id="lh7ffzej" targetId="lh7ffzea" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Flag}</arg>
+                           <arg name="right">0</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lh7ffzek" targetId="lh7ffzec" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Flag}</arg>
+                           <arg name="right">1</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lh7ffzel" targetId="lh7ffzee" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_Flag}</arg>
+                           <arg name="right">2</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lh7ffzem" targetId="lh7ffzeg" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>03d8ef48-f712-4a93-8831-afb8c08e7c43</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>104df993-2142-4dda-af1b-16c1883992b4</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>808ba008-7e93-4bcc-b66f-691f229c5a63</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>deb69099-894d-4b5b-acf0-714f7104e38e</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>ac4b4474-379b-4744-91e9-a237f9430dfc</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>320d2f4d-46e8-4747-95e4-0abca4b9cc01</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>bf31a6f5-bcf2-4ca7-9741-70675d2e88a4</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-05-04T06:59:38Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "VR-357_UnitTest3",
+	 "in_MatterCode": "TSCC2",
+	 "in_RefCode": "12006713",
+	 "in_Event_Name": "Unit Test",
+	 "in_API_Name": "API08"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3d83c147-fef9-42ae-888e-23b29f2ddb3c</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>aa481b65-d74a-4b37-aab6-4a45b6736dbe</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:27Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>4B9VqpplSP0ek07nM77DE3</types1:GUID>
+      <types1:DisplayName>Process_MatterChanged</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.697Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

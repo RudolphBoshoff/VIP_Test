@@ -1,0 +1,2993 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>SMFmabeAzu2JQht-gt-10100480-2021-08-13T10:41:38.725Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcEmail</types1:Name>
+      <types1:ParentFlowIds>BJQWSwxF1T4W6jK-gt-9899529-2021-08-13T10:41:46.442Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>This service enables you to create, display, update, and delete data related to Business Partner, Supplier, and Customer with the data provided in a payload, in an API call. This service also supports create deep entity operation and batch processing.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:39Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:38Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>nitish.kumar_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-04-01T04:48:40Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcEmail/SvcEmail_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcEmail"
+                            label=""
+                            name="SvcEmail"
+                            uuid="fd7c514a-7455-4a81-8716-cf29e6a3920e">
+            <description>This service enables you to create, display, update, and delete data related to Business Partner, Supplier, and Customer with the data provided in a payload, in an API call. This service also supports create deep entity operation and batch processing.</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_A_BusinessPartnerAddress_BusinessPartner_BusinessPartner_AddressID_AddressID_to_EmailAddress"
+                       maxRedirects="100"
+                       name="POST_A_BusinessPartnerAddress_BusinessPartner_BusinessPartner_AddressID_AddressID_to_EmailAddress"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Creates a new email address data for the existing business partner address. Adds a new email address data for the existing business partner address record. Multiple emails can be linked to an address record.</description>
+                  <input>
+                     <parameter description="New entity"
+                                label="body"
+                                name="body"
+                                required="true"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">API_BUSINESS_PARTNER_A_AddressEmailAddressType_create</option>
+                        </options>
+                     </parameter>
+                     <parameter description="Business Partner Number  &#xA;Key identifying a business partner in the SAP system. The key is unique within a client."
+                                label="BusinessPartnerPathParam"
+                                name="BusinessPartnerPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Internal key for identifying a Business Address Services address.  &#xA;For more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation."
+                                label="AddressIDPathParam"
+                                name="AddressIDPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartnerAddress(BusinessPartner='{$BusinessPartnerPathParam}',AddressID='{$AddressIDPathParam}')/to_EmailAddress"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="EmailAddress"
+                       failOnError="true"
+                       forSearch="false"
+                       label="check_email_exists"
+                       maxRedirects="100"
+                       name="check_email_exists"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieves email address data linked to business partner address fields. Retrieves all the email address data linked to all business partner address records in the system.</description>
+                  <input>
+                     <parameter description="Business Partner Number  &#xA;Key identifying a business partner in the SAP system. The key is unique within a client."
+                                label="BusinessPartnerPathParam"
+                                name="BusinessPartnerPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith="100010"
+                                type="string"/>
+                     <parameter description="Internal key for identifying a Business Address Services address.  &#xA;For more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation."
+                                label="AddressIDPathParam"
+                                name="AddressIDPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith="337905"
+                                type="string"/>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_BusinessPartnerAddress(BusinessPartner='{$BusinessPartnerPathParam}',AddressID='{$AddressIDPathParam}')/to_EmailAddress"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Email" type="string">
+                        <xquery>{util:parseJSON(util:parseXML(util:toXML( $RESTResponse))/*:payload/text())/results/EmailAddress/text()}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="Email Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="PATCH_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       maxRedirects="100"
+                       name="PATCH_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Updates email address record by using key fields. Updates business partner email address data of the record identified by AddressID, Person and OrdinalNumber fields.</description>
+                  <input>
+                     <parameter description="New property values"
+                                label="body"
+                                name="body"
+                                required="true"
+                                testWith="{&#34;EmailAddress&#34;: &#34;change1@london.co.uk&#34;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                     <parameter description="Internal key for identifying a Business Address Services address.  &#xA;For more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation."
+                                label="AddressIDPathParam"
+                                name="AddressIDPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith="337905"
+                                type="string"/>
+                     <parameter description="Internal key for identifying a person in Business Address Services.  &#xA;For more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation."
+                                label="PersonPathParam"
+                                name="PersonPathParam"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Sequence Number"
+                                label="OrdinalNumberPathParam"
+                                name="OrdinalNumberPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith="1"
+                                type="string"/>
+                     <parameter label="Cookie"
+                                name="Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=7-EdoGhD4GpDWXJnU295aUFeIcXRYRHrldz6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="GPsfX_7DimktilfIdlKsOw=="
+                                type="string"/>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_AddressEmailAddress(AddressID='{$AddressIDPathParam}',Person='{$PersonPathParam}',OrdinalNumber='{$OrdinalNumberPathParam}')"
+                                        verb="PATCH">
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$Cookie}</header>
+                           <header name="X-CSRF-Token">{$token}</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Email Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       maxRedirects="100"
+                       name="GET_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieves email address data by using key fields. Retrieves email address data by using AddressID, Person and OrdinalNumber fields.</description>
+                  <input>
+                     <parameter description="Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)"
+                                label="$select"
+                                name="$select"
+                                required="false"
+                                testWith=""
+                                type="picklist">
+                        <options>
+                           <option name="values">[{"value":"AddressID","label":"AddressID"},{"value":"Person","label":"Person"},{"value":"OrdinalNumber","label":"OrdinalNumber"},{"value":"IsDefaultEmailAddress","label":"IsDefaultEmailAddress"},{"value":"EmailAddress","label":"EmailAddress"},{"value":"SearchEmailAddress","label":"SearchEmailAddress"},{"value":"AddressCommunicationRemarkText","label":"AddressCommunicationRemarkText"}]</option>
+                        </options>
+                     </parameter>
+                     <parameter description="Internal key for identifying a Business Address Services address.  &#xA;For more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation."
+                                label="AddressIDPathParam"
+                                name="AddressIDPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Internal key for identifying a person in Business Address Services.  &#xA;For more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation."
+                                label="PersonPathParam"
+                                name="PersonPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Sequence Number"
+                                label="OrdinalNumberPathParam"
+                                name="OrdinalNumberPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_AddressEmailAddress(AddressID='{$AddressIDPathParam}',Person='{$PersonPathParam}',OrdinalNumber='{$OrdinalNumberPathParam}')"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Retrieved entity"
+                            entireResponse="true"
+                            name="entireResponse"
+                            type="object"/>
+                  </output>
+               </action>
+               <action category="Email Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="DELETE_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       maxRedirects="100"
+                       name="DELETE_A_AddressEmailAddress_AddressID_AddressID_Person_Person_OrdinalNumber_OrdinalNumber_"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Deletes email address record by using key fields. Deletes business partner email address data of the record identified by AddressID, Person, and OrdinalNumber.</description>
+                  <input>
+                     <parameter description="Internal key for identifying a Business Address Services address.  &#xA;For more information about the meaning and use of the address number and the Business Address Services concepts, see the function group SZA0 documentation."
+                                label="AddressIDPathParam"
+                                name="AddressIDPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Internal key for identifying a person in Business Address Services.  &#xA;For more information about the meaning and use of the person number and Business Address Services concepts, see the function group SZA0 documentation."
+                                label="PersonPathParam"
+                                name="PersonPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Sequence Number"
+                                label="OrdinalNumberPathParam"
+                                name="OrdinalNumberPathParam"
+                                nogen="true"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_AddressEmailAddress(AddressID='{$AddressIDPathParam}',Person='{$PersonPathParam}',OrdinalNumber='{$OrdinalNumberPathParam}')"
+                                        verb="DELETE">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Email Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_A_AddressEmailAddress"
+                       maxRedirects="100"
+                       name="POST_A_AddressEmailAddress"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Creates a new email address data for the existing business partner address. Adds a new email address data for the existing business partner address record. Multiple emails can be linked to an address record.</description>
+                  <input>
+                     <parameter description="New entity"
+                                label="body"
+                                name="body"
+                                required="true"
+                                testWith=""
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">API_BUSINESS_PARTNER_A_AddressEmailAddressType_create</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_AddressEmailAddress"
+                                        verb="POST">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Email Address"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GET_A_AddressEmailAddress"
+                       maxRedirects="100"
+                       name="GET_A_AddressEmailAddress"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Retrieves email address data linked to business partner address fields. Retrieves all the email address data linked to all business partner address records in the system.</description>
+                  <input>
+                     <parameter description="Show only the first n items, see [Paging - Top](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=66)"
+                                label="$top"
+                                name="$top"
+                                required="false"
+                                testWith="5"
+                                type="int"/>
+                     <parameter description="Skip the first n items, see [Paging - Skip](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)"
+                                label="$skip"
+                                name="$skip"
+                                required="false"
+                                testWith=""
+                                type="int"/>
+                     <parameter description="Filter items by property values, see [Filtering](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=64)"
+                                label="$filter"
+                                name="$filter"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter description="Include count of items, see [Inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67)"
+                                label="$inlinecount"
+                                name="$inlinecount"
+                                required="false"
+                                testWith=""
+                                type="picklist">
+                        <options>
+                           <option name="values">[{"value":"allpages","label":"allpages"},{"value":"none","label":"none"}]</option>
+                        </options>
+                     </parameter>
+                     <parameter description="Order items by property values, see [Sorting](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=65)"
+                                label="$orderby"
+                                name="$orderby"
+                                required="false"
+                                testWith=""
+                                type="picklist">
+                        <options>
+                           <option name="values">[{"value":"AddressID","label":"AddressID"},{"value":"AddressID desc","label":"AddressID desc"},{"value":"Person","label":"Person"},{"value":"Person desc","label":"Person desc"},{"value":"OrdinalNumber","label":"OrdinalNumber"},{"value":"OrdinalNumber desc","label":"OrdinalNumber desc"},{"value":"IsDefaultEmailAddress","label":"IsDefaultEmailAddress"},{"value":"IsDefaultEmailAddress desc","label":"IsDefaultEmailAddress desc"},{"value":"EmailAddress","label":"EmailAddress"},{"value":"EmailAddress desc","label":"EmailAddress desc"},{"value":"SearchEmailAddress","label":"SearchEmailAddress"},{"value":"SearchEmailAddress desc","label":"SearchEmailAddress desc"},{"value":"AddressCommunicationRemarkText","label":"AddressCommunicationRemarkText"},{"value":"AddressCommunicationRemarkText desc","label":"AddressCommunicationRemarkText desc"}]</option>
+                        </options>
+                     </parameter>
+                     <parameter description="Select properties to be returned, see [Select](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=68)"
+                                label="$select"
+                                name="$select"
+                                required="false"
+                                testWith=""
+                                type="picklist">
+                        <options>
+                           <option name="values">[{"value":"AddressID","label":"AddressID"},{"value":"Person","label":"Person"},{"value":"OrdinalNumber","label":"OrdinalNumber"},{"value":"IsDefaultEmailAddress","label":"IsDefaultEmailAddress"},{"value":"EmailAddress","label":"EmailAddress"},{"value":"SearchEmailAddress","label":"SearchEmailAddress"},{"value":"AddressCommunicationRemarkText","label":"AddressCommunicationRemarkText"}]</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://{$hostName}/s4hanacloud/sap/opu/odata/sap/API_BUSINESS_PARTNER/A_AddressEmailAddress"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="Retrieved entities"
+                            entireResponse="true"
+                            name="entireResponse"
+                            type="object"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerBankType_create">
+                  <description/>
+                  <detail>
+                     <field name="IBAN" type="string"/>
+                     <field name="BankAccountReferenceText" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="BankAccount" type="string"/>
+                     <field name="BankIdentification" type="string"/>
+                     <field name="BankCountryKey" type="string"/>
+                     <field name="CollectionAuthInd" type="boolean"/>
+                     <field name="BankControlKey" type="string"/>
+                     <field name="BankAccountName" type="string"/>
+                     <field name="BankNumber" type="string"/>
+                     <field name="BankAccountHolderName" type="string"/>
+                     <field name="IBANValidityStartDate" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTextType">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressPhoneNumberType_create">
+                  <description/>
+                  <detail>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="IsDefaultPhoneNumber" type="boolean"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="InternationalPhoneNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="DestinationLocationCountry" type="string"/>
+                     <field name="PhoneNumberType" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerRoleType_update">
+                  <description/>
+                  <detail>
+                     <field name="ValidTo" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidFrom" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyType">
+                  <description/>
+                  <detail>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="AlternativePayee" type="string"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="CompanyCodeName" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="PaymentIsToBeSentByEDI" type="boolean"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="SupplierAccountNote" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="IsToBeCheckedForDuplicates" type="boolean"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="SupplierClerk" type="string"/>
+                     <field name="to_SupplierWithHoldingTax" type="object"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="MinorityGroup" type="string"/>
+                     <field name="SupplierCertificationDate" type="string"/>
+                     <field name="to_Supplier" type="reference">
+                        <options>
+                           <option name="referenceTo">API_BUSINESS_PARTNER_A_SupplierType</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="SupplierClerkURL" type="string"/>
+                     <field name="BillOfExchLmtAmtInCoCodeCrcy" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="WithholdingTaxCountry" type="string"/>
+                     <field name="CheckPaidDurationInDays" type="string"/>
+                     <field name="ClearCustomerSupplier" type="boolean"/>
+                     <field name="SupplierClerkIDBySupplier" type="string"/>
+                     <field name="to_CompanyText" type="object"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="SupplierHeadOffice" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="SupplierIsBlockedForPosting" type="boolean"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="to_SupplierDunning" type="object"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyTextType">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTextType">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaType">
+                  <description/>
+                  <detail>
+                     <field name="Customer" type="string"/>
+                     <field name="to_SalesAreaTax" type="object"/>
+                     <field name="PartialDeliveryIsAllowed" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesDistrict" type="string"/>
+                     <field name="ExchangeRateType" type="string"/>
+                     <field name="PriceListType" type="string"/>
+                     <field name="InvoiceListSchedule" type="string"/>
+                     <field name="CustomerABCClassification" type="string"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="AdditionalCustomerGroup1" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="AdditionalCustomerGroup3" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="AdditionalCustomerGroup2" type="string"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="AdditionalCustomerGroup5" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="AdditionalCustomerGroup4" type="string"/>
+                     <field name="InvoiceDate" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="CompleteDeliveryIsDefined" type="boolean"/>
+                     <field name="SalesGroup" type="string"/>
+                     <field name="PaymentGuaranteeProcedure" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="CustomerAccountAssignmentGroup" type="string"/>
+                     <field name="CustomerGroup" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="DeliveryIsBlockedForCustomer" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="to_PartnerFunction" type="object"/>
+                     <field name="CustomerPricingProcedure" type="string"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="SalesOffice" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="DeliveryPriority" type="string"/>
+                     <field name="SupplyingPlant" type="string"/>
+                     <field name="to_SalesAreaText" type="object"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="CustomerPaymentTerms" type="string"/>
+                     <field name="ItemOrderProbabilityInPercent" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CustomerPriceGroup" type="string"/>
+                     <field name="OrderCombinationIsAllowed" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTaxGroupingType">
+                  <description/>
+                  <detail>
+                     <field name="CustomerTaxGroupingCode" type="string"/>
+                     <field name="CustTaxGroupExemptionRate" type="string"/>
+                     <field name="CustTaxGrpExemptionCertificate" type="string"/>
+                     <field name="CustTaxGroupSubjectedEndDate" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="CustTaxGroupExemptionStartDate" type="string"/>
+                     <field name="CustTaxGroupSubjectedStartDate" type="string"/>
+                     <field name="CustTaxGroupExemptionEndDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaType_update">
+                  <description/>
+                  <detail>
+                     <field name="PartialDeliveryIsAllowed" type="string"/>
+                     <field name="SalesDistrict" type="string"/>
+                     <field name="ExchangeRateType" type="string"/>
+                     <field name="PriceListType" type="string"/>
+                     <field name="InvoiceListSchedule" type="string"/>
+                     <field name="CustomerABCClassification" type="string"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="AdditionalCustomerGroup1" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="AdditionalCustomerGroup3" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="AdditionalCustomerGroup2" type="string"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="AdditionalCustomerGroup5" type="string"/>
+                     <field name="AdditionalCustomerGroup4" type="string"/>
+                     <field name="InvoiceDate" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="CompleteDeliveryIsDefined" type="boolean"/>
+                     <field name="SalesGroup" type="string"/>
+                     <field name="PaymentGuaranteeProcedure" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="CustomerAccountAssignmentGroup" type="string"/>
+                     <field name="CustomerGroup" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="DeliveryIsBlockedForCustomer" type="string"/>
+                     <field name="CustomerPricingProcedure" type="string"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="SalesOffice" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="DeliveryPriority" type="string"/>
+                     <field name="SupplyingPlant" type="string"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="CustomerPaymentTerms" type="string"/>
+                     <field name="ItemOrderProbabilityInPercent" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CustomerPriceGroup" type="string"/>
+                     <field name="OrderCombinationIsAllowed" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToFuncAndDeptType">
+                  <description/>
+                  <detail>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="ContactPersonFunction" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="ContactPersonDepartment" type="string"/>
+                     <field name="EmailAddress" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                     <field name="RelationshipCategory" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIdentificationType_update">
+                  <description/>
+                  <detail>
+                     <field name="BPIdnNmbrIssuingInstitute" type="string"/>
+                     <field name="BPIdentificationEntryDate" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerType_create">
+                  <description/>
+                  <detail>
+                     <field name="FormOfAddress" type="string"/>
+                     <field name="OrganizationBPName4" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="OrganizationBPName2" type="string"/>
+                     <field name="OrganizationBPName3" type="string"/>
+                     <field name="PersonFullName" type="string"/>
+                     <field name="OrganizationBPName1" type="string"/>
+                     <field name="Industry" type="string"/>
+                     <field name="IsSexUnknown" type="boolean"/>
+                     <field name="BusinessPartnerType" type="string"/>
+                     <field name="OrganizationLiquidationDate" type="string"/>
+                     <field name="to_Customer" type=""/>
+                     <field name="LegalForm" type="string"/>
+                     <field name="BusinessPartnerGrouping" type="string"/>
+                     <field name="to_Supplier" type=""/>
+                     <field name="NameCountry" type="string"/>
+                     <field name="AcademicTitle" type="string"/>
+                     <field name="BusinessPartnerIDByExtSystem" type="string"/>
+                     <field name="IsMarkedForArchiving" type="boolean"/>
+                     <field name="to_BusinessPartnerRole" type="object"/>
+                     <field name="BusinessPartnerBirthplaceName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="LastName" type="string"/>
+                     <field name="BirthDate" type="string"/>
+                     <field name="to_BusinessPartnerAddress" type="object"/>
+                     <field name="to_BusinessPartnerBank" type="object"/>
+                     <field name="BusinessPartnerCategory" type="string"/>
+                     <field name="NameFormat" type="string"/>
+                     <field name="BusinessPartnerIsBlocked" type="boolean"/>
+                     <field name="CorrespondenceLanguage" type="string"/>
+                     <field name="to_BusinessPartnerContact" type="object"/>
+                     <field name="Language" type="string"/>
+                     <field name="GroupBusinessPartnerName1" type="string"/>
+                     <field name="GroupBusinessPartnerName2" type="string"/>
+                     <field name="AdditionalLastName" type="string"/>
+                     <field name="TradingPartner" type="string"/>
+                     <field name="to_BuPaIndustry" type="object"/>
+                     <field name="IsFemale" type="boolean"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="FirstName" type="string"/>
+                     <field name="to_BuPaIdentification" type="object"/>
+                     <field name="BusinessPartnerBirthDateStatus" type="string"/>
+                     <field name="MiddleName" type="string"/>
+                     <field name="OrganizationFoundationDate" type="string"/>
+                     <field name="to_BusinessPartnerTax" type="object"/>
+                     <field name="GenderCodeName" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="IsMale" type="boolean"/>
+                     <field name="SearchTerm2" type="string"/>
+                     <field name="SearchTerm1" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerTaxNumberType">
+                  <description/>
+                  <detail>
+                     <field name="BPTaxType" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="BPTaxLongNumber" type="string"/>
+                     <field name="BPTaxNumber" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierTextType">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierDunningType_update">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIdentificationType_create">
+                  <description/>
+                  <detail>
+                     <field name="BPIdnNmbrIssuingInstitute" type="string"/>
+                     <field name="BPIdentificationEntryDate" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="BPIdentificationType" type="string"/>
+                     <field name="BPIdentificationNumber" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyType_update">
+                  <description/>
+                  <detail>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="AlternativePayee" type="string"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="PaymentIsToBeSentByEDI" type="boolean"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="SupplierAccountNote" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="IsToBeCheckedForDuplicates" type="boolean"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="SupplierClerk" type="string"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="MinorityGroup" type="string"/>
+                     <field name="SupplierCertificationDate" type="string"/>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="SupplierClerkURL" type="string"/>
+                     <field name="BillOfExchLmtAmtInCoCodeCrcy" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="WithholdingTaxCountry" type="string"/>
+                     <field name="CheckPaidDurationInDays" type="string"/>
+                     <field name="ClearCustomerSupplier" type="boolean"/>
+                     <field name="SupplierClerkIDBySupplier" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="SupplierHeadOffice" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="SupplierIsBlockedForPosting" type="boolean"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgType_update">
+                  <description/>
+                  <detail>
+                     <field name="SupplierABCClassificationCode" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="MaterialPlannedDeliveryDurn" type="string"/>
+                     <field name="PurchasingIsBlockedForSupplier" type="boolean"/>
+                     <field name="IsOrderAcknRqd" type="boolean"/>
+                     <field name="PricingDateControl" type="string"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="CalculationSchemaGroupCode" type="string"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="SupplierConfirmationControlKey" type="string"/>
+                     <field name="InvoiceIsGoodsReceiptBased" type="boolean"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="MinimumOrderAmount" type="string"/>
+                     <field name="PurOrdAutoGenerationIsAllowed" type="boolean"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="SupplierRespSalesPersonName" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="SupplierPhoneNumber" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="PurchaseOrderCurrency" type="string"/>
+                     <field name="PurchasingGroup" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerRoleType">
+                  <description/>
+                  <detail>
+                     <field name="BusinessPartnerRole" type="string"/>
+                     <field name="ValidTo" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidFrom" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerContactType_update">
+                  <description/>
+                  <detail>
+                     <field name="IsStandardRelationship" type="boolean"/>
+                     <field name="RelationshipCategory" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyType_create">
+                  <description/>
+                  <detail>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="AlternativePayee" type="string"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="PaymentIsToBeSentByEDI" type="boolean"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="SupplierAccountNote" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="IsToBeCheckedForDuplicates" type="boolean"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="SupplierClerk" type="string"/>
+                     <field name="to_SupplierWithHoldingTax" type="object"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="MinorityGroup" type="string"/>
+                     <field name="SupplierCertificationDate" type="string"/>
+                     <field name="to_Supplier" type="reference">
+                        <options>
+                           <option name="referenceTo">API_BUSINESS_PARTNER_A_SupplierType_create</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="SupplierClerkURL" type="string"/>
+                     <field name="BillOfExchLmtAmtInCoCodeCrcy" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="WithholdingTaxCountry" type="string"/>
+                     <field name="CheckPaidDurationInDays" type="string"/>
+                     <field name="ClearCustomerSupplier" type="boolean"/>
+                     <field name="SupplierClerkIDBySupplier" type="string"/>
+                     <field name="to_CompanyText" type="object"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="SupplierHeadOffice" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="SupplierIsBlockedForPosting" type="boolean"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="to_SupplierDunning" type="object"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustSalesPartnerFuncType">
+                  <description/>
+                  <detail>
+                     <field name="PartnerCounter" type="string"/>
+                     <field name="PersonnelNumber" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="BPCustomerNumber" type="string"/>
+                     <field name="ContactPerson" type="string"/>
+                     <field name="CustomerPartnerDescription" type="string"/>
+                     <field name="PartnerFunction" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIdentificationType">
+                  <description/>
+                  <detail>
+                     <field name="BPIdnNmbrIssuingInstitute" type="string"/>
+                     <field name="BPIdentificationEntryDate" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="BPIdentificationType" type="string"/>
+                     <field name="BPIdentificationNumber" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressPhoneNumberType_update">
+                  <description/>
+                  <detail>
+                     <field name="IsDefaultPhoneNumber" type="boolean"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="InternationalPhoneNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="DestinationLocationCountry" type="string"/>
+                     <field name="PhoneNumberType" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerRoleType_create">
+                  <description/>
+                  <detail>
+                     <field name="BusinessPartnerRole" type="string"/>
+                     <field name="ValidTo" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidFrom" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyType">
+                  <description/>
+                  <detail>
+                     <field name="CollectiveInvoiceVariant" type="string"/>
+                     <field name="to_CustomerDunning" type="object"/>
+                     <field name="Customer" type="string"/>
+                     <field name="AlternativePayerAccount" type="string"/>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="RecordPaymentHistoryIndicator" type="boolean"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="CustomerSupplierClearingIsUsed" type="boolean"/>
+                     <field name="KnownOrNegotiatedLeave" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="AccountingClerkInternetAddress" type="string"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="to_WithHoldingTax" type="object"/>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="ValueAdjustmentKey" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="UserAtCustomer" type="string"/>
+                     <field name="CustomerAccountNote" type="string"/>
+                     <field name="CustomerHeadOffice" type="string"/>
+                     <field name="to_CompanyText" type="object"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="PhysicalInventoryBlockInd" type="boolean"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                     <field name="PaytAdviceIsSentbyEDI" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustSalesPartnerFuncType_update">
+                  <description/>
+                  <detail>
+                     <field name="CustomerPartnerDescription" type="string"/>
+                     <field name="PersonnelNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="BPCustomerNumber" type="string"/>
+                     <field name="ContactPerson" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerType_create">
+                  <description/>
+                  <detail>
+                     <field name="NielsenRegion" type="string"/>
+                     <field name="IndustryCode2" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="IndustryCode1" type="string"/>
+                     <field name="to_CustomerCompany" type="object"/>
+                     <field name="NFPartnerIsNaturalPerson" type="string"/>
+                     <field name="IndustryCode5" type="string"/>
+                     <field name="IndustryCode4" type="string"/>
+                     <field name="IndustryCode3" type="string"/>
+                     <field name="to_CustomerSalesArea" type="object"/>
+                     <field name="to_CustomerUnloadingPoint" type="object"/>
+                     <field name="to_CustomerTaxGrouping" type="object"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="CustomerCorporateGroup" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="to_CustomerText" type="object"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="CustomerClassification" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="DeliveryIsBlocked" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerUnloadingPointType">
+                  <description/>
+                  <detail>
+                     <field name="MondayAfternoonClosingTime" type="string"/>
+                     <field name="IsDfltBPUnloadingPoint" type="boolean"/>
+                     <field name="Customer" type="string"/>
+                     <field name="SaturdayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningClosingTime" type="string"/>
+                     <field name="SundayAfternoonClosingTime" type="string"/>
+                     <field name="CustomerFactoryCalenderCode" type="string"/>
+                     <field name="MondayMorningOpeningTime" type="string"/>
+                     <field name="FridayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayMorningClosingTime" type="string"/>
+                     <field name="TuesdayMorningOpeningTime" type="string"/>
+                     <field name="WednesdayAfternoonClosingTime" type="string"/>
+                     <field name="TuesdayAfternoonClosingTime" type="string"/>
+                     <field name="MondayAfternoonOpeningTime" type="string"/>
+                     <field name="SaturdayMorningClosingTime" type="string"/>
+                     <field name="SundayMorningOpeningTime" type="string"/>
+                     <field name="TuesdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningClosingTime" type="string"/>
+                     <field name="MondayMorningClosingTime" type="string"/>
+                     <field name="SaturdayMorningOpeningTime" type="string"/>
+                     <field name="SundayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningOpeningTime" type="string"/>
+                     <field name="SaturdayAfternoonClosingTime" type="string"/>
+                     <field name="UnloadingPointName" type="string"/>
+                     <field name="WednesdayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayMorningOpeningTime" type="string"/>
+                     <field name="SundayMorningClosingTime" type="string"/>
+                     <field name="FridayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningOpeningTime" type="string"/>
+                     <field name="BPGoodsReceivingHoursCode" type="string"/>
+                     <field name="TuesdayMorningClosingTime" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgTextType">
+                  <description/>
+                  <detail>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerContactType">
+                  <description/>
+                  <detail>
+                     <field name="to_ContactAddress" type="object"/>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="IsStandardRelationship" type="boolean"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="to_ContactRelationship" type=""/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="RelationshipCategory" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierType_create">
+                  <description/>
+                  <detail>
+                     <field name="TaxNumberResponsible" type="string"/>
+                     <field name="to_SupplierCompany" type="object"/>
+                     <field name="Customer" type="string"/>
+                     <field name="SupplierProcurementBlock" type="string"/>
+                     <field name="SuplrQualityManagementSystem" type="string"/>
+                     <field name="PaymentIsBlockedForSupplier" type="boolean"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="to_SupplierPurchasingOrg" type="object"/>
+                     <field name="BR_TaxIsSplit" type="boolean"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="to_SupplierText" type="object"/>
+                     <field name="SuplrProofOfDelivRlvtCode" type="string"/>
+                     <field name="SupplierCorporateGroup" type="string"/>
+                     <field name="PurchasingIsBlocked" type="boolean"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="AlternativePayeeAccountNumber" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                     <field name="SuplrQltyInProcmtCertfnValidTo" type="string"/>
+                     <field name="BirthDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressPhoneNumberType">
+                  <description/>
+                  <detail>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="IsDefaultPhoneNumber" type="boolean"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="InternationalPhoneNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="DestinationLocationCountry" type="string"/>
+                     <field name="PhoneNumberType" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerDunningType_create">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningArea" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgType">
+                  <description/>
+                  <detail>
+                     <field name="PurchasingIsBlockedForSupplier" type="boolean"/>
+                     <field name="IsOrderAcknRqd" type="boolean"/>
+                     <field name="PricingDateControl" type="string"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="CalculationSchemaGroupCode" type="string"/>
+                     <field name="to_PurchasingOrgText" type="object"/>
+                     <field name="SupplierConfirmationControlKey" type="string"/>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="MinimumOrderAmount" type="string"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="SupplierRespSalesPersonName" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="PurchasingGroup" type="string"/>
+                     <field name="SupplierABCClassificationCode" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="MaterialPlannedDeliveryDurn" type="string"/>
+                     <field name="to_PartnerFunction" type="object"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="InvoiceIsGoodsReceiptBased" type="boolean"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="PurOrdAutoGenerationIsAllowed" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="SupplierPhoneNumber" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="PurchaseOrderCurrency" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressFaxNumberType_create">
+                  <description/>
+                  <detail>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="FaxCountry" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="InternationalFaxNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="IsDefaultFaxNumber" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToFuncAndDeptType_create">
+                  <description/>
+                  <detail>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="ContactPersonFunction" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="ContactPersonDepartment" type="string"/>
+                     <field name="EmailAddress" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                     <field name="RelationshipCategory" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierDunningType">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningArea" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerTaxNumberType_update">
+                  <description/>
+                  <detail>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="BPTaxLongNumber" type="string"/>
+                     <field name="BPTaxNumber" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToAddressType_update">
+                  <description/>
+                  <detail>
+                     <field name="CareOfName" type="string"/>
+                     <field name="CityCode" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="InhouseMail" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="Floor" type="string"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="ContactPersonPrfrdCommMedium" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="ContactPersonBuilding" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="CorrespondenceShortName" type="string"/>
+                     <field name="AddressRepresentationCode" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="AddressNumber" type="string"/>
+                     <field name="ContactRelationshipDepartment" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="RoomNumber" type="string"/>
+                     <field name="ContactRelationshipFunction" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerAddressType_update">
+                  <description/>
+                  <detail>
+                     <field name="CareOfName" type="string"/>
+                     <field name="CityCode" type="string"/>
+                     <field name="CountyCode" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="AddressIDByExternalSystem" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="TownshipCode" type="string"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="TownshipName" type="string"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerBankType_update">
+                  <description/>
+                  <detail>
+                     <field name="IBAN" type="string"/>
+                     <field name="BankAccountReferenceText" type="string"/>
+                     <field name="BankAccount" type="string"/>
+                     <field name="BankCountryKey" type="string"/>
+                     <field name="CollectionAuthInd" type="boolean"/>
+                     <field name="BankControlKey" type="string"/>
+                     <field name="BankAccountName" type="string"/>
+                     <field name="BankNumber" type="string"/>
+                     <field name="BankAccountHolderName" type="string"/>
+                     <field name="IBANValidityStartDate" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerUnloadingPointType_create">
+                  <description/>
+                  <detail>
+                     <field name="MondayAfternoonClosingTime" type="string"/>
+                     <field name="IsDfltBPUnloadingPoint" type="boolean"/>
+                     <field name="Customer" type="string"/>
+                     <field name="SaturdayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningClosingTime" type="string"/>
+                     <field name="SundayAfternoonClosingTime" type="string"/>
+                     <field name="CustomerFactoryCalenderCode" type="string"/>
+                     <field name="MondayMorningOpeningTime" type="string"/>
+                     <field name="FridayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayMorningClosingTime" type="string"/>
+                     <field name="TuesdayMorningOpeningTime" type="string"/>
+                     <field name="WednesdayAfternoonClosingTime" type="string"/>
+                     <field name="TuesdayAfternoonClosingTime" type="string"/>
+                     <field name="MondayAfternoonOpeningTime" type="string"/>
+                     <field name="SaturdayMorningClosingTime" type="string"/>
+                     <field name="SundayMorningOpeningTime" type="string"/>
+                     <field name="TuesdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningClosingTime" type="string"/>
+                     <field name="MondayMorningClosingTime" type="string"/>
+                     <field name="SaturdayMorningOpeningTime" type="string"/>
+                     <field name="SundayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningOpeningTime" type="string"/>
+                     <field name="SaturdayAfternoonClosingTime" type="string"/>
+                     <field name="UnloadingPointName" type="string"/>
+                     <field name="WednesdayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayMorningOpeningTime" type="string"/>
+                     <field name="SundayMorningClosingTime" type="string"/>
+                     <field name="FridayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningOpeningTime" type="string"/>
+                     <field name="BPGoodsReceivingHoursCode" type="string"/>
+                     <field name="TuesdayMorningClosingTime" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTaxGroupingType_update">
+                  <description/>
+                  <detail>
+                     <field name="CustTaxGroupExemptionRate" type="string"/>
+                     <field name="CustTaxGrpExemptionCertificate" type="string"/>
+                     <field name="CustTaxGroupSubjectedEndDate" type="string"/>
+                     <field name="CustTaxGroupExemptionStartDate" type="string"/>
+                     <field name="CustTaxGroupSubjectedStartDate" type="string"/>
+                     <field name="CustTaxGroupExemptionEndDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPartnerFuncType_update">
+                  <description/>
+                  <detail>
+                     <field name="ReferenceSupplier" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressEmailAddressType">
+                  <description/>
+                  <detail>
+                     <field name="SearchEmailAddress" type="string"/>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="IsDefaultEmailAddress" type="boolean"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="EmailAddress" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerTaxNumberType_create">
+                  <description/>
+                  <detail>
+                     <field name="BPTaxType" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="BPTaxLongNumber" type="string"/>
+                     <field name="BPTaxNumber" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierType">
+                  <description/>
+                  <detail>
+                     <field name="TaxNumberResponsible" type="string"/>
+                     <field name="CreationDate" type="string"/>
+                     <field name="to_SupplierCompany" type="object"/>
+                     <field name="CreatedByUser" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="ConcatenatedInternationalLocNo" type="string"/>
+                     <field name="SupplierFullName" type="string"/>
+                     <field name="SupplierProcurementBlock" type="string"/>
+                     <field name="TaxNumber5" type="string"/>
+                     <field name="TaxNumber4" type="string"/>
+                     <field name="Industry" type="string"/>
+                     <field name="SuplrQualityManagementSystem" type="string"/>
+                     <field name="PaymentIsBlockedForSupplier" type="boolean"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="to_SupplierPurchasingOrg" type="object"/>
+                     <field name="BR_TaxIsSplit" type="boolean"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="to_SupplierText" type="object"/>
+                     <field name="SuplrProofOfDelivRlvtCode" type="string"/>
+                     <field name="SupplierCorporateGroup" type="string"/>
+                     <field name="PurchasingIsBlocked" type="boolean"/>
+                     <field name="TaxNumber3" type="string"/>
+                     <field name="TaxNumber2" type="string"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="TaxNumber1" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="SupplierName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="AlternativePayeeAccountNumber" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                     <field name="SuplrQltyInProcmtCertfnValidTo" type="string"/>
+                     <field name="BirthDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyType_update">
+                  <description/>
+                  <detail>
+                     <field name="CollectiveInvoiceVariant" type="string"/>
+                     <field name="AlternativePayerAccount" type="string"/>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="RecordPaymentHistoryIndicator" type="boolean"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="CustomerSupplierClearingIsUsed" type="boolean"/>
+                     <field name="KnownOrNegotiatedLeave" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="AccountingClerkInternetAddress" type="string"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="ValueAdjustmentKey" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="UserAtCustomer" type="string"/>
+                     <field name="CustomerAccountNote" type="string"/>
+                     <field name="CustomerHeadOffice" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="PhysicalInventoryBlockInd" type="boolean"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                     <field name="PaytAdviceIsSentbyEDI" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerType">
+                  <description/>
+                  <detail>
+                     <field name="NielsenRegion" type="string"/>
+                     <field name="CreationDate" type="string"/>
+                     <field name="CreatedByUser" type="string"/>
+                     <field name="IndustryCode2" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="IndustryCode1" type="string"/>
+                     <field name="to_CustomerCompany" type="object"/>
+                     <field name="NFPartnerIsNaturalPerson" type="string"/>
+                     <field name="IndustryCode5" type="string"/>
+                     <field name="IndustryCode4" type="string"/>
+                     <field name="IndustryCode3" type="string"/>
+                     <field name="to_CustomerSalesArea" type="object"/>
+                     <field name="TaxNumber5" type="string"/>
+                     <field name="TaxNumber4" type="string"/>
+                     <field name="to_CustomerUnloadingPoint" type="object"/>
+                     <field name="Industry" type="string"/>
+                     <field name="to_CustomerTaxGrouping" type="object"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="CustomerName" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="CustomerCorporateGroup" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="CustomerFullName" type="string"/>
+                     <field name="to_CustomerText" type="object"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="TaxNumber3" type="string"/>
+                     <field name="TaxNumber2" type="string"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="TaxNumber1" type="string"/>
+                     <field name="CustomerClassification" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="DeliveryIsBlocked" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTaxType_create">
+                  <description/>
+                  <detail>
+                     <field name="CustomerTaxClassification" type="string"/>
+                     <field name="CustomerTaxCategory" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DepartureCountry" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="Division" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerType_update">
+                  <description/>
+                  <detail>
+                     <field name="NielsenRegion" type="string"/>
+                     <field name="CustomerCorporateGroup" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="IndustryCode2" type="string"/>
+                     <field name="IndustryCode1" type="string"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="NFPartnerIsNaturalPerson" type="string"/>
+                     <field name="IndustryCode5" type="string"/>
+                     <field name="IndustryCode4" type="string"/>
+                     <field name="IndustryCode3" type="string"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="CustomerClassification" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="DeliveryIsBlocked" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierWithHoldingTaxType_update">
+                  <description/>
+                  <detail>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="IsWithholdingTaxSubject" type="boolean"/>
+                     <field name="RecipientType" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustSalesPartnerFuncType_create">
+                  <description/>
+                  <detail>
+                     <field name="PartnerCounter" type="string"/>
+                     <field name="PersonnelNumber" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="BPCustomerNumber" type="string"/>
+                     <field name="ContactPerson" type="string"/>
+                     <field name="CustomerPartnerDescription" type="string"/>
+                     <field name="PartnerFunction" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerDunningType_update">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPartnerFuncType">
+                  <description/>
+                  <detail>
+                     <field name="SupplierSubrange" type="string"/>
+                     <field name="CreationDate" type="string"/>
+                     <field name="PartnerCounter" type="string"/>
+                     <field name="Plant" type="string"/>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="CreatedByUser" type="string"/>
+                     <field name="ReferenceSupplier" type="string"/>
+                     <field name="PartnerFunction" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToAddressType">
+                  <description/>
+                  <detail>
+                     <field name="CityCode" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="FormOfAddress" type="string"/>
+                     <field name="InhouseMail" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="to_MobilePhoneNumber" type="object"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="ContactPersonPrfrdCommMedium" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="ContactPersonBuilding" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="to_EmailAddress" type="object"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="AddressNumber" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="RoomNumber" type="string"/>
+                     <field name="CareOfName" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="to_URLAddress" type="object"/>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="Floor" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="CorrespondenceShortName" type="string"/>
+                     <field name="AddressRepresentationCode" type="string"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="FullName" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="ContactRelationshipDepartment" type="string"/>
+                     <field name="to_FaxNumber" type="object"/>
+                     <field name="to_PhoneNumber" type="object"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="ContactRelationshipFunction" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerWithHoldingTaxType_update">
+                  <description/>
+                  <detail>
+                     <field name="ObligationDateEnd" type="string"/>
+                     <field name="ObligationDateBegin" type="string"/>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="WithholdingTaxAgent" type="boolean"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressHomePageURLType_create">
+                  <description/>
+                  <detail>
+                     <field name="IsDefaultURLAddress" type="boolean"/>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="URLFieldLength" type="int"/>
+                     <field name="WebsiteURL" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="SearchURLAddress" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressEmailAddressType_update">
+                  <description/>
+                  <detail>
+                     <field name="SearchEmailAddress" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="IsDefaultEmailAddress" type="boolean"/>
+                     <field name="EmailAddress" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerContactType_create">
+                  <description/>
+                  <detail>
+                     <field name="to_ContactAddress" type="object"/>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="IsStandardRelationship" type="boolean"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="to_ContactRelationship" type=""/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="RelationshipCategory" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgTextType_create">
+                  <description/>
+                  <detail>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgType_create">
+                  <description/>
+                  <detail>
+                     <field name="PurchasingIsBlockedForSupplier" type="boolean"/>
+                     <field name="IsOrderAcknRqd" type="boolean"/>
+                     <field name="PricingDateControl" type="string"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="CalculationSchemaGroupCode" type="string"/>
+                     <field name="to_PurchasingOrgText" type="object"/>
+                     <field name="SupplierConfirmationControlKey" type="string"/>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="MinimumOrderAmount" type="string"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="SupplierRespSalesPersonName" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="PurchasingGroup" type="string"/>
+                     <field name="SupplierABCClassificationCode" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="MaterialPlannedDeliveryDurn" type="string"/>
+                     <field name="to_PartnerFunction" type="object"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="InvoiceIsGoodsReceiptBased" type="boolean"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="PurOrdAutoGenerationIsAllowed" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="SupplierPhoneNumber" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="PurchaseOrderCurrency" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaAddressUsageType">
+                  <description/>
+                  <detail>
+                     <field name="AddressUsage" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="StandardUsage" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIndustryType_create">
+                  <description/>
+                  <detail>
+                     <field name="IndustryKeyDescription" type="string"/>
+                     <field name="IsStandardIndustry" type="string"/>
+                     <field name="IndustrySystemType" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="IndustrySector" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="count">
+                  <description>The number of entities in the collection. Available when using the [$inlinecount](https://help.sap.com/doc/5890d27be418427993fafa6722cdc03b/Cloud/en-US/OdataV2.pdf#page=67) query option.</description>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTaxType_update">
+                  <description/>
+                  <detail>
+                     <field name="CustomerTaxClassification" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerUnloadingPointType_update">
+                  <description/>
+                  <detail>
+                     <field name="MondayAfternoonClosingTime" type="string"/>
+                     <field name="IsDfltBPUnloadingPoint" type="boolean"/>
+                     <field name="SaturdayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningClosingTime" type="string"/>
+                     <field name="SundayAfternoonClosingTime" type="string"/>
+                     <field name="CustomerFactoryCalenderCode" type="string"/>
+                     <field name="MondayMorningOpeningTime" type="string"/>
+                     <field name="FridayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayAfternoonClosingTime" type="string"/>
+                     <field name="ThursdayMorningClosingTime" type="string"/>
+                     <field name="TuesdayMorningOpeningTime" type="string"/>
+                     <field name="WednesdayAfternoonClosingTime" type="string"/>
+                     <field name="TuesdayAfternoonClosingTime" type="string"/>
+                     <field name="MondayAfternoonOpeningTime" type="string"/>
+                     <field name="SaturdayMorningClosingTime" type="string"/>
+                     <field name="SundayMorningOpeningTime" type="string"/>
+                     <field name="TuesdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningClosingTime" type="string"/>
+                     <field name="MondayMorningClosingTime" type="string"/>
+                     <field name="SaturdayMorningOpeningTime" type="string"/>
+                     <field name="SundayAfternoonOpeningTime" type="string"/>
+                     <field name="FridayMorningOpeningTime" type="string"/>
+                     <field name="SaturdayAfternoonClosingTime" type="string"/>
+                     <field name="WednesdayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayMorningOpeningTime" type="string"/>
+                     <field name="SundayMorningClosingTime" type="string"/>
+                     <field name="FridayAfternoonOpeningTime" type="string"/>
+                     <field name="ThursdayAfternoonOpeningTime" type="string"/>
+                     <field name="WednesdayMorningOpeningTime" type="string"/>
+                     <field name="BPGoodsReceivingHoursCode" type="string"/>
+                     <field name="TuesdayMorningClosingTime" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaAddressUsageType_update">
+                  <description/>
+                  <detail>
+                     <field name="StandardUsage" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerDunningType">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningArea" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerWithHoldingTaxType_create">
+                  <description/>
+                  <detail>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="WithholdingTaxAgent" type="boolean"/>
+                     <field name="WithholdingTaxType" type="string"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="ObligationDateEnd" type="string"/>
+                     <field name="ObligationDateBegin" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierType_update">
+                  <description/>
+                  <detail>
+                     <field name="TaxNumberResponsible" type="string"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="PostingIsBlocked" type="boolean"/>
+                     <field name="ResponsibleType" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="FiscalAddress" type="string"/>
+                     <field name="SuplrProofOfDelivRlvtCode" type="string"/>
+                     <field name="SupplierProcurementBlock" type="string"/>
+                     <field name="SupplierCorporateGroup" type="string"/>
+                     <field name="PurchasingIsBlocked" type="boolean"/>
+                     <field name="SuplrQualityManagementSystem" type="string"/>
+                     <field name="VATRegistration" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="PaymentIsBlockedForSupplier" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="AlternativePayeeAccountNumber" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="TaxNumberType" type="string"/>
+                     <field name="SuplrQltyInProcmtCertfnValidTo" type="string"/>
+                     <field name="BR_TaxIsSplit" type="boolean"/>
+                     <field name="BirthDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressFaxNumberType">
+                  <description/>
+                  <detail>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="FaxCountry" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="InternationalFaxNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="IsDefaultFaxNumber" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressHomePageURLType">
+                  <description/>
+                  <detail>
+                     <field name="IsDefaultURLAddress" type="boolean"/>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="URLFieldLength" type="int"/>
+                     <field name="WebsiteURL" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="SearchURLAddress" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerWithHoldingTaxType">
+                  <description/>
+                  <detail>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="WithholdingTaxAgent" type="boolean"/>
+                     <field name="WithholdingTaxType" type="string"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="ObligationDateEnd" type="string"/>
+                     <field name="ObligationDateBegin" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIndustryType">
+                  <description/>
+                  <detail>
+                     <field name="IndustryKeyDescription" type="string"/>
+                     <field name="IsStandardIndustry" type="string"/>
+                     <field name="IndustrySystemType" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="IndustrySector" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierCompanyTextType">
+                  <description/>
+                  <detail>
+                     <field name="Language" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="LongText" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="LongTextID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPartnerFuncType_create">
+                  <description/>
+                  <detail>
+                     <field name="SupplierSubrange" type="string"/>
+                     <field name="PartnerCounter" type="string"/>
+                     <field name="Plant" type="string"/>
+                     <field name="PurchasingOrganization" type="string"/>
+                     <field name="ReferenceSupplier" type="string"/>
+                     <field name="PartnerFunction" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="DefaultPartner" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="error">
+                  <description/>
+                  <detail>
+                     <field name="error" type="object"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerTaxGroupingType_create">
+                  <description/>
+                  <detail>
+                     <field name="CustomerTaxGroupingCode" type="string"/>
+                     <field name="CustTaxGroupExemptionRate" type="string"/>
+                     <field name="CustTaxGrpExemptionCertificate" type="string"/>
+                     <field name="CustTaxGroupSubjectedEndDate" type="string"/>
+                     <field name="CustTaxGroupExemptionStartDate" type="string"/>
+                     <field name="CustTaxGroupSubjectedStartDate" type="string"/>
+                     <field name="CustTaxGroupExemptionEndDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerAddressType_create">
+                  <description/>
+                  <detail>
+                     <field name="CareOfName" type="string"/>
+                     <field name="CityCode" type="string"/>
+                     <field name="CountyCode" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="to_AddressUsage" type="object"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="AddressIDByExternalSystem" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="to_URLAddress" type="object"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="TownshipCode" type="string"/>
+                     <field name="to_MobilePhoneNumber" type="object"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="to_EmailAddress" type="object"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="TownshipName" type="string"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="to_FaxNumber" type="object"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="to_PhoneNumber" type="object"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressEmailAddressType_create">
+                  <description/>
+                  <detail>
+                     <field name="SearchEmailAddress" type="string"/>
+                     <field name="OrdinalNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="IsDefaultEmailAddress" type="boolean"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="EmailAddress" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierWithHoldingTaxType_create">
+                  <description/>
+                  <detail>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="WithholdingTaxType" type="string"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="RecipientType" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsWithholdingTaxSubject" type="boolean"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToAddressType_create">
+                  <description/>
+                  <detail>
+                     <field name="CityCode" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="InhouseMail" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="to_MobilePhoneNumber" type="object"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="ContactPersonPrfrdCommMedium" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="ContactPersonBuilding" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="to_EmailAddress" type="object"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="AddressNumber" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="BusinessPartnerCompany" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="RoomNumber" type="string"/>
+                     <field name="CareOfName" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="BusinessPartnerPerson" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="to_URLAddress" type="object"/>
+                     <field name="RelationshipNumber" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="Floor" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="CorrespondenceShortName" type="string"/>
+                     <field name="AddressRepresentationCode" type="string"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="ContactRelationshipDepartment" type="string"/>
+                     <field name="to_FaxNumber" type="object"/>
+                     <field name="to_PhoneNumber" type="object"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="ContactRelationshipFunction" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BPContactToFuncAndDeptType_update">
+                  <description/>
+                  <detail>
+                     <field name="ContactPersonFunction" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="PhoneNumber" type="string"/>
+                     <field name="ContactPersonDepartment" type="string"/>
+                     <field name="EmailAddress" type="string"/>
+                     <field name="PhoneNumberExtension" type="string"/>
+                     <field name="RelationshipCategory" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaIndustryType_update">
+                  <description/>
+                  <detail>
+                     <field name="IndustryKeyDescription" type="string"/>
+                     <field name="IsStandardIndustry" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerBankType">
+                  <description/>
+                  <detail>
+                     <field name="BankName" type="string"/>
+                     <field name="IBAN" type="string"/>
+                     <field name="BankAccountReferenceText" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="BankAccount" type="string"/>
+                     <field name="BankIdentification" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="BankCountryKey" type="string"/>
+                     <field name="CollectionAuthInd" type="boolean"/>
+                     <field name="BankControlKey" type="string"/>
+                     <field name="SWIFTCode" type="string"/>
+                     <field name="BankAccountName" type="string"/>
+                     <field name="BankNumber" type="string"/>
+                     <field name="BankAccountHolderName" type="string"/>
+                     <field name="IBANValidityStartDate" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierWithHoldingTaxType">
+                  <description/>
+                  <detail>
+                     <field name="WithholdingTaxCode" type="string"/>
+                     <field name="WithholdingTaxType" type="string"/>
+                     <field name="WithholdingTaxCertificate" type="string"/>
+                     <field name="RecipientType" type="string"/>
+                     <field name="ExemptionDateBegin" type="string"/>
+                     <field name="WithholdingTaxNumber" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsWithholdingTaxSubject" type="boolean"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="ExemptionReason" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="ExemptionDateEnd" type="string"/>
+                     <field name="WithholdingTaxExmptPercent" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BuPaAddressUsageType_create">
+                  <description/>
+                  <detail>
+                     <field name="AddressUsage" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="StandardUsage" type="boolean"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="AddressID" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressHomePageURLType_update">
+                  <description/>
+                  <detail>
+                     <field name="URLFieldLength" type="int"/>
+                     <field name="WebsiteURL" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="SearchURLAddress" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_AddressFaxNumberType_update">
+                  <description/>
+                  <detail>
+                     <field name="FaxCountry" type="string"/>
+                     <field name="FaxNumber" type="string"/>
+                     <field name="FaxNumberExtension" type="string"/>
+                     <field name="InternationalFaxNumber" type="string"/>
+                     <field name="AddressCommunicationRemarkText" type="string"/>
+                     <field name="IsDefaultFaxNumber" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerAddressType">
+                  <description/>
+                  <detail>
+                     <field name="CityCode" type="string"/>
+                     <field name="CountyCode" type="string"/>
+                     <field name="StreetName" type="string"/>
+                     <field name="FormOfAddress" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="StreetPrefixName" type="string"/>
+                     <field name="POBoxDeviatingCountry" type="string"/>
+                     <field name="to_MobilePhoneNumber" type="object"/>
+                     <field name="HouseNumberSupplementText" type="string"/>
+                     <field name="POBoxDeviatingRegion" type="string"/>
+                     <field name="StreetSuffixName" type="string"/>
+                     <field name="AddressTimeZone" type="string"/>
+                     <field name="TaxJurisdiction" type="string"/>
+                     <field name="CityName" type="string"/>
+                     <field name="TransportZone" type="string"/>
+                     <field name="to_EmailAddress" type="object"/>
+                     <field name="TownshipName" type="string"/>
+                     <field name="HomeCityName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="Country" type="string"/>
+                     <field name="Region" type="string"/>
+                     <field name="DeliveryServiceNumber" type="string"/>
+                     <field name="District" type="string"/>
+                     <field name="Person" type="string"/>
+                     <field name="ValidityStartDate" type="string"/>
+                     <field name="CareOfName" type="string"/>
+                     <field name="POBox" type="string"/>
+                     <field name="HouseNumber" type="string"/>
+                     <field name="POBoxDeviatingCityName" type="string"/>
+                     <field name="POBoxIsWithoutNumber" type="boolean"/>
+                     <field name="to_AddressUsage" type="object"/>
+                     <field name="AdditionalStreetSuffixName" type="string"/>
+                     <field name="AddressIDByExternalSystem" type="string"/>
+                     <field name="PostalCode" type="string"/>
+                     <field name="County" type="string"/>
+                     <field name="to_URLAddress" type="object"/>
+                     <field name="Language" type="string"/>
+                     <field name="POBoxLobbyName" type="string"/>
+                     <field name="ValidityEndDate" type="string"/>
+                     <field name="AddressUUID" type="string"/>
+                     <field name="TownshipCode" type="string"/>
+                     <field name="PrfrdCommMediumType" type="string"/>
+                     <field name="AdditionalStreetPrefixName" type="string"/>
+                     <field name="POBoxPostalCode" type="string"/>
+                     <field name="DeliveryServiceTypeCode" type="string"/>
+                     <field name="FullName" type="string"/>
+                     <field name="CompanyPostalCode" type="string"/>
+                     <field name="to_FaxNumber" type="object"/>
+                     <field name="to_PhoneNumber" type="object"/>
+                     <field name="AddressID" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerType_update">
+                  <description/>
+                  <detail>
+                     <field name="FormOfAddress" type="string"/>
+                     <field name="BusinessPartnerCategory" type="string"/>
+                     <field name="OrganizationBPName4" type="string"/>
+                     <field name="OrganizationBPName2" type="string"/>
+                     <field name="OrganizationBPName3" type="string"/>
+                     <field name="NameFormat" type="string"/>
+                     <field name="PersonFullName" type="string"/>
+                     <field name="OrganizationBPName1" type="string"/>
+                     <field name="BusinessPartnerIsBlocked" type="boolean"/>
+                     <field name="CorrespondenceLanguage" type="string"/>
+                     <field name="Industry" type="string"/>
+                     <field name="IsSexUnknown" type="boolean"/>
+                     <field name="BusinessPartnerType" type="string"/>
+                     <field name="Language" type="string"/>
+                     <field name="OrganizationLiquidationDate" type="string"/>
+                     <field name="GroupBusinessPartnerName1" type="string"/>
+                     <field name="GroupBusinessPartnerName2" type="string"/>
+                     <field name="AdditionalLastName" type="string"/>
+                     <field name="TradingPartner" type="string"/>
+                     <field name="LegalForm" type="string"/>
+                     <field name="BusinessPartnerGrouping" type="string"/>
+                     <field name="IsFemale" type="boolean"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="FirstName" type="string"/>
+                     <field name="BusinessPartnerBirthDateStatus" type="string"/>
+                     <field name="NameCountry" type="string"/>
+                     <field name="MiddleName" type="string"/>
+                     <field name="AcademicTitle" type="string"/>
+                     <field name="BusinessPartnerIDByExtSystem" type="string"/>
+                     <field name="OrganizationFoundationDate" type="string"/>
+                     <field name="IsMarkedForArchiving" type="boolean"/>
+                     <field name="GenderCodeName" type="string"/>
+                     <field name="BusinessPartnerBirthplaceName" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="LastName" type="string"/>
+                     <field name="IsMale" type="boolean"/>
+                     <field name="SearchTerm2" type="string"/>
+                     <field name="SearchTerm1" type="string"/>
+                     <field name="BirthDate" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaTaxType">
+                  <description/>
+                  <detail>
+                     <field name="CustomerTaxClassification" type="string"/>
+                     <field name="CustomerTaxCategory" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="DepartureCountry" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="Division" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierDunningType_create">
+                  <description/>
+                  <detail>
+                     <field name="DunningBlock" type="string"/>
+                     <field name="DunningLevel" type="string"/>
+                     <field name="LastDunnedOn" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="DunningRecipient" type="string"/>
+                     <field name="DunningArea" type="string"/>
+                     <field name="DunningProcedure" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="LegDunningProcedureOn" type="string"/>
+                     <field name="SupplierAccountGroup" type="string"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="DunningClerk" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_SupplierPurchasingOrgTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_BusinessPartnerType">
+                  <description/>
+                  <detail>
+                     <field name="CreationDate" type="string"/>
+                     <field name="CreatedByUser" type="string"/>
+                     <field name="FormOfAddress" type="string"/>
+                     <field name="Customer" type="string"/>
+                     <field name="OrganizationBPName4" type="string"/>
+                     <field name="BusinessPartner" type="string"/>
+                     <field name="OrganizationBPName2" type="string"/>
+                     <field name="OrganizationBPName3" type="string"/>
+                     <field name="PersonFullName" type="string"/>
+                     <field name="OrganizationBPName1" type="string"/>
+                     <field name="Industry" type="string"/>
+                     <field name="IsSexUnknown" type="boolean"/>
+                     <field name="BusinessPartnerType" type="string"/>
+                     <field name="OrganizationLiquidationDate" type="string"/>
+                     <field name="to_Customer" type=""/>
+                     <field name="LegalForm" type="string"/>
+                     <field name="BusinessPartnerGrouping" type="string"/>
+                     <field name="to_Supplier" type=""/>
+                     <field name="NameCountry" type="string"/>
+                     <field name="AcademicTitle" type="string"/>
+                     <field name="LastChangedByUser" type="string"/>
+                     <field name="BusinessPartnerIDByExtSystem" type="string"/>
+                     <field name="IsMarkedForArchiving" type="boolean"/>
+                     <field name="BusinessPartnerUUID" type="string"/>
+                     <field name="to_BusinessPartnerRole" type="object"/>
+                     <field name="BusinessPartnerBirthplaceName" type="string"/>
+                     <field name="ETag" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CreationTime" type="string"/>
+                     <field name="IndependentAddressID" type="string"/>
+                     <field name="LastName" type="string"/>
+                     <field name="BirthDate" type="string"/>
+                     <field name="to_BusinessPartnerAddress" type="object"/>
+                     <field name="to_BusinessPartnerBank" type="object"/>
+                     <field name="BusinessPartnerCategory" type="string"/>
+                     <field name="NameFormat" type="string"/>
+                     <field name="BusinessPartnerIsBlocked" type="boolean"/>
+                     <field name="CorrespondenceLanguage" type="string"/>
+                     <field name="BusinessPartnerFullName" type="string"/>
+                     <field name="to_BusinessPartnerContact" type="object"/>
+                     <field name="Language" type="string"/>
+                     <field name="GroupBusinessPartnerName1" type="string"/>
+                     <field name="LastChangeTime" type="string"/>
+                     <field name="GroupBusinessPartnerName2" type="string"/>
+                     <field name="Supplier" type="string"/>
+                     <field name="AdditionalLastName" type="string"/>
+                     <field name="TradingPartner" type="string"/>
+                     <field name="BusinessPartnerName" type="string"/>
+                     <field name="to_BuPaIndustry" type="object"/>
+                     <field name="PersonNumber" type="string"/>
+                     <field name="IsFemale" type="boolean"/>
+                     <field name="IsNaturalPerson" type="string"/>
+                     <field name="FirstName" type="string"/>
+                     <field name="to_BuPaIdentification" type="object"/>
+                     <field name="BusinessPartnerBirthDateStatus" type="string"/>
+                     <field name="MiddleName" type="string"/>
+                     <field name="OrganizationFoundationDate" type="string"/>
+                     <field name="to_BusinessPartnerTax" type="object"/>
+                     <field name="GenderCodeName" type="string"/>
+                     <field name="LastChangeDate" type="string"/>
+                     <field name="InternationalLocationNumber2" type="string"/>
+                     <field name="InternationalLocationNumber3" type="string"/>
+                     <field name="InternationalLocationNumber1" type="string"/>
+                     <field name="IsMale" type="boolean"/>
+                     <field name="SearchTerm2" type="string"/>
+                     <field name="SearchTerm1" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyType_create">
+                  <description/>
+                  <detail>
+                     <field name="CollectiveInvoiceVariant" type="string"/>
+                     <field name="to_CustomerDunning" type="object"/>
+                     <field name="Customer" type="string"/>
+                     <field name="AlternativePayerAccount" type="string"/>
+                     <field name="ItemIsToBePaidSeparately" type="boolean"/>
+                     <field name="PaymentTerms" type="string"/>
+                     <field name="RecordPaymentHistoryIndicator" type="boolean"/>
+                     <field name="ReconciliationAccount" type="string"/>
+                     <field name="AccountingClerk" type="string"/>
+                     <field name="CustomerSupplierClearingIsUsed" type="boolean"/>
+                     <field name="KnownOrNegotiatedLeave" type="string"/>
+                     <field name="IntrstCalcFrequencyInMonths" type="string"/>
+                     <field name="HouseBank" type="string"/>
+                     <field name="CashPlanningGroup" type="string"/>
+                     <field name="LayoutSortingRule" type="string"/>
+                     <field name="AccountingClerkInternetAddress" type="string"/>
+                     <field name="AccountingClerkPhoneNumber" type="string"/>
+                     <field name="to_WithHoldingTax" type="object"/>
+                     <field name="APARToleranceGroup" type="string"/>
+                     <field name="PaymentMethodsList" type="string"/>
+                     <field name="ValueAdjustmentKey" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="InterestCalculationCode" type="string"/>
+                     <field name="InterestCalculationDate" type="string"/>
+                     <field name="AccountingClerkFaxNumber" type="string"/>
+                     <field name="UserAtCustomer" type="string"/>
+                     <field name="CustomerAccountNote" type="string"/>
+                     <field name="CustomerHeadOffice" type="string"/>
+                     <field name="to_CompanyText" type="object"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="IsToBeLocallyProcessed" type="boolean"/>
+                     <field name="PhysicalInventoryBlockInd" type="boolean"/>
+                     <field name="CompanyCode" type="string"/>
+                     <field name="PaymentBlockingReason" type="string"/>
+                     <field name="PaytAdviceIsSentbyEDI" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerCompanyTextType_update">
+                  <description/>
+                  <detail>
+                     <field name="LongText" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="API_BUSINESS_PARTNER_A_CustomerSalesAreaType_create">
+                  <description/>
+                  <detail>
+                     <field name="Customer" type="string"/>
+                     <field name="to_SalesAreaTax" type="object"/>
+                     <field name="PartialDeliveryIsAllowed" type="string"/>
+                     <field name="DistributionChannel" type="string"/>
+                     <field name="SalesDistrict" type="string"/>
+                     <field name="ExchangeRateType" type="string"/>
+                     <field name="PriceListType" type="string"/>
+                     <field name="InvoiceListSchedule" type="string"/>
+                     <field name="CustomerABCClassification" type="string"/>
+                     <field name="ShippingCondition" type="string"/>
+                     <field name="AdditionalCustomerGroup1" type="string"/>
+                     <field name="Currency" type="string"/>
+                     <field name="IncotermsTransferLocation" type="string"/>
+                     <field name="AdditionalCustomerGroup3" type="string"/>
+                     <field name="IncotermsVersion" type="string"/>
+                     <field name="AdditionalCustomerGroup2" type="string"/>
+                     <field name="BillingIsBlockedForCustomer" type="string"/>
+                     <field name="AdditionalCustomerGroup5" type="string"/>
+                     <field name="Division" type="string"/>
+                     <field name="AdditionalCustomerGroup4" type="string"/>
+                     <field name="InvoiceDate" type="string"/>
+                     <field name="OrderIsBlockedForCustomer" type="string"/>
+                     <field name="CompleteDeliveryIsDefined" type="boolean"/>
+                     <field name="SalesGroup" type="string"/>
+                     <field name="PaymentGuaranteeProcedure" type="string"/>
+                     <field name="IncotermsLocation2" type="string"/>
+                     <field name="IncotermsLocation1" type="string"/>
+                     <field name="CustomerAccountAssignmentGroup" type="string"/>
+                     <field name="CustomerGroup" type="string"/>
+                     <field name="AccountByCustomer" type="string"/>
+                     <field name="DeliveryIsBlockedForCustomer" type="string"/>
+                     <field name="SalesOrganization" type="string"/>
+                     <field name="to_PartnerFunction" type="object"/>
+                     <field name="CustomerPricingProcedure" type="string"/>
+                     <field name="IncotermsClassification" type="string"/>
+                     <field name="SalesOffice" type="string"/>
+                     <field name="DeletionIndicator" type="boolean"/>
+                     <field name="DeliveryPriority" type="string"/>
+                     <field name="SupplyingPlant" type="string"/>
+                     <field name="to_SalesAreaText" type="object"/>
+                     <field name="CustomerAccountGroup" type="string"/>
+                     <field name="CustomerPaymentTerms" type="string"/>
+                     <field name="ItemOrderProbabilityInPercent" type="string"/>
+                     <field name="AuthorizationGroup" type="string"/>
+                     <field name="CustomerPriceGroup" type="string"/>
+                     <field name="OrderCombinationIsAllowed" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="string">
+                  <description/>
+                  <detail>
+                     <field name="string" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="boolean">
+                  <description/>
+                  <detail>
+                     <field name="boolean" type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="double">
+                  <description/>
+                  <detail>
+                     <field name="double" type="double"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="integer">
+                  <description/>
+                  <detail>
+                     <field name="integer" type="int"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1PiFt6LNt9cbNqMm94udOW</types1:GUID>
+      <types1:DisplayName>SvcEmail</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:14.173Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,517 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>HNKVlDjAqQHhwq9-gt-20541288-2022-10-12T10:48:21.544Z::pd.xml</types1:EntryId>
+      <types1:Name>api5b_Wrapper</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Wrapper process which invokes API5B (Cancellation of Invoice payment posting) processes</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:22Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-17T06:35:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-17T06:41:54Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.api5b_Wrapper/api5b_Wrapper.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="api5b_Wrapper"
+                  name="api5b_Wrapper"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Wrapper process which invokes API5B (Cancellation of Invoice payment posting) processes</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="tmp_hostname_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">https://my305570-api.s4hana.ondemand.com</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">VIEW_POINT_CLOUD_Q</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password_SAP" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_host" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vpc_api_input" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ClearedPaymentResetEntry" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ReadCount" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TokenSetFlag" type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l7owvrbo" targetId="l7owvrbn"/>
+               </start>
+               <assignment id="l7owvrbn">
+                  <title>Set Parent Process attributes</title>
+                  <operation source="formula" to="temp.tmp_ProcessStartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_X_TRANSACTION_ID">
+                     <expression language="XQuery">fn:concat('API05b_', date:toChar($temp.tmp_ProcessStartTime, 'YYYYMMDDHH24MISS'))</expression>
+                  </operation>
+                  <operation source="constant" to="temp.tmp_ApiName">API05b - Payment Clearance Reset</operation>
+                  <operation source="constant" to="temp.tmp_EventName">Batch of API05b</operation>
+                  <operation source="formula" to="temp.tmp_IICS_Process_ID">
+                     <expression language="XQuery">util:getProcessId()</expression>
+                  </operation>
+                  <link id="l7owvrbp" targetId="kw3flc8d"/>
+               </assignment>
+               <assignment id="kw3flc8d">
+                  <title>URN Mapping</title>
+                  <operation source="formula" to="temp.tmp_vpc_host">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_vpc_password">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_vpc_username">
+                     <expression language="XQuery">util:resolveURN('URN_VPC_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_hostname_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username_SAP">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <link id="l7owvrbe" targetId="l7owvto8"/>
+               </assignment>
+               <assignment id="l7syo86y">
+                  <title>Set SAP PaymentsResets read count</title>
+                  <operation source="formula" to="temp.tmp_ReadCount">
+                     <expression language="XQuery">util:iif($output.o_HttpResponseStatusCode = '200', 
+fn:sum(for $i in $output.o_ClearedPaymentReset_Array 
+return xs:integer(fn:not(fn:empty($i/ReceiptNumber)) and fn:not(fn:empty($i/KeyValue1)) and fn:not(fn:empty($i/KeyValue3)))), 0)</expression>
+                  </operation>
+                  <link id="l7syo88j" targetId="l7syo88i"/>
+               </assignment>
+               <assignment id="l84getah">
+                  <title>Check if Token is Set</title>
+                  <operation source="formula" to="temp.tmp_TokenSetFlag">
+                     <expression language="XQuery">util:iif(util:isNull($output.out_vpc_token ), fn:false(), fn:true())</expression>
+                  </operation>
+                  <link id="l84getck" targetId="l84getcj"/>
+               </assignment>
+               <eventContainer id="l7owvto8">
+                  <subflow id="l7owvoy8">
+                     <title>Fetch ClearedPaymentsResetEnteries from SAP</title>
+                     <subflowGUID>6UZf13AhQUmlv2HiQ7E8o1</subflowGUID>
+                     <subflowPath>Process_GET_YY1_ClearedPaymentResetEntries</subflowPath>
+                     <runForEach>false</runForEach>
+                     <input>
+                        <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                        <parameter name="in_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                        <parameter name="in_IICS_Process_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                        <parameter name="in_ParentProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                        <parameter name="in_ApiName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                        <parameter name="in_Body" source="formula" updatable="true">
+                           <expression language="XQuery">'N/A'</expression>
+                        </parameter>
+                     </input>
+                     <outputDef>
+                        <field name="o_ClearedPaymentReset_Array" type="objectlist">
+                           <options>
+                              <option name="referenceTo">$po:$any</option>
+                              <option hide="true" name="multiSelect">true</option>
+                              <option name="required">false</option>
+                              <option name="isCopy">true</option>
+                           </options>
+                        </field>
+                        <field name="o_HttpResponseStatusCode" type="string">
+                           <options>
+                              <option name="required">false</option>
+                           </options>
+                        </field>
+                     </outputDef>
+                  </subflow>
+                  <flow id="l7owvtoa">
+                     <link id="l7owvtob" targetId="l7owvto8" type="containerLink"/>
+                  </flow>
+                  <flow id="l7owvtod">
+                     <subflow id="l7owvtvo">
+                        <title>Log GetData Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                           <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                           <parameter name="i_Code" source="field" updatable="true">output.getData-faultInfo[1]/code</parameter>
+                           <parameter name="i_Error" source="field" updatable="true">output.getData-faultInfo[1]/reason</parameter>
+                           <parameter name="i_Description" source="field" updatable="true">output.getData-faultInfo[1]/detail</parameter>
+                           <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                           <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                           <parameter name="i_DataKey" source="constant" updatable="true">Bulk data extraction from SAP failed</parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP : GET Cleared Payment Reset entries</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_PAYCLEAREDRESET_API_V1_CDS/YY1_PayClearedReset_API_v1'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">'N/A'</expression>
+                           </parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom API)</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="l7psizpo" targetId="l7psizpn"/>
+                     </subflow>
+                     <end id="l7psizpn">
+                        <title>End Data Retrieval Failure</title>
+                     </end>
+                  </flow>
+                  <link id="l7owvto9" targetId="l7owvtoa" type="containerLink"/>
+                  <link id="l7syo86z" targetId="l7syo86y"/>
+                  <events>
+                     <catch faultField="getData-faultInfo" id="l7owvsbd" interrupting="true">
+                        <link id="l7owvtoc" targetId="l7owvtod" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="l7syo88i" type="exclusive">
+                  <title>SAP PaymentResets read count</title>
+                  <flow id="l7syo88m">
+                     <link id="l7syo88n" targetId="l7syo88i" type="containerLink"/>
+                  </flow>
+                  <flow id="l7syo88p">
+                     <end id="l7syo8uy">
+                        <title>End No data read from SAP</title>
+                     </end>
+                  </flow>
+                  <link id="l7syo88l" targetId="l7syo88m" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-than">
+                           <arg name="left">{$temp.tmp_ReadCount}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7syo88o" targetId="l7syo88p" type="containerLink"/>
+                  <link id="l7syo88k" targetId="l7psiy8v"/>
+               </container>
+               <container id="l7psiy8v" type="exclusive">
+                  <title>Current User</title>
+                  <flow id="l7psiy8w">
+                     <link id="l7psiy91" targetId="l7psiy8v" type="containerLink"/>
+                  </flow>
+                  <flow id="l7psiy8x">
+                     <eventContainer id="l84g2grr">
+                        <subflow id="l7psiy8y">
+                           <title>VPC Get Token</title>
+                           <subflowGUID>07bmeP8qUUzjnAwYUaz46x</subflowGUID>
+                           <subflowPath>P_VPC_GetToken-2</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input/>
+                           <outputDef>
+                              <field name="out_vpc_token" type="string">
+                                 <options>
+                                    <option name="required">false</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="l84g2grt">
+                           <link id="l84g2gru" targetId="l84g2grr" type="containerLink"/>
+                        </flow>
+                        <flow id="l84g2grw">
+                           <subflow id="l84g2gzf">
+                              <title>Log GetVPCToken Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.VPCGetToken-faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.VPCGetToken-faultInfo[1]/reason</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.VPCGetToken-faultInfo[1]/detail</parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                                 <parameter name="i_DataKey" source="constant" updatable="true">Get VPC Token failed</parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">VPC : GET Token</parameter>
+                                 <parameter name="i_RestURL" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">'N/A'</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                           </subflow>
+                           <link id="l84g2grx" targetId="l84g2grr" type="containerLink"/>
+                        </flow>
+                        <link id="l84g2grs" targetId="l84g2grt" type="containerLink"/>
+                        <events>
+                           <catch faultField="VPCGetToken-faultInfo"
+                                  id="l84g2grn"
+                                  interrupting="true">
+                              <link id="l84g2grv" targetId="l84g2grw" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="l7psiy92" targetId="l7psiy8v" type="containerLink"/>
+                  </flow>
+                  <link id="l7psiy8z" targetId="l7psiy8w" type="containerLink">
+                     <condition source="formula">
+                        <function name="contains">
+                           <arg name="left">{$input.CurrentUser}</arg>
+                           <arg name="right">FORCE INVALID</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l7psiy90" targetId="l7psiy8x" type="containerLink"/>
+                  <link id="l84getai" targetId="l84getah"/>
+               </container>
+               <container id="l84getcj" type="exclusive">
+                  <title>Token Set?</title>
+                  <flow id="l84getcn">
+                     <link id="l84getco" targetId="l84getcj" type="containerLink"/>
+                  </flow>
+                  <flow id="l84getcq">
+                     <throw id="l84geua7">
+                        <title>Throw VPCToken set error</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">404</parameter>
+                           <parameter name="detail" source="constant" updatable="true">VPC Token not set</parameter>
+                           <parameter name="reason" source="constant" updatable="true">VPC Token not set</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l84getcm" targetId="l84getcn" type="containerLink">
+                     <condition source="formula">
+                        <function name="true">
+                           <arg name="field">{$temp.tmp_TokenSetFlag}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l84getcp" targetId="l84getcq" type="containerLink">
+                     <condition source="formula">
+                        <function name="false">
+                           <arg name="field">{$temp.tmp_TokenSetFlag}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l84getcl" targetId="kr94x76i"/>
+               </container>
+               <container id="kr94x76i" type="exclusive">
+                  <title>Next PaymentReset entry ?</title>
+                  <flow id="kr94x76m">
+                     <assignment id="kr94x77t">
+                        <title>Pick a PaymentReset entry for Processing</title>
+                        <operation source="formula" to="temp.tmp_ClearedPaymentResetEntry">
+                           <expression language="XQuery">list:head($output.o_ClearedPaymentReset_Array  )</expression>
+                        </operation>
+                        <link id="kzi42xam" targetId="kzi42y15"/>
+                     </assignment>
+                     <assignment id="kr94x78e">
+                        <title>Move to Next PaymentReset entry</title>
+                        <operation source="formula" to="output.o_ClearedPaymentReset_Array">
+                           <expression language="XQuery">list:tail($output.o_ClearedPaymentReset_Array)</expression>
+                        </operation>
+                     </assignment>
+                     <eventContainer id="kzi42y15">
+                        <subflow id="kzi42xal">
+                           <title>Post Receipt Cancellation to VPoint</title>
+                           <subflowGUID>2ODy45ECtcFlX2NtDC4F4n</subflowGUID>
+                           <subflowPath>API_5b</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_VPC_Token" source="field" updatable="true">output.out_vpc_token</parameter>
+                              <parameter name="in_ClearedPaymentResetEntry" source="field" updatable="true">temp.tmp_ClearedPaymentResetEntry</parameter>
+                              <parameter name="in_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                              <parameter name="in_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                              <parameter name="in_IICS_Process_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                              <parameter name="in_ParentProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              <parameter name="in_ApiName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                           </input>
+                           <outputDef/>
+                        </subflow>
+                        <flow id="kzi42y17">
+                           <link id="kzi42y18" targetId="kzi42y15" type="containerLink"/>
+                        </flow>
+                        <flow id="kzi42y1a">
+                           <subflow id="l7psj2cz">
+                              <title>Log Post Receipt Cancellation Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="field" updatable="true">temp.tmp_X_TRANSACTION_ID</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="field" updatable="true">temp.tmp_IICS_Process_ID</parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.api5b-faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.api5b-faultInfo[1]/reason</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.api5b-faultInfo[1]/detail</parameter>
+                                 <parameter name="i_APIName" source="field" updatable="true">temp.tmp_ApiName</parameter>
+                                 <parameter name="i_EventName" source="field" updatable="true">temp.tmp_EventName</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'ReceiptNumber='||$temp.tmp_ClearedPaymentResetEntry/ReceiptNumber||'^ClearingAccountingDocument='||$temp.tmp_ClearedPaymentResetEntry/KeyValue3	</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="formula" updatable="true">
+                                    <expression language="XQuery">'api5b'</expression>
+                                 </parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/opu/odata/sap/YY1_PAYCLEAREDRESET_API_V1_CDS/YY1_PayClearedReset_API_v1'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">'N/A'</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">N/A (Custom API)</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">temp.tmp_ProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="l7psj2d0" targetId="kzi42y5k"/>
+                           </subflow>
+                           <jumpTo id="kzi42y5k">
+                              <link id="kzi42y5l" targetId="kr94x78e"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="kzi42y16" targetId="kzi42y17" type="containerLink"/>
+                        <link id="l7svbg6a" targetId="kr94x78e"/>
+                        <events>
+                           <catch faultField="api5b-faultInfo" id="kzi42y0n" interrupting="true">
+                              <link id="kzi42y19" targetId="kzi42y1a" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="kr94x76n" targetId="kr94x76i" type="containerLink"/>
+                  </flow>
+                  <flow id="kr94x76p">
+                     <end id="l7psizn8">
+                        <title>End No more entries to process</title>
+                     </end>
+                  </flow>
+                  <link id="kr94x76l" targetId="kr94x76m" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$output.o_ClearedPaymentReset_Array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kr94x76o" targetId="kr94x76p" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$output.o_ClearedPaymentReset_Array}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kr94x7bt" targetId="kr94x7br"/>
+               </container>
+               <jumpTo id="kr94x7br">
+                  <link id="kr94x7bs" targetId="kr94x76i"/>
+               </jumpTo>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>10831e15-22cc-4549-a43c-d02ffc7c9154</ns1:Id>
+               <ns1:Name>t</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:22Z</ns1:CreationDate>
+               <ns1:ModifiedBy>anupama.rao@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-17T06:35:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>5S8arWGERu3jjbx8IJYvMU</types1:GUID>
+      <types1:DisplayName>api5b_Wrapper</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.201Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

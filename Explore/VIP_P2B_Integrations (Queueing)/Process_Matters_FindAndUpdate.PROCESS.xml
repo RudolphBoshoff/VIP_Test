@@ -1,0 +1,419 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f4VQT53nQciSrZM-gt-7544172-2021-12-05T16:48:01.09Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_Matters_FindAndUpdate</types1:Name>
+      <types1:ParentFlowIds>2JrhNzUzeA8rJ4p-gt-1248338-2021-12-20T09:31:52.869Z::pd.xml,ncjIw8jIw8jIw8j-gt-24152861-2022-06-08T05:54:42.224Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Updates the Matter Status to Open [0]/Blocked Invoicing [1]/Blocked Time Entry [2] to align the status of the matter with the status of the Billing File (see process: api9 and api9_Wrapper)</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2021-12-05T16:48:01Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-06-19T11:36:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-06-19T11:48:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_Matters_FindAndUpdate/Process_Matters_FindAndUpdate.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_Matters_FindAndUpdate"
+                  name="Process_Matters_FindAndUpdate"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Updates the Matter Status to Open [0]/Blocked Invoicing [1]/Blocked Time Entry [2] to align the status of the matter with the status of the Billing File (see process: api9 and api9_Wrapper)</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_BlockDetails" type="reference">
+                  <options>
+                     <option name="referenceTo">AppSvcYY1:results</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">0L8yRuv9VrIjvcbVfHmB68</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_Flag2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">N</option>
+                  </options>
+               </field>
+               <field description="" name="o_MattersSuccess" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_MattersFailed" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Matters" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MattersList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Matters</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClientsList" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_VPC_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8ulne9u" targetId="l8ulne7s"/>
+               </start>
+               <assignment id="l8ulne7s">
+                  <title>Assignment to tmp_MattersList</title>
+                  <operation source="list" to="temp.tmp_MattersList">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:Matters">
+                        <where>RevEntity = '{$input.in_BlockDetails[1]/SalesOrganization}' and RefCode = '{$input.in_BlockDetails[1]/BusinessPartner}'</where>
+                     </query>
+                  </operation>
+                  <link id="l8ulne99" targetId="l8ulne8f"/>
+               </assignment>
+               <container id="l8ulne8f" type="exclusive">
+                  <title>Matters List</title>
+                  <flow id="l8ulne8g">
+                     <assignment id="l8ulne8h">
+                        <title>Next Record</title>
+                        <operation source="formula" to="temp.tmp_Matters">
+                           <expression language="XQuery">list:head($temp.tmp_MattersList)</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_MattersList">
+                           <expression language="XQuery">list:tail($temp.tmp_MattersList)</expression>
+                        </operation>
+                        <link id="l8ulne8y" targetId="l8ulne8i"/>
+                     </assignment>
+                     <assignment id="l8ulne8i">
+                        <title>Construct Payload</title>
+                        <operation source="formula" to="temp.tmp_VPC_Payload">
+                           <expression language="XQuery">&lt;root&gt;
+  &lt;!-- Changed Value --&gt;
+  &lt;MatterStatus&gt;{$input.in_BlockDetails[1]/Block }&lt;/MatterStatus&gt;
+  
+  &lt;!-- Unchanged Mandatory Fields --&gt;
+  &lt;RefCode&gt;{$temp.tmp_Matters.RefCode }&lt;/RefCode&gt;
+  &lt;MatterCode&gt;{$temp.tmp_Matters.tmp_MatterCode}&lt;/MatterCode&gt;
+  &lt;CurCode&gt;{$temp.tmp_Matters.CurCode} &lt;/CurCode&gt;
+  &lt;DateCreated&gt;{$temp.tmp_Matters.DateCreated} &lt;/DateCreated&gt;
+  &lt;Description&gt;{$temp.tmp_Matters.Description} &lt;/Description&gt;
+  &lt;MatterType&gt;{$temp.tmp_Matters.MatterType} &lt;/MatterType&gt;
+  &lt;RateList2&gt;{$temp.tmp_Matters.RateList2} &lt;/RateList2&gt;
+  &lt;RevEntity&gt;{$temp.tmp_Matters.RevEntity} &lt;/RevEntity&gt;  
+  &lt;OrgUnit1&gt;{$temp.tmp_Matters.OrgUnit1 }&lt;/OrgUnit1&gt;
+  &lt;CustomText&gt;{$temp.tmp_Matters.CustomText }&lt;/CustomText&gt;
+  &lt;CustomCode&gt;{$temp.tmp_Matters.CustomCode }&lt;/CustomCode&gt;
+  &lt;MtAdmin2Code&gt;{$temp.tmp_Matters.MtAdmin2Code }&lt;/MtAdmin2Code&gt;
+  &lt;MtAdminCode&gt;{$temp.tmp_Matters.MtAdminCode }&lt;/MtAdminCode&gt;
+  
+  &lt;!-- Unchanged Non-Mandatory Fields; Added for https://vistra.atlassian.net/browse/VR-2765 --&gt;
+  &lt;matterExt&gt;{$temp.tmp_Matters.MatterExt   }&lt;/matterExt&gt;
+  &lt;mtUserCombo&gt;{$temp.tmp_Matters.MtUserCombo   }&lt;/mtUserCombo&gt;
+  &lt;chargeTaxNr&gt;{$temp.tmp_Matters.ChargeTaxNr   }&lt;/chargeTaxNr&gt;
+  &lt;coverLetter&gt;{$temp.tmp_Matters.CoverLetter   }&lt;/coverLetter&gt;
+  &lt;remitFrom&gt;{$temp.tmp_Matters.RemitFrom   }&lt;/remitFrom&gt;
+  &lt;remitTo&gt;{$temp.tmp_Matters.RemitTo   }&lt;/remitTo&gt;
+  &lt;wipBillAt&gt;{$temp.tmp_Matters.WIPBillAt  }&lt;/wipBillAt&gt;
+  &lt;timeLimit&gt;{$temp.tmp_Matters.TimeLimit  }&lt;/timeLimit&gt;
+  &lt;dateCompletion&gt;{$temp.tmp_Matters.DateCompletion  }&lt;/dateCompletion&gt;
+  &lt;autoSettle&gt;{$temp.tmp_Matters.AutoSettle  }&lt;/autoSettle&gt;
+  &lt;notChargeDisb&gt;{$temp.tmp_Matters.NotChargeDisb   }&lt;/notChargeDisb&gt;
+  &lt;notChargeTime&gt;{$temp.tmp_Matters.NotChargeTime  }&lt;/notChargeTime&gt;
+  &lt;invoiceOther&gt;{$temp.tmp_Matters.InvoiceOther  }&lt;/invoiceOther&gt;
+  &lt;invoiceFile&gt;{$temp.tmp_Matters.InvoiceFile  }&lt;/invoiceFile&gt;
+  &lt;invoiceMatter&gt;{$temp.tmp_Matters.InvoiceMatter   }&lt;/invoiceMatter&gt;
+  &lt;dateClosed&gt;{$temp.tmp_Matters.DateClosed   }&lt;/dateClosed&gt;
+  &lt;orgCode&gt;{$temp.tmp_Matters.OrgCode  }&lt;/orgCode&gt;
+  &lt;note&gt;{$temp.tmp_Matters.Note   }&lt;/note&gt;
+&lt;/root&gt;</expression>
+                        </operation>
+                        <link id="l8ulne8z" targetId="l8ulne8j"/>
+                     </assignment>
+                     <subflow id="l8ulne8j">
+                        <title>P_VPC_GetToken</title>
+                        <subflowGUID>07bmeP8qUUzjnAwYUaz46x</subflowGUID>
+                        <subflowPath>P_VPC_GetToken-2</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input/>
+                        <outputDef>
+                           <field name="out_vpc_token" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="l8ulne90" targetId="l8ulne8k"/>
+                     </subflow>
+                     <eventContainer id="l8ulne8k">
+                        <service id="l8ulne8s">
+                           <title>PUT_Matter</title>
+                           <serviceName>AppSvcVpcPracticeManagement-v8:PUT_Matter</serviceName>
+                           <serviceGUID>5DZL3yLYt5YjxSxYnCVfiv</serviceGUID>
+                           <serviceInput>
+                              <parameter name="access_token" source="constant">{$output.out_vpc_token}</parameter>
+                              <parameter name="body" source="formula">
+                                 <expression language="XQuery">$temp.tmp_VPC_Payload </expression>
+                              </parameter>
+                              <parameter name="baseURL" source="formula">
+                                 <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                              </parameter>
+                              <parameter name="RefCode" source="field">temp.tmp_Matters.RefCode</parameter>
+                              <parameter name="MatterCode" source="field">temp.tmp_Matters.MatterCode</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l8ulne8l">
+                           <assignment id="l8ulne8m">
+                              <title>Assignment to o_Flag2, o_MattersSuccess</title>
+                              <operation source="formula" to="output.o_Flag2">
+                                 <expression language="XQuery">'Y'</expression>
+                              </operation>
+                              <operation source="formula" to="output.o_MattersSuccess">
+                                 <expression language="XQuery">list:append($output.o_MattersSuccess , $temp.tmp_Matters.MatterCode )</expression>
+                              </operation>
+                              <link id="l8ulne93" targetId="l8ulne8n"/>
+                           </assignment>
+                           <jumpTo id="l8ulne8n">
+                              <link id="l8ulne94" targetId="l8ulne8f"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="l8ulne8o">
+                           <assignment id="l8ulne8p">
+                              <title>Assignment to o_MattersFailed</title>
+                              <operation source="formula" to="output.o_MattersFailed">
+                                 <expression language="XQuery">list:append($output.o_MattersFailed , $temp.tmp_Matters.MatterCode )</expression>
+                              </operation>
+                              <link id="l8ulne95" targetId="l8ulne8q"/>
+                           </assignment>
+                           <subflow id="l8ulne8q">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">$input.in_X_TRANSACTION_ID </expression>
+                                 </parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">'Parent='||$input.in_IICS_Process_ID||'^FailureAt='||util:getProcessId()||'^'</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">{$input.in_ApiName}</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">{$input.in_EventName}</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'RefCode='||$input.in_BlockDetails[1]/BusinessPartner ||
+'^RevEntity='||$input.in_BlockDetails[1]/SalesOrganization ||
+'^MatterCode='||$temp.tmp_Matters.MatterCode||'^'</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">VPoint: Failed to update the credit block for Matter (Customer Status has already been updated)</parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')||'api/practicemanager/matter?skipwarning=1'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toJSON($temp.tmp_VPC_Payload )</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="formula" updatable="true">
+                                    <expression language="XQuery">'https://web.clmvpcdev.vaws/rest/apidoc/index#!/PracticeManagement/MattersController_Put'</expression>
+                                 </parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="l8ulne96" targetId="l8ulne8r"/>
+                           </subflow>
+                           <jumpTo id="l8ulne8r">
+                              <link id="l8ulne97" targetId="l8ulne8f"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="l8ulne91" targetId="l8ulne8l" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kwtcku7a" interrupting="true">
+                              <link id="l8ulne92" targetId="l8ulne8o" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                  </flow>
+                  <flow id="l8ulne8t">
+                     <create id="l8ulne8u">
+                        <title>VIP_P2B_InterfaceErrorLog</title>
+                        <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                        <createInput>
+                           <parameter name="X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                           <parameter name="IICS_Run_ID" source="constant" updatable="true">{$input.in_IICS_Process_ID}</parameter>
+                           <parameter name="Code" source="constant" updatable="true">100</parameter>
+                           <parameter name="Error" source="constant" updatable="true">Continue</parameter>
+                           <parameter name="Description" source="formula" updatable="true">
+                              <expression language="XQuery">list:count($output.o_MattersSuccess)||' Matters Updated; '||list:count($output.o_MattersFailed)||' Matters Failed to Update'</expression>
+                           </parameter>
+                           <parameter name="DateCreated" source="formula" updatable="true">
+                              <expression language="XQuery">fn:current-dateTime()</expression>
+                           </parameter>
+                           <parameter name="DateProcessStart" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                           <parameter name="API_NAME" source="constant" updatable="true">{$input.in_ApiName}</parameter>
+                           <parameter name="EVENT_NAME" source="constant" updatable="true">{$input.in_EventName}</parameter>
+                           <parameter name="DATA_KEY" source="formula" updatable="true">
+                              <expression language="XQuery">'RefCode='||$input.in_BlockDetails[1]/BusinessPartner ||
+'^RevEntity='||$input.in_BlockDetails[1]/SalesOrganization ||
+'^Matters Updated='||fn:string-join($output.o_MattersSuccess , ";")||
+'^Matters Failed to Update='||fn:string-join($output.o_MattersFailed , ";")</expression>
+                           </parameter>
+                           <parameter name="IICS_PROCESS_NAME" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="l8ulne98" targetId="l8ulne8v"/>
+                     </create>
+                     <end id="l8ulne8v">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l8ulne8w" targetId="l8ulne8g" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$temp.tmp_MattersList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l8ulne8x" targetId="l8ulne8t" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$temp.tmp_MattersList}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>4098f923-d57c-48c7-b1c2-4badc0a84de8</ns1:Id>
+               <ns1:Name>Billfilechk</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-12-05T16:48:01Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:08Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12052978"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f299e8c2-810a-49ec-983f-9d6c1dec73d4</ns1:Id>
+               <ns1:Name>MatterUpdated</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2021-12-06T12:49:45Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:08Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "80006515",
+	 "in_Block": "2",
+	 "in_BaseURL": "http://10.104.10.15:8089/",
+	 "in_AccessToken": "AQAAANCMnd8BFdERjHoAwE_Cl-sBAAAAEDCio3yPG0mWbxpf3QxThgAAAAACAAAAAAADZgAAwAAAABAAAABGknssM72iXPEzwAAZ1uHdAAAAAASAAACgAAAAEAAAABwgwPyxr0ZhOZcVSNzrRZ6wAAAADYkDMTL84wNPtX1-d96wNeUi_ZiFRZZesC-9t2Nxn-sM09I3TGbsGpZMvIBRs7KBH2LJxFCyfqafgAb2Em-I0rhaV4XrdVYRrsLgv8taVw8mDFk9euiYhvkITwr6jpaG0mxmplQoh0-EkW1FkmeWZD6VDx6Hp39eJa_EzdUia5N8avHBzzhKqKm66zr0t9D8AtWwMlWPFFfD1BZRk2hCPJlXWC8eYUNoT3U94wGyIwsUAAAAao87t8-r04quCae5az00zX-yRVE",
+	 "in_hostname": "https://my305570-api.s4hana.ondemand.com",
+	 "in_Cookie": "sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=Ra12xXJdsdik_utQloaIJGgkMB1WjRHsrVr6Fj4QG_U%3d; path=/; secure; HttpOnly",
+	 "SAP_UUID": "",
+	 "X_CSRF_Token": "2K5adKiSCful68HP_QxB9A=="	 
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>dd49a9f7-401d-4d17-83c0-0497f6d0c5d9</ns1:Id>
+               <ns1:Name>mtr_upd</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-02-04T12:21:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-12T10:48:08Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "80005005",
+	 "in_Block": "2",
+	 "in_BaseURL": "https://web.clmvpcdev.vaws:443/rest",
+	 "in_AccessToken": "7crJIKKkqwlTqE-5xpWVEd5TFeLX7cAPCKzhKAdwsZ4oDXw8BgADIoEgO6eHihUZyd06r4NkMywSFjWFiNH1ake9KyJfXxRumRoP_Lgbiqw_cE7Teg1-Hunq089e4d-zEuTdZ59kxIjuPjdRivw1DTykOl0F979uHzTCVBpFtsP_mTipLR827Btqinz3B-2AdCKGo0E2SEy4p26-VrrNniurXSH7IVR46Lukz2Gs3BW2ja51e-uh107XNx4B43F_Q8PZ4n-68Y-gA_SAvovVXWc2FMIfVQ_mcdUk8SGHqmQL8E9o2scdXVoEOhUhgai5f8J2F6DdGqj18pwJvvGEAZGfWXTpSFTvPzvHdAodODKOcotLOEPKSVKI6gDOOYxaE5y8l8CTBLKPc5YAhLnnPIMYhgspLeCI-LbnlmXCTWDBlZHpf1A9iC3krUW6aDQwQbhViF7AXtUlID2G97xkUWe00O5kikvgRHxUq18xbQkKMj7_G6QPJFugPHG5NCA0TFS9FlC4YMY8SPRFySW28TpKhQEBlbGsCldE-HAfATQc8r6YUETQpKKLCLOh33TSpdW_10fipVFbSp7DzldYw_EKpGfOD7245io33yYheFP1JE2KfVfdgUyygtvU5RZXUwek16l9UtVwt3PYr2xG8ro9qd7JypL5fW5j_zloDjCzKsjB59dJ9NCddn9Ke8EibCtZs8zthaocfqXP-5LUf_HdQDP3wC4VMEvMnDPAdfpQleVYRHF56p3UPsNsG2mbgj3i3faumt668TXsUQQLCpiZl9LL-PfXCF8Jedtiuia55gpA-lrcXAB4DVriSPR1Kw_CKswXton4B8SOBzmMqkqMnZbGMtPowvrns7oWxQsQr6Nlxp7WCrKBrUAycHgU193n7_YM94YSicXoOWyqCycu3lpd2aY1Mi7lXvsvb5UiAem0byCLUztayOwiOTLbEOszqNq8a-EX-xzjKqNd-UBP5eSFRvrYmCTVIc7w_4W7oBpTZsUEvCksug5EyGUskH2Yw4OJlG26bciYOXG_DXUg1ib08gDUJPVo-PFjHFo"
+	
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>98s840fh8uTfYN3B8dvfWC</types1:GUID>
+      <types1:DisplayName>Process_Matters_FindAndUpdate</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.6Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

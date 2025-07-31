@@ -1,0 +1,361 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>aaaaaaa-gt-9899329-2021-08-13T10:41:43.009Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcAPI9</types1:Name>
+      <types1:ParentFlowIds>YZcjKsJlv58pIO3-gt-9899561-2021-08-13T10:41:46.811Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-13T10:41:43Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:47:46Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:49:11Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcAPI9/SvcAPI9_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcAPI9"
+                            label=""
+                            name="SvcAPI9"
+                            uuid="d58a7722-4f0f-4e31-9575-9adad945f623">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="blockdetails"
+                       failOnError="true"
+                       forSearch="false"
+                       label="FetchBlockDeails"
+                       maxRedirects="100"
+                       name="FetchBlockDeails"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_CREDITBLOCK_API_V1_CDS/YY1_CreditBlock_API_v1"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-Token">fetch</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="blockDetails" type="reference">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                     <field description="" name="blockDetails_array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            name="X_CSRF_Token"
+                            responseHeader="X-CSRF-Token"
+                            type="string"/>
+                     <field description="" name="Cookie" type="string">
+                        <xquery>{let $cookies := svc:getResponseHeader($ResponseHeaders , "set-cookie")
+return fn:concat($cookies[1], ';', $cookies[2])}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="blockdetails"
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdateSAPLog"
+                       maxRedirects="100"
+                       name="UpdateSAPLog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="Cookie"
+                                name="Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=agk_AHSoAERiN052AzTcgOikj81YzxHspvr6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="vOXKIDi_tcSGD-tjKLB2jw=="
+                                type="string"/>
+                     <parameter label="SAP_UUID"
+                                name="SAP_UUID"
+                                nogen="true"
+                                required="true"
+                                testWith="fa163e10-1bf5-1eec-95d1-04bdcb458b83"
+                                type="string"/>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{ &#34;Value1&#34;: &#34;0&#34; }"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE(guid'{$SAP_UUID}')"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">{$token}</header>
+                           <header name="Cookie">{$Cookie}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="blockdetails"
+                       failOnError="true"
+                       forSearch="false"
+                       label="CreateBlockRecord"
+                       maxRedirects="100"
+                       name="CreateBlockRecord"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=9n7f8oqgE8zLYoh_m2Xn_Q5_NNvu5hHru5T6Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="fq8thpkq_vIcUE6DKjbCVQ=="
+                                type="string"/>
+                     <parameter name="body"
+                                required="true"
+                                testWith="{     &#34;ID&#34;: &#34;VPC&#34;,     &#34;SubID&#34;: &#34;API09&#34;,     &#34;KeyValue1&#34;: &#34;23000000&#34;,     &#34;CompanyCode&#34;: &#34;SG02&#34;,      &#34;Value1&#34;: &#34;2&#34;      }"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">{$token}</header>
+                           <header name="Cookie">{$Cookie}</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="blockdetails"
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetPatchToken"
+                       maxRedirects="100"
+                       name="GetPatchToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE?$top=1"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-Token">fetch</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="PATCH_X_CSRF_Token"
+                            responseHeader="X-CSRF-Token"
+                            type="string"/>
+                     <field description="" name="PATCH_Cookie" type="string">
+                        <xquery>{let $cookies := svc:getResponseHeader($ResponseHeaders , "set-cookie")
+return fn:concat($cookies[1], ';', $cookies[2])}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="SubID" nullable="true" required="false" type="string"/>
+                     <field name="SAP_UUID" nullable="true" required="false" type="string"/>
+                     <field name="BusinessPartner"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Block" nullable="true" required="false" type="int"/>
+                     <field name="SalesOrganization"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Value1" nullable="true" required="false" type="int"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>e6BdqHzVLu3l6yQx0zYM4I</types1:GUID>
+      <types1:DisplayName>SvcAPI9</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:14Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

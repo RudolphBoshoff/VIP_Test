@@ -1,0 +1,654 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>CHdqwx8R8WrY1Sy-gt-6883397-2023-08-25T10:02:43.453Z::pd.xml</types1:EntryId>
+      <types1:Name>Create_file_from_TPQ</types1:Name>
+      <types1:ParentFlowIds>hr5wq9bdsreK8ZA-gt-6979342-2023-08-25T10:28:45.113Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This endpoint receives event notifications from VPoint, interprets the payload and writes the payload to a JSON file, which is picked up by the respective file events</types1:Description>
+      <types1:AppliesTo>AppConn-VIPP2B:Transaction_Processing_Queue</types1:AppliesTo>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-08-25T10:02:43Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-08-25T11:20:00Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-08-25T11:10:23Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Create_file_from_TPQ/Create_file_from_TPQ.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Create file from TPQ"
+                  name="Create_file_from_TPQ"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo>AppConn-VIPP2B:Transaction_Processing_Queue</appliesTo>
+            <description>This endpoint receives event notifications from VPoint, interprets the payload and writes the payload to a JSON file, which is picked up by the respective file events</description>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description=""
+                      name="tmp_VIP_P2B_InterfaceAuditLog"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_P2B_InterfaceAuditLog</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_json_text" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-JsonWtiter:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2pXtdn8cZ4hcSRDTk1q9IQ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Description" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_EventDetails_LimitedList" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails-LimitedList</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQPdN3MjQgQbd1LiGzIw2R</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TPQ_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConn-VIPP2B:Transaction_Processing_Queue</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">2h6nZL5WJyPeuPP7RyFC0O</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_TPQ" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedUsers>
+                     <user>veerabh-vistra-dev </user>
+                     <user> veerabhadra.dhikonda </user>
+                     <user> anupama.rao@vistra.com </user>
+                     <user> dhiraj.dhandhaliya@vistra.com </user>
+                     <user> Dhiraj.Dhandhaliya </user>
+                     <user> swapnil.shrungare@vistra.com.SAML </user>
+                     <user> vipapiconsumer_dev </user>
+                     <user> vipapiconsumer_tst </user>
+                     <user> vipapiconsumer_prd </user>
+                     <user> anupama.rao@vistra.com.SAML </user>
+                     <user> rudolph.boshoff@vistra.com.SAML </user>
+                     <user> veerabh-vistra-tst </user>
+                     <user> swapnil.shrungare@vistra.com.SAML2 </user>
+                     <user> kumari.nimisha@vistra.com </user>
+                     <user> rudolph.boshoff@vistra.com </user>
+                     <user> Rudolph.Boshoff</user>
+                     <user>veerabh-vistra-dev</user>
+                     <user>veerabhadra.dhikonda</user>
+                     <user>anupama.rao@vistra.com</user>
+                     <user>dhiraj.dhandhaliya@vistra.com</user>
+                     <user>Dhiraj.Dhandhaliya</user>
+                     <user>swapnil.shrungare@vistra.com.SAML</user>
+                     <user>vipapiconsumer_dev</user>
+                     <user>vipapiconsumer_tst</user>
+                     <user>vipapiconsumer_prd</user>
+                     <user>anupama.rao@vistra.com.SAML</user>
+                     <user>rudolph.boshoff@vistra.com.SAML</user>
+                     <user>veerabh-vistra-tst</user>
+                     <user>swapnil.shrungare@vistra.com.SAML2</user>
+                     <user>kumari.nimisha@vistra.com</user>
+                     <user>rudolph.boshoff@vistra.com</user>
+                     <user>Rudolph.Boshoff</user>
+                  </allowedUsers>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="llqfcg1i" targetId="kpmvx8z9"/>
+               </start>
+               <assignment id="kpmvx8z9">
+                  <title>Decode File Content</title>
+                  <operation source="formula" to="temp.tmp_EventDetails_LimitedList">
+                     <expression language="XQuery">&lt;EventDetails&gt;
+   &lt;eventChangeType&gt;{$eventChangeType }&lt;/eventChangeType&gt;
+   &lt;eventTypeName&gt;{$EventTypeName }&lt;/eventTypeName&gt;
+   {if( fn:string-length($Identifier1)=0) then () else(
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;{$Identifier1Name }&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$Identifier1 }&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;)}
+   {if( fn:string-length($Identifier2)=0) then () else(
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;{$Identifier2Name }&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$Identifier2 }&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;)}
+   {if( fn:string-length($Identifier3)=0) then () else(
+   &lt;identifiers&gt;
+      &lt;identifierName&gt;{$Identifier3Name }&lt;/identifierName&gt;
+      &lt;identifierValue&gt;{$Identifier3 }&lt;/identifierValue&gt;
+   &lt;/identifiers&gt;)}
+&lt;/EventDetails&gt;
+</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_json_text">
+                     <expression language="XQuery">util:toJSON($temp.tmp_EventDetails_LimitedList )</expression>
+                  </operation>
+                  <link id="llqfcfsk" targetId="ljwpl3nn"/>
+               </assignment>
+               <container id="ljwpl3nn" type="exclusive">
+                  <title>tmp_event_name</title>
+                  <flow id="ljwpl3nr">
+                     <link id="ljwpl3ns" targetId="ljwpl3nn" type="containerLink"/>
+                  </flow>
+                  <flow id="ljwpl3nu">
+                     <assignment id="llqfcg00">
+                        <title>Prepare JSON</title>
+                        <operation source="constant" to="temp.tmp_Writer[1]/format">PlainText</operation>
+                        <operation source="formula" to="temp.tmp_Writer[1]/fileName">
+                           <expression language="XQuery">fn:concat( $X_Transaction_ID  ,'.json')</expression>
+                        </operation>
+                        <operation source="field" to="temp.tmp_Writer[1]/content">temp.tmp_json_text</operation>
+                        <operation source="formula" to="temp.tmp_Writer[1]/filePath">
+                           <expression language="XQuery">'\data\vpcevents\'|| (switch($EventTypeName ) case "INVOICE_CREATED" return "invoicecreated" case "MATTER_CREATED" return "mattercreated" case "MATTER_CHANGED" return "matterupdated" case "PROJ_MANAGER_CHANGED" return "projmanagerchanged" case "ADDRESS_CHANGED" return "addresschanged" case "EMAIL_ADDRESS_CHANGED" return "emailaddresschanged" case "ENTITY_NAME_CHANGED" return "entitynamechanged" default return $EventTypeName )</expression>
+                        </operation>
+                        <link id="llqfcg0l" targetId="llqfcg0d"/>
+                     </assignment>
+                     <eventContainer id="llqfcg0d">
+                        <service id="llqfcg0g">
+                           <title>Generic</title>
+                           <serviceName>AppCon-JsonWtiter:Generic</serviceName>
+                           <serviceGUID>2pXtdn8cZ4hcSRDTk1q9IQ</serviceGUID>
+                           <serviceInput>
+                              <parameter name="fileWriteTask" source="field" updatable="true">temp.tmp_Writer</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="llqfcg0e">
+                           <assignment id="llqgapde">
+                              <title>Update TPQ Processing Status</title>
+                              <operation source="constant" to="ProcessingStatus">FILE CREATED</operation>
+                              <operation source="formula" to="CreatedDate">
+                                 <expression language="XQuery">fn:current-dateTime()</expression>
+                              </operation>
+                           </assignment>
+                           <link id="llqfcg0j" targetId="llqfcg0d" type="containerLink"/>
+                        </flow>
+                        <flow id="llqfcg0f">
+                           <link id="llqfcg0k" targetId="llqfcg0d" type="containerLink"/>
+                        </flow>
+                        <link id="llqfcg0h" targetId="llqfcg0e" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="ljwpl4g6" interrupting="true">
+                              <link id="llqfcg0i" targetId="llqfcg0f" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="ljwpl3nv" targetId="ljwpl3nn" type="containerLink"/>
+                  </flow>
+                  <link id="ljwpl3nq" targetId="ljwpl3nr" type="containerLink">
+                     <condition source="formula">
+                        <function name="included">
+                           <arg name="left">{$temp.tmp_EventDetails_LimitedList[1]/eventTypeName}</arg>
+                           <arg name="right">EMAIL_ADDRESS_CHANGED,EMAIL_ADDRESS_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ljwpl3nt" targetId="ljwpl3nu" type="containerLink"/>
+                  <link id="llqfcft8" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>88248d04-2c55-467d-8013-f60ab396dad6</ns1:Id>
+               <ns1:Name>Address_Changed</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "99999992",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "Matters.RefCode",
+				"identifierValue": "12000006"
+			},
+			{
+				"identifierName": "Matters.MatterCode",
+				"identifierValue": "TSAC1-4"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "MATTER_CREATED"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>258fc01c-545b-4d11-bc2e-bf7e51e130c2</ns1:Id>
+               <ns1:Name>API-18</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "DIPS-161_TEST001",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "WFlowHeader.FileCode",
+				"identifierValue": "12345678"
+			},
+			{
+				"identifierName": "WFlowHeader.WflowNr",
+				"identifierValue": "99999"
+			},
+			{
+				"identifierName": "WFlowFields.FldValue",
+				"identifierValue": "XX00"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "INITIATE_PROCUREMENT"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>f2370ea2-2203-42b2-9de5-2b246e77bfac</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "80006315"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>01aa7825-1428-4e90-9dea-58b55ce6f2c7</ns1:Id>
+               <ns1:Name>BillingFileClosed</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CLOSED",
+	 	 "identifiers": {
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "80001215"
+	 	 }
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3b36d0dd-43da-4fe6-b1ac-1245c8a61d79</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>be1992d0-5379-4c9c-8e6a-5aaca344bca2</ns1:Id>
+               <ns1:Name>email_address_Changed</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "112051359"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>d69efe48-73f5-41e0-a108-c59095614445</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "33",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "39097"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>46ec8372-f9a2-4de5-9daf-8f0c5e8e7dce</ns1:Id>
+               <ns1:Name>INVOICE_CREDIT_NOTE_CREATED</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "106807",
+	"Payload": {
+		"eventChangeType": "UPDATE",
+		"eventTypeName": "INVOICE_CREDIT_NOTE_CREATED",
+		"identifiers": [
+			{
+				"identifierName": "InvoiceHeader.ProformaNr",
+				"identifierValue": "210045"
+			}
+		]
+	}
+}
+
+</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>bb4f5143-0992-40f8-927d-43656d8679d4</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "77",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "112051359"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "AN"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>21cad52c-cd98-4c96-9b24-2dc25def1fbe</ns1:Id>
+               <ns1:Name>MatterCreated</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	"X_TRANSACTION_ID": "99999991",
+   
+	"Payload": {
+		"identifiers": [
+			{
+				"identifierName": "Matters.RefCode",
+				"identifierValue": "10456816"
+			},
+			{
+				"identifierName": "Matters.MatterCode",
+				"identifierValue": "CF"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "MATTER_CREATED"
+	}
+
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3dd7c858-add9-465d-8240-c7ff6f34d6ec</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "12500223"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "AN01"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>755ac50c-e3f0-4600-a598-e6e95401654b</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "102",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "3"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "DISB042"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a6294aee-ca31-412a-910c-5576911ab661</ns1:Id>
+               <ns1:Name>PaymentRequestSIT</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "450",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "4"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "DISB042"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>3d500435-b4fa-41cc-8514-28ff9704f04c</ns1:Id>
+               <ns1:Name>ProjManager</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:44Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:44Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+     "X_TRANSACTION_ID": "25",
+     "Payload": {
+          "eventChangeType": "UPDATED",
+          "eventTypeName": "PROJ_MANAGER_CHANGED",
+          "identifiers": [{
+               "identifierName": "RmClients.AddrCode",
+               "identifierValue": "12051401"
+          }
+
+ 
+
+               ]
+     }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>fd6ab8c6-bf3f-4497-b586-43ae440967a6</ns1:Id>
+               <ns1:Name>ProjManagerChanged</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:43Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:43Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7437575",
+	 "Payload": 
+{"identifiers":[{"identifierName":"WFlowHeader.FileCode","identifierValue":"11918093"},{"identifierName":"WFlowHeader.WflowNr","identifierValue":"42299"}],"eventChangeType":"NEW","eventTypeName":"INITIATE_PROCUREMENT"}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>a2630f0a-9633-4ee4-9766-955327773ab0</ns1:Id>
+               <ns1:Name>t</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:43Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:43Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "7",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ENTITY_NAME_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "EntNameChanges.Entcode",
+	 	 	 "identifierValue": "12500081"
+	 	 },
+                 {
+	 	 	 "identifierName": "EntNameChanges.SeqNr",
+	 	 	 "identifierValue": "1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>4550bfac-e081-4853-9b72-bb62e1f7e45e</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:43Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:43Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "RBTEST221216-2",
+	 "Payload": {
+		"identifiers": [
+			{
+				"identifierName": "WFlowHeader.WflowNr",
+				"identifierValue": "2158"
+			},
+			{
+				"identifierName": "WFlowHeader.FileCode",
+				"identifierValue": "12500178"
+			},
+			{
+				"identifierName": "WFlowFields.FldValue",
+				"identifierValue": "BAH-E"
+			}
+		],
+		"eventChangeType": "NEW",
+		"eventTypeName": "INITIATE_PROCUREMENT"
+	}
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>2782153a-731a-4a80-8ec5-ba5caadbf3eb</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-08-25T10:02:43Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-08-25T10:02:43Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9m4Ty2N8fWblFoZWjKHI0z</types1:GUID>
+      <types1:DisplayName>Create file from TPQ</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.881Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

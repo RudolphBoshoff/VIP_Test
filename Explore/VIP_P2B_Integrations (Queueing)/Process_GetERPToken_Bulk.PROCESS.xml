@@ -1,0 +1,116 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>6nRN7Y3AxtPk7HN-gt-622204-2022-10-17T12:09:49.933Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GetERPToken_Bulk</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2022-10-17T12:09:50Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-17T12:12:06Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-17T12:12:17Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GetERPToken_Bulk/Process_GetERPToken_Bulk.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GetERPToken_Bulk"
+                  name="Process_GetERPToken_Bulk"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_cookie" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DateCreated" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_user" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description=""
+                      name="tmp_tbl_VIP_p2b_erptoken_bulk"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_p2b_erptoken_bulk</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l6ddopqi" targetId="l6ddopqh"/>
+               </start>
+               <assignment id="l6ddopqh">
+                  <title>Assignment to tmp_tbl_VIP_p2b_erptoken</title>
+                  <operation source="query" to="temp.tmp_tbl_VIP_p2b_erptoken_bulk">
+                     <query advanceQuery="false"
+                            from="ConnectionDQMetadata-1:VIP_p2b_erptoken_bulk">
+                        <where>Order By ID</where>
+                     </query>
+                  </operation>
+                  <link id="l6ddopqt" targetId="l6ddopqs"/>
+               </assignment>
+               <assignment id="l6ddopqs">
+                  <title>Assignment to out_cookie, out_token etc.</title>
+                  <operation source="field" to="output.out_cookie">temp.tmp_tbl_VIP_p2b_erptoken_bulk.COOKIE</operation>
+                  <operation source="field" to="output.out_token">temp.tmp_tbl_VIP_p2b_erptoken_bulk.TOKEN</operation>
+                  <operation source="field" to="output.out_DateCreated">temp.tmp_tbl_VIP_p2b_erptoken_bulk.DATECREATED</operation>
+                  <operation source="field" to="output.out_user">temp.tmp_tbl_VIP_p2b_erptoken_bulk.USER</operation>
+                  <link id="l6ddopqu" targetId="c"/>
+               </assignment>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>02ca72e6-2180-404d-86dd-b07cdbe3efb2</ns1:Id>
+               <ns1:Name>ASa</ns1:Name>
+               <ns1:CreatedBy>swapnil.shrungare@vistra.com.SAML2</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-17T12:09:50Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-17T12:09:50Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>dS5mFl9fL4QbJqaWK1t0iV</types1:GUID>
+      <types1:DisplayName>Process_GetERPToken_Bulk</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:18.045Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

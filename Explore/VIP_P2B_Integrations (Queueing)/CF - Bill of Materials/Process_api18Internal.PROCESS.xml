@@ -1,0 +1,501 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>sqy3eHRi92qBbbe-gt-1318513-2023-03-01T09:59:13.304Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_api18Internal</types1:Name>
+      <types1:ParentFlowIds>B1T4W6jKsJlv58p-gt-5544605-2023-03-01T09:56:56.445Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-03-01T09:59:13Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-01T10:02:21Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-01T10:39:46Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_api18Internal/Process_api18Internal.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_api18Internal"
+                  name="Process_api18Internal"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_WflowNr" required="true" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_EventName"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_X_TransactionID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_PR_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PR_Count" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="out_PR_Payloads" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_FaultInfo" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="cout_Doc_S" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="count_Doc_F" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_PurchaseRequisition" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CreatedPR_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_StartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Items_PO" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomComponents-Prepared</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7IReYEup5kel3NymikpycZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Items_CC" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomComponents-Prepared</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7IReYEup5kel3NymikpycZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_WflowType" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">NI</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ProcessVariables" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Documents" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomComponents-Prepared</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7IReYEup5kel3NymikpycZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Document_Current" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomComponents-Prepared</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7IReYEup5kel3NymikpycZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PurchReqNo" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_FaultInfo" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_PO_Documents_Keep" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoCfBomComponents-Prepared</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7IReYEup5kel3NymikpycZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SAP_Doc List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$type:string</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JournalEntry" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_JournalEntryItem" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:JournalEntryCreateRequestJournalEntryItem</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">7DNzTf8uK84iRNP8a0OpAq</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbb2nj81" targetId="lbb2nj80"/>
+               </start>
+               <assignment id="lbb2nj80">
+                  <title>Set Process Variables</title>
+                  <operation source="formula" to="temp.tmp_StartTime">
+                     <expression language="XQuery">fn:current-dateTime()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ProcessVariables">
+                     <expression language="XQuery">&lt;ProcessVariables&gt; 
+  &lt;IICS_Run_ID&gt;{util:getProcessId()}&lt;/IICS_Run_ID&gt; 
+  &lt;IICS_Process_Name&gt;{util:getAssetName()}&lt;/IICS_Process_Name&gt; 
+  &lt;Event_Name&gt;{$input.in_EventName }&lt;/Event_Name&gt;
+  &lt;API_Name&gt;{$input.in_API_Name}&lt;/API_Name&gt;
+  &lt;X_TRANSACTION_ID&gt;{$input.in_X_TransactionID}&lt;/X_TRANSACTION_ID&gt;
+&lt;/ProcessVariables&gt;
+
+
+</expression>
+                  </operation>
+                  <link id="lbb2nj82" targetId="lbb0ykrf"/>
+               </assignment>
+               <subflow id="lbb0ykrf">
+                  <title>Get BOM Details from Workflow</title>
+                  <subflowGUID>eq3jGtbRmMocZO4JRhMA4Z</subflowGUID>
+                  <subflowPath>Process_GET_Workflow</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_WflowNr" source="field" updatable="true">input.in_WflowNr</parameter>
+                     <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_BomHeader" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoCfBomHead-Prepared</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">3TOuBiqwuKsdp5eqlzJ2wG</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lckojeni" targetId="lckojenh"/>
+               </subflow>
+               <subflow id="lckojenh">
+                  <title>Get New Incorporation Details</title>
+                  <subflowGUID>3ujmUhIBWmAlo4YWvwtuiW</subflowGUID>
+                  <subflowPath>Process_GET_CF_NI_Details</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_RefCode" source="field" updatable="true">input.in_RefCode</parameter>
+                  </input>
+                  <outputDef>
+                     <field name="out_NewIncorporation" type="reference">
+                        <options>
+                           <option name="referenceTo">$po:PoCfNi-Details</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">ggunWFXPsSYiClT3654PAS</option>
+                        </options>
+                     </field>
+                     <field name="out_NewIncorporation_List" type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:PoCfNi-Details</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                           <option name="isCopy">true</option>
+                           <option name="guid">ggunWFXPsSYiClT3654PAS</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="lckojeqm" targetId="lbb0ylsv"/>
+               </subflow>
+               <container id="lbb0ylsv" type="parallel">
+                  <title>Procure Internal or External</title>
+                  <flow id="lbb0ylt1">
+                     <assignment id="lbb0ylt2">
+                        <title>Internal Components</title>
+                        <operation source="formula" to="temp.tmp_Items_CC">
+                           <expression language="XQuery">for $c in $output.out_BomHeader/Components[RequirePO=0] return $c </expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_JournalEntryItem">
+                           <expression language="XQuery">let $H := $output.out_BomHeader 
+	,$CompanyCode := 'VG18'
+    ,$MatterCode := 'CF'
+for $L in $temp.tmp_Items_CC 
+	,$GL in ($L/SendingGLAccount/text(), $L/CogsGLAccount/text())     
+let $CC := $L/SendingCostCenter/text() 	
+return 
+&lt;Item&gt;
+  &lt;GLAccount&gt;{$GL} &lt;/GLAccount&gt;
+  &lt;Material&gt;{$L/ComponentCode/text()}&lt;/Material&gt;  
+  &lt;DocumentItemText&gt;{fn:substring($L/ComponentDescription/text(),1,50)}&lt;/DocumentItemText&gt;    
+  &lt;AssignmentReference&gt;{$MatterCode }&lt;/AssignmentReference&gt;    
+  &lt;CompanyCode&gt;VG18&lt;/CompanyCode&gt;
+  
+  {if (fn:starts-with($GL, "4") or fn:starts-with($GL, "5")) 
+  then (
+  &lt;AccountAssignment&gt;
+		&lt;AccountAssignmentType&gt;{util:iif(fn:starts-with($GL , '4'), 'EO','PR')}&lt;/AccountAssignmentType&gt;
+		&lt;CostCenter&gt;{$CC}&lt;/CostCenter&gt;        
+        &lt;ProfitCenter&gt;{$output.out_NewIncorporation[1]/Sector/text() }&lt;/ProfitCenter&gt;
+  &lt;/AccountAssignment&gt;	)
+  else () }
+  
+  {if (fn:starts-with($GL, "4") or fn:starts-with($GL, "5")) 
+  then (
+  &lt;ProfitabilitySupplement&gt;		
+		&lt;SoldMaterial&gt;{$L/ComponentCode/text()}&lt;/SoldMaterial&gt;
+		&lt;WBSElement&gt;{'VPC-'||$H/RefCode/text()||'-'||$MatterCode}&lt;/WBSElement&gt;
+  &lt;/ProfitabilitySupplement&gt; )
+  else () }
+  
+	{if (fn:starts-with($GL, "4") or fn:starts-with($GL, "5") ) 
+  then (
+  &lt;AmountInTransactionCurrency currencyCode="USD"&gt;{ fn:format-number($L/TotalComponentPrice_USD, '#0.##')}&lt;/AmountInTransactionCurrency&gt; ) 
+  else (
+  &lt;AmountInTransactionCurrency currencyCode="USD"&gt;{ fn:format-number($L/TotalComponentPrice_USD * (-1), '#0.##')}&lt;/AmountInTransactionCurrency&gt;
+  )} 
+
+ 
+&lt;/Item&gt;</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_JournalEntry">
+                           <expression language="XQuery">let $H := $output.out_BomHeader return
+&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+	&lt;soap:Header/&gt;
+	&lt;soap:Body&gt;
+		&lt;ns:JournalEntryBulkCreateRequest xmlns:ns="http://sap.com/xi/SAPSCORE/SFIN"&gt;
+			&lt;MessageHeader&gt;
+				&lt;ID&gt;{	$H/RefCode||'_'||
+                	 	util:iif($H/WF_ServiceType="NI" , $H/SalesCode||'_', 'TS_') ||
+                        $H/WflowNr }&lt;/ID&gt;
+				&lt;CreationDateTime&gt;{fn:format-dateTime(fn:current-dateTime(), "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01].000Z")}&lt;/CreationDateTime&gt;
+				&lt;SenderBusinessSystemId&gt;VIP&lt;/SenderBusinessSystemId&gt;
+				&lt;TestDataIndicator&gt;false&lt;/TestDataIndicator&gt;
+			&lt;/MessageHeader&gt;
+			&lt;JournalEntryCreateRequest&gt;
+				&lt;MessageHeader&gt;
+					&lt;ID&gt;{	$H/RefCode/text()||'_'||
+                	 		util:iif($H/WF_ServiceType="NI" , $H/SalesCode||'_', 'TS_') ||
+                        	$H/WflowNr/text() }&lt;/ID&gt;
+					&lt;CreationDateTime&gt;{fn:format-dateTime(fn:current-dateTime(), "[Y0001]-[M01]-[D01]T[H01]:[m01]:[s01].000Z")}&lt;/CreationDateTime&gt;
+				&lt;/MessageHeader&gt;
+				&lt;JournalEntry&gt;
+					&lt;OriginalReferenceDocumentType&gt;BKPFF&lt;/OriginalReferenceDocumentType&gt;
+					&lt;DocumentItemText&gt;&lt;/DocumentItemText&gt;
+					&lt;DocumentHeaderText&gt;{fn:substring($H/Description/text(),1,25) }&lt;/DocumentHeaderText&gt;
+					&lt;BusinessTransactionType&gt;RFBU&lt;/BusinessTransactionType&gt;
+					&lt;AccountingDocumentType&gt;SA&lt;/AccountingDocumentType&gt;
+					&lt;DocumentReferenceID&gt;{$H/RefCode/text()}&lt;/DocumentReferenceID&gt;
+					&lt;Reference1InDocumentHeader&gt;{$H/SalesCode/text()}&lt;/Reference1InDocumentHeader&gt;
+					&lt;Reference2InDocumentHeader&gt;{$H/WflowNr/text()}&lt;/Reference2InDocumentHeader&gt;
+					&lt;CreatedByUser&gt;CC0000000022&lt;/CreatedByUser&gt;
+					&lt;CompanyCode&gt;VG18&lt;/CompanyCode&gt;
+					&lt;DocumentDate&gt;{fn:format-date(fn:current-date(), "[Y0001]-[M01]-[D01]")}&lt;/DocumentDate&gt;
+					&lt;PostingDate&gt;{fn:format-date(fn:current-date(), "[Y0001]-[M01]-[D01]")}&lt;/PostingDate&gt; 
+					{$temp.tmp_JournalEntryItem }
+				&lt;/JournalEntry&gt;
+			&lt;/JournalEntryCreateRequest&gt;
+		&lt;/ns:JournalEntryBulkCreateRequest&gt;
+	&lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</expression>
+                        </operation>
+                        <link id="lckoje99" targetId="lckoje98"/>
+                     </assignment>
+                     <container id="lckoje98" type="exclusive">
+                        <title>Cost Center Items</title>
+                        <flow id="lckoje9c">
+                           <subflow id="lckojebp">
+                              <title>Process_POST_JournalEntryBulkCreateRequest</title>
+                              <subflowGUID>2GoHM40fVmKjlTZ5291uoI</subflowGUID>
+                              <subflowPath>Process_POST_JournalEntryBulkCreateRequest</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="in_JournalEntryCreateRequest" source="field" updatable="true">temp.tmp_JournalEntry</parameter>
+                                 <parameter name="in_Transaction_ID" source="field" updatable="true">temp.tmp_ProcessVariables[1]/X_TRANSACTION_ID</parameter>
+                                 <parameter name="in_IICS_Run_ID" source="field" updatable="true">temp.tmp_ProcessVariables[1]/IICS_Run_ID</parameter>
+                                 <parameter name="in_Event_Name" source="field" updatable="true">input.in_EventName</parameter>
+                                 <parameter name="in_API_Name" source="field" updatable="true">input.in_API_Name</parameter>
+                                 <parameter name="in_ProformaNr" source="formula" updatable="true">
+                                    <expression language="XQuery">let $H := $output.out_BomHeader return
+$H/RefCode||'_'||
+util:iif($H/WF_ServiceType="NI" , $H/SalesCode||'_', 'TS_') ||
+$H/WflowNr</expression>
+                                 </parameter>
+                              </input>
+                              <outputDef>
+                                 <field name="out_JournalConfirmation_Payload" type="reference">
+                                    <options>
+                                       <option name="referenceTo">$po:$any</option>
+                                       <option name="required">false</option>
+                                       <option name="isCopy">true</option>
+                                    </options>
+                                 </field>
+                                 <field name="out_ResponseCode" type="string">
+                                    <options>
+                                       <option name="required">false</option>
+                                    </options>
+                                 </field>
+                              </outputDef>
+                           </subflow>
+                           <link id="lckoje9d" targetId="lckoje98" type="containerLink"/>
+                        </flow>
+                        <flow id="lckoje9f">
+                           <link id="lckoje9g" targetId="lckoje98" type="containerLink"/>
+                        </flow>
+                        <link id="lckoje9b" targetId="lckoje9c" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_Items_CC}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lckoje9e" targetId="lckoje9f" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_Items_CC}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                     <link id="lbb0ylt9" targetId="lbb0ylsv" type="containerLink"/>
+                  </flow>
+                  <link id="lepiamka" targetId="lepiamk9"/>
+                  <link id="lbb0ylt4" targetId="lbb0ylt1" type="containerLink"/>
+               </container>
+               <end id="lepiamk9">
+                  <title>End 2</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>79d8aedf-ef43-4b1d-8b31-333e3ea4da4e</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-01T09:59:13Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-01T09:59:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12500188",
+	 "in_WflowNr": "2583"
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8c550880-eff8-4015-a841-146fcee9e8c1</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2023-03-01T09:59:13Z</ns1:CreationDate>
+               <ns1:ModifiedBy>veerabh-vistra-tst</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-03-01T09:59:13Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 
+	 "in_RefCode": "11795839",
+	 "in_WflowNr": "6893",
+
+	 "in_API_Name": "1",
+	 "in_EventName": "2",
+	 "in_X_TransactionID": "3"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>eilxZPxlxK5lzbqwKQX7OU</types1:GUID>
+      <types1:DisplayName>Process_api18Internal</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.187Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

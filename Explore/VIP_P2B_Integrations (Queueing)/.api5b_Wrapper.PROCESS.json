@@ -1,0 +1,105 @@
+{
+  "objectInfo" : {
+    "id" : "5S8arWGERu3jjbx8IJYvMU",
+    "name" : "api5b_Wrapper",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "HNKVlDjAqQHhwq9-gt-20541288-2022-10-12T10:48:21.544Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Wrapper process which invokes API5B (Cancellation of Invoice payment posting) processes",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2023-09-16T18:19:24.423Z",
+  "objectRefs" : [ {
+    "id" : "6UZf13AhQUmlv2HiQ7E8o1",
+    "name" : "Process_GET_YY1_ClearedPaymentResetEntries",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "rmf6S3wOLIFvukN-gt-37356767-2022-10-12T10:48:10.286Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Retrieves the Cancelled/Reversed Invoice payment entries from SAP Custom API",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic SAP Processes"
+  }, {
+    "id" : "07bmeP8qUUzjnAwYUaz46x",
+    "name" : "P_VPC_GetToken",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "Dt0x7bcoq3xgjAT-gt-37241474-2022-10-12T10:47:39.472Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/Generic VPC"
+  }, {
+    "id" : "7N5uKhvv6kXg3zoRAbuggF",
+    "name" : "Process_P2B_Event_ErrorLog",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "yCEx9dwMbgbdoPV-gt-4367235-2021-09-16T07:13:31.393Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Records errors in SQL DB, File, and Email\nChangelog:\nhttps://vistra.atlassian.net/browse/VR-147",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  }, {
+    "id" : "2ODy45ECtcFlX2NtDC4F4n",
+    "name" : "API_5b",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "89SfSmbduaa-gt-12414217-2021-10-27T18:42:46.96Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Posts the cancelled Invoice clearance data to VPoint API and logs the same in SAP",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    },
+    "path" : "/Explore/VIP_P2B_Integrations"
+  } ]
+}

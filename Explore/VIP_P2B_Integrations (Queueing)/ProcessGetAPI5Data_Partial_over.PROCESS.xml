@@ -1,0 +1,221 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Sk72VR4109cjIw8-gt-24314711-2022-09-28T15:03:20.722Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessGetAPI5Data_Partial_over</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Retrieves the Invoice and BankAccount data from VPoint tables for a given Invoice payment clearance entry</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-28T15:03:21Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2022-12-07T08:15:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2022-12-07T08:16:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessGetAPI5Data_Partial_over/ProcessGetAPI5Data_Partial_over.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessGetAPI5Data_Partial_over"
+                  name="ProcessGetAPI5Data_Partial_over"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Retrieves the Invoice and BankAccount data from VPoint tables for a given Invoice payment clearance entry</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_DocumentReferenceID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Customer_RefCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CompanyCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_CurrencyCode"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_ProformaNr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_BankAccount" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_InvoiceHeader" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:InvoiceHeader</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BankAccounts" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:BankAccounts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BankAccountsENTCODE" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:BankAccounts</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="krffjo7h" targetId="krffjo7g"/>
+               </start>
+               <assignment id="krffjo7g">
+                  <title>Fetch BankAccount, InvoiceHeader Info</title>
+                  <operation source="query" to="temp.tmp_BankAccounts">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:BankAccounts">
+                        <where>EntCode = '{$input.in_CompanyCode }' and CurCode = '{$input.in_CurrencyCode }'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_InvoiceHeader">
+                     <query advanceQuery="true" from="AppConnectionVPCdbo:InvoiceHeader">
+                        <where>RefCode = '{$input.in_Customer_RefCode }' and (cast(InvoiceNr as varchar) = '{$input.in_DocumentReferenceID}' or substring(InvoiceRef, 1, 16) = '{$input.in_DocumentReferenceID}')</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_BankAccountsENTCODE">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:BankAccounts">
+                        <where>EntCode = '{$input.in_CompanyCode }' and SeqNr = 1</where>
+                     </query>
+                  </operation>
+                  <link id="kzi2youe" targetId="kzi2youd"/>
+               </assignment>
+               <container id="kzi2youd" type="exclusive">
+                  <title>Invoice Header ?</title>
+                  <flow id="kzi2youu">
+                     <link id="kzi2youv" targetId="kzi2youd" type="containerLink"/>
+                  </flow>
+                  <flow id="kzi2youw">
+                     <end id="l84dx7ua">
+                        <title>End No InvoiceHeader data found</title>
+                     </end>
+                  </flow>
+                  <link id="kzi2youn" targetId="kzi2youu" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_InvoiceHeader}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kzi2youq" targetId="kzi2youw" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_InvoiceHeader}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kzi2youf" targetId="kx6j9sac"/>
+               </container>
+               <container id="kx6j9sac" type="exclusive">
+                  <title>Bank Account ?</title>
+                  <flow id="kx6j9sag">
+                     <assignment id="kx6j9sar">
+                        <title>Set Output attributes</title>
+                        <operation source="field" to="output.out_ProformaNr">temp.tmp_InvoiceHeader.ProformaNr</operation>
+                        <operation source="formula" to="output.out_BankAccount">
+                           <expression language="XQuery">$temp.tmp_BankAccounts.BAnumber</expression>
+                        </operation>
+                     </assignment>
+                     <link id="kx6j9sah" targetId="kx6j9sac" type="containerLink"/>
+                  </flow>
+                  <flow id="kx6j9saj">
+                     <assignment id="l7yxi0ay">
+                        <title>Set Output Attributes 2</title>
+                        <operation source="field" to="output.out_ProformaNr">temp.tmp_InvoiceHeader.ProformaNr</operation>
+                        <operation source="formula" to="output.out_BankAccount">
+                           <expression language="XQuery">$temp.tmp_BankAccountsENTCODE.BAnumber</expression>
+                        </operation>
+                     </assignment>
+                     <link id="kx6j9sak" targetId="kx6j9sac" type="containerLink"/>
+                  </flow>
+                  <link id="kx6j9saf" targetId="kx6j9sag" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_BankAccounts}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx6j9sai" targetId="kx6j9saj" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_BankAccounts}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kx6j9saq" targetId="c"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>439e3922-29bb-47e4-a84d-ad80358f582a</ns1:Id>
+               <ns1:Name>t2</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-28T15:03:21Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-12-07T08:15:30Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_DocumentReferenceID": "70007",
+	 "in_Customer_RefCode": "12500013",
+	 "in_CompanyCode": "SG03",
+	 "in_CurrencyCode": "SGD"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>01tLKR13JG0k9awjmEd7uT</types1:GUID>
+      <types1:DisplayName>ProcessGetAPI5Data_Partial_over</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.74Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

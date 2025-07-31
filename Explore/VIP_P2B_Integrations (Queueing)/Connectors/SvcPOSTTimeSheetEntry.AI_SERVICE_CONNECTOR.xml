@@ -1,0 +1,314 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>QnA7vNljLYqBGZk-gt-5340362-2021-10-20T05:14:53.687Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcPOSTTimeSheetEntry</types1:Name>
+      <types1:ParentFlowIds>wgpbdoPVm5Y6tMF-gt-5346239-2021-10-20T05:14:54.362Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Service created to POST Timesheet entry to SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-10-20T05:14:54Z</types1:CreationDate>
+      <types1:ModifiedBy>veerabh-vistra-tst</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-12T10:47:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>veerabh-vistra-tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-12T10:48:44Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcPOSTTimeSheetEntry/SvcPOSTTimeSheetEntry_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcPOSTTimeSheetEntry"
+                            label=""
+                            name="SvcPOSTTimeSheetEntry"
+                            uuid="3b30857c-73b8-479b-a121-05a43476b73b">
+            <description>Service created to POST Timesheet entry to SAP</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="timesheet"
+                       failOnError="true"
+                       forSearch="false"
+                       label="POST_WorkForce_TimeSheet"
+                       maxRedirects="100"
+                       name="POST_WorkForce_TimeSheet"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description>Creating timesheet entry elements based on the mapping specification.</description>
+                  <input>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{ &#34;CompanyCode&#34;: &#34;GB01&#34;, &#34;PersonWorkAgreement&#34;: &#34;50000054&#34;, &#34;PersonWorkAgreementExternalID&#34;: &#34;20002070&#34;, &#34;TimeSheetDataFields&#34;: { &#34;ActivityType&#34;: &#34;T003&#34;, &#34;HoursUnitOfMeasure&#34;: &#34;H&#34;, &#34;RecordedHours&#34;: &#34;2.5&#34;, &#34;RecordedQuantity&#34;: &#34;1.000&#34;, &#34;WBSElement&#34;: &#34;VPC-SG01-TSUSD&#34; }, &#34;TimeSheetDate&#34;: &#34;/Date(1633867816000)/&#34;, &#34;TimeSheetIsReleasedOnSave&#34;: true, &#34;TimeSheetOperation&#34;: &#34;C&#34;, &#34;TimeSheetStatus&#34;: &#34;30&#34;, &#34;YY1_ServiceCode_TIM&#34;: &#34;TIMESPENT&#34;, &#34;YY1_VTimeStatus_TIM&#34;: &#34;30&#34; }"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">TimeSheetDataFields</option>
+                        </options>
+                     </parameter>
+                     <parameter name="in_X_CSRF_TOKEN"
+                                nogen="true"
+                                required="true"
+                                testWith="vyoFoMWswfj-XKFW-6sGyQ=="
+                                type="string"/>
+                     <parameter name="in_Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=qI1Ad-Wk5le8cUdzoIuwb8AigiVD0BHtm8_6Fj6c4eI%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_MANAGE_WORKFORCE_TIMESHEET/TimeSheetEntryCollection"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-TOKEN">{$in_X_CSRF_TOKEN}</header>
+                           <header name="Cookie">{$in_Cookie}</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="TimeSheetRecord"
+                            property="TimeSheetRecord"
+                            type="string"/>
+                     <field description="" name="O_PO_PostTimeSheet" type="reference">
+                        <options>
+                           <option name="referenceTo">TimeSheetDataFields</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="YY1_ServiceCode_TIM"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetRecord"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PersonWorkAgreementExternalID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetStatus"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetIsExecutedInTestRun"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetOperation"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_ServiceCode_TIMF"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_VTimeStatus_TIM"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_VTimeStatus_TIMF"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TimeSheetDate"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetIsReleasedOnSave"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="TimeSheetDataFields"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">TimeSheetDataFields</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="TimeSheetPredecessorRecord"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="YY1_VTimeStatus_TIMT"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PersonWorkAgreement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="TimeSheetDataFields">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="TimeSheetTaskComponent"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WBSElement"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="HoursUnitOfMeasure"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ReceiverCostCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ActivityType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetWrkLocCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="SenderCostCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InternalOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="WorkItem" nullable="true" required="false" type="string"/>
+                     <field name="RejectionReason"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="BillingControlCategory"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PurchaseOrderItem"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetNote"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetTaskType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RecordedQuantity"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetOvertimeCategory"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetTaskLevel"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="RecordedHours"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="PurchaseOrder"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ControllingArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="TimeSheetIsReleasedOnSave"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>83Aes6ar44thNRqcZGSvmg</types1:GUID>
+      <types1:DisplayName>SvcPOSTTimeSheetEntry</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:16.859Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

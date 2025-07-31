@@ -1,0 +1,245 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ME3mY6pkTjFIMeI-gt-47248759-2023-01-16T08:47:31.628Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_GET_CF_NI_Details</types1:Name>
+      <types1:ParentFlowIds>aa-gt-13442292-2023-01-12T09:05:10Z::pd.xml,sfYmWR7hsAVR3aa-gt-5546832-2023-03-01T09:58:37.301Z::pd.xml,sqy3eHRi92qBbbe-gt-1318513-2023-03-01T09:59:13.304Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Fetch details of a Newly Incorporated company for CF from VPoint</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2023-01-16T08:47:32Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-05-08T09:06:26Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-08T09:09:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_GET_CF_NI_Details/Process_GET_CF_NI_Details.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_GET_CF_NI_Details"
+                  name="Process_GET_CF_NI_Details"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Fetch details of a Newly Incorporated company for CF from VPoint</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_RefCode" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_NewIncorporation" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoCfNi-Details</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">ggunWFXPsSYiClT3654PAS</option>
+                  </options>
+               </field>
+               <field description="" name="out_NewIncorporation_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">$po:PoCfNi-Details</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">ggunWFXPsSYiClT3654PAS</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_RefMaster" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RefMaster</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_LookValues_Jurisdiction" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:LookValues</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Entity" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:Entity</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ShareCapital_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:ShareCapital</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ShareCapital" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:ShareCapital</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IncorpDate" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_IdentityRegister" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:IdentityRegister</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MemAndArts_Notes" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbayush2" targetId="lbayush1"/>
+               </start>
+               <assignment id="lbayush1">
+                  <title>Get New Incorp Details</title>
+                  <operation source="query" to="temp.tmp_RefMaster">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:RefMaster">
+                        <where>RefCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="query" to="temp.tmp_Entity">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:Entity">
+                        <where>EntCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="list" to="temp.tmp_ShareCapital_List">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:ShareCapital">
+                        <where>EntCode = '{$input.in_RefCode}'</where>
+                     </query>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_ShareCapital">
+                     <expression language="XQuery">list:head($temp.tmp_ShareCapital_List )</expression>
+                  </operation>
+                  <operation source="query" to="temp.tmp_IdentityRegister">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:IdentityRegister">
+                        <where>RefCode = '{$input.in_RefCode}'  and IdType = 'CDC'  and Active = true</where>
+                     </query>
+                  </operation>
+                  <link id="lbazf233" targetId="lbazf232"/>
+               </assignment>
+               <assignment id="lbazf232">
+                  <title>Query Jurisdiction</title>
+                  <operation source="query" to="temp.tmp_LookValues_Jurisdiction">
+                     <query advanceQuery="false" from="AppConnectionVPCdbo:LookValues">
+                        <where>TabCode = 'CNTR' and ElCode = '{$temp.tmp_Entity.IncorpPlace}'</where>
+                     </query>
+                  </operation>
+                  <link id="lcyjs6fc" targetId="lcyjs6fb"/>
+               </assignment>
+               <assignment id="lbazf23t">
+                  <title>Set Output</title>
+                  <operation source="field" to="temp.tmp_IncorpDate">temp.tmp_Entity.IncorpDate</operation>
+                  <operation source="formula" to="output.out_NewIncorporation">
+                     <expression language="XQuery">&lt;PoCfNi_Details&gt;
+   &lt;Name&gt;{$temp.tmp_RefMaster.Name }&lt;/Name&gt;
+   &lt;Sector&gt;{$temp.tmp_RefMaster.OrgUnit1 }&lt;/Sector&gt;
+   &lt;ChnsName&gt;{$temp.tmp_RefMaster.ChnsName }&lt;/ChnsName&gt;
+   &lt;PrimaryBusinessUnit&gt;{$temp.tmp_RefMaster.AdminGroup}&lt;/PrimaryBusinessUnit&gt;
+   &lt;ShelfOrTailor&gt;{util:iif($temp.tmp_RefMaster.AdminGroup = 'CF-SHELF', 'Shelf Company', 'Tailor Made') }&lt;/ShelfOrTailor&gt;
+   &lt;IncorpPlace&gt;{$temp.tmp_Entity.IncorpPlace }&lt;/IncorpPlace&gt;
+   &lt;IncorpPlaceName&gt;{$temp.tmp_LookValues_Jurisdiction.Name }&lt;/IncorpPlaceName&gt;
+   &lt;IncorpNr&gt;{$temp.tmp_Entity.IncorpNr }&lt;/IncorpNr&gt;
+   &lt;RefCode&gt;{$temp.tmp_RefMaster.RefCode }&lt;/RefCode&gt;
+   &lt;MfNr&gt;{$temp.tmp_RefMaster.MfNr  }&lt;/MfNr&gt;   
+   &lt;IncorpDate&gt;{util:iif(util:isNull($temp.tmp_IncorpDate),'',date:toChar($temp.tmp_IncorpDate, "DD-MM-YYYY"))}&lt;/IncorpDate&gt;
+   &lt;IncorpText&gt;{$temp.tmp_Entity.IncorpText }&lt;/IncorpText&gt;
+   &lt;MemAndArts&gt;{$temp.tmp_MemAndArts_Notes }&lt;/MemAndArts&gt;
+   &lt;CapAuth&gt;{$temp.tmp_ShareCapital[1]/CapAuth}&lt;/CapAuth&gt;
+   &lt;PaidCap&gt;{$temp.tmp_ShareCapital[1]/PaidCap }&lt;/PaidCap&gt;
+   &lt;StatedCap&gt;{$temp.tmp_ShareCapital[1]/StatedCap }&lt;/StatedCap&gt;
+   &lt;NrShare&gt;{$temp.tmp_ShareCapital[1]/NrShare }&lt;/NrShare&gt;
+   &lt;NomValShare&gt;{$temp.tmp_ShareCapital[1]/NomValShare }&lt;/NomValShare&gt;
+   &lt;TotalShareVal&gt;{$temp.tmp_ShareCapital[1]/NrShare * $temp.tmp_ShareCapital[1]/NomValShare}&lt;/TotalShareVal&gt;
+   &lt;TotalIssuedVal&gt;{$temp.tmp_ShareCapital[1]/Issued * $temp.tmp_ShareCapital[1]/NomValShare}&lt;/TotalIssuedVal&gt;
+&lt;/PoCfNi_Details&gt;
+</expression>
+                  </operation>
+                  <link id="lbazf23v" targetId="c"/>
+               </assignment>
+               <container id="lcyjs6fb" type="exclusive">
+                  <title>tmp_IdentityRegister</title>
+                  <flow id="lcyjs6ff">
+                     <assignment id="lcyjs6fr">
+                        <title>Assignment to tmp_MemAndArts_Notes</title>
+                        <operation source="field" to="temp.tmp_MemAndArts_Notes">temp.tmp_IdentityRegister.Note</operation>
+                     </assignment>
+                     <link id="lcyjs6fg" targetId="lcyjs6fb" type="containerLink"/>
+                  </flow>
+                  <flow id="lcyjs6fi">
+                     <link id="lcyjs6fj" targetId="lcyjs6fb" type="containerLink"/>
+                  </flow>
+                  <link id="lcyjs6fe" targetId="lcyjs6ff" type="containerLink">
+                     <condition source="formula">
+                        <function name="set">
+                           <arg name="field">{$temp.tmp_IdentityRegister}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lcyjs6fh" targetId="lcyjs6fi" type="containerLink">
+                     <condition source="formula">
+                        <function name="unset">
+                           <arg name="field">{$temp.tmp_IdentityRegister}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lcyjs6fd" targetId="lbazf23t"/>
+               </container>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0d491a43-0bad-4a3f-8e8e-521a2231ccc7</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2023-01-16T08:47:32Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-05-08T09:06:26Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_RefCode": "12000065"
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3ujmUhIBWmAlo4YWvwtuiW</types1:GUID>
+      <types1:DisplayName>Process_GET_CF_NI_Details</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.839Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

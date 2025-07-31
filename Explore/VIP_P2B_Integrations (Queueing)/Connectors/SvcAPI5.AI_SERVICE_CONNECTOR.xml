@@ -1,0 +1,285 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>036ln6lRuImXyco-gt-14414894-2021-08-20T07:34:34.989Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcAPI5</types1:Name>
+      <types1:ParentFlowIds>5ieE9cjIw8jIw8j-gt-21940657-2022-06-06T09:36:25.917Z::conn.xml,HsbfYLnzYLnzYLn-gt-27825674-2021-08-20T07:34:35.541Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>benarji-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2021-08-20T07:34:35Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:34Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>nitish.kumar_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-04-01T04:50:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcAPI5/SvcAPI5_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcAPI5"
+                            label=""
+                            name="SvcAPI5"
+                            uuid="d58a7722-4f0f-4e31-9575-9adad945f623">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category="clearedpayments"
+                       failOnError="true"
+                       forSearch="false"
+                       label="ClearedPaymentsEntries"
+                       maxRedirects="100"
+                       name="ClearedPaymentsEntries"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="username"
+                                name="username"
+                                nogen="true"
+                                required="true"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                nogen="true"
+                                required="true"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_PAYMENTCLEARED_API_V1_CDS/YY1_PaymentCleared_API_v1"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <httpHeaders>
+                           <header name="Accept">application/json</header>
+                           <header name="X-CSRF-Token">fetch</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="ClearedPaymentDetails" type="reference">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery/>
+                     </field>
+                     <field description="" name="ClearedPaymentDetails_array" type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                     <field description=""
+                            name="X_CSRF_Token_SAP"
+                            responseHeader="X-CSRF-Token"
+                            type="string"/>
+                     <field description="" name="Cookie_SAP" type="string">
+                        <xquery>{let $cookies := svc:getResponseHeader($ResponseHeaders , "set-cookie")
+return fn:concat($cookies[1], ';', $cookies[2])}</xquery>
+                     </field>
+                  </output>
+               </action>
+               <action category="clearedpayments"
+                       failOnError="true"
+                       forSearch="false"
+                       label="UpdateSAPLog"
+                       maxRedirects="100"
+                       name="UpdateSAPLog"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="hostname"
+                                name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter label="Cookie"
+                                name="Cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=O5xL4_YeVLCnwjHz_xswyN0xv43nFhHrtC36Fj4QG_U%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter label="token"
+                                name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="sCklGNg0urdZjEe7FA7nIQ=="
+                                type="string"/>
+                     <parameter label="body"
+                                name="body"
+                                required="true"
+                                testWith="{&#xA;    &#34;ID&#34;: &#34;VPC&#34;,&#xA;    &#34;SubID&#34;: &#34;API05&#34;,&#xA;    &#34;CompanyCode&#34;: &#34;GB02&#34;,&#xA;    &#34;KeyValue1&#34;: &#34;2000000004&#34;,&#xA;    &#34;KeyValue2&#34;: &#34;2021&#34;,&#xA;    &#34;KeyValue3&#34;: &#34;2000000004&#34;,&#xA;    &#34;KeyValue4&#34;: &#34;2021&#34;,&#xA;    &#34;Success&#34;: true&#xA;}"
+                                type="reference">
+                        <options>
+                           <option name="referenceTo">api5UpdatelogInput</option>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/YY1_LOGGINGTABLE_CDS/YY1_LOGGINGTABLE"
+                                        verb="POST">
+                        <httpHeaders>
+                           <header name="X-CSRF-Token">{$token}</header>
+                           <header name="Cookie">{$Cookie}</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="result" type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                        <xquery>{util:parseJSON( $RESTResponse)/element()}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="root">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">results</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="FiscalYear" nullable="true" required="false" type="int"/>
+                     <field name="ClearingAccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Code_01" nullable="true" required="false" type="string"/>
+                     <field name="ClearingFiscalYear"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="AccountingDocument"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Code" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Customer" nullable="true" required="false" type="string"/>
+                     <field name="BalanceTransactionCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AmountInBalanceTransacCrcy"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ClearingDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="Reference1InDocumentHeader"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="DocumentReferenceID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="api5UpdatelogInput">
+                  <description/>
+                  <detail>
+                     <field name="ID" nullable="true" required="false" type="string"/>
+                     <field name="SubID" nullable="true" required="false" type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="KeyValue1" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue2" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue3" nullable="true" required="false" type="string"/>
+                     <field name="KeyValue4" nullable="true" required="false" type="string"/>
+                     <field name="Success" nullable="true" required="false" type="boolean"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>5BwKdkJIMMnkh6HyhcueAl</types1:GUID>
+      <types1:DisplayName>SvcAPI5</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:17.308Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

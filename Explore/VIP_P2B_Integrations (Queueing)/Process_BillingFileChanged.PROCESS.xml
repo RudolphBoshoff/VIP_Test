@@ -1,0 +1,585 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>aaaaa-gt-14407407-2021-09-16T07:13:34.008Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_BillingFileChanged</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>process to capture BillingFileChanged</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>nitish.kumar_tst</types1:CreatedBy>
+      <types1:CreationDate>2021-09-16T07:13:34Z</types1:CreationDate>
+      <types1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-03-31T07:36:51Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_BillingFileChanged"
+                  name="Process_BillingFileChanged"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>process to capture BillingFileChanged</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-P2BFileEvent:ParsedFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6pHx2vkTVgpeQMefvNTXsp</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_event_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_event_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RefCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MatterCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerPO" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:APIBUSINESSPARTNERABusinessPartnerTypeCreate</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">3m6KNqyGEOfgyYI9MmBX6U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_BusinessPartnerPO_Any" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients_AddrCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_CurrentDate" type="date">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_code" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Desc" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RmClients" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnectionVPCdbo:RmClients</option>
+                     <option name="required">false</option>
+                     <option name="guid">cta893CVPCvl9C54Pb8Uk8</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OrgBPName1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_OrgBPName2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-P2BFileEvent:AppCon-BillingFileChangedFileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="kpmvx8za" targetId="kpmvx8z9"/>
+               </start>
+               <assignment id="kpmvx8z9">
+                  <title>Get Event Type</title>
+                  <operation source="formula" to="temp.tmp_event_name">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventTypeName</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_event_type">
+                     <expression language="XQuery">$input.fileEvent[1]/content/EventDetails/eventChangeType </expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RefCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("Matters.RefCode") or fn:lower-case($ids/identifierName/text()) = fn:lower-case("RmClients.AddrCode")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_RmClients_AddrCode">
+                     <expression language="XQuery">for $ids in $input.fileEvent[1]/content/EventDetails/identifiers
+return if (fn:lower-case($ids/identifierName/text()) = fn:lower-case("RmClients.AddrCode")) then $ids/identifierValue/text()  else()</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <link id="ktleubkn" targetId="kpzdw0ag"/>
+               </assignment>
+               <container id="kpzdw0ag" type="exclusive">
+                  <title>DecAction</title>
+                  <flow id="kq5k9fep">
+                     <assignment id="kuxzhgqf">
+                        <title>Assignment to tmp_RmClients</title>
+                        <operation source="query" to="temp.tmp_RmClients">
+                           <query advanceQuery="false" from="AppConnectionVPCdbo:RmClients">
+                              <where>AddrCode = '{$tmp_RmClients_AddrCode}' </where>
+                           </query>
+                        </operation>
+                        <link id="kv6nmx23" targetId="kv6nmx0z"/>
+                     </assignment>
+                     <eventContainer id="kv6nmx0z">
+                        <service id="kv6nmx1n">
+                           <title>GET_A_BusinessPartner_BusinessPartner_ 1 1</title>
+                           <serviceName>AppSvcCheckBusinessPartner:GET_A_BusinessPartner_BusinessPartner_</serviceName>
+                           <serviceGUID>09svspRfE52cQDujuoim8R</serviceGUID>
+                           <serviceInput>
+                              <parameter name="BusinessPartnerPathParam" source="field" updatable="true">temp.tmp_RefCode</parameter>
+                              <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                              <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                              <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kv6nmx10">
+                           <container id="kv6nmx11" type="exclusive">
+                              <title>SvcCheckBusinessParnter_BusinessPartner</title>
+                              <flow id="kv6nmx12">
+                                 <eventContainer id="kv6nmx13">
+                                    <subflow id="kv6nmx1g">
+                                       <title>ProcessGetChangeBillingfile</title>
+                                       <subflowGUID>3TU3Uqa9WmtkuA4j5ENjWB</subflowGUID>
+                                       <subflowPath>ProcessGetChangeBillingfile</subflowPath>
+                                       <runForEach>false</runForEach>
+                                       <input>
+                                          <parameter name="in_AddrCode" source="field" updatable="true">temp.tmp_RefCode</parameter>
+                                       </input>
+                                       <outputDef>
+                                          <field name="out_ChangeBillingFileFields" type="reference">
+                                             <options>
+                                                <option name="referenceTo">$po:POEntityDetails</option>
+                                                <option name="required">false</option>
+                                                <option name="isCopy">true</option>
+                                                <option name="guid">9pfIZtTCho6eam7UAD0HUg</option>
+                                             </options>
+                                          </field>
+                                       </outputDef>
+                                    </subflow>
+                                    <flow id="kv6nmx14">
+                                       <assignment id="kwm8sccm">
+                                          <title>Assignment to tmp_OrgBPName1, tmp_OrgBPName2</title>
+                                          <operation source="formula" to="temp.tmp_OrgBPName1">
+                                             <expression language="XQuery">util:iif(fn:string-length($output.out_ChangeBillingFileFields[1]/RefMasterName) &gt; 40,fn:substring($output.out_ChangeBillingFileFields[1]/RefMasterName , 1, 40),$output.out_ChangeBillingFileFields[1]/RefMasterName )</expression>
+                                          </operation>
+                                          <operation source="formula" to="temp.tmp_OrgBPName2">
+                                             <expression language="XQuery">util:iif(fn:string-length($output.out_ChangeBillingFileFields[1]/RefMasterName ) &gt; 40,fn:substring($output.out_ChangeBillingFileFields[1]/RefMasterName , 41, 40),'' )</expression>
+                                          </operation>
+                                          <link id="kwm8sccn" targetId="kv6nmx15"/>
+                                       </assignment>
+                                       <assignment id="kv6nmx15">
+                                          <title>CreateBusinessPartnerPO 1 1</title>
+                                          <operation source="formula" to="temp.tmp_BusinessPartnerPO_Any">
+                                             <expression language="XQuery">&lt;root xmlns:m="urn:informatica:ae:xquery:json2xml:meta-data"&gt;
+&lt;d&gt;
+&lt;AuthorizationGroup&gt;0001 &lt;/AuthorizationGroup&gt;
+&lt;BusinessPartnerCategory&gt;2&lt;/BusinessPartnerCategory&gt;
+&lt;OrganizationBPName1&gt;{$temp.tmp_OrgBPName1 }&lt;/OrganizationBPName1&gt;
+&lt;OrganizationBPName2&gt;{$temp.tmp_OrgBPName2 }&lt;/OrganizationBPName2&gt;
+ &lt;/d&gt;
+&lt;/root&gt;</expression>
+                                          </operation>
+                                          <link id="kv6nmx1u" targetId="kv6nmx16"/>
+                                       </assignment>
+                                       <eventContainer id="kv6nmx16">
+                                          <service id="kv6nmx1c">
+                                             <title>PATCH_A_BusinessPartner_BusinessPartner_ 1</title>
+                                             <serviceName>AppSvcPatchBusinessPartner:PATCH_A_BusinessPartner_BusinessPartner_</serviceName>
+                                             <serviceGUID>01PPGIuiYavgRQmHncTLIM</serviceGUID>
+                                             <serviceInput>
+                                                <parameter name="body" source="formula">
+                                                   <expression language="XQuery">$temp.tmp_BusinessPartnerPO_Any </expression>
+                                                </parameter>
+                                                <parameter name="BusinessPartnerPathParam" source="field" updatable="true">temp.tmp_RefCode</parameter>
+                                                <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                                                <parameter name="Cookie" source="field" updatable="true">output.SvcCheckBusinessParnter_Cookie</parameter>
+                                                <parameter name="token" source="field" updatable="true">output.SvcCheckBusinessParnter_Token</parameter>
+                                             </serviceInput>
+                                          </service>
+                                          <flow id="kv6nmx17">
+                                             <end id="kv6nmx18"/>
+                                          </flow>
+                                          <flow id="kv6nmx19">
+                                             <assignment id="kv6nmx1a">
+                                                <title>Assignment to tmp_Error, tmp_code etc. 1</title>
+                                                <operation source="field" to="temp.tmp_Error">output.faultInfo_3[1]/reason</operation>
+                                                <operation source="field" to="temp.tmp_code">output.faultInfo_3[1]/code</operation>
+                                                <operation source="field" to="temp.tmp_Desc">output.faultInfo_3[1]/detail</operation>
+                                                <link id="kv6nmx1x" targetId="kv6nmx1b"/>
+                                             </assignment>
+                                             <jumpTo id="kv6nmx1b">
+                                                <link id="kv6nmx1y" targetId="kv6nmx1l"/>
+                                             </jumpTo>
+                                          </flow>
+                                          <link id="kv6nmx1v" targetId="kv6nmx17" type="containerLink"/>
+                                          <events>
+                                             <catch faultField="faultInfo_3" id="ktmitmxv" interrupting="true">
+                                                <link id="kv6nmx1w" targetId="kv6nmx19" type="containerLink"/>
+                                             </catch>
+                                          </events>
+                                       </eventContainer>
+                                    </flow>
+                                    <flow id="kv6nmx1d">
+                                       <assignment id="kv6nmx1e">
+                                          <title>Assignment to tmp_Error, tmp_code etc.</title>
+                                          <operation source="field" to="temp.tmp_Error">output.faultInfo_2[1]/reason</operation>
+                                          <operation source="field" to="temp.tmp_code">output.faultInfo_2[1]/code</operation>
+                                          <operation source="field" to="temp.tmp_Desc">output.faultInfo_2[1]/detail</operation>
+                                          <link id="kv6nmx1z" targetId="kv6nmx1f"/>
+                                       </assignment>
+                                       <jumpTo id="kv6nmx1f">
+                                          <link id="kv6nmx20" targetId="kv6nmx1l"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="kv6nmx1s" targetId="kv6nmx14" type="containerLink"/>
+                                    <events>
+                                       <catch faultField="faultInfo_2" id="ktmitmiq" interrupting="true">
+                                          <link id="kv6nmx1t" targetId="kv6nmx1d" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                              </flow>
+                              <flow id="kv6nmx1h">
+                                 <throw id="kv6nmx1i">
+                                    <title>Throw 5</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">555</parameter>
+                                       <parameter name="detail" source="formula" updatable="true">
+                                          <expression language="XQuery">fn:concat('API08-',$temp.tmp_RefCode,'-',$temp.tmp_RmClients_AddrCode  ,'BusinessPartner do not exist')</expression>
+                                       </parameter>
+                                       <parameter name="reason" source="constant" updatable="true">BusinessPartner doesn't exist</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="kv6nmx1q" targetId="kv6nmx12" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="string-equals">
+                                       <arg name="left">{$output.SvcCheckBusinessParnter_BusinessPartner}</arg>
+                                       <arg name="right">{$temp.tmp_RefCode}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="kv6nmx1r" targetId="kv6nmx1h" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="kv6nmx1j">
+                           <assignment id="kv6nmx1k">
+                              <title>Assignment to tmp_code, tmp_Desc etc.</title>
+                              <operation source="field" to="temp.tmp_code">output.faultInfo_getBP[1]/code</operation>
+                              <operation source="field" to="temp.tmp_Desc">output.faultInfo_getBP[1]/detail</operation>
+                              <operation source="field" to="temp.tmp_Error">output.faultInfo_getBP[1]/reason</operation>
+                              <link id="kv6nmx21" targetId="kv6nmx1l"/>
+                           </assignment>
+                           <subflow id="kv6nmx1l">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/name||'~Process_BillingFileChanged'</expression>
+                                 </parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getProcessId()</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">temp.tmp_code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">temp.tmp_Error</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">temp.tmp_Desc</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">'API08'</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">'BILLING_FILE_CHANGED'</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:concat($temp.tmp_RefCode ,'-' ,$temp.tmp_RmClients_AddrCode )</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="constant" updatable="true">'Process_BillingFileChanged'</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="kv6nmx22" targetId="kv6nmx1m"/>
+                           </subflow>
+                           <end id="kv6nmx1m">
+                              <title>End Failed</title>
+                           </end>
+                        </flow>
+                        <link id="kv6nmx1o" targetId="kv6nmx10" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo_getBP" id="ktmitm8e" interrupting="true">
+                              <link id="kv6nmx1p" targetId="kv6nmx1j" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                  </flow>
+                  <flow id="kpzdw0e6">
+                     <end id="kuqwdfx5">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="kq5k9feo" targetId="kq5k9fep" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.tmp_event_name}</arg>
+                           <arg name="right">BILLING_FILE_CHANGED</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kpzdw0e1" targetId="kpzdw0e6" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>16bf7be3-8093-4516-82fc-d475d5ff56de</ns1:Id>
+               <ns1:Name>billingFileChanged</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "BILLING_FILE_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RmClients.AddrCode",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>5e4c3bd5-327a-491d-b969-94c2a33696e9</ns1:Id>
+               <ns1:Name>email</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "EMAIL_ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefContacts.RefCode",
+	 	 	 "identifierValue": "100195"
+	 	 },
+                 {
+	 	 	 "identifierName": "RefContacts.SeqNr",
+	 	 	 "identifierValue": "2"
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>7e240e07-a968-490c-add1-1f0342682a6b</ns1:Id>
+               <ns1:Name>invoice_created</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:52Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "INVOICE_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "InvoiceHeader.ProformaNr",
+	 	 	 "identifierValue": "1000021"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>23eddb8c-d7a7-4838-a9d8-68d58054d82b</ns1:Id>
+               <ns1:Name>matterChanged</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "MATTER_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "FF01"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>78273a8a-bffe-458a-9d5a-49531e189c9a</ns1:Id>
+               <ns1:Name>matter_Created</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "25",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "10777899"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>229ad959-1479-4ac8-ad61-e09722b739c4</ns1:Id>
+               <ns1:Name>PaymentRequest</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "PAYMENTBATCH_CLOSED",
+	 	 "identifiers": [{
+               "identifierName": "PaymentOnService.PayNr",
+               "identifierValue": "11"
+          },
+                 {
+               "identifierName": "PaymentOnService.ServCode",
+               "identifierValue": "IMCC2"
+          }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>8a819f96-ec2d-45c0-a0a5-e39b5b7d04b8</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "UPDATED",
+	 	 "eventTypeName": "ADDRESS_CHANGED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "RefAddress.RefCode",
+	 	 	 "identifierValue": "80002415"
+	 	 },
+                 {
+	 	 	 "identifierName": "Addresses.AddrNr",
+	 	 	 "identifierValue": ""
+	 	 },
+                 {
+	 	 	 "identifierName": "RefAddress.SeqNr",
+	 	 	 "identifierValue": ""
+	 	 }
+
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+            <ns1:SampleData>
+               <ns1:Id>e9c74739-1c15-409f-b42d-f8409e496a0d</ns1:Id>
+               <ns1:Name>test2</ns1:Name>
+               <ns1:CreatedBy>nitish.kumar_tst</ns1:CreatedBy>
+               <ns1:CreationDate>2021-09-16T07:13:34Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-03-31T07:36:51Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "X_TRANSACTION_ID": "22",
+	 "Payload": {
+	 	 "eventChangeType": "NEW",
+	 	 "eventTypeName": "MATTER_CREATED",
+	 	 "identifiers": [{
+	 	 	 "identifierName": "Matters.RefCode",
+	 	 	 "identifierValue": "106023"
+	 	 },
+                 {
+	 	 	 "identifierName": "Matters.MatterCode",
+	 	 	 "identifierValue": "IMAC1"
+	 	 }
+               ]
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>kx7IKIXRb8gjD3NNk44v8h</types1:GUID>
+      <types1:DisplayName>Process_BillingFileChanged</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:19:19.961Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
