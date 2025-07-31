@@ -1,0 +1,309 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>pGY2KsJlv58pIO3-gt-41227193-2022-06-25T10:30:33.255Z::svc.xml</types1:EntryId>
+      <types1:Name>SC-Conn-MDM-Vforce-C360-Create</types1:Name>
+      <types1:ParentFlowIds>GkeHy2uI5CUP9WY-gt-31051636-2022-06-25T10:30:34.521Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-06-25T10:30:33Z</types1:CreationDate>
+      <types1:ModifiedBy>santosh.rpatil@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-06-30T06:50:30Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>santosh.rpatil@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-07-29T06:53:38Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_Conn_MDM_Vforce_C360_Create/SC_Conn_MDM_Vforce_C360_Create_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC-Conn-MDM-Vforce-C360-Create"
+                            label=""
+                            name="SC-Conn-MDM-Vforce-C360-Create"
+                            uuid="61908bcd-7a1c-4749-8130-17fe3215f27f">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd">
+               <connectionAttribute description=""
+                                    masked="true"
+                                    name="Username"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+               <connectionAttribute description=""
+                                    masked="true"
+                                    name="Password"
+                                    required="true"
+                                    testWith=""
+                                    type="string"/>
+            </connectionAttributes>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Login"
+                       maxRedirects="100"
+                       name="Login"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://emw1.dm-em.informaticacloud.com/saas/public/core/v3/login"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="username">dhiraj.dhandhaliya</otherParam>
+                           <otherParam name="password">Dhiraj@1992</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="sessionId"
+                            property="sessionId"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="CC360_API"
+                       maxRedirects="100"
+                       name="CC360_API"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="Session_Id"
+                                nogen="true"
+                                required="true"
+                                testWith="iTEhxKQbokIkyBlELz3DMh"
+                                type="string"/>
+                     <parameter name="Id"
+                                required="true"
+                                testWith="0017Y00001gckmvQAA"
+                                type="string"/>
+                     <parameter name="name"
+                                nogen="true"
+                                required="false"
+                                testWith="abcdef"
+                                type="string"/>
+                     <parameter name="physical_address_line_1"
+                                nogen="true"
+                                required="false"
+                                testWith="123, ajkfhsjk"
+                                type="string"/>
+                     <parameter name="physical_city"
+                                nogen="true"
+                                required="false"
+                                testWith="CHILE"
+                                type="string"/>
+                     <parameter name="physical_county"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="physical_country"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Code&#34;:&#34;CL&#34;}"
+                                type="string"/>
+                     <parameter name="physical_postal_code"
+                                nogen="true"
+                                required="false"
+                                testWith="237846da"
+                                type="string"/>
+                     <parameter name="physical_postal_code_prefix"
+                                nogen="true"
+                                required="false"
+                                testWith="237"
+                                type="string"/>
+                     <parameter name="Finance_Address_Line_1"
+                                nogen="true"
+                                required="false"
+                                testWith="12jfbhd"
+                                type="string"/>
+                     <parameter name="finance_city"
+                                nogen="true"
+                                required="false"
+                                testWith="AFGHANISTAN"
+                                type="string"/>
+                     <parameter name="finance_county"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="finance_country"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Code&#34;:&#34;AF&#34;}"
+                                type="string"/>
+                     <parameter name="finance_postal_code"
+                                nogen="true"
+                                required="false"
+                                testWith="12JFDH"
+                                type="string"/>
+                     <parameter name="account_sector"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Code&#34;:&#34;Capital Markets&#34;}"
+                                type="string"/>
+                     <parameter name="entity_status"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Code&#34;:&#34;Active&#34;}"
+                                type="string"/>
+                     <parameter name="customer_status"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Code&#34;:&#34;Active&#34;}"
+                                type="string"/>
+                     <parameter name="sourceSystem"
+                                required="true"
+                                testWith="sourcesystem_vforce"
+                                type="string"/>
+                     <parameter name="registered_address_line_1"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="registered_city"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="registered_county"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="registered_country"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Name&#34;:&#34;(blank)&#34;,&#34;Code&#34;:&#34;NULL&#34;}"
+                                type="string"/>
+                     <parameter name="registered_postal_code"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="company_type"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Name&#34;:&#34;(blank)&#34;,&#34;Code&#34;:&#34;NULL&#34;}"
+                                type="string"/>
+                     <parameter name="date_of_incorporation"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="country_of_incorporation"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Name&#34;:&#34;(blank)&#34;,&#34;Code&#34;:&#34;NULL&#34;}"
+                                type="string"/>
+                     <parameter name="state_of_incorporation"
+                                nogen="true"
+                                required="false"
+                                testWith="{&#34;Name&#34;:&#34;(blank)&#34;,&#34;Code&#34;:&#34;NULL&#34;}"
+                                type="string"/>
+                     <parameter name="local_identifier_value"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                     <parameter name="global_identifier_value"
+                                nogen="true"
+                                required="false"
+                                testWith="''"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://emw1-mdm.dm-em.informaticacloud.com/business-entity/public/api/v1/entity/vistra_organization_mdm?sourceSystem={$sourceSystem }&amp;amp;sourcePKey={$Id }"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="IDS-SESSION-ID">{$Session_Id}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                        </httpHeaders>
+                        <body>{{
+"name":"{$name}",
+"physical_address_line_1":"{$physical_address_line_1}",
+"physical_city":"{$physical_city}",
+"physical_county":"{$physical_county}",
+"physical_country":{$physical_country},
+"physical_postal_code":"{$physical_postal_code}",
+"finance_address_line_1":"{$Finance_Address_Line_1}",
+"finance_city":"{$finance_city}",
+"finance_county":"{$finance_county}",
+"finance_country":{$finance_country},
+"finance_postal_code":"{$finance_postal_code}",
+"account_sector":{$account_sector},
+"entity_status":{$entity_status},
+"customer_status":{$customer_status},
+"physical_postal_code_prefix":"{$physical_postal_code_prefix}",
+"registered_address_line_1":"{$registered_address_line_1}",
+"registered_city":"{$registered_city}",
+"registered_county":"{$registered_county}",
+"registered_country":{$registered_country},
+"registered_postal_code":"{$registered_postal_code}",
+"company_type":{$company_type},
+"date_of_incorporation":"{$date_of_incorporation}",
+"country_of_incorporation":{$country_of_incorporation},
+"state_of_incorporation":{$state_of_incorporation},
+"local_identifier_value":"{$local_identifier_value}",
+"global_identifier_value":"{$global_identifier_value}"
+}}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="approvalRequired"
+                            property="approvalRequired"
+                            type="string"/>
+                     <field description="" name="id" property="id" type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="Account_Sector">
+                  <description/>
+                  <detail>
+                     <field name="account_sector"
+                            nullable="true"
+                            required="false"
+                            type="picklist"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>20tLHkbv7CUgBXRwm26aKc</types1:GUID>
+      <types1:DisplayName>SC-Conn-MDM-Vforce-C360-Create</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-12T07:04:51.91Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
