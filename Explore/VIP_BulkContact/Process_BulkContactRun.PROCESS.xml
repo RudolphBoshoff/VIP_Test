@@ -1,0 +1,322 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>2OvMBu8zbgdwUiQ-gt-43893961-2023-09-08T07:20:01.858Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_BulkContactRun</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-09-08T07:20:02Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-11T11:01:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_BulkContactRun"
+                  name="Process_BulkContactRun"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="delimitedContent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">AppCon-BulkContactUpdate:AppCon-BulkContactUpdateContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4SiXhixpKHohLLGhirVgKj</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="temp_fileContent" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-BulkContactUpdate:AppCon-BulkContactUpdateRecord</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4SiXhixpKHohLLGhirVgKj</option>
+                  </options>
+               </field>
+               <field description="" name="temp_fileContent_List" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppCon-BulkContactUpdate:AppCon-BulkContactUpdateRecord</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4SiXhixpKHohLLGhirVgKj</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_batch_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_remark" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_max_document_number" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_docnumber" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_bulkcontactupdate" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-VIP-SNOWFLAKE:BULKCONTACTPROCESSLOG</option>
+                     <option name="required">false</option>
+                     <option name="guid">5VFyNNPJUABexfCC3JvWUJ</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="AppCon-BulkContactUpdate:AppCon-BulkContactUpdate"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lm8v7jfx" targetId="lm8v7jfw"/>
+               </start>
+               <assignment id="lm8v7jfw">
+                  <title>Assignment to temp_fileContent_List, tmp_batch_id</title>
+                  <operation source="field" to="temp.temp_fileContent_List">input.delimitedContent[1]/record</operation>
+                  <operation source="formula" to="temp.tmp_batch_id">
+                     <expression language="XQuery">util:generateUUID()</expression>
+                  </operation>
+                  <link id="lm98e0y9" targetId="lm98e0y8"/>
+               </assignment>
+               <service id="lm98e0y8">
+                  <title>Copy Files</title>
+                  <serviceName>avShellService</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="command" source="constant">E:\data\BulkContactUpdate\Script\copy_command.bat</parameter>
+                     <parameter name="workingDirPath" source="constant">C:\Windows\System32</parameter>
+                  </serviceInput>
+                  <link id="lm98e0ya" targetId="lm8v7jg6"/>
+               </service>
+               <service id="lm8v7jgl">
+                  <title>Run Cloud Task</title>
+                  <serviceName>ICSExecuteTask</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="Task Name" source="constant">mt_LoadBulkContactLogToSnowflake [MCT]</parameter>
+                     <parameter name="Wait for Task to Complete" source="constant">false</parameter>
+                     <parameter name="Fail on Cloud Task Errors" source="constant">false</parameter>
+                     <parameter name="GUID" source="constant">0zekk7PeoijjwTGc4hNcgT</parameter>
+                  </serviceInput>
+                  <link id="lm8vg9q8" targetId="lm8vg9q7"/>
+               </service>
+               <subflow id="lm8v7jg6">
+                  <title>Process_BulkcontactNonAPICall</title>
+                  <subflowGUID>7YK97JZmwgBluqPp4XPtcI</subflowGUID>
+                  <subflowPath>Process_BulkcontactNonAPICall</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="in_batchid" source="constant" updatable="true">{$temp.tmp_batch_id}</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="lm98e0y1" targetId="lm8v7jgl"/>
+               </subflow>
+               <container id="lm8vg9q7" type="exclusive">
+                  <title>File record</title>
+                  <flow id="lm8vg9qh">
+                     <subflow id="lma44vwv">
+                        <title>P_VPC_GetToken</title>
+                        <subflowGUID>07bmeP8qUUzjnAwYUaz46x</subflowGUID>
+                        <subflowPath>P_VPC_GetToken-2</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input/>
+                        <outputDef>
+                           <field name="out_vpc_token" type="string">
+                              <options>
+                                 <option name="required">false</option>
+                              </options>
+                           </field>
+                        </outputDef>
+                        <link id="lma44vww" targetId="lm8vg9rj"/>
+                     </subflow>
+                     <container id="lm8vg9rj" type="exclusive">
+                        <title>temp_fileContent_List</title>
+                        <flow id="lm8vg9ru">
+                           <assignment id="lm8vg9su">
+                              <title>Assignment to temp_fileContent, temp_fileContent_List</title>
+                              <operation source="formula" to="temp.temp_fileContent">
+                                 <expression language="XQuery">list:head($temp.temp_fileContent_List)</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_fileContent_List">
+                                 <expression language="XQuery">list:tail($temp.temp_fileContent_List)</expression>
+                              </operation>
+                              <link id="lm91zjed" targetId="lm91zjec"/>
+                           </assignment>
+                           <container id="lm91zjec" type="exclusive">
+                              <title>temp_fileContent</title>
+                              <flow id="lm91zjen">
+                                 <eventContainer id="lm91zji1">
+                                    <subflow id="lm91zjfp">
+                                       <title>process_BulkContactAPICall</title>
+                                       <subflowGUID>kC6fvYXPVMJjy7dDjzu6WF</subflowGUID>
+                                       <subflowPath>process_BulkContactAPICall</subflowPath>
+                                       <runForEach>false</runForEach>
+                                       <input>
+                                          <parameter name="t_input" source="field">temp.temp_fileContent</parameter>
+                                          <parameter name="i_vpc_access_token" source="formula" updatable="true">
+                                             <expression language="XQuery">$output.out_vpc_token</expression>
+                                          </parameter>
+                                       </input>
+                                       <outputDef>
+                                          <field name="o_status" type="string">
+                                             <options>
+                                                <option name="required">false</option>
+                                             </options>
+                                          </field>
+                                          <field name="o_remark" type="string">
+                                             <options>
+                                                <option name="required">false</option>
+                                             </options>
+                                          </field>
+                                       </outputDef>
+                                    </subflow>
+                                    <flow id="lm91zji3">
+                                       <link id="lm91zji4" targetId="lm91zji1" type="containerLink"/>
+                                    </flow>
+                                    <flow id="lm91zji6">
+                                       <link id="lm91zji7" targetId="lm91zji1" type="containerLink"/>
+                                    </flow>
+                                    <link id="lm91zji2" targetId="lm91zji3" type="containerLink"/>
+                                    <link id="lm91zjik" targetId="lm91zjij"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="lm91zjfv" interrupting="true">
+                                          <link id="lm91zji5" targetId="lm91zji6" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <create id="lm91zjij">
+                                    <title>BULKCONTACTPROCESSLOG</title>
+                                    <entityName>AppConn-VIP-SNOWFLAKE:BULKCONTACTPROCESSLOG</entityName>
+                                    <createInput>
+                                       <parameter name="BATCHNO" source="field" updatable="true">temp.tmp_batch_id</parameter>
+                                       <parameter name="REFCODE" source="field" updatable="true">temp.temp_fileContent[1]/MFCode</parameter>
+                                       <parameter name="ACTION" source="field" updatable="true">temp.temp_fileContent[1]/Action</parameter>
+                                       <parameter name="REFERNCE" source="field" updatable="true">temp.temp_fileContent[1]/RelationCode</parameter>
+                                       <parameter name="STATUS" source="formula" updatable="true">
+                                          <expression language="XQuery">$output.o_status</expression>
+                                       </parameter>
+                                       <parameter name="REMARK" source="formula" updatable="true">
+                                          <expression language="XQuery">$output.o_remark </expression>
+                                       </parameter>
+                                    </createInput>
+                                    <link id="lnl9537b" targetId="lnl9537a"/>
+                                 </create>
+                                 <wait id="lnl9537a">
+                                    <title>Wait 1</title>
+                                    <duration source="formula">
+                                       <function name="duration_expression">
+                                          <arg name="value">3</arg>
+                                          <arg name="scale">M</arg>
+                                          <arg name="businessDays"/>
+                                       </function>
+                                    </duration>
+                                    <link id="lnl9538j" targetId="lnl9538i"/>
+                                 </wait>
+                                 <subflow id="lnl9538i">
+                                    <title>Process_logfile</title>
+                                    <subflowGUID>2JTMvlkM7H7d8WWOwkgEyu</subflowGUID>
+                                    <subflowPath>Process_logfile</subflowPath>
+                                    <runForEach>false</runForEach>
+                                    <input>
+                                       <parameter name="in_batch_id" source="constant" updatable="true">{$temp.tmp_batch_id}</parameter>
+                                    </input>
+                                    <outputDef/>
+                                    <link id="lnl9538k" targetId="lm91zjrf"/>
+                                 </subflow>
+                                 <jumpTo id="lm91zjrf">
+                                    <link id="lm91zjrv" targetId="lm8vg9rj"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="lm91zjep">
+                                 <jumpTo id="lm91zjso">
+                                    <link id="lm91zjt1" targetId="lm8vg9rj"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="lm91zjeg" targetId="lm91zjen" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="contains">
+                                       <arg name="left">{$temp.temp_fileContent[1]/Action}</arg>
+                                       <arg name="right">Contact</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="lm91zjej" targetId="lm91zjep" type="containerLink"/>
+                           </container>
+                        </flow>
+                        <flow id="lm8vg9rw">
+                           <end id="lm8vg9sf">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="lm8vg9rn" targetId="lm8vg9ru" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.temp_fileContent_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lm8vg9rq" targetId="lm8vg9rw" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.temp_fileContent_List}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lm8vg9qj">
+                     <end id="lm8vg9rb">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lm8vg9qa" targetId="lm8vg9qh" type="containerLink">
+                     <condition source="formula">
+                        <function name="not-empty">
+                           <arg name="field">{$input.delimitedContent[1]/record}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lm8vg9qd" targetId="lm8vg9qj" type="containerLink">
+                     <condition source="formula">
+                        <function name="empty">
+                           <arg name="field">{$input.delimitedContent[1]/record}</arg>
+                        </function>
+                     </condition>
+                  </link>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>7h1QoLQwFBkjjnyw75cCWQ</types1:GUID>
+      <types1:DisplayName>Process_BulkContactRun</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-11T11:02:49.484Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

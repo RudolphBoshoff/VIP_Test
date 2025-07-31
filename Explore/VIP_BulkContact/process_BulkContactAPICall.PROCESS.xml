@@ -1,0 +1,402 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>AzbdtqSLlBWlD2p-gt-43989796-2023-09-08T07:19:59.429Z::pd.xml</types1:EntryId>
+      <types1:Name>process_BulkContactAPICall</types1:Name>
+      <types1:ParentFlowIds>2OvMBu8zbgdwUiQ-gt-43893961-2023-09-08T07:20:01.858Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-09-08T07:19:59Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-11T04:48:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.process_BulkContactAPICall/process_BulkContactAPICall.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="process_BulkContactAPICall"
+                  name="process_BulkContactAPICall"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="t_input" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-BulkContactUpdate:AppCon-BulkContactUpdateRecord</option>
+                     <option name="required">false</option>
+                     <option name="guid">4SiXhixpKHohLLGhirVgKj</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="tin_batch_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_vpc_access_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="o_status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="o_remark" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_action" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_api_vpc_body" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_refcontacts_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:RefContacts</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">jE75PffzCyNcujh4WSoEa1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_ref_contact" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:RefContacts</option>
+                     <option name="required">false</option>
+                     <option name="guid">jE75PffzCyNcujh4WSoEa1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_email_list" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_is_active" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_viewpoint_officers_tbl" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:Officers</option>
+                     <option name="required">false</option>
+                     <option name="guid">jE75PffzCyNcujh4WSoEa1</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_body" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_batch_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_refcontact_ei" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:RefContacts</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_refcontact_er" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:RefContacts</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_refcontact_eb" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-BulkContdbo:RefContacts</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_seqnr" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lio1zy1e" targetId="lio1zy1d"/>
+               </start>
+               <assignment id="lio1zy1d">
+                  <title>Get Officers tables instance</title>
+                  <operation source="query" to="temp.tmp_viewpoint_officers_tbl">
+                     <query advanceQuery="true" from="AppConn-BulkContdbo:Officers">
+                        <where>EntCode = '{$input.t_input[1]/MFCode }' and  AddrCode = '{$input.t_input[1]/RelationCode }'  and   Status = 'A'</where>
+                     </query>
+                  </operation>
+                  <link id="lio1zy1f" targetId="lilhe22g"/>
+               </assignment>
+               <container id="lilhe22g" type="exclusive">
+                  <title>CheckAction</title>
+                  <flow id="lilhe22q">
+                     <container id="litv8b7l" type="exclusive">
+                        <title>Check if Officer is already appointed</title>
+                        <flow id="litv8b8c">
+                           <link id="litv8b8d" targetId="litv8b7l" type="containerLink"/>
+                        </flow>
+                        <flow id="litv8b8e">
+                           <assignment id="lkqsrhfn">
+                              <title>Assignment to o_remark, o_status</title>
+                              <operation source="formula" to="output.o_remark">
+                                 <expression language="XQuery">'Officer Already resigned'</expression>
+                              </operation>
+                              <operation source="constant" to="output.o_status">1</operation>
+                              <link id="lkqsrhfo" targetId="litv8b93"/>
+                           </assignment>
+                           <end id="litv8b93">
+                              <title>Officer is already resigned , no need to do anything</title>
+                           </end>
+                        </flow>
+                        <link id="litv8b85" targetId="litv8b8c" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_viewpoint_officers_tbl}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="litv8b88" targetId="litv8b8e" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_viewpoint_officers_tbl}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="litv8b7m" targetId="limzimj0"/>
+                     </container>
+                     <assignment id="limzimj0">
+                        <title>Create input Body to VPC API</title>
+                        <operation source="formula" to="temp.tmp_body">
+                           <expression language="XQuery">'{
+"entCode": "'||$input.t_input[1]/MFCode||'",
+"seqNr": '||$temp.tmp_viewpoint_officers_tbl.SeqNr  ||',
+"dateResign": "'|| date:toDate($input.t_input[1]/DateResigned,'MM/DD/YYYY' )||'",  
+"dateResign2": null,  
+"dateResign3": null,
+"reasonResign": "",
+"note": null 
+}'</expression>
+                        </operation>
+                        <link id="lio6x240" targetId="lin1gqyw"/>
+                     </assignment>
+                     <eventContainer id="lin1gqyw">
+                        <service id="limx6xik">
+                           <title>PUT_Appointment</title>
+                           <serviceName>AppConVpcEntityAdministration:PUT_Appointment</serviceName>
+                           <serviceGUID>4W1y2DNoG2klovPfAbVLyG</serviceGUID>
+                           <serviceInput>
+                              <parameter name="baseURL" source="formula">
+                                 <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                              </parameter>
+                              <parameter name="access_token" source="field" updatable="true">input.i_vpc_access_token</parameter>
+                              <parameter name="fileCode" source="field" updatable="true">input.t_input[1]/MFCode</parameter>
+                              <parameter name="seqNr" source="formula">
+                                 <expression language="XQuery">$temp.tmp_viewpoint_officers_tbl.SeqNr </expression>
+                              </parameter>
+                              <parameter name="body" source="field" updatable="true">temp.tmp_body</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="lin1gqyy">
+                           <assignment id="lkqsrhgf">
+                              <title>Assignment to o_remark, o_status 1</title>
+                              <operation source="formula" to="output.o_remark">
+                                 <expression language="XQuery">'Officer resigned'</expression>
+                              </operation>
+                              <operation source="constant" to="output.o_status">1</operation>
+                              <link id="lkqsrhgg" targetId="lkqn3nok"/>
+                           </assignment>
+                           <end id="lkqn3nok">
+                              <title>End 1</title>
+                           </end>
+                        </flow>
+                        <flow id="lin1gqz1">
+                           <assignment id="lkqsrhgt">
+                              <title>Assignment to o_remark, o_status</title>
+                              <operation source="field" to="output.o_remark">output.faultInfo[1]/reason</operation>
+                              <operation source="constant" to="output.o_status">0</operation>
+                              <link id="lkqsrhj7" targetId="lkqsrhj6"/>
+                           </assignment>
+                           <end id="lkqsrhj6">
+                              <title>End 4</title>
+                           </end>
+                        </flow>
+                        <link id="lin1gqyx" targetId="lin1gqyy" type="containerLink"/>
+                        <events>
+                           <catch faultField="faultInfo" id="lin1gqyv" interrupting="true">
+                              <link id="lin1gqz0" targetId="lin1gqz1" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                  </flow>
+                  <flow id="lilhe23q">
+                     <container id="liogqd50" type="exclusive">
+                        <title>Check If Officer Already exists</title>
+                        <flow id="liogqd5p">
+                           <assignment id="lkqsrhi3">
+                              <title>Assignment to o_remark, o_status 2 1</title>
+                              <operation source="formula" to="output.o_remark">
+                                 <expression language="XQuery">'Officer  Already  Appointed'</expression>
+                              </operation>
+                              <operation source="constant" to="output.o_status">1</operation>
+                              <link id="lkqsrhi4" targetId="lkqn3nsb"/>
+                           </assignment>
+                           <end id="lkqn3nsb">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <flow id="liogqd5r">
+                           <assignment id="liogqd9j">
+                              <title>Create input Body to VPC API 1</title>
+                              <operation source="formula" to="temp.tmp_body">
+                                 <expression language="XQuery">'{
+  "entCode": "'||$input.t_input[1]/MFCode||'",
+  "officerType": "CON",
+  "addrCode": "'||$input.t_input[1]/RelationCode||'",
+  "userCode": null,
+  "relatedAddress": null,
+  "relatedAddress2": null,
+  "relatedAddress3": null,
+  "udCode": null,
+  "udCode2": null,
+  "dateAppoint": "'|| date:toDate( $input.t_input[1]/DateAppointed ,'MM/DD/YYYY' )||'",
+  "dateAppoint2": null,
+  "dateAppoint3": null,
+  "dateResign": null,
+  "dateResign2": null,
+  "dateResign3": null,
+  "dateLastElect": null,
+  "dateNextElect": null,
+  "position": "",
+  "keyPowers": "",
+  "note": "",
+  "reasonResign": "",
+  "status": "A"
+}'</expression>
+                              </operation>
+                              <link id="liogqdad" targetId="liogqda5"/>
+                           </assignment>
+                           <eventContainer id="liogqda5">
+                              <service id="liogqda9">
+                                 <title>POST_Appointment</title>
+                                 <serviceName>AppConVpcEntityAdministration:POST_Appointment</serviceName>
+                                 <serviceGUID>4W1y2DNoG2klovPfAbVLyG</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="baseURL" source="formula">
+                                       <expression language="XQuery">util:resolveURN('URN_VPC_Hostname')</expression>
+                                    </parameter>
+                                    <parameter name="access_token" source="field" updatable="true">input.i_vpc_access_token</parameter>
+                                    <parameter name="fileCode" source="field" updatable="true">input.t_input[1]/MFCode</parameter>
+                                    <parameter name="body" source="field" updatable="true">temp.tmp_body</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="liogqda6">
+                                 <assignment id="lkqsrhho">
+                                    <title>Assignment to o_remark, o_status 2</title>
+                                    <operation source="formula" to="output.o_remark">
+                                       <expression language="XQuery">'Officer Appointed'</expression>
+                                    </operation>
+                                    <operation source="constant" to="output.o_status">1</operation>
+                                    <link id="lkqsrhhp" targetId="lkqn3nsy"/>
+                                 </assignment>
+                                 <end id="lkqn3nsy">
+                                    <title>End 6</title>
+                                 </end>
+                              </flow>
+                              <flow id="liogqda7">
+                                 <assignment id="lkqsrhh8">
+                                    <title>Assignment to o_remark, o_status</title>
+                                    <operation source="field" to="output.o_remark">output.faultInfo[1]/reason</operation>
+                                    <operation source="constant" to="output.o_status">0</operation>
+                                    <link id="lkqsrhim" targetId="lkqsrhil"/>
+                                 </assignment>
+                                 <end id="lkqsrhil">
+                                    <title>End 3</title>
+                                 </end>
+                              </flow>
+                              <link id="liogqdaa" targetId="liogqda6" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="liobkhak" interrupting="true">
+                                    <link id="liogqdab" targetId="liogqda7" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                        </flow>
+                        <link id="liogqd5i" targetId="liogqd5p" type="containerLink">
+                           <condition source="formula">
+                              <function name="set">
+                                 <arg name="field">{$temp.tmp_viewpoint_officers_tbl}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="liogqd5l" targetId="liogqd5r" type="containerLink">
+                           <condition source="formula">
+                              <function name="unset">
+                                 <arg name="field">{$temp.tmp_viewpoint_officers_tbl}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lilhe22s">
+                     <end id="lio1zzq8">
+                        <title>End 5</title>
+                     </end>
+                  </flow>
+                  <link id="lilhe22j" targetId="lilhe22q" type="containerLink">
+                     <condition source="formula">
+                        <function name="ends-with">
+                           <arg name="left">{$input.t_input[1]/Action}</arg>
+                           <arg name="right">removal</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lilhe23p" targetId="lilhe23q" type="containerLink">
+                     <condition source="formula">
+                        <function name="ends-with">
+                           <arg name="left">{$input.t_input[1]/Action}</arg>
+                           <arg name="right">appointment</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lilhe22m" targetId="lilhe22s" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>kC6fvYXPVMJjy7dDjzu6WF</types1:GUID>
+      <types1:DisplayName>process_BulkContactAPICall</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-11T11:02:44.684Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

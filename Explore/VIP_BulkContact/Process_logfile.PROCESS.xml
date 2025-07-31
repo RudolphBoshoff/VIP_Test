@@ -1,0 +1,185 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>LFu8zbgdwUiQLnz-gt-40215315-2023-10-10T11:41:19.612Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_logfile</types1:Name>
+      <types1:ParentFlowIds>2OvMBu8zbgdwUiQ-gt-43893961-2023-09-08T07:20:01.858Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>swapnil.shrungare@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-10-10T11:41:20Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-10-11T04:42:58Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-10-11T04:48:18Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_logfile/Process_logfile.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_logfile"
+                  name="Process_logfile"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_batch_id" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="guid">5VFyNNPJUABexfCC3JvWUJ</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tmp_snowflake_log" type="objectlist">
+                  <options>
+                     <option name="referenceTo">AppConn-VIP-SNOWFLAKE:BULKCONTACTPROCESSLOG</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">5VFyNNPJUABexfCC3JvWUJ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_log_writer" type="reference">
+                  <options>
+                     <option name="referenceTo">AppCon-ReadBulkcontactLog:SerializeToDelimitedContentTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2bmO0hL0niwetgwK8hIXoj</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_data" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_batch" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lnl948x6" targetId="lnl948x5"/>
+               </start>
+               <assignment id="lnl948x5">
+                  <title>Assignment to tmp_batch</title>
+                  <operation source="formula" to="temp.tmp_batch">
+                     <expression language="XQuery">fn:normalize-space($input.in_batch_id)</expression>
+                  </operation>
+                  <link id="lnl948x7" targetId="lnk93ksn"/>
+               </assignment>
+               <assignment id="lnk93ksn">
+                  <title>ReadSnowFlakeTable</title>
+                  <operation source="list" to="temp.tmp_snowflake_log">
+                     <query advanceQuery="false" from="AppConn-VIP-SNOWFLAKE:BULKCONTACTPROCESSLOG">
+                        <where>BATCHNO LIKE '%{$temp.tmp_batch}%'</where>
+                     </query>
+                  </operation>
+                  <link id="lnkbicwj" targetId="lnkbicwi"/>
+               </assignment>
+               <assignment id="lnkbicwi">
+                  <title>Assignment to tmp_data, tmp_counter</title>
+                  <operation source="formula" to="temp.tmp_batch">
+                     <expression language="XQuery">list:count($temp.tmp_snowflake_log )</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_data">
+                     <expression language="XQuery">for $i in $temp.tmp_snowflake_log 
+return 
+      &lt;record&gt;
+ 		&lt;BATCHNO&gt;{$i/BATCHNO/text()}&lt;/BATCHNO&gt;
+      	&lt;REFCODE&gt;{$i/REFCODE/text()}&lt;/REFCODE&gt;
+      	&lt;ACTION&gt;{$i/ACTION/text()}&lt;/ACTION&gt;
+        &lt;STATUS&gt;{$i/STATUS/text()}&lt;/STATUS&gt;
+        &lt;REMARK&gt;{$i/REMARK/text()}&lt;/REMARK&gt;
+      &lt;/record&gt;</expression>
+                  </operation>
+                  <link id="lnkbicwk" targetId="lnkbicw8"/>
+               </assignment>
+               <assignment id="lnkbicw8">
+                  <title>Assignment to File name, Custom objects etc.</title>
+                  <operation source="formula" to="temp.tmp_log_writer[1]/fileName">
+                     <expression language="XQuery"> $input.in_batch_id ||'.csv'</expression>
+                  </operation>
+                  <operation source="field" to="temp.tmp_log_writer[1]/customObjects">temp.tmp_data</operation>
+                  <operation source="formula" to="temp.tmp_log_writer[1]/header">
+                     <expression language="XQuery">(: custom headers are necessary to make sure that we get a correct order of columns in the generated file :)
+(
+&lt;Header&gt;
+   &lt;fieldIndex&gt;1&lt;/fieldIndex&gt;
+   &lt;name&gt;BATCHNO&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;2&lt;/fieldIndex&gt;
+   &lt;name&gt;REFCODE&lt;/name&gt;
+&lt;/Header&gt;,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;3&lt;/fieldIndex&gt;
+   &lt;name&gt;ACTION&lt;/name&gt;
+&lt;/Header&gt;
+,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;4&lt;/fieldIndex&gt;
+   &lt;name&gt;STATUS&lt;/name&gt;
+&lt;/Header&gt;
+,
+&lt;Header&gt;
+   &lt;fieldIndex&gt;5&lt;/fieldIndex&gt;
+   &lt;name&gt;REMARK&lt;/name&gt;
+&lt;/Header&gt;
+)
+</expression>
+                  </operation>
+                  <link id="lnkbicwa" targetId="lnk9in3c"/>
+               </assignment>
+               <service id="lnk9in3c">
+                  <title>ExceptionWriter</title>
+                  <serviceName>AppCon-ReadBulkcontactLog:ExceptionWriter</serviceName>
+                  <serviceGUID>2bmO0hL0niwetgwK8hIXoj</serviceGUID>
+                  <serviceInput>
+                     <parameter name="serializationTask" source="field" updatable="true">temp.tmp_log_writer</parameter>
+                  </serviceInput>
+                  <link id="lnk9in3e" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>49d80bb5-71e9-424b-849b-d3a39663a392</ns1:Id>
+               <ns1:Name>dd</ns1:Name>
+               <ns1:CreatedBy>swapnil.shrungare@vistra.com.SAML2</ns1:CreatedBy>
+               <ns1:CreationDate>2023-10-11T03:30:06Z</ns1:CreationDate>
+               <ns1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-10-11T03:30:06Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "in_batch_id": "498238d1-4f8f-45d8-b905-31b5e175ce77 "
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>2JTMvlkM7H7d8WWOwkgEyu</types1:GUID>
+      <types1:DisplayName>Process_logfile</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-10-11T11:02:44.641Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
