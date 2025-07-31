@@ -1,0 +1,213 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>U0clmbcjIw8jIw8-gt-31051605-2022-06-25T10:30:32.748Z::svc.xml</types1:EntryId>
+      <types1:Name>SC-Conn-MDM-Vforce-Read</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-06-25T10:30:33Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>santosh.rpatil@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-06-25T11:40:49Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_Conn_MDM_Vforce_Read/SC_Conn_MDM_Vforce_Read_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC-Conn-MDM-Vforce-Read"
+                            label=""
+                            name="SC-Conn-MDM-Vforce-Read"
+                            uuid="db5bac73-a4fc-42bb-a66e-a61f5724ccd5">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Vforce_Login"
+                       maxRedirects="100"
+                       name="Vforce_Login"
+                       preemptiveAuth="true"
+                       responseEncoding="UTF-8">
+                  <description/>
+                  <input>
+                     <parameter name="username"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="password"
+                                nogen="true"
+                                required="false"
+                                testWith="VFdev05@2022myyF0XbrOff6eYQs0WcVIKQbO"
+                                type="string"/>
+                     <parameter name="grant_type"
+                                nogen="true"
+                                required="false"
+                                testWith="password"
+                                type="string"/>
+                     <parameter name="client_id"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="client_secret"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://test.salesforce.com/services/oauth2/token?username={$username}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="access_token"
+                            property="access_token"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="SF_Single_Record"
+                       maxRedirects="100"
+                       name="SF_Single_Record"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="access_token"
+                                required="false"
+                                testWith="00D3O0000008pcx!ARkAQFvqzzmVltsiecTJZr7bW3t9xzEZeuRGlrXVDfvDinsG306o4nawBBe5y5qlxhmHhzm65PzA6ie68hdvrYA5MERo19UB"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://vistravforce--devdvdvn05.my.salesforce.com/services/data/v53.0/sobjects/Account/0013O00000x054oQAA"
+                                        verb="GET">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$access_token)}</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Id" property="Id" type="string"/>
+                     <field description="" name="Name" property="Name" type="string"/>
+                     <field description=""
+                            name="parentId"
+                            property="parentId"
+                            type="string"/>
+                     <field description=""
+                            name="Billing_Contact_Email__c"
+                            property="Billing_Contact_Email__c"
+                            type="string"/>
+                     <field description="" name="BillingAddress" type="reference">
+                        <options>
+                           <option name="referenceTo">PO_Address</option>
+                        </options>
+                        <xquery>{for $x in //root/BillingAddress
+return
+&lt;PO_Address&gt;
+   &lt;country&gt;{$x/country/text()}&lt;/country&gt;
+   &lt;city&gt;{$x/city/text()}&lt;/city&gt;
+   &lt;street&gt;{$x/street/text()}&lt;/street&gt;
+   &lt;postalCode&gt;{$x/postalCode/text()}&lt;/postalCode&gt;
+   &lt;state&gt;{$x/state/text()}&lt;/state&gt;
+&lt;/PO_Address&gt;}</xquery>
+                     </field>
+                     <field description=""
+                            name="Customer360_Sync_Date__c"
+                            property="Customer360_Sync_Date__c"
+                            type="string"/>
+                     <field description="" name="ShippingAddress" type="reference">
+                        <options>
+                           <option name="referenceTo">PO_Address</option>
+                        </options>
+                        <xquery>{for $x in //root/ShippingAddress
+return
+&lt;PO_Address&gt;
+   &lt;country&gt;{$x/country/text()}&lt;/country&gt;
+   &lt;city&gt;{$x/city/text()}&lt;/city&gt;
+   &lt;street&gt;{$x/street/text()}&lt;/street&gt;
+   &lt;postalCode&gt;{$x/postalCode/text()}&lt;/postalCode&gt;
+   &lt;state&gt;{$x/state/text()}&lt;/state&gt;
+&lt;/PO_Address&gt;}</xquery>
+                     </field>
+                     <field description=""
+                            name="Customer_Status__c"
+                            property="Customer_Status__c"
+                            type="string"/>
+                     <field description=""
+                            name="Customer_Company_Status__c"
+                            property="Customer_Company_Status__c"
+                            type="string"/>
+                     <field description=""
+                            name="Sector__c"
+                            property="Sector__c"
+                            type="string"/>
+                     <field description="" name="BillingAddress_Test" type="reference">
+                        <options>
+                           <option name="referenceTo">PO_Address</option>
+                        </options>
+                        <xquery>{for $x in //root/BillingAddress
+return
+&lt;PO_Address&gt;
+   &lt;country&gt;{$x/country/text()}&lt;/country&gt;
+   &lt;city&gt;{$x/city/text()}&lt;/city&gt;
+   &lt;street&gt;{$x/street/text()}&lt;/street&gt;
+   &lt;postalCode&gt;{$x/postalCode/text()}&lt;/postalCode&gt;
+   &lt;state&gt;{$x/state/text()}&lt;/state&gt;
+&lt;/PO_Address&gt;}</xquery>
+                     </field>
+                     <field description=""
+                            name="RecordTypeId"
+                            property="RecordTypeId"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="PO_Address">
+                  <description/>
+                  <detail>
+                     <field name="country" nullable="true" required="false" type="string"/>
+                     <field name="city" nullable="true" required="false" type="string"/>
+                     <field name="street" nullable="true" required="false" type="string"/>
+                     <field name="postalCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="state" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>1DuTV0SOBYbhAdNSjVVS2A</types1:GUID>
+      <types1:DisplayName>SC-Conn-MDM-Vforce-Read</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-12T07:04:51.994Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
