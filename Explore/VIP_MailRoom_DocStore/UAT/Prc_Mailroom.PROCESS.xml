@@ -1,0 +1,91 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>PCOkSSHCwkNmumf-gt-3226587-2023-01-27T12:28:21.674Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_Mailroom-1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>This is for processing parameter csv file.</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:22Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_Mailroom"
+                  name="Prc_Mailroom-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>This is for processing parameter csv file.</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lc5vra4r" targetId="lda7fn8a"/>
+               </start>
+               <eventContainer id="lda7fn8a">
+                  <service id="lc5vra4q">
+                     <title>srvc_mailroom</title>
+                     <serviceName>avShellService</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="command" source="constant">E:\data\SrcFiles\MailRoom\API Parameter\Move_API_Para_End.bat</parameter>
+                        <parameter name="workingDirPath" source="constant">C:\Windows\System32</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lda7fn8c">
+                     <link id="lda7fn8d" targetId="lda7fn8a" type="containerLink"/>
+                  </flow>
+                  <flow id="lda7fn8f">
+                     <throw id="lda7fn8l">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lda7fn8b" targetId="lda7fn8c" type="containerLink"/>
+                  <link id="lc5vra4s" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lda7fn87" interrupting="true">
+                        <link id="lda7fn8e" targetId="lda7fn8f" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>57d99e6d-9976-4271-95ed-8f667f7d0d01</ns1:Id>
+               <ns1:Name>input</ns1:Name>
+               <ns1:CreatedBy>mohsin.shah@vistra.com.SAML2</ns1:CreatedBy>
+               <ns1:CreationDate>2023-01-27T12:28:22Z</ns1:CreationDate>
+               <ns1:ModifiedBy>mohsin.shah@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-27T12:28:22Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3QSmyvkrVsukSOomlyn8M6</types1:GUID>
+      <types1:DisplayName>Prc_Mailroom</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-04T16:14:47.475Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

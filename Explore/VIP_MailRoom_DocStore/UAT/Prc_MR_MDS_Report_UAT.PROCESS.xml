@@ -1,0 +1,372 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>62htghGZ5i4rswV-gt-3682657-2023-01-27T12:28:28.921Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_MR_MDS_Report_UAT</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:29Z</types1:CreationDate>
+      <types1:ModifiedBy>mohsin.shah@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-02-15T08:06:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>mohsin.shah@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-15T08:07:07Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Prc_MR_MDS_Report_UAT/Prc_MR_MDS_Report_UAT.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_MR_MDS_Report_UAT"
+                  name="Prc_MR_MDS_Report_UAT"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="temp_email_input" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-MR-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">02FzkGkS2jWiMRMKWCsPgF</option>
+                  </options>
+               </field>
+               <field description="" name="temp_body" type="richtextarea">
+                  <options>
+                     <option name="text_height">12</option>
+                     <option name="text_width">100</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_db_Count" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnDBConfig-MailRoom-1:VIP_MR_FILE_COUNT</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Hgd8hrwRY0iLq4Ifi93OM</option>
+                  </options>
+               </field>
+               <field description="" name="temp_db_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">ConnDBConfig-MailRoom-1:VIP_MR_Docstore_log</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Hgd8hrwRY0iLq4Ifi93OM</option>
+                  </options>
+               </field>
+               <field description="" name="temp_File_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_head" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_File_Path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Comment" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_table_payload" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_table_header" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_final_table" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_SrNr" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="normal">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbw1f63x" targetId="lbw1f645"/>
+               </start>
+               <eventContainer id="lbw1f645">
+                  <service id="lbw1f63w">
+                     <title>Run Cloud Task</title>
+                     <serviceName>ICSExecuteTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Task Name" source="constant">mt_MR_File_Count [MCT]</parameter>
+                        <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                        <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                        <parameter name="GUID" source="constant">1mRBIMy7eMahbZ5iIK7128</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lbw1f647">
+                     <assignment id="lbw1f64j">
+                        <title>Assignment to temp_db_Count</title>
+                        <operation source="query" to="temp.temp_db_Count">
+                           <query advanceQuery="false" from="ConnDBConfig-MailRoom:VIP_MR_FILE_COUNT"/>
+                        </operation>
+                        <link id="lbw1f65u" targetId="lbw1f65t"/>
+                     </assignment>
+                     <assignment id="lbw1f65t">
+                        <title>Assignment to temp_db_list</title>
+                        <operation source="list" to="temp.temp_db_list">
+                           <query advanceQuery="false" from="ConnDBConfig-MailRoom:VIP_MR_Docstore_log">
+                              <where>LIMIT 0</where>
+                           </query>
+                        </operation>
+                        <link id="lbw1f678" targetId="lbw1f677"/>
+                     </assignment>
+                     <container id="lbw1f677" type="exclusive">
+                        <title>temp_db_list</title>
+                        <flow id="lbw1f67b">
+                           <assignment id="lbw1f694">
+                              <title>Assignment to temp_head</title>
+                              <operation source="formula" to="temp.temp_head">
+                                 <expression language="XQuery">list:head($temp.temp_db_list )</expression>
+                              </operation>
+                              <link id="lbw1f69z" targetId="lbw1f69y"/>
+                           </assignment>
+                           <assignment id="lbw1f69y">
+                              <title>Assignment to temp_File_Name, temp_File_Path etc.</title>
+                              <operation source="formula" to="temp.temp_File_Name">
+                                 <expression language="XQuery">$temp.temp_db_list[1]/Bank_Statement_File_Name 
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_File_Path">
+                                 <expression language="XQuery">$temp.temp_db_list[1]/Processed_Bank_Statement_Path
+</expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_Status">
+                                 <expression language="XQuery">$temp.temp_db_list[1]/Document_Store_Status </expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_Date">
+                                 <expression language="XQuery">$temp.temp_db_list[1]/Document_Store_Date </expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_Comment">
+                                 <expression language="XQuery">$temp.temp_db_list[1]/Document_Store_Comments </expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_SrNr">
+                                 <expression language="XQuery">$temp.temp_SrNr  +1</expression>
+                              </operation>
+                              <link id="lbx7jemj" targetId="lbx7jemi"/>
+                           </assignment>
+                           <assignment id="lbx7jemi">
+                              <title>Assignment to temp_table_payload, temp_table_header</title>
+                              <operation source="formula" to="temp.temp_table_payload">
+                                 <expression language="XQuery">'&lt;TR style="border: 1px solid black"&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_SrNr||'&lt;/TD&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_File_Name||'&lt;/TD&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_File_Path||'&lt;/TD&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_Status||'&lt;/TD&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_Date||'&lt;/TD&gt;
+&lt;TD style="border: 1px solid black"&gt;'||$temp.temp_Comment||'&lt;/TD&gt;
+&lt;/TR&gt;'
+    </expression>
+                              </operation>
+                              <operation source="formula" to="temp.temp_table_header">
+                                 <expression language="XQuery">fn:concat($temp.temp_table_header ,'&amp;#10;',$temp.temp_table_payload)</expression>
+                              </operation>
+                              <link id="lbx7jeqg" targetId="lbx7jeqf"/>
+                           </assignment>
+                           <assignment id="lbx7jeqf">
+                              <title>Assignment to temp_db_list</title>
+                              <operation source="formula" to="temp.temp_db_list">
+                                 <expression language="XQuery">list:tail($temp.temp_db_list )</expression>
+                              </operation>
+                              <link id="lbx7jer2" targetId="lbx7jer0"/>
+                           </assignment>
+                           <jumpTo id="lbx7jer0">
+                              <link id="lbx7jer1" targetId="lbw1f677"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="lbw1f67e">
+                           <assignment id="lc0acju9">
+                              <title>Assignment to temp_final_table</title>
+                              <operation source="formula" to="temp.temp_final_table">
+                                 <expression language="XQuery">'&lt;Table cellspacing = 0 cellpadding = 8px&gt;
+&lt;TR&gt;
+&lt;TH style="border: 1px solid black"&gt;Sr No.&lt;/TH&gt;
+&lt;TH style="border: 1px solid black"&gt;Bank Statement File Name&lt;/TH&gt;
+&lt;TH style="border: 1px solid black"&gt;Processed Bank Statement Path&lt;/TH&gt;
+&lt;TH style="border: 1px solid black"&gt;Document Store Status&lt;/TH&gt;
+&lt;TH style="border: 1px solid black"&gt;Document Store Date&lt;/TH&gt;
+&lt;TH style="border: 1px solid black"&gt;Document Store Comments&lt;/TH&gt;
+'||$temp.temp_table_header||'
+&lt;/Table&gt;'</expression>
+                              </operation>
+                              <link id="lc0acjua" targetId="lbw1f67v"/>
+                           </assignment>
+                           <assignment id="lbw1f67v">
+                              <title>Assignment to temp_body</title>
+                              <operation source="constant" to="temp.temp_body">&lt;p&gt;Hi Team,&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 44.5205%; border-style: solid; height: 40px;" border="1px" cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr style="height: 48px;"&gt;
+&lt;td style="width: 31.8117%; border-style: solid; border-width: 1px; height: 17px;"&gt;&lt;span style="font-size: 10pt;"&gt;No of Bank Statements Stored:&lt;/span&gt;&lt;/td&gt;
+&lt;td style="width: 3.3984%; border-style: solid; border-width: 1px; height: 17px;"&gt;&lt;span style="font-size: 10pt;"&gt;{$temp.temp_db_Count[1]/Total}&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 48px;"&gt;
+&lt;td style="width: 31.8117%; text-align: justify; border-style: solid; border-width: 1px; height: 13px;"&gt;&lt;span style="font-size: 10pt;"&gt;No of Statements Successful:&lt;/span&gt;&lt;/td&gt;
+&lt;td style="width: 3.3984%; border-style: solid; border-width: 1px; height: 13px;"&gt;&lt;span style="font-size: 10pt;"&gt;{$temp.temp_db_Count[1]/Success}&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style="height: 48px;"&gt;
+&lt;td style="width: 31.8117%; border-style: solid; border-width: 1px; height: 10px;"&gt;&lt;span style="font-size: 10pt;"&gt;No of Statements Failed:&lt;/span&gt;&lt;/td&gt;
+&lt;td style="width: 3.3984%; border-style: solid; border-width: 1px; height: 10px;"&gt;&lt;span style="font-size: 10pt;"&gt;{$temp.temp_db_Count[1]/Failed}&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Refer log details for the concerned statements below:&lt;/p&gt;
+&lt;table style="border-collapse: collapse; width: 100%; border-style: none; float: left;" cellpadding="5"&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style="width: 98.2456%; border-style: none; text-align: left; vertical-align: top;"&gt;{$temp.temp_final_table}&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Regards,&lt;br&gt;MAILROOM VPOINT DOCUMENT STORE BOT&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</operation>
+                              <link id="lbw1f684" targetId="lbw1f683"/>
+                           </assignment>
+                           <assignment id="lbw1f683">
+                              <title>Assignment to Subject, Recipient Addresses etc.</title>
+                              <operation source="constant" to="temp.temp_email_input[1]/subject">MDS STATUS REPORT</operation>
+                              <operation source="constant" to="temp.temp_email_input[1]/to">SGPMailroom@vistra.com</operation>
+                              <operation source="field" to="temp.temp_email_input[1]/body">temp.temp_body</operation>
+                              <operation source="constant" to="temp.temp_email_input[1]/contentType">text/html; charset=UTF-8</operation>
+                              <operation source="constant" to="temp.temp_email_input[1]/cc">VIP-IICSTeam@vistra.com;BotSupport@vistra.com;Meghana.Jadhav@vistra.com</operation>
+                              <link id="lbw1f68s" targetId="lbw1f68k"/>
+                           </assignment>
+                           <eventContainer id="lbw1f68k">
+                              <service id="lbw1f68p">
+                                 <title>sendEmailService</title>
+                                 <serviceName>AppConn-Email-MR-1:sendEmailService</serviceName>
+                                 <serviceGUID>02FzkGkS2jWiMRMKWCsPgF</serviceGUID>
+                                 <serviceInput>
+                                    <parameter name="emailTaskInput" source="field" updatable="true">temp.temp_email_input</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="lbw1f68l">
+                                 <service id="lcetdihs">
+                                    <title>Run Cloud Task</title>
+                                    <serviceName>ICSExecuteTask</serviceName>
+                                    <serviceGUID/>
+                                    <serviceInput>
+                                       <parameter name="Task Name" source="constant">mt_MR_log_file [MCT]</parameter>
+                                       <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                                       <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                                       <parameter name="GUID" source="constant">8NO7D0b5zobb0pFoL3DnOJ</parameter>
+                                    </serviceInput>
+                                    <link id="le5e2xaq" targetId="lbw1f68m"/>
+                                 </service>
+                                 <end id="lbw1f68m"/>
+                              </flow>
+                              <flow id="lbw1f68n">
+                                 <throw id="lbw1f68o">
+                                    <title>Throw 1</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="lbw1f68q" targetId="lbw1f68l" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="lbups67g" interrupting="true">
+                                    <link id="lbw1f68r" targetId="lbw1f68n" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                        </flow>
+                        <link id="lbw1f67a" targetId="lbw1f67b" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.temp_db_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lbw1f67d" targetId="lbw1f67e" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.temp_db_list}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lbw1f64a">
+                     <throw id="lbw1f64g">
+                        <title>Throw 2</title>
+                        <throwInput>
+                           <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                           <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                           <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lbw1f646" targetId="lbw1f647" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lbw1f640" interrupting="true">
+                        <link id="lbw1f649" targetId="lbw1f64a" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>18d2b281-eb97-4837-a2a8-c10f41bc6fcf</ns1:Id>
+               <ns1:Name>i</ns1:Name>
+               <ns1:CreatedBy>mohsin.shah@vistra.com.SAML2</ns1:CreatedBy>
+               <ns1:CreationDate>2023-01-27T12:28:29Z</ns1:CreationDate>
+               <ns1:ModifiedBy>mohsin.shah@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-01-27T12:28:29Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>0RpaTNTIewElNVhwEaoAkC</types1:GUID>
+      <types1:DisplayName>Prc_MR_MDS_Report_UAT</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-20T14:15:23.018Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

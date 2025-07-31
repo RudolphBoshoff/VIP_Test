@@ -1,0 +1,233 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>bbeDi34jBvSx0aa-gt-9718463-2023-01-27T12:28:14.016Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcVPOINT_MailRoom-1</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>Service Connector for getting access token</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:14Z</types1:CreationDate>
+      <types1:ModifiedBy>mohsin.shah@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-01-27T12:36:47Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcVPOINT_MailRoom"
+                            label=""
+                            name="SvcVPOINT_MailRoom-1"
+                            uuid="fae16c77-3f80-4eca-97bc-a74ce812c0a1">
+            <description>Service Connector for getting access token</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="GetAccessToken"
+                       maxRedirects="100"
+                       name="GetAccessToken"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="username"
+                                name="username"
+                                required="false"
+                                testWith="svcintclmvpcqasch"
+                                type="string"/>
+                     <parameter label="password"
+                                name="password"
+                                required="false"
+                                testWith="Today123"
+                                type="string"/>
+                     <parameter label="grant_type"
+                                name="grant_type"
+                                required="false"
+                                testWith="password"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcqa.vaws/rest/"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($base_url  , 'token')}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/x-www-form-urlencoded</header>
+                           <header name="Accept">*/*</header>
+                           <header name="Accept-Encoding">gzip, deflate, br</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="out_access_token"
+                            property="access_token"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="MoveFile"
+                       maxRedirects="100"
+                       name="MoveFile"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="access_token"
+                                name="access_token"
+                                required="false"
+                                testWith="2HDw5odLpZIYJi2Juk1CVC_rZPbMFuFZMTAedtvQXpknFVsAl8LYGAQOnWps-tUpd_EBZxnd2QJrHGJ-5aCIKd6rFcFUrJlkp1nNtj3ymegqI-_NfoWVNvlOeRYf6BdxGYSXesHlTxkwJ03shcEw7GweA1rVqrw7jNs-dC7emJD08JZltp3UGyVMZkiiNTeXxoLBW9TA3ZYqLAcdg19LPXRztG3x03bTYs2XabkjLH-0NprL8DjVD6ieaTRzifYDFCFJwK1RHOrHw77s9vWMyiiItekuxGCuFjAP-QhsEzIw5G-4B1yx11stVFEYxkDCoymkMqSHkDo-VTTaoIOEqkr15S8csk-gmxtFnyYK5o6KU2miGRIKLN4NWDNE5IBP360ae_KN0BoGrw2_n81KbI-u699RkP9CvtSxJa7SIegtptH7ebRTFlbH4oFSoIm_841KCw019TUfFXWHxmrCQZKXhIuFhm6g1L92Vz_McIWEXh2OuJOQ4Vz1OTMd7cqm_vgl_yapF2p_pZa_M-VGlFSyAiBzx4m-jIFN6OGjOEXx_UreWTxAaIvQ-d9SwZQWhMiwaCapHr_oBQcL3a4_EEIL78JefnExztwGOHxod0M3gzkKqJ5KbaAzuqNcHHQQukEaVPENvD2VpTuFoxyyRegvI2tV6FmqGodRpciWGYYUSx5gColXOgNuZ3EPL9KmyI7TKPbf7oVHBKJpdDEuYbPv3T7iS49kehfO86hxkpqwPm_cLiHtpgz7SWyQEnB6e9YHx_wG5cQ9OicmrE7jcb5uJ4kADFYpfPKc4AUb5zV8KXgmBu8M7lIJhZevLmdbsLfpdXIbyJJyimkA-cw8VJgJQnEsQHh_yVS9hqG8pWsJPx8hoI0JYdj1RvC-ee8S3QKG6Y7adMEPmZ9zwaKvjgBVv0-_m9Pjy5I8bTic_bx3U_XBMZ_wJHwDgbRL-b7MkWmC0qMxqMuW2Rv1e-XrHPkeoNGku7CRwD6w2kJWmi27XQgtOKox-JAWPhsnoZzG_wl3vl6OBWwV_M3A1p8BU7TFyyYPPcMGAMhVCgxs-FpSBHbvaLbrhIccny9kzjfv5UjbdE71TKjvBuxwml3ghRI4FxXkPfVRdqG-YmdPo6l2-uRanjCpKZhsyeOOJC6cthYbHPBOjMTGE18fHS8PFlAg_VnyFftIrLOXn7XSrso"
+                                type="string"/>
+                     <parameter label="holderModel"
+                                name="holderModel"
+                                required="false"
+                                testWith="{     &#34;docNr&#34;: 0,     &#34;folderNr&#34;: 19,     &#34;mfNumber&#34;: 12007203,     &#34;docDate&#34;: &#34;2022-01-22T00:00:00&#34;,     &#34;confRank&#34;: 0,     &#34;vpCode&#34;: &#34;&#34;,     &#34;docStatus&#34;: 0,     &#34;docOrigin&#34;: 0,     &#34;descr&#34;: &#34;VP Demo Installation Guide v8&#34;,     &#34;note&#34;: &#34;TEst&#34;,     &#34;dateIndex&#34;: &#34;2021-02-01T00:00:00&#34;,     &#34;ucodeIndex&#34;: &#34;SM&#34;,     &#34;dateUpdate&#34;: &#34;2021-02-01T00:00:00&#34;,     &#34;ucodeUpdate&#34;: &#34;SM&#34;,     &#34;procStatus&#34;: 1,     &#34;storeStatus&#34;: null,     &#34;numFiles&#34;: 0,     &#34;relations&#34;: [         {             &#34;relDocNr&#34;: 855,             &#34;relNr&#34;: 1,             &#34;ixField&#34;: 1,             &#34;fldKey&#34;: &#34;INDEX&#34;,             &#34;fldType&#34;: 40,             &#34;fldCap&#34;: &#34;Master File&#34;,             &#34;valNumber&#34;: 52.0,             &#34;valText&#34;: null,             &#34;valShow&#34;: &#34;Asia-Pac (HK) Limited [ASIA-P]&#34;         },         {             &#34;relDocNr&#34;: 855,             &#34;relNr&#34;: 2,             &#34;ixField&#34;: 2,             &#34;fldKey&#34;: &#34;DOCDATE&#34;,             &#34;fldType&#34;: 33,             &#34;fldCap&#34;: &#34;Document Date&#34;,             &#34;valNumber&#34;: 43690.0,             &#34;valText&#34;: null,             &#34;valShow&#34;: &#34;13-Aug-2019&#34;         }     ],     &#34;tasks&#34;: [], &#34;Files&#34;: [],      }"
+                                type="string"/>
+                     <parameter label="file"
+                                name="file"
+                                required="false"
+                                testWith=""
+                                type="attachment"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcuat.vaws/rest/"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{concat($base_url, &#34;api/V8.0/DocumentManagement/Holders/Holders&#34;)}"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="file">$file</otherParam>
+                           <otherParam name="holderModel">$holderModel</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Authorization">{concat('Bearer ',$access_token)}</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept-Encoding">gzip, deflate, br</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="out_holderNr"
+                            property="dixDocNr"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Add file to a holder"
+                       maxRedirects="100"
+                       name="Add file to a holder"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter label="File"
+                                name="File"
+                                required="false"
+                                testWith=""
+                                type="attachment"/>
+                     <parameter label="HolderNr"
+                                name="HolderNr"
+                                required="false"
+                                testWith="189"
+                                type="string"/>
+                     <parameter label="FileDesc"
+                                name="FileDesc"
+                                required="false"
+                                testWith="Test"
+                                type="string"/>
+                     <parameter label="FileDate"
+                                name="FileDate"
+                                required="false"
+                                testWith="2021-09-29"
+                                type="date"/>
+                     <parameter label="ByChunck"
+                                name="ByChunck"
+                                required="false"
+                                testWith="false"
+                                type="string"/>
+                     <parameter label="Token"
+                                name="Token"
+                                required="false"
+                                testWith="6eP_38R19rQeykGEOhqxMt4T6IlS9VHocWM3PNCeQpNLhsy1K07oAG_TtK-tSXsN2WtMK5LCk03-7XkjSMBikMTrElFAz_zixEh1K2RyXkoGH8KypOIg6pC5JbADBmwSLsf7zJINL-7j-1yjIhBLu57ELcIzJZTIA3xweXM_grNKbALj8kfVf1rN3BqTWep_kf3AdXB7cnkDqcAB53bmnusNuBN74YKYQmsmSVvyYR0aJlPXB5xDi2gUIemn2nJKegmmsgbjc4OQ-8RxEQ5DJshsIiRNvZVWht98HklsGqeMPzHlEdcvU5JeFlfPOhzlzwXdgvf5r_OiZrt7Hj29fobi1p4rWXXqLa_sRyV35ik_Gg_nrAV2nGKop6LZ5ZF8c87LektrInS0sIQxIZf-NdbVk1rIpqCc1bg1imMByODjN14PBQfTuTaRICOcHenKzdIHfVQ7VJ9mR_0YKHcSAL2-3H7-peSxd-pOl8Fj5iA3iTxORaCmOsC10oy5Z9Q3g592CGFO8n_BwauMQRB068lKP2pAFZgMdVsTMCtSySnlXKF0ya0FZU4Yto_UC4_f1NiZuBJSk3ZUyvIpzzQ7X6uH4b5BNGLZ3oCHWHbEAtZmioNknXDmPhOre75Pk7Mpkqwzxy59szPsIPDJaGucUib7lzWSl6CQZPtSNR6KuEG-3hfl3yjPh2jIvLwBhPPTmaBoUnD4JJvsEeiZeSrsoZo4I5ENqt9ERLnSd2JF-aFCSygisJZwcC8zHKaxJdi62Evg3LJbotndVs7Enk-4e3ygCnZKpmnrxWhLTQCYENxgNEUfDQLHRQeucQijDizhTw1LvqIXBPx065cgtgdVqJmSAjqQNR5mOzE8CkF8wx0Odh5iPuXYIFiUUiODu6BnRxg6wrqBB9bEKt3-o3RzQaFw95z2547vauMnvhVQqMVHvZoJ-QdmGqHPxIZAW00mz2ABKdX5pA_C_O_EQjQmtGi2594zbM8tau-aEGrI8fK4YrHQGUVDbYc0vkFph5GMC45E592RKEPEAlBkGrWxiHa89-epMQ62VtDiMIR8pgPc77piT7x-f_zQ02vmclRyu1sYdGGxmryjZ8MOmHo87F8eA9_FXUapwCc8PVU3cAPz_Kd0st6tJIVYF2PAMrCt--vUHHI5zc444BlCnqhmdBf5ZRAcoo-pANwH4_oZJ2M"
+                                type="string"/>
+                     <parameter label="base_url"
+                                name="base_url"
+                                required="false"
+                                testWith="https://web.clmvpcdev.vaws/rest/"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://web.clmvpcdev.vaws/rest/api/V8.0/DocumentManagement/Holders/Documents"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="file">$file</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="Authorization">Bearer 6eP_38R19rQeykGEOhqxMt4T6IlS9VHocWM3PNCeQpNLhsy1K07oAG_TtK-tSXsN2WtMK5LCk03-7XkjSMBikMTrElFAz_zixEh1K2RyXkoGH8KypOIg6pC5JbADBmwSLsf7zJINL-7j-1yjIhBLu57ELcIzJZTIA3xweXM_grNKbALj8kfVf1rN3BqTWep_kf3AdXB7cnkDqcAB53bmnusNuBN74YKYQmsmSVvyYR0aJlPXB5xDi2gUIemn2nJKegmmsgbjc4OQ-8RxEQ5DJshsIiRNvZVWht98HklsGqeMPzHlEdcvU5JeFlfPOhzlzwXdgvf5r_OiZrt7Hj29fobi1p4rWXXqLa_sRyV35ik_Gg_nrAV2nGKop6LZ5ZF8c87LektrInS0sIQxIZf-NdbVk1rIpqCc1bg1imMByODjN14PBQfTuTaRICOcHenKzdIHfVQ7VJ9mR_0YKHcSAL2-3H7-peSxd-pOl8Fj5iA3iTxORaCmOsC10oy5Z9Q3g592CGFO8n_BwauMQRB068lKP2pAFZgMdVsTMCtSySnlXKF0ya0FZU4Yto_UC4_f1NiZuBJSk3ZUyvIpzzQ7X6uH4b5BNGLZ3oCHWHbEAtZmioNknXDmPhOre75Pk7Mpkqwzxy59szPsIPDJaGucUib7lzWSl6CQZPtSNR6KuEG-3hfl3yjPh2jIvLwBhPPTmaBoUnD4JJvsEeiZeSrsoZo4I5ENqt9ERLnSd2JF-aFCSygisJZwcC8zHKaxJdi62Evg3LJbotndVs7Enk-4e3ygCnZKpmnrxWhLTQCYENxgNEUfDQLHRQeucQijDizhTw1LvqIXBPx065cgtgdVqJmSAjqQNR5mOzE8CkF8wx0Odh5iPuXYIFiUUiODu6BnRxg6wrqBB9bEKt3-o3RzQaFw95z2547vauMnvhVQqMVHvZoJ-QdmGqHPxIZAW00mz2ABKdX5pA_C_O_EQjQmtGi2594zbM8tau-aEGrI8fK4YrHQGUVDbYc0vkFph5GMC45E592RKEPEAlBkGrWxiHa89-epMQ62VtDiMIR8pgPc77piT7x-f_zQ02vmclRyu1sYdGGxmryjZ8MOmHo87F8eA9_FXUapwCc8PVU3cAPz_Kd0st6tJIVYF2PAMrCt--vUHHI5zc444BlCnqhmdBf5ZRAcoo-pANwH4_oZJ2M</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept-Encoding">gzip, deflate, br</header>
+                        </httpHeaders>
+                        <body generateUsing="Form"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="out_holderNr"
+                            property="dixDocNr"
+                            type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>0XO7yfr1rbNjeu3W8AX0ej</types1:GUID>
+      <types1:DisplayName>SvcVPOINT_MailRoom</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-04T16:14:47.568Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

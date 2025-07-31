@@ -1,0 +1,281 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>96xZ6or3rp3yD7t-gt-5743281-2023-01-27T12:28:39.969Z::tf.xml</types1:EntryId>
+      <types1:Name>tf_file_name_validation-1</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:40Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="tf_file_name_validation"
+                   name="tf_file_name_validation-1"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="This is error message for the wrong file name."
+                          name="Error_message"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="Error_message2" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="dt_read_file" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-read-file</option>
+                  </options>
+               </field>
+               <field description="" name="dt_file_name_validation" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-file-name-validation</option>
+                  </options>
+               </field>
+               <field description="" name="Error_message1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ld346smr" targetId="ld346smw"/>
+               </start>
+               <eventContainer id="ld346smw">
+                  <service id="ld346smq">
+                     <title>dt_read_file</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_read_file</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">hh49BoL8ym0k3lLlB2sHyj</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-read-file">temp.dt_read_file</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.dt_read_file/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.dt_read_file/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.dt_read_file/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.dt_read_file/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.dt_read_file/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="ld346sny" targetId="ld346so3"/>
+                  <events>
+                     <catch faultField="temp.dt_read_file/fault"
+                            id="ld346smu"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.dt_read_file/fault"
+                            id="ld346smv"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="ld346so3">
+                  <service id="ld346snx">
+                     <title>dt_file_name_validation</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_file_name_validation</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">9EZoOe0wL2BgtDdFNhtWIv</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-file-name-validation">temp.dt_file_name_validation</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Task_Status">Task Status</operation>
+                        <operation source="field"
+                                   to="temp.dt_file_name_validation/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.dt_file_name_validation/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.dt_file_name_validation/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.dt_file_name_validation/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/Error_Message">Error Message</operation>
+                        <operation source="field"
+                                   to="temp.dt_file_name_validation/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.dt_file_name_validation/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="ld73nqqz" targetId="ld73nqqy"/>
+                  <events>
+                     <catch faultField="temp.dt_file_name_validation/fault"
+                            id="ld346so1"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.dt_file_name_validation/fault"
+                            id="ld346so2"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <assignment id="ld73nqqy">
+                  <title>assgn_error_message</title>
+                  <operation source="constant" to="input.Error_message">{$temp.dt_read_file[1]/output[1]/Success_Source_Rows}{$temp.dt_file_name_validation[1]/inout[1]/Email_validation_in} </operation>
+                  <link id="ld73nqr0" targetId="ld346sq0"/>
+               </assignment>
+               <container id="ld346sq0" type="exclusive">
+                  <title>dcsn_flow</title>
+                  <flow id="ld346sq4">
+                     <link id="ld346sq5" targetId="ld346sq0" type="containerLink"/>
+                  </flow>
+                  <flow id="ld346sq7">
+                     <end id="ld346sqe">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <link id="ld346sq3" targetId="ld346sq4" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-or-equals">
+                           <arg name="left">{$temp.dt_file_name_validation[1]/output[1]/Success_Target_Rows}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="ld346sq6" targetId="ld346sq7" type="containerLink"/>
+                  <link id="ld346sq2" targetId="ld346spl"/>
+               </container>
+               <service id="ld346spl">
+                  <title>Notififcation_email</title>
+                  <serviceName>emailNotificationService</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="Email To" source="constant">Rahul.Kumar@vistra.com</parameter>
+                     <parameter name="Email Cc" source="constant"/>
+                     <parameter name="Email Subject" source="constant">File uploaded is not valid</parameter>
+                     <parameter name="Email Content Type" source="constant">text</parameter>
+                     <parameter name="Email Body" source="constant">&lt;p&gt;Hi Team,&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;File name is not correct because of following reasons.{$temp.dt_file_name_validation[1]/inout[1]/Email_validation_in}&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;Thanks and Regards&lt;/p&gt;</parameter>
+                  </serviceInput>
+                  <serviceOutput/>
+                  <link id="ld346spn" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-read-file"
+                              isByCopy="true"
+                              name="mt-read-file">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-file-name-validation"
+                              isByCopy="true"
+                              name="mt-file-name-validation">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="InOut Parameters"
+                            name="inout"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>ejF08fynREDbsS3M3Hac6Z</types1:GUID>
+      <types1:DisplayName>tf_file_name_validation</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-04T16:14:54.246Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

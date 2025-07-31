@@ -1,0 +1,591 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>cnIQtEOvlp6oIuQ-gt-5766494-2023-02-01T10:28:36.046Z::pd.xml</types1:EntryId>
+      <types1:Name>ProcessAutoTag_MR_automation_UAT</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-02-01T10:28:36Z</types1:CreationDate>
+      <types1:ModifiedBy>mohsin.shah@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-02-16T09:52:16Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>mohsin.shah@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-16T09:52:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.ProcessAutoTag_MR_automation_UAT/ProcessAutoTag_MR_automation_UAT.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="ProcessAutoTag_MR_automation_UAT"
+                  name="ProcessAutoTag_MR_automation_UAT"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">apc-VPC-automation-2:PlainFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dUsK4fHUDuuiJj0XWzDjkZ</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="returnvalue" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_metadata" type="reference">
+                  <options>
+                     <option name="referenceTo">apc-VPC-automation-2:PlainFileContent</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dUsK4fHUDuuiJj0XWzDjkZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_metadatalist" type="objectlist">
+                  <options>
+                     <option name="referenceTo">apc-VPC-automation-2:PlainFileContent</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">dUsK4fHUDuuiJj0XWzDjkZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vp_grant_type" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_vp_base_url" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_masterfile_number" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Discription" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Document_Date " type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_file" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_file_name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_email_input" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-MR:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">14JihXfQtcidGBkJj9bQ2U</option>
+                  </options>
+               </field>
+               <field description="" name="temp_log_Table" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnDBConfig-MailRoom-1:VIP_MR_Docstore_log</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Hgd8hrwRY0iLq4Ifi93OM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Refcode_list" type="objectlist">
+                  <options>
+                     <option name="referenceTo">ConnectionDBDevVP-MR-1:RefMaster</option>
+                     <option hide="true" name="multiSelect">true</option>
+                     <option name="required">false</option>
+                     <option name="guid">hsGCnr7xIEAhJrBBvpBNwZ</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Parameter_Data" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnDBConfig-MailRoom-1:VIP_MR_Parameter</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Hgd8hrwRY0iLq4Ifi93OM</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_prepfiletransfer" type="attachment">
+                  <options>
+                     <option hide="true" name="count">1</option>
+                     <option name="maxsize">5242880</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_prepfilemetadata" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_File_Path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_starting_date" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                     <option name="initialvalue">1900-01-01T06:38:50Z</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_date_valnumber" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_val_date" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_valnumber_f" type="int">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_valnumber_i" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="untitled3" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="untitled4" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="normal">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="apc-VPC-automation-2:FileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbnf0rbr" targetId="lbnf0rav"/>
+               </start>
+               <eventContainer id="lbnf0rav">
+                  <service id="lbnf0rbb">
+                     <title>Prc_gettoken</title>
+                     <serviceName>Prc_gettoken_MR-1</serviceName>
+                     <serviceGUID>aV4qDpGlVk2epRV2kcfv6m</serviceGUID>
+                     <serviceInput/>
+                  </service>
+                  <flow id="lbnf0raw">
+                     <assignment id="lbnf0rdk">
+                        <title>Assignment to tmp_metadatalist_query</title>
+                        <operation source="formula" to="temp.tmp_metadatalist">
+                           <expression language="XQuery">$input.fileEvent[1]/content
+</expression>
+                        </operation>
+                        <link id="lbnf0rej" targetId="lbnf0rdx"/>
+                     </assignment>
+                     <container id="lbnf0rdx" type="exclusive">
+                        <title>tmp_metadatalist</title>
+                        <flow id="lbnf0rdy">
+                           <assignment id="lbnf0rdz">
+                              <title>Assignment to tmp_metadata</title>
+                              <operation source="formula" to="temp.tmp_metadata">
+                                 <expression language="XQuery">list:head($temp.tmp_metadatalist )</expression>
+                              </operation>
+                              <link id="lbnf0reb" targetId="lbnf0re0"/>
+                           </assignment>
+                           <assignment id="lbnf0re0">
+                              <title>Assignment to tmp_masterfile_number, tmp_file etc.</title>
+                              <operation source="formula" to="temp.tmp_masterfile_number">
+                                 <expression language="XQuery">fn:substring-before($temp.tmp_metadata , '|')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_file">
+                                 <expression language="XQuery">fn:substring-before(fn:substring-after($temp.tmp_metadata , '|'),'|')</expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_file_name">
+                                 <expression language="XQuery">fn:substring-after(fn:substring-after($temp.tmp_metadata , '|'),'|')</expression>
+                              </operation>
+                              <link id="lbnf0rec" targetId="lbnf0re1"/>
+                           </assignment>
+                           <assignment id="lbnf0re1">
+                              <title>Assignment to tmp_Parameter_Data</title>
+                              <operation source="query" to="temp.tmp_Parameter_Data">
+                                 <query advanceQuery="false" from="ConnDBConfig-MailRoom-1:VIP_MR_Parameter">
+                                    <where>Client_Code = '{$temp.tmp_masterfile_number}' and File_Name = '{$temp.tmp_file_name}'</where>
+                                 </query>
+                              </operation>
+                              <link id="lbnf0red" targetId="lbnf0re2"/>
+                           </assignment>
+                           <assignment id="lbnf0re2">
+                              <title>Assignment to tmp_Discription, tmp_Document_Date  etc.</title>
+                              <operation source="formula" to="temp.tmp_Discription">
+                                 <expression language="XQuery">$temp.tmp_Parameter_Data[1]/Descr </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_Document_Date ">
+                                 <expression language="XQuery">$temp.tmp_Parameter_Data[1]/Doc_Date </expression>
+                              </operation>
+                              <operation source="formula" to="temp.tmp_File_Path">
+                                 <expression language="XQuery">$temp.tmp_Parameter_Data[1]/File_Path </expression>
+                              </operation>
+                              <link id="lbnf0rf7" targetId="lbnf0rf6"/>
+                           </assignment>
+                           <assignment id="lbnf0rf6">
+                              <title>Assignment to tmp_Refcode_list</title>
+                              <operation source="list" to="temp.tmp_Refcode_list">
+                                 <query advanceQuery="false" from="ConnectionDBDevVP-MR-1:RefMaster">
+                                    <where>RefCode = '{$temp.tmp_masterfile_number}'</where>
+                                 </query>
+                              </operation>
+                              <link id="ld062v1n" targetId="ld062v1m"/>
+                           </assignment>
+                           <container id="ld062v1m" type="exclusive">
+                              <title>tmp_Refcode_list</title>
+                              <flow id="ld062v1q">
+                                 <assignment id="ldjvq086">
+                                    <title>Assignment to tmp_val_date, untitled2</title>
+                                    <operation source="formula" to="temp.tmp_val_date">
+                                       <expression language="XQuery">xs:dateTime($temp.tmp_starting_date )</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_valnumber_i">
+                                       <expression language="XQuery">xs:dateTime(date:toDate($temp.tmp_Parameter_Data[1]/Doc_Date, 'DD/MM/YYYY'))</expression>
+                                    </operation>
+                                    <link id="ldl7webx" targetId="ldl7webw"/>
+                                 </assignment>
+                                 <assignment id="ldl7webw">
+                                    <title>Assignment to untitled1</title>
+                                    <operation source="formula" to="temp.tmp_valnumber_f">
+                                       <expression language="XQuery">fn:floor(date:dateDiff(xs:dateTime($temp.tmp_valnumber_i), xs:dateTime($temp.tmp_val_date),'DD')+3)</expression>
+                                    </operation>
+                                    <link id="ldl7weby" targetId="ld062vcp"/>
+                                 </assignment>
+                                 <assignment id="ld062vcp">
+                                    <title>Assignment to tmp_vp_base_url, tmp_prepfilemetadata etc.</title>
+                                    <operation source="constant" to="temp.tmp_vp_base_url">https://web.clmvpcuat.vaws/rest/</operation>
+                                    <operation source="formula" to="temp.tmp_prepfilemetadata">
+                                       <expression language="XQuery">'{
+
+"docNr": 0,
+
+"folderNr":6,
+
+"mfNumber": ','"',$temp.tmp_Refcode_list.MfNr ,'",
+
+"docDate":','"',date:toDate($temp.tmp_Parameter_Data[1]/Doc_Date  , 'DD/MM/YYYY'),'",
+
+"confRank": 0,
+
+"vpCode": "",
+
+"docStatus": 0,
+
+"docOrigin": 0,
+
+"descr":','"',$temp.tmp_Parameter_Data[1]/Descr ,'", 
+
+"note": "VitalDocsTEST",
+
+"dateIndex":','"',fn:current-dateTime(),'", 
+
+"ucodeIndex": "SM",
+
+"dateUpdate":','"',fn:current-dateTime(),'", 
+
+"ucodeUpdate": "SM",
+
+"procStatus": 1,
+
+"storeStatus": null,
+
+"numFiles": 0,
+
+"relations": [
+
+{
+
+"relDocNr": 855,
+
+"relNr": 1,
+
+"ixField": 1,
+
+"fldKey": "INDEX",
+
+"fldType": 40,
+
+"fldCap": "Master File",
+
+"valNumber": ','"',$temp.tmp_Refcode_list.MfNr ,'",
+
+"valText": null,
+
+"valShow":','"',$temp.tmp_Refcode_list.Name ,'", 
+
+},
+
+{
+
+"relDocNr": 855,
+
+"relNr": 2,
+
+"ixField": 2,
+
+"fldKey": "DOCDATE",
+
+"fldType": 33,
+
+"fldCap": "Document Date",
+
+"valNumber": ','"',$temp.tmp_valnumber_f ,'",
+
+"valText": null,
+
+"valShow": ','"',date:toDate($temp.tmp_Parameter_Data[1]/Doc_Date  , 'DD/MM/YYYY'),'",
+
+},
+{
+
+"relDocNr": 855,
+
+"relNr": 3,
+
+"ixField": 43,
+
+"fldKey": "DOCTYPE",
+
+"fldType": 71,
+
+"fldCap": "Banking Document Type",
+
+"valNumber": 0,
+
+"valText": "STA",
+
+"valShow": "Statement"
+
+}
+
+],
+
+"tasks": [],
+
+"Files": [],
+
+}'</expression>
+                                    </operation>
+                                    <operation source="formula" to="temp.tmp_prepfiletransfer">
+                                       <expression language="XQuery">sff:createAttachmentFromBase64($temp.tmp_file_name  ,$temp.tmp_file ,'application/pdf')</expression>
+                                    </operation>
+                                    <link id="ld062vdh" targetId="ld062vd8"/>
+                                 </assignment>
+                                 <eventContainer id="ld062vd8">
+                                    <subflow id="ld062vdc">
+                                       <title>Prc_Move_File</title>
+                                       <subflowGUID>chyRYzeDi0Xg6B55Y2Dnqt</subflowGUID>
+                                       <subflowPath>Prc_Move_File-1</subflowPath>
+                                       <runForEach>false</runForEach>
+                                       <input>
+                                          <parameter name="i_access_token" source="field" updatable="true">output.o_Token</parameter>
+                                          <parameter name="i_holderModel" source="field" updatable="true">temp.tmp_prepfilemetadata</parameter>
+                                          <parameter name="i_file" source="field" updatable="true">temp.tmp_prepfiletransfer</parameter>
+                                          <parameter name="i_base_url" source="field" updatable="true">temp.tmp_vp_base_url</parameter>
+                                          <parameter name="i_File_Name" source="field" updatable="true">temp.tmp_file_name</parameter>
+                                          <parameter name="i_File_Path" source="field" updatable="true">temp.tmp_File_Path</parameter>
+                                          <parameter name="i_Doc_Date" source="field" updatable="true">temp.tmp_Document_Date </parameter>
+                                       </input>
+                                       <outputDef>
+                                          <field name="ErrorMessage" type="string">
+                                             <options>
+                                                <option name="required">false</option>
+                                             </options>
+                                          </field>
+                                          <field name="ErrorCode" type="string">
+                                             <options>
+                                                <option name="required">false</option>
+                                             </options>
+                                          </field>
+                                          <field name="ErrorReason" type="string">
+                                             <options>
+                                                <option name="required">false</option>
+                                             </options>
+                                          </field>
+                                       </outputDef>
+                                    </subflow>
+                                    <flow id="ld062vd9">
+                                       <assignment id="ld062veg">
+                                          <title>Assignment to tmp_metadatalist</title>
+                                          <operation source="formula" to="temp.tmp_metadatalist">
+                                             <expression language="XQuery">list:tail($temp.tmp_metadatalist )</expression>
+                                          </operation>
+                                       </assignment>
+                                       <link id="ld062vdf" targetId="ld062vd8" type="containerLink"/>
+                                    </flow>
+                                    <flow id="ld062vda">
+                                       <jumpTo id="ld062vdb">
+                                          <link id="ld062vdg" targetId="ld062veg"/>
+                                       </jumpTo>
+                                    </flow>
+                                    <link id="ld062vdd" targetId="ld062vd9" type="containerLink"/>
+                                    <link id="ld062vf0" targetId="ld062vey"/>
+                                    <events>
+                                       <catch faultField="faultInfo" id="lbnlddmh" interrupting="true">
+                                          <link id="ld062vde" targetId="ld062vda" type="containerLink"/>
+                                       </catch>
+                                    </events>
+                                 </eventContainer>
+                                 <jumpTo id="ld062vey">
+                                    <link id="ld062vez" targetId="lbnf0rdx"/>
+                                 </jumpTo>
+                              </flow>
+                              <flow id="ld062v1t">
+                                 <create id="ld062v2v">
+                                    <title>VIP_MR_Docstore_log</title>
+                                    <entityName>ConnDBConfig-MailRoom:VIP_MR_Docstore_log</entityName>
+                                    <createInput>
+                                       <parameter name="Bank_Statement_File_Name" source="field" updatable="true">temp.tmp_file_name</parameter>
+                                       <parameter name="Processed_Bank_Statement_Path"
+                                                  source="field"
+                                                  updatable="true">temp.tmp_File_Path</parameter>
+                                       <parameter name="Document_Store_Status" source="constant" updatable="true">Failed &amp; Archived</parameter>
+                                       <parameter name="Document_Store_Date" source="field" updatable="true">temp.tmp_Document_Date </parameter>
+                                       <parameter name="Document_Store_Comments" source="constant" updatable="true">Unable to create holder and unable to upload file/Master File Code Inactive/Master File Code Not Available in VPoint</parameter>
+                                    </createInput>
+                                    <link id="ld062vbx" targetId="ld062vbv"/>
+                                 </create>
+                                 <jumpTo id="ld062vbv">
+                                    <link id="ld062vbw" targetId="ld062veg"/>
+                                 </jumpTo>
+                              </flow>
+                              <link id="ld062v1p" targetId="ld062v1q" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="not-empty">
+                                       <arg name="field">{$temp.tmp_Refcode_list}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                              <link id="ld062v1s" targetId="ld062v1t" type="containerLink">
+                                 <condition source="formula">
+                                    <function name="empty">
+                                       <arg name="field">{$temp.tmp_Refcode_list}</arg>
+                                    </function>
+                                 </condition>
+                              </link>
+                           </container>
+                        </flow>
+                        <flow id="lbnf0re5">
+                           <service id="lcg6zenh">
+                              <title>Run Cloud Task</title>
+                              <serviceName>ICSExecuteTask</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="Task Name" source="constant">mt_MR_Process_End [MCT]</parameter>
+                                 <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                                 <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                                 <parameter name="GUID" source="constant">icMbgMbDHa1k3pDzULfvWj</parameter>
+                              </serviceInput>
+                              <link id="lcg6zeni" targetId="lbnf0re8"/>
+                           </service>
+                           <end id="lbnf0re8">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="lbnf0re9" targetId="lbnf0rdy" type="containerLink">
+                           <condition source="formula">
+                              <function name="not-empty">
+                                 <arg name="field">{$temp.tmp_metadatalist}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lbnf0rea" targetId="lbnf0re5" type="containerLink">
+                           <condition source="formula">
+                              <function name="empty">
+                                 <arg name="field">{$temp.tmp_metadatalist}</arg>
+                              </function>
+                           </condition>
+                        </link>
+                     </container>
+                  </flow>
+                  <flow id="lbnf0rb6">
+                     <throw id="lbnf0rca">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="formula" updatable="true">
+                              <expression language="XQuery">$output.faultInfo[1]/code </expression>
+                           </parameter>
+                           <parameter name="detail" source="formula" updatable="true">
+                              <expression language="XQuery">$output.faultInfo[1]/detail </expression>
+                           </parameter>
+                           <parameter name="reason" source="formula" updatable="true">
+                              <expression language="XQuery">$output.faultInfo[1]/reason </expression>
+                           </parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="lbnf0rbc" targetId="lbnf0raw" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l9cleq8p" interrupting="true">
+                        <link id="lbnf0rbd" targetId="lbnf0rb6" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>7f66ce55-3f21-4c1e-afd9-2ed68e42dcb8</ns1:Id>
+               <ns1:Name>test1</ns1:Name>
+               <ns1:CreatedBy>mohsin.shah@vistra.com.SAML2</ns1:CreatedBy>
+               <ns1:CreationDate>2023-02-01T10:28:36Z</ns1:CreationDate>
+               <ns1:ModifiedBy>mohsin.shah@vistra.com.SAML2</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-02-01T10:28:36Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>94inkhvj1ibfBE3wPT8Wyg</types1:GUID>
+      <types1:DisplayName>ProcessAutoTag_MR_automation_UAT</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-20T14:15:23.035Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

@@ -1,0 +1,242 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>3VQU8lpDqotxGom-gt-5626622-2023-01-27T12:28:18.876Z::tf.xml</types1:EntryId>
+      <types1:Name>tf_mailroom_adding-1</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:19Z</types1:CreationDate>
+      <types1:ModifiedBy>mohsin.shah@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-02-03T12:59:06Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>mohsin.shah@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-03T12:59:14Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.tf_mailroom_adding-1/tf_mailroom_adding-1.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="tf_mailroom_adding"
+                   name="tf_mailroom_adding-1"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="file_listener_mailroom" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">ajHbvorTuncgvLmr6E7XM9</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="IntegrationOps Task 1" type="reference">
+                  <options>
+                     <option hide="true" name="isAPITaskType">true</option>
+                     <option name="referenceTo">$po:Prc-Parameter-File-UAT</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <event eventSource="fileListenerTask:file_listener_mailroom"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="ldoj3i9n" targetId="ldoj3i9t"/>
+               </start>
+               <eventContainer id="ldoj3i9t">
+                  <service id="ldoj3i9m">
+                     <title>IntegrationOps Task 1</title>
+                     <serviceName>avTaskflowLocalCalling</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="GUID" source="constant" updatable="true">16snZVhv2iEg1YcgxGKD8e</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">PROCESS</parameter>
+                        <parameter name="Agent Name" source="constant" updatable="true">VIP_IICS_SA_SG_ONPREM_GROUP</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">Prc_Parameter_File_UAT</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="Prc-Parameter-File-UAT">temp.IntegrationOps Task 1</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.IntegrationOps Task 1/output/File_Name">File_Name</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="ldoj3i9o" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.IntegrationOps Task 1/fault"
+                            id="ldoj3i9q"
+                            interrupting="true"
+                            name="error"/>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="Prc-Parameter-File-UAT"
+                              isByCopy="true"
+                              name="Prc-Parameter-File-UAT">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895">
+                  <description>This process object represents a taskflow specific file task field details.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Arrived Files"
+                            name="arrivedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-arrivedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field label="Update Files"
+                            name="updatedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-updatedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field label="Deleted Files"
+                            name="deletedFiles"
+                            nullable="true"
+                            required="false"
+                            type="objectlist">
+                        <options>
+                           <option name="referenceTo">$po:INTERNALB2BFILELISTENER1565084895-deletedFiles</option>
+                           <option name="relationshipName">Child</option>
+                           <option hide="true" name="multiSelect">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-updatedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-updatedFiles">
+                  <description>This process object represents a updatedFiles structure of the file task field.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-arrivedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-arrivedFiles">
+                  <description>This process object represents a arrivedFiles structure of the file task field.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INTERNALB2BFILELISTENER1565084895-deletedFiles"
+                              isByCopy="true"
+                              name="INTERNALB2BFILELISTENER1565084895-deletedFiles">
+                  <description>This process object represents file listener task deletedFiles structure.This is in case of taskflow.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Path"
+                            name="path"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Name"
+                            name="name"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Size"
+                            name="size"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field label="Last Modified"
+                            name="lastModified"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>1fNfxJYBNaehfkBEt4EjOL</types1:GUID>
+      <types1:DisplayName>tf_mailroom_adding</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-04T16:14:54.427Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

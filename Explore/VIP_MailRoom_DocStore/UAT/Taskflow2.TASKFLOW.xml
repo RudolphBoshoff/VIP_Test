@@ -1,0 +1,383 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>f5i4rswVYx8R8Wr-gt-5626813-2023-01-27T12:28:42.095Z::tf.xml</types1:EntryId>
+      <types1:Name>Taskflow2-1</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:42Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Taskflow2"
+                   name="Taskflow2-1"
+                   overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Data Task 1" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-log-creation-db</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 2" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-log-file</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 3" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-log</option>
+                  </options>
+               </field>
+               <field description="" name="Data Task 4" type="reference">
+                  <options>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                     <option name="referenceTo">$po:mt-dummy-count</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lc77zmjv" targetId="lc77zmkh"/>
+               </start>
+               <eventContainer id="lc77zmkh">
+                  <service id="lc77zmju">
+                     <title>Data Task 1</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_log_creation_db</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">3rdyVDieQNyg2X3WIQBeOF</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-log-creation-db">temp.Data Task 1</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 1/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 1/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 1/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 1/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="lc77zmqk" targetId="lc77zmqj"/>
+                  <events>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="lc77zmkf"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 1/fault"
+                            id="lc77zmkg"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="lc77zmlo">
+                  <service id="lc77zml1">
+                     <title>Data Task 2</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_log_file</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">5T6MLSH6HM9cPHjeCheuoK</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-log-file">temp.Data Task 2</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 2/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 2/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 2/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 2/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 2/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="lc77zmm9" targetId="lc77zmmv"/>
+                  <events>
+                     <catch faultField="temp.Data Task 2/fault"
+                            id="lc77zmlm"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 2/fault"
+                            id="lc77zmln"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="lc77zmmv">
+                  <service id="lc77zmm8">
+                     <title>Data Task 3</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_log</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">0WkFfq1FJSdlXhcuwpDhoZ</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-log">temp.Data Task 3</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 3/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 3/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 3/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 3/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 3/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="lc77zmng" targetId="lc77zmo2"/>
+                  <events>
+                     <catch faultField="temp.Data Task 3/fault"
+                            id="lc77zmmt"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 3/fault"
+                            id="lc77zmmu"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="lc77zmo2">
+                  <service id="lc77zmnf">
+                     <title>Data Task 4</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mt_dummy_count</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">bAtssSIseMyklKPXmJzSWH</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mt-dummy-count">temp.Data Task 4</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Data Task 4/output/Object_Name">Object Name</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Log_Id">Log Id</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Task_Id">Task Id</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Task_Status">Task Status</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Data Task 4/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Data Task 4/output/Error_Message">Error Message</operation>
+                        <operation source="field" to="temp.Data Task 4/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field" to="temp.Data Task 4/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="lc77zmqg" targetId="c"/>
+                  <events>
+                     <catch faultField="temp.Data Task 4/fault"
+                            id="lc77zmo0"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.Data Task 4/fault"
+                            id="lc77zmo1"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <container id="lc77zmqj" type="exclusive">
+                  <title>Decision 1</title>
+                  <flow id="lc77zmqn">
+                     <link id="lc77zmqo" targetId="lc77zmqj" type="containerLink"/>
+                  </flow>
+                  <flow id="lc77zmqq">
+                     <end id="lc77zmr4">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lc77zmqm" targetId="lc77zmqn" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-or-equals">
+                           <arg name="left">{$temp.DataTask1[1]/output[1]/Success_Source_Rows}</arg>
+                           <arg name="right">{1}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="lc77zmqp" targetId="lc77zmqq" type="containerLink"/>
+                  <link id="lc77zmql" targetId="lc77zmlo"/>
+               </container>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-log-creation-db"
+                              isByCopy="true"
+                              name="mt-log-creation-db">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-log-file"
+                              isByCopy="true"
+                              name="mt-log-file">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-log"
+                              isByCopy="true"
+                              name="mt-log">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mt-dummy-count"
+                              isByCopy="true"
+                              name="mt-dummy-count">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>01GjVv3fNayclP4vN7ytWI</types1:GUID>
+      <types1:DisplayName>Taskflow2</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-04T16:14:54.279Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

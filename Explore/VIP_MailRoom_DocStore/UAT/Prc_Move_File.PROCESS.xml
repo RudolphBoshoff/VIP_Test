@@ -1,0 +1,244 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wQtzbdtqSLlBWlD-gt-9718496-2023-01-27T12:28:14.356Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_Move_File-1</types1:Name>
+      <types1:ParentFlowIds>cnIQtEOvlp6oIuQ-gt-5766494-2023-02-01T10:28:36.046Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>mohsin.shah@vistra.com.SAML2</types1:CreatedBy>
+      <types1:CreationDate>2023-01-27T12:28:14Z</types1:CreationDate>
+      <types1:ModifiedBy>mohsin.shah@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2023-02-05T11:29:21Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>mohsin.shah@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2023-02-05T11:29:31Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Prc_Move_File-1/Prc_Move_File-1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_Move_File"
+                  name="Prc_Move_File-1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="i_access_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_holderModel" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_file" type="attachment">
+                  <options>
+                     <option hide="true" name="count">1</option>
+                     <option name="maxsize">5242880</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_base_url" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_File_Name" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_File_Path" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="i_Doc_Date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="ErrorMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="ErrorCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="ErrorReason" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="temp_Log_Table" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnDBConfig-MailRoom-1:VIP_MR_Docstore_log</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">6Hgd8hrwRY0iLq4Ifi93OM</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Document_Store_Date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_DSD" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_DSDF" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="temp_Date" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="true" tracingLevel="normal">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lbnfom33" targetId="lbnfom3k"/>
+               </start>
+               <eventContainer id="lbnfom3k">
+                  <service id="lbnfom32">
+                     <title>MoveFile</title>
+                     <serviceName>AppVPOINT-MailRoom-1:MoveFile</serviceName>
+                     <serviceGUID>97qpFtjaLC4j5n46vIgCG2</serviceGUID>
+                     <serviceInput>
+                        <parameter name="access_token" source="field" updatable="true">input.i_access_token</parameter>
+                        <parameter name="holderModel" source="field" updatable="true">input.i_holderModel</parameter>
+                        <parameter name="file" source="field" updatable="true">input.i_file</parameter>
+                        <parameter name="base_url" source="field" updatable="true">input.i_base_url</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="lbnfom3m">
+                     <assignment id="ld4e8yir">
+                        <title>Assignment to temp_Document_Store_Date, temp_DSD etc.</title>
+                        <operation source="formula" to="temp.temp_Document_Store_Date">
+                           <expression language="XQuery">fn:current-date()</expression>
+                        </operation>
+                        <operation source="formula" to="temp.temp_DSD">
+                           <expression language="XQuery">fn:substring-before($temp.temp_Document_Store_Date ,'Z')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.temp_DSDF">
+                           <expression language="XQuery">date:toDate($temp.temp_DSD , 'YYYY-MM-DD')</expression>
+                        </operation>
+                        <operation source="formula" to="temp.temp_Date">
+                           <expression language="XQuery">date:toChar($temp.temp_DSDF , 'DD/MM/YYYY')</expression>
+                        </operation>
+                        <link id="ld4e8yis" targetId="lbnktxxl"/>
+                     </assignment>
+                     <create id="lbnktxxl">
+                        <title>VIP_MR_Docstore_log</title>
+                        <entityName>ConnDBConfig-MailRoom:VIP_MR_Docstore_log</entityName>
+                        <createInput>
+                           <parameter name="Bank_Statement_File_Name" source="field" updatable="true">input.i_File_Name</parameter>
+                           <parameter name="Processed_Bank_Statement_Path"
+                                      source="field"
+                                      updatable="true">input.i_File_Path</parameter>
+                           <parameter name="Document_Store_Status" source="constant" updatable="true">Success &amp; Archived</parameter>
+                           <parameter name="Document_Store_Date" source="field" updatable="true">temp.temp_Date</parameter>
+                        </createInput>
+                        <link id="lbnkty04" targetId="lbnkty03"/>
+                     </create>
+                     <end id="lbnkty03"/>
+                  </flow>
+                  <flow id="lbnfom3p">
+                     <assignment id="lbnktxwr">
+                        <title>Assignment to ErrorCode, Error Message etc.</title>
+                        <operation source="field" to="output.ErrorCode">output.faultInfo[1]/code</operation>
+                        <operation source="field" to="output.ErrorMessage">output.faultInfo[1]/detail</operation>
+                        <operation source="field" to="output.ErrorReason">output.faultInfo[1]/reason</operation>
+                        <link id="lbnktxze" targetId="lbnktxzd"/>
+                     </assignment>
+                     <container id="lbnktxzd" type="exclusive">
+                        <title>ErrorReason</title>
+                        <flow id="lbnktxzh">
+                           <create id="lbnkty0h">
+                              <title>VIP_MR_Docstore_log</title>
+                              <entityName>ConnDBConfig-MailRoom:VIP_MR_Docstore_log</entityName>
+                              <createInput>
+                                 <parameter name="Bank_Statement_File_Name" source="field" updatable="true">input.i_File_Name</parameter>
+                                 <parameter name="Processed_Bank_Statement_Path"
+                                            source="field"
+                                            updatable="true">input.i_File_Path</parameter>
+                                 <parameter name="Document_Store_Status" source="constant" updatable="true">Failed &amp; Archived</parameter>
+                                 <parameter name="Document_Store_Comments" source="constant" updatable="true">Unable to create holder and unable to upload file/Master File Code Inactive/Master File Code Not Available in VPoint</parameter>
+                              </createInput>
+                           </create>
+                           <link id="lbnktxzi" targetId="lbnktxzd" type="containerLink"/>
+                        </flow>
+                        <flow id="lbnktxzk">
+                           <create id="lbnkty2i">
+                              <title>VIP_MR_Docstore_log</title>
+                              <entityName>ConnDBConfig-MailRoom:VIP_MR_Docstore_log</entityName>
+                              <createInput>
+                                 <parameter name="Bank_Statement_File_Name" source="field" updatable="true">input.i_File_Name</parameter>
+                                 <parameter name="Processed_Bank_Statement_Path"
+                                            source="field"
+                                            updatable="true">input.i_File_Path</parameter>
+                                 <parameter name="Document_Store_Status" source="constant" updatable="true">Failed &amp; Archived</parameter>
+                                 <parameter name="Document_Store_Comments" source="constant" updatable="true">Unable to create holder and unable to upload file/Master File Code Inactive/Master File Code Not Available in VPoint</parameter>
+                              </createInput>
+                           </create>
+                           <link id="lbnktxzl" targetId="lbnktxzd" type="containerLink"/>
+                        </flow>
+                        <link id="lbnktxzg" targetId="lbnktxzh" type="containerLink">
+                           <condition source="formula">
+                              <function name="contains">
+                                 <arg name="left">{$output.ErrorReason}</arg>
+                                 <arg name="right">File failed to add to holder</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lbnktxzj" targetId="lbnktxzk" type="containerLink"/>
+                        <link id="lbnktxzf" targetId="lbnktxwl"/>
+                     </container>
+                     <end id="lbnktxwl">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="lbnfom3l" targetId="lbnfom3m" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="lbnfom3h" interrupting="true">
+                        <link id="lbnfom3o" targetId="lbnfom3p" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>chyRYzeDi0Xg6B55Y2Dnqt</types1:GUID>
+      <types1:DisplayName>Prc_Move_File</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-02-05T11:29:51.113Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
