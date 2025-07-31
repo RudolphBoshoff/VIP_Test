@@ -1,0 +1,86 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>wlyjllCYAOTMneB-gt-6335611-2022-07-05T08:15:26.363Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_MDM_Vpoint_Event_Subprocess</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Dhiraj.Dhandhaliya_tst</types1:CreatedBy>
+      <types1:CreationDate>2022-07-05T08:15:26Z</types1:CreationDate>
+      <types1:ModifiedBy>santosh.rpatil@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-08-22T06:28:34Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>Dhiraj.Dhandhaliya_tst</types1:PublishedBy>
+      <types1:PublicationDate>2022-07-05T12:38:02Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Prc_MDM_Vpoint_Event_Subprocess/Prc_MDM_Vpoint_Event_Subprocess.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_MDM_Vpoint_Event_Subprocess"
+                  name="Prc_MDM_Vpoint_Event_Subprocess"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="X_TRANSACTION_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="Payload" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:EventDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aQhziO2swOKkKQsktNXUUd</option>
+                  </options>
+               </parameter>
+            </input>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l57wb2cj" targetId="l57wb2ci"/>
+               </start>
+               <milestone id="l57wb2ci">
+                  <title>Milestone 1</title>
+                  <link id="l57wb2cq" targetId="l57wb2cp"/>
+               </milestone>
+               <subflow id="l57wb2cp">
+                  <title>Prc_MDM_Vpoint_To_C360</title>
+                  <subflowGUID>5pYhzmV5VJAc07Hjxk8bQK</subflowGUID>
+                  <subflowPath>Prc_MDM_Vpoint_To_C360</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.X_TRANSACTION_ID</parameter>
+                     <parameter name="Payload" source="field" updatable="true">input.Payload</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="l57wb2cr" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>95OMbWAEyTfjwTJtNLDn46</types1:GUID>
+      <types1:DisplayName>Prc_MDM_Vpoint_Event_Subprocess</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-09-12T07:04:56.172Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
