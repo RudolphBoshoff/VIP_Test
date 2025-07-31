@@ -1,0 +1,79 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>47M1reAFLK2D86C-gt-32817737-2022-10-07T09:02:58.941Z::conn.xml</types1:EntryId>
+      <types1:Name>APC-File-Email-Attachment</types1:Name>
+      <types1:ParentFlowIds>6vNljLYqBGZkL0j-gt-32901963-2022-10-07T09:02:59.292Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+connection</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rahul.tiwari@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-10-07T09:02:59Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rahul.tiwari@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-07T09:26:06Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connection/APC-File-Email-Attachment/APC-File-Email-Attachment.conn.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <connection xmlns="http://schemas.informatica.com/socrates/data-services/2014/04/avosConnections.xsd"
+                     displayName="APC-File-Email-Attachment"
+                     label="APC-File-Email-Attachment"
+                     name="APC-File-Email-Attachment">
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <agent>VIP_IICS_SA_SG_ONPREM_GROUP</agent>
+            <attributes/>
+            <consumers>
+               <consumer enabled="true" name="FileParser" typeName="FileParser">
+                  <description>Use this event source to monitor folders for new files and process file information and content.</description>
+                  <attributes>
+                     <attribute encrypted="false"
+                                name="directoryName"
+                                value="E:\data\Chrome_River_SAP_Integration\TgtFiles"/>
+                     <attribute encrypted="false" name="recursive" value="false"/>
+                     <attribute encrypted="false" name="include" value="CR_Report_Status.csv"/>
+                     <attribute encrypted="false" name="exclude" value=""/>
+                     <attribute encrypted="false" name="noop" value="false"/>
+                     <attribute encrypted="false" name="delete" value="false"/>
+                     <attribute encrypted="false" name="preMove" value=""/>
+                     <attribute encrypted="false" name="move" value=""/>
+                     <attribute encrypted="false" name="moveFailed" value=""/>
+                     <attribute encrypted="false" name="initialDelay" value="1"/>
+                     <attribute encrypted="false" name="delay" value="1"/>
+                     <attribute encrypted="false" name="maxMessagesPerPoll" value=""/>
+                     <attribute encrypted="false" name="readLock" value="rename"/>
+                     <attribute encrypted="false" name="readLockTimeout" value=""/>
+                     <attribute encrypted="false" name="readLockCheckInterval" value=""/>
+                     <attribute encrypted="false" name="readLockMinLength" value=""/>
+                     <attribute encrypted="false" name="readLockLoggingLevel" value="WARN"/>
+                     <attribute encrypted="false" name="charset" value=""/>
+                     <attribute encrypted="false" name="otherAttributes" value=""/>
+                     <attribute encrypted="false" name="contentFormat" value="Attachment"/>
+                     <attribute encrypted="false" name="simplifyContent" value="false"/>
+                     <attribute encrypted="false" name="singleObjectContent" value="false"/>
+                  </attributes>
+               </consumer>
+            </consumers>
+            <javaConnector xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"
+                           agentOnly="true"
+                           plugin="Camel"
+                           supportsConnectionTest="true"
+                           supportsDataPreview="false"
+                           supportsOData="false"
+                           supportsPublishSkipMetadataRefresh="false"
+                           type="File"
+                           uuid="ac000300-d9fe-11e4-8830-0800200c9a66">
+               <description>Provides connections to file monitoring brokers.</description>
+            </javaConnector>
+         </connection>
+      </types1:Entry>
+      <types1:GUID>2D0V4cLrHRVcgeqpqwfUAO</types1:GUID>
+      <types1:DisplayName>APC-File-Email-Attachment</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:33.721Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

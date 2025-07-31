@@ -1,0 +1,348 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>Ru5V1FyuRZXDyvs-gt-23841274-2022-09-28T09:04:46.952Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_CR_Push_XML_To_SAP</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-28T09:04:47Z</types1:CreationDate>
+      <types1:ModifiedBy>rahul.tiwari@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-07T13:43:56Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_CR_Push_XML_To_SAP"
+                  name="Prc_CR_Push_XML_To_SAP"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">APC-CR-Expense-Report-Read:PlainFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aNifKYKIjUFlQ8Zdz6Dqin</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="O_Note" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Responce" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="O_Fault" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="Tmp_File_Data" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Responce" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Xml_Read" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_Email" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="Tmp_File_Writer" type="reference">
+                  <options>
+                     <option name="referenceTo">APC-CR-Expense-Report-Read:FileWriteTask</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aNifKYKIjUFlQ8Zdz6Dqin</option>
+                  </options>
+               </field>
+               <field description="" name="untitled1" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="APC-CR-Expense-Report-Read:FileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8d04tly" targetId="l7sx8os0"/>
+               </start>
+               <assignment id="l7sx8os0">
+                  <title>Assignment to Tmp_File_Data, O_Responce</title>
+                  <operation source="formula" to="temp.Tmp_File_Data">
+                     <expression language="XQuery">$input.fileEvent[1]/content </expression>
+                  </operation>
+                  <operation source="formula" to="temp.Tmp_Responce">
+                     <expression language="XQuery">$input.fileEvent[1]/fileInfo[1]/fullName </expression>
+                  </operation>
+                  <link id="l7uffwlo" targetId="l8k11hju"/>
+               </assignment>
+               <eventContainer id="l8k11hju">
+                  <service id="l7uffwln">
+                     <title>Push_CR_Data_to_SAP</title>
+                     <serviceName>APC-CR-To-SAP-Integration:Push_CR_Data_to_SAP</serviceName>
+                     <serviceGUID>0fB8OptcB9MeK1vE6tNjOu</serviceGUID>
+                     <serviceInput>
+                        <parameter name="Input" source="field" updatable="true">temp.Tmp_File_Data</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l8k11hjw">
+                     <assignment id="l8wrrd2i">
+                        <title>Assignment to File name, Plain File Content</title>
+                        <operation source="constant" to="temp.Tmp_File_Writer[1]/fileName">SAP_RESPONSE_PAYLOAD.xml</operation>
+                        <operation source="field" to="temp.Tmp_File_Writer[1]/content">output.responce</operation>
+                        <link id="l8wwn30f" targetId="l8wwn30e"/>
+                     </assignment>
+                     <service id="l8wwn30e">
+                        <title>FileWriter</title>
+                        <serviceName>APC-CR-Expense-Report-Read:FileWriter</serviceName>
+                        <serviceGUID>aNifKYKIjUFlQ8Zdz6Dqin</serviceGUID>
+                        <serviceInput>
+                           <parameter name="fileWriteTask" source="field" updatable="true">temp.Tmp_File_Writer</parameter>
+                        </serviceInput>
+                        <link id="l8wwn30g" targetId="l8wvuggw"/>
+                     </service>
+                     <service id="l8y734u2">
+                        <title>Clean_Up_Processed_Reports</title>
+                        <serviceName>avShellService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="command" source="constant">Clean_Up_Processed_Reports.bat</parameter>
+                           <parameter name="workingDirPath" source="constant">E:\data\Chrome_River_SAP_Integration\SrcFiles</parameter>
+                        </serviceInput>
+                     </service>
+                     <wait id="l8wvuggw">
+                        <title>Wait for Payload file to generate</title>
+                        <duration source="formula">
+                           <function name="duration_expression">
+                              <arg name="value">5</arg>
+                              <arg name="scale">M</arg>
+                              <arg name="businessDays"/>
+                           </function>
+                        </duration>
+                        <link id="l8wwn31a" targetId="l8wyg941"/>
+                     </wait>
+                     <eventContainer id="l8wyg941">
+                        <service id="l8wwn319">
+                           <title>mct_m_Capture_SAP_Response_Payload</title>
+                           <serviceName>ICSExecuteTask</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="Task Name" source="constant">mct_m_Capture_SAP_Response_Payload [MCT]</parameter>
+                              <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                              <parameter name="Fail on Cloud Task Errors" source="constant">true</parameter>
+                              <parameter name="GUID" source="constant">30y9oTq4rThcThi3ANY3eR</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="l8wyg943">
+                           <eventContainer id="l8y734nt">
+                              <service id="l8y734nn">
+                                 <title>mct_Update_CR_Control_table</title>
+                                 <serviceName>ICSExecuteTask</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="Task Name" source="constant">mct_Update_CR_Control_table [MCT]</parameter>
+                                    <parameter name="Wait for Task to Complete" source="constant">false</parameter>
+                                    <parameter name="Fail on Cloud Task Errors" source="constant">false</parameter>
+                                    <parameter name="GUID" source="constant">5RLwA1YWdymj9bjI6iFkOo</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="l8y734nv">
+                                 <link id="l8y734nw" targetId="l8y734nt" type="containerLink"/>
+                              </flow>
+                              <flow id="l8y734ny">
+                                 <throw id="l8y734rj">
+                                    <title>Throw 2</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                       <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="l8y734nu" targetId="l8y734nv" type="containerLink"/>
+                              <link id="l8y734no" targetId="l8wyg94q"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="l8wyg940" interrupting="true">
+                                    <link id="l8y734nx" targetId="l8y734ny" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <assignment id="l8wyg94q">
+                              <title>Assignment to Recipient Addresses, Subject etc.</title>
+                              <operation source="constant" to="temp.Tmp_Email[1]/to">vip-iicsteam@vistra.com</operation>
+                              <operation source="formula" to="temp.Tmp_Email[1]/subject">
+                                 <expression language="XQuery">'UAT: ChromeRiver Alerts: Successful !! Mapping Task mct_m_Capture_SAP_Response_Payload'</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Email[1]/body">
+                                 <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process Name : Prc_CR_Push_XML_To_SAP has executed successfully.!','&amp;#10;','&amp;#10;','Please find the below process id details and kindly invetigate the cause','&amp;#10;','&amp;#10;','Process Id :',util:getProcessId(),'&amp;#10;','&amp;#10;','&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','VIP Team')</expression>
+                              </operation>
+                              <link id="l8wyg94x" targetId="l8wyg94w"/>
+                           </assignment>
+                           <service id="l8wyg94w">
+                              <title>sendEmailService</title>
+                              <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                              <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.Tmp_Email</parameter>
+                              </serviceInput>
+                              <link id="l8y734uj" targetId="l8y734ui"/>
+                           </service>
+                           <wait id="l8y734ui">
+                              <title>Wait for files to delete</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">30</arg>
+                                    <arg name="scale">M</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                           </wait>
+                           <link id="l8wyg944" targetId="l8wyg941" type="containerLink"/>
+                        </flow>
+                        <flow id="l8wyg946">
+                           <assignment id="l8wyg959">
+                              <title>Assignment to Recipient Addresses, Subject etc.</title>
+                              <operation source="constant" to="temp.Tmp_Email[1]/to">vip-iicsteam@vistra.com</operation>
+                              <operation source="formula" to="temp.Tmp_Email[1]/subject">
+                                 <expression language="XQuery">'UAT: ChromeRiver Alerts: Failed !! Action Required: Mapping Task mct_m_Capture_SAP_Response_Payload.'</expression>
+                              </operation>
+                              <operation source="formula" to="temp.Tmp_Email[1]/body">
+                                 <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process Name : Prc_CR_Push_XML_To_SAP has Failed.!','&amp;#10;','&amp;#10;','Please find the below process id details and kindly invetigate the cause','&amp;#10;','&amp;#10;','Process Id :',util:getProcessId(),'&amp;#10;','&amp;#10;','Fault :', $output.Note  ,'&amp;#10;','&amp;#10;','&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','VIP Team')</expression>
+                              </operation>
+                              <link id="l8wyg95l" targetId="l8wyg95k"/>
+                           </assignment>
+                           <service id="l8wyg95k">
+                              <title>sendEmailService</title>
+                              <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                              <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                              <serviceInput>
+                                 <parameter name="emailTaskInput" source="field" updatable="true">temp.Tmp_Email</parameter>
+                              </serviceInput>
+                              <link id="l8wyg95m" targetId="l8wyg955"/>
+                           </service>
+                           <throw id="l8wyg955">
+                              <title>Throw 1</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                                 <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="l8wyg942" targetId="l8wyg943" type="containerLink"/>
+                        <link id="l8y734u6" targetId="l8y734u2"/>
+                        <events>
+                           <catch faultField="faultInfo" id="l8wyg940" interrupting="true">
+                              <link id="l8wyg945" targetId="l8wyg946" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <link id="l8k11hjx" targetId="l8k11hju" type="containerLink"/>
+                  </flow>
+                  <flow id="l8k11hjz">
+                     <assignment id="l8k11hn0">
+                        <title>Assignment to Recipient Addresses, Subject etc.</title>
+                        <operation source="constant" to="temp.Tmp_Email[1]/to">vip-iicsteam@vistra.com</operation>
+                        <operation source="formula" to="temp.Tmp_Email[1]/subject">
+                           <expression language="XQuery">'UAT: ChromeRiver Alerts: Failed !! Action Required: SAP Connector Failed'</expression>
+                        </operation>
+                        <operation source="formula" to="temp.Tmp_Email[1]/body">
+                           <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process Name : Prc_CR_Push_XML_To_SAP has Failed.!','&amp;#10;','&amp;#10;','Please find the below process id details and kindly invetigate the cause','&amp;#10;','&amp;#10;','Process Id :',util:getProcessId(),'&amp;#10;','&amp;#10;','Fault :', $output.Note  ,'&amp;#10;','&amp;#10;','&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','VIP Team')</expression>
+                        </operation>
+                        <link id="l8k11hng" targetId="l8k11hnf"/>
+                     </assignment>
+                     <service id="l8k11hnf">
+                        <title>sendEmailService</title>
+                        <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                        <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                        <serviceInput>
+                           <parameter name="emailTaskInput" source="field" updatable="true">temp.Tmp_Email</parameter>
+                        </serviceInput>
+                        <link id="l8k11hnh" targetId="l8k11hkr"/>
+                     </service>
+                     <throw id="l8k11hkr">
+                        <title>Throw 3</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                           <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l8k11hjv" targetId="l8k11hjw" type="containerLink"/>
+                  <link id="l8wyg93r" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l8k11hjt" interrupting="true">
+                        <link id="l8k11hjy" targetId="l8k11hjz" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>9087efdf-ae80-4c47-9a0d-66d5d103b927</ns1:Id>
+               <ns1:Name>CR_TEST</ns1:Name>
+               <ns1:CreatedBy>santosh.rpatil@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-09-28T09:04:47Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rahul.tiwari@vistra.com</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-10-07T09:03:08Z</ns1:ModificationDate>
+               <ns1:Data format="json">{
+	 "fileEvent": {
+	 	 "fileInfo": {
+	 	 	 "fullName": "",
+	 	 	 "name": "",
+	 	 	 "ext": "",
+	 	 	 "path": "",
+	 	 	 "dir": "",
+	 	 	 "size": "",
+	 	 	 "lastModified": ""
+	 	 },
+	 	 "content": "\n   "
+	 }
+}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>7dZMqIfADTGgtGM7lNNDuB</types1:GUID>
+      <types1:DisplayName>Prc_CR_Push_XML_To_SAP</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:36.47Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

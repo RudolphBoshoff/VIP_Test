@@ -1,0 +1,359 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>UjIw8jIw8jIw8jI-gt-10052429-2022-09-28T09:04:47.494Z::tf.xml</types1:EntryId>
+      <types1:Name>Tsk_m_Chromeriver_to_SAP_Integration</types1:Name>
+      <types1:MimeType>application/xml+taskflow</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-28T09:04:47Z</types1:CreationDate>
+      <types1:ModifiedBy>rahul.tiwari@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-18T11:34:57Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>rahul.tiwari@vistra.com</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-18T11:35:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/tf.Tsk_m_Chromeriver_to_SAP_Integration/Tsk_m_Chromeriver_to_SAP_Integration.tf.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <taskflow xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                   xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                   xmlns:list="urn:activevos:spi:list:functions"
+                   displayName="Tsk_m_Chromeriver_to_SAP_Integration"
+                   name="Tsk_m_Chromeriver_to_SAP_Integration"
+                   overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <tempFields>
+               <field description="" name="Ingestion file from CR" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="Tsk_Chromeriver_Process_Files"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:InternalInfaSubTaskflowField</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">true</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="mct_Fetch_Delta_files_for_current_run"
+                      type="reference">
+                  <options>
+                     <option name="failOnNotRun">true</option>
+                     <option name="failOnFault">true</option>
+                     <option name="referenceTo">$po:mct-Fetch-Delta-files-for-current-run</option>
+                  </options>
+               </field>
+               <field description="" name="Filter_CR_Reports" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:INFA-commandTask</option>
+                     <option name="failOnNotRun">false</option>
+                     <option name="failOnFault">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="true" tracingLevel="verbose">
+               <rest/>
+               <emailProperties emailOnSuspend="true">
+                  <emailTo>vip-iicsteam@vistra.com</emailTo>
+                  <emailCc/>
+                  <emailSubject>UAT: ChromeRiver Alerts !! Failed: Action Required !! Tsk_m_Chromeriver_to_SAP_Integration</emailSubject>
+                  <emailContentType>html</emailContentType>
+                  <emailBody>&lt;p&gt;Hi Team,&lt;/p&gt;
+&lt;p&gt;Task flow &lt;strong&gt;Tsk_m_Chromeriver_to_SAP_Integration&lt;/strong&gt; has failed.&lt;/p&gt;
+&lt;p&gt;Please Investigate the root cause and resume the load.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is an auto generated email. Please do not reply !!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thanks &amp;amp; Regards&lt;/p&gt;
+&lt;p&gt;VIP Team&lt;/p&gt;</emailBody>
+               </emailProperties>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8wm7scx" targetId="l8wm7sd7"/>
+               </start>
+               <eventContainer id="l8wm7sd7">
+                  <service id="l8wm7scw">
+                     <title>Ingestion file from CR</title>
+                     <serviceName>DIExecuteServiceTaskIngestionTaskImpl</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">Ingest_CR_Files</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">5vVizIPbMr0c2JnfLAxrGd</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MI_TASK</parameter>
+                        <parameter name="serviceProviderId" source="constant" updatable="true">filelistener</parameter>
+                        <parameter name="serviceProviderContextPath"
+                                   source="constant"
+                                   updatable="true">mitask/</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd">temp.Ingestion Task 1</operation>
+                           <operation source="constant"
+                                      to="Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd/input[1]/CATEGORYGeneral[1]/sourceConnectionType">advancedsftp</operation>
+                           <operation source="constant"
+                                      to="Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd/input[1]/CATEGORYGeneral[1]/targetConnectionType">local</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Ingestion file from CR/output/successFiles">successFiles</operation>
+                        <operation source="field" to="temp.Ingestion file from CR/output/failedFiles">failedFiles</operation>
+                        <operation source="field" to="temp.Ingestion file from CR/output/fileDetails">fileDetails</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="l8y4b356" targetId="l8y4b35i"/>
+                  <events>
+                     <catch faultField="temp.Ingestion file from CR/fault"
+                            id="l8wm7sd6"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <eventContainer id="l8y4b35i">
+                  <service id="l8y4b355">
+                     <title>Filter_CR_Reports</title>
+                     <serviceName>ICSExecuteCommandTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Task Name" source="constant">Filter_CR_Reports</parameter>
+                        <parameter name="Wait for Task to Complete" source="constant">true</parameter>
+                        <parameter name="Runtime Environment" source="constant">010OPL25000000000003:VIP_IICS_SA_SG_ONPREM_GROUP</parameter>
+                        <parameter name="Script Name" source="constant">E:\data\Chrome_River_SAP_Integration\SrcFiles\Filter_CR_Report.bat</parameter>
+                        <parameter name="Input Arguments" source="constant"/>
+                        <parameter name="Work Directory" source="constant"/>
+                        <parameter name="RuntimeEnvGUID" source="constant">6wjEZKwEnGPkb19XNEszGg</parameter>
+                        <parameter name="FailTaskIfAnyScriptFails" source="constant" updatable="true">true</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="INFA-commandTask">temp.Filter_CR_Reports</operation>
+                           <operation source="constant" to="INFA-commandTask/input[1]/script-1/name">Script1</operation>
+                           <operation source="constant" to="INFA-commandTask/input[1]/script-1/scriptName">E:\data\Chrome_River_SAP_Integration\SrcFiles\Filter_CR_Report.bat</operation>
+                           <operation source="constant"
+                                      to="INFA-commandTask/input[1]/script-1/inputArguments"/>
+                           <operation source="constant" to="INFA-commandTask/input[1]/script-1/workDir"/>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/Run_Id">Run Id</operation>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/Start_Time">Start Time</operation>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/End_Time">End Time</operation>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/Exit_Code">Exit Code</operation>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/Execution_Status">Execution Status</operation>
+                        <operation source="field" to="temp.Filter_CR_Reports/output/Std_Error">Std Error</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="l8y4b357" targetId="l8y4b35t"/>
+                  <events>
+                     <catch faultField="temp.Filter_CR_Reports/fault"
+                            id="l8y4b35h"
+                            interrupting="true"
+                            name="error"/>
+                  </events>
+               </eventContainer>
+               <eventContainer id="l8y4b35t">
+                  <service id="l8y4b34z">
+                     <title>mct_Fetch_Delta_files_for_current_run</title>
+                     <serviceName>ICSExecuteDataTask</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="Wait for Task to Complete" source="constant" updatable="true">true</parameter>
+                        <parameter name="Max Wait" source="constant" updatable="true">604800</parameter>
+                        <parameter name="Task Name" source="constant" updatable="true">mct_Fetch_Delta_files_for_current_run</parameter>
+                        <parameter name="GUID" source="constant" updatable="true">4KgluSPcsMAlWdyhYCM2uw</parameter>
+                        <parameter name="Task Type" source="constant" updatable="true">MCT</parameter>
+                        <parameter name="Has Inout Parameters" source="constant" updatable="true">false</parameter>
+                        <parameter name="taskField" source="nested">
+                           <operation source="field" to="mct-Fetch-Delta-files-for-current-run">temp.mct_Fetch_Delta_files_for_current_run</operation>
+                        </parameter>
+                     </serviceInput>
+                     <serviceOutput>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Object_Name">Object Name</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Run_Id">Run Id</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Log_Id">Log Id</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Task_Id">Task Id</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Task_Status">Task Status</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Success_Source_Rows">Success Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Failed_Source_Rows">Failed Source Rows</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Success_Target_Rows">Success Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Failed_Target_Rows">Failed Target Rows</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Start_Time">Start Time</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/End_Time">End Time</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/Error_Message">Error Message</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/TotalTransErrors">Total Transformation Errors</operation>
+                        <operation source="field"
+                                   to="temp.mct_Fetch_Delta_files_for_current_run/output/FirstErrorCode">First Error Code</operation>
+                     </serviceOutput>
+                  </service>
+                  <link id="l9e2q0cd" targetId="l9e2q0cc"/>
+                  <events>
+                     <catch faultField="temp.mct_Fetch_Delta_files_for_current_run/fault"
+                            id="l8y4b35r"
+                            interrupting="true"
+                            name="error">
+                        <suspend/>
+                     </catch>
+                     <catch faultField="temp.mct_Fetch_Delta_files_for_current_run/fault"
+                            id="l8y4b35s"
+                            interrupting="true"
+                            name="warning"/>
+                  </events>
+               </eventContainer>
+               <container id="l9e2q0cc" type="exclusive">
+                  <title>Decision_check files</title>
+                  <flow id="l9e2q0cg">
+                     <link id="l9e2q0ch" targetId="l9e2q0cc" type="containerLink"/>
+                  </flow>
+                  <flow id="l9e2q0cj">
+                     <service id="l9e2q0dp">
+                        <title>Send_Mail_No_Files</title>
+                        <serviceName>emailNotificationService</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="Email To" source="constant">VistraSG.Payable@vistra.com;Kelly.Lam@vistra.com;HueiLi.Chew@vistra.com</parameter>
+                           <parameter name="Email Cc" source="constant">vip-iicsteam@vistra.com</parameter>
+                           <parameter name="Email Subject" source="constant">UAT: ChromeRiver Alerts: Load Exit !! No Files to be processed Today</parameter>
+                           <parameter name="Email Content Type" source="constant">html</parameter>
+                           <parameter name="Email Body" source="constant">&lt;p&gt;Hi Team,&lt;/p&gt;
+&lt;p&gt;Chrome River Process skipped from execution as there are no new files to be processed today !!&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;This is an auto Genarated email, kindly do not reply !!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Thanks &amp;amp; Regards&lt;/p&gt;
+&lt;p&gt;VIP Team&lt;/p&gt;</parameter>
+                        </serviceInput>
+                        <serviceOutput/>
+                        <link id="l9e2q0eu" targetId="l9e2q0et"/>
+                     </service>
+                     <end id="l9e2q0et">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l9e2q0cf" targetId="l9e2q0cg" type="containerLink">
+                     <condition source="formula">
+                        <function name="greater-than">
+                           <arg name="left">{$temp.mct_Fetch_Delta_files_for_current_run[1]/output[1]/Success_Target_Rows}</arg>
+                           <arg name="right">{0}</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="l9e2q0ci" targetId="l9e2q0cj" type="containerLink"/>
+                  <link id="l9e2q0ce" targetId="l8wm7sdg"/>
+               </container>
+               <subflow id="l8wm7sdg">
+                  <title>Tsk_Chromeriver_Process_Files</title>
+                  <subflowGUID>aANC8KGorAxjVIPxT71R2x</subflowGUID>
+                  <subflowPath>Tsk_Chromeriver_Process_Files</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef/>
+                  <link id="l8wm7sdi" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+            <dependencies>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd"
+                              isByCopy="true"
+                              name="Ingest-CR-Files-5vVizIPbMr0c2JnfLAxrGd">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Input Parameters"
+                            name="input"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="InternalInfaSubTaskflowField"
+                              isByCopy="true"
+                              name="InternalInfaSubTaskflowField">
+                  <description>This process object represents a subtaskflow type reference field.</description>
+                  <tags/>
+                  <detail/>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="mct-Fetch-Delta-files-for-current-run"
+                              isByCopy="true"
+                              name="mct-Fetch-Delta-files-for-current-run">
+                  <description/>
+                  <tags/>
+                  <detail>
+                     <field label="TaskProperties Parameters"
+                            name="taskProperties"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              displayName="INFA-commandTask"
+                              isByCopy="true"
+                              name="INFA-commandTask">
+                  <description>This process object represents a taskflow specific command task output field details.</description>
+                  <tags/>
+                  <detail>
+                     <field label="Output Parameters"
+                            name="output"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                     <field label="Fault"
+                            name="fault"
+                            nullable="true"
+                            required="false"
+                            type="reference"/>
+                  </detail>
+               </processObject>
+            </dependencies>
+         </taskflow>
+      </types1:Entry>
+      <types1:GUID>5nGBb82Nvs8kuQNU7b0fwr</types1:GUID>
+      <types1:DisplayName>Tsk_m_Chromeriver_to_SAP_Integration</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:36.807Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

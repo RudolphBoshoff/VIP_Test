@@ -1,0 +1,104 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>6vNljLYqBGZkL0j-gt-32901963-2022-10-07T09:02:59.292Z::pd.xml</types1:EntryId>
+      <types1:Name>Prc_CR_Email_Attachment</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rahul.tiwari@vistra.com</types1:CreatedBy>
+      <types1:CreationDate>2022-10-07T09:02:59Z</types1:CreationDate>
+      <types1:ModifiedBy>rahul.tiwari@vistra.com</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-07T10:04:14Z</types1:ModificationDate>
+      <types1:PublicationStatus>unpublished</types1:PublicationStatus>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Prc_CR_Email_Attachment"
+                  name="Prc_CR_Email_Attachment"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="fileEvent" type="reference">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="referenceTo">APC-File-Email-Attachment:AttachmentFileContent</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">2D0V4cLrHRVcgeqpqwfUAO</option>
+                  </options>
+               </parameter>
+            </input>
+            <tempFields>
+               <field description="" name="tempEmailRequest" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:EmailTaskInput</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+               <field description="" name="tempEmailAttachments" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConn-Email-1:AttachmentInformation</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">aGqWxC1jkG7dWgHznehPkO</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <event eventSource="APC-File-Email-Attachment:FileParser"/>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l8x6d9xo" targetId="l8x6d9xn"/>
+               </start>
+               <assignment id="l8x6d9xn">
+                  <title>Assignment to Recipient Addresses, CC Addresses etc.</title>
+                  <operation source="formula" to="temp.tempEmailRequest[1]/to">
+                     <expression language="XQuery">'VistraSG.Payable@vistra.com;Kelly.Lam@vistra.com;HueiLi.Chew@vistra.com'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tempEmailRequest[1]/cc">
+                     <expression language="XQuery">'vip-iicsteam@vistra.com'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tempEmailRequest[1]/subject">
+                     <expression language="XQuery">'UAT: ChromeRiver Alerts: Successful !! Process to push Reports to SAP Successful'</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tempEmailRequest[1]/body">
+                     <expression language="XQuery">fn:concat('Hello Team','&amp;#10;','&amp;#10;','Process to push CR Reports to SAP executed successfully!','&amp;#10;','&amp;#10;','Please find the attachment for the individual posting status of each Report.','&amp;#10;','&amp;#10;','This is Auto-generated email. Please do not reply.','&amp;#10;','&amp;#10;','Regards','&amp;#10;','VIP Team')</expression>
+                  </operation>
+                  <operation source="field" to="temp.tempEmailAttachments[1]/name">input.fileEvent[1]/fileInfo[1]/fullName</operation>
+                  <operation source="field" to="temp.tempEmailAttachments[1]/content">input.fileEvent[1]/attachment</operation>
+                  <operation source="field" to="temp.tempEmailRequest[1]/attachments">temp.tempEmailAttachments</operation>
+                  <link id="l8x6d9y1" targetId="l8x6d9y0"/>
+               </assignment>
+               <service id="l8x6d9y0">
+                  <title>sendEmailService</title>
+                  <serviceName>AppConn-Email-1:sendEmailService</serviceName>
+                  <serviceGUID>aGqWxC1jkG7dWgHznehPkO</serviceGUID>
+                  <serviceInput>
+                     <parameter name="emailTaskInput" source="field" updatable="true">temp.tempEmailRequest</parameter>
+                  </serviceInput>
+                  <link id="l8x6d9y2" targetId="c"/>
+               </service>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>8kDX9odbSpnlzaZ4S4ueSi</types1:GUID>
+      <types1:DisplayName>Prc_CR_Email_Attachment</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:34.136Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

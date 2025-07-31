@@ -1,0 +1,75 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>KhxsnCmp6oIuQaa-gt-23686284-2022-09-28T09:04:35.926Z::svc.xml</types1:EntryId>
+      <types1:Name>SC_CR_XML_GENERATION</types1:Name>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-28T09:04:36Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>santosh.rpatil@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-09-28T10:00:41Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SC_CR_XML_GENERATION/SC_CR_XML_GENERATION_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SC_CR_XML_GENERATION"
+                            label=""
+                            name="SC_CR_XML_GENERATION"
+                            uuid="91c1b5a0-645a-4a9a-8388-5c6aee9ab19f">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Xml_Generation"
+                       maxRedirects="100"
+                       name="Xml_Generation"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://emw1.dm-em.informaticacloud.com:443/active-bpel/rt/Tsk_m_Chromeriver_to_SAP_Integration"
+                                        verb="POST">
+                        <authentication>
+                           <username>vipapiconsumer_dev</username>
+                           <password/>
+                           <isExpressionInPassword>false</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="RunId" property="RunId" type="string"/>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>4TFKm83wntPdR2Lrhp45cU</types1:GUID>
+      <types1:DisplayName>SC_CR_XML_GENERATION</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:33.765Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

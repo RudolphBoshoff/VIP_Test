@@ -1,0 +1,102 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>KT50AkRtO3M4WwO-gt-23686276-2022-09-28T09:04:35.893Z::svc.xml</types1:EntryId>
+      <types1:Name>SvcCon_CR_to_SAP_TGT</types1:Name>
+      <types1:ParentFlowIds>OrMickgpbdoPVm5-gt-23845458-2022-09-28T09:04:36.502Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>santosh.rpatil@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-28T09:04:36Z</types1:CreationDate>
+      <types1:ModifiedBy>santosh.rpatil@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-06T11:43:40Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>santosh.rpatil@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-06T11:47:57Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/SvcCon_CR_to_SAP_TGT/SvcCon_CR_to_SAP_TGT_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="SvcCon_CR_to_SAP_TGT"
+                            label=""
+                            name="SvcCon_CR_to_SAP_TGT"
+                            uuid="5a959328-d021-41bd-9ad7-b08604f50156">
+            <description/>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       label="Push_CR_Data_to_SAP"
+                       maxRedirects="100"
+                       name="Push_CR_Data_to_SAP"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="Input"
+                                nogen="true"
+                                required="true"
+                                testWith="&lt;soap:Envelope xmlns:soap=&#34;http://schemas.xmlsoap.org/soap/envelope/&#34; xmlns:sfin=&#34;http://sap.com/xi/SAPSCORE/SFIN&#34; xmlns:yy1=&#34;http://SAPCustomFields.com/YY1_&#34;&gt;     &lt;soap:Header/&gt;     &lt;soap:Body&gt; &lt;sfin:JournalEntryBulkCreateRequest&gt; &lt;MessageHeader&gt; &lt;CreationDateTime&gt;2022-09-23T11:09:45.00Z&lt;/CreationDateTime&gt; &lt;ID&gt;1&lt;/ID&gt; &lt;SenderBusinessSystemId&gt;VIP&lt;/SenderBusinessSystemId&gt; &lt;TestDataIndicator&gt;false&lt;/TestDataIndicator&gt; &lt;/MessageHeader&gt; &lt;JournalEntryCreateRequest&gt; &lt;MessageHeader&gt; &lt;CreationDateTime&gt;2022-09-23T11:09:45.00Z&lt;/CreationDateTime&gt; &lt;ID&gt;QA0031886266&lt;/ID&gt; &lt;/MessageHeader&gt; &lt;JournalEntry&gt; &lt;OriginalReferenceDocumentType&gt;BKPFF&lt;/OriginalReferenceDocumentType&gt; &lt;BusinessTransactionType&gt;RFBU&lt;/BusinessTransactionType&gt; &lt;AccountingDocumentType&gt;ER&lt;/AccountingDocumentType&gt; &lt;DocumentReferenceID&gt;QA0031886266&lt;/DocumentReferenceID&gt; &lt;DocumentHeaderText&gt;Client Expenses Out of Po&lt;/DocumentHeaderText&gt; &lt;CreatedByUser&gt;Chrome River&lt;/CreatedByUser&gt; &lt;CompanyCode&gt;SG01&lt;/CompanyCode&gt; &lt;DocumentDate&gt;2022-08-16&lt;/DocumentDate&gt; &lt;PostingDate&gt;2022-09-23&lt;/PostingDate&gt; &lt;TaxDeterminationDate&gt;2022-09-23&lt;/TaxDeterminationDate&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61006002&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+95&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Client Expenses Out of Pocket&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886266-5&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;50305000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+30&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Foreo&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;8082022&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886266-4&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;63006000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+65&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Client Expenses Out of Pocket&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886266-3&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;50305000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+30&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Impact Solution&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;20210808&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886266-2&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;50305000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+50&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Foreo&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;8082022&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886266-1&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;ProductTaxItem&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;TaxItemClassification&gt;VST&lt;/TaxItemClassification&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;0&lt;/AmountInTransactionCurrency&gt; &lt;TaxBaseAmountInTransCrcy currencyCode=&#34;SGD&#34;&gt;270&lt;/TaxBaseAmountInTransCrcy&gt; &lt;/ProductTaxItem&gt; &lt;CreditorItem&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;Creditor&gt;9980000399&lt;/Creditor&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;-270&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;H&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;QA0031886266&lt;/DocumentItemText&gt; &lt;/CreditorItem&gt; &lt;/JournalEntry&gt; &lt;/JournalEntryCreateRequest&gt; &lt;JournalEntryCreateRequest&gt; &lt;MessageHeader&gt; &lt;CreationDateTime&gt;2022-09-23T11:09:45.00Z&lt;/CreationDateTime&gt; &lt;ID&gt;QA0031886491&lt;/ID&gt; &lt;/MessageHeader&gt; &lt;JournalEntry&gt; &lt;OriginalReferenceDocumentType&gt;BKPFF&lt;/OriginalReferenceDocumentType&gt; &lt;BusinessTransactionType&gt;RFBU&lt;/BusinessTransactionType&gt; &lt;AccountingDocumentType&gt;ER&lt;/AccountingDocumentType&gt; &lt;DocumentReferenceID&gt;QA0031886491&lt;/DocumentReferenceID&gt; &lt;DocumentHeaderText&gt;Workshop Trip to UK&lt;/DocumentHeaderText&gt; &lt;CreatedByUser&gt;Chrome River&lt;/CreatedByUser&gt; &lt;CompanyCode&gt;SG01&lt;/CompanyCode&gt; &lt;DocumentDate&gt;2022-08-16&lt;/DocumentDate&gt; &lt;PostingDate&gt;2022-09-23&lt;/PostingDate&gt; &lt;TaxDeterminationDate&gt;2022-09-23&lt;/TaxDeterminationDate&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61008000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+52.81&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-9&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61004002&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+88.02&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-8&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61003002&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+211.25&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-7&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61007000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+1000&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-6&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61004002&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+10&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-12&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;66000000&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+15&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-11&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;Item&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;GLAccount&gt;61004002&lt;/GLAccount&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;+44.01&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;S&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;Workshop Trip to UK&lt;/DocumentItemText&gt; &lt;AssignmentReference&gt;&lt;/AssignmentReference&gt; &lt;OplAcctgDocItmCntrySpcfcRef1&gt;QA0031886491-10&lt;/OplAcctgDocItmCntrySpcfcRef1&gt; &lt;Tax&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;/Tax&gt; &lt;AccountAssignment&gt; &lt;CostCenter&gt;SG01110001&lt;/CostCenter&gt; &lt;/AccountAssignment&gt; &lt;/Item&gt; &lt;ProductTaxItem&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;TaxCode&gt;PO&lt;/TaxCode&gt; &lt;TaxItemClassification&gt;VST&lt;/TaxItemClassification&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;0&lt;/AmountInTransactionCurrency&gt; &lt;TaxBaseAmountInTransCrcy currencyCode=&#34;SGD&#34;&gt;1421.09&lt;/TaxBaseAmountInTransCrcy&gt; &lt;/ProductTaxItem&gt; &lt;CreditorItem&gt; &lt;ReferenceDocumentItem&gt;&lt;/ReferenceDocumentItem&gt; &lt;Creditor&gt;9980000399&lt;/Creditor&gt; &lt;AmountInTransactionCurrency currencyCode=&#34;SGD&#34;&gt;-1421.09&lt;/AmountInTransactionCurrency&gt; &lt;DebitCreditCode&gt;H&lt;/DebitCreditCode&gt; &lt;DocumentItemText&gt;QA0031886491&lt;/DocumentItemText&gt; &lt;/CreditorItem&gt; &lt;/JournalEntry&gt; &lt;/JournalEntryCreateRequest&gt; &lt;/sfin:JournalEntryBulkCreateRequest&gt;  &lt;/soap:Body&gt; &lt;/soap:Envelope&gt;"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="https://my305570-api.s4hana.ondemand.com/sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi"
+                                        verb="POST">
+                        <authentication>
+                           <username>CHROMERIVER</username>
+                           <password/>
+                           <isExpressionInPassword>false</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">text/xml; charset=utf-8</header>
+                           <header name="SOAPAction">"http://sap.com/xi/SAPSCORE/SFIN/JournalEntryBulkCreationRequest_In/JournalEntryBulkCreationRequest_InRequest"</header>
+                           <header name="Authorization">Basic Q0hST01FUklWRVI6UWN3SlhiZ01RZFFpR0ZCci16UkxYQkFXWHB2eU5vYlk1ck1vZXFCRA==</header>
+                           <header name="Connection">keep-alive</header>
+                           <header name="Cookie">sap-usercontext=sap-client=100</header>
+                           <header name="Accept">text/xml</header>
+                        </httpHeaders>
+                        <body>{$Input}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="responce"
+                            type="string"/>
+                     <field description="" name="ReferenceID" type="string">
+                        <xquery>{for $i in //*:Envelope/*:Body/*:JournalEntryBulkCreateConfirmation/JournalEntryCreateConfirmation/MessageHeader
+
+return
+fn:concat($i/ReferenceID/text(),', ')}</xquery>
+                     </field>
+                     <field description="" name="Note" type="string">
+                        <xquery>{for $i in //*:Envelope/*:Body/*:JournalEntryBulkCreateConfirmation/JournalEntryCreateConfirmation/Log/Item
+
+return
+fn:concat($i/Note/text(),', ')}</xquery>
+                     </field>
+                  </output>
+               </action>
+            </actions>
+            <objects/>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>d9CDUyqdTeLj5xYaWuJ7ob</types1:GUID>
+      <types1:DisplayName>SvcCon_CR_to_SAP_TGT</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2022-10-27T11:54:33.683Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
