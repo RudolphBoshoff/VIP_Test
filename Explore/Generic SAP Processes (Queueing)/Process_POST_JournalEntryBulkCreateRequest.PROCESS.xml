@@ -1,0 +1,266 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>y2uI5CUP9WYVMPI-gt-11242155-2022-09-14T08:26:09.398Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_POST_JournalEntryBulkCreateRequest</types1:Name>
+      <types1:ParentFlowIds>7qaaaa-gt-957994-2023-02-28T13:08:17.944Z::pd.xml,97yV4AdypKwKBqR-gt-38832316-2023-01-11T15:48:55.974Z::pd.xml,aa-gt-13442292-2023-01-12T09:05:10Z::pd.xml,EJLEwporzYLnzYL-gt-13944910-2023-01-13T13:55:09.148Z::pd.xml,GXbeKLUaaaaabbg-gt-11387267-2022-09-14T08:26:11.527Z::pd.xml,KkQIW3Ni7A7vNlj-gt-14151353-2023-01-13T02:51:24.584Z::pd.xml,Q7ousWTzIf6riX2-gt-11387280-2022-09-14T08:26:11.685Z::pd.xml,Qnbf6riX2FNBeNT-gt-6270359-2021-09-16T20:23:46.687Z::pd.xml,SJhtghGZ5i4rswV-gt-8030674-2022-12-29T07:15:50.718Z::pd.xml,sqy3eHRi92qBbbe-gt-1318513-2023-03-01T09:59:13.304Z::pd.xml,VGTiPZx1Xmgaabc-gt-1842318-2022-10-18T16:48:12.758Z::pd.xml,Wq9bdsreK8ZAZf5-gt-1251750-2022-12-16T08:04:37.763Z::pd.xml,zx1XmgaabclvAhr-gt-47419873-2023-01-16T09:00:04.168Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates the Invoice Journal entry in SAP and logs success / failure accordingly</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-09-14T08:26:09Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:36Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-09-04T09:23:58Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_POST_JournalEntryBulkCreateRequest/Process_POST_JournalEntryBulkCreateRequest.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_POST_JournalEntryBulkCreateRequest"
+                  name="Process_POST_JournalEntryBulkCreateRequest"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates the Invoice Journal entry in SAP and logs success / failure accordingly</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_JournalEntryCreateRequest"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Process_Variables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_JournalConfirmation_Payload"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="out_ResponseCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description=""
+                      name="out_ProcessVariables_PostJournal"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="liiyv0q0" targetId="liiyv0pz"/>
+               </start>
+               <assignment id="liiyv0pz">
+                  <title>Set Process Variables</title>
+                  <operation source="field" to="output.out_ProcessVariables_PostJournal">input.in_Process_Variables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PostJournal[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PostJournal[1]/RequestPayload">
+                     <expression language="XQuery">util:toXML($input.in_JournalEntryCreateRequest/element())</expression>
+                  </operation>
+                  <operation source="constant"
+                             to="output.out_ProcessVariables_PostJournal[1]/HelpFileLInk">https://api.sap.com/api/OP_JOURNALENTRYCREATEREQUESTCONF_IN/overview</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PostJournal[1]/IICS_Run_ID">
+                     <expression language="XQuery">'Parent='||$input.in_Process_Variables[1]/IICS_Run_ID  ||'^LoggedAt='||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_PostJournal[1]/RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'//sap/bc/srt/scs_ext/sap/journalentrycreaterequestconfi'||' (SOAPAction = "http://sap.com/xi/SAPSCORE/SFIN/JournalEntryCreateRequestConfirmation_In/JournalEntryCreateRequestConfirmation_InRequest")'</expression>
+                  </operation>
+                  <link id="liiyv0q1" targetId="l349qexa"/>
+               </assignment>
+               <assignment id="l349qexa">
+                  <title>Fetch URN Mappings</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <link id="liiyv0py" targetId="l349qeyp"/>
+               </assignment>
+               <eventContainer id="l349qeyp">
+                  <service id="l349qexw">
+                     <title>Create Journal Entry</title>
+                     <serviceName>AppSvcJournalEntryCreateRequestConfirmation-In:JournalEntryBulkCreateRequest</serviceName>
+                     <serviceGUID>bbOXMeh0JeJkuj45JTCtCp</serviceGUID>
+                     <serviceInput>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="JournalEntryBulkCreateRequest" source="formula">
+                           <expression language="XQuery">$input.in_JournalEntryCreateRequest </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l349qeyr">
+                     <link id="l349qeys" targetId="l349qeyp" type="containerLink"/>
+                  </flow>
+                  <flow id="l349qeyu">
+                     <assignment id="liiyuwlo">
+                        <title>Set Output attributes</title>
+                        <operation source="field" to="output.out_ResponseCode">output.faultInfo[1]/code</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Code">{$output.faultInfo[1]/code}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Error">{$output.faultInfo[1]/reason}</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PostJournal[1]/Description">{$output.faultInfo[1]/detail}</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PostJournal[1]/FailedAtStep">SAP: Failed to post Journal Entry</operation>
+                        <link id="liiyuwlp" targetId="l8lleoqk"/>
+                     </assignment>
+                     <subflow id="l8lleoqk">
+                        <title>Log Posting Failure</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_PostJournal</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="liiyuwlk" targetId="l84iw4cb"/>
+                     </subflow>
+                     <end id="l84iw4cb">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l349qeyq" targetId="l349qeyr" type="containerLink"/>
+                  <link id="l349qfkl" targetId="l349qfkk"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l349qeya" interrupting="true">
+                        <link id="l349qeyt" targetId="l349qeyu" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="l349qfkk" type="exclusive">
+                  <title>Severity Code</title>
+                  <flow id="l349qfko">
+                     <assignment id="liiyuyst">
+                        <title>Add Failure Response to Process Varaiables</title>
+                        <operation source="formula" to="output.out_JournalConfirmation_Payload">
+                           <expression language="XQuery">$output.JournalEntryBulkCreateConfirmation </expression>
+                        </operation>
+                        <operation source="constant" to="output.out_ResponseCode">{$output.JournalEntryBulkCreateConfirmation[1]/JournalEntryCreateConfirmation[1]/Log[1]/MaximumLogItemSeverityCode}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Code">SeverityCode: 3</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Error">{$output.SeverityCode_msg}</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_PostJournal[1]/Description">
+                           <expression language="XQuery">for $itm in $output.JournalEntryBulkCreateConfirmation[1]/JournalEntryCreateConfirmation[1]/Log/*:Item return fn:concat(fn:string-join($itm/Note/text(), "+"), "; ") </expression>
+                        </operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_PostJournal[1]/FailedAtStep">SAP: Failed to post Journal Entry</operation>
+                     </assignment>
+                     <link id="l84iw46h" targetId="l349qfkk" type="containerLink"/>
+                  </flow>
+                  <flow id="l349qfkr">
+                     <assignment id="liiyuzpw">
+                        <title>Add Response to Process Varaiables</title>
+                        <operation source="formula" to="output.out_JournalConfirmation_Payload">
+                           <expression language="XQuery">$output.JournalEntryBulkCreateConfirmation </expression>
+                        </operation>
+                        <operation source="constant" to="output.out_ResponseCode">{$output.JournalEntryBulkCreateConfirmation[1]/JournalEntryCreateConfirmation[1]/Log[1]/MaximumLogItemSeverityCode}</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Code">201</operation>
+                        <operation source="constant" to="output.out_ProcessVariables_PostJournal[1]/Error">{$output.SeverityCode_msg}</operation>
+                        <operation source="formula"
+                                   to="output.out_ProcessVariables_PostJournal[1]/Description">
+                           <expression language="XQuery">for $itm in $output.JournalEntryBulkCreateConfirmation[1]/JournalEntryCreateConfirmation[1]/Log/*:Item return fn:concat(fn:string-join($itm/Note/text(), "+"), "; ") </expression>
+                        </operation>
+                     </assignment>
+                     <link id="l349qfks" targetId="l349qfkk" type="containerLink"/>
+                  </flow>
+                  <link id="l349qfkn" targetId="l349qfko" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$output.JournalEntryBulkCreateConfirmation[1]/JournalEntryCreateConfirmation[1]/Log[1]/MaximumLogItemSeverityCode}</arg>
+                           <arg name="right">3</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="liwzhiey" targetId="liwzhiex"/>
+                  <link id="l349qfkq" targetId="l349qfkr" type="containerLink"/>
+               </container>
+               <subflow id="liwzhiex">
+                  <title>Log Posting</title>
+                  <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                  <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_PostJournal</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="liwzhiez" targetId="c"/>
+               </subflow>
+               <end id="c"/>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>2GoHM40fVmKjlTZ5291uoI</types1:GUID>
+      <types1:DisplayName>Process_POST_JournalEntryBulkCreateRequest</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:34.851Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

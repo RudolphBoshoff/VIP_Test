@@ -1,0 +1,175 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>PVm5Y6tMFyglsO7-gt-30027354-2022-08-22T14:14:58.669Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_SetERPToken_URN_SAP_Username_DM1</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Username=VIP_DM_1</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-08-22T14:14:59Z</types1:CreationDate>
+      <types1:ModifiedBy>swapnil.shrungare@vistra.com.SAML2</types1:ModifiedBy>
+      <types1:ModificationDate>2022-10-17T11:59:50Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>swapnil.shrungare@vistra.com.SAML2</types1:PublishedBy>
+      <types1:PublicationDate>2022-10-17T12:00:03Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_SetERPToken_URN_SAP_Username_DM1/Process_SetERPToken_URN_SAP_Username_DM1.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_SetERPToken_URN_SAP_Username_DM1"
+                  name="Process_SetERPToken_URN_SAP_Username_DM1"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Username=VIP_DM_1</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <output>
+               <field description="" name="out_cookie" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_DateCreated" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tbl_VIP_p2b_erptoken_bulk" type="reference">
+                  <options>
+                     <option name="referenceTo">ConnectionDQMetadata-1:VIP_p2b_erptoken_bulk</option>
+                     <option name="required">false</option>
+                     <option name="guid">2k0VOKhPhwUiJh4QHcAXok</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="none">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l6c32gr4" targetId="l6c32gr3"/>
+               </start>
+               <assignment id="l6c32gr3">
+                  <title>Assignment to tmp_hostname, tmp_password etc.</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd_DM1')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username_DM1')</expression>
+                  </operation>
+                  <link id="l6c32gr5" targetId="l6d79obt"/>
+               </assignment>
+               <eventContainer id="l6d79obt">
+                  <service id="l6c32gqk">
+                     <title>GETSAPToken</title>
+                     <serviceName>AppERPGettoken:getAccessToken</serviceName>
+                     <serviceGUID>6D5gF9AP8aLlArRqeUz0AL</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostName" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l6d79obv">
+                     <assignment id="l6daoe1h">
+                        <title>Assignment to tbl_VIP_p2b_erptoken_bulk</title>
+                        <operation source="query" to="temp.tbl_VIP_p2b_erptoken_bulk">
+                           <query advanceQuery="false"
+                                  from="ConnectionDQMetadata-1:VIP_p2b_erptoken_bulk">
+                              <where>Order By ID</where>
+                           </query>
+                        </operation>
+                        <link id="l74ww1j5" targetId="l74ww1j4"/>
+                     </assignment>
+                     <assignment id="l74ww1j4">
+                        <title>Assignment to COOKIE, TOKEN etc.</title>
+                        <operation source="field" to="temp.tbl_VIP_p2b_erptoken_bulk.COOKIE">output.o_SvcERPGetToken_Cookie</operation>
+                        <operation source="field" to="temp.tbl_VIP_p2b_erptoken_bulk.TOKEN">output.o_SvcERPGetToken_X_CSRF_TOKEN</operation>
+                        <operation source="formula" to="temp.tbl_VIP_p2b_erptoken_bulk.DATECREATED">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </operation>
+                        <operation source="field" to="output.out_cookie">output.o_SvcERPGetToken_Cookie</operation>
+                        <operation source="field" to="output.out_token">output.o_SvcERPGetToken_X_CSRF_TOKEN</operation>
+                        <operation source="formula" to="output.out_DateCreated">
+                           <expression language="XQuery">fn:current-dateTime()</expression>
+                        </operation>
+                        <operation source="constant" to="temp.tbl_VIP_p2b_erptoken_bulk.USER">VIP_DM_1</operation>
+                     </assignment>
+                     <link id="l6d79obw" targetId="l6d79obt" type="containerLink"/>
+                  </flow>
+                  <flow id="l6d79oby">
+                     <throw id="l6d79oc3">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                           <parameter name="detail" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                           <parameter name="reason" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="l6d79obu" targetId="l6d79obv" type="containerLink"/>
+                  <link id="l6d79oem" targetId="c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l6d79obs" interrupting="true">
+                        <link id="l6d79obx" targetId="l6d79oby" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="c"/>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>230fb915-e2d1-4201-9fb5-5fd9ae55f0e6</ns1:Id>
+               <ns1:Name>new</ns1:Name>
+               <ns1:CreatedBy>rudolph.boshoff@vistra.com.SAML</ns1:CreatedBy>
+               <ns1:CreationDate>2022-08-22T14:14:59Z</ns1:CreationDate>
+               <ns1:ModifiedBy>rudolph.boshoff@vistra.com.SAML</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-08-22T14:14:59Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>9OnE56XeqQkgNkZaRjuf8Q</types1:GUID>
+      <types1:DisplayName>Process_SetERPToken_URN_SAP_Username_DM1</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:31.18Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

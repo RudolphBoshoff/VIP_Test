@@ -1,0 +1,421 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>iVsKKkhEuHWvJ4r-gt-957979-2023-02-28T13:08:17.132Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_POST_JournalEntryBulkClearingRequest</types1:Name>
+      <types1:ParentFlowIds>7qaaaa-gt-957994-2023-02-28T13:08:17.944Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates the Invoice Journal entry in SAP and logs success / failure accordingly</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2023-02-28T13:08:17Z</types1:CreationDate>
+      <types1:ModifiedBy>anupama.rao@vistra.com.SAML</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-16T15:06:04Z</types1:ModificationDate>
+      <types1:PublicationStatus>out-of-date</types1:PublicationStatus>
+      <types1:PublishedBy>anupama.rao@vistra.com.SAML</types1:PublishedBy>
+      <types1:PublicationDate>2023-03-16T15:17:28Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_POST_JournalEntryBulkClearingRequest/Process_POST_JournalEntryBulkClearingRequest.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_POST_JournalEntryBulkClearingRequest"
+                  name="Process_POST_JournalEntryBulkClearingRequest"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates the Invoice Journal entry in SAP and logs success / failure accordingly</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_JournalEntryClearingRequest"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Transaction_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_IICS_Run_ID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_Event_Name"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_API_Name" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProformaNr"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_MessageID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_DataKey" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_PostClearingResponseCode" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PostClearingResponseMessage" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PostClearingResponseDetails" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_username" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_hostname" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_password" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_SoapResponse" type="reference">
+                  <options>
+                     <option name="referenceTo">AppConnVIPIntegrations-CF:soap_response</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Error" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_MessageUUId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="l349qexb" targetId="l349qexa"/>
+               </start>
+               <assignment id="l349qexa">
+                  <title>Fetch URN Mappings</title>
+                  <operation source="formula" to="temp.tmp_hostname">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_password">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Pwd')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_username">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Username')</expression>
+                  </operation>
+                  <operation source="formula" to="temp.tmp_MessageUUId">
+                     <expression language="XQuery">util:generateUUID()</expression>
+                  </operation>
+                  <link id="l349qey1" targetId="l349qeyp"/>
+               </assignment>
+               <eventContainer id="l349qeyp">
+                  <service id="l349qexw">
+                     <title>Clear Journal Entry</title>
+                     <serviceName>AppSvcSapS4-JournalEntryBulkClearingRequest-Custom:JournalEntryBulkClearingRequest</serviceName>
+                     <serviceGUID>25iRG3buSQpenhDgizQScq</serviceGUID>
+                     <serviceInput>
+                        <parameter name="username" source="field" updatable="true">temp.tmp_username</parameter>
+                        <parameter name="password" source="field" updatable="true">temp.tmp_password</parameter>
+                        <parameter name="hostname" source="field" updatable="true">temp.tmp_hostname</parameter>
+                        <parameter name="JournalEntryBulkClearingRequest" source="formula">
+                           <expression language="XQuery">$input.in_JournalEntryClearingRequest </expression>
+                        </parameter>
+                        <parameter name="MessageId" source="field" updatable="true">temp.tmp_MessageUUId</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l349qeyr">
+                     <container id="lbxt5uvr" type="exclusive">
+                        <title>Clearing Status</title>
+                        <flow id="lbxt5uvu">
+                           <link id="lbxt5uvv" targetId="lbxt5uvr" type="containerLink"/>
+                        </flow>
+                        <flow id="lbxt5uvx">
+                           <assignment id="lbxt5v5w">
+                              <title>Set Clearing Error attributes</title>
+                              <operation source="constant" to="temp.tmp_Error[1]/HttpStatusCode">{$output.o_HTTP_ResponseCode}</operation>
+                              <operation source="constant" to="temp.tmp_Error[1]/Detail">Journal clearing failed</operation>
+                              <operation source="constant" to="temp.tmp_Error[1]/Reason">{$output.o_JEClearing_Response}</operation>
+                              <link id="lbxt5v5x" targetId="lbxt5v2j"/>
+                           </assignment>
+                           <jumpTo id="lbxt5v2j">
+                              <link id="lbxt5v2k" targetId="lb0xn0uq"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lbxt5uvt" targetId="lbxt5uvu" type="containerLink">
+                           <condition source="formula">
+                              <function name="starts-with">
+                                 <arg name="left">{$output.o_HTTP_ResponseCode}</arg>
+                                 <arg name="right">2</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lbxt5uvw" targetId="lbxt5uvx" type="containerLink"/>
+                        <link id="lbxt5uvs" targetId="lbxt5rlm"/>
+                     </container>
+                     <container id="lb0xmycq" type="exclusive">
+                        <title>error_code</title>
+                        <flow id="lb0xmycu">
+                           <create id="lb0xn0tn">
+                              <title>Log Success</title>
+                              <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                              <createInput>
+                                 <parameter name="X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_Transaction_ID}</parameter>
+                                 <parameter name="IICS_Run_ID" source="constant" updatable="true">{$input.in_IICS_Run_ID}</parameter>
+                                 <parameter name="Code" source="constant" updatable="true">{$output.out_SoapResponse[1]/error_code}</parameter>
+                                 <parameter name="Error" source="constant" updatable="true">{$output.out_SoapResponse[1]/error_message}</parameter>
+                                 <parameter name="Description" source="formula" updatable="true">
+                                    <expression language="XQuery">'Journal cleared successfully'</expression>
+                                 </parameter>
+                                 <parameter name="DateCreated" source="formula" updatable="true">
+                                    <expression language="XQuery">fn:current-dateTime()</expression>
+                                 </parameter>
+                                 <parameter name="DateProcessStart" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                                 <parameter name="API_NAME" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                                 <parameter name="EVENT_NAME" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                                 <parameter name="DATA_KEY" source="constant" updatable="true">{$input.in_DataKey}</parameter>
+                                 <parameter name="IICS_PROCESS_NAME" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="REST_URL" source="constant" updatable="true">NA</parameter>
+                                 <parameter name="REST_PAYLOAD" source="constant" updatable="true">NA</parameter>
+                              </createInput>
+                           </create>
+                           <link id="lb0xmycv" targetId="lb0xmycq" type="containerLink"/>
+                        </flow>
+                        <flow id="lb0xmycx">
+                           <subflow id="lb0xn0uq">
+                              <title>Log Error</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_Transaction_ID}</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="constant" updatable="true">{$input.in_IICS_Run_ID}</parameter>
+                                 <parameter name="i_Code" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/HttpStatusCode,  $output.out_SoapResponse[1]/error_code)</expression>
+                                 </parameter>
+                                 <parameter name="i_Error" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/Reason , 'Journal clearing failed' )</expression>
+                                 </parameter>
+                                 <parameter name="i_Description" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/Detail ,  $output.out_SoapResponse[1]/error_message )</expression>
+                                 </parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                                 <parameter name="i_DataKey" source="field" updatable="true">input.in_DataKey</parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="formula" updatable="true">
+                                    <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id) and fn:starts-with($output.o_HTTP_ResponseCode, '2'), 'SAP S4 : Journal clearing response not received', 'SAP S4 : Journal clearing failed')</expression>
+                                 </parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/bc/srt/scs/sap/journalentrybulkclearingreques?'||$temp.tmp_MessageUUId ||'  (SOAPAction = "http://sap.com/xi/SAPSCORE/SFIN/JournalEntryBulkCreationRequest_In/JournalEntryBulkCreationRequest_InRequest")'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toXML($input.in_JournalEntryClearingRequest/element())</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">https://api.sap.com/api/JOURNALENTRYBULKCLEARINGREQUES/overview</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                           </subflow>
+                           <link id="lb0xmycy" targetId="lb0xmycq" type="containerLink"/>
+                        </flow>
+                        <link id="lb0xmyct" targetId="lb0xmycu" type="containerLink">
+                           <condition source="formula">
+                              <function name="starts-with">
+                                 <arg name="left">{$output.out_SoapResponse[1]/error_code}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="lb0xmycw" targetId="lb0xmycx" type="containerLink"/>
+                        <link id="lb0xn08r" targetId="lb0xn03d"/>
+                     </container>
+                     <eventContainer id="lbxt5rlm">
+                        <subflow id="lb0xmy6m">
+                           <title>Read SOAP Response</title>
+                           <subflowGUID>9aEkH2h1AfWgTJQBwsvGg1</subflowGUID>
+                           <subflowPath>Process_ReadSoapResponse_CF</subflowPath>
+                           <runForEach>false</runForEach>
+                           <input>
+                              <parameter name="in_MessageHeaderID" source="field" updatable="true">input.in_MessageID</parameter>
+                           </input>
+                           <outputDef>
+                              <field name="out_SoapResponse" type="reference">
+                                 <options>
+                                    <option name="referenceTo">AppConnVIPIntegrations-CF:soap_response</option>
+                                    <option name="required">false</option>
+                                    <option name="isCopy">true</option>
+                                    <option name="guid">4jeLzcggRQkghEFjkshE2U</option>
+                                 </options>
+                              </field>
+                           </outputDef>
+                        </subflow>
+                        <flow id="lbxt5rlo">
+                           <link id="lbxt5rlp" targetId="lbxt5rlm" type="containerLink"/>
+                        </flow>
+                        <flow id="lbxt5rlr">
+                           <assignment id="lbxt5rup">
+                              <title>Set Error attributes</title>
+                              <operation source="field" to="temp.tmp_Error[1]/HttpStatusCode">output.ReadfaultInfo[1]/code</operation>
+                              <operation source="field" to="temp.tmp_Error[1]/Detail">output.ReadfaultInfo[1]/detail</operation>
+                              <operation source="field" to="temp.tmp_Error[1]/Reason">output.ReadfaultInfo[1]/reason</operation>
+                              <link id="lbxt5tm8" targetId="lbxt5tm6"/>
+                           </assignment>
+                           <jumpTo id="lbxt5tm6">
+                              <link id="lbxt5tm7" targetId="lb0xn0uq"/>
+                           </jumpTo>
+                        </flow>
+                        <link id="lbxt5rln" targetId="lbxt5rlo" type="containerLink"/>
+                        <link id="lb0xmycr" targetId="lb0xmycq"/>
+                        <events>
+                           <catch faultField="ReadfaultInfo" id="lbxt5rkl" interrupting="true">
+                              <link id="lbxt5rlq" targetId="lbxt5rlr" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <assignment id="lb0xn03d">
+                        <title>Set Ouput</title>
+                        <operation source="formula" to="output.out_PostClearingResponseCode">
+                           <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/HttpStatusCode,  $output.out_SoapResponse[1]/error_code)</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_PostClearingResponseMessage">
+                           <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/Reason , util:iif($output.out_SoapResponse[1]/error_code='1','Journal cleared successfully','Journal clearing failed' ))</expression>
+                        </operation>
+                        <operation source="formula" to="output.out_PostClearingResponseDetails">
+                           <expression language="XQuery">util:iif(util:isNull($output.out_SoapResponse[1]/confirmation_id),$temp.tmp_Error[1]/Detail ,  $output.out_SoapResponse[1]/error_message )</expression>
+                        </operation>
+                        <link id="lb0xn03f" targetId="lb0xmybw"/>
+                     </assignment>
+                     <end id="lb0xmybw"/>
+                  </flow>
+                  <flow id="l349qeyu">
+                     <subflow id="l8lleoqk">
+                        <title>Log Error</title>
+                        <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                        <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                        <runForEach>false</runForEach>
+                        <input>
+                           <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_Transaction_ID}</parameter>
+                           <parameter name="i_IICS_Run_ID" source="constant" updatable="true">{$input.in_IICS_Run_ID}</parameter>
+                           <parameter name="i_Code" source="constant" updatable="true">{$output.faultInfo[1]/code}</parameter>
+                           <parameter name="i_Error" source="constant" updatable="true">{$output.faultInfo[1]/reason}</parameter>
+                           <parameter name="i_Description" source="constant" updatable="true">{$output.faultInfo[1]/detail}</parameter>
+                           <parameter name="i_APIName" source="constant" updatable="true">{$input.in_API_Name}</parameter>
+                           <parameter name="i_EventName" source="constant" updatable="true">{$input.in_Event_Name}</parameter>
+                           <parameter name="i_DataKey" source="field" updatable="true">input.in_DataKey</parameter>
+                           <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                           <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP: Failed to clear Journal Entry</parameter>
+                           <parameter name="i_RestURL" source="formula" updatable="true">
+                              <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||'/sap/bc/srt/scs/sap/journalentrybulkclearingreques?'||$temp.tmp_MessageUUId ||'  (SOAPAction = "http://sap.com/xi/SAPSCORE/SFIN/JournalEntryBulkCreationRequest_In/JournalEntryBulkCreationRequest_InRequest")'</expression>
+                           </parameter>
+                           <parameter name="i_RequestPayload" source="formula" updatable="true">
+                              <expression language="XQuery">util:toXML($input.in_JournalEntryClearingRequest/element())</expression>
+                           </parameter>
+                           <parameter name="i_HelpFileLInk" source="constant" updatable="true">https://api.sap.com/api/JOURNALENTRYBULKCLEARINGREQUES/overview</parameter>
+                           <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                        </input>
+                        <outputDef/>
+                        <link id="lb0xn08x" targetId="lb0xn08w"/>
+                     </subflow>
+                     <assignment id="lb0xn08w">
+                        <title>Set Ouput</title>
+                        <operation source="field" to="output.out_PostClearingResponseCode">output.faultInfo[1]/code</operation>
+                        <operation source="field" to="output.out_PostClearingResponseMessage">output.faultInfo[1]/reason</operation>
+                        <operation source="field" to="output.out_PostClearingResponseDetails">output.faultInfo[1]/detail</operation>
+                        <link id="lb0xn08y" targetId="l84iw4cb"/>
+                     </assignment>
+                     <end id="l84iw4cb">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <link id="l349qeyq" targetId="l349qeyr" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l349qeya" interrupting="true">
+                        <link id="l349qeyt" targetId="l349qeyu" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>4YB8TOT7lQDiN415WJIl4j</types1:GUID>
+      <types1:DisplayName>Process_POST_JournalEntryBulkClearingRequest</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:34.903Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

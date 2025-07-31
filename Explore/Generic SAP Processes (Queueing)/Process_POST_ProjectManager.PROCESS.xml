@@ -1,0 +1,276 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>ZbfUryzfYtjCtbd-gt-20445553-2022-10-12T10:48:08.82Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_POST_ProjectManager</types1:Name>
+      <types1:ParentFlowIds>5NYLonEBNjDg8SO-gt-1623506-2023-08-23T09:54:35.914Z::pd.xml,kNmumf6S3wOLIFv-gt-22945939-2022-03-31T07:36:51.62Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Creates a Project Manager in SAP</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>veerabh-vistra-tst</types1:CreatedBy>
+      <types1:CreationDate>2022-10-12T10:48:09Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-07-10T13:21:37Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-07-11T08:33:12Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_POST_ProjectManager/Process_POST_ProjectManager.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_POST_ProjectManager"
+                  name="Process_POST_ProjectManager"
+                  overrideAPIName="true">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Creates a Project Manager in SAP</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="in_ProjectUUID"
+                          required="true"
+                          type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="in_ProcessVariables"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Body" required="true" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Project" required="true" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description=""
+                      name="out_ProcessVariables_POST_ProjectManager"
+                      type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoErrorDetails</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">48IWXcpluKJki95qyLOgaB</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RetryFlag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lh8wk32x" targetId="lh8wk32w"/>
+               </start>
+               <assignment id="lh8wk32w">
+                  <title>Set Process Variables</title>
+                  <operation source="field" to="output.out_ProcessVariables_POST_ProjectManager">input.in_ProcessVariables</operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_ProjectManager[1]/IICS_Process_Name">
+                     <expression language="XQuery">util:getAssetName()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_ProjectManager[1]/IICS_Run_ID">
+                     <expression language="XQuery"> 'Parent='||$input.in_ProcessVariables[1]/IICS_Run_ID ||'^LoggedAt='||util:getProcessId()</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_ProjectManager[1]/RestURL">
+                     <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')||
+'/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/'||
+'A_EnterpriseProject(guid'''||$input.in_ProjectUUID||''')/to_EntProjTeamMember'</expression>
+                  </operation>
+                  <operation source="formula"
+                             to="output.out_ProcessVariables_POST_ProjectManager[1]/Data_Key">
+                     <expression language="XQuery">$input.in_ProcessVariables[1]/Data_Key||
+'^Project='||$input.in_Project||
+'^ProjectUUID='||$input.in_ProjectUUID </expression>
+                  </operation>
+                  <link id="lh8wk32y" targetId="l6g7v66g"/>
+               </assignment>
+               <subflow id="l6g7v66g">
+                  <title>Process_GetERPToken</title>
+                  <subflowGUID>ayzWjWozBkwb3VgtMDpnwB</subflowGUID>
+                  <subflowPath>Process_GetERPToken</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_cookie" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_DateCreated" type="datetime">
+                        <options>
+                           <option name="thirtyMinutesIncrement">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="l6kpk8f6" targetId="l6g7v6yl"/>
+               </subflow>
+               <subflow id="lh8wk30h">
+                  <title>Log Transaction</title>
+                  <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                  <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input>
+                     <parameter name="i_ProcessVariables" source="field" updatable="true">output.out_ProcessVariables_POST_ProjectManager</parameter>
+                  </input>
+                  <outputDef/>
+                  <link id="lh8wk30j" targetId="lh8wk2z3"/>
+               </subflow>
+               <eventContainer id="l6g7v6yl">
+                  <service id="l6g7v6uk">
+                     <title>POST_ProjectManager</title>
+                     <serviceName>AppsvcEnterpriseProjectSRV0002:POST_ProjectManager</serviceName>
+                     <serviceGUID>4lOcSO8yGSDk9iG48li5Qd</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="formula">
+                           <expression language="XQuery">util:resolveURN('URN_SAP_Hostname')</expression>
+                        </parameter>
+                        <parameter name="cookie" source="field" updatable="true">output.out_cookie</parameter>
+                        <parameter name="token" source="field" updatable="true">output.out_token</parameter>
+                        <parameter name="body" source="formula">
+                           <expression language="XQuery">$input.in_Body </expression>
+                        </parameter>
+                        <parameter name="in_ProjectUUID" source="field" updatable="true">input.in_ProjectUUID</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="l6g7v6yn">
+                     <assignment id="lh8wk4db">
+                        <title>Update Process Variables</title>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Code">output.o_HttpResponseStatusCode</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Error">output.o_Message</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Description">Project Manager created successfully</operation>
+                     </assignment>
+                     <link id="lh8wk2z6" targetId="l6g7v6yl" type="containerLink"/>
+                  </flow>
+                  <flow id="l6g7v6yq">
+                     <assignment id="l6kpk8fd">
+                        <title>Update Process Variables</title>
+                        <operation source="formula" to="temp.tmp_Counter">
+                           <expression language="XQuery">$temp.tmp_Counter +1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_RetryFlag">
+                           <expression language="XQuery">util:iif($temp.tmp_Counter &lt;=3 and $output.faultInfo[1]/code = 'HTTP_401',1,0) </expression>
+                        </operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Code">output.faultInfo[1]/code</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Error">output.faultInfo[1]/reason</operation>
+                        <operation source="field"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/Description">output.faultInfo[1]/detail</operation>
+                        <operation source="constant"
+                                   to="output.out_ProcessVariables_POST_ProjectManager[1]/FailedAtStep">SAP: Create Project Manager</operation>
+                        <link id="l6kpk8l5" targetId="l6kpk8l4"/>
+                     </assignment>
+                     <container id="l6kpk8l4" type="exclusive">
+                        <title>tmp_RetryFlag</title>
+                        <flow id="l6kpk8l8">
+                           <wait id="l6kpk8rr">
+                              <title>Wait 10s</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">10</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                              <link id="l6kpk8rs" targetId="l6kpk8qe"/>
+                           </wait>
+                           <jumpTo id="l6kpk8qe">
+                              <link id="l6kpk8qf" targetId="l6g7v66g"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="l6kpk8lb">
+                           <link id="lh8wk304" targetId="l6kpk8l4" type="containerLink"/>
+                        </flow>
+                        <link id="l6kpk8l7" targetId="l6kpk8l8" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_RetryFlag}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="l6kpk8la" targetId="l6kpk8lb" type="containerLink"/>
+                     </container>
+                     <link id="lh8wk305" targetId="l6g7v6yl" type="containerLink"/>
+                  </flow>
+                  <link id="l6g7v6ym" targetId="l6g7v6yn" type="containerLink"/>
+                  <link id="lh8wk30i" targetId="lh8wk30h"/>
+                  <events>
+                     <catch faultField="faultInfo" id="l6g7v6xy" interrupting="true">
+                        <link id="l6g7v6yp" targetId="l6g7v6yq" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <end id="lh8wk2z3">
+                  <title>End</title>
+               </end>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>4b583f0f-6e76-49cd-a570-8d2976ed386b</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>veerabh-vistra-tst</ns1:CreatedBy>
+               <ns1:CreationDate>2022-10-12T10:48:09Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2023-07-10T13:21:37Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>47NQfzMd1i9iMXLqKHgq8P</types1:GUID>
+      <types1:DisplayName>Process_POST_ProjectManager</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:34.789Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

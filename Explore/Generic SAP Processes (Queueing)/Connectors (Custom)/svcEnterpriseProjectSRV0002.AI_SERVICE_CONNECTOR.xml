@@ -1,0 +1,1303 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>kQ0ARabbfTQbdxW-gt-24700613-2022-08-18T16:11:24.164Z::svc.xml</types1:EntryId>
+      <types1:Name>svcEnterpriseProjectSRV0002</types1:Name>
+      <types1:ParentFlowIds>gclopz4KhPVEQrX-gt-24777137-2022-08-18T16:11:26.102Z::conn.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+businesssconnector</types1:MimeType>
+      <types1:Description>https://api.sap.com/api/API_ENTERPRISE_PROJECT_SRV_0002/overview</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>rudolph.boshoff@vistra.com.SAML</types1:CreatedBy>
+      <types1:CreationDate>2022-08-18T16:11:24Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2023-03-29T09:54:52Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-04-03T07:56:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/rt.connector/svcEnterpriseProjectSRV0002/svcEnterpriseProjectSRV0002_svcDef.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <businessConnector xmlns="http://schemas.informatica.com/socrates/data-services/2014/05/business-connector-model.xsd"
+                            agentOnly="false"
+                            debug="false"
+                            displayName="svcEnterpriseProjectSRV0002"
+                            label=""
+                            name="svcEnterpriseProjectSRV0002"
+                            uuid="340857a3-b172-46f9-ad4c-45a60526a676">
+            <description>https://api.sap.com/api/API_ENTERPRISE_PROJECT_SRV_0002/overview</description>
+            <tags/>
+            <connectionAttributes xmlns="http://schemas.informatica.com/appmodules/screenflow/2014/04/avosConnectors.xsd"/>
+            <actions>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BasicAuth_GET"
+                       maxRedirects="100"
+                       name="BaseAction_BasicAuth_GET"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="username"
+                                required="false"
+                                testWith="VIEW_POINT_CLOUD_Q"
+                                type="string"/>
+                     <parameter name="password"
+                                required="false"
+                                testWith="xTQXVaJPZah}lrCjN5KLridzayxjoRPmxFQougkl"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002"
+                                        verb="GET">
+                        <authentication>
+                           <username>{$username}</username>
+                           <password>{$password}</password>
+                           <isExpressionInPassword>true</isExpressionInPassword>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            entireResponse="true"
+                            name="output"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_POST"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_POST"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="true"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="cookie"
+                                nogen="true"
+                                required="true"
+                                testWith="sap-usercontext=sap-client=100; path=/;SAP_SESSIONID_TLW_100=62CGqVm2I3AV0iSgN3XbIJPXRn0cqBHtlCn6Fj6c4eI%3d; path=/; secure; HttpOnly"
+                                type="string"/>
+                     <parameter name="token"
+                                nogen="true"
+                                required="true"
+                                testWith="X07ihxkPHPtXT3hK0FgQSg=="
+                                type="string"/>
+                     <parameter name="body" required="true" testWith="{}" type="reference">
+                        <options>
+                           <option name="referenceTo"/>
+                        </options>
+                     </parameter>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                        </httpHeaders>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_PATCH"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_PATCH"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="cookie"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="token"
+                                nogen="true"
+                                required="false"
+                                testWith=""
+                                type="string"/>
+                     <parameter name="body" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002"
+                                        verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category="Enterprise Project"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_A_EnterpriseProject"
+                       maxRedirects="100"
+                       name="POST_A_EnterpriseProject"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="inherit" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input/>
+                  <binding>
+                     <restSimpleBinding url="/A_EnterpriseProject" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="ProjectUUID"
+                            property="ProjectUUID"
+                            type="string"/>
+                     <field description="" name="Project" property="Project" type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_EnterpriseProject"
+                       maxRedirects="100"
+                       name="GET_A_EnterpriseProject"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="Project_ID"
+                                required="false"
+                                testWith="VPC-10034925-ANRE"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_EnterpriseProject" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$filter">Project eq '{$Project_ID}'</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_A_EnterpriseProject_GUID"
+                       maxRedirects="100"
+                       name="GET_A_EnterpriseProject_GUID"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="ProjectUUID" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_EnterpriseProject(guid'{$ProjectUUID}')" verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="$select">ProjectProfileCode_fc,EnterpriseProjectType_fc</otherParam>
+                           <otherParam name="$expand">to_EntProjectPublicSector,to_EntProjBlkFunc</otherParam>
+                        </otherParams>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Enterprise Project Processing Status"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_ChangeEntProjProcgStatus_DoNotUse"
+                       maxRedirects="100"
+                       name="POST_ChangeEntProjProcgStatus_DoNotUse"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="exclude" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="ProjectUUID"
+                                nogen="true"
+                                required="true"
+                                testWith="fa163e9c-e1e2-1edd-8793-3e1414d2be8e"
+                                type="string"/>
+                     <parameter name="ProcessingStatus"
+                                nogen="true"
+                                required="true"
+                                testWith="10"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/ChangeEntProjProcgStatus" verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <otherParams>
+                           <otherParam name="ProjectUUID">guid'{$ProjectUUID}'</otherParam>
+                           <otherParam name="ProcessingStatus">{$ProcessingStatus}</otherParam>
+                        </otherParams>
+                        <httpHeaders>
+                           <header name="If-Match">*</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="false"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Enterprise Project Processing Status"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_ChangeEntProjProcgStatus"
+                       maxRedirects="100"
+                       name="POST_ChangeEntProjProcgStatus"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="exclude" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="overwrite" name="url" type="url"/>
+                        <section type="body">
+                           <attribute inherit="overwrite" name="generateUsing" type="generateUsing"/>
+                        </section>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="ProjectUUID"
+                                nogen="true"
+                                required="false"
+                                testWith="fa163e9c-e1e2-1edd-8793-3e1414d2be8e"
+                                type="string"/>
+                     <parameter name="ProcessingStatus"
+                                nogen="true"
+                                required="false"
+                                testWith="10"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/ChangeEntProjProcgStatus?ProjectUUID=guid'{$ProjectUUID}'&amp;amp;ProcessingStatus='{$ProcessingStatus}'"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="If-Match">*</header>
+                        </httpHeaders>
+                        <body generateUsing="UnwrappedJSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description="" name="Project" property="Project" type="string"/>
+                     <field description=""
+                            name="ProjectUUID"
+                            property="ProjectUUID"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ProjectProcessingStatus_UUID"
+                       maxRedirects="100"
+                       name="GET_ProjectProcessingStatus_UUID"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="exclude" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="overwrite" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="in_Project"
+                                required="false"
+                                testWith="VPC-10053907-DB"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{fn:concat($hostname, '/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject',&#xA;'?$filter=Project%20eq%20'&#xA;,'''',$in_Project,'''' )}"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="O_Project"
+                            property="Project"
+                            type="string"/>
+                     <field description=""
+                            name="O_ProjectUUID"
+                            property="ProjectUUID"
+                            type="string"/>
+                     <field description=""
+                            name="O_ProcessingStatus"
+                            property="ProcessingStatus"
+                            type="string"/>
+                     <field description=""
+                            entireResponse="true"
+                            name="out_SvcGET_EnterpriseProject_EntireResponse"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">A_EnterpriseProject_GET</option>
+                        </options>
+                     </field>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BasicAuth_GET"
+                       label="GET_ProjectRoleType"
+                       maxRedirects="100"
+                       name="GET_ProjectRoleType"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="username" type="parameter"/>
+                           <attribute inherit="inherit" name="password" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="output" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="overwrite" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="in_Project"
+                                required="false"
+                                testWith="VPC-12500081-AN"
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject?$expand=to_EntProjTeamMember,to_EntProjTeamMember/to_EntProjEntitlement,to_EntProjRole,to_EnterpriseProjectElement,to_EnterpriseProjectJVA,to_EntProjBlkFunc&amp;amp;$filter=Project%20eq%20'{$in_Project }'"
+                                        verb="GET">
+                        <authentication>
+                           <username/>
+                           <password/>
+                           <isExpressionInPassword/>
+                        </authentication>
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_POST"
+                       label="POST_ProjectManager"
+                       maxRedirects="100"
+                       name="POST_ProjectManager"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="inherit" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="overwrite" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter label="in_ProjectUUID"
+                                name="in_ProjectUUID"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EnterpriseProject(guid'{fn:replace($in_ProjectUUID,' ','%20')}')/to_EntProjTeamMember"
+                                        verb="POST">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <body>{util:toJSON($body/element())}</body>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       isAbstract="true"
+                       label="BaseAction_BearerToken_DELETE"
+                       maxRedirects="100"
+                       name="BaseAction_BearerToken_DELETE"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <input>
+                     <parameter name="hostname"
+                                required="false"
+                                testWith="https://my305570-api.s4hana.ondemand.com"
+                                type="string"/>
+                     <parameter name="cookie" required="false" testWith="" type="string"/>
+                     <parameter name="token" required="false" testWith="" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding multiUsing="semicolonSeparated"
+                                        url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002"
+                                        verb="DELETE">
+                        <mutualAuth enabled="false">
+                           <keyStore mode="file"/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="Content-Type">application/json</header>
+                           <header name="Accept">application/json</header>
+                           <header name="Cookie">{$cookie}</header>
+                           <header name="X-CSRF-TOKEN">{$token}</header>
+                           <header name="If-Match">*</header>
+                        </httpHeaders>
+                     </restSimpleBinding>
+                  </binding>
+                  <output>
+                     <field description=""
+                            name="o_HttpResponseStatusCode"
+                            responseStatusCode="true"
+                            type="string"/>
+                     <field description=""
+                            name="o_Message"
+                            property="Message"
+                            type="string"/>
+                  </output>
+               </action>
+               <action category=""
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_DELETE"
+                       label="DELETE_ProjectManager"
+                       maxRedirects="100"
+                       name="DELETE_ProjectManager"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="overwrite" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                           <attribute inherit="inherit" name="If-Match" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="in_ProjectEntitlementUUID"
+                                required="true"
+                                testWith=""
+                                type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="{$hostname}/sap/opu/odata/sap/API_ENTERPRISE_PROJECT_SRV;v=0002/A_EntTeamMemberEntitlement(guid'{fn:replace($in_ProjectEntitlementUUID,' ','%20')}')"
+                                        verb="DELETE">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+               <action category="Enterprise Project"
+                       failOnError="true"
+                       forSearch="false"
+                       inherits="BaseAction_BearerToken_PATCH"
+                       label="PATCH_A_EnterpriseProject"
+                       maxRedirects="100"
+                       name="PATCH_A_EnterpriseProject"
+                       preemptiveAuth="true"
+                       responseEncoding="">
+                  <description/>
+                  <inheritanceMetadata>
+                     <section type="input">
+                        <section type="inputParameters">
+                           <attribute inherit="inherit" name="hostname" type="parameter"/>
+                           <attribute inherit="inherit" name="cookie" type="parameter"/>
+                           <attribute inherit="inherit" name="token" type="parameter"/>
+                           <attribute inherit="inherit" name="body" type="parameter"/>
+                        </section>
+                     </section>
+                     <section type="output">
+                        <section type="outputFields">
+                           <attribute inherit="inherit" name="o_HttpResponseStatusCode" type="field"/>
+                           <attribute inherit="inherit" name="o_Message" type="field"/>
+                        </section>
+                     </section>
+                     <section type="restSimpleBinding">
+                        <attribute inherit="extend" name="url" type="url"/>
+                        <section type="httpHeaders">
+                           <attribute inherit="inherit" name="Content-Type" type="header"/>
+                           <attribute inherit="inherit" name="Accept" type="header"/>
+                           <attribute inherit="inherit" name="Cookie" type="header"/>
+                           <attribute inherit="inherit" name="X-CSRF-TOKEN" type="header"/>
+                        </section>
+                        <section type="otherParams"/>
+                     </section>
+                  </inheritanceMetadata>
+                  <input>
+                     <parameter name="guid" required="false" type="string"/>
+                  </input>
+                  <binding>
+                     <restSimpleBinding url="/A_EnterpriseProject(guid'{$guid}')" verb="PATCH">
+                        <mutualAuth enabled="false">
+                           <keyStore/>
+                           <keyStorePassword/>
+                        </mutualAuth>
+                        <httpHeaders>
+                           <header name="If-Match">*</header>
+                        </httpHeaders>
+                        <body generateUsing="JSON" preserveJsonStringFormatting="true"/>
+                     </restSimpleBinding>
+                  </binding>
+                  <output/>
+               </action>
+            </actions>
+            <objects>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="A_EnterpriseProject_GET">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="d" nullable="true" required="false" type="reference">
+                        <options>
+                           <option name="referenceTo">d</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="d">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="results"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">results</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="results">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="ProjectStartDate_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ProjectProfileCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProfitCenter_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="to_EntProjTeamMember_oc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalLocation"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ActualStartDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="to_EntProjRole_oc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AvailabilityControlIsActive_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="EntProjectIsConfidential"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProjectCurrency_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="EnterpriseProjectServiceOrg"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_EnterpriseProjectElement"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EnterpriseProjectElement</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ActualEndDate_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Delete_mc" nullable="true" required="false" type="string"/>
+                     <field name="InvestmentProfile"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProjectEndDate_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ProcessingStatus"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="FunctionalArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="EntProjIsMultiSlsOrdItmsEnbld"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_EnterpriseProjectElement_oc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_EntProjRole"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EntProjRole</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ResponsibleCostCenter_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="IsBillingRelevant_fc"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="Project_fc" nullable="true" required="false" type="int"/>
+                     <field name="ResponsibleCostCenter"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="InvestmentProfile_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="TaxJurisdiction"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="IsBillingRelevant"
+                            nullable="true"
+                            required="false"
+                            type="boolean"/>
+                     <field name="LastChangedByUser"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Project" nullable="true" required="false" type="string"/>
+                     <field name="Location_fc" nullable="true" required="false" type="int"/>
+                     <field name="EnterpriseProjectType"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProjectStartDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="to_EntProjectPublicSector"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EntProjectPublicSector</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ControllingArea_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PriorityCode_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ControllingArea"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ActualStartDate_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ProjectProfileCode_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="PriorityCode" nullable="true" required="false" type="int"/>
+                     <field name="FunctionalArea_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="EntProjIsMultiSlsOrdItmsEnbld_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="RestrictedTimePosting"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProjectDescription_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="CustomerUUID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ProjectEndDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="to_EntProjTeamMember"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EntProjTeamMember</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ProjectUUID"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AvailabilityControlIsActive"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="Plant" nullable="true" required="false" type="string"/>
+                     <field name="ProjectLastChangedDateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="EnterpriseProjectType_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ProjectCurrency"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="to_EntProjBlkFunc"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EntProjBlkFunc</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="metadata"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">metadata</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="ProjectDescription"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="AvailabilityControlProfile_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="ChangeEntProjProcgStatus_ac"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="ActualEndDate"
+                            nullable="true"
+                            required="false"
+                            type="datetime"/>
+                     <field name="ProfitCenter" nullable="true" required="false" type="int"/>
+                     <field name="to_EntProjBlkFunc_oc"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostingSheet_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="to_EnterpriseProjectJVA"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">to_EnterpriseProjectJVA</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                     <field name="Update_mc" nullable="true" required="false" type="string"/>
+                     <field name="ProjectInternalID"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="AvailabilityControlProfile"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="FunctionalLocation_fc"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Plant_fc" nullable="true" required="false" type="int"/>
+                     <field name="LastChangeDateTime"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CostingSheet"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="CompanyCode"
+                            nullable="true"
+                            required="false"
+                            type="string"/>
+                     <field name="YY1_Customer_PPH"
+                            nullable="true"
+                            required="false"
+                            type="int"/>
+                     <field name="Location" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EnterpriseProjectElement">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="deferred">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EntProjRole">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EntProjectPublicSector">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EntProjTeamMember">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EntProjBlkFunc">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="metadata">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="etag" nullable="true" required="false" type="string"/>
+                     <field name="id" nullable="true" required="false" type="string"/>
+                     <field name="type" nullable="true" required="false" type="string"/>
+                     <field name="uri" nullable="true" required="false" type="string"/>
+                  </detail>
+               </processObject>
+               <processObject xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2011/06/avosHostEnvironment.xsd"
+                              isByCopy="true"
+                              name="to_EnterpriseProjectJVA">
+                  <description>An automatically generated process object</description>
+                  <detail>
+                     <field name="deferred"
+                            nullable="true"
+                            required="false"
+                            type="reference">
+                        <options>
+                           <option name="referenceTo">deferred</option>
+                           <option name="relationshipName">Child</option>
+                        </options>
+                     </field>
+                  </detail>
+               </processObject>
+            </objects>
+         </businessConnector>
+      </types1:Entry>
+      <types1:GUID>d6VzqsBfz4RcKOmqriccyb</types1:GUID>
+      <types1:DisplayName>svcEnterpriseProjectSRV0002</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:32.255Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

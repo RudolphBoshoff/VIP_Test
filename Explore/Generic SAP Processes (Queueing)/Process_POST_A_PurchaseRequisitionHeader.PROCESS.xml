@@ -1,0 +1,368 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>PVIKchzt1Y6tMFy-gt-1244341-2022-12-16T08:04:36.765Z::pd.xml</types1:EntryId>
+      <types1:Name>Process_POST_A_PurchaseRequisitionHeader</types1:Name>
+      <types1:ParentFlowIds>97yV4AdypKwKBqR-gt-38832316-2023-01-11T15:48:55.974Z::pd.xml,aa-gt-13442292-2023-01-12T09:05:10Z::pd.xml,EJLEwporzYLnzYL-gt-13944910-2023-01-13T13:55:09.148Z::pd.xml,KkQIW3Ni7A7vNlj-gt-14151353-2023-01-13T02:51:24.584Z::pd.xml,sfYmWR7hsAVR3aa-gt-5546832-2023-03-01T09:58:37.301Z::pd.xml,SJhtghGZ5i4rswV-gt-8030674-2022-12-29T07:15:50.718Z::pd.xml,Wq9bdsreK8ZAZf5-gt-1251750-2022-12-16T08:04:37.763Z::pd.xml</types1:ParentFlowIds>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description>Working with hardcoded input</types1:Description>
+      <types1:AppliesTo/>
+      <types1:Tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</types1:Tags>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>Rudolph.Boshoff.TST</types1:CreatedBy>
+      <types1:CreationDate>2022-12-16T08:04:37Z</types1:CreationDate>
+      <types1:ModifiedBy>Rudolph.Boshoff.TST</types1:ModifiedBy>
+      <types1:ModificationDate>2022-12-16T08:05:54Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>Rudolph.Boshoff.TST</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-08T09:09:20Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.Process_POST_A_PurchaseRequisitionHeader/Process_POST_A_PurchaseRequisitionHeader.pd.xml</types1:PublishedContributionId>
+      <types1:AutosaveExists>false</types1:AutosaveExists>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="Process_POST_A_PurchaseRequisitionHeader"
+                  name="Process_POST_A_PurchaseRequisitionHeader"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description>Working with hardcoded input</description>
+            <tags>.agent:VIP_IICS_SA_SG_ONPREM_GROUP,.anonymous</tags>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description="" name="in_Body" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_X_TRANSACTION_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ApiName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_EventName" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_IICS_Process_ID" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_ParentProcessStartTime" type="datetime">
+                  <options>
+                     <option name="thirtyMinutesIncrement">true</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Token" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+               <parameter description="" name="in_Cookie" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="out_PostPurchReq_Feedback" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:PoSapStdOutput-1</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                     <option name="guid">744PJPq37S2lH1aSoGbVii</option>
+                  </options>
+               </field>
+               <field description="" name="out_PostPurchReq_Status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="out_PurchReqNo" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="tmp_Counter" type="int">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">0</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_RetryFlag" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+               <field description="" name="tmp_Payload2" type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <targetLocation>VIP_IICS_SA_SG_ONPREM_GROUP</targetLocation>
+               <rest>
+                  <allowAnonymousAccess/>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="lamfep7e" targetId="l6g7v66g"/>
+               </start>
+               <subflow id="l6g7v66g">
+                  <title>Process_GetERPToken</title>
+                  <subflowGUID>ayzWjWozBkwb3VgtMDpnwB</subflowGUID>
+                  <subflowPath>Process_GetERPToken</subflowPath>
+                  <runForEach>false</runForEach>
+                  <input/>
+                  <outputDef>
+                     <field name="out_cookie" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_token" type="string">
+                        <options>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                     <field name="out_DateCreated" type="datetime">
+                        <options>
+                           <option name="thirtyMinutesIncrement">true</option>
+                           <option name="required">false</option>
+                        </options>
+                     </field>
+                  </outputDef>
+                  <link id="la9siw5e" targetId="la9siw61"/>
+               </subflow>
+               <eventContainer id="la9siw61">
+                  <service id="la9siw5d">
+                     <title>POST Purchase Requisition Header</title>
+                     <serviceName>AppSvcPurchaseRequisition:POST_A_PurchaseRequisitionHeader</serviceName>
+                     <serviceGUID>2Mav3z5t2xSbNd1FESXesW</serviceGUID>
+                     <serviceInput>
+                        <parameter name="hostname" source="formula">
+                           <expression language="XQuery">util:resolveURN('URN_C_SAP_Hostname')</expression>
+                        </parameter>
+                        <parameter name="cookie" source="field" updatable="true">output.out_cookie</parameter>
+                        <parameter name="token" source="field" updatable="true">output.out_token</parameter>
+                        <parameter name="body" source="formula">
+                           <expression language="XQuery">$input.in_Body </expression>
+                        </parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="la9siw63">
+                     <create id="la9siw6e">
+                        <title>VIP_P2B_InterfaceErrorLog</title>
+                        <entityName>ConnectionDQMetadata-1:VIP_P2B_InterfaceErrorLog</entityName>
+                        <createInput>
+                           <parameter name="X_TRANSACTION_ID" source="field" updatable="true">input.in_X_TRANSACTION_ID</parameter>
+                           <parameter name="IICS_Run_ID" source="formula" updatable="true">
+                              <expression language="XQuery">'Parent='||$input.in_IICS_Process_ID||'^LoggedAt='||util:getProcessId()||'^'</expression>
+                           </parameter>
+                           <parameter name="Code" source="field" updatable="true">output.o_HttpResponseStatusCode</parameter>
+                           <parameter name="Error" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif( fn:starts-with($output.o_HttpResponseStatusCode , '2'), 'Success', $output.o_Message ) </expression>
+                           </parameter>
+                           <parameter name="Description" source="formula" updatable="true">
+                              <expression language="XQuery">util:iif( fn:starts-with($output.o_HttpResponseStatusCode , '2'), 'PurchaseRequisition='||$output.o_PR_PurchaseRequisition , $output.o_MessageDetail ) </expression>
+                           </parameter>
+                           <parameter name="DateCreated" source="formula" updatable="true">
+                              <expression language="XQuery">fn:current-dateTime()</expression>
+                           </parameter>
+                           <parameter name="DateProcessStart" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                           <parameter name="API_NAME" source="field" updatable="true">input.in_ApiName</parameter>
+                           <parameter name="EVENT_NAME" source="field" updatable="true">input.in_EventName</parameter>
+                           <parameter name="DATA_KEY" source="formula" updatable="true">
+                              <expression language="XQuery">'PurReqnDescription='||$input.in_Body/PurReqnDescription</expression>
+                           </parameter>
+                           <parameter name="IICS_PROCESS_NAME" source="formula" updatable="true">
+                              <expression language="XQuery">util:getAssetName()</expression>
+                           </parameter>
+                        </createInput>
+                        <link id="laqiwbpp" targetId="laqiwbnh"/>
+                     </create>
+                     <assignment id="laqiwbnh">
+                        <title>Assign Output</title>
+                        <operation source="field" to="output.out_PostPurchReq_Status">output.o_HttpResponseStatusCode</operation>
+                        <operation source="formula" to="output.out_PostPurchReq_Feedback">
+                           <expression language="XQuery">&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;{$output.o_HttpResponseStatusCode }&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;{util:iif( fn:starts-with($output.o_HttpResponseStatusCode , '2'), '', $output.o_MessageDetail )  }&lt;/Detail&gt;
+   &lt;Reason&gt;{util:iif( fn:starts-with($output.o_HttpResponseStatusCode , '2'), 'Success', $output.o_Message )  }&lt;/Reason&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;PurchaseRequisition&lt;/Identifier&gt;
+      &lt;Value&gt;{$output.o_PR_PurchaseRequisition}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;PurchaseRequisitionType&lt;/Identifier&gt;
+      &lt;Value&gt;{$output.o_PR_EntireResponse[1]/d[1]/PurchaseRequisitionType/text() }&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;Message Only&lt;/Identifier&gt;
+      &lt;Value&gt;{ for $itm in $output.o_MessageDetail[1]/errordetails/*:item return fn:concat(fn:string-join($itm/Note/text(), "+"), ";
+      ") }&lt;/Value&gt;
+   &lt;/Parameters&gt;
+&lt;/PoSapStdOutput&gt;
+</expression>
+                        </operation>
+                        <operation source="field" to="output.out_PurchReqNo">output.o_PR_PurchaseRequisition</operation>
+                        <link id="laqiwbqw" targetId="laqiwbqv"/>
+                     </assignment>
+                     <end id="laqiwbqv">
+                        <title>End 1</title>
+                     </end>
+                  </flow>
+                  <flow id="la9siw66">
+                     <assignment id="la9siw6y">
+                        <title>Assignment to tmp_Counter, tmp_RetryFlag</title>
+                        <operation source="formula" to="temp.tmp_Counter">
+                           <expression language="XQuery">$temp.tmp_Counter +1</expression>
+                        </operation>
+                        <operation source="formula" to="temp.tmp_RetryFlag">
+                           <expression language="XQuery">util:iif($temp.tmp_Counter &lt;=3 and $output.faultInfo[1]/code = 'HTTP_401',1,0) </expression>
+                        </operation>
+                        <link id="la9siw7p" targetId="la9siw7f"/>
+                     </assignment>
+                     <container id="la9siw7f" type="exclusive">
+                        <title>tmp_RetryFlag</title>
+                        <flow id="la9siw7g">
+                           <wait id="la9siw7h">
+                              <title>Wait 10s</title>
+                              <duration source="formula">
+                                 <function name="duration_expression">
+                                    <arg name="value">10</arg>
+                                    <arg name="scale">S</arg>
+                                    <arg name="businessDays"/>
+                                 </function>
+                              </duration>
+                              <link id="la9siw7n" targetId="la9siw7i"/>
+                           </wait>
+                           <jumpTo id="la9siw7i">
+                              <link id="la9siw7o" targetId="l6g7v66g"/>
+                           </jumpTo>
+                        </flow>
+                        <flow id="la9siw7j">
+                           <subflow id="laqiwajr">
+                              <title>Process_P2B_Event_ErrorLog</title>
+                              <subflowGUID>7N5uKhvv6kXg3zoRAbuggF</subflowGUID>
+                              <subflowPath>Process_P2B_Event_ErrorLog</subflowPath>
+                              <runForEach>false</runForEach>
+                              <input>
+                                 <parameter name="i_X_TRANSACTION_ID" source="constant" updatable="true">{$input.in_X_TRANSACTION_ID}</parameter>
+                                 <parameter name="i_IICS_Run_ID" source="formula" updatable="true">
+                                    <expression language="XQuery">'Parent='||$input.in_IICS_Process_ID||'^LoggedAt='||util:getProcessId()||'^'</expression>
+                                 </parameter>
+                                 <parameter name="i_Code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                 <parameter name="i_Error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                 <parameter name="i_Description" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                 <parameter name="i_APIName" source="constant" updatable="true">{$input.in_ApiName}</parameter>
+                                 <parameter name="i_EventName" source="constant" updatable="true">{$input.in_EventName}</parameter>
+                                 <parameter name="i_DataKey" source="formula" updatable="true">
+                                    <expression language="XQuery">'PurReqnDescription='||$input.in_Body/PurReqnDescription</expression>
+                                 </parameter>
+                                 <parameter name="i_IICSProcessname" source="formula" updatable="true">
+                                    <expression language="XQuery">util:getAssetName()</expression>
+                                 </parameter>
+                                 <parameter name="i_FailedAtStep" source="constant" updatable="true">SAP: Failed to create Purchase Requisition Header</parameter>
+                                 <parameter name="i_RestURL" source="formula" updatable="true">
+                                    <expression language="XQuery">util:resolveURN('URN_C_SAP_Hostname')||'/sap/opu/odata/sap/API_PURCHASEREQ_PROCESS_SRV/A_PurchaseRequisitionHeader'</expression>
+                                 </parameter>
+                                 <parameter name="i_RequestPayload" source="formula" updatable="true">
+                                    <expression language="XQuery">util:toJSON($input.in_Body/element )</expression>
+                                 </parameter>
+                                 <parameter name="i_HelpFileLInk" source="constant" updatable="true">https://api.sap.com/api/API_PURCHASEREQ_PROCESS_SRV/overview</parameter>
+                                 <parameter name="i_ProcessStartTime" source="field" updatable="true">input.in_ParentProcessStartTime</parameter>
+                              </input>
+                              <outputDef/>
+                              <link id="laqiwbpx" targetId="laqiwbpw"/>
+                           </subflow>
+                           <assignment id="laqiwbpw">
+                              <title>Assign Output 1</title>
+                              <operation source="field" to="output.out_PostPurchReq_Status">output.faultInfo[1]/code</operation>
+                              <operation source="formula" to="output.out_PostPurchReq_Feedback">
+                                 <expression language="XQuery">&lt;PoSapStdOutput&gt;
+   &lt;HttpStatusCode&gt;{$output.faultInfo[1]/code }&lt;/HttpStatusCode&gt;
+   &lt;Detail&gt;{$output.faultInfo[1]/detail }&lt;/Detail&gt;
+   &lt;Reason&gt;{$output.faultInfo[1]/reason }&lt;/Reason&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;PurReqnDescription&lt;/Identifier&gt;
+      &lt;Value&gt;{$input.in_Body/PurReqnDescription}&lt;/Value&gt;
+   &lt;/Parameters&gt;
+   &lt;Parameters&gt;
+      &lt;Identifier&gt;PurchaseRequisitionType&lt;/Identifier&gt;
+      &lt;Value&gt;{$input.in_Body[1]/to_PurchaseReqnItem[1]/results[1]/PurchaseRequisitionType/text() }&lt;/Value&gt;
+   &lt;/Parameters&gt;
+&lt;/PoSapStdOutput&gt;
+</expression>
+                              </operation>
+                              <operation source="field" to="output.out_PurchReqNo">output.o_PR_PurchaseRequisition</operation>
+                              <link id="laqiwbrm" targetId="laqiwbrl"/>
+                           </assignment>
+                           <end id="laqiwbrl">
+                              <title>End 2</title>
+                           </end>
+                        </flow>
+                        <link id="la9siw7l" targetId="la9siw7g" type="containerLink">
+                           <condition source="formula">
+                              <function name="string-equals">
+                                 <arg name="left">{$temp.tmp_RetryFlag}</arg>
+                                 <arg name="right">1</arg>
+                              </function>
+                           </condition>
+                        </link>
+                        <link id="la9siw7m" targetId="la9siw7j" type="containerLink"/>
+                     </container>
+                  </flow>
+                  <link id="la9siw62" targetId="la9siw63" type="containerLink"/>
+                  <events>
+                     <catch faultField="faultInfo" id="la9siw60" interrupting="true">
+                        <link id="la9siw65" targetId="la9siw66" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+            </flow>
+         </process>
+         <ns1:sample-data-sets xmlns:ns1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/sampleData.xsd">
+            <ns1:SampleData>
+               <ns1:Id>0621e11c-0cc0-4cb9-9e52-672346dd1a8e</ns1:Id>
+               <ns1:Name>t1</ns1:Name>
+               <ns1:CreatedBy>Rudolph.Boshoff.TST</ns1:CreatedBy>
+               <ns1:CreationDate>2022-12-16T08:04:37Z</ns1:CreationDate>
+               <ns1:ModifiedBy>Rudolph.Boshoff.TST</ns1:ModifiedBy>
+               <ns1:ModificationDate>2022-12-16T08:05:54Z</ns1:ModificationDate>
+               <ns1:Data format="json">{}</ns1:Data>
+            </ns1:SampleData>
+         </ns1:sample-data-sets>
+      </types1:Entry>
+      <types1:GUID>3LpFo0NgBM7dIMY6WDCw6D</types1:GUID>
+      <types1:DisplayName>Process_POST_A_PurchaseRequisitionHeader</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2023-09-16T18:16:34.48Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
